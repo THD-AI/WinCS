@@ -1,12 +1,21 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Hollow Knight](README.md) · [🖼️ Library](../../README.md) · **2 / 26** · [Next: 9 Years of Shadows →](../9-years-of-shadows/README.md)
+<!-- reference-navigation:end -->
+
+![Hollow Knight: start with this gameplay reference](images/blue-cave.jpg)
+
+**Look for:** The tiny bright silhouette, readable ledges and feeling of a much larger place.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer or publisher's official site/store listing. These are existing copyrighted promotional/gameplay media, stored for private design analysis. No production-asset license is asserted. Do not put these files into game builds or publish the reference folder as an asset pack.
 
 Views were visually inspected. GIF inspection showed a rendered frame; this is not a frame-by-frame timing analysis. No sprite sheets, source code or meshes were extracted. Captions are our observations and discussion prompts, not developer documentation.
 
 ## blue-cave.jpg
 
-![Reference view: Vertical platform spacing and the bright character against a blue background.](images/blue-cave.jpg)
 
 Vertical platform spacing and the bright character against a blue background.
 
@@ -40,3 +49,7 @@ Enemy scale and ground combat silhouette against layered architecture. Source fi
 ## Review with Vatsal and Lex
 
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
+
+<!-- reference-navigation:start -->
+[← Previous: Hollow Knight](README.md) · [🖼️ Library](../../README.md) · **2 / 26** · [Next: 9 Years of Shadows →](../9-years-of-shadows/README.md)
+<!-- reference-navigation:end -->

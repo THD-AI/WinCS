@@ -1,10 +1,19 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 26** · [Next: Compare the games →](../../comparison.md)
+<!-- reference-navigation:end -->
+
+![Dead Cells: start with this gameplay reference](images/01-official-gameplay.jpg)
+
+**Look for:** Read the attack silhouette against the background. Motion and recovery matter more than extra particles.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer/publisher store listing. Visually inspected in a contact sheet; these are composition observations, not timing or source-pipeline analysis. Copyright remains with the credited rightsholders. Private research only; no runtime reuse license.
 
 ## images/01-official-gameplay.jpg
 
-![Side-view close combat: bright attack arc against a muted corridor.](images/01-official-gameplay.jpg)
 
 Side-view close combat: bright attack arc against a muted corridor.
 
@@ -38,3 +47,7 @@ Large bridge encounter: strong silhouette and attack effects against distant lig
 ## Gameplay study
 
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
+
+<!-- reference-navigation:start -->
+[← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 26** · [Next: Compare the games →](../../comparison.md)
+<!-- reference-navigation:end -->

@@ -1,5 +1,7 @@
 # Technical proposal and delivery architecture
 
+[← Previous](../design/art-and-audio.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](engine-evidence.md)
+
 Status: **proposed**, no engine installed. See [engine evidence](engine-evidence.md) for primary documentation and current constraints.
 
 ## Choose by a small spike, not language folklore
@@ -38,3 +40,5 @@ Target smooth play on the team's ordinary student laptops. Measure frame pacing 
 ## Optional Flipper research boundary
 
 Treat a hardware version as a separate future design. Its small monochrome display, limited memory/input and native application environment change art, controls and runtime architecture. A browser/WebGL build is not an FAP binary. Preserve a simple core loop if desired; do not constrain the jam to support two platforms.
+
+[← Previous](../design/art-and-audio.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](engine-evidence.md)

@@ -1,22 +1,26 @@
 # Contributing
 
-Vatsal leads the game direction. A discussion explores options, an issue defines an accepted task, and a PR contains a checked change. A planning issue is not automatic permission to build a feature before team/rules approval.
+[← Previous](docs/github-workspace.md) · [🏠 Home](README.md) · [🖼️ Visual library](references/README.md) · [Next →](NOTICE.md)
+
+Vatsal leads the game direction. Right now we browse references, explore playful ideas and edit documents. Issues and the project board have been deleted; recreate them only once the game technical design document is concluded. A PR can contain a checked document change without an issue.
 
 ## Small workflow
 
-1. Pick a ready issue and agree an owner and file boundary. Keep new ideas in Ideas discussions until chosen.
-2. Use `feature/<issue>-<slug>`, `fix/…`, `docs/…` or `chore/…` from main. One branch and one PR per coherent task. Review fixes stay there.
+1. Agree a small task, owner and file boundary. Keep new ideas in Ideas discussions until chosen.
+2. Use `feature/<slug>`, `fix/…`, `docs/…` or `chore/…` from main. One branch and one PR per coherent task. Review fixes stay there.
 3. Write conventional imperative commits (`docs: define the traversal prototype`). Include reason and checks when useful. All repository commits use `arudaev <hlexhelftd@gmail.com>` as requested by Alexander; no attribution trailers.
-4. Reference `Closes #n` or `Refs #n` and document tests/remaining choices. Review staged files and run `git diff --cached --check` and `python scripts/check_docs.py`.
+4. Explain checks and remaining choices; issue links are optional while tracking is deferred. Review staged files and run `git diff --cached --check` and `python scripts/check_docs.py`.
 5. Maintainer reviews and merges with merge commits; delete merged topic branches. Agents do not merge, publish, enable auto-merge or rewrite shared history.
 
 No branch per doc, person, AI session or tiny fix. No permanent dev branch. At jam scale, prefer sequential small merges over a stack. If a genuine dependent epic needs a stack, keep at most two active layers, state the base PR and blocker, and merge bottom-up. Use available GitHub native dependency facilities only after checking their current support; no stack tooling is a prerequisite to participate.
 
-## Board and issue states
+## Tracking comes after design
 
-Use the GitHub project's default **Todo / In Progress / Done** states. Within Todo, `status:needs-decision` marks unresolved choices; `status:ready` means an owner can start. Labels `type:research`, `type:decision`, `type:task`, `type:bug` and `area:event`, `area:design`, `area:art`, `area:tech`, `area:delivery` identify work. Keep only one active implementation issue per person.
+Do not recreate the deleted backlog or board during reference gathering. Once the game technical design document is concluded, create tasks from the chosen game and one private board. Templates and labels can stay unused until then.
 
-Board updates are manual initially; no bot token, comment command handler or broad automation is necessary. Mark a task Done after evidence is linked and acceptance criteria pass. Use native parent/sub-issues or dependency relationships if the current GitHub API/UI supports them; links in bodies remain readable fallbacks. Avoid dozens of empty tickets for hypothetical mechanics.
+## Visual documents
+
+Open game studies with an image and a short “look for this” cue. Keep provenance and deeper notes below. Every study/gallery has Previous / Library / Next links at both ends. Standard relative Markdown works across GitHub, Obsidian and Logseq. Update the trail with `python scripts/refresh_reference_navigation.py` after changing the reading order.
 
 ## Checks now and later
 
@@ -25,3 +29,5 @@ Current checks verify Markdown local links, reference structure and repository h
 ## Continuing after the jam
 
 Tag the submitted build only with maintainer approval. Preserve its commit and credits. Triage feedback into bugs versus possible expansions; keep the original playable loop intact. Do not expand into a full Metroidvania or integrate Voyager without a new team decision. Reassess ownership, contributor credit, asset licenses, public-source licensing and hosting cost before public release.
+
+[← Previous](docs/github-workspace.md) · [🏠 Home](README.md) · [🖼️ Visual library](references/README.md) · [Next →](NOTICE.md)

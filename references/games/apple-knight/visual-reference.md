@@ -1,12 +1,21 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Apple Knight](README.md) · [🖼️ Library](../../README.md) · **8 / 26** · [Next: Animal Well →](../animal-well/README.md)
+<!-- reference-navigation:end -->
+
+![Apple Knight: start with this gameplay reference](images/store-1.png)
+
+**Look for:** Spot the route, obstacle and player first. What would give our version its own comic rule?
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer or publisher's official site/store listing. These are existing copyrighted promotional/gameplay media, stored for private design analysis. No production-asset license is asserted. Do not put these files into game builds or publish the reference folder as an asset pack.
 
 Views were visually inspected. GIF inspection showed a rendered frame; this is not a frame-by-frame timing analysis. No sprite sheets, source code or meshes were extracted. Captions are our observations and discussion prompts, not developer documentation.
 
 ## store-1.png
 
-![Reference view: Forest combat and title overlay; useful for terrain layering, not a clean timing study.](images/store-1.png)
 
 Forest combat and title overlay; useful for terrain layering, not a clean timing study.
 
@@ -40,3 +49,7 @@ Dragon encounter demonstrates the extra boss and effect workload.
 ## Review with Vatsal and Lex
 
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
+
+<!-- reference-navigation:start -->
+[← Previous: Apple Knight](README.md) · [🖼️ Library](../../README.md) · **8 / 26** · [Next: Animal Well →](../animal-well/README.md)
+<!-- reference-navigation:end -->

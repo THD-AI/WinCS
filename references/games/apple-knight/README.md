@@ -1,5 +1,21 @@
 # Apple Knight
 
+<!-- reference-navigation:start -->
+[← Previous: Metroid Dread · gallery](../metroid-dread/visual-reference.md) · [🖼️ Library](../../README.md) · **7 / 26** · [Next: Apple Knight · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Immediate platforming
+
+[![Apple Knight: gameplay reference](images/store-1.png)](visual-reference.md)
+
+**Look for:** Spot the route, obstacle and player first. What would give our version its own comic rule?
+
+[▶ Gameplay / trailer sources](#watch-and-gaps) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Alexander raised this as a comparison when discussing what would distinguish the team's idea. This folder refers to the original Apple Knight, not its sequels.
 
 ## Verified reference facts
@@ -34,3 +50,7 @@ A distinguishing rule could be environmental manipulation, a humorous consequenc
 The developer and official store screenshot galleries are verified. A first-party standalone gameplay trailer for the original game was not verified in this pass; use a played demo or a team-selected recording before drawing conclusions about camera easing or animation timing.
 
 Retained screenshots are credited to Limitless LLC and are reference-only, not production assets.
+
+<!-- reference-navigation:start -->
+[← Previous: Metroid Dread · gallery](../metroid-dread/visual-reference.md) · [🖼️ Library](../../README.md) · **7 / 26** · [Next: Apple Knight · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

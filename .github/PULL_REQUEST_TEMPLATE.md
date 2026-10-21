@@ -1,6 +1,6 @@
 ## Change
 
-Describe the concrete problem and resulting behavior. Closes # or Refs #.
+Describe the concrete problem and resulting behavior. No issue link is required while tracking is deferred until the game technical design document is concluded.
 
 ## Evidence
 

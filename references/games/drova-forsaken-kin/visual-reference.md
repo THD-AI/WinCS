@@ -1,10 +1,19 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Drova – Forsaken Kin](README.md) · [🖼️ Library](../../README.md) · **14 / 26** · [Next: Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
+<!-- reference-navigation:end -->
+
+![Drova – Forsaken Kin: start with this gameplay reference](images/01-official-gameplay.jpg)
+
+**Look for:** Notice paths, fences and buildings. One small prop can imply a larger society.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer/publisher store listing. Visually inspected in a contact sheet; these are composition observations, not timing or source-pipeline analysis. Copyright remains with the credited rightsholders. Private research only; no runtime reuse license.
 
 ## images/01-official-gameplay.jpg
 
-![Oblique settlement scene: narrow routes bounded by fences and architecture.](images/01-official-gameplay.jpg)
 
 Oblique settlement scene: narrow routes bounded by fences and architecture.
 
@@ -38,3 +47,7 @@ Dark encounter space: local light and enemy scale affect readability.
 ## Gameplay study
 
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
+
+<!-- reference-navigation:start -->
+[← Previous: Drova – Forsaken Kin](README.md) · [🖼️ Library](../../README.md) · **14 / 26** · [Next: Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
+<!-- reference-navigation:end -->

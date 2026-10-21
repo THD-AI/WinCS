@@ -1,5 +1,7 @@
 # Plan and progress
 
+[← Previous](decisions/README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](github-workspace.md)
+
 Research date: 21 October 2026. This is pre-jam preparation, not permission to build competition content before the rules allow it.
 
 | Order | Work | Exit evidence |
@@ -10,10 +12,14 @@ Research date: 21 October 2026. This is pre-jam preparation, not permission to b
 | 4 | Research every named game in parallel | Per-game mechanics, worldbuilding, sources, gameplay images/views, production uncertainties |
 | 5 | Compare references through Vatsal's preference | Dependency matrix and a deliberately tiny proposed scope |
 | 6 | Draft proposal pack | Core loop, mechanics, level/storyboard, art/audio budget, technical options, testing and delivery |
-| 7 | Set up lightweight GitHub collaboration | Issues, private board, enabled Discussions, templates and small-branch workflow |
+| 7 | Make references easy to explore | Visual library, Previous / Next trail, Discussions and small-branch workflow |
 | 8 | Validate, commit and hand off | Document/link checks, reviewed staging, project commit then parent gitlink commit |
 | Next: team decision | Short call with Vatsal and Lex | Choose a provisional direction; confirm capacity; resolve rule questions |
 | At theme reveal | Fit direction to actual theme | Record accepted one-page pitch, controls, asset budget and cut list |
+
+## Tracking gate
+
+The initial issues and board have been deleted. Recreate them **only once the game technical design document is concluded**. Keep exploring in documents and Discussions until then. The existing proposals remain options; [playable jokes and puns](design/play-and-puns.md) need exploration before choosing a direction.
 
 ## Decision gates
 
@@ -30,3 +36,5 @@ Research date: 21 October 2026. This is pre-jam preparation, not permission to b
 ## Progress record
 
 Repository, event evidence, research files and planning pack are checked into Git; see docs/github-workspace.md for actual remote resources and remaining setup limitations. Design options stay proposed until a team decision is recorded. No final engine, game title, final art direction, playable prototype or production deployment is claimed by this planning phase.
+
+[← Previous](decisions/README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](github-workspace.md)

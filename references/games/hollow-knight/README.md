@@ -1,5 +1,21 @@
 # Hollow Knight
 
+<!-- reference-navigation:start -->
+[← Previous: Visual library](../../README.md) · [🖼️ Library](../../README.md) · **1 / 26** · [Next: Hollow Knight · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Vatsal’s starting point
+
+[![Hollow Knight: gameplay reference](images/blue-cave.jpg)](visual-reference.md)
+
+**Look for:** The tiny bright silhouette, readable ledges and feeling of a much larger place.
+
+[▶ Gameplay / trailer sources](#watch-and-source-trail) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Priority: Vatsal's main reference. This describes a reference, not an approved WinCS design.
 
 ## Verified reference facts
@@ -35,3 +51,7 @@ Ask Vatsal to rank: movement feel, lonely exploration, melee combat, mystery and
 - [Official screenshots and press-kit entry](https://www.hollowknight.com/): retained media are reference-only, credited to Team Cherry.
 
 No source sprites or game code were extracted. Engine choice for WinCS remains independent of this reference.
+
+<!-- reference-navigation:start -->
+[← Previous: Visual library](../../README.md) · [🖼️ Library](../../README.md) · **1 / 26** · [Next: Hollow Knight · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

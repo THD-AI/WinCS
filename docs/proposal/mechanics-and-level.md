@@ -1,6 +1,16 @@
 # Mechanics, dependencies and level storyboard
 
+[← Previous](game-proposal.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../design/art-and-audio.md)
+
 Status: proposed option A. Substitute if Vatsal chooses another loop.
+
+> This earlier route sketch stays as an option. The loop still needs a funny situation and a payoff worth discovering; [the pun drawer](../design/play-and-puns.md) offers alternatives rather than extra mandatory mechanics.
+
+| Read a place | Try something surprising | Return and notice the change |
+| --- | --- | --- |
+| [![Hollow Knight: readable cavern space](../../references/games/hollow-knight/images/blue-cave.jpg)](../../references/games/hollow-knight/visual-reference.md) | [![Animal Well: playful object interaction](../../references/games/animal-well/images/catch.gif)](../../references/games/animal-well/visual-reference.md) | [![Stardew Valley: everyday place and visible detail](../../references/games/stardew-valley/images/01-official-gameplay.jpg)](../../references/games/stardew-valley/visual-reference.md) |
+
+*Existing-game visual prompts, not screenshots of our level: Team Cherry, Shared Memory and ConcernedApe. The exact scenes do not depict the proposed sequence. Click for credits; use the three beats to sketch an original joke.*
 
 ## Systems and costs
 
@@ -47,3 +57,5 @@ Prototype coyote time and jump buffering as tuning proposals, not mandatory comp
 ## Playtest notes template
 
 Tester / build commit / browser / hardware; time to first movement; missed route cues; deaths and reasons; ability understood without explanation; total time; funniest/most memorable moment; blocker; resulting change. Ask what they thought they could do before telling them the intended solution.
+
+[← Previous](game-proposal.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../design/art-and-audio.md)

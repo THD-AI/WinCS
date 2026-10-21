@@ -1,41 +1,37 @@
-# Reference library
+# Pick a game. Follow your curiosity.
 
-Research collected 21 October 2026. All **13 named games** have dedicated analysis and visual-reference files. Screenshots/GIFs are developer/publisher promotional material with original URLs and credits. They are private design references, not production assets. Exact internal sprite sheets, source projects and map files were not obtained.
+**Start with a picture, not a wall of text.** Click a frame to open its game study. Every study and gallery has Previous / Library / Next links at the top and bottom.
 
-## Start with Vatsal
+[▶ Start the guided trail: Hollow Knight](games/hollow-knight/README.md) · [🎲 The pun drawer](../docs/design/play-and-puns.md) · [🏠 Home](../README.md)
 
-| Game | Why it is here | Analysis | Views |
-| --- | --- | --- | --- |
-| Hollow Knight | Vatsal's main reference: exploration, movement, atmosphere; original art is hand-drawn | [Read](games/hollow-knight/README.md) | [Images](games/hollow-knight/visual-reference.md) |
-| 9 Years of Shadows | Lex's side-view pixel comparison | [Read](games/9-years-of-shadows/README.md) | [Images](games/9-years-of-shadows/visual-reference.md) |
-| Metroid Dread | Lex's tutorial-size/genre comparison, not a content blueprint | [Read](games/metroid-dread/README.md) | [Images](games/metroid-dread/visual-reference.md) |
-| Apple Knight | Alexander's differentiation question | [Read](games/apple-knight/README.md) | [Images](games/apple-knight/visual-reference.md) |
-| Animal Well | Alexander's exploration/puzzle comparison | [Read](games/animal-well/README.md) | [Images](games/animal-well/visual-reference.md) |
-| Soul Knight | Lex's preference: readable combat and absurdity | [Read](games/soul-knight/README.md) | [Images](games/soul-knight/visual-reference.md) |
+## Vatsal first, then the team’s other tastes
 
-## Secondary team references
+| Reference | What catches your eye? |
+| --- | --- |
+| [![Hollow Knight: reference frame](games/hollow-knight/images/blue-cave.jpg)](games/hollow-knight/README.md) | **[Hollow Knight](games/hollow-knight/README.md)**<br>Vatsal’s starting point<br>[More views + sources](games/hollow-knight/visual-reference.md) |
+| [![9 Years of Shadows: reference frame](games/9-years-of-shadows/images/scene-3.png)](games/9-years-of-shadows/README.md) | **[9 Years of Shadows](games/9-years-of-shadows/README.md)**<br>Pixel spectacle<br>[More views + sources](games/9-years-of-shadows/visual-reference.md) |
+| [![Metroid Dread: reference frame](games/metroid-dread/images/gallery-1.jpg)](games/metroid-dread/README.md) | **[Metroid Dread](games/metroid-dread/README.md)**<br>Learn a move, see a new route<br>[More views + sources](games/metroid-dread/visual-reference.md) |
+| [![Apple Knight: reference frame](games/apple-knight/images/store-1.png)](games/apple-knight/README.md) | **[Apple Knight](games/apple-knight/README.md)**<br>Immediate platforming<br>[More views + sources](games/apple-knight/visual-reference.md) |
+| [![Animal Well: reference frame](games/animal-well/images/catch.gif)](games/animal-well/README.md) | **[Animal Well](games/animal-well/README.md)**<br>What happens if I try this?<br>[More views + sources](games/animal-well/visual-reference.md) |
+| [![Soul Knight: reference frame](games/soul-knight/images/switch-02.jpg)](games/soul-knight/README.md) | **[Soul Knight](games/soul-knight/README.md)**<br>A little readable chaos<br>[More views + sources](games/soul-knight/visual-reference.md) |
+| [![Drova – Forsaken Kin: reference frame](games/drova-forsaken-kin/images/01-official-gameplay.jpg)](games/drova-forsaken-kin/README.md) | **[Drova – Forsaken Kin](games/drova-forsaken-kin/README.md)**<br>A place with a life of its own<br>[More views + sources](games/drova-forsaken-kin/visual-reference.md) |
+| [![Kingdom Two Crowns: reference frame](games/kingdom-two-crowns/images/01-official-gameplay.jpg)](games/kingdom-two-crowns/README.md) | **[Kingdom Two Crowns](games/kingdom-two-crowns/README.md)**<br>Tiny controls, large consequences<br>[More views + sources](games/kingdom-two-crowns/visual-reference.md) |
+| [![Kingdom Eighties: reference frame](games/kingdom-eighties/images/03-official-gameplay.jpg)](games/kingdom-eighties/README.md) | **[Kingdom Eighties](games/kingdom-eighties/README.md)**<br>Ordinary places, strange trouble<br>[More views + sources](games/kingdom-eighties/visual-reference.md) |
+| [![Stardew Valley: reference frame](games/stardew-valley/images/01-official-gameplay.jpg)](games/stardew-valley/README.md) | **[Stardew Valley](games/stardew-valley/README.md)**<br>Small acts, visible changes<br>[More views + sources](games/stardew-valley/visual-reference.md) |
+| [![Children of Morta: reference frame](games/children-of-morta/images/01-official-gameplay.jpg)](games/children-of-morta/README.md) | **[Children of Morta](games/children-of-morta/README.md)**<br>Warmth around the danger<br>[More views + sources](games/children-of-morta/visual-reference.md) |
+| [![Planet of Lana: reference frame](games/planet-of-lana/images/01-official-gameplay.jpg)](games/planet-of-lana/README.md) | **[Planet of Lana](games/planet-of-lana/README.md)**<br>Let the picture tell it<br>[More views + sources](games/planet-of-lana/visual-reference.md) |
+| [![Dead Cells: reference frame](games/dead-cells/images/01-official-gameplay.jpg)](games/dead-cells/README.md) | **[Dead Cells](games/dead-cells/README.md)**<br>Action with a clear reaction<br>[More views + sources](games/dead-cells/visual-reference.md) |
 
-| Game | Useful lens | Analysis | Views |
-| --- | --- | --- | --- |
-| Drova – Forsaken Kin | Environmental society, world coherence; top-down | [Read](games/drova-forsaken-kin/README.md) | [Images](games/drova-forsaken-kin/visual-reference.md) |
-| Kingdom Two Crowns | Minimal input, layered horizontal space, indirect action | [Read](games/kingdom-two-crowns/README.md) | [Images](games/kingdom-two-crowns/visual-reference.md) |
-| Kingdom Eighties | Place, restrained lighting, everyday props | [Read](games/kingdom-eighties/README.md) | [Images](games/kingdom-eighties/visual-reference.md) |
-| Stardew Valley | Small acts, readable objects and visible improvement | [Read](games/stardew-valley/README.md) | [Images](games/stardew-valley/visual-reference.md) |
-| Children of Morta | Homecoming and emotional context around action | [Read](games/children-of-morta/README.md) | [Images](games/children-of-morta/visual-reference.md) |
-| Planet of Lana | Composition, scale and visual storytelling; painterly rather than pixel | [Read](games/planet-of-lana/README.md) | [Images](games/planet-of-lana/visual-reference.md) |
-| Dead Cells | Combat readability and documented animation production tradeoffs | [Read](games/dead-cells/README.md) | [Images](games/dead-cells/visual-reference.md) |
+## Connect the dots
 
-See [comparison and dependencies](comparison.md). The [team brief](../docs/brief/team-and-intent.md) separately records Voyager and the film couch as context. They are not candidate-game requirements.
+[Compare mechanics and visual qualities](comparison.md) · [Keep exploring playful ideas](../docs/design/play-and-puns.md) · [Existing proposal](../docs/proposal/game-proposal.md)
 
-## How to use the library
+Pick one moment you want to try, one detail that makes you smile, and one expensive system we can leave behind. Vatsal’s Hollow Knight reference leads; the rest offers possibilities, not a checklist to combine.
 
-1. Vatsal picks two gameplay moments, not entire games. State the exact quality: a jump, a loop back, a reveal, a silhouette, an interaction.
-2. Compare three views: navigation/camera scale, encounter/obstacle readability, and world mood/landmark. Some supplied stills show UI or co-op; captions identify those rather than pretending they are other camera angles.
-3. Watch official gameplay/trailers for motion; a screenshot cannot establish input latency or frame timing. We checked source pages and image content, not every full playthrough. Video playback limitations are recorded per game.
-4. Translate one quality into an original, bounded mechanic, with dependencies and asset cost. Remove one expensive feature for every new system proposed.
+## Notes for your notebook
 
-## Provenance and limits
+These are standard relative Markdown links and image embeds, with explicit backlinks. Open the cloned folder in Obsidian or Logseq, or browse on GitHub; no plugin or app-specific wiki syntax is required. Animated GIFs remain animated in readers that support them. Gameplay/trailer links are available on each game page; playback has not been verified for every source.
 
-Stored files have source URLs, credits and hashes in visual-reference.md or media-sources.json. Original aspect ratios and store compression are retained. No source-game sprites were extracted. Promotional screenshots may contain compositing/UI and do not establish original layer hierarchy or engine internals. Unknown engines remain unknown; strongest engine/pipeline evidence is linked where available (Hollow Knight, Animal Well, Dead Cells).
+The library contains all 13 named games and 42 credited source images/GIFs. Images here remain third-party private research references, not our game or a runtime asset pack. See each gallery for original URLs, credits and hashes, and [NOTICE](../NOTICE.md) for rights. Research collected 21 October 2026.
 
-Before any public repository/export, review whether to keep media as links instead of redistributing reference images. A future game build must not include references/.
+[▶ Start the trail](games/hollow-knight/README.md) · [🏠 Home](../README.md)

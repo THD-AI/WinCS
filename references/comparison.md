@@ -1,5 +1,7 @@
 # What correlates, what conflicts, what costs time
 
+[← Previous](README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](README.md) · [Next →](../docs/design/play-and-puns.md)
+
 This is our design analysis of the linked [reference library](README.md), not a ranking of the games or a locked pitch. Prioritize Vatsal's taste. Shared appearance does not imply shared game logic or production tools.
 
 | Family | References | Shared quality | Useful tiny translation | Dependencies to avoid importing |
@@ -36,3 +38,5 @@ Theme and core player experience precede the chain. Art exploration can run alon
 ## Smallest differentiator
 
 Ask Vatsal to finish: “You are a ___ who can ___, but ___.” If the answer could describe every platformer, make the interaction or consequence specific. Originality should come from one coherent relationship between verb, world and outcome. Do not solve the Apple Knight comparison by adding five unrelated mechanics.
+
+[← Previous](README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](README.md) · [Next →](../docs/design/play-and-puns.md)

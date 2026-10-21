@@ -1,10 +1,19 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 26** · [Next: Dead Cells →](../dead-cells/README.md)
+<!-- reference-navigation:end -->
+
+![Planet of Lana: start with this gameplay reference](images/01-official-gameplay.jpg)
+
+**Look for:** Notice negative space, scale and the next crossing. This is composition reference, not pixel concept art.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer/publisher store listing. Visually inspected in a contact sheet; these are composition observations, not timing or source-pipeline analysis. Copyright remains with the credited rightsholders. Private research only; no runtime reuse license.
 
 ## images/01-official-gameplay.jpg
 
-![Wide landscape with tiny character, depth and a legible crossing.](images/01-official-gameplay.jpg)
 
 Wide landscape with tiny character, depth and a legible crossing.
 
@@ -38,3 +47,7 @@ Dark machine interior: local lighting picks out a route and interaction.
 ## Gameplay study
 
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
+
+<!-- reference-navigation:start -->
+[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 26** · [Next: Dead Cells →](../dead-cells/README.md)
+<!-- reference-navigation:end -->

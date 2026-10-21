@@ -1,10 +1,19 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Two Crowns](README.md) · [🖼️ Library](../../README.md) · **16 / 26** · [Next: Kingdom Eighties →](../kingdom-eighties/README.md)
+<!-- reference-navigation:end -->
+
+![Kingdom Two Crowns: start with this gameplay reference](images/01-official-gameplay.jpg)
+
+**Look for:** Notice the single ground line and layered scenery. Minimal input does not mean a tiny simulation.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer/publisher store listing. Visually inspected in a contact sheet; these are composition observations, not timing or source-pipeline analysis. Copyright remains with the credited rightsholders. Private research only; no runtime reuse license.
 
 ## images/01-official-gameplay.jpg
 
-![Nighttime side-view scene: threats, recruited people and warm light on one strip.](images/01-official-gameplay.jpg)
 
 Nighttime side-view scene: threats, recruited people and warm light on one strip.
 
@@ -38,3 +47,7 @@ Daylight forest shrine/landmark: foreground silhouette and water reflection.
 ## Gameplay study
 
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
+
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Two Crowns](README.md) · [🖼️ Library](../../README.md) · **16 / 26** · [Next: Kingdom Eighties →](../kingdom-eighties/README.md)
+<!-- reference-navigation:end -->

@@ -1,5 +1,21 @@
 # Soul Knight
 
+<!-- reference-navigation:start -->
+[← Previous: Animal Well · gallery](../animal-well/visual-reference.md) · [🖼️ Library](../../README.md) · **11 / 26** · [Next: Soul Knight · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · A little readable chaos
+
+[![Soul Knight: gameplay reference](images/switch-02.jpg)](visual-reference.md)
+
+**Look for:** Find the safe space between projectiles. Keep the joke visible while the action happens.
+
+[▶ Gameplay / trailer sources](https://www.youtube.com/watch?v=I-X-uZcfoXo) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Lex's principal named preference; a secondary reference for Vatsal's game.
 
 ## Primary evidence
@@ -21,3 +37,7 @@ For our own prototype, one readable enemy with one projectile pattern could repl
 Engine, exact animation tool, sprite dimensions, atlas structure and source pipeline are unverified here. The pixel gameplay views show presentation, not the method used to create it. An original side-view character needs a different movement/animation contract from these top-down examples.
 
 Ask Lex which moment he likes: dodging, weapon variety, quick restarts, co-op or absurdity. Offer that quality as an option for Vatsal to evaluate; do not displace Vatsal's preferred camera and exploration by default. Watch the official store trailer for movement/feedback; no frame-accurate timing or complete playthrough was analyzed here.
+
+<!-- reference-navigation:start -->
+[← Previous: Animal Well · gallery](../animal-well/visual-reference.md) · [🖼️ Library](../../README.md) · **11 / 26** · [Next: Soul Knight · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

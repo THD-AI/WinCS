@@ -1,5 +1,21 @@
 # Animal Well
 
+<!-- reference-navigation:start -->
+[← Previous: Apple Knight · gallery](../apple-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **9 / 26** · [Next: Animal Well · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · What happens if I try this?
+
+[![Animal Well: gameplay reference](images/catch.gif)](visual-reference.md)
+
+**Look for:** Watch an object interaction. Could one consistent rule produce a surprising second use?
+
+[▶ Gameplay / trailer sources](#watch) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Alexander's exploration reference; secondary to Vatsal's requested direction.
 
 ## Verified reference facts
@@ -33,3 +49,7 @@ This option supports 'funny but deep' through a repeated rule with surprising co
 - [Official release-date trailer, linked by Shared Memory](https://www.youtube.com/watch?v=qhB6dLh9nn4).
 
 YouTube embed fetching was throttled during research. Links were verified through the developer's press kit; the videos were not watched in this pass, and no timestamp claims are made. All local GIFs remain Shared Memory reference media, not licensed WinCS assets.
+
+<!-- reference-navigation:start -->
+[← Previous: Apple Knight · gallery](../apple-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **9 / 26** · [Next: Animal Well · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
