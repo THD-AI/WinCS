@@ -21,6 +21,8 @@ Research date: 21 October 2026. This is pre-jam preparation, not permission to b
 
 The initial issues and board have been deleted. Recreate them **only once the game technical design document is concluded**. Keep exploring in documents and Discussions until then. The existing proposals remain options; [playable jokes and puns](design/play-and-puns.md) need exploration before choosing a direction.
 
+When the game exists and tracking returns, implement the [THD Room Finder-style automation plan](technical/github-automation-plan.md): linked deliverable issues, board/review transitions, native closure on merge to main, parent acceptance and reconciliation. This is deferred work, not new workflows or an issue backlog to create now.
+
 ## Decision gates
 
 **Gate A – today:** ask Vatsal which Hollow Knight qualities matter: exploration, movement, combat, atmosphere, mystery or boss challenge. Ask him to rank two, not approve all six. Lex chooses a voluntary asset budget; Alexander chooses actual support availability.
