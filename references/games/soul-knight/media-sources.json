@@ -1,0 +1,60 @@
+{
+  "game": "Soul Knight",
+  "retrieved": "2026-10-21",
+  "screenshots": [
+    {
+      "url": "https://play-lh.googleusercontent.com/9-GXjkPqF11HdU2OZfsVIH89phZ56k91xeGafeW8LLQSKlY-LsdRP5lIxJLkxOOrx1M4JNrnE0k_z-r2nC08pg=w526-h296",
+      "purpose": "Illustrated combat promotional card, not a pixel gameplay capture.",
+      "credit": "ChillyRoom",
+      "file": "images/01-official-gameplay.jpg",
+      "sha256": "eb98cc620bd8c39784c6d308af665eba031204cb261fc3ad5d783a39df6811d4"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/ezREc33gNOdsagG2oFketXwSbo4JC82oqZ-FHPBqxKcUtP13ZpRq_HuhW5CH5h9FtrDI0MRHPBSLCD6Y-W_iAg=w526-h296",
+      "purpose": "Illustrated loot promotional card, not an inventory screenshot.",
+      "credit": "ChillyRoom",
+      "file": "images/02-official-gameplay.jpg",
+      "sha256": "dad5e363617f52e0f309d058b83132eafbe9392954e79dc55b262aba5e853060"
+    },
+    {
+      "url": "https://play-lh.googleusercontent.com/N3q9VBlojhqxACI1V4U9OyWdqQSvrMrAGC_HVVs0WvpMSf2mCp67L4Xmc-ox6asjA1eGJYdYKeDQixUBfjPiyg=w526-h296",
+      "purpose": "Illustrated boss promotional card, not a verified gameplay encounter.",
+      "credit": "ChillyRoom",
+      "file": "images/03-official-gameplay.jpg",
+      "sha256": "69b0d0e058f7be3fc420424381cd8e1274e17fed861c22b4fad93c3e65d4e519"
+    },
+    {
+      "purpose": "Character-selection hub: multiple character silhouettes, shared room and UI.",
+      "credit": "ChillyRoom / Nintendo publisher listing",
+      "file": "images/switch-01.jpg",
+      "source_page": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Soul-Knight-1652172.html",
+      "url": "https://www.nintendo.com/eu/media/images/06_screenshots/games_5/nintendo_switch_download_software_2/nswitchds_soulknight/NSwitchDS_SoulKnight_01.jpg",
+      "sha256": "fc78deb06f53fff500ee7c44a81292aa917bf717bba1efc03c6ec7fcced53fe7"
+    },
+    {
+      "purpose": "A contained room encounter: player, enemies, bullets and walls share one top-down plane.",
+      "credit": "ChillyRoom / Nintendo publisher listing",
+      "file": "images/switch-02.jpg",
+      "source_page": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Soul-Knight-1652172.html",
+      "url": "https://www.nintendo.com/eu/media/images/06_screenshots/games_5/nintendo_switch_download_software_2/nswitchds_soulknight/NSwitchDS_SoulKnight_02.jpg",
+      "sha256": "a7d66c35ace35f23ee521243c37456a5042e6e73e66cfb333017ced3f2e22a74"
+    },
+    {
+      "purpose": "Dense projectile encounter: safe-space readability and effect contrast become critical.",
+      "credit": "ChillyRoom / Nintendo publisher listing",
+      "file": "images/switch-03.jpg",
+      "source_page": "https://www.nintendo.com/en-gb/Games/Nintendo-Switch-download-software/Soul-Knight-1652172.html",
+      "url": "https://www.nintendo.com/eu/media/images/06_screenshots/games_5/nintendo_switch_download_software_2/nswitchds_soulknight/NSwitchDS_SoulKnight_03.jpg",
+      "sha256": "1ee33c183d972ec741b117317fc593a9806bc2927c3e17e6c6a1a9500db29d3c"
+    }
+  ],
+  "store_page": "https://play.google.com/store/apps/details?id=com.ChillyRoom.DungeonShooter",
+  "rights": "Private research only; no runtime asset license asserted",
+  "trailers": [
+    {
+      "name": "Google Play publisher trailer",
+      "watch": "https://www.youtube.com/watch?v=I-X-uZcfoXo",
+      "source_page": "https://play.google.com/store/apps/details?id=com.ChillyRoom.DungeonShooter"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "retrieved": "2026-10-21",
+  "game": "Stardew Valley",
+  "store_page": "https://store.steampowered.com/app/413150/",
+  "screenshots": [
+    {
+      "file": "images/01-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_b887651a93b0525739049eb4194f633de2df75be.1920x1080.jpg?t=1786554168",
+      "steam_screenshot_id": 0,
+      "credit": "ConcernedApe / ConcernedApe",
+      "purpose": "Farm exterior: tile grid, task objects and UI in a top-down camera.",
+      "sha256": "4c4b746d325141a0612a040c4ab2cde1f5b76162a47465e72ca8bcb2b086a486"
+    },
+    {
+      "file": "images/02-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_9ac899fe2cda15d48b0549bba77ef8c4a090a71c.1920x1080.jpg?t=1786554168",
+      "steam_screenshot_id": 1,
+      "credit": "ConcernedApe / ConcernedApe",
+      "purpose": "Mine interior: limited visibility and route geometry change the scene mood.",
+      "sha256": "16f2832912b9bffa03d6a3e60a00d52205e2eaeb4134690ec2b9bf8bd9bdfffd"
+    },
+    {
+      "file": "images/03-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_4fa0866709ede3753fdf2745349b528d5e8c4054.1920x1080.jpg?t=1786554168",
+      "steam_screenshot_id": 2,
+      "credit": "ConcernedApe / ConcernedApe",
+      "purpose": "Settlement path and riverbank: landmarks and boundaries make navigation readable.",
+      "sha256": "65643f247f7e32380fa20be0dbc0e0c866e624a832252780b02c459649ca9e9d"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Stardew Valley Trailer 1080p",
+      "watch": "https://store.steampowered.com/app/413150/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256815967/movie.293x165.jpg?t=1754692862"
+    }
+  ],
+  "rights": "Copyright remains with named rightsholders. Internal visual research references only; no license for redistribution as game assets is asserted."
+}

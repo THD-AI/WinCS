@@ -1,0 +1,14 @@
+# Generated game output and local state
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+.cache/
+tmp/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db

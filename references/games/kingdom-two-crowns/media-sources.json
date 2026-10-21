@@ -1,0 +1,49 @@
+{
+  "retrieved": "2026-10-21",
+  "game": "Kingdom Two Crowns",
+  "store_page": "https://store.steampowered.com/app/701160/",
+  "screenshots": [
+    {
+      "file": "images/01-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/701160/ss_ca9df45386d8ead4a0cf62a16c2524095a610f6c.1920x1080.jpg?t=1791479063",
+      "steam_screenshot_id": 0,
+      "credit": "Fury Studios, Coatsink / Raw Fury",
+      "purpose": "Nighttime side-view scene: threats, recruited people and warm light on one strip.",
+      "sha256": "b030f5e6598bfc6636c9cc2e4b3225890e9c53f6eb6ce5978c40dbbef5af411e"
+    },
+    {
+      "file": "images/02-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/701160/ss_fb33eeb33590f492c39c714fd673e059599895a5.1920x1080.jpg?t=1791479063",
+      "steam_screenshot_id": 1,
+      "credit": "Fury Studios, Coatsink / Raw Fury",
+      "purpose": "Split-screen co-op view, not two vertically connected world floors.",
+      "sha256": "3485ebeb9d951cd2889d1727dadbf30a3ce2778e218141e310e0c9c47b83e6aa"
+    },
+    {
+      "file": "images/03-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/701160/ss_7b16a9ab8f9498ec1a28507120ab3ae7eb7c7217.1920x1080.jpg?t=1791479063",
+      "steam_screenshot_id": 2,
+      "credit": "Fury Studios, Coatsink / Raw Fury",
+      "purpose": "Daylight forest shrine/landmark: foreground silhouette and water reflection.",
+      "sha256": "922e470a162c5b50642f2874dca1f103b5c48ed55e393b21ba8fa67ac8d30f1d"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Build Explore Conquer Defend",
+      "watch": "https://store.steampowered.com/app/701160/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257409025/955597dd5bee1deffd44b679dde861fd7c50c232/movie_600x337.jpg?t=1787746446"
+    },
+    {
+      "name": "This is Kingdom Two Crowns",
+      "watch": "https://store.steampowered.com/app/701160/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257034147/movie.293x165.jpg?t=1729278935"
+    },
+    {
+      "name": "Kingdom Anniversary 2025 EN",
+      "watch": "https://store.steampowered.com/app/701160/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257215471/d42727749dc717822a7857b7fc599f2d76ca05b0/movie_600x337.jpg?t=1760089069"
+    }
+  ],
+  "rights": "Copyright remains with named rightsholders. Internal visual research references only; no license for redistribution as game assets is asserted."
+}

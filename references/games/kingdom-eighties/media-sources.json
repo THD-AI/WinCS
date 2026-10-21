@@ -1,0 +1,49 @@
+{
+  "retrieved": "2026-10-21",
+  "game": "Kingdom Eighties",
+  "store_page": "https://store.steampowered.com/app/1956040/",
+  "screenshots": [
+    {
+      "file": "images/01-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1956040/ss_2f7f423a053b6c4fa92035bc2b5c925e18f6f245.1920x1080.jpg?t=1792068216",
+      "steam_screenshot_id": 0,
+      "credit": "Fury Studios / Raw Fury",
+      "purpose": "Split-screen co-op promotional gameplay view: compare repeated horizontal strips.",
+      "sha256": "ea9f7efa8887c2b2b7157fd215c9bacbfd8e46bce96c955d79f1ed43b5991348"
+    },
+    {
+      "file": "images/02-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1956040/ss_611e0f0f9bb3a1a24d37a6cd3f01fd637a59a6ce.1920x1080.jpg?t=1792068216",
+      "steam_screenshot_id": 1,
+      "credit": "Fury Studios / Raw Fury",
+      "purpose": "Side-view neighborhood composition with cables, tree canopy and bicycle.",
+      "sha256": "baad060b8917bae01b184e1e5d6482fdec0601ec1ffdfdb35a8312f35b7b10bf"
+    },
+    {
+      "file": "images/03-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1956040/ss_712e19bbaf8284fe07b0783f5d1f8e3008e6d0ce.1920x1080.jpg?t=1792068216",
+      "steam_screenshot_id": 2,
+      "credit": "Fury Studios / Raw Fury",
+      "purpose": "Side-view group near an ordinary building; reflections reinforce a single ground line.",
+      "sha256": "6de35521e2434d9737aa4250f68897452d1d48dbedce93618f91d10837d552ab"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Co-op trailer",
+      "watch": "https://store.steampowered.com/app/1956040/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257096410/616c8d3c359f3afaa7251387df2717191e1c10f5/movie_600x337.jpg?t=1739206843"
+    },
+    {
+      "name": "Launch trailer",
+      "watch": "https://store.steampowered.com/app/1956040/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256955112/movie.293x165.jpg?t=1687784365"
+    },
+    {
+      "name": "PC Release Date Trailer",
+      "watch": "https://store.steampowered.com/app/1956040/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256951427/movie.293x165.jpg?t=1686158193"
+    }
+  ],
+  "rights": "Copyright remains with named rightsholders. Internal visual research references only; no license for redistribution as game assets is asserted."
+}

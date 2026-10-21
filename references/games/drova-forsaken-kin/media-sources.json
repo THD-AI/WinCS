@@ -1,0 +1,49 @@
+{
+  "retrieved": "2026-10-21",
+  "game": "Drova - Forsaken Kin",
+  "store_page": "https://store.steampowered.com/app/1585180/",
+  "screenshots": [
+    {
+      "file": "images/01-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1585180/ss_747e0589ecd12091730bc181b995d0a9bfbf1fc9.1920x1080.jpg?t=1792569797",
+      "steam_screenshot_id": 0,
+      "credit": "Just2D / Deck13, Smilegate, Gamersky Games",
+      "purpose": "Oblique settlement scene: narrow routes bounded by fences and architecture.",
+      "sha256": "4e88251e51a24ba87c13059bc20e2445804915186daba819a51a05efaac4525c"
+    },
+    {
+      "file": "images/02-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1585180/ss_807e7b8d4f8fe6d5243a78a627a4c1b920b86900.1920x1080.jpg?t=1792569797",
+      "steam_screenshot_id": 1,
+      "credit": "Just2D / Deck13, Smilegate, Gamersky Games",
+      "purpose": "Dialogue in a settlement: social interaction shares the exploration camera.",
+      "sha256": "f21099f0219a2a9c7d24afc7f523feaa2402fec8196a88d131c7a84ecb59983a"
+    },
+    {
+      "file": "images/03-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1585180/ss_757683477f1cc491c3f5b3d26b2f9a5f0063ddc8.1920x1080.jpg?t=1792569797",
+      "steam_screenshot_id": 2,
+      "credit": "Just2D / Deck13, Smilegate, Gamersky Games",
+      "purpose": "Dark encounter space: local light and enemy scale affect readability.",
+      "sha256": "0a7f722e3335701a9d88b6b2cf4214b1c31a8e988ba047f4a4d0ac153403dffc"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "Accolades Trailer",
+      "watch": "https://store.steampowered.com/app/1585180/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257071821/34a128fd0e65a269eeb89537908690622f37095d/movie_600x337.jpg?t=1731072418"
+    },
+    {
+      "name": "Launch Trailer",
+      "watch": "https://store.steampowered.com/app/1585180/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257064109/9d7c50dc95fd9e24e81bd67f69b6a5f8461f1b55/movie_600x337.jpg?t=1729000238"
+    },
+    {
+      "name": "Character Progression Trailer",
+      "watch": "https://store.steampowered.com/app/1585180/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257038421/movie.293x165.jpg?t=1725374238"
+    }
+  ],
+  "rights": "Copyright remains with named rightsholders. Internal visual research references only; no license for redistribution as game assets is asserted."
+}

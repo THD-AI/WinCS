@@ -1,0 +1,23 @@
+name: Task or research
+description: A bounded piece of planning, investigation or implementation
+title: "[Task] "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome and reason
+      description: What changes for the team or player? Mark unaccepted design proposals.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria and evidence
+      description: Include dependencies, source links, checks and explicit cut boundaries.
+    validations:
+      required: true
+  - type: textarea
+    id: budget
+    attributes:
+      label: Owner, time budget and blockers
+      description: Confirm voluntary availability. Identify organizer or team decisions first.

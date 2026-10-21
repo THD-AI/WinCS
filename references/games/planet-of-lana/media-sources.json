@@ -1,0 +1,49 @@
+{
+  "retrieved": "2026-10-21",
+  "game": "Planet of Lana",
+  "store_page": "https://store.steampowered.com/app/1608230/",
+  "screenshots": [
+    {
+      "file": "images/01-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1608230/ss_73b0b2da6ced61844f4ad07e97613ebbb2c7bd65.1920x1080.jpg?t=1772728759",
+      "steam_screenshot_id": 0,
+      "credit": "Wishfully / Thunderful Publishing",
+      "purpose": "Wide landscape with tiny character, depth and a legible crossing.",
+      "sha256": "adb0f74f9b0b4b45304b87f454cd19a11e5a0a6ffff62ff673cbc94219e723d6"
+    },
+    {
+      "file": "images/02-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1608230/ss_6f4a2ba6f5946be25ef2cd5cc9b8bf932b9178ff.1920x1080.jpg?t=1772728759",
+      "steam_screenshot_id": 1,
+      "credit": "Wishfully / Thunderful Publishing",
+      "purpose": "Quiet forest clearing: negative space and companion scale guide attention.",
+      "sha256": "e712458bf4f6d9067ae04174feda23de2043ea0d6894aa8b013c7d97e504ab50"
+    },
+    {
+      "file": "images/03-official-gameplay.jpg",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1608230/ss_393d5e36d6c9d3e920e9f8066bf420ca61215709.1920x1080.jpg?t=1772728759",
+      "steam_screenshot_id": 2,
+      "credit": "Wishfully / Thunderful Publishing",
+      "purpose": "Dark machine interior: local lighting picks out a route and interaction.",
+      "sha256": "d5dd7e2e028edb9a35ae04c1f4a6c9be3d3f5149e61f2b914c5973f904dae7ce"
+    }
+  ],
+  "trailers": [
+    {
+      "name": "New Trailer",
+      "watch": "https://store.steampowered.com/app/1608230/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/257093457/52082f6249c11b79ab68b9e70835c8a8ed510331/movie_600x337.jpg?t=1738259555"
+    },
+    {
+      "name": "Release Trailer",
+      "watch": "https://store.steampowered.com/app/1608230/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256948506/movie.293x165.jpg?t=1684853784"
+    },
+    {
+      "name": "Gameplay Trailer",
+      "watch": "https://store.steampowered.com/app/1608230/",
+      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256891854/movie.293x165.jpg?t=1655235903"
+    }
+  ],
+  "rights": "Copyright remains with named rightsholders. Internal visual research references only; no license for redistribution as game assets is asserted."
+}
