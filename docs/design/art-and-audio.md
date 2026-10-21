@@ -1,5 +1,7 @@
 # Art direction exploration and asset contract
 
+[← Previous](../proposal/mechanics-and-level.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../technical/technical-proposal.md)
+
 Status: provisional production constraints, not a final visual identity. Choose mechanics and camera before drawing a full cast. Vatsal selects two favorite gameplay screenshots from the Hollow Knight/9 Years references and says what reads well; Lex decides a comfortable contribution size.
 
 ## Two directions to compare after the loop is chosen
@@ -35,3 +37,5 @@ Keep editable source separate from exported runtime PNGs. Record author, date, s
 | No runtime assets yet | – | – | – | – | – |
 
 Reference screenshots live under references/, never public/ or an exported build. Any later build script should enforce that boundary.
+
+[← Previous](../proposal/mechanics-and-level.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../technical/technical-proposal.md)

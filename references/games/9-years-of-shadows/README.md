@@ -1,5 +1,21 @@
 # 9 Years of Shadows
 
+<!-- reference-navigation:start -->
+[← Previous: Hollow Knight · gallery](../hollow-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **3 / 26** · [Next: 9 Years of Shadows · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Pixel spectacle
+
+[![9 Years of Shadows: gameplay reference](images/scene-3.png)](visual-reference.md)
+
+**Look for:** Compare the richly decorated stage with the space the player actually needs to read.
+
+[▶ Gameplay / trailer sources](#watch) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Mentioned by Lex as a pixel-art side-scrolling reference. Not an approved WinCS feature list.
 
 ## Verified reference facts
@@ -37,3 +53,7 @@ Ask Vatsal whether the appeal is richly colored pixel scenery, responsive melee,
 - [Nintendo launch trailer](https://www.youtube.com/watch?v=sYHBqQ0NeWo).
 
 All retained images remain Halberd Studios' reference media; they are not a usable WinCS sprite library.
+
+<!-- reference-navigation:start -->
+[← Previous: Hollow Knight · gallery](../hollow-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **3 / 26** · [Next: 9 Years of Shadows · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

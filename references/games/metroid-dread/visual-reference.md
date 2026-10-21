@@ -1,12 +1,21 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Metroid Dread](README.md) · [🖼️ Library](../../README.md) · **6 / 26** · [Next: Apple Knight →](../apple-knight/README.md)
+<!-- reference-navigation:end -->
+
+![Metroid Dread: start with this gameplay reference](images/gallery-1.jpg)
+
+**Look for:** Separate the playable side view from cinematic shots; look for movement affordances.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer or publisher's official site/store listing. These are existing copyrighted promotional/gameplay media, stored for private design analysis. No production-asset license is asserted. Do not put these files into game builds or publish the reference folder as an asset pack.
 
 Views were visually inspected. GIF inspection showed a rendered frame; this is not a frame-by-frame timing analysis. No sprite sheets, source code or meshes were extracted. Captions are our observations and discussion prompts, not developer documentation.
 
 ## gallery-1.jpg
 
-![Reference view: Side-on running and aiming, platforms, projectile effects and minimap.](images/gallery-1.jpg)
 
 Side-on running and aiming, platforms, projectile effects and minimap.
 
@@ -40,3 +49,7 @@ Cinematic capture closeup: compare production cost and camera change with the ga
 ## Review with Vatsal and Lex
 
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
+
+<!-- reference-navigation:start -->
+[← Previous: Metroid Dread](README.md) · [🖼️ Library](../../README.md) · **6 / 26** · [Next: Apple Knight →](../apple-knight/README.md)
+<!-- reference-navigation:end -->

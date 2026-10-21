@@ -1,5 +1,7 @@
 # Jam delivery and team energy
 
+[← Previous](../technical/engine-evidence.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../events/degdev-3.md)
+
 All times Europe/Berlin (CEST, UTC+02 on 23–24 October 2026). The [event brief](../events/degdev-3.md) holds source evidence. Theme and organizer answers override proposed gameplay work. This plan deliberately contains rest and scope cuts.
 
 ## Before the event
@@ -47,3 +49,5 @@ Give a tool the accepted mechanic, file boundaries, engine version and explicit 
 ## Final checklist
 
 Fresh build opens from agreed host and from a backup; assets load without local absolute paths; keyboard focus and mute work; no stuck keys after blur; ability gate works before/after pickup; death and two full restarts work; ending is visible; credits/license/AI declarations complete; no reference screenshots in export; ZIP and demo recording saved; submission received before organizer deadline. Record build commit and URL in the release issue; maintainer authorizes publication.
+
+[← Previous](../technical/engine-evidence.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../events/degdev-3.md)

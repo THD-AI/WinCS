@@ -1,5 +1,21 @@
 # Drova – Forsaken Kin
 
+<!-- reference-navigation:start -->
+[← Previous: Soul Knight · gallery](../soul-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **13 / 26** · [Next: Drova – Forsaken Kin · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · A place with a life of its own
+
+[![Drova – Forsaken Kin: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
+
+**Look for:** Notice paths, fences and buildings. One small prop can imply a larger society.
+
+[▶ Gameplay / trailer sources](visual-reference.md#gameplay-study) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Secondary team reference; Vatsal's Hollow Knight preference remains the lead.
 
 ## Evidence and presentation
@@ -29,3 +45,7 @@ Does Vatsal want to understand a place through exploration, or is combat the rea
 For our own asset organization, group player states, terrain, interaction props and feedback separately, with fixed pivots and explicit frame durations. That is a proposed export contract, not the original game's source folder structure. Before making a whole sheet, test one frame at actual camera scale.
 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
+
+<!-- reference-navigation:start -->
+[← Previous: Soul Knight · gallery](../soul-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **13 / 26** · [Next: Drova – Forsaken Kin · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

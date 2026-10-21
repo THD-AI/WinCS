@@ -1,5 +1,7 @@
 # Team brief and conversation digest
 
+[← Previous](../events/degdev-3.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../decisions/README.md)
+
 Source: Alexander's supplied WhatsApp excerpts and screenshot, 21 October 2026, plus his explicit task request. This is a minimal planning digest; raw messages and the personal screenshot are not redistributed.
 
 ## People and ownership
@@ -38,3 +40,5 @@ The disagreement in chat is about production cost and team energy, not whether s
 5. Record decisions and next action; stop expanding the idea (2 min).
 
 No messages, meeting invitations or collaborator invitations have been sent to teammates.
+
+[← Previous](../events/degdev-3.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../decisions/README.md)

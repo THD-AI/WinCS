@@ -1,5 +1,21 @@
 # Kingdom Eighties
 
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Two Crowns · gallery](../kingdom-two-crowns/visual-reference.md) · [🖼️ Library](../../README.md) · **17 / 26** · [Next: Kingdom Eighties · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Ordinary places, strange trouble
+
+[![Kingdom Eighties: gameplay reference](images/03-official-gameplay.jpg)](visual-reference.md)
+
+**Look for:** Look at the small-town props and lighting. Familiar places can make absurd situations funnier.
+
+[▶ Gameplay / trailer sources](visual-reference.md#gameplay-study) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Secondary team reference; Vatsal's Hollow Knight preference remains the lead.
 
 ## Evidence and presentation
@@ -29,3 +45,7 @@ Would a ridiculous ordinary workplace or small-town location make Vatsal's 'funn
 For our own asset organization, group player states, terrain, interaction props and feedback separately, with fixed pivots and explicit frame durations. That is a proposed export contract, not the original game's source folder structure. Before making a whole sheet, test one frame at actual camera scale.
 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
+
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Two Crowns · gallery](../kingdom-two-crowns/visual-reference.md) · [🖼️ Library](../../README.md) · **17 / 26** · [Next: Kingdom Eighties · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

@@ -1,5 +1,21 @@
 # Metroid Dread
 
+<!-- reference-navigation:start -->
+[← Previous: 9 Years of Shadows · gallery](../9-years-of-shadows/visual-reference.md) · [🖼️ Library](../../README.md) · **5 / 26** · [Next: Metroid Dread · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Learn a move, see a new route
+
+[![Metroid Dread: gameplay reference](images/gallery-1.jpg)](visual-reference.md)
+
+**Look for:** Separate the playable side view from cinematic shots; look for movement affordances.
+
+[▶ Gameplay / trailer sources](#watch-and-source-trail) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Lex mentioned a tutorial-sized area as a scope analogy. It is not a request to reproduce Metroid.
 
 ## Verified reference facts
@@ -36,3 +52,7 @@ Minimum evidence before art expansion: a new player understands the gate without
 - [Nintendo developer report on design iteration](https://metroid.nintendo.com/dread/news/metroid-dread-report-vol-10/) is useful background for discussing movement and level design together.
 
 All retained Nintendo imagery is reference-only. No source meshes, textures or sprites were extracted.
+
+<!-- reference-navigation:start -->
+[← Previous: 9 Years of Shadows · gallery](../9-years-of-shadows/visual-reference.md) · [🖼️ Library](../../README.md) · **5 / 26** · [Next: Metroid Dread · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

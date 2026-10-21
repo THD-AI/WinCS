@@ -1,12 +1,21 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: 9 Years of Shadows](README.md) · [🖼️ Library](../../README.md) · **4 / 26** · [Next: Metroid Dread →](../metroid-dread/README.md)
+<!-- reference-navigation:end -->
+
+![9 Years of Shadows: start with this gameplay reference](images/scene-3.png)
+
+**Look for:** Compare the richly decorated stage with the space the player actually needs to read.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer or publisher's official site/store listing. These are existing copyrighted promotional/gameplay media, stored for private design analysis. No production-asset license is asserted. Do not put these files into game builds or publish the reference folder as an asset pack.
 
 Views were visually inspected. GIF inspection showed a rendered frame; this is not a frame-by-frame timing analysis. No sprite sheets, source code or meshes were extracted. Captions are our observations and discussion prompts, not developer documentation.
 
 ## scene-3.png
 
-![Reference view: Dialogue and portrait overlay show UI and illustration cost beyond platforming sprites.](images/scene-3.png)
 
 Dialogue and portrait overlay show UI and illustration cost beyond platforming sprites.
 
@@ -40,3 +49,7 @@ Vertical shaft framing and airborne enemies; compare character contrast against 
 ## Review with Vatsal and Lex
 
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
+
+<!-- reference-navigation:start -->
+[← Previous: 9 Years of Shadows](README.md) · [🖼️ Library](../../README.md) · **4 / 26** · [Next: Metroid Dread →](../metroid-dread/README.md)
+<!-- reference-navigation:end -->

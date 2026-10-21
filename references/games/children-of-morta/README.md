@@ -1,5 +1,21 @@
 # Children of Morta
 
+<!-- reference-navigation:start -->
+[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 26** · [Next: Children of Morta · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Warmth around the danger
+
+[![Children of Morta: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
+
+**Look for:** Compare character visibility with the effects. A return-home beat can give an outing meaning.
+
+[▶ Gameplay / trailer sources](visual-reference.md#gameplay-study) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Secondary team reference; Vatsal's Hollow Knight preference remains the lead.
 
 ## Evidence and presentation
@@ -29,3 +45,7 @@ Can the ending reframe an earlier funny moment as care for someone, using one ch
 For our own asset organization, group player states, terrain, interaction props and feedback separately, with fixed pivots and explicit frame durations. That is a proposed export contract, not the original game's source folder structure. Before making a whole sheet, test one frame at actual camera scale.
 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
+
+<!-- reference-navigation:start -->
+[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 26** · [Next: Children of Morta · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

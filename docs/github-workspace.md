@@ -1,37 +1,27 @@
-# GitHub workspace and handoff
+# Workspace now; project tracking later
 
-Created 21 October 2026 under Alexander's THD-AI organization.
+[← Previous](PLAN.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](../CONTRIBUTING.md)
 
-- [Private repository](https://github.com/THD-AI/WinCS).
-- [Private project board](https://github.com/orgs/THD-AI/projects/6), linked to the repository, saved Board layout with Todo / In Progress / Done.
-- [Planning hub discussion](https://github.com/THD-AI/WinCS/discussions/9).
-- [Reference-quality discussion](https://github.com/THD-AI/WinCS/discussions/10).
+Updated 21 October 2026 following Alexander's direction.
 
-Organization Projects were disabled; `has_organization_projects` was enabled so this board could be created. The repository and the project were separately verified private. No new collaborators, organization members, billing resources or public hosts were added. Existing organization access still applies; teammates' GitHub handles and intended access have not been supplied.
+**Current phase: references and playful design exploration.** The [private repository](https://github.com/THD-AI/WinCS) stays. All eight initial issues and the initial project board have been deleted. Do not restore them from old issue descriptions or recreate them automatically.
 
-## Tracked work
+The [planning discussion](https://github.com/THD-AI/WinCS/discussions/9) and [reference discussion](https://github.com/THD-AI/WinCS/discussions/10) remain. README.md and AGENTS.md supersede any old board/issue links in those historical discussions.
 
-| Issue | Purpose | Current readiness |
-| --- | --- | --- |
-| [#1](https://github.com/THD-AI/WinCS/issues/1) | Research/proposal baseline | Completed with the checked initial baseline |
-| [#2](https://github.com/THD-AI/WinCS/issues/2) | Organizer rules and submission facts | Ready for a team volunteer to ask |
-| [#3](https://github.com/THD-AI/WinCS/issues/3) | Vatsal's direction and support capacity | Ready for team discussion |
-| [#4](https://github.com/THD-AI/WinCS/issues/4) | Engine/export spike | Blocked by #2 and #3 |
-| [#5](https://github.com/THD-AI/WinCS/issues/5) | Asset contract and voluntary art budget | Needs design decision and a tested player scale |
-| [#6](https://github.com/THD-AI/WinCS/issues/6) | Complete tiny game | Future work; blocked by rules, theme and team decision |
-| [#7](https://github.com/THD-AI/WinCS/issues/7) | Playtest and submission | Future work; blocked by #2 and #6 |
-| [#8](https://github.com/THD-AI/WinCS/issues/8) | After-jam ownership and continuation | Deferred |
+## When to create tracking
 
-Dependencies are explicit issue-body links, not claimed native blocking automation. Readiness labels supplement the three board columns. Board moves are manual initially, with GitHub's built-in close behavior where enabled; no custom token or workflow deployment is required.
+**Only once the game technical design document is concluded.** This is a future trigger, not an instruction to rush a design merely to reopen tracking.
 
-## Branches, PRs and initial bootstrap
+At that point, create a small new backlog and one private board from the accepted design: core loop, controls, level/progression, asset contract, engine/export path and actual team capacity. Put unresolved design questions in the document first. Create tasks for chosen work, not every mechanic mentioned in the references. Existing templates remain dormant scaffolding for that later phase.
 
-The empty repository's baseline is committed on `docs/initial-planning` and seeds remote `main` from that verified commit. No commit is made while checked out on main, and no redundant remote planning branch/empty PR is needed for the bootstrap. Subsequent work follows one issue / one typed branch / one PR, with merge commits and merged-branch deletion enabled. Squash and rebase merge options are disabled to preserve logical commits.
+Until then: browse images, watch source gameplay, compare ideas, sketch playable jokes and record decisions in documents. Preserve the existing game/mechanics proposals as alternatives.
 
-Use the guidance in [CONTRIBUTING.md](../CONTRIBUTING.md) for optional two-layer stacks. Branch protection and automated PR-title enforcement are **not configured**; these are documented team conventions, with document CI present. Runtime CI is deferred until a game/toolchain exists.
+## Git and access
 
-dotPrivate uses one dedicated `docs/wincs-planning` branch for the new submodule registration. Its pre-existing changes are excluded. Future parent gitlink updates should be consolidated at useful checkpoints, not made for every project commit.
+Keep one typed branch and one PR per coherent change, even without issues. Review fixes stay on the same branch; no branch per document. See [Contributing](../CONTRIBUTING.md).
 
-## Immediate next step
+Merge commits and merged-branch deletion are enabled; branch protection and PR-title enforcement are not configured. Document CI remains active. dotPrivate records only this submodule's commit at useful checkpoints.
 
-Vatsal chooses two desired reference qualities and a provisional loop; Lex and Alexander confirm comfortable support hours; a volunteer resolves #2. No additional repository, branch, meeting invitation, public page or new game implementation is needed to have that conversation.
+The repository stays private. Organization Projects was enabled during initial setup and remains enabled for other organizational use; removing this project's board does not change that organization-wide setting. No collaborators, billing resources or public hosts have been added.
+
+[← Previous](PLAN.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](../CONTRIBUTING.md)

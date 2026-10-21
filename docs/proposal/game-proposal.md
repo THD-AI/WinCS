@@ -1,6 +1,16 @@
 # Game proposal v0.1 – for Vatsal to choose
 
+[← Previous](../design/play-and-puns.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](mechanics-and-level.md)
+
 **Status: draft, not an approved game design.** The actual theme is not yet known. All premises below are placeholders. Aim for a 3–5 minute complete game before adding content.
+
+> **Kept as an early scope sketch.** These options do not yet establish the game's sense of humor. Start with [the pun drawer](../design/play-and-puns.md) for playable jokes and silly situations; Vatsal can keep, remix or reject the options below.
+
+| A place worth poking around | A rule worth playing with |
+| --- | --- |
+| [![Hollow Knight: cavern exploration reference](../../references/games/hollow-knight/images/blue-cave.jpg)](../../references/games/hollow-knight/visual-reference.md) | [![Animal Well: interaction reference](../../references/games/animal-well/images/catch.gif)](../../references/games/animal-well/visual-reference.md) |
+
+*Reference frames from Team Cherry and Shared Memory; not our proposed game. Click for source credits. The invitation: put an original ridiculous situation inside a readable, enjoyable interaction.*
 
 ## Desired player experience
 
@@ -50,3 +60,5 @@ These are not claims about the event theme or Vatsal's preferred story. Do not m
 ## Acceptance criteria for a complete tiny game
 
 A new player can open the agreed URL, understand the goal, move reliably, discover the ability, pass the gate, finish and restart without developer help. Death never traps the player. Collision and artwork agree. The build contains no unlicensed reference media. Three outside players try it; record where they get lost and what changed.
+
+[← Previous](../design/play-and-puns.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](mechanics-and-level.md)

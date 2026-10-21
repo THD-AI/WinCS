@@ -1,5 +1,21 @@
 # Stardew Valley
 
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Eighties · gallery](../kingdom-eighties/visual-reference.md) · [🖼️ Library](../../README.md) · **19 / 26** · [Next: Stardew Valley · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->
+
+## At a glance · Small acts, visible changes
+
+[![Stardew Valley: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
+
+**Look for:** Find the everyday objects that suggest something to do. Borrow care and clarity, not a whole farming economy.
+
+[▶ Gameplay / trailer sources](visual-reference.md#gameplay-study) · [🖼️ More views and credits](visual-reference.md)
+
+*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+
+## Go deeper (optional)
+
 Research date: 21 October 2026. Secondary team reference; Vatsal's Hollow Knight preference remains the lead.
 
 ## Evidence and presentation
@@ -29,3 +45,7 @@ Is 'deep' a personal connection or a complex simulation? A jam can achieve the f
 For our own asset organization, group player states, terrain, interaction props and feedback separately, with fixed pivots and explicit frame durations. That is a proposed export contract, not the original game's source folder structure. Before making a whole sheet, test one frame at actual camera scale.
 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
+
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Eighties · gallery](../kingdom-eighties/visual-reference.md) · [🖼️ Library](../../README.md) · **19 / 26** · [Next: Stardew Valley · gallery →](visual-reference.md)
+<!-- reference-navigation:end -->

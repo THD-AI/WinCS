@@ -1,5 +1,15 @@
 # Visual reference views
 
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Eighties](README.md) · [🖼️ Library](../../README.md) · **18 / 26** · [Next: Stardew Valley →](../stardew-valley/README.md)
+<!-- reference-navigation:end -->
+
+![Kingdom Eighties: start with this gameplay reference](images/03-official-gameplay.jpg)
+
+**Look for:** Look at the small-town props and lighting. Familiar places can make absurd situations funnier.
+
+[← Game study](README.md) · Credits and original sources follow each view below.
+
 Collected 21 October 2026 from the developer/publisher store listing. Visually inspected in a contact sheet; these are composition observations, not timing or source-pipeline analysis. Copyright remains with the credited rightsholders. Private research only; no runtime reuse license.
 
 ## images/01-official-gameplay.jpg
@@ -26,7 +36,6 @@ Side-view neighborhood composition with cables, tree canopy and bicycle.
 
 ## images/03-official-gameplay.jpg
 
-![Side-view group near an ordinary building; reflections reinforce a single ground line.](images/03-official-gameplay.jpg)
 
 Side-view group near an ordinary building; reflections reinforce a single ground line.
 
@@ -38,3 +47,7 @@ Side-view group near an ordinary building; reflections reinforce a single ground
 ## Gameplay study
 
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
+
+<!-- reference-navigation:start -->
+[← Previous: Kingdom Eighties](README.md) · [🖼️ Library](../../README.md) · **18 / 26** · [Next: Stardew Valley →](../stardew-valley/README.md)
+<!-- reference-navigation:end -->

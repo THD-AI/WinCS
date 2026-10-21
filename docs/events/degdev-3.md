@@ -1,5 +1,7 @@
 # DEGDEV – 3rd Deggendorf Game Jam
 
+[← Previous](../delivery/jam-plan.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../brief/team-and-intent.md)
+
 Checked **21 October 2026**. Primary registration source: [Eventbrite](https://www.eventbrite.de/e/degdev-3-deggendorfer-game-jam-registrierung-2001046010484). University confirmation: [THD calendar](https://www.th-deg.de/de/veranstaltung?id=44166222). Supplementary listing: [Games/Bavaria](https://events.games-bavaria.com/event/degdev-3-deggendorfer-game-jam/).
 
 Eventbrite could not be opened by the web reader, but a direct public HTTP request returned 200. Its visible description, embedded structured event dates and page data were checked. No logged-in attendee data was accessed or copied. The raw page is not committed. THD independently confirms dates, start/end, venue campus and free participation.
@@ -49,3 +51,5 @@ Questions prepared for the team to ask (no organizer message has been sent):
 5. What are the confirmed room, overnight access/rest arrangements, network access and facilities?
 
 Do not send messages or register others without Alexander's explicit instruction. Log organizer answers with date and source in this file; update the delivery plan if they differ.
+
+[← Previous](../delivery/jam-plan.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../brief/team-and-intent.md)
