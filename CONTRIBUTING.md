@@ -18,6 +18,8 @@ No branch per doc, person, AI session or tiny fix. No permanent dev branch. At j
 
 Do not recreate the deleted backlog or board during reference gathering. Once the game technical design document is concluded, create tasks from the chosen game and one private board. Templates and labels can stay unused until then.
 
+When there is a game and tracking returns, use the [THD Room Finder-style automation plan](docs/technical/github-automation-plan.md). It covers automatic linking, issue closure after maintainer merge to main, board/review states, sub-issue roll-up and repair of missed events. No new metadata workflows are active yet.
+
 ## Visual documents
 
 Open game studies with an image and a short “look for this” cue. Keep provenance and deeper notes below. Every study/gallery has Previous / Library / Next links at both ends. Standard relative Markdown works across GitHub, Obsidian and Logseq. Update the trail with `python scripts/refresh_reference_navigation.py` after changing the reading order.

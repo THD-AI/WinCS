@@ -5,6 +5,7 @@
 - Read README.md, docs/PLAN.md, docs/brief/team-and-intent.md and docs/decisions/README.md first.
 - This is Vatsal's project. Alexander and Lex provide support; do not assign them full-time production commitments or assume Lex will make every asset.
 - Issues and the project board have been deleted at Alexander's request. Recreate them only once the game technical design document is concluded; never recreate them from earlier instructions or historical discussion links during reference exploration.
+- After that gate and once there is a game, organize issues/projects and automate metadata like THD Room Finder, following docs/technical/github-automation-plan.md. Do not install those workflows/credentials now. PR merge remains the maintainer's decision; issue linking and board sync never imply permission to auto-merge.
 - The current scope is research, proposals and repository organization. Do not silently turn a candidate into an accepted design or implement the game from a planning issue alone.
 - The team must select the core loop after the organizer reveals the theme and confirms rules. Pre-event gameplay work depends on the organizer's pre-work policy.
 - Use AGENTS.md as the only agent instruction document. Do not introduce CLAUDE.md, Claude integrations or Claude-specific workflows.

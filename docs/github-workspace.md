@@ -14,6 +14,8 @@ The [planning discussion](https://github.com/THD-AI/WinCS/discussions/9) and [re
 
 At that point, create a small new backlog and one private board from the accepted design: core loop, controls, level/progression, asset contract, engine/export path and actual team capacity. Put unresolved design questions in the document first. Create tasks for chosen work, not every mechanic mentioned in the references. Existing templates remain dormant scaffolding for that later phase.
 
+Alexander additionally requested THD Room Finder-style issue organization and automated PR/issue/project updates once there is a game. The [deferred automation plan](technical/github-automation-plan.md) records the fields, views, linking/closure behavior, review transitions, sub-issue roll-up and implementation checks. Do not activate those workflows during the present reference phase.
+
 Until then: browse images, watch source gameplay, compare ideas, sketch playable jokes and record decisions in documents. Preserve the existing game/mechanics proposals as alternatives.
 
 ## Git and access
