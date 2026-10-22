@@ -55,7 +55,7 @@ Separate **alpha cutouts**, **FX region masks**, **interior reveal masks** and *
 
 Use the [shared art/animation brief](art-and-audio.md) for scale, silhouette, palette roles, terrain contours and animation-state names. Each request carries the accepted master/endpoint poses, location + mechanic ID, recording/clarification source, fixed scene origin/canvas/pivots, the change to make, protected geometry and the proof required. Do not ask for all stages, characters and transitions in one generation.
 
-For a terrain fault, compose normal and corrupted states on the same coordinates. Separate the removable lower-path art, upper-route supports, glitch region and both collision states. The [crossing schematic](../proposal/diagrams/crossing-change.svg) defines the intended behavior; exact 404 styling remains open. After any layer extension, rebuild the proof composite and retest both states before moving to the next strip.
+For a terrain fault, first choose the affected shape: an irregular tear, displaced slice, duplicated silhouette, stale reflection or folded connection. Use a different local silhouette for each place rather than stamping one rectangle everywhere. Compose normal and corrupted states on the same coordinates. Separate the removable lower-path art, upper-route supports, glitch region and both collision states. The [crossing schematic](../proposal/diagrams/crossing-change.svg) defines the intended behavior; exact 404 styling remains open. After any layer extension, rebuild the proof composite and retest both states before moving to the next strip.
 
 ## 5. Add just enough motion
 

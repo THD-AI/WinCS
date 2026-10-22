@@ -1,50 +1,114 @@
 <?xml version="1.0" ?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1330" height="680" viewBox="0 0 1330 680" role="img" aria-labelledby="title desc">
-  <title id="title">Proposed world route</title>
-  <desc id="desc">Read across the top then right to left below: Hidden Garden, campus, Lost in the Green, crossings, creek, Toxic Garden. Playground is optional.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1430" height="1120" viewBox="0 0 1430 1120" role="img" aria-labelledby="title desc">
+  <title id="title">A route through localized spatial faults</title>
+  <desc id="desc">A chaotic map of six fragmented terrain islands. Numbered locations retain the world order while local faults duplicate ledges, loop paths, shear a bridge, split banks and rewire a garden. Pale solid contours are footing; dashed pink contours are echoes.</desc>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-      <path d="M0 0 L8 3 L0 6" fill="none" stroke="#a6633c" stroke-width="1.5"/>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8" fill="none" stroke="#edbc70" stroke-width="1.6"/>
     </marker>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0 H0 V48" fill="none" stroke="#27403f" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="100%" height="100%" fill="#f5f1e8"/>
-  <text x="40" y="48" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#213d39">A ROUTE THROUGH THE GLITCH</text>
-  <text x="40" y="80" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Proposed world sequence · terrain and mechanic rhythm, not a measured campus map</text>
-  <rect x="40" y="120" width="390" height="200" rx="16" fill="#fffdf6" stroke="#738b69" stroke-width="3"/>
-  <text x="60" y="158" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#738b69">1  HIDDEN GARDEN</text>
-  <text x="60" y="197" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Lake touch → mirror arrival</text>
-  <text x="60" y="228" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Quiet reveal / learn the rule</text>
-  <path d="M60 286 C105 275 100 249 150 264 S205 314 255 280 S325 258 405 283" fill="none" stroke="#738b69" stroke-width="5"/>
-  <rect x="470" y="120" width="390" height="200" rx="16" fill="#fffdf6" stroke="#c38d6e" stroke-width="3"/>
-  <text x="490" y="158" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#c38d6e">2  CAMPUS LEDGES</text>
-  <text x="490" y="197" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Recognizable architecture, wrong path</text>
-  <text x="490" y="228" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Simple puzzle / bugged ledges</text>
-  <path d="M490 292 H580 L635 266 H710 L750 285 H835" fill="none" stroke="#c38d6e" stroke-width="5"/>
-  <rect x="900" y="120" width="390" height="200" rx="16" fill="#fffdf6" stroke="#5a7850" stroke-width="3"/>
-  <text x="920" y="158" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#5a7850">3  LOST IN THE GREEN</text>
-  <text x="920" y="197" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Grassy channels and screened paths</text>
-  <text x="920" y="228" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Navigation / optional stealth</text>
-  <path d="M920 286 C965 275 960 249 1010 264 S1065 314 1115 280 S1185 258 1265 283" fill="none" stroke="#5a7850" stroke-width="5"/>
-  <rect x="900" y="370" width="390" height="200" rx="16" fill="#fffdf6" stroke="#9f6b48" stroke-width="3"/>
-  <text x="920" y="408" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#9f6b48">4  RUSTY CROSSINGS</text>
-  <text x="920" y="447" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Lower path disappears; go over rails</text>
-  <text x="920" y="478" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">One terrain-state traversal</text>
-  <path d="M920 542 H1010 L1065 516 H1140 L1180 535 H1265" fill="none" stroke="#9f6b48" stroke-width="5"/>
-  <rect x="470" y="370" width="390" height="200" rx="16" fill="#fffdf6" stroke="#638e96" stroke-width="3"/>
-  <text x="490" y="408" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#638e96">5  STEPPING-STONE CREEK</text>
-  <text x="490" y="447" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Rise, dip, rise · water and reflections</text>
-  <text x="490" y="478" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Gentle exploration / a breathing beat</text>
-  <path d="M490 536 C535 525 530 499 580 514 S635 564 685 530 S755 508 835 533" fill="none" stroke="#638e96" stroke-width="5"/>
-  <rect x="40" y="370" width="390" height="200" rx="16" fill="#fffdf6" stroke="#8a8550" stroke-width="3"/>
-  <text x="60" y="408" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#8a8550">6  TOXIC GARDEN</text>
-  <text x="60" y="447" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Plants, rocks and rust-edged passages</text>
-  <text x="60" y="478" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Maze / optional combat</text>
-  <path d="M60 536 C105 525 100 499 150 514 S205 564 255 530 S325 508 405 533" fill="none" stroke="#8a8550" stroke-width="5"/>
-  <path d="M435 220 H462" stroke="#a6633c" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
-  <path d="M865 220 H892" stroke="#a6633c" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
-  <path d="M1095 325 V362" stroke="#a6633c" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
-  <path d="M895 470 H872" stroke="#a6633c" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
-  <path d="M465 470 H438" stroke="#a6633c" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
-  <text x="40" y="615" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Playground: optional horror detour; placement and scope stay open. Robot: optional item, not a stage.</text>
-  <text x="40" y="646" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Jam slice: lake / garden first; add at most one small terrain change after a complete playable loop.</text>
+  <rect width="100%" height="100%" fill="#102328"/>
+  <rect x="20" y="110" width="1390" height="895" fill="url(#grid)" opacity=".55"/>
+  <text x="40" y="48" font-family="Arial,sans-serif" font-size="34" font-weight="700" fill="#e8f0e2">A ROUTE THROUGH THE GLITCH</text>
+  <text x="40" y="82" font-family="Arial,sans-serif" font-size="21" font-weight="400" fill="#a4b9ad">Six places. Six different ways reality fails. The world order survives the coordinate disaster.</text>
+  <path d="M365 245 C475 360 390 70 540 185" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+  <path d="M865 225 C1020 80 900 480 1050 395" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+  <path d="M1100 490 C1190 570 970 475 925 580" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+  <path d="M655 680 C550 820 530 525 440 700" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+  <path d="M280 840 C275 990 860 955 1050 910" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+  <path d="M165 377 C210 437 360 415 345 460 S480 480 500 415" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <text x="200" y="450" font-family="Arial,sans-serif" font-size="16" font-weight="400" fill="#f178a4">[garden copy: missing parent]</text>
+  <path d="M925 170 L980 225 952 250 1008 270" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <polygon points="977.9,202.2 963.1,199.0 970.5,178.2 936.1,184.6 918.0,175.0 921.3,195.8 900.0,203.0 909.0,215.8 901.6,238.2 926.2,234.2 937.7,255.0 951.7,243.0 975.4,250.2 970.5,225.4 982.0,219.0" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+  <path d="M465 565 C550 490 590 435 665 420" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <text x="490" y="473" font-family="Arial,sans-serif" font-size="16" font-weight="400" fill="#a4b9ad">shortcut / returns to known anchor</text>
+  <g transform="translate(45 155)">
+    <text x="0" y="0" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#e8f0e2">1  HIDDEN GARDEN</text>
+    <text x="0" y="30" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f178a4">REFERENCE ERROR</text>
+    <text x="0" y="57" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#a4b9ad">Touch a reflection that has lost its shore.</text>
+    <path d="M0 145 C50 135 58 86 115 115 S175 190 230 135 S294 109 345 135 L345 218 L300 205 L280 230 L230 208 L190 225 L150 212 L115 235 L65 208 L20 220 L0 195 Z" fill="#314b3e" stroke="#43604b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 145 C50 135 58 86 115 115 S175 190 230 135 S294 109 345 135" fill="none" stroke="#e8f0e2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <polygon points="221.2,127.5 203.9,122.5 212.6,90.0 172.2,100.0 151.1,85.0 155.0,117.5 130.0,128.8 140.6,148.8 131.9,183.8 160.7,177.5 174.2,210.0 190.5,191.2 218.3,202.5 212.6,163.8 226.0,153.8" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M136 127 C165 170 190 175 222 132" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M12 177 Q100 155 180 180 T330 175" fill="none" stroke="#62c7bb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M170 170 C130 145 136 220 192 200 C235 180 207 142 174 155" fill="none" stroke="#62c7bb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <circle cx="90" cy="123" r="5" fill="#edbc70"/>
+    <circle cx="68" cy="92" r="6" fill="#edbc70"/>
+    <path d="M68 100 V118 M60 107 H77 M68 118 l-7 11 M68 118 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <g transform="translate(550 125)">
+    <text x="0" y="0" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#e8f0e2">2  CAMPUS LEDGES</text>
+    <text x="0" y="30" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f178a4">COPY / PASTE</text>
+    <text x="0" y="57" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#a4b9ad">The same ledge, one storey wrong.</text>
+    <path d="M0 160 C60 160 65 135 120 135 L155 112 H230 L245 143 H345 L345 218 L300 205 L280 230 L230 208 L190 225 L150 212 L115 235 L65 208 L20 220 L0 195 Z" fill="#314b3e" stroke="#43604b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 160 C60 160 65 135 120 135 L155 112 H230 L245 143 H345" fill="none" stroke="#e8f0e2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M40 110 V72 H116 V128 M190 111 V64 H272 V133" fill="none" stroke="#bba88f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M97 72 H173 V128 M247 64 H329 V133" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <polygon points="320.0,99.4 302.0,94.8 311.0,64.6 269.0,73.9 247.0,60.0 251.0,90.2 225.0,100.6 236.0,119.2 227.0,151.6 257.0,145.8 271.0,176.0 288.0,158.6 317.0,169.0 311.0,133.1 325.0,123.8" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M260 103 H336" fill="none" stroke="#e8f0e2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <circle cx="175" cy="75" r="6" fill="#edbc70"/>
+    <path d="M175 83 V101 M167 90 H184 M175 101 l-7 11 M175 101 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <g transform="translate(1030 310)">
+    <text x="0" y="0" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#e8f0e2">3  LOST IN THE GREEN</text>
+    <text x="0" y="30" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f178a4">RECURSIVE PATH</text>
+    <text x="0" y="57" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#a4b9ad">Same landmark. A different way out.</text>
+    <path d="M0 150 C35 169 70 160 91 130 S155 116 171 150 S235 178 252 132 S310 120 345 145 L345 218 L300 205 L280 230 L230 208 L190 225 L150 212 L115 235 L65 208 L20 220 L0 195 Z" fill="#314b3e" stroke="#43604b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 150 C35 169 70 160 91 130 S155 116 171 150 S235 178 252 132 S310 120 345 145" fill="none" stroke="#e8f0e2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M55 129 V80 M35 91 L55 65 76 91 M245 135 V79 M225 91 L245 65 266 91" fill="none" stroke="#9daf7d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <polygon points="278.6,123.2 259.4,119.8 269.0,97.4 224.1,104.3 200.5,94.0 204.8,116.4 177.0,124.1 188.8,137.9 179.1,161.9 211.2,157.6 226.2,180.0 244.4,167.1 275.4,174.8 269.0,148.2 284.0,141.3" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M74 170 C140 230 250 205 217 160 C198 133 174 145 185 166" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M75 179 C110 222 188 203 177 174" fill="none" stroke="#edbc70" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+    <circle cx="120" cy="88" r="6" fill="#edbc70"/>
+    <path d="M120 96 V114 M112 103 H129 M120 114 l-7 11 M120 114 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <g transform="translate(660 565)">
+    <text x="0" y="0" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#e8f0e2">4  RUSTY CROSSINGS</text>
+    <text x="0" y="30" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f178a4">NULL PATH / SHEAR</text>
+    <text x="0" y="57" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#a4b9ad">The lower route is gone. Take the rail.</text>
+    <path d="M0 164 C35 164 42 145 70 145 M272 155 C300 148 320 163 345 150 L345 218 L300 205 L280 230 L230 208 L190 225 L150 212 L115 235 L65 208 L20 220 L0 195 Z" fill="#314b3e" stroke="#43604b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 164 C35 164 42 145 70 145 M272 155 C300 148 320 163 345 150" fill="none" stroke="#e8f0e2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 90 L132 100 M191 81 L345 72" fill="none" stroke="#ad8568" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M132 100 L191 81" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <polygon points="270.5,150.0 236.3,145.9 253.4,119.1 173.6,127.4 131.8,115.0 139.4,141.8 90.0,151.1 110.9,167.5 93.8,196.4 150.8,191.2 177.4,218.0 209.7,202.6 264.8,211.8 253.4,179.9 280.0,171.7" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M80 148 H268" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M61 129 L118 114 H185 L207 96 290 95" fill="none" stroke="#e8f0e2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M65 140 C95 58 140 78 175 90 S240 74 278 80" fill="none" stroke="#edbc70" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+    <circle cx="52" cy="107" r="6" fill="#edbc70"/>
+    <path d="M52 115 V133 M44 122 H61 M52 133 l-7 11 M52 133 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <g transform="translate(100 650)">
+    <text x="0" y="0" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#e8f0e2">5  STEPPING-STONE CREEK</text>
+    <text x="0" y="30" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f178a4">STALE REFLECTION</text>
+    <text x="0" y="57" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#a4b9ad">Soft banks split; the water remembers.</text>
+    <path d="M0 146 C55 140 51 99 112 119 S154 182 202 160 M248 155 C282 122 305 120 345 136 L345 218 L300 205 L280 230 L230 208 L190 225 L150 212 L115 235 L65 208 L20 220 L0 195 Z" fill="#314b3e" stroke="#43604b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 146 C55 140 51 99 112 119 S154 182 202 160 M248 155 C282 122 305 120 345 136" fill="none" stroke="#e8f0e2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <polygon points="253.8,142.1 242.3,137.6 248.0,108.5 221.2,117.4 207.1,104.0 209.6,133.1 193.0,143.2 200.0,161.1 194.3,192.5 213.5,186.9 222.4,216.0 233.3,199.2 251.9,209.3 248.0,174.6 257.0,165.6" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M187 165 Q217 163 253 151" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M200 149 Q218 133 246 143" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M6 189 Q70 165 141 190 T335 188" fill="none" stroke="#62c7bb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M50 195 Q90 160 139 181 T250 189" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <circle cx="79" cy="83" r="6" fill="#edbc70"/>
+    <path d="M79 91 V109 M71 98 H88 M79 109 l-7 11 M79 109 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <g transform="translate(1030 805)">
+    <text x="0" y="0" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#e8f0e2">6  TOXIC GARDEN</text>
+    <text x="0" y="30" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#f178a4">ROOT OVERFLOW</text>
+    <text x="0" y="57" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#a4b9ad">A planted maze rewires its own lanes.</text>
+    <path d="M0 147 C55 131 62 172 111 155 S177 103 213 135 S285 174 345 138 L345 218 L300 205 L280 230 L230 208 L190 225 L150 212 L115 235 L65 208 L20 220 L0 195 Z" fill="#314b3e" stroke="#43604b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M0 147 C55 131 62 172 111 155 S177 103 213 135 S285 174 345 138" fill="none" stroke="#e8f0e2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M60 154 C0 90 90 63 105 120 S180 200 194 130 S310 61 317 137" fill="none" stroke="#9cad6e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M39 171 C150 80 158 240 299 155" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <polygon points="238.8,128.5 216.2,123.6 227.5,91.9 175.0,101.6 147.5,87.0 152.5,118.7 120.0,129.7 133.8,149.2 122.5,183.4 160.0,177.3 177.5,209.0 198.8,190.7 235.0,201.7 227.5,163.9 245.0,154.1" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <circle cx="225" cy="104" r="6" fill="#edbc70"/>
+    <path d="M225 112 V130 M217 119 H234 M225 130 l-7 11 M225 130 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <text x="50" y="1018" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#e8f0e2">Solid pale contour = active footing</text>
+  <path d="M405 1012 H460" fill="none" stroke="#e8f0e2" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <text x="495" y="1018" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#f178a4">Dashed contour = echo / removed geometry</text>
+  <text x="50" y="1056" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#edbc70">Amber arrows = intended world order; jagged dashed regions = local fault zones.</text>
+  <text x="50" y="1090" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#a4b9ad">Design proposals, not a generated map. Playground is an optional detour; one fault family is enough for the jam.</text>
 </svg>

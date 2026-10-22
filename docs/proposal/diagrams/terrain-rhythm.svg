@@ -1,26 +1,53 @@
 <?xml version="1.0" ?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="555" viewBox="0 0 1200 555" role="img" aria-labelledby="title desc">
-  <title id="title">Gentle creek terrain rhythm</title>
-  <desc id="desc">Broad crests and troughs describe a proposed walking profile above water. This is an authored design schematic, not final pixel art.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1130" viewBox="0 0 1400 1130" role="img" aria-labelledby="title desc">
+  <title id="title">Three chaotic creek terrain variants</title>
+  <desc id="desc">Asymmetric soft banks delaminate in a slip, missing geometry persists as a reflection echo, and two distant shores are joined by a folded-address portal. Active pale contours are distinct from dashed echoes. These are alternative candidate mechanics, not one stacked level.</desc>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-      <path d="M0 0 L8 3 L0 6" fill="none" stroke="#a6633c" stroke-width="1.5"/>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8" fill="none" stroke="#edbc70" stroke-width="1.6"/>
     </marker>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0 H0 V48" fill="none" stroke="#27403f" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="100%" height="100%" fill="#f5f1e8"/>
-  <text x="40" y="48" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#213d39">THE CREEK: RISE, DIP, RISE</text>
-  <text x="40" y="82" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#213d39">Source motif: stepping stones and banks. Stage translation: broad, flowing terrain changes.</text>
-  <rect x="40" y="120" width="1120" height="255" rx="14" fill="#e2ece1"/>
-  <path d="M40 275 C110 275 120 165 210 180 S315 315 400 265 S500 160 580 205 S685 320 770 260 S890 160 970 215 S1080 295 1160 250 V375 H40Z" fill="#7a9167"/>
-  <path d="M40 275 C110 275 120 165 210 180 S315 315 400 265 S500 160 580 205 S685 320 770 260 S890 160 970 215 S1080 295 1160 250" fill="none" stroke="#344f3b" stroke-width="7"/>
-  <path d="M65 331 Q170 315 270 335 T500 335 T730 335 T955 335 T1140 335" fill="none" stroke="#6e9da6" stroke-width="10"/>
-  <text x="150" y="150" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">crest</text>
-  <text x="330" y="310" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">dip</text>
-  <text x="520" y="155" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">crest</text>
-  <text x="690" y="320" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">dip</text>
-  <text x="900" y="160" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">crest</text>
-  <text x="55" y="410" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#213d39">Walking rhythm ≠ a precision-jump gauntlet.</text>
-  <text x="55" y="446" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#213d39">Low rounded banks, shallow rises and generous footholds; occasional short gaps only where useful.</text>
-  <text x="55" y="484" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#213d39">Painted contour, collision contour and reflection FX are separate authoring layers.</text>
-  <text x="55" y="526" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">Schematic only: no heights, jump distances or final pixel style have been approved.</text>
+  <rect width="100%" height="100%" fill="#102328"/>
+  <rect x="20" y="110" width="1360" height="905" fill="url(#grid)" opacity=".55"/>
+  <text x="40" y="48" font-family="Arial,sans-serif" font-size="32" font-weight="700" fill="#e8f0e2">THE CREEK IS LOSING ITS SHAPE</text>
+  <text x="40" y="83" font-family="Arial,sans-serif" font-size="21" font-weight="400" fill="#a4b9ad">Three possible faults. Choose one; do not stack all three into the same crossing.</text>
+  <text x="45" y="137" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#e8f0e2">A / SLIP: a bank fragment comes back at the wrong height</text>
+  <path d="M45 275 C120 272 115 182 208 216 S315 292 378 257 L430 250 L430 328 L385 343 L350 330 L285 357 L240 340 L160 358 L95 332 L45 345 Z" fill="#35553f" stroke="#70916c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M490 224 C552 197 575 249 627 242 S715 158 789 213 L805 290 L770 325 L716 304 L670 327 L610 310 L550 330 L496 302 Z" fill="#3b5947" stroke="#70916c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M855 260 C920 271 925 235 990 228 S1110 282 1200 246 L1335 266 V350 L1260 330 L1198 354 L1130 330 L1060 360 L985 340 L925 358 L855 335 Z" fill="#35553f" stroke="#70916c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M430 250 Q465 251 490 270 C550 250 605 288 655 261" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <path d="M795 240 Q830 242 855 260" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <path d="M45 275 C120 272 115 182 208 216 S315 292 378 257 L430 250 Q465 247 490 224 C552 197 575 249 627 242 S715 158 789 213 Q831 240 855 260 C920 271 925 235 990 228 S1110 282 1200 246 L1335 266" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <polygon points="441.4,238.7 453.6,232.5 447.5,192.2 476.1,204.6 491.0,186.0 488.3,226.3 506.0,240.2 498.5,265.1 504.6,308.4 484.2,300.7 474.7,341.0 463.2,317.8 443.4,331.7 447.5,283.6 438.0,271.2" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+  <polygon points="861.3,227.8 848.0,221.0 854.6,176.8 823.6,190.4 807.3,170.0 810.2,214.2 791.0,229.5 799.1,256.7 792.5,304.3 814.7,295.8 825.0,340.0 837.6,314.5 859.1,329.8 854.6,277.1 865.0,263.5" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+  <circle cx="110" cy="212" r="6" fill="#edbc70"/>
+  <path d="M110 220 V238 M102 227 H119 M110 238 l-7 11 M110 238 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M100 300 C280 375 475 336 595 346 S980 365 1300 320" fill="none" stroke="#62c7bb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <text x="48" y="395" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#a4b9ad">PLAY: follow broad reconnected contours. The banks look displaced; landing widths stay generous.</text>
+  <text x="45" y="450" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#e8f0e2">B / ECHO: the reflection keeps geometry that the bank has lost</text>
+  <path d="M45 565 C127 550 143 491 217 520 S300 598 373 558 S445 500 520 529 L572 546 M665 542 C750 492 800 534 855 555 S930 596 1005 540 S1170 510 1335 553" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M572 546 C600 510 638 512 665 542" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <path d="M584 542 Q620 523 651 539" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M50 600 Q160 580 270 603 T500 604 T735 602 T980 604 T1325 602" fill="none" stroke="#62c7bb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M75 642 C143 650 148 707 219 682 S301 610 374 650 S443 708 521 679 L572 662 C601 698 638 697 665 666 C750 716 800 674 855 652" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <polygon points="559.6,567.1 583.4,558.6 571.5,503.5 626.9,520.4 656.0,495.0 650.7,550.1 685.0,569.2 670.5,603.1 682.4,662.5 642.8,651.9 624.3,707.0 601.8,675.2 563.6,694.3 571.5,628.6 553.0,611.6" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+  <path d="M595 623 L600 657 M620 625 L620 673 M645 623 L640 657" fill="none" stroke="#62c7bb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="3 5"/>
+  <circle cx="350" cy="525" r="6" fill="#edbc70"/>
+  <path d="M350 533 V551 M342 540 H359 M350 551 l-7 11 M350 551 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <text x="48" y="735" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#a4b9ad">PLAY: read the persistent reflection as a clue; only a confirmed, solid route supports the player.</text>
+  <text x="45" y="788" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#e8f0e2">C / FOLD: two distant shores share a broken address</text>
+  <path d="M45 913 C130 930 168 830 250 871 S357 963 438 907 S532 867 595 899 M785 923 C857 888 915 817 993 863 S1115 964 1205 910 S1298 884 1335 895" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <path d="M438 907 C570 1010 795 980 787 858 C783 811 735 845 777 880" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+  <ellipse cx="555" cy="878" rx="22" ry="49" fill="#62c7bb" fill-opacity=".12" stroke="#62c7bb" stroke-width="4"/>
+  <ellipse cx="825" cy="890" rx="22" ry="49" fill="#62c7bb" fill-opacity=".12" stroke="#62c7bb" stroke-width="4"/>
+  <path d="M573 871 C640 796 746 802 804 877" fill="none" stroke="#edbc70" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+  <polygon points="604.2,886.3 637.3,882.6 620.8,858.7 698.0,866.0 738.5,855.0 731.2,878.9 779.0,887.2 758.8,901.9 775.3,927.7 720.1,923.1 694.4,947.0 663.1,933.2 609.7,941.5 620.8,913.0 595.0,905.6" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+  <circle cx="315" cy="890" r="6" fill="#edbc70"/>
+  <path d="M315 898 V916 M307 905 H324 M315 916 l-7 11 M315 916 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  <text x="48" y="1000" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#a4b9ad">PLAY: one paired-anchor transition, safe feet and a recognizable exit. No wall-walking controller required.</text>
+  <text x="45" y="1060" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#edbc70">Solid = active footing  /  dashed = ghost or old state  /  jagged region = bounded fault patch</text>
+  <text x="45" y="1098" font-family="Arial,sans-serif" font-size="18" font-weight="400" fill="#a4b9ad">Original design schematics. The photographed stones inspire form and rhythm, not these impossible geometries.</text>
 </svg>

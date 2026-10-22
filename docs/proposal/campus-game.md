@@ -2,7 +2,7 @@
 
 [← Voice-note direction](../brief/voice-notes.md) · [Visual boards](../../references/campus/README.md) · [How we make it →](../design/layered-stage-workflow.md)
 
-![Proposed route and terrain rhythm](diagrams/route-overview.svg)
+![Fragmented world route with distinct localized fault families](diagrams/route-overview.svg)
 
 **Proposal for team discussion, 22 October 2026.** A student touches a lake reflection and enters a familiar campus whose geometry keeps misbehaving. The player learns to read the faults: follow a misleading reflection, cross a soft rise and dip, or take the upper railing when the normal path glitches away. Funny, curious and sometimes unsettling; the controls themselves remain dependable.
 
@@ -30,22 +30,37 @@ The ten [voice recordings](../brief/voice-notes.md), followed by Alexander's wri
 
 | Place | Candidate emphasis | One small authored change | Extra system only if selected |
 | --- | --- | --- | --- |
-| Hidden Garden | Exploration / reflection puzzle | Touch water and appear at a named safe arrival point | A second physical world is optional |
-| Campus | Ledge navigation / visual puzzle | A known passage or ledge shifts to reveal another route | No arbitrary climbing system |
-| Lost in the Green | Observation / navigation | A familiar landmark or reflection reveals the useful high/low path | Stealth needs sightlines, detection and reset |
-| Crossings | Deliberate parkour | Lower path disappears; upper rail route becomes necessary | Choose one climb/mantle verb, not every movement ability |
-| Creek | Gentle terrain rhythm / reflection clues | Reinterpret a water/shore clue while following rises and dips | No mandatory precision-jump gauntlet |
-| Toxic Garden | Maze / possible combat | A rust-edged passage opens or changes the encounter space | Combat needs tells, attack/hurt/recovery and hit rules |
+| Hidden Garden | Exploration / reflection puzzle | A reflection survives after its shore disappears; touch the detached reflection to reach a safe paired shore | One interaction/anchor pair; full mirror physics optional |
+| Campus | Ledge navigation / visual puzzle | Copied ledges appear one storey out of alignment; one settled copy completes the route | One authored offset, not unrestricted object duplication |
+| Lost in the Green | Observation / navigation | A repeated landmark sends the player around a short spatial loop; a recognizable changed detail identifies the exit | One bounded loop/shortcut; stealth separate |
+| Crossings | Deliberate parkour | A local cascade deletes the lower route and shears the structure; the upper rail fragments settle into a usable contour | One climb/mantle verb; settled layout fixed during traversal |
+| Creek | Gentle terrain rhythm / reflection clues | A soft bank slips, its old position remains in water, or two shores share a folded address; choose one variant | Broad active footing; alternatives shown in the terrain diagram |
+| Toxic Garden | Maze / possible combat | Root-like overflow displaces planter passages and opens a new lane around an encounter | One paired lane layout; combat behavior/reset separate |
 
 These are candidate variants, not six mechanics automatically approved for the jam. Stealth, puzzles and combat can be composed around the same art/state contract; their behavior and testing still cost work. Dead Cells-like combat is an option from the latest clarification, while its greenhouse remains the material reference. Random level assembly is not the proposed method.
+
+### Fault families: surprise with a playable consequence
+
+**New design candidates, not additional transcript requirements.** Diagram colors are an authoring legend; the game palette still comes from the agreed pixel-style test. The diagrams now exaggerate different failures instead of repeating a regular hill or rectangular corruption patch. Each has a clear relationship between what looks wrong and what the player can do:
+
+- **Reference error:** water retains the image of a missing shore. Investigate the impossible image; the familiar touch action becomes the transition.
+- **Copy / paste:** a ledge or doorway has a displaced twin. Compare the copies, then use the one that settles into the active route. An optional sign can insist “You are here” in both places.
+- **Recursive path:** a short passage returns beside its own landmark. A changed reflection, leaf or prop marks the useful exit; repeated exploration should reveal the rule rather than silently shuffle it.
+- **Null path / shear:** a missing strip and displaced bridge pieces create the upper route. A small visible cascade can look complex while resolving to one authored state swap.
+- **Stale reflection:** a bank's old shape persists in the water after the real contour changes. It is a clue, not an invisible collider. The creek diagram compares slip, echo and fold alternatives; they are not a three-mechanic requirement.
+- **Root overflow:** organic forms and planter lanes invade each other's space. A different lane can change the approach to a puzzle or selected enemy without requiring an entire procedural maze.
+
+**Buildable chaos budget:** one collision-changing fault family in the first slice, plus cheap displaced silhouettes/afterimages that have no collision. Choose a local trigger, an affected region, a known destination and a stable recovery anchor. Give the player a place to witness the failure and a short quiet beat after it. The fault should change a decision, route or interpretation; decorative fragmentation alone is not the mechanic.
+
+**Possible later variation:** choose among a small set of prevalidated layouts at a checkpoint. Store that variant/seed with the checkpoint so retry teaches a consistent result. Scenery-only offsets, leaf echoes and effect fragments may vary within bounds that preserve cues. Do not randomize input, hit timing or actor-supporting collision every frame. The full world map shows a vocabulary to discuss, not six runtime systems to implement during the jam.
 
 ### The under-bridge change, made concrete
 
 ![Normal path and corrupted upper-route alternative](diagrams/crossing-change.svg)
 
 1. Let the player see the ordinary lower path **and** an attainable upper route.
-2. From a safe staging area, show a local glitch tell: displaced contour, missing patch or interrupted reflection.
-3. Commit one authored normal/corrupted state pair. Change artwork, collision and interaction targets together.
+2. From a safe staging area, show a local cascade: a stale lower-path trace, misaligned span and torn fault region. The lower support still exists during this warning.
+3. Commit one authored normal/corrupted state pair. Freeze the chosen rail-fragment arrangement and change artwork, collision and interaction targets together.
 4. The lower path is gone; the player climbs over the railing and reaches stable ground.
 5. Retry restores a coherent checkpoint state; the player never reloads inside a vanished floor.
 
@@ -53,9 +68,9 @@ The 404/glitch idea comes from Alexander's account of Voyager. **Exact visual st
 
 ## Soft terrain is a design constraint
 
-![Broad repeated rises and dips, separate from precision parkour](diagrams/terrain-rhythm.svg)
+![Three asymmetric creek fault alternatives: slip, stale reflection and folded shore](diagrams/terrain-rhythm.svg)
 
-The stepping-stone photos are a rhythm and shape reference, not instructions to build a block grid. The creek should flow through broad crests, shallow troughs, low banks and occasional small gaps. Give walking room and breathing space after the crossing's more deliberate climb. Distinct cliff/ledge breaks remain possible where they serve the route; they should not make every surface a square-tile staircase.
+The stepping-stone photos are a rhythm and shape reference, not instructions to build a block grid. The updated schematic deliberately varies crest width, sag depth, undercuts, detached sections and mirrored traces. Its three fault cases are alternative studies; select one for a prototype. The creek should flow through broad crests, shallow troughs, low banks and occasional small gaps. Give walking room and breathing space after the crossing's more deliberate climb. Distinct cliff/ledge breaks remain possible where they serve the route; they should not make every surface a square-tile staircase.
 
 Our pixel treatment will translate the contour/depth qualities admired in [Planet of Lana](../../references/games/planet-of-lana/layers-and-motion.md). That original uses a painted hybrid pipeline; our target is original pixel art with similarly flowing composition. Hollow Knight supplies exploration/character readability and possible combat qualities without dictating our terrain construction. Classic [Monkey Island](../../references/games/secret-of-monkey-island/visual-reference.md) provides complementary curved pixel-contour references.
 
@@ -115,7 +130,7 @@ A chair swing, tray/shield, bottle and shrinking computing-device chain are pres
 | A06 | Playground horror reference and interior reveal |
 | A07 / A09 | Lake touch, reflection travel and inexpensive crash-spin transition |
 | A08 | Secret-boss extras deferred beyond the jam |
-| Latest written clarification | Separate Lost in the Green from the stone creek; route order, soft rises/dips, disappearing lower path and rail traversal |
+| Latest written clarifications | Separate Lost in the Green from the stone creek; route order, soft rises/dips, disappearing lower path and rail traversal; stronger chaotic shapes and localized bug consequences |
 
 Recording names, time ranges, transcription uncertainties and hashes remain in the [voice digest/index](../brief/voice-notes.md). New schemas, jokes and diagrams are proposals, not invented transcript quotes. Photographic boards, game screenshots and original schematics have different evidence roles; none are runtime assets.
 

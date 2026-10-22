@@ -73,6 +73,16 @@ A checkpoint stores stage, terrain-state ID, safe feet position, optional-item p
 
 **Required prototype checks if selected:** trigger twice, retry before/after the switch, approach from either side, restart, leave/re-enter the stage, lose focus during the tell, and verify the stable exit is still reachable. Check no invisible lower floor remains, no unmarked fall is introduced, and the rail art matches the upper collision. Stealth/combat variants need their own behavior/reset checks; masks alone do not implement those systems.
 
+### Fault selection and bounded variation
+
+The [proposal's fault families](../proposal/campus-game.md#fault-families-surprise-with-a-playable-consequence) are alternatives, not permission to generate arbitrary collision. For the jam, use one authored layout/state pair. Offset copies, stale reflections and fragmented silhouettes can be decorative when they have no collision and cannot masquerade as confirmed footing.
+
+For a later variant set, validate each layout's entry, destination, clearances, required verb and reachable exit before enabling selection. Choose at a safe checkpoint; checkpoint data includes the variant ID/seed as well as the terrain state. Freeze that selection through the traversal and retry. Any enemy/navigation or interaction references must bind to the selected variant, not stale object coordinates from another one. An unknown or unavailable variant falls back to a known valid layout.
+
+Slip = an authored displaced bank with a connected contour; echo = a visual old-state clue; fold = a paired-anchor transition, not a gravity/controller rewrite. A recursive path is one bounded connection with a recognizable exit. A root-overflow lane change uses a second authored passage layout. These translations explain the cost behind the chaotic diagram shapes; none is implemented today.
+
+Verify every enabled variant from both approach directions, through death/retry and full restart. In addition to collision safety, playtest whether a fresh player can distinguish a usable surface from an echo without relying only on color. The diagram's pale solid / dashed convention is an authoring legend, not a finalized in-game shader.
+
 ## Collectible and optional reveals
 
 Robot baseline: uncollected → nearby cue → collected → small feedback. Choose whether death keeps it for the current session; restart always restores the starting state. A following companion requires its own reset and transition contract, so defer it by default.

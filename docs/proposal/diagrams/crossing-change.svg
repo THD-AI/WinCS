@@ -1,32 +1,85 @@
 <?xml version="1.0" ?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1225" height="585" viewBox="0 0 1225 585" role="img" aria-labelledby="title desc">
-  <title id="title">Changing crossing geometry</title>
-  <desc id="desc">Two schematic states: the lower path initially exists; after a warned glitch it disappears and the player uses the upper rail route. Art and collision change together.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1235" viewBox="0 0 1400 1235" role="img" aria-labelledby="title desc">
+  <title id="title">A cascading crossing fault with three readable phases</title>
+  <desc id="desc">Three side-on design states show an intact lower path, a localized warned fracture, and a missing lower route beneath settled displaced rails. The upper route is solid after commitment; dashed old surfaces are non-colliding echoes. The player has a safe waiting area and retry.</desc>
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-      <path d="M0 0 L8 3 L0 6" fill="none" stroke="#a6633c" stroke-width="1.5"/>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8" fill="none" stroke="#edbc70" stroke-width="1.6"/>
     </marker>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0 H0 V48" fill="none" stroke="#27403f" stroke-width="1"/>
+    </pattern>
   </defs>
-  <rect width="100%" height="100%" fill="#f5f1e8"/>
-  <text x="40" y="48" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#213d39">UNDER THE BRIDGE: THE ROUTE FAILS, THEN CHANGES</text>
-  <text x="40" y="80" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#213d39">One authored normal / corrupted pair. Preview the alternate route before removing the path.</text>
-  <rect x="40" y="115" width="550" height="320" rx="14" fill="#e6e8df"/>
-  <text x="60" y="150" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#213d39">A  NORMAL</text>
-  <path d="M50 195 H580" stroke="#535b55" stroke-width="20"/>
-  <path d="M120 195 V390 M510 195 V390" stroke="#535b55" stroke-width="18"/>
-  <path d="M180 288 H485 M200 288 V345 M280 288 V345 M360 288 V345 M440 288 V345" fill="none" stroke="#9b6b4d" stroke-width="8"/>
-  <path d="M60 360 H570" stroke="#58714d" stroke-width="16"/>
-  <text x="64" y="410" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Lower walkable path; upper rail route is visible.</text>
-  <rect x="635" y="115" width="550" height="320" rx="14" fill="#e6e8df"/>
-  <text x="655" y="150" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#213d39">B  CORRUPTED</text>
-  <path d="M645 195 H1175" stroke="#535b55" stroke-width="20"/>
-  <path d="M715 195 V390 M1105 195 V390" stroke="#535b55" stroke-width="18"/>
-  <path d="M775 288 H1080 M795 288 V345 M875 288 V345 M955 288 V345 M1035 288 V345" fill="none" stroke="#9b6b4d" stroke-width="8"/>
-  <path d="M655 360 H760 M1080 360 H1165" stroke="#58714d" stroke-width="16"/>
-  <path d="M765 360 H1075" stroke="#b86e83" stroke-width="10" stroke-dasharray="9 17"/>
-  <path d="M710 345 Q735 255 810 264 H1030 Q1085 264 1120 345" fill="none" stroke="#a6633c" stroke-width="4" marker-end="url(#arrow)"/>
-  <text x="659" y="410" font-family="Arial, sans-serif" font-size="17" font-weight="400" fill="#213d39">Lower path gone; climb / traverse over the rails.</text>
-  <text x="40" y="478" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#213d39">Tell → safe commit → matching artwork + collision swap → traverse → stable exit.</text>
-  <text x="40" y="516" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="#213d39">Keep one checkpoint and a safe retry. Do not delete the floor under a player without warning.</text>
-  <text x="40" y="552" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#213d39">404/glitch styling remains provisional until Alexander supplies the Voyager references.</text>
+  <rect width="100%" height="100%" fill="#102328"/>
+  <rect x="20" y="110" width="1360" height="1010" fill="url(#grid)" opacity=".55"/>
+  <text x="40" y="48" font-family="Arial,sans-serif" font-size="31" font-weight="700" fill="#e8f0e2">UNDER THE BRIDGE: A SMALL CASCADE OF WRONG</text>
+  <text x="40" y="83" font-family="Arial,sans-serif" font-size="20" font-weight="400" fill="#a4b9ad">Deletion + displaced structure + stale afterimages. One selected outcome; a stable rail route after the tell.</text>
+  <text x="45" y="140" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#e8f0e2">1 / ASSESS: read the normal route and notice an impossible afterimage</text>
+  <g transform="translate(0 0)">
+    <path d="M50 370 C105 365 140 337 188 348" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M1170 352 Q1250 342 1340 370" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M210 209 L600 190 M720 193 L1330 229" fill="none" stroke="#8f8068" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M250 215 L305 363 M1120 218 L1175 357" fill="none" stroke="#6f8172" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M265 247 L530 277 L675 260 L950 278 L1160 269" fill="none" stroke="#b08a69" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M320 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M400 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M480 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M775 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M865 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M955 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M1090 270 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M188 348 C350 342 355 377 510 360 S690 334 825 353 S1030 374 1170 352" fill="none" stroke="#e8f0e2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M545 368 L627 363 L610 373 L690 370" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <circle cx="166" cy="308" r="6" fill="#edbc70"/>
+    <path d="M166 316 V334 M158 323 H175 M166 334 l-7 11 M166 334 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+  </g>
+  <text x="45" y="475" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#e8f0e2">2 / WARN: the fault tears locally; wait or commit from solid ground</text>
+  <g transform="translate(0 0)">
+    <path d="M50 705 C105 700 140 672 188 683" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M1170 687 Q1250 677 1340 705" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M210 544 L600 525 M720 528 L1330 564" fill="none" stroke="#8f8068" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M250 550 L305 698 M1120 553 L1175 692" fill="none" stroke="#6f8172" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M265 582 L530 612 L675 595 L950 613 L1160 604" fill="none" stroke="#b08a69" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M320 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M400 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M480 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M775 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M865 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M955 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M1090 605 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M188 683 C350 677 355 712 510 695 S690 669 825 688 S1030 709 1170 687" fill="none" stroke="#e8f0e2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <polygon points="883.2,655.0 805.0,649.1 844.1,610.9 661.4,622.6 565.7,605.0 583.1,643.2 470.0,656.5 517.9,680.0 478.7,721.1 609.2,713.8 670.1,752.0 744.0,730.0 870.2,743.2 844.1,697.6 905.0,685.9" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M510 707 l85 18 103 -42 111 25 103 -37" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M566 554 l161 -31 185 56" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M575 563 l75 -35 107 40 148 -32" fill="none" stroke="#f178a4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <circle cx="166" cy="643" r="6" fill="#edbc70"/>
+    <path d="M166 651 V669 M158 658 H175 M166 669 l-7 11 M166 669 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <text x="195" y="784" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#edbc70">Safe staging / cue plays; the lower floor still exists here.</text>
+  </g>
+  <text x="45" y="810" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#e8f0e2">3 / RESOLVE: the lower route is gone; climb the settled rail fragments</text>
+  <g transform="translate(0 0)">
+    <path d="M50 1040 C105 1035 140 1007 188 1018" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M1170 1022 Q1250 1012 1340 1040" fill="none" stroke="#e8f0e2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M210 879 L600 860 M720 863 L1330 899" fill="none" stroke="#8f8068" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M250 885 L305 1033 M1120 888 L1175 1027" fill="none" stroke="#6f8172" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M265 917 L530 947 L675 930 L950 948 L1160 939" fill="none" stroke="#b08a69" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M320 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M400 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M480 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M775 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M865 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M955 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M1090 940 v55" fill="none" stroke="#b08a69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M188 1018 Q265 1010 312 1032 M1050 1034 Q1120 1015 1170 1022" fill="none" stroke="#e8f0e2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M312 1032 C460 1057 560 988 705 1027 S910 1062 1050 1034" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <polygon points="431.5,1002.5 544.9,997.5 488.2,965.0 752.8,975.0 891.4,960.0 866.2,992.5 1030.0,1003.8 960.7,1023.8 1017.4,1058.8 828.4,1052.5 740.2,1085.0 633.1,1066.2 450.4,1077.5 488.2,1038.8 400.0,1028.8" fill="#f178a4" fill-opacity=".08" stroke="#f178a4" stroke-width="2" stroke-dasharray="6 7"/>
+    <path d="M325 939 Q445 899 524 928 L630 918 Q690 886 751 921 L885 932 Q974 915 1040 949" fill="none" stroke="#e8f0e2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <path d="M575 898 l75 -35 107 40 148 -32" fill="none" stroke="#f178a4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" stroke-dasharray="8 9"/>
+    <path d="M280 1005 C316 893 420 883 505 901 S640 885 720 895 S960 872 1090 998" fill="none" stroke="#edbc70" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#arrow)"/>
+    <circle cx="674" cy="865" r="6" fill="#edbc70"/>
+    <path d="M674 873 V891 M666 880 H683 M674 891 l-7 11 M674 891 l7 11" fill="none" stroke="#edbc70" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+    <text x="195" y="1119" font-family="Arial,sans-serif" font-size="17" font-weight="400" fill="#edbc70">Commit once; the upper contour is now stable. Old lower-path traces have no collision.</text>
+  </g>
+  <text x="45" y="1165" font-family="Arial,sans-serif" font-size="20" font-weight="400" fill="#a4b9ad">The environment can be absurd. Input, collision, hit tells and checkpoint recovery still need a trustworthy rule.</text>
+  <text x="45" y="1203" font-family="Arial,sans-serif" font-size="19" font-weight="400" fill="#a4b9ad">Alternative fragment arrangements are authored ahead of time. Freeze the chosen state before traversal.</text>
 </svg>

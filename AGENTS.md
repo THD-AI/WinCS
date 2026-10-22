@@ -29,6 +29,8 @@
 
 - Today's scope is organized visual direction and a reviewable proposal, not runtime production. Use the ten-recording digest plus later written corrections as the source of intent. Favor authored flowing pixel contours and aligned normal/corrupted art/collision states; no procedural stage assembly is proposed. The under-bridge fault removes the lower path and redirects traversal over the rails. Exact Voyager 404 styling awaits owner references; do not inspect or import Voyager for that now. Read the shared art/animation contract in docs/design/art-and-audio.md.
 
+- The latest diagram exploration uses distinct localized fault families: missing references, copied/offset ledges, recursive paths, sheared crossings, creek slip/echo/fold alternatives and root-overflow lanes. These are candidates, not six approved runtime mechanics. Tie each visual failure to a readable player decision; keep a selected terrain state stable during traversal/retry. Diagram colors are not the final game palette.
+
 ## Git and collaboration
 
 - Inspect status, unstaged and staged diffs before edits. Preserve others' work. Never touch unrelated dotPrivate gitlinks, especially WORK/RETULIA.

@@ -8,7 +8,7 @@ Research date: 21 October 2026. This is pre-jam preparation, not permission to b
 
 **Reference correction pass:** regenerated creek from original photos; ten Playground trailer frames; classic Monkey Island pixel captures; focused boss/mascot/greenhouse/character/worldbuilding galleries; Lana developer depth/wind demonstrations and a [layer translation study](../references/games/planet-of-lana/layers-and-motion.md). Corrected reference roles are in the decision log and brief.
 
-**Latest route clarification:** [visual proposal](proposal/campus-game.md) now separates Lost in the Green (grassy navigation) from the four-angle stepping-stone creek (gentle rise/dip rhythm). Three original schematics show route order, terrain and the under-bridge path disappearing into a rail traversal. Campus has an eight-page Previous/Next trail; the game trail remains 36 pages.
+**Latest route clarification:** [visual proposal](proposal/campus-game.md) now separates Lost in the Green (grassy navigation) from the four-angle stepping-stone creek (gentle rise/dip rhythm). Three original schematics now show fragmented route islands, asymmetric creek slip/echo/fold alternatives and a localized crossing fault cascade. The proposal connects each fault to a player decision and bounds its implementation/variant cost. Campus has an eight-page Previous/Next trail; the game trail remains 36 pages.
 
 **Next visual gate:** review the garden and one player-scale/style test, then approve a horizontal master before extracting masks. A reference library does not promise every location in the jam. Issues/board and workflows remain deferred; the PR watcher remains paused.
 
