@@ -48,7 +48,10 @@
       "sha256": "0798a6155af109969cd8cefc8d9788ee152b0908b7529500bc5e5e1090982b6b",
       "board": "hidden-gardens",
       "disposition": "selected motif for cleaned collage; not a runtime asset",
-      "observation": "stepping slab path"
+      "observation": "stepping slab path",
+      "related_studies": [
+        "creek: slab rhythm and terrain translation; no extra direct generation input"
+      ]
     },
     {
       "id": "C07",
@@ -56,7 +59,10 @@
       "sha256": "f2dbe4002dcd07e0bf9e68458e728d73e7386e732b42d704cf4cb789863314a6",
       "board": "hidden-gardens",
       "disposition": "context or alternate angle; consolidated, not a separate panel",
-      "observation": "alternate slab path"
+      "observation": "alternate slab path",
+      "related_studies": [
+        "creek: slab rhythm and terrain translation; no extra direct generation input"
+      ]
     },
     {
       "id": "C08",
@@ -158,7 +164,7 @@
       "id": "C20",
       "filename": "20261022_142113.jpg",
       "sha256": "1f6f73d6e44f98c397cf1aca142d54fd25292e0855f67d972acc525cea16c0a7",
-      "board": "creek",
+      "board": "lost-in-the-green",
       "disposition": "selected motif for cleaned collage; not a runtime asset",
       "observation": "open stream bank"
     },
@@ -166,7 +172,7 @@
       "id": "C21",
       "filename": "20261022_142120.jpg",
       "sha256": "1f4c5747618d704ebf96c1879d4d29d94e9272e065da82717eed93c5983b4542",
-      "board": "creek",
+      "board": "lost-in-the-green",
       "disposition": "selected motif for cleaned collage; not a runtime asset",
       "observation": "creek and path"
     },
@@ -174,7 +180,7 @@
       "id": "C22",
       "filename": "20261022_142204.jpg",
       "sha256": "b08f9f91748afdfe50d94a0322b1637722de232b5cf83437ad262157320cffc1",
-      "board": "creek",
+      "board": "lost-in-the-green",
       "disposition": "selected motif for cleaned collage; not a runtime asset",
       "observation": "forked creek paths"
     },
@@ -223,7 +229,7 @@
       "filename": "20261022_142322.jpg",
       "sha256": "b96bf0921e0488c3429115f4cbad8a4da94b689770a6ba779f8bd388db4947fe",
       "board": "creek",
-      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "disposition": "context approach angle; four closer crossing views drive the dedicated board",
       "observation": "tree-framed creek junction"
     },
     {
@@ -231,7 +237,7 @@
       "filename": "20261022_142332.jpg",
       "sha256": "4c463ea92d429ee1a18ff3a5c65cf24ec7b43b6b96aca5faf5b5e0530628eddf",
       "board": "creek",
-      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
       "observation": "steps across water"
     },
     {
@@ -239,7 +245,7 @@
       "filename": "20261022_142341.jpg",
       "sha256": "ab2ca861d13d0cceca3ddbc3ad1946bcee29f5710b6affd87a5b08c6708f879f",
       "board": "creek",
-      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
       "observation": "alternate water steps"
     },
     {
@@ -247,7 +253,7 @@
       "filename": "20261022_142351.jpg",
       "sha256": "8c5b04acc00da2b9009722f82d8bd13738a971b551c54e7c11b2bf371c8e4458",
       "board": "creek",
-      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
       "observation": "close creek steps"
     },
     {
@@ -255,7 +261,7 @@
       "filename": "20261022_142401.jpg",
       "sha256": "9faa5485b282b1d209183b72aaa9a33e60ff4ecb9c663d3a8b0e1bbf4eea8adb",
       "board": "creek",
-      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
       "observation": "willow bank"
     },
     {

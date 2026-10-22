@@ -1,29 +1,25 @@
-# Campus field notes · places worth getting lost in
+# Campus field notes · a route through the glitch
 
-[← Game references](../README.md) · [Home](../../README.md) · [Start with the hidden garden →](hidden-gardens.md)
+[← Game references](../README.md) · [Home](../../README.md) · [Read the proposal →](../../docs/proposal/campus-game.md)
 
-![Hidden garden: the primary lake-stage reference](images/hidden-gardens.png)
+![Proposed world route through the six main location families](../../docs/proposal/diagrams/route-overview.svg)
 
-**Start here: the hidden garden and its lake are the main stage-development priority.** Campus architecture is a separate reference. The creek and rusty crossings are separate locations with different movement and navigation identities.
+**Lake touch → mirror arrival in Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden.** This is the proposed fictional route, not a geographical campus map or six promised jam levels. Playground is an optional detour with placement still open; the robot is an item.
 
-These boards turn Alexander's 59 photographs from 22 October 2026 into a small visual library. They are **AI-cleaned photographic interpretations**, with some reconstructed details, rather than exact documentary photographs, final pixel art or collision maps. Original photographs remain outside Git. The [source index](source-index.json) accounts for every original; [generation notes](generation.md) explain transformations and limitations.
-
-| Place | What it contributes | Open |
+| First, reveal a different world | Then, lose the familiar route | Finally, find a different rhythm |
 | --- | --- | --- |
-| **Hidden garden / lake** | Main stage; layered reeds, willow screens, soft ground, water and concealed routes | [Garden board and stage brief](hidden-gardens.md) |
-| Campus | Peach colonnades, window rhythm, passages and distant landmarks | [Architecture](campus.md) |
-| Creek | Confusing vegetation, repeated bends and partial sightlines | [Creek](creek.md) |
-| Crossings | Weathered steel, rust, rails, overhead spans and parkour | [Crossings](crossings.md) |
-| Playground | Real climbing structures interpreted through the horror-animation reference | [Playground](playground.md) |
-| Toxic Garden | Plants, stone, rusty enclosures and maze possibilities | [Toxic Garden](toxic-garden.md) |
-| Little robot | Funny collectible character; potential companion/item/upgrade | [Robot](campus-robot.md) |
+| [![Hidden Garden board](images/hidden-gardens.png)](hidden-gardens.md) | [![Lost in the Green board](images/lost-in-the-green.png)](lost-in-the-green.md) | [![Stepping-stone creek board](images/creek-stones-v3.png)](creek.md) |
+| [1. Hidden Garden / lake](hidden-gardens.md) | [3. Lost in the Green](lost-in-the-green.md) | [5. Creek / reflections](creek.md) |
+| [![Campus architecture board](images/campus.png)](campus.md) | [![Crossings board](images/crossings.png)](crossings.md) | [![Toxic Garden board](images/toxic-garden.png)](toxic-garden.md) |
+| [2. Campus ledges](campus.md) | [4. Rust / parkour](crossings.md) | [6. Toxic Garden](toxic-garden.md) |
 
-## What the photos can and cannot settle
+| Optional horror detour | Optional collectible |
+| --- | --- |
+| [![Playground photographic board](images/playground.png)](playground.md) | [![Campus robot board](images/campus-robot.png)](campus-robot.md) |
+| [Playground + animation reference](playground.md) | [Cute robot item](campus-robot.md) |
 
-Keep materials, silhouettes, depth cues and recognizable motifs. Consolidate duplicate angles. Remove bystanders, phone shadows, social UI and incidental signage from selected boards. Exclude the five professor screenshots and the private chat captures from committed media.
+Eight cleaned photographic boards organize 59 owner-supplied photos. They are interpretations, not final pixel art, measured geometry or a collision map. The [source index](source-index.json) preserves every original ID; [generation notes](generation.md) record inputs, prompts, hashes and reconstruction limits. Raw photos, portraits, recordings and unredacted transcripts stay outside Git.
 
-The photos do not establish a continuous level map, lake bathymetry, hidden sides of structures, enemy types or physical dimensions. Additional lake-side and side-on path views would help later. No extra Instagram images were needed for these location boards; the yogurt reference remains a link and optional replay gag.
+Use Previous / Library / Next through the eight location/item studies. The first six follow the proposed main route; Playground and robot follow as optional material. Sources can inform more than one design study without duplicating the original files.
 
-**Browse:** [Garden →](hidden-gardens.md) · [Layered art workflow](../../docs/design/layered-stage-workflow.md) · [Current proposal](../../docs/proposal/campus-game.md)
-
-[← Game references](../README.md) · [Home](../../README.md) · [Start with the hidden garden →](hidden-gardens.md)
+**Next production decision:** one consistent pixel-style test at player scale, then one authored horizontal master with layered depth and tested terrain. [Layered stage workflow](../../docs/design/layered-stage-workflow.md) · [Current proposal](../../docs/proposal/campus-game.md).

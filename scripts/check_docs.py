@@ -5,6 +5,7 @@ import json
 import re
 import sys
 from urllib.parse import unquote
+import xml.etree.ElementTree as ET
 from refresh_reference_navigation import navigation
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -89,11 +90,17 @@ if campus.exists():
     if len(sources) != 59 or {p['id'] for p in sources} != {f'C{i:02}' for i in range(1, 60)}:
         errors.append('Campus source index must cover all 59 photographs exactly once')
     manifest = json.loads((campus / 'media-sources.json').read_text(encoding='utf-8'))
-    expected_boards = {'campus', 'hidden-gardens', 'creek', 'crossings', 'playground', 'toxic-garden', 'campus-robot'}
-    if len(manifest['collages']) != 7 or {p.get('id', Path(p['file']).stem) for p in manifest['collages']} != expected_boards:
-        errors.append('Campus collage manifest must retain seven separate location/item identities')
+    expected_boards = {'campus', 'hidden-gardens', 'lost-in-the-green', 'creek', 'crossings', 'playground', 'toxic-garden', 'campus-robot'}
+    if len(manifest['collages']) != len(expected_boards) or {p.get('id', Path(p['file']).stem) for p in manifest['collages']} != expected_boards:
+        errors.append('Campus collage manifest must retain eight separate location/item identities')
+    declared = [item['file'] for item in manifest['collages']]
+    actual = {p.relative_to(campus).as_posix() for p in (campus / 'images').glob('*')}
+    if len(declared) != len(set(declared)) or set(declared) != actual:
+        errors.append('Campus manifest must cover each active collage exactly once')
     prompts = json.loads((campus / 'prompts.json').read_text(encoding='utf-8'))['prompts']
     source_ids = {p['id'] for p in sources}
+    if any(p['board'] not in expected_boards for p in sources):
+        errors.append('Campus source index has an unknown board identity')
     for item in manifest['collages']:
         media = campus / item['file']
         if not media.is_file() or hashlib.sha256(media.read_bytes()).hexdigest() != item['sha256']:
@@ -102,6 +109,14 @@ if campus.exists():
             errors.append(f'Campus collage is not PNG: {item["file"]}')
         if item['prompt_key'] not in prompts or not set(item['source_ids']) <= source_ids:
             errors.append(f'Campus collage has invalid prompt/source mapping: {item["file"]}')
+    route = json.loads((campus / 'reading-order.json').read_text(encoding='utf-8'))
+    route_paths = [page['path'] for page in route]
+    if len(route_paths) != len(set(route_paths)) or set(route_paths) != {f'references/campus/{name}.md' for name in expected_boards}:
+        errors.append('Campus reading trail must include each location/item study once')
+    for index, page in enumerate(route):
+        path = ROOT / page['path']
+        if not path.is_file() or path.read_text(encoding='utf-8').count(navigation(route, index, 'references/campus/README.md')) != 2:
+            errors.append(f'{page["path"]}: missing current two-ended campus navigation')
     original_names = {p['filename'] for p in sources}
     for path in ROOT.rglob('*'):
         if '.git' in path.parts or 'tmp' in path.parts:
@@ -132,6 +147,17 @@ if animation.exists():
         if not isinstance(timestamp, int) or not 0 <= timestamp < 72:
             errors.append(f'Playground frame has invalid source time: {item["file"]}')
 
+for diagram in (ROOT / 'docs/proposal/diagrams').glob('*.svg'):
+    try:
+        svg = ET.parse(diagram).getroot()
+        if svg.tag != '{http://www.w3.org/2000/svg}svg' or any(
+            not svg.findtext('{http://www.w3.org/2000/svg}' + tag)
+            for tag in ('title', 'desc')
+        ):
+            errors.append(f'{diagram.relative_to(ROOT)}: missing SVG title/description')
+    except ET.ParseError as exc:
+        errors.append(f'{diagram.relative_to(ROOT)}: invalid SVG: {exc}')
+
 for forbidden in ('CLAUDE.md', '.env'):
     if (ROOT / forbidden).exists():
         errors.append(f'Unexpected root file: {forbidden}')
@@ -141,6 +167,6 @@ if errors:
     sys.exit(1)
 print(f'Checked {len(markdown)} Markdown files, {len(expected_games)} games and {image_count} image signatures/provenance entries.')
 if campus.exists():
-    print('Checked seven collage hashes/prompts, 59 source-photo IDs and ten voice-note entries; no originals imported.')
+    print('Checked eight collage hashes/prompts and reading-trail pages, 59 source-photo IDs and ten voice-note entries; no originals imported.')
 if animation.exists():
     print(f'Checked {len(frames)} Playground frame hashes, signatures, source times and credits.')

@@ -1,35 +1,34 @@
 # Collage provenance and review
 
-[← Location library](README.md) · [Home](../../README.md) · [Next: garden →](hidden-gardens.md)
+[← Location library](README.md) · [Proposal](../../docs/proposal/campus-game.md) · [Start with Hidden Garden →](hidden-gardens.md)
 
-Generated 22 October 2026 with the built-in image generation tool. Exact final prompt set: [prompts.json](prompts.json). The tool did not expose a model version; none is claimed. All boards use opaque photographic collage layouts, not transparent runtime assets.
+Eight active photographic reference boards, generated 22 October 2026 with built-in image generation. [Exact prompt set](prompts.json) · [Output hashes, dimensions and inputs](media-sources.json) · [59 original-photo IDs](source-index.json). No model version was exposed; none is claimed. These are opaque reference boards, not transparent runtime layers or measured maps.
 
-## Inputs and retained outputs
-
-The owner supplied 59 photographs. Local numbered contact sheets covered C01–C20, C21–C40 and C41–C59 for inspection and generation context. They are working inputs outside Git. Every photo's ID, filename, hash and intended board appears in [source-index.json](source-index.json). Membership means **source coverage**, not that each original became its own visible collage panel.
-
-| Final output | Prompt key | Visual inputs beyond the layout example | Review |
+| Active output | Prompt key | Generation inputs / source coverage | Review result |
 | --- | --- | --- | --- |
-| images/hidden-gardens.png | garden | Contact sheet 1; C12 full-size garden panorama | Dedicated primary location; no campus hero panel; water glimpses are reconstructed |
-| images/campus.png | campus | Contact sheet 1; C01 courtyard | Architecture separated from garden; facade/ledge details consolidated |
-| images/creek-v2.png | creek-v2 | Original photos C20, C21, C22, C29 plus layout example; no prior generated creek | Regenerated after rejection: grassy channel, straight paths, high/low routes and a single stepping-block line; reviewed against originals |
-| images/crossings.png | crossings | Contact sheet 2 | Spans, rails and industrial silhouettes; rust detail intensified from sparse reference |
-| images/playground.png | playground | Contact sheet 2; C39 interior | Tower/ramp/crawl motifs retained; photographs remain daytime reference rather than horror art |
-| images/toxic-garden.png | toxic | Contact sheet 3; C52 balanced stones | Plants/rocks/rust emphasized; planter passages are an interpreted arrangement, not a site map |
-| images/campus-robot.png | robot | Contact sheet 3; C59 robot | Human hands and lettering removed; opposing view reconstructed, not verified engineering geometry |
+| images/hidden-gardens.png | garden | Contact sheet 1 + full-size C12; C03–C14 family | Approved lake/garden focus retained; partial water evidence reconstructed |
+| images/campus.png | campus | Contact sheet 1 + C01; C01–C02/C15–C19 family | Approved architecture board retained |
+| images/lost-in-the-green.png | lost_green | Selected channel/path panels of creek-v2; oldest board's leaf-screen mood; direct originals C20/C22; C20–C22 family | Merge keeps open grassy trough, path split and screened water; stone crossing removed from this identity |
+| images/crossings.png | crossings | Contact sheet 2; C23–C27 family | Approved spans/rails/rust board retained; terrain change appears in the separate design schematic |
+| images/creek-stones-v3.png | creek_stones | Four full-size originals C29–C32; C28 context reviewed | Four large crossing views; single-line stepping blocks, banks, reflections and water; partial person removed |
+| images/toxic-garden.png | toxic | Contact sheet 3 + full-size C52; C40–C54 family | Approved plants/rocks/rust board retained |
+| images/playground.png | playground | Contact sheet 2 + full-size C39; C33–C39 family | Approved daytime structure board retained; horror source has its own trailer study |
+| images/campus-robot.png | robot | Contact sheet 3 + full-size C59; C55–C59 family | Approved cute robot board retained; opposite view is reconstructed |
 
-Every prompt used Alexander's supplied room collage as **layout style only**: cream gutters, large photographic panels, small handwritten tape labels and a palette footer. Room furniture, ducks and cabinet contents were not requested for these boards. The full-size style example remains outside Git.
+The owner's room collage is **layout style only** for all boards: cream gutters, large photographic panels, tape labels and palette footer. No room furniture, ducks or cabinet content is requested. Originals and contact sheets remain outside Git. Primary source membership indexes each photo once; related-study annotations may point to other useful motifs without duplicating the raw file.
 
-The previous creek.png and its forked-route interpretation were rejected and removed from the current library. creek-v2.png is a new generation from originals, not an edit of that board. Direct input IDs and broader reviewed IDs are recorded separately in the manifest. The old creek prompt remains historical provenance; creek-v2 is active.
+## Latest split and retained history
 
-The first combined campus/garden, creek/crossing and “riverfront” drafts were superseded after Alexander clarified the location identities. Those drafts remain local and are not included in this change. The robot and playground photographic boards were retained. No professor screenshots, chat screenshots, source audio or original campus photographs are committed.
+The earlier creek-v2 board mixed grassy channels with a small stone panel. Alexander's latest clarification separates those purposes: Lost in the Green receives the grass/path/screening motifs; the creek receives a dedicated four-angle stepping-stone study. Both new boards were visually reviewed against the originals and the requested location identities. The previous mixed image is kept only in local working history, not the current library.
 
-## What was actually checked
+The oldest Lost in the Green image is used for leaf-screen mood only, as requested in the merge. Its invented cascades and extra stone rows are not treated as site evidence or restored to the dedicated creek board. Earlier prompt keys remain historical provenance; the active output-to-prompt mapping above is authoritative.
 
-All 59 images and five professor screenshots were inspected in local numbered contact sheets; selected campus, garden, playground-interior, stone and robot originals were inspected at larger size. Every final collage was visually reviewed for its location identity, label legibility, unwanted people, usable motifs and separation requested by Alexander. The generated files are copied into this repository; [media manifest](media-sources.json) stores their hashes and dimensions.
+## What is evidence, what is design
 
-AI cleanup changes details, perspective, vegetation and arrangements. Keep these boards as design references. They are not faithful archival composites or exact floor plans. Rust swatch labels on the crossings board are not a scientific material legend. The hidden-garden water and Toxic Garden passages require stage interpretation; neither proves unphotographed geography.
+All 59 photographs were inspected in numbered contact sheets; selected originals and all active outputs were viewed at larger size. The new creek uses four distinct photographed angles, not an invented turnaround. AI cleanup still changes vegetation, perspective and small arrangements; these are not archival composites. Rust intensification, reconstructed water and hidden sides do not prove real geography.
 
-The 59 photos are owner-supplied, with third-party buildings, objects and occasional people depicted. No blanket release or runtime license is inferred. Final stage art should be original, reviewed and consistent with organizer requirements. Existing-game/trailer media retains its original rightsholders and is never a game asset by default.
+The route, rising/falling terrain and normal/corrupted crossing diagrams under docs/proposal/diagrams/ are original editable **design schematics**. They are deliberately separate from photo interpretation, final pixel style and runtime assets. The proposed hills are not measured stepping-block heights. Six earlier approved boards are unchanged by the latest split.
 
-[← Location library](README.md) · [Home](../../README.md) · [Next: garden →](hidden-gardens.md)
+No original photos, five professor screenshots, raw chats, source audio, full videos or unredacted transcripts are committed. Source rightsholders and people depicted do not acquire a blanket release through image cleanup. Runtime art will need its own original/licensed sources and provenance. No public-sharing or game-use license for the commercial references is inferred.
+
+[← Location library](README.md) · [Proposal](../../docs/proposal/campus-game.md) · [Start with Hidden Garden →](hidden-gardens.md)

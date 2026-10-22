@@ -2,7 +2,7 @@
 
 [← Art workflow](../design/layered-stage-workflow.md) · [Home](../../README.md) · [Next: jam plan →](../delivery/jam-plan.md)
 
-**Proposed, not implemented.** Continue with the [engine spike](technical-proposal.md); a layered image pipeline does not require Three.js or settle the engine. Phaser remains a candidate. If the chosen collision system handles slopes poorly, simplify collision rather than changing the full renderer late in the jam.
+**Proposed, not implemented.** Continue with the [engine spike](technical-proposal.md); a layered image pipeline does not require Three.js or settle the engine. Phaser remains a candidate. Test broad slopes before committing to a controller. Keep the intended flowing contour; simplify incidental bumps or an optional verb before replacing the terrain language with a tile staircase.
 
 ## One stage manifest, explicit coordinate space
 
@@ -41,6 +41,37 @@ A pixel grid is a rendering choice, not a requirement for square tile collision.
 5. Set a checkpoint on solid ground. Death resets actor, world state and camera together. Restart clears the whole session, including optional items.
 
 Visual reflection and physical mirror world are different systems. Do not negate arbitrary coordinates and hope collisions still work. A first-slice version can use a short cut/fade, reused pose and a spin. Cooldown and anchor separation prevent an immediate teleport loop. Corruption is deliberate presentation; broken controls and missing assets are bugs to fix.
+
+## Authored terrain-state change
+
+![Normal/corrupted crossing contract](../proposal/diagrams/crossing-change.svg)
+
+The crossing is a proposed state pair: `normal` has the lower path; `corrupted` removes it and enables an attainable upper rail route. This is separate from decorative parallax and separate from the lake teleport. Similar state pairs can later support campus ledges, puzzles or a bounded enemy arena without procedural map generation.
+
+Illustrative expansion for a crossing stage, not an implemented manifest:
+
+```json
+{
+  "id": "crossings",
+  "initialState": "normal",
+  "states": {
+    "normal": {"composition": "normal.json", "collision": "normal-collision.json"},
+    "corrupted": {"composition": "corrupted.json", "collision": "upper-route-collision.json"}
+  },
+  "change": {
+    "trigger": "bridge-fault",
+    "safeStagingAnchor": "before-bridge",
+    "targetState": "corrupted",
+    "stableExitAnchor": "beyond-rails"
+  }
+}
+```
+
+Before triggering, preview the alternate route and verify the required traversal verb exists. Preload both compositions and collision layouts. Commit from an authored safe region after a visible tell; do not silently delete supporting collision beneath the player. Swap rendered state, collision, interaction targets and any selected enemy/navigation state together at a controlled update boundary. Reject or defer a switch that would overlap the actor with new solids or strand it inside removed space.
+
+A checkpoint stores stage, terrain-state ID, safe feet position, optional-item policy and any necessary encounter state. Death restores a coherent snapshot; full restart restores initial states everywhere. Prevent a held input from retriggering the fault. Never serialize only the screenshot/FX state while collision remains in another version.
+
+**Required prototype checks if selected:** trigger twice, retry before/after the switch, approach from either side, restart, leave/re-enter the stage, lose focus during the tell, and verify the stable exit is still reachable. Check no invisible lower floor remains, no unmarked fall is introduced, and the rail art matches the upper collision. Stealth/combat variants need their own behavior/reset checks; masks alone do not implement those systems.
 
 ## Collectible and optional reveals
 

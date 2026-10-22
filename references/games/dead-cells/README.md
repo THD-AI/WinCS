@@ -16,7 +16,7 @@ The [official Bad Seed listing](https://store.steampowered.com/app/1204130/Dead_
 
 **Our Toxic Garden translation:** local plants + stones + rust-edged enclosures, staggered paths and one clear landmark. The campus photos do not show an actual greenhouse; the greenhouse is the *game reference*, not an invented fact about the site. Give potential enemies distinct silhouettes against foliage and keep the route legible through the maze.
 
-Alexander also likes some boss designs, but has not specified which here. Do not select an arbitrary boss as an accepted target. Weapon rosters, procedural runs, roguelite resets and Dead Cells' whole combat model are not the requested reference role.
+Alexander also likes some boss designs, but has not specified which here. Do not select an arbitrary boss as an accepted target. The latest written clarification also allows Dead Cells-like combat as a possible mode. A bounded original experiment would select one enemy tell, one response and one attack/recovery cycle; it does not commit WinCS to weapon rosters, procedural runs or roguelite resets.
 
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 

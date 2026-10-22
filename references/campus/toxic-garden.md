@@ -1,6 +1,8 @@
 # Toxic Garden · plants, rocks and rust
 
-[← Playground](playground.md) · [Library](README.md) · [Next: robot →](campus-robot.md)
+<!-- reference-navigation:start -->
+[← Previous: Creek / stepping stones](creek.md) · [🖼️ Library](README.md) · **6 / 8** · [Next: Playground detour →](playground.md)
+<!-- reference-navigation:end -->
 
 ![Toxic Garden material-reference collage](images/toxic-garden.png)
 
@@ -14,4 +16,6 @@ The [official Bad Seed listing](https://store.steampowered.com/app/1204130/Dead_
 
 Sources C40–C54 in [source-index.json](source-index.json). Bike/promenade views provide context, not the hero composition. Detail boards preserve granite, gravel, rust and planting relationships without importing the original files.
 
-[← Playground](playground.md) · [Library](README.md) · [Next: robot →](campus-robot.md)
+<!-- reference-navigation:start -->
+[← Previous: Creek / stepping stones](creek.md) · [🖼️ Library](README.md) · **6 / 8** · [Next: Playground detour →](playground.md)
+<!-- reference-navigation:end -->

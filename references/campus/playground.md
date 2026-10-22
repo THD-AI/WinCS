@@ -1,6 +1,8 @@
 # Playground · familiar shapes, something wrong
 
-[← Crossings](crossings.md) · [Library](README.md) · [Next: Toxic Garden →](toxic-garden.md)
+<!-- reference-navigation:start -->
+[← Previous: Toxic Garden](toxic-garden.md) · [🖼️ Library](README.md) · **7 / 8** · [Next: Robot collectible →](campus-robot.md)
+<!-- reference-navigation:end -->
 
 ![Real playground structure and material collage](images/playground.png)
 
@@ -22,4 +24,6 @@ Our optional interpretation: a round crawl opening first reads as shelter; an al
 
 Source photos C33–C39. The current board deliberately remains photographic; a dusk/horror stage painting comes after approval of the reference and composition.
 
-[← Crossings](crossings.md) · [Library](README.md) · [Next: Toxic Garden →](toxic-garden.md)
+<!-- reference-navigation:start -->
+[← Previous: Toxic Garden](toxic-garden.md) · [🖼️ Library](README.md) · **7 / 8** · [Next: Robot collectible →](campus-robot.md)
+<!-- reference-navigation:end -->

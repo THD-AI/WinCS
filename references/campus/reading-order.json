@@ -1,0 +1,34 @@
+[
+  {
+    "path": "references/campus/hidden-gardens.md",
+    "label": "Hidden Garden / lake"
+  },
+  {
+    "path": "references/campus/campus.md",
+    "label": "Campus architecture"
+  },
+  {
+    "path": "references/campus/lost-in-the-green.md",
+    "label": "Lost in the Green"
+  },
+  {
+    "path": "references/campus/crossings.md",
+    "label": "Rusty crossings"
+  },
+  {
+    "path": "references/campus/creek.md",
+    "label": "Creek / stepping stones"
+  },
+  {
+    "path": "references/campus/toxic-garden.md",
+    "label": "Toxic Garden"
+  },
+  {
+    "path": "references/campus/playground.md",
+    "label": "Playground detour"
+  },
+  {
+    "path": "references/campus/campus-robot.md",
+    "label": "Robot collectible"
+  }
+]

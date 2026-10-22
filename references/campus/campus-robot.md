@@ -1,6 +1,8 @@
 # The little campus robot · pocket-sized trouble
 
-[← Toxic Garden](toxic-garden.md) · [Library](README.md) · [Next: stage workflow →](../../docs/design/layered-stage-workflow.md)
+<!-- reference-navigation:start -->
+[← Previous: Playground detour](playground.md) · [🖼️ Library](README.md) · **8 / 8** · [Next: Location library →](README.md)
+<!-- reference-navigation:end -->
 
 ![Small wheeled campus robot reference collage](images/campus-robot.png)
 
@@ -12,4 +14,6 @@ Proposed jam version: one small collectible sprite and a happy beep when found. 
 
 Sources C55–C59. Hands, people and institutional lettering were removed from the generated board. Keep exact hardware/brand replication out of the runtime brief.
 
-[← Toxic Garden](toxic-garden.md) · [Library](README.md) · [Next: stage workflow →](../../docs/design/layered-stage-workflow.md)
+<!-- reference-navigation:start -->
+[← Previous: Playground detour](playground.md) · [🖼️ Library](README.md) · **8 / 8** · [Next: Location library →](README.md)
+<!-- reference-navigation:end -->

@@ -21,7 +21,7 @@ flowchart LR
 
 ## 1. Reference first, style second
 
-Use the [seven location/item boards](../../references/campus/README.md) to choose actual shapes and materials. Start with the hidden garden. A photographic board is not a pixel-art style decision. Make one small style test at the intended player/camera scale before a long painting: terrain, one tree, water, a character silhouette and a small interaction prop. Use the [Planet of Lana developer demonstrations and layer analysis](../../references/games/planet-of-lana/layers-and-motion.md) for depth, soft contours and small motion; translate them into a consistent pixel treatment. The original uses hand-painted hybrid techniques, not pixel art. Classic Monkey Island supplies complementary curved pixel-contour examples. A pixel world need not use square terrain tiles.
+Use the [eight location/item boards](../../references/campus/README.md) to choose actual shapes and materials. Start with the hidden garden. A photographic board is not a pixel-art style decision. Make one small style test at the intended player/camera scale before a long painting: terrain, one tree, water, a character silhouette and a small interaction prop. Use the [Planet of Lana developer demonstrations and layer analysis](../../references/games/planet-of-lana/layers-and-motion.md) for depth, soft contours and small motion; translate them into a consistent pixel treatment. The original uses hand-painted hybrid techniques, not pixel art. Classic Monkey Island supplies complementary curved pixel-contour examples. A pixel world need not use square terrain tiles.
 
 **Proposed starting contract to approve:** a 640×360 design viewport, integer scaling where practical, one common pixel density, no rotation/filter that makes isolated assets look smoother than the world. A 24–32 pixel tall student is a test range, not an accepted sprite size. Readability at actual scale decides it.
 
@@ -51,9 +51,15 @@ Each isolated object/layer needs genuine alpha, a fixed scene origin and a clean
 
 Separate **alpha cutouts**, **FX region masks**, **interior reveal masks** and **collision geometry** in names and documentation. A black/white region mask is not itself a transparent sprite. Test premultiplied-alpha/fringing behavior over both light and dark backgrounds; do not ship a painted checkerboard as transparency.
 
+### One visual contract for every increment
+
+Use the [shared art/animation brief](art-and-audio.md) for scale, silhouette, palette roles, terrain contours and animation-state names. Each request carries the accepted master/endpoint poses, location + mechanic ID, recording/clarification source, fixed scene origin/canvas/pivots, the change to make, protected geometry and the proof required. Do not ask for all stages, characters and transitions in one generation.
+
+For a terrain fault, compose normal and corrupted states on the same coordinates. Separate the removable lower-path art, upper-route supports, glitch region and both collision states. The [crossing schematic](../proposal/diagrams/crossing-change.svg) defines the intended behavior; exact 404 styling remains open. After any layer extension, rebuild the proof composite and retest both states before moving to the next strip.
+
 ## 5. Add just enough motion
 
-First animation budget: one water shimmer region, one reed cluster and a sparse leaf emitter. Character budget: idle, walk, jump/fall, interact; hurt/attack only if their mechanic exists. Fixed frame canvas, feet/pivot and silhouette make the controller stable. Generated in-between frames need review for limb duplication, scale drift and changing costumes; image generation does not guarantee a coherent sprite sheet.
+First animation budget: one water shimmer region, one reed cluster and a sparse leaf emitter. Character budget: idle, walk, jump/fall, interact; hurt/attack only if their mechanic exists. Fixed frame canvas, feet/pivot and silhouette make the controller stable. Generated in-between frames need review for limb duplication, scale drift and changing costumes; image generation does not guarantee a coherent sprite sheet. Supply both approved endpoint poses, fixed canvas/facing/foot anchors and timing. Review the whole transition, including attack anticipation/active/recovery and authored hit events if combat is selected.
 
 For the playground, an authored trigger can fade the exterior cutout to an aligned interior plate. Keep collision and player position stable. For reflection travel, reuse the interaction pose plus a short comic spin and an explicit safe destination. Avoid a cinematic transformation pipeline in the baseline.
 

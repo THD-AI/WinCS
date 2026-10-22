@@ -36,15 +36,18 @@ A02 includes a private account/workplace side discussion at roughly 2:33–2:50;
 
 - “Poncho Goblins” is Alexander's proposed team name; three ponchos are offered. Registration rename and game title are unconfirmed.
 - Hidden garden/lake gets priority and its own collage. Campus is separate.
-- Creek is confusing; crossings are rusty and parkour-oriented. Keep them distinct.
+- Latest classification: **Lost in the Green** merges grassy channels, high/low paths and confusing leaf screens. **Creek** is the separate later stone/reflection location, with four large crossing angles and a broad rise–dip terrain rhythm, not a precision-parkour requirement.
 - “Riverfront and stone” was the wrong design interpretation: **Toxic Garden**, with plants, rocks, rust and maze potential.
 - Playground is tied to the supplied horror-animation trailer. The robot is an **item/collectible character**, possibly companion/upgrade, not “night sim.”
 - Professor and mascot jokes are secret replacement bosses **after one completion**, not the main first-run bosses. Keep source portraits out of Git.
 - Terraria means **Wall of Flesh and Moon Lord boss design/fights only**; terrain/readability and general game design are explicitly rejected as references.
 - Little Nightmares contributes character design only, not ambience. Duck Season contributes mascot behavior and different endings.
-- Monkey Island means classic pixel art, not Special Edition repainting. Children of Morta means visual design and magic/effects. Dead Cells means the overgrown greenhouse, with some boss designs still unspecified.
+- Monkey Island means classic pixel art, not Special Edition repainting. Children of Morta means visual design and magic/effects. Dead Cells means the overgrown greenhouse, with some boss designs still unspecified; the latest clarification also permits combat qualities as an optional selected mode.
 - Infinity Blade means a trilogy-wide post-technological science-fantasy civilization: advanced remnants only partly understood by a medieval society, perceived as machinery, magic, temples or divine artifacts. The supplied memory excerpt clarifies intent; it is not independently retrieved history.
-- Regenerate the creek from original photos, never by correcting the rejected collage. Keep the other approved boards.
+- The active creek stone board comes from C29–C32 originals; the earlier mixed creek-v2 is superseded by the separate Lost in the Green merge and stone board. Keep the other approved boards.
+- Proposed order: ordinary lake touch / crash-spin → Hidden Garden mirror arrival → campus architecture/ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden. Playground placement remains open.
+- At the crossings, a warned glitch can remove the normal lower path and make traversal over the railings necessary. This changes terrain/state, not only a visual filter. Exact Voyager 404 appearance remains pending owner screenshots.
+- Original pixel art should use authored, flowing contours and one shared design system. Expand accepted masters, clean plates, masks, poses and in-betweens incrementally. Today's work stops at visual organization/proposal; recorded team discussion will refine it before building.
 - Start with cleaned collages; then agree visual direction, compose horizontal stages, isolate layers/masks and add limited animation. No seasonal/day-night/weather matrix is requested.
 
 [← Team brief](team-and-intent.md) · [Home](../../README.md) · [Next: campus proposal →](../proposal/campus-game.md)

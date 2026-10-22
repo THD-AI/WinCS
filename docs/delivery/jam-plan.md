@@ -10,13 +10,13 @@ Research, ask organizer questions, verify repository access and install a team-a
 
 ## Agenda mapped to deliverables
 
-**Current candidate:** one hidden-garden/lake slice from the [campus proposal](../proposal/campus-game.md). Recheck theme/rules. Voice note A08 recommends deferring secret-boss extras beyond the event.
+**Current candidate:** lake entry → mirror arrival in Hidden Garden → one short changed route / exit from the [campus proposal](../proposal/campus-game.md). Recheck theme/rules. Voice note A08 recommends deferring secret-boss extras beyond the event.
 
 | Gate | Garden deliverable | Fallback |
 | --- | --- | --- |
 | First 45 minutes | Choose reflection variant, controls, scale, route and ending | Paired-shore transition in one world |
 | First two sprint hours | Plain shapes traverse the garden; interaction/reset/export work | One short route and comic reveal |
-| Friday evening | Complete beginning/lake/return/ending; one art frame integrates | One background and static foreground |
+| Friday evening | Complete beginning/lake arrival/changed route/ending; one art frame integrates | One background and static foreground |
 | Night handoff | One stage master, bounded layers, proven transition | No second collision layout |
 | Saturday morning | Fix seams, readability, collision, restart and export | Cut effects, combat and companion behavior |
 
@@ -27,7 +27,7 @@ Do not schedule all environments, weapons and replay bosses into this window. On
 | Fri 14:00–15:15 | Arrival and welcome | Confirm room, rules, submission URL, team access and support availability |
 | Fri 15:15–15:30 | Keynote and theme reveal | Vatsal states a one-sentence interpretation; choose one option |
 | Fri 15:30–17:30 | First part of sprint 1 | Lock scope in 30–45 min; spike tool/export; greybox core movement and goal |
-| Fri 17:30–19:30 | Rest of sprint 1 | One full ugly playthrough, one ability/gate, safe retry; art integrates one frame first |
+| Fri 17:30–19:30 | Rest of sprint 1 | One full ugly playthrough, one selected interaction/state change, safe retry; art integrates one frame first |
 | Fri 19:30–20:00 | Pizza | Stop; reassess scope and energy; discard nonessential systems |
 | Fri 20:00–00:00 | Sprint 2 | Integrate bounded art/audio; outside playtest; test hosted/exported build |
 | Sat 00:00–00:30 | Fitness break | Leave written handoff and assess energy |
@@ -42,7 +42,7 @@ Full post-reveal elapsed window: 20 hours. Official sprint blocks total 18 hours
 
 ## Proposed work split, confirm voluntarily
 
-Vatsal owns the idea, level progression and small gameplay changes with pairing. Alexander can support tool setup, controller/collision and export verification. Lex can support readability, one character sheet or tiles/props within an agreed budget. One person integrates at a time; split file ownership before parallel edits. AI may draft bounded functions/assets only if permitted, and a named person reviews each result. None of this assigns unpaid full-time commitments by default.
+Vatsal owns the idea, level progression and small gameplay changes with pairing. Alexander can support tool setup, controller/collision and export verification. Lex can support readability, one character action pack or layered terrain/props within an agreed budget. One person integrates at a time; split file ownership before parallel edits. AI may draft bounded functions/assets only if permitted, and a named person reviews each result. None of this assigns unpaid full-time commitments by default.
 
 ## Cut ladder
 
@@ -52,7 +52,7 @@ Vatsal owns the idea, level progression and small gameplay changes with pairing.
 4. Replace complex ability with one context interaction that opens a shortcut.
 5. Ship a one-room beginning–action–ending vignette with restart.
 
-Never cut the win condition, reset, input clarity, collision sanity, playable export or credits. A complete tiny game beats a traversal demo with no ending.
+Never cut the win condition, reset, input clarity, collision sanity, playable export or credits. A complete tiny game beats a traversal demo with no ending. Keep the flowing terrain and chosen visual reveal recognizable while shrinking the route. The six-stage world route and optional playground are expansion material, not six jam deliverables.
 
 ## AI working protocol
 

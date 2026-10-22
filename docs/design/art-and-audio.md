@@ -1,43 +1,62 @@
-# Art direction exploration and asset contract
+# One visual system · scenery, characters, motion and sound
 
-[← Previous](../proposal/mechanics-and-level.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../technical/technical-proposal.md)
+[← Current proposal](../proposal/campus-game.md) · [Home](../../README.md) · [Next: layered workflow →](layered-stage-workflow.md)
 
-Status: provisional production constraints, not a final visual identity. Choose mechanics and camera before drawing a full cast. Vatsal selects two favorite gameplay screenshots from the Hollow Knight/9 Years references and says what reads well; Lex decides a comfortable contribution size.
+![Proposed terrain language: broad rises and dips](../proposal/diagrams/terrain-rhythm.svg)
 
-**Current preparation:** [seven collages](../../references/campus/README.md) and the [layered-stage workflow](layered-stage-workflow.md). Hidden garden/lake first; one common style test before stage masters, clean plates, alpha layers and motion masks. No seasonal/time/weather matrix. Collages are reference interpretations; no runtime art is approved. Animation budget follows the chosen mechanic.
+**Current direction:** original pixel art with flowing terrain silhouettes, authored horizontal compositions and separated depth. The photographic boards supply real motifs; the [Lana study](../../references/games/planet-of-lana/layers-and-motion.md) supplies depth/contour/process references. Neither is a runtime asset pack. Final pixel style awaits a small team-reviewed test.
 
-## Two directions to compare after the loop is chosen
+## Agree the design system on one small scene
 
-| Direction | Borrowed quality, not copied content | Production implication |
+| Decision | Proposed starting point | Review evidence |
 | --- | --- | --- |
-| Quiet, strange, luminous | Hollow Knight silhouette separation; Animal Well's environmental mystery; original pixel execution | Dark restrained backgrounds, clear foreground collision, one bright interactable accent; no darkness that hides platforms |
-| Warm, absurd little world | Kingdom's layered depth and Children of Morta's pixel design and magic-effect contrasts | One warm focal color against cool background; humor in props; keep combat readability if chosen |
+| Scale | 640×360 logical viewport; student 24–32 pixels tall as a test range | Feet, hands and props read at actual camera scale |
+| Pixel language | Consistent cluster size and edge treatment across characters, scenery and FX | No isolated smooth asset against a coarse pixel world |
+| Terrain | Broad rising/falling contours, authored cliffs/ledges where useful | Continuous walking rhythm; no obligatory square-tile staircase |
+| Depth | Distant low-contrast masses; one clear play plane; sparse front framing | Player, interaction and landing points stay visible |
+| Palette / light | Shared palette roles and one light direction, with local material families | Garden greens/water, campus plaster, crossing rust and Toxic Garden growth still belong together |
+| Corruption | One consistent fault vocabulary; exact 404 look awaits owner screenshots | Normal/corrupted pairs remain aligned and readable |
+| Character shape | Original student garment/proportions, distinct from source characters | Idle, movement and one action remain recognizable in silhouette |
 
-Do not combine every game's palette. Side-view gameplay references take priority over top-down character proportions. Planet of Lana is composition/negative-space reference, not a pixel-art production template. Dead Cells' technique is research, not a requirement to build a 3D-to-2D animation pipeline.
+The viewport and sprite height are proposals, not separate competing resolutions to adopt automatically. A full palette or color count is not locked by a collage. Modular props can be reused inside an authored contour; reuse does not require procedural stage assembly.
 
-## Candidate asset budget to approve
+## Expand scenery and animation in the same order
 
-- Working resolution proposal: 320×180 logical pixels, integer scale where possible; 16×16 terrain cells; player up to 24×32. Spike this once with actual collision and camera before locking it.
-- One palette of roughly 12–20 colors plus transparency, with separate values for collision surfaces, background and interactables. Counts are budgets, not artistic rules.
-- Player: idle 2 frames, run 4, jump 1, fall 1, ability 2, hurt/reset 1: **11 unique frame slots** before reuse. One horizontal facing mirrored unless asymmetry matters. At 24×32 this is a compact sheet; sheet layout/export naming must be explicit.
-- One tileset: solid/platform variants, ledge caps, corners, background wall and 3–5 props. One biome with two background layers is enough.
-- One ability pickup, one gate marker, one hazard, goal marker; a few UI glyphs. No boss or NPC cast.
-- Audio: one short optional ambient loop, jump/land, pickup/ability, hurt/reset, win (some can share). Mute and user-gesture audio start required.
+Reference board → one scale/style test → greybox and horizontal master → clean plates/layers → one state pair → selected action poses → in-betweens → motion proof → next bounded addition. The [production workflow](layered-stage-workflow.md) explains each step. Keep the accepted master and export contract stable while filling gaps.
 
-Frame count is a draft cost estimate. Lex may offer fewer frames; the fallback is a static original sprite with movement feedback, never pressure to finish a commercial-quality animation set.
+| Pack | Minimum useful states / parts | Add only when |
+| --- | --- | --- |
+| Student movement | Idle, walk, jump/fall, land and interaction | All feet/pivots agree; controller and camera work |
+| Lake touch | Approach/ready → contact → transition → safe arrival | Named anchors, cooldown and reset are defined |
+| One rail traversal | Mount → over/along → dismount; reuse poses where they truly fit | The crossings state-change route is selected and reachable |
+| One weapon | Anticipation → active strike → recovery | Combat is selected; range, hit event and cancel/reset rules exist |
+| One enemy | Idle/patrol → tell → attack → recovery; hit/defeat | It replaces another scoped task; no enemy roster by default |
+| Robot item | Uncollected, collected and a short feedback effect | Collection never blocks completion |
+| Environment | One water shimmer region, one reed loop, sparse leaves | Clean plates exist; effects do not obscure play |
+| Stage state pair | Normal art/collision + corrupted art/collision | Same origin, safe staging and a stable exit work |
 
-## Export and integration contract
+For generated in-betweens, provide the two approved endpoint poses, frame canvas, body proportions, facing, foot/hand anchors and intended timing. Check the sequence for sliding feet, changing costumes, extra limbs and prop drift. A convincing isolated picture is not proof of animation continuity. Do not generate a huge sprite sheet before one action works.
 
-Before parallel asset work, agree PNG transparency, exact cell dimensions, origin/foot position, frame order, names and FPS; collision shapes are independent data, never inferred from transparent pixels. Use `player_idle.png`, `player_run.png`, `terrain.png` as illustrative filenames; final atlas format follows the chosen engine. Nearest-neighbor sampling, pixel alignment and no accidental blur. Test a single exported frame in the running scene before producing all animations.
+Animation timing and hit events are authored separately from image appearance. A repeated generation cannot decide invulnerability, damage, collision or an enemy's behavior. Store state names, pivots and frame durations beside eventual runtime assets; no production sheet is claimed today.
 
-Keep editable source separate from exported runtime PNGs. Record author, date, source tool, edits, license/permission, intended use and AI generation provenance in the runtime manifest. AI outputs still need consistent silhouettes, frame sizes, cleaned transparency, temporal consistency and organizer permission. Do not assume generating a sheet makes it animation-ready.
+## Keep the kinds of masks distinct
 
-## Provenance template
+- **Alpha cutout:** what is drawn; requires real transparency and padding.
+- **FX region:** where water/glitch/light can animate; requires clean pixels beneath it.
+- **Interior reveal:** aligned exterior/interior plates with a trigger, for an optional playground section.
+- **Terrain-state replacement:** a normal/corrupted composition pair whose collision/state changes with its art.
+- **Collision geometry:** what can support, block or harm the player; authored and tested independently of painted grass.
 
-| Runtime path | Author / source | License / permission | AI tool/model if used | Human edits | Verified by |
-| --- | --- | --- | --- | --- | --- |
-| No runtime assets yet | – | – | – | – | – |
+The same scene origin links these outputs. Names, dimensions, pivots, state IDs, source/approval records and a proof composite prevent expansion from becoming a pile of incompatible masks. [Technical contracts](../technical/layered-stage-contract.md).
 
-Reference screenshots live under references/, never public/ or an exported build. Any later build script should enforce that boundary.
+## Sound supports the visible rule
 
-[← Previous](../proposal/mechanics-and-level.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](../technical/technical-proposal.md)
+Candidate cues: water/contact, a brief failed-operation sound, foot/landing response, an item beep and a clear success/restart cue. Keep ambient water/vegetation quiet enough for action cues; use original or licensed audio. Important progress never depends on sound alone. Mute, pause and reduced decorative motion must preserve the game's state.
+
+The pun should also be playable: “Path not found” can accompany a vanished path and a discoverable alternative. Exact dialogue, final story, music and voice performance remain discussion material.
+
+## What counts as ready to expand
+
+One route plays from start to ending and restarts; the art recomposes correctly; camera seams and alpha edges are clean; both terrain states match their collision; the selected action sequence has stable pivots and timing. Then add one strip, mask, prop or action pack and repeat the same review. All shipped media needs source/rights/AI provenance; the reference library stays outside exports.
+
+[← Current proposal](../proposal/campus-game.md) · [Home](../../README.md) · [Next: layered workflow →](layered-stage-workflow.md)

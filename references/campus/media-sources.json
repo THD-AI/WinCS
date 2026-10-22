@@ -3,86 +3,6 @@
   "tool": "built-in image generation",
   "collages": [
     {
-      "file": "images/campus-robot.png",
-      "sha256": "616de7c53590cfe3d0eae95b2e9666a36668729fdc645a94a17843488c404297",
-      "dimensions": [
-        1086,
-        1448
-      ],
-      "prompt_key": "robot",
-      "source_ids": [
-        "C55",
-        "C56",
-        "C57",
-        "C58",
-        "C59"
-      ],
-      "usage": "AI-cleaned reference interpretation; not runtime art"
-    },
-    {
-      "file": "images/campus.png",
-      "sha256": "e47cd43011d087ab855571275619a083781e40f3f70315f739e1a53fee8d34c6",
-      "dimensions": [
-        1086,
-        1448
-      ],
-      "prompt_key": "campus",
-      "source_ids": [
-        "C01",
-        "C02",
-        "C15",
-        "C16",
-        "C17",
-        "C18",
-        "C19"
-      ],
-      "usage": "AI-cleaned reference interpretation; not runtime art"
-    },
-    {
-      "file": "images/creek-v2.png",
-      "sha256": "d20c118b4927f1bb53da8cfdd5e2ab2ccd87b0fbe1999365b48830c847d7ba31",
-      "dimensions": [
-        1086,
-        1448
-      ],
-      "prompt_key": "creek-v2",
-      "source_ids": [
-        "C20",
-        "C21",
-        "C22",
-        "C29"
-      ],
-      "usage": "Regenerated from original photos and layout example; rejected collage not used as input; not runtime art",
-      "id": "creek",
-      "reviewed_source_ids": [
-        "C20",
-        "C21",
-        "C22",
-        "C28",
-        "C29",
-        "C30",
-        "C31",
-        "C32"
-      ]
-    },
-    {
-      "file": "images/crossings.png",
-      "sha256": "1ebf3b8dd8791a5a2bb9f3d7023b3d8721f513b021334b66cd3813c3e60b1102",
-      "dimensions": [
-        1086,
-        1448
-      ],
-      "prompt_key": "crossings",
-      "source_ids": [
-        "C23",
-        "C24",
-        "C25",
-        "C26",
-        "C27"
-      ],
-      "usage": "AI-cleaned reference interpretation; not runtime art"
-    },
-    {
       "file": "images/hidden-gardens.png",
       "sha256": "02f9c1d2393b2f61187a6a4494705734f1b10bdfb22dd643da42199a088fa3a5",
       "dimensions": [
@@ -107,23 +27,87 @@
       "usage": "AI-cleaned reference interpretation; not runtime art"
     },
     {
-      "file": "images/playground.png",
-      "sha256": "274ea63632e1cbba75a9341f3a6049221c2a1af159a884e3f621e2664ce4644c",
+      "file": "images/campus.png",
+      "sha256": "e47cd43011d087ab855571275619a083781e40f3f70315f739e1a53fee8d34c6",
       "dimensions": [
         1086,
         1448
       ],
-      "prompt_key": "playground",
+      "prompt_key": "campus",
       "source_ids": [
-        "C33",
-        "C34",
-        "C35",
-        "C36",
-        "C37",
-        "C38",
-        "C39"
+        "C01",
+        "C02",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
       ],
       "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "id": "lost-in-the-green",
+      "file": "images/lost-in-the-green.png",
+      "sha256": "79f97d79766771c69493a443d60b78a6bd044fd92c843ffe6949a17330411fca",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "lost_green",
+      "source_ids": [
+        "C20",
+        "C21",
+        "C22"
+      ],
+      "inputs": [
+        "creek-v2: channel/path/vegetation panels only",
+        "earlier Lost in the Green collage: leaf-screen mood only; no invented stone cascades",
+        "C20",
+        "C22",
+        "owner room collage: layout only"
+      ],
+      "usage": "AI-cleaned photographic interpretation; not a measured map or runtime asset"
+    },
+    {
+      "file": "images/crossings.png",
+      "sha256": "1ebf3b8dd8791a5a2bb9f3d7023b3d8721f513b021334b66cd3813c3e60b1102",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "crossings",
+      "source_ids": [
+        "C23",
+        "C24",
+        "C25",
+        "C26",
+        "C27"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "id": "creek",
+      "file": "images/creek-stones-v3.png",
+      "sha256": "0c9d5778c4f052b09336e13d1118d839c60578adb8d4b9e9f8cd034273bab060",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "creek_stones",
+      "source_ids": [
+        "C29",
+        "C30",
+        "C31",
+        "C32"
+      ],
+      "inputs": [
+        "C29",
+        "C30",
+        "C31",
+        "C32",
+        "owner room collage: layout only"
+      ],
+      "usage": "AI-cleaned photographic interpretation; not a measured map or runtime asset"
     },
     {
       "file": "images/toxic-garden.png",
@@ -149,6 +133,42 @@
         "C52",
         "C53",
         "C54"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/playground.png",
+      "sha256": "274ea63632e1cbba75a9341f3a6049221c2a1af159a884e3f621e2664ce4644c",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "playground",
+      "source_ids": [
+        "C33",
+        "C34",
+        "C35",
+        "C36",
+        "C37",
+        "C38",
+        "C39"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/campus-robot.png",
+      "sha256": "616de7c53590cfe3d0eae95b2e9666a36668729fdc645a94a17843488c404297",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "robot",
+      "source_ids": [
+        "C55",
+        "C56",
+        "C57",
+        "C58",
+        "C59"
       ],
       "usage": "AI-cleaned reference interpretation; not runtime art"
     }

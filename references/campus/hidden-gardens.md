@@ -1,10 +1,12 @@
 # Hidden garden · the lake stage
 
-[← Library](README.md) · [Home](../../README.md) · [Next: campus →](campus.md)
+<!-- reference-navigation:start -->
+[← Previous: Visual library](README.md) · [🖼️ Library](README.md) · **1 / 8** · [Next: Campus architecture →](campus.md)
+<!-- reference-navigation:end -->
 
 ![Hidden garden and lake-stage source motifs](images/hidden-gardens.png)
 
-**Primary location.** Alexander explicitly separated this from campus architecture and asked for more emphasis here. The lake is a design requirement from his account; the photographed reed beds provide partial water-edge evidence, not a complete lake panorama.
+**Primary location; proposed stage 1 after the lake transition.** Alexander explicitly separated this from campus architecture and asked for more emphasis here. The lake is a design requirement from his account; the photographed reed beds provide partial water-edge evidence, not a complete lake panorama.
 
 ## Look, then imagine moving through it
 
@@ -20,7 +22,7 @@ Willow branches frame a small opening. Reeds obscure what lies behind the next b
 
 ## Horizontal stage study to make next
 
-**Proposal, not generated level art:** sheltered garden entrance → reed corridor → first lake reveal → short stepping route → sheltered return/exit. A single memorable silhouette should orient the player after a concealed turn. The lake reveal deserves the largest composition; do not shrink it to a background thumbnail beneath a campus building.
+**Proposal, not generated level art:** approach the ordinary lake → touch its surface / comic crash-spin → arrive in the Hidden Garden mirror space → explore reed-screened soft terrain → exit toward campus architecture. The later stepping-stone creek is a distinct stage after the crossings. A single memorable silhouette should orient the player after a concealed turn. The lake reveal deserves the largest composition; do not shrink it to a background thumbnail beneath a campus building.
 
 Start with one three-screen composition at a common horizon and player scale. Design the walking surface and one deliberate gap before painting. Smooth visual slopes can sit over simple stable collision; avoid decorative lumps that make the character snag. A far lake strip, far trees, mid reeds, near branches and foreground ground lip should become separate assets only after the composed image is approved.
 
@@ -32,4 +34,6 @@ C03–C14 in [source-index.json](source-index.json). C04/C13/C14 are foliage/gro
 
 Later, capture an unobstructed lake-wide view, both edges of its intended crossing, a low side-on bank profile and where the garden meets the creek. Keep unknown space flexible instead of claiming generated fill is real geography.
 
-[← Library](README.md) · [Home](../../README.md) · [Next: campus →](campus.md)
+<!-- reference-navigation:start -->
+[← Previous: Visual library](README.md) · [🖼️ Library](README.md) · **1 / 8** · [Next: Campus architecture →](campus.md)
+<!-- reference-navigation:end -->

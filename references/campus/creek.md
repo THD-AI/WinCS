@@ -1,17 +1,30 @@
-# The creek · pleasantly lost, reliably found
+# The creek · stepping stones, reflections and a rise–dip rhythm
 
-[← Campus](campus.md) · [Library](README.md) · [Next: crossings →](crossings.md)
+<!-- reference-navigation:start -->
+[← Previous: Rusty crossings](crossings.md) · [🖼️ Library](README.md) · **5 / 8** · [Next: Toxic Garden →](toxic-garden.md)
+<!-- reference-navigation:end -->
 
-![Regenerated creek reference: grassy channel, paths and stepping blocks](images/creek-v2.png)
+![Four cleaned angles of the stepping-stone crossing](images/creek-stones-v3.png)
 
-**Confusing is the intended identity.** This is the grassy creek-and-path location, separate from the rusty bridge-crossing parkour space.
+**A separate later stage, after the rusty crossings and before Toxic Garden.** The creek's focus is the crossing stones, low banks, water and reflections. The grassy channel / confusing vegetation belongs to [Lost in the Green](lost-in-the-green.md).
 
-**Regenerated from scratch from original photographs**, using no previous creek collage as input. Open grassy banks, a narrow channel, straight path segments, high/low routes and stepping blocks remain visible. The earlier forked-route interpretation is rejected.
+## What the different angles contribute
 
-Confusion belongs in the authored stage: repeated landmarks, partial water views and screened turns can make a route feel uncertain without pretending the photographs already show a maze. Proposal: one short wrong turn with a reward, one recognizable landmark and a clear way back. Do not use invisible collision, identical mandatory branches or offscreen deaths as confusion. A plant foreground mask can occlude scenery without hiding the player's landing point.
+| View | Visible reference | Proposed translation |
+| --- | --- | --- |
+| Approach | One line of low blocks between broad bank steps | Reveal a gently changing route across water |
+| Along the stones | Offset edges, gaps, changing apparent heights | A rising/falling walking rhythm rather than a square-tile grid |
+| Water / reflections | Flow, broken light and tree silhouettes | Water FX and reflection clues on separate masks |
+| Reverse angle | The same crossing seen from the opposite bank | Check silhouette continuity and a recognizable destination |
 
-**Layer candidates:** far canopy, stream, opposite bank, near reeds, traversable bank, front trunk. Water movement and sound can suggest direction; no hydraulic simulation is needed. Keep the bridge geometry on the [crossings board](crossings.md).
+![Proposed flowing terrain profile, not a measured crossing](../../docs/proposal/diagrams/terrain-rhythm.svg)
 
-Reviewed sources C20–C22 and C28–C32; direct generation inputs C20, C21, C22 and C29 plus the layout example. These are multiple views, not proof of a looping maze. [Exact regeneration prompt](prompts.json) and [provenance/review](generation.md). Side-on path and creek-boundary photos remain useful future additions.
+**The stones inspire the rhythm; they do not dictate a block-shaped level.** Alexander wants repeated broad up/down contours, like the flowing landscape qualities studied in [Planet of Lana](../games/planet-of-lana/layers-and-motion.md). Round banks, shallow dips, generous footholds and a few small gaps can produce that feeling in pixel art. This is gentle traversal/exploration, distinct from the crossing's deliberate parkour beat.
 
-[← Campus](campus.md) · [Library](README.md) · [Next: crossings →](crossings.md)
+The photos do not demonstrate the proposed hills or game jump distances. The schematic above is our original design interpretation. Test a continuous slope profile and flat reflection/interaction patches before final art; keep painted grass, collision and water FX separate.
+
+**Sources:** C28 is the approach/context; C29–C32 are the four direct source angles used in this dedicated board. C06/C07 on the garden board also inform slab rhythm, without relocating those photographs or treating them as extra direct generation inputs. All 59 sources remain indexed once in [source-index.json](source-index.json). [Exact prompt and review](generation.md).
+
+<!-- reference-navigation:start -->
+[← Previous: Rusty crossings](crossings.md) · [🖼️ Library](README.md) · **5 / 8** · [Next: Toxic Garden →](toxic-garden.md)
+<!-- reference-navigation:end -->
