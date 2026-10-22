@@ -34,10 +34,10 @@ The signs and lines above are **new draft jokes**, not transcribed requirements.
 | --- | --- | --- | --- |
 | **Hidden garden / lake** | Soft terrain, screened water, layered reeds | One reflection transition and short traversal puzzle | First-slice priority |
 | Campus | Peach colonnades, distant glass blocks | Framing, landmarks, a tiny opening/ending | Reuse as backdrop if helpful |
-| Creek | Winding, repetitive, uncertain sightlines | One bounded wrong turn and a landmark | Later stage, not merged into crossings |
+| Creek | Winding, repetitive, uncertain sightlines | One bounded wrong turn and a landmark on a route inspired by grassy channels and high/low paths | Later stage, not merged into crossings |
 | Crossings | Rust, metal spans, narrow ledges | Deliberate parkour sequence | Later stage; extra movement verbs cost time |
 | Playground | Cheerful structures become unsettling | Interior mask reveal; optional short chase | Later stage; [animation study](../../references/campus/playground.md) |
-| Toxic Garden | Plants, stones, rusty enclosures | Compact maze, readable enemy opportunities | Later stage; confirm Arboretum comparison |
+| Toxic Garden | Plants, stones, rusty enclosures | Compact maze, readable enemy opportunities | Later stage; [Arboretum greenhouse views](../../references/games/dead-cells/visual-reference.md) |
 
 Six environmental identities are a **reference library**, not six promised jam levels. Keep the hidden garden complete before extending the world. See the [location boards](../../references/campus/README.md).
 
@@ -55,7 +55,7 @@ A private repository or a folder called “our little secret” does **not** hid
 
 **Working premise: “Introduction to Getting Lost.”** A new student is sent to collect a campus orientation stamp. The map is perfectly clear; reality is less cooperative. The student follows a misplaced reflection through the hidden garden and returns to a place they can finally recognize. A found robot gives a very official beep. The final instruction is simply to help the next lost student.
 
-The warmth comes from finding your footing somewhere new, not a long explanation of the corruption. Environmental jokes introduce uncertainty without mocking a real individual. On a later replay, the same places could reveal a different explanation and optional comic boss replacements. Infinity Blade contributes the idea that another pass reinterprets what seemed settled; it does not require its story, characters or generational system.
+The warmth comes from finding your footing somewhere new, not a long explanation of the corruption. Environmental jokes introduce uncertainty without mocking a real individual. On a later replay, the same places could reveal a different explanation and optional comic boss replacements. Infinity Blade contributes a different worldbuilding idea: a civilization builds around enormous advanced remnants it only partly understands, presenting them as ancient machinery, ritual or magic. An optional original seed is a lake mechanism treated as a ceremonial gate that responds to an ordinary student ID. This does not decide the final lore, add a new mechanic or make replay the purpose of the reference.
 
 This is a disposable writing draft for discussion, not the requested final story direction. Alexander may supply that later, and Vatsal can reject this premise entirely.
 

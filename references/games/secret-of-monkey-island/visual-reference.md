@@ -1,43 +1,75 @@
-# The Secret of Monkey Island: Special Edition · visual reference
+# The Secret of Monkey Island · classic · visual reference
 
 <!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island: Special Edition](README.md) · [🖼️ Library](../../README.md) · **34 / 36** · [Next: Infinity Blade →](../infinity-blade/README.md)
+[← Previous: The Secret of Monkey Island · classic](README.md) · [🖼️ Library](../../README.md) · **34 / 36** · [Next: Infinity Blade →](../infinity-blade/README.md)
 <!-- reference-navigation:end -->
 
-![The Secret of Monkey Island: Special Edition: selected official frame](images/01-official-gameplay.jpg)
+**Classic pixel art only.** CD/DOS, EGA and VGA captures are labeled below; Special Edition repaint screenshots have been removed.
 
-**Look for:** Funny actions and surprising consequences, economical scene reuse.
+[Game study](README.md) · [Hashes and full provenance](media-sources.json)
 
-[Game study](README.md) · Research 22 October 2026; official stills inspected, not a complete play session.
+Selected visual research, 22 October 2026. These are existing-game references, not our concept art or runtime assets. Video frames are captured at the listed source times without browser/player overlays. A still cannot establish responsiveness or the exact timing of an attack.
 
-## Frame 1
+## Classic CD/DOS view
 
-![The Secret of Monkey Island: Special Edition: frame 1](images/01-official-gameplay.jpg)
+[![Classic CD/DOS view: the curved bridge and irregular rock face read as continuous shapes, despite the pixel grid.](images/classic-01.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
 
-Credit: LucasArts and respective rightsholders. [Source page](https://store.steampowered.com/app/32360/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32360/ss_ce07cc2b68cc3c8b02c8222d078afa975c084a39.1920x1080.jpg?t=1741729431)
+Classic CD/DOS view: the curved bridge and irregular rock face read as continuous shapes, despite the pixel grid.
 
-SHA-256: `e9764ca8413bdbf387bf910668fc0f6178393539a0a9d4716623eaeccda3d186`. Research only; no runtime reuse license.
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
 
-## Frame 2
+## Classic CD/DOS close-up
 
-![The Secret of Monkey Island: Special Edition: frame 2](images/02-official-gameplay.jpg)
+[![Classic CD/DOS close-up: broad color clusters and a curved face create expression without block-like construction.](images/classic-02.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
 
-Credit: LucasArts and respective rightsholders. [Source page](https://store.steampowered.com/app/32360/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32360/ss_1b7837925734f3240cc4570f465d3a31749eabe8.1920x1080.jpg?t=1741729431)
+Classic CD/DOS close-up: broad color clusters and a curved face create expression without block-like construction.
 
-SHA-256: `d861e3195424fe418f3cb466d602e84946bbe59207f55feb2f6aab50efd10801`. Research only; no runtime reuse license.
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
 
-## Frame 3
+## Classic CD/DOS village
 
-![The Secret of Monkey Island: Special Edition: frame 3](images/03-official-gameplay.jpg)
+[![Classic CD/DOS village: irregular huts, timber and vegetation form a coherent low-resolution environment.](images/classic-03.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
 
-Credit: LucasArts and respective rightsholders. [Source page](https://store.steampowered.com/app/32360/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32360/ss_ef1df454ee0b4b9386d2ae538b83f2c8cba60fe0.1920x1080.jpg?t=1741729431)
+Classic CD/DOS village: irregular huts, timber and vegetation form a coherent low-resolution environment.
 
-SHA-256: `2699a441616f84f0be1650eb6991b0bfe1ea05548464776299ce1dfadb681f63`. Research only; no runtime reuse license.
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
+
+## Classic CD/DOS village detail
+
+[![Classic CD/DOS village detail: curved supports and large color masses separate foreground structure from backdrop.](images/classic-04.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
+
+Classic CD/DOS village detail: curved supports and large color masses separate foreground structure from backdrop.
+
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
+
+## Classic EGA street view
+
+[![Classic EGA street view: uneven rooflines and selective bright windows give a small palette a clear hierarchy.](images/classic-05.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
+
+Classic EGA street view: uneven rooflines and selective bright windows give a small palette a clear hierarchy.
+
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
+
+## Classic EGA street and verb interface
+
+[![Classic EGA street and verb interface: inspect the crooked buildings rather than borrowing the large command UI.](images/classic-06.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
+
+Classic EGA street and verb interface: inspect the crooked buildings rather than borrowing the large command UI.
+
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
+
+## Classic VGA ship interior
+
+[![Classic VGA ship interior: curved hull, sloping beams and layered staging; an environment need not follow square tiles.](images/classic-07.png)](https://www.scummvm.org/en/screenshots/lucasarts/mi/)
+
+Classic VGA ship interior: curved hull, sloping beams and layered staging; an environment need not follow square tiles.
+
+Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https://www.scummvm.org/en/screenshots/lucasarts/mi/).
 
 ## Gameplay study
 
-Use official trailers on the source page to compare scale, feedback and camera behavior. Keep observation separate from developer-pipeline claims.
+[Primary gallery and platform/variant labels](https://www.scummvm.org/en/screenshots/lucasarts/mi/). These stills support a contour, color-cluster and staging study. They do not prove collision geometry or that WinCS should use an adventure-game camera or interface.
 
 <!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island: Special Edition](README.md) · [🖼️ Library](../../README.md) · **34 / 36** · [Next: Infinity Blade →](../infinity-blade/README.md)
+[← Previous: The Secret of Monkey Island · classic](README.md) · [🖼️ Library](../../README.md) · **34 / 36** · [Next: Infinity Blade →](../infinity-blade/README.md)
 <!-- reference-navigation:end -->

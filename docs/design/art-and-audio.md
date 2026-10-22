@@ -11,7 +11,7 @@ Status: provisional production constraints, not a final visual identity. Choose 
 | Direction | Borrowed quality, not copied content | Production implication |
 | --- | --- | --- |
 | Quiet, strange, luminous | Hollow Knight silhouette separation; Animal Well's environmental mystery; original pixel execution | Dark restrained backgrounds, clear foreground collision, one bright interactable accent; no darkness that hides platforms |
-| Warm, absurd little world | Kingdom's layered depth and Children of Morta's warm focal lighting | One warm focal color against cool background; humor in props; keep combat readability if chosen |
+| Warm, absurd little world | Kingdom's layered depth and Children of Morta's pixel design and magic-effect contrasts | One warm focal color against cool background; humor in props; keep combat readability if chosen |
 
 Do not combine every game's palette. Side-view gameplay references take priority over top-down character proportions. Planet of Lana is composition/negative-space reference, not a pixel-art production template. Dead Cells' technique is research, not a requirement to build a 3D-to-2D animation pipeline.
 

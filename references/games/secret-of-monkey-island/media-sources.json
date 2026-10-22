@@ -2,25 +2,60 @@
   "date": "2026-10-22",
   "screenshots": [
     {
-      "file": "images/01-official-gameplay.jpg",
-      "sha256": "e9764ca8413bdbf387bf910668fc0f6178393539a0a9d4716623eaeccda3d186",
-      "source_page": "https://store.steampowered.com/app/32360/",
-      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32360/ss_ce07cc2b68cc3c8b02c8222d078afa975c084a39.1920x1080.jpg?t=1741729431",
-      "credit": "LucasArts"
+      "file": "images/classic-01.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_1_1_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "3c27b57a8eb3106612c0c13819b0119c362c69435b51e9db97b85a1850b962a0",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic CD/DOS capture as labeled by ScummVM"
     },
     {
-      "file": "images/02-official-gameplay.jpg",
-      "sha256": "d861e3195424fe418f3cb466d602e84946bbe59207f55feb2f6aab50efd10801",
-      "source_page": "https://store.steampowered.com/app/32360/",
-      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32360/ss_1b7837925734f3240cc4570f465d3a31749eabe8.1920x1080.jpg?t=1741729431",
-      "credit": "LucasArts"
+      "file": "images/classic-02.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_1_2_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "98eaa806700c825fbf2d59f696eeddd0daee83dec06991f3b3c9e58792b8d7a2",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic CD/DOS capture as labeled by ScummVM"
     },
     {
-      "file": "images/03-official-gameplay.jpg",
-      "sha256": "2699a441616f84f0be1650eb6991b0bfe1ea05548464776299ce1dfadb681f63",
-      "source_page": "https://store.steampowered.com/app/32360/",
-      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/32360/ss_ef1df454ee0b4b9386d2ae538b83f2c8cba60fe0.1920x1080.jpg?t=1741729431",
-      "credit": "LucasArts"
+      "file": "images/classic-03.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_1_3_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "76045086ae4706f33a4511ac20dc0248fe4ce69dfa514ac6695419f3bc64d713",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic CD/DOS capture as labeled by ScummVM"
+    },
+    {
+      "file": "images/classic-04.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_1_4_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "81147b57dda834dac37c2ebbf4839898485af12e663f0ed142830381903864ef",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic CD/DOS capture as labeled by ScummVM"
+    },
+    {
+      "file": "images/classic-05.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_4_1_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "f3d8b40dd947bf70adf9ac3c213d0aeafac7c96e47acdc8946fd67e4eaecf132",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic EGA capture as labeled by ScummVM"
+    },
+    {
+      "file": "images/classic-06.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_4_2_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "a7d9346c8bb58fde0132be30a85f45784835d486624f84e250257cab2ce85a8e",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic EGA capture as labeled by ScummVM"
+    },
+    {
+      "file": "images/classic-07.png",
+      "original_url": "https://www.scummvm.org/data/screenshots/scumm/monkey/monkey_dos_en_5_1_full.png",
+      "source_page": "https://www.scummvm.org/en/screenshots/lucasarts/mi/",
+      "sha256": "2b6be3a456ef660622d8744e892f0beb7aaf52e8c4f056ff003c16a6ae6d3f04",
+      "credit": "Lucasfilm Games / LucasArts; capture hosted by ScummVM",
+      "variant": "Classic VGA capture as labeled by ScummVM"
     }
   ]
 }

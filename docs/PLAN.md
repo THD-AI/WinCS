@@ -6,6 +6,8 @@ Research date: 21 October 2026. This is pre-jam preparation, not permission to b
 
 **Updated 22 October:** [campus collages](../references/campus/README.md), [voice-note digest](brief/voice-notes.md), [current proposal](proposal/campus-game.md), [stage workflow](design/layered-stage-workflow.md) and [technical contract](technical/layered-stage-contract.md). Ten recordings (17.6 minutes) and all 59 photos are indexed. Seven final collages separate the location identities; five new studies extend the trail to 18 games. Hidden garden/lake is the first stage candidate; no runtime build is included.
 
+**Reference correction pass:** regenerated creek from original photos; ten Playground trailer frames; classic Monkey Island pixel captures; focused boss/mascot/greenhouse/character/worldbuilding galleries; Lana developer depth/wind demonstrations and a [layer translation study](../references/games/planet-of-lana/layers-and-motion.md). Corrected reference roles are in the decision log and brief.
+
 **Next visual gate:** review the garden and one player-scale/style test, then approve a horizontal master before extracting masks. A reference library does not promise every location in the jam. Issues/board and workflows remain deferred; the PR watcher remains paused.
 
 | Order | Work | Exit evidence |

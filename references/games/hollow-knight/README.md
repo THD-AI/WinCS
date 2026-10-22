@@ -1,7 +1,7 @@
 # Hollow Knight
 
 <!-- reference-navigation:start -->
-[← Previous: Visual library](../../README.md) · [🖼️ Library](../../README.md) · **1 / 36** · [Next: Hollow Knight Â· gallery →](visual-reference.md)
+[← Previous: Visual library](../../README.md) · [🖼️ Library](../../README.md) · **1 / 36** · [Next: Hollow Knight · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Vatsal’s starting point
@@ -53,5 +53,5 @@ Ask Vatsal to rank: movement feel, lonely exploration, melee combat, mystery and
 No source sprites or game code were extracted. Engine choice for WinCS remains independent of this reference.
 
 <!-- reference-navigation:start -->
-[← Previous: Visual library](../../README.md) · [🖼️ Library](../../README.md) · **1 / 36** · [Next: Hollow Knight Â· gallery →](visual-reference.md)
+[← Previous: Visual library](../../README.md) · [🖼️ Library](../../README.md) · **1 / 36** · [Next: Hollow Knight · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

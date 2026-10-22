@@ -8,7 +8,7 @@
 
 Dense plants against rust-brown planters create paths that can double back. Granite piles and stacked stones provide distinctive silhouettes. Overhead concrete creates a shaded ceiling; red foliage gives a distant orientation cue. No greenhouse is documented by these photographs.
 
-The Dead Cells greenhouse/garden comparison is provisionally the **Dilapidated Arboretum**; confirm that this is the intended biome before matching details. Borrow the contrast of lush growth and decaying structure, not its maps, enemies or assets. [Official developer patch notes](https://deadcells.com/patchnotes/) name the biome; this does not establish its art pipeline.
+The [official Bad Seed listing](https://store.steampowered.com/app/1204130/Dead_Cells__The_Bad_Seed/) identifies the **Dilapidated Arboretum** as a greenhouse. [Targeted exterior, interior and gameplay references](../games/dead-cells/visual-reference.md) show that visual family. Borrow lush growth against decaying structure, not its maps, enemies or assets. The greenhouse belongs to the game reference, not the photographed campus location.
 
 **Proposed experiment:** a planter maze with one readable enemy lane and a short bypass. Thorn edges or a slow plant hazard can share one telegraph and reset rule. Poison meters, several enemy families and procedural mazes are expansion ideas. A 24-hour label does not make them baseline requirements.
 

@@ -21,7 +21,7 @@ flowchart LR
 
 ## 1. Reference first, style second
 
-Use the [seven location/item boards](../../references/campus/README.md) to choose actual shapes and materials. Start with the hidden garden. A photographic board is not a pixel-art style decision. Make one small style test at the intended player/camera scale before a long painting: terrain, one tree, water, a character silhouette and a small interaction prop. Compare a crisp pixel treatment with the painterly softness admired in Planet of Lana; choose one rendering language rather than blending incompatible source images.
+Use the [seven location/item boards](../../references/campus/README.md) to choose actual shapes and materials. Start with the hidden garden. A photographic board is not a pixel-art style decision. Make one small style test at the intended player/camera scale before a long painting: terrain, one tree, water, a character silhouette and a small interaction prop. Use the [Planet of Lana developer demonstrations and layer analysis](../../references/games/planet-of-lana/layers-and-motion.md) for depth, soft contours and small motion; translate them into a consistent pixel treatment. The original uses hand-painted hybrid techniques, not pixel art. Classic Monkey Island supplies complementary curved pixel-contour examples. A pixel world need not use square terrain tiles.
 
 **Proposed starting contract to approve:** a 640×360 design viewport, integer scaling where practical, one common pixel density, no rotation/filter that makes isolated assets look smoother than the world. A 24–32 pixel tall student is a test range, not an accepted sprite size. Readability at actual scale decides it.
 
@@ -43,7 +43,7 @@ Block the lake reveal as the main wide composition. Extend with overlapping crop
 | Front framing | Branches, reeds, ground lip | Slightly faster parallax; never hide essential landings |
 | FX / UI | Shimmer, leaves, interaction cue | Local masks or screen layer |
 
-These are proposed layers for our implementation, **not a claim about Wishfully's internal files or engine**. Soft visual terrain can use hand-authored simple collision. An alpha mask defines where pixels show; it does not tell the physics engine what is walkable.
+These are proposed layers for our implementation, **not an extracted Wishfully layer stack**. The developer interview verifies a hybrid Unity workflow with some shallow modeled painted elements; our simple strip method is a separate jam-sized translation. Soft visual terrain can use hand-authored simple collision: broad slopes, clear cliff breaks and flat interaction/landing patches. Test a representative slope route before the master, so art does not lock in a controller problem. An alpha mask defines where pixels show; it does not tell the physics engine what is walkable.
 
 ## 4. Extract once, preserve the accepted scene
 

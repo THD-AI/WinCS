@@ -1,7 +1,7 @@
 # 9 Years of Shadows
 
 <!-- reference-navigation:start -->
-[← Previous: Hollow Knight Â· gallery](../hollow-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **3 / 36** · [Next: 9 Years of Shadows Â· gallery →](visual-reference.md)
+[← Previous: Hollow Knight · gallery](../hollow-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **3 / 36** · [Next: 9 Years of Shadows · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Pixel spectacle
@@ -55,5 +55,5 @@ Ask Vatsal whether the appeal is richly colored pixel scenery, responsive melee,
 All retained images remain Halberd Studios' reference media; they are not a usable WinCS sprite library.
 
 <!-- reference-navigation:start -->
-[← Previous: Hollow Knight Â· gallery](../hollow-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **3 / 36** · [Next: 9 Years of Shadows Â· gallery →](visual-reference.md)
+[← Previous: Hollow Knight · gallery](../hollow-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **3 / 36** · [Next: 9 Years of Shadows · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

@@ -1,52 +1,58 @@
-# Visual reference views
+# Dead Cells · Dilapidated Arboretum · visual reference
 
 <!-- reference-navigation:start -->
 [← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 36** · [Next: Terraria →](../terraria/README.md)
 <!-- reference-navigation:end -->
 
-![Dead Cells: start with this gameplay reference](images/01-official-gameplay.jpg)
+**Greenhouse before generic combat.** Official Bad Seed images and two greenhouse gameplay frames; adjacent swamp/boss screenshots are excluded.
 
-**Look for:** Read the attack silhouette against the background. Motion and recovery matter more than extra particles.
+[Game study](README.md) · [Hashes and full provenance](media-sources.json)
 
-[← Game study](README.md) · Credits and original sources follow each view below.
+Selected visual research, 22 October 2026. These are existing-game references, not our concept art or runtime assets. Video frames are captured at the listed source times without browser/player overlays. A still cannot establish responsiveness or the exact timing of an attack.
 
-Collected 21 October 2026 from the developer/publisher store listing. Visually inspected in a contact sheet; these are composition observations, not timing or source-pipeline analysis. Copyright remains with the credited rightsholders. Private research only; no runtime reuse license.
+## Exterior greenhouse dome surrounded by overgrowth
 
-## images/01-official-gameplay.jpg
+[![Exterior greenhouse dome surrounded by overgrowth: architecture and vegetation remain separate masses.](images/bad-seed-01.jpg)](https://store.steampowered.com/app/1204130/)
 
+Exterior greenhouse dome surrounded by overgrowth: architecture and vegetation remain separate masses.
 
-Side-view close combat: bright attack arc against a muted corridor.
+Credit: Motion Twin / Evil Empire. [Source](https://store.steampowered.com/app/1204130/).
 
-- Credit: Motion Twin / Motion Twin.
-- [Source page](https://store.steampowered.com/app/588650/).
-- [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/ss_ac28000ade40cc2fe5c128f32ac98ba33c008a7a.1920x1080.jpg?t=1779086887).
-- SHA-256: `d4ef9dd9c62f448dc9d18f2485f58584b15c29b542792b1733745e8819172cde`.
+## Greenhouse interior
 
-## images/02-official-gameplay.jpg
+[![Greenhouse interior: tall arched windows, green light, hanging vegetation and a broken playable floor.](images/bad-seed-02.jpg)](https://store.steampowered.com/app/1204130/)
 
-![Platforms at different heights and a bright player attack; note safe landings.](images/02-official-gameplay.jpg)
+Greenhouse interior: tall arched windows, green light, hanging vegetation and a broken playable floor.
 
-Platforms at different heights and a bright player attack; note safe landings.
+Credit: Motion Twin / Evil Empire. [Source](https://store.steampowered.com/app/1204130/).
 
-- Credit: Motion Twin / Motion Twin.
-- [Source page](https://store.steampowered.com/app/588650/).
-- [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/ss_7bde51ea6c8f6289e85ea1d8c1c941e1f8bfee91.1920x1080.jpg?t=1779086887).
-- SHA-256: `5570ded11394e20d79d7ea315e743833a6ac1b220343dcf3be4659f1d1fc91a5`.
+## Dark greenhouse/laboratory detail
 
-## images/03-official-gameplay.jpg
+[![Dark greenhouse/laboratory detail: glass containers and dense red plant forms contrast with the structure.](images/bad-seed-03.jpg)](https://store.steampowered.com/app/1204130/)
 
-![Large bridge encounter: strong silhouette and attack effects against distant light.](images/03-official-gameplay.jpg)
+Dark greenhouse/laboratory detail: glass containers and dense red plant forms contrast with the structure.
 
-Large bridge encounter: strong silhouette and attack effects against distant light.
+Credit: Motion Twin / Evil Empire. [Source](https://store.steampowered.com/app/1204130/).
 
-- Credit: Motion Twin / Motion Twin.
-- [Source page](https://store.steampowered.com/app/588650/).
-- [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/ss_e87e72a247918d8493892e035d5e1b4b84470d2f.1920x1080.jpg?t=1779086887).
-- SHA-256: `192561581df7fb557365c85c016b27e653d9aa076400f06cdf0a88a1ed21d0eb`.
+## 0:40 · Combat inside the Arboretum greenhouse
+
+[![Combat inside the Arboretum greenhouse: broken floor, overgrowth and structure remain visible.](images/arboretum-040.jpg)](https://store.steampowered.com/app/1204130/)
+
+Combat inside the Arboretum greenhouse: broken floor, overgrowth and structure remain visible.
+
+Credit: Motion Twin / Evil Empire. [Source at 0:40](https://store.steampowered.com/app/1204130/).
+
+## 0:50 · Vertical greenhouse framing and hanging plants leave a distinct playable horizontal ledge.
+
+[![Vertical greenhouse framing and hanging plants leave a distinct playable horizontal ledge.](images/arboretum-050.jpg)](https://store.steampowered.com/app/1204130/)
+
+Vertical greenhouse framing and hanging plants leave a distinct playable horizontal ledge.
+
+Credit: Motion Twin / Evil Empire. [Source at 0:50](https://store.steampowered.com/app/1204130/).
 
 ## Gameplay study
 
-Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
+The official Gameplay Trailer is a montage of Bad Seed environments; only selected greenhouse shots are retained. [Official DLC description and trailers](https://store.steampowered.com/app/1204130/). Separate window/structure planes, hanging growth, playable ledges and front framing for our own original stage; this is analysis, not the developer’s source-layer organization.
 
 <!-- reference-navigation:start -->
 [← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 36** · [Next: Terraria →](../terraria/README.md)

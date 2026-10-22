@@ -28,6 +28,10 @@ Illustrative file names and numbers, not assets that already exist. Lock design 
 
 Author collision independently of painted alpha. Use a forgiving body inside the character silhouette, but keep the feet and actual safe ground aligned. Test uphill/downhill motion, slab edges, head clearance and the narrowest planned passage. A smaller body alone does not solve slopes. Wall grabs, moving ropes and arbitrary polygon physics are optional features with explicit costs.
 
+## Curved terrain and pixel presentation
+
+A pixel grid is a rendering choice, not a requirement for square tile collision. The [Lana layer study](../../references/games/planet-of-lana/layers-and-motion.md) distinguishes verified hybrid source techniques from our 2D strip proposal. Test broad up/down slopes, a crest, cliff, jump landing and flat lake anchor before selecting a physics/controller approach. Avoid tracing grass alpha into colliders. Use the same world transform for painted ground, character feet, interaction props and collision; decorative background planes never carry collision.
+
 ## Reflection transition contract
 
 1. Activate only at a named anchor when grounded and in range; show one interaction cue.

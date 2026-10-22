@@ -1,32 +1,22 @@
-# Little Nightmares
+# Little Nightmares · character shape
 
 <!-- reference-navigation:start -->
 [← Previous: Terraria · gallery](../terraria/visual-reference.md) · [🖼️ Library](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
-![Little Nightmares: official gameplay reference](images/01-official-gameplay.jpg)
+[![Little Nightmares · character shape: visual study](images/six-character.png)](visual-reference.md)
 
-**Look for:** A small vulnerable figure against oversized, threatening surroundings.
+**Character design only: a simple garment mass, concealed face, small exposed limbs and a readable silhouette.**
 
-[Gallery and credits](visual-reference.md) · [Voice-note context](../../../docs/brief/voice-notes.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
 
-Research: 22 October 2026. Newly named audio reference; not a replacement for Vatsal's creative authority.
+The [publisher's Six character art](https://en.bandainamcoent.eu/little-nightmares/little-nightmares-ii) is explicitly from **Little Nightmares II**, showing the returning character. It is a character reference, not a screenshot from the first game or a model sheet.
 
-## Mechanics and dependencies
+**Observation:** the oversized hood contrasts with tiny bare hands/feet; the face stays dark and the prop gives the body a clear pose. **Original translation:** test a student with a distinct poncho/hoodie outline, different garment construction and palette, and one readable campus object at actual side-view scale. A recognizably different silhouette matters more than matching a yellow coat.
 
-The official publisher describes stealth and survival. Our selected store stills show a bright small figure in dark rooms, cage-like structures and an oversized interior. This is a scale and tension reference, not a requirement for a 3D depth-navigation controller.
+Alexander does not want this game's ambience, horror pacing or general game design. The playground horror reference comes from Playground; do not let this character study silently decide the mood. No animation states, rig or sprite construction are established by this single publisher illustration.
 
-## Worldbuilding and visual observation
-
-Use negative space, limited light and familiar objects made imposing by scale. Keep the floor and next action readable even when the background is ominous.
-
-## Proposed WinCS experiment
-
-One original student silhouette in an oversized hoodie/poncho could carry the vulnerability. Do not reuse Six, her costume or a room layout; elaborate chase AI and cinematic animation are not baseline.
-
-## Source and production boundary
-
-[Developer/publisher store page](https://store.steampowered.com/app/424840/). Credit: Tarsier Studios and respective publisher/rightsholders. Three official store stills were visually inspected; frame timing and full gameplay were not tested. Engine, sprite organization and internal tools are not established by this check. For our own production, use the [layer workflow](../../../docs/design/layered-stage-workflow.md); the source game's production files are not available or licensed through these screenshots.
+Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
 [← Previous: Terraria · gallery](../terraria/visual-reference.md) · [🖼️ Library](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)

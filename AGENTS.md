@@ -24,6 +24,9 @@
 - Keep original authorship and licensing/AI provenance for every eventual shipped asset. No copied commercial sprites, music, dialogue, characters, maps or brands.
 - Prefer one short complete loop. Add systems only with explicit dependencies, asset cost and a cut order.
 
+- Respect the owner's specific reference roles: Terraria = Wall of Flesh/Moon Lord bosses only; Little Nightmares = character design only; Duck Season = mascot/endings; Monkey Island = classic pixel art, not the remake repaint; Morta = visual design/magic; Dead Cells = greenhouse and unspecified boss-design interests; Infinity Blade = trilogy-wide post-technological civilization, not replay structure. Lana contributes soft terrain/depth; distinguish its verified painted hybrid pipeline from our pixel-art strip proposal. Read references/games/planet-of-lana/layers-and-motion.md.
+- The creek-v2 collage is a fresh generation from original photographs; do not restore the rejected forked/fantasy interpretation. Other accepted location boards stay unchanged unless requested. Playground trailer screenshots have their own credited study in references/animation/playground/.
+
 ## Git and collaboration
 
 - Inspect status, unstaged and staged diffs before edits. Preserve others' work. Never touch unrelated dotPrivate gitlinks, especially WORK/RETULIA.

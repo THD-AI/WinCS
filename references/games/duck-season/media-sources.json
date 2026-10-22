@@ -1,26 +1,60 @@
 {
   "date": "2026-10-22",
+  "usage": "Credited visual research only; not runtime assets or a reuse license.",
   "screenshots": [
     {
-      "file": "images/01-official-gameplay.jpg",
-      "sha256": "ef349edc39a7058d5ab6a795c8a691080ab14e1f0797d46a735be9d175b16a5a",
-      "source_page": "https://store.steampowered.com/app/503580/",
-      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_4357e9d4aef320b61214c9e0749130af2f71032e.1920x1080.jpg?t=1667677823",
-      "credit": "Stress Level Zero"
+      "file": "images/ending-0200.jpg",
+      "sha256": "bb1dca8e3fafc83af033dbf6631e44223c84ec55e0aeeff33d698e7dc8ada6e8",
+      "source_page": "https://www.youtube.com/watch?v=aUP66wTKdXM",
+      "timestamp_seconds": 200,
+      "credit": "Stress Level Zero; gameplay recording Let's STFU and Play",
+      "observation": "The dog is inside the dark living room, beyond its expected television role.",
+      "recording_chapter": "Death"
     },
     {
-      "file": "images/02-official-gameplay.jpg",
-      "sha256": "ab3e98dbea0f548539e645a9b1365af23c3c742ba998799d71bb12d4e4826e3b",
-      "source_page": "https://store.steampowered.com/app/503580/",
-      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_9c0641fe29e474cc1c61045ba97df10a447d198c.1920x1080.jpg?t=1667677823",
-      "credit": "Stress Level Zero"
+      "file": "images/ending-0330.jpg",
+      "sha256": "4f2f3216c6f0251db4fc4340ae1a28bc28dedb56e6e5a327ac2dd853c9752379",
+      "source_page": "https://www.youtube.com/watch?v=aUP66wTKdXM",
+      "timestamp_seconds": 330,
+      "credit": "Stress Level Zero; gameplay recording Let's STFU and Play",
+      "observation": "The mascot occupies the room near the television and an electrical boundary.",
+      "recording_chapter": "Revenge At Last"
     },
     {
-      "file": "images/03-official-gameplay.jpg",
-      "sha256": "9b31e1e965fd2d1bb822d94a95dea34b29252393fc25b3cd2f3785919ba711bb",
-      "source_page": "https://store.steampowered.com/app/503580/",
-      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_ee200ad135ae23956ab2236a44afe4c7af7222a8.1920x1080.jpg?t=1667677823",
-      "credit": "Stress Level Zero"
+      "file": "images/ending-0350.jpg",
+      "sha256": "47d8a46c9da5c9b7bcfa3de6cb5bb6db2f0053e13cb272125b7d28d2688962c5",
+      "source_page": "https://www.youtube.com/watch?v=aUP66wTKdXM",
+      "timestamp_seconds": 350,
+      "credit": "Stress Level Zero; gameplay recording Let's STFU and Play",
+      "observation": "The child is isolated with the cartridge in a dark ending tableau.",
+      "recording_chapter": "Revenge At Last"
+    },
+    {
+      "file": "images/ending-0800.jpg",
+      "sha256": "7e46341d854dcb7948e97aa25aca9cfb2eb0c48db3f20bad17760071f6282503",
+      "source_page": "https://www.youtube.com/watch?v=aUP66wTKdXM",
+      "timestamp_seconds": 800,
+      "credit": "Stress Level Zero; gameplay recording Let's STFU and Play",
+      "observation": "A bright party-like ending tableau follows the threatening mascot sequences.",
+      "recording_chapter": "Fiesta"
+    },
+    {
+      "file": "images/ending-0950.jpg",
+      "sha256": "9e5fedf5d6c0377b5211e5c4c7530797e3df49943d850468a32457c68ba343d3",
+      "source_page": "https://www.youtube.com/watch?v=aUP66wTKdXM",
+      "timestamp_seconds": 950,
+      "credit": "Stress Level Zero; gameplay recording Let's STFU and Play",
+      "observation": "The mascot is framed on the television again; context has changed after earlier intrusions.",
+      "recording_chapter": "Dog"
+    },
+    {
+      "file": "images/ending-0980.jpg",
+      "sha256": "0f15d3573677e43fd3100ade22145edd671ac47c0c3b82b1a533341037c3242f",
+      "source_page": "https://www.youtube.com/watch?v=aUP66wTKdXM",
+      "timestamp_seconds": 980,
+      "credit": "Stress Level Zero; gameplay recording Let's STFU and Play",
+      "observation": "The dog operates a bank of surveillance screens: a reversal of who watches whom.",
+      "recording_chapter": "Dog"
     }
   ]
 }

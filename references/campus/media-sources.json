@@ -39,14 +39,22 @@
       "usage": "AI-cleaned reference interpretation; not runtime art"
     },
     {
-      "file": "images/creek.png",
-      "sha256": "faed3b421eedeacbb55bb22ef2363df77eb00dca6d8d46698969328ca3b3d3f6",
+      "file": "images/creek-v2.png",
+      "sha256": "d20c118b4927f1bb53da8cfdd5e2ab2ccd87b0fbe1999365b48830c847d7ba31",
       "dimensions": [
         1086,
         1448
       ],
-      "prompt_key": "creek",
+      "prompt_key": "creek-v2",
       "source_ids": [
+        "C20",
+        "C21",
+        "C22",
+        "C29"
+      ],
+      "usage": "Regenerated from original photos and layout example; rejected collage not used as input; not runtime art",
+      "id": "creek",
+      "reviewed_source_ids": [
         "C20",
         "C21",
         "C22",
@@ -55,8 +63,7 @@
         "C30",
         "C31",
         "C32"
-      ],
-      "usage": "AI-cleaned reference interpretation; not runtime art"
+      ]
     },
     {
       "file": "images/crossings.png",

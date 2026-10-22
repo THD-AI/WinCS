@@ -16,7 +16,6 @@ Only explicit team/owner decisions become accepted. Research recommendations do 
 | D008 | Open | AI/prebuilt media/code policy and judging/submission rules | Organizer answer |
 | D009 | Proposed | itch.io HTML5 final build, private preview during development | Organizer format, team account and privacy decision |
 | D010 | Deferred | Flipper Zero port and any 3D effects | Revisit after jam only if team wants it |
-
 | D011 | Accepted direction | Visual-first browsing and Previous / Next navigation; fun, puns and playful references; keep earlier proposals as options | Alexander's feedback, 21 October 2026 |
 | D012 | Accepted preparation scope | Transcribe ten recordings; organize 59 photos into cleaned collages; keep originals/portraits/audio outside Git | Alexander, 22 October 2026 |
 | D013 | Accepted reference direction | Hidden garden/lake primary; campus separate; confusing creek separate from rusty parkour crossings; horror playground; Toxic Garden plants/rocks/rust | Alexander's written corrections, 22 October 2026 |
@@ -25,6 +24,8 @@ Only explicit team/owner decisions become accepted. Research recommendations do 
 | D016 | Accepted role / future idea | Robot as collectible/item character, possible companion/upgrade; joke replacement bosses after one completion | Alexander; no portraits/runtime boss art approved |
 | D017 | Accepted art process | Collages → style approval → horizontal master → layers/masks → limited animation; no season/time/weather matrix | Alexander, 22 October 2026; later game art remains rule-dependent |
 | D018 | Proposed writing | “Introduction to Getting Lost” campus-orientation premise | Disposable draft; Vatsal and later story direction decide |
+| D019 | Accepted reference roles | Terraria bosses only; Little Nightmares character shape only; Duck Season mascot/endings; classic Monkey Island; Morta visual design/magic; Dead Cells greenhouse; Infinity Blade post-technological civilization | Alexander's explicit 22 October corrections; [comparison](../../references/comparison.md), per-game studies and galleries revised; replay remains a separate future joke-boss idea |
+| D020 | Accepted reference correction | Regenerate creek from original photos; keep other approved boards; capture supplied Playground trailer and study Lana depth/soft terrain | Alexander, 22 October; creek-v2 uses four originals and layout example, no earlier creek output; [provenance](../../references/campus/generation.md) |
 
 For each accepted design choice append date, decider, reason, rejected alternatives, affected files and evidence. Reopen it if the theme, rules, available hours or a playtest invalidates the assumption. Do not use a technical decision to decide the story or visual identity by accident.
 

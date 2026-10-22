@@ -1,7 +1,7 @@
 # Soul Knight
 
 <!-- reference-navigation:start -->
-[← Previous: Animal Well Â· gallery](../animal-well/visual-reference.md) · [🖼️ Library](../../README.md) · **11 / 36** · [Next: Soul Knight Â· gallery →](visual-reference.md)
+[← Previous: Animal Well · gallery](../animal-well/visual-reference.md) · [🖼️ Library](../../README.md) · **11 / 36** · [Next: Soul Knight · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · A little readable chaos
@@ -39,5 +39,5 @@ Engine, exact animation tool, sprite dimensions, atlas structure and source pipe
 Ask Lex which moment he likes: dodging, weapon variety, quick restarts, co-op or absurdity. Offer that quality as an option for Vatsal to evaluate; do not displace Vatsal's preferred camera and exploration by default. Watch the official store trailer for movement/feedback; no frame-accurate timing or complete playthrough was analyzed here.
 
 <!-- reference-navigation:start -->
-[← Previous: Animal Well Â· gallery](../animal-well/visual-reference.md) · [🖼️ Library](../../README.md) · **11 / 36** · [Next: Soul Knight Â· gallery →](visual-reference.md)
+[← Previous: Animal Well · gallery](../animal-well/visual-reference.md) · [🖼️ Library](../../README.md) · **11 / 36** · [Next: Soul Knight · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

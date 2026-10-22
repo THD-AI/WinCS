@@ -18,7 +18,7 @@ The first six recordings are the initial idea sequence. A07 is the friend's refl
 | A02 · 14:12:06 · 0:00–2:33; 2:50–3:32 | Masks/layers, depth, extending horizontal banners in one visual language, image generation, collision body smaller than decorative silhouette, browser playtesting, Voyager room workflow | Approval-first art workflow; frame/pivot/seam contracts; device support requires testing |
 | A03 · 14:12:34 · 0:00–0:14 | Collect references while light/weather are good | Photos are source material; no mechanics implied |
 | A04 · 14:14:19 · 0:00–0:35 | Swinging a chair as melee; sprite pieces and in-between animation frames | One action with fixed pivots/hit timing if combat is selected; generated frames need manual QA |
-| A05 · 14:19:38 · 0:00–0:55 | Infinity Blade story/lore structure; support Vatsal's project rather than taking it over; one stage first with later sets | Cyclical reveals as optional narrative structure; Vatsal decides scope |
+| A05 · 14:19:38 · 0:00–0:55 | Infinity Blade story/lore structure; support Vatsal's project rather than taking it over; one stage first with later sets | Later written clarification: post-technological science-fantasy civilization, not cyclical narrative; Vatsal decides scope |
 | A06 · 14:25:42 · 0:00–1:28 | Playground horror-animation reference; digital corruption and surrealism; local climbing playground as a stage; masks reveal pipe/tower interiors on approach | Interior reveal zones are optional local state, not a second entire world |
 | A07 · 16:19:29 · 0:00–1:07 | Friend proposes exploration, parkour, some combat and crossing a pond reflection into a mirror world to finish traversal | Candidate signature mechanic; requires paired geometry, spawn and return rules |
 | A08 · 16:25:36 · 0:00–0:19 | Recommends **not** doing these extras during the 24 hours, but planning them as future secret bosses | Medium-model recheck corrected the initial missed negation; defer replay extras |
@@ -30,7 +30,7 @@ A02 includes a private account/workplace side discussion at roughly 2:33–2:50;
 
 ## Recognition uncertainties
 
-“Per core” is interpreted as **parkour**, “flash wall” as a possible **Wall of Flesh** reference, “labor case” as a possible **Leberkäse** joke, and “3GS” as possibly **Three.js**. These are interpretations, not silently corrected quotes. A01's “Duck Hunt season” likely refers to **Duck Season**, consistent with the supplied screenshot. Exact item names and A10's old-computer terms need source-audio review before quoting them. A04 and A08 were also rechecked with the medium transcription model; A08's missed negation was corrected in this digest. No human-audited verbatim claim is made.
+“Per core” is interpreted as **parkour**, “flash wall” as the later-confirmed **Wall of Flesh** reference, “labor case” as a possible **Leberkäse** joke, and “3GS” as possibly **Three.js**. These are interpretations, not silently corrected quotes. A01's “Duck Hunt season” likely refers to **Duck Season**, consistent with the supplied screenshot. Exact item names and A10's old-computer terms need source-audio review before quoting them. A04 and A08 were also rechecked with the medium transcription model; A08's missed negation was corrected in this digest. No human-audited verbatim claim is made.
 
 ## Explicit written clarifications to carry forward
 
@@ -40,6 +40,11 @@ A02 includes a private account/workplace side discussion at roughly 2:33–2:50;
 - “Riverfront and stone” was the wrong design interpretation: **Toxic Garden**, with plants, rocks, rust and maze potential.
 - Playground is tied to the supplied horror-animation trailer. The robot is an **item/collectible character**, possibly companion/upgrade, not “night sim.”
 - Professor and mascot jokes are secret replacement bosses **after one completion**, not the main first-run bosses. Keep source portraits out of Git.
+- Terraria means **Wall of Flesh and Moon Lord boss design/fights only**; terrain/readability and general game design are explicitly rejected as references.
+- Little Nightmares contributes character design only, not ambience. Duck Season contributes mascot behavior and different endings.
+- Monkey Island means classic pixel art, not Special Edition repainting. Children of Morta means visual design and magic/effects. Dead Cells means the overgrown greenhouse, with some boss designs still unspecified.
+- Infinity Blade means a trilogy-wide post-technological science-fantasy civilization: advanced remnants only partly understood by a medieval society, perceived as machinery, magic, temples or divine artifacts. The supplied memory excerpt clarifies intent; it is not independently retrieved history.
+- Regenerate the creek from original photos, never by correcting the rejected collage. Keep the other approved boards.
 - Start with cleaned collages; then agree visual direction, compose horizontal stages, isolate layers/masks and add limited animation. No seasonal/day-night/weather matrix is requested.
 
 [← Team brief](team-and-intent.md) · [Home](../../README.md) · [Next: campus proposal →](../proposal/campus-game.md)

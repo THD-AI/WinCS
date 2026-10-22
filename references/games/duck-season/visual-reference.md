@@ -1,43 +1,67 @@
 # Duck Season · visual reference
 
 <!-- reference-navigation:start -->
-[← Previous: Duck Season](README.md) · [🖼️ Library](../../README.md) · **32 / 36** · [Next: The Secret of Monkey Island: Special Edition →](../secret-of-monkey-island/README.md)
+[← Previous: Duck Season](README.md) · [🖼️ Library](../../README.md) · **32 / 36** · [Next: The Secret of Monkey Island · classic →](../secret-of-monkey-island/README.md)
 <!-- reference-navigation:end -->
 
-![Duck Season: selected official frame](images/01-official-gameplay.jpg)
+**Mascot escalation and ending contrasts.** Includes ending spoilers; ordinary shooting scenes have been removed from this selection.
 
-**Look for:** The familiar mascot becomes unsettling; a tone reference for optional Dexter-like transformation.
+[Game study](README.md) · [Hashes and full provenance](media-sources.json)
 
-[Game study](README.md) · Research 22 October 2026; official stills inspected, not a complete play session.
+Selected visual research, 22 October 2026. These are existing-game references, not our concept art or runtime assets. Video frames are captured at the listed source times without browser/player overlays. A still cannot establish responsiveness or the exact timing of an attack.
 
-## Frame 1
+## 3:20 · The dog is inside the dark living room, beyond its expected television role.
 
-![Duck Season: frame 1](images/01-official-gameplay.jpg)
+[![The dog is inside the dark living room, beyond its expected television role.](images/ending-0200.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=200s)
 
-Credit: Stress Level Zero and respective rightsholders. [Source page](https://store.steampowered.com/app/503580/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_4357e9d4aef320b61214c9e0749130af2f71032e.1920x1080.jpg?t=1667677823)
+The dog is inside the dark living room, beyond its expected television role.
 
-SHA-256: `ef349edc39a7058d5ab6a795c8a691080ab14e1f0797d46a735be9d175b16a5a`. Research only; no runtime reuse license.
+Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 3:20](https://www.youtube.com/watch?v=aUP66wTKdXM&t=200s). Recording chapter: **Death**.
 
-## Frame 2
+## 5:30 · The mascot occupies the room near the television and an electrical boundary.
 
-![Duck Season: frame 2](images/02-official-gameplay.jpg)
+[![The mascot occupies the room near the television and an electrical boundary.](images/ending-0330.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=330s)
 
-Credit: Stress Level Zero and respective rightsholders. [Source page](https://store.steampowered.com/app/503580/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_9c0641fe29e474cc1c61045ba97df10a447d198c.1920x1080.jpg?t=1667677823)
+The mascot occupies the room near the television and an electrical boundary.
 
-SHA-256: `ab3e98dbea0f548539e645a9b1365af23c3c742ba998799d71bb12d4e4826e3b`. Research only; no runtime reuse license.
+Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 5:30](https://www.youtube.com/watch?v=aUP66wTKdXM&t=330s). Recording chapter: **Revenge At Last**.
 
-## Frame 3
+## 5:50 · The child is isolated with the cartridge in a dark ending tableau.
 
-![Duck Season: frame 3](images/03-official-gameplay.jpg)
+[![The child is isolated with the cartridge in a dark ending tableau.](images/ending-0350.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=350s)
 
-Credit: Stress Level Zero and respective rightsholders. [Source page](https://store.steampowered.com/app/503580/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_ee200ad135ae23956ab2236a44afe4c7af7222a8.1920x1080.jpg?t=1667677823)
+The child is isolated with the cartridge in a dark ending tableau.
 
-SHA-256: `9b31e1e965fd2d1bb822d94a95dea34b29252393fc25b3cd2f3785919ba711bb`. Research only; no runtime reuse license.
+Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 5:50](https://www.youtube.com/watch?v=aUP66wTKdXM&t=350s). Recording chapter: **Revenge At Last**.
+
+## 13:20 · A bright party-like ending tableau follows the threatening mascot sequences.
+
+[![A bright party-like ending tableau follows the threatening mascot sequences.](images/ending-0800.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=800s)
+
+A bright party-like ending tableau follows the threatening mascot sequences.
+
+Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 13:20](https://www.youtube.com/watch?v=aUP66wTKdXM&t=800s). Recording chapter: **Fiesta**.
+
+## 15:50 · The mascot is framed on the television again
+
+[![The mascot is framed on the television again; context has changed after earlier intrusions.](images/ending-0950.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=950s)
+
+The mascot is framed on the television again; context has changed after earlier intrusions.
+
+Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 15:50](https://www.youtube.com/watch?v=aUP66wTKdXM&t=950s). Recording chapter: **Dog**.
+
+## 16:20 · The dog operates a bank of surveillance screens
+
+[![The dog operates a bank of surveillance screens: a reversal of who watches whom.](images/ending-0980.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=980s)
+
+The dog operates a bank of surveillance screens: a reversal of who watches whom.
+
+Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 16:20](https://www.youtube.com/watch?v=aUP66wTKdXM&t=980s). Recording chapter: **Dog**.
 
 ## Gameplay study
 
-Use official trailers on the source page to compare scale, feedback and camera behavior. Keep observation separate from developer-pipeline claims.
+[Source recorder chapter guide](https://steamcommunity.com/app/503580/discussions/0/1495615865217183797/): Trapped Forever 0:00; Death 2:11; Revenge At Last 4:16; Nuke 7:18; Best Men 9:08; Fiesta 11:44; Dog 14:59. Selected frames concentrate on the mascot, altered staging and the reversal in Dog. Chapter names follow this recorder; no ending-trigger rules are asserted. A source timestamp is relative to this compilation, not in-game elapsed time.
 
 <!-- reference-navigation:start -->
-[← Previous: Duck Season](README.md) · [🖼️ Library](../../README.md) · **32 / 36** · [Next: The Secret of Monkey Island: Special Edition →](../secret-of-monkey-island/README.md)
+[← Previous: Duck Season](README.md) · [🖼️ Library](../../README.md) · **32 / 36** · [Next: The Secret of Monkey Island · classic →](../secret-of-monkey-island/README.md)
 <!-- reference-navigation:end -->

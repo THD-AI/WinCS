@@ -8,13 +8,13 @@
 
 | Reference | What to study |
 | --- | --- |
-| [![Terraria](games/terraria/images/01-official-gameplay.jpg)](games/terraria/README.md) | [Terraria](games/terraria/README.md): terrain readability and encounter scale |
-| [![Little Nightmares](games/little-nightmares/images/01-official-gameplay.jpg)](games/little-nightmares/README.md) | [Little Nightmares](games/little-nightmares/README.md): a small figure in oversized surroundings |
-| [![Duck Season](games/duck-season/images/03-official-gameplay.jpg)](games/duck-season/README.md) | [Duck Season](games/duck-season/README.md): a familiar mascot turning unsettling |
-| [![Monkey Island Special Edition](games/secret-of-monkey-island/images/01-official-gameplay.jpg)](games/secret-of-monkey-island/README.md) | [The Secret of Monkey Island](games/secret-of-monkey-island/README.md): playful interactions and payoff; these are Special Edition frames |
-| [Infinity Blade](games/infinity-blade/README.md) | Repeated journeys change the story; diagram provided because the official image endpoint returned 403 |
+| [![Terraria](games/terraria/images/moon-097.jpg)](games/terraria/README.md) | [Terraria](games/terraria/README.md): Wall of Flesh and Moon Lord boss shapes/fights only |
+| [![Little Nightmares](games/little-nightmares/images/six-character.png)](games/little-nightmares/README.md) | [Little Nightmares](games/little-nightmares/README.md): character silhouette, garment mass and proportions only |
+| [![Duck Season](games/duck-season/images/ending-0980.jpg)](games/duck-season/README.md) | [Duck Season](games/duck-season/README.md): mascot escalation and contrasting endings |
+| [![Classic Monkey Island pixel art](games/secret-of-monkey-island/images/classic-01.png)](games/secret-of-monkey-island/README.md) | [The Secret of Monkey Island](games/secret-of-monkey-island/README.md): classic pixel contours, playful interactions and payoff |
+| [![Infinity Blade III machinery](games/infinity-blade/images/iii-008.jpg)](games/infinity-blade/README.md) | [Infinity Blade](games/infinity-blade/README.md): civilization built around incomprehensibly advanced remnants, read as ancient machinery or magic |
 
-Also: [Playground horror-animation study and trailer](campus/playground.md), tied to the real playground structure board. All commercial screenshots retain their rightsholders; none are runtime assets.
+Also: [Playground trailer study with ten timestamped screenshots](animation/playground/README.md), tied to the real playground structure board. All commercial screenshots retain their rightsholders; none are runtime assets.
 
 **Start with a picture, not a wall of text.** Click a frame to open its game study. Every study and gallery has Previous / Library / Next links at the top and bottom.
 
@@ -34,9 +34,9 @@ Also: [Playground horror-animation study and trailer](campus/playground.md), tie
 | [![Kingdom Two Crowns: reference frame](games/kingdom-two-crowns/images/01-official-gameplay.jpg)](games/kingdom-two-crowns/README.md) | **[Kingdom Two Crowns](games/kingdom-two-crowns/README.md)**<br>Tiny controls, large consequences<br>[More views + sources](games/kingdom-two-crowns/visual-reference.md) |
 | [![Kingdom Eighties: reference frame](games/kingdom-eighties/images/03-official-gameplay.jpg)](games/kingdom-eighties/README.md) | **[Kingdom Eighties](games/kingdom-eighties/README.md)**<br>Ordinary places, strange trouble<br>[More views + sources](games/kingdom-eighties/visual-reference.md) |
 | [![Stardew Valley: reference frame](games/stardew-valley/images/01-official-gameplay.jpg)](games/stardew-valley/README.md) | **[Stardew Valley](games/stardew-valley/README.md)**<br>Small acts, visible changes<br>[More views + sources](games/stardew-valley/visual-reference.md) |
-| [![Children of Morta: reference frame](games/children-of-morta/images/01-official-gameplay.jpg)](games/children-of-morta/README.md) | **[Children of Morta](games/children-of-morta/README.md)**<br>Warmth around the danger<br>[More views + sources](games/children-of-morta/visual-reference.md) |
+| [![Children of Morta: reference frame](games/children-of-morta/images/01-official-gameplay.jpg)](games/children-of-morta/README.md) | **[Children of Morta](games/children-of-morta/README.md)**<br>Pixel design and magic/effects<br>[More views + sources](games/children-of-morta/visual-reference.md) |
 | [![Planet of Lana: reference frame](games/planet-of-lana/images/01-official-gameplay.jpg)](games/planet-of-lana/README.md) | **[Planet of Lana](games/planet-of-lana/README.md)**<br>Let the picture tell it<br>[More views + sources](games/planet-of-lana/visual-reference.md) |
-| [![Dead Cells: reference frame](games/dead-cells/images/01-official-gameplay.jpg)](games/dead-cells/README.md) | **[Dead Cells](games/dead-cells/README.md)**<br>Action with a clear reaction<br>[More views + sources](games/dead-cells/visual-reference.md) |
+| [![Dead Cells: reference frame](games/dead-cells/images/bad-seed-02.jpg)](games/dead-cells/README.md) | **[Dead Cells](games/dead-cells/README.md)**<br>Overgrown Arboretum greenhouse<br>[More views + sources](games/dead-cells/visual-reference.md) |
 
 ## Connect the dots
 
@@ -48,6 +48,6 @@ Pick one moment you want to try, one detail that makes you smile, and one expens
 
 These are standard relative Markdown links and image embeds, with explicit backlinks. Open the cloned folder in Obsidian or Logseq, or browse on GitHub; no plugin or app-specific wiki syntax is required. Animated GIFs remain animated in readers that support them. Gameplay/trailer links are available on each game page; playback has not been verified for every source.
 
-The library contains all 13 named games and 42 credited source images/GIFs. Images here remain third-party private research references, not our game or a runtime asset pack. See each gallery for original URLs, credits and hashes, and [NOTICE](../NOTICE.md) for rights. Research collected 21 October 2026.
+The library covers all 18 named games, with additional targeted galleries and two animated Lana process demonstrations. [Lana layers](games/planet-of-lana/layers-and-motion.md) and [Playground trailer frames](animation/playground/README.md) connect the pictures to the proposed stage workflow. Images here remain third-party private research references, not our game or a runtime asset pack. See each gallery for original URLs, credits and hashes, and [NOTICE](../NOTICE.md) for rights. Research collected 21–22 October 2026.
 
 [▶ Start the trail](games/hollow-knight/README.md) · [🏠 Home](../README.md)

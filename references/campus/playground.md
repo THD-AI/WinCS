@@ -8,19 +8,15 @@
 
 ## Watch / look
 
-[▶ PLAYGROUND trailer supplied by Alexander](https://youtu.be/P8U22dvli4w) · [Director interview and published stills](https://www.stashmedia.tv/rodrigo-sousa-teases-horror-mini-series-playground/)
+[▶ Supplied Playground trailer](https://youtu.be/P8U22dvli4w) · **[Ten timecoded trailer screenshots and stage observations](../animation/playground/README.md)**
 
-![Playground still: a tiny warm refuge inside a dark creature-filled space](https://www.stashmedia.tv/wp-content/uploads/Rodrigo-Sousa-Teases-Horror-Mini-Series-Playground2.jpg)
+[![Playground trailer at 0:10: creature in a rope-net space](../animation/playground/images/frame-010.jpg)](../animation/playground/README.md)
 
-*Reference still: Rodrigo Goulão de Sousa, Playground; image hosted with the linked director interview. No reuse license for our game. Music/sound credit: Jérémy Ben Ammar.*
+*Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar. Clean source-video frame at 0:10. Reference only, not runtime art.*
 
-Research on 22 October 2026: the YouTube page resolved, but the available browser failed to attach twice. Three published stills were visually inspected; full trailer playback, camera timing and sound were **not** verified. These are still-image observations, not a claim to have watched the trailer.
+Selected trailer sequences were visually reviewed on 22 October 2026; the linked study records ten captures, their source times and observations. The [creator interview](https://www.stashmedia.tv/rodrigo-sousa-teases-horror-mini-series-playground/) supplies context. Colored play structures, confined bright refuges and creatures occupying rope/tube spaces are the visual targets. Sound and exact editing cadence are not analyzed here.
 
-- Deep blue/green darkness surrounds small warm or bright areas; attention stays with the vulnerable figures.
-- Rope grids and climbing-wall holds remain recognizable while their scale and empty surrounds become unsettling.
-- Cheerful color spots and toy shapes coexist with grotesque silhouettes. Do not copy the characters or creatures.
-
-The director's interview describes childhood play spaces contrasted with dark horror. Our original interpretation: a round crawl opening first reads as shelter; a distant silhouette briefly interrupts its light. A short chase could reuse the route only after movement and recovery are reliable.
+Our optional interpretation: a round crawl opening first reads as shelter; an aligned interior reveal shows a shape behind it. Preserve cheerful equipment colors as well as darkness. Little Nightmares is a character-shape reference, not the ambience source.
 
 **Proposed layers:** far treeline → dark play towers → walkable ramp → rope detail → near posts. Keep bright play surfaces distinct from danger. Make threat cues visible before a chase; horror should come from anticipation, not an unreadable floor.
 

@@ -6,7 +6,7 @@
 
 ![Children of Morta: start with this gameplay reference](images/01-official-gameplay.jpg)
 
-**Look for:** Compare character visibility with the effects. A return-home beat can give an outing meaning.
+**Look for:** Study detailed pixel design and magical effects; preserve the character silhouette through bright spell shapes. Family/homecoming mechanics are not the requested reference.
 
 [← Game study](README.md) · Credits and original sources follow each view below.
 

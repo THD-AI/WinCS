@@ -1,39 +1,52 @@
 {
-  "retrieved": "2026-10-21",
-  "game": "Dead Cells",
-  "store_page": "https://store.steampowered.com/app/588650/",
+  "date": "2026-10-22",
+  "usage": "Credited visual research only; not runtime assets or a reuse license.",
   "screenshots": [
     {
-      "file": "images/01-official-gameplay.jpg",
-      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/ss_ac28000ade40cc2fe5c128f32ac98ba33c008a7a.1920x1080.jpg?t=1779086887",
-      "steam_screenshot_id": 0,
-      "credit": "Motion Twin / Motion Twin",
-      "purpose": "Side-view close combat: bright attack arc against a muted corridor.",
-      "sha256": "d4ef9dd9c62f448dc9d18f2485f58584b15c29b542792b1733745e8819172cde"
+      "file": "images/bad-seed-01.jpg",
+      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1204130/ss_9af3f94076af6986b8dab3a4cd976f555abf1d79.1920x1080.jpg?t=1716555090",
+      "source_page": "https://store.steampowered.com/app/1204130/",
+      "sha256": "39792ccea502160279b14195d07eb480deade3f98dfe4b6a27a9f5d59999b3d9",
+      "credit": "Motion Twin / Evil Empire",
+      "purpose": "Bad Seed DLC official screenshot; biome to identify visually"
     },
     {
-      "file": "images/02-official-gameplay.jpg",
-      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/ss_7bde51ea6c8f6289e85ea1d8c1c941e1f8bfee91.1920x1080.jpg?t=1779086887",
-      "steam_screenshot_id": 1,
-      "credit": "Motion Twin / Motion Twin",
-      "purpose": "Platforms at different heights and a bright player attack; note safe landings.",
-      "sha256": "5570ded11394e20d79d7ea315e743833a6ac1b220343dcf3be4659f1d1fc91a5"
+      "file": "images/bad-seed-02.jpg",
+      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1204130/ss_74b8ab008df0e72e33c4be8569c99d74753fd31c.1920x1080.jpg?t=1716555090",
+      "source_page": "https://store.steampowered.com/app/1204130/",
+      "sha256": "6c9d591f03a6ee9cf03a1a19961d3fb1f8e7e80211d55c79edb4b3e777510181",
+      "credit": "Motion Twin / Evil Empire",
+      "purpose": "Bad Seed DLC official screenshot; biome to identify visually"
     },
     {
-      "file": "images/03-official-gameplay.jpg",
-      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/588650/ss_e87e72a247918d8493892e035d5e1b4b84470d2f.1920x1080.jpg?t=1779086887",
-      "steam_screenshot_id": 2,
-      "credit": "Motion Twin / Motion Twin",
-      "purpose": "Large bridge encounter: strong silhouette and attack effects against distant light.",
-      "sha256": "192561581df7fb557365c85c016b27e653d9aa076400f06cdf0a88a1ed21d0eb"
-    }
-  ],
-  "trailers": [
+      "file": "images/bad-seed-03.jpg",
+      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1204130/ss_dd90bbc8929ff90c02fa7921e1bd3d1e4477f9a4.1920x1080.jpg?t=1716555090",
+      "source_page": "https://store.steampowered.com/app/1204130/",
+      "sha256": "5510c859baa97f83883d16ba86eee57a10b2ecce4351c971120338383b7154ea",
+      "credit": "Motion Twin / Evil Empire",
+      "purpose": "Bad Seed DLC official screenshot; biome to identify visually"
+    },
     {
-      "name": "Dead Cells - Accolade Trailer",
-      "watch": "https://store.steampowered.com/app/588650/",
-      "thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/256755089/movie.293x165.jpg?t=1581426951"
+      "file": "images/arboretum-040.jpg",
+      "sha256": "84f4d374e3d77a03698eb243203625f603a982872e910cf91d74130e43a2ae28",
+      "source_page": "https://store.steampowered.com/app/1204130/",
+      "timestamp_seconds": 40,
+      "credit": "Motion Twin / Evil Empire",
+      "observation": "Combat inside the Arboretum greenhouse: broken floor, overgrowth and structure remain visible.",
+      "trailer": "Dead Cells: The Bad Seed Gameplay Trailer",
+      "trailer_id": 256773646,
+      "original_url": "https://video.akamai.steamstatic.com/store_trailers/1204130/264207/508936f91b95949eb62e6cb4f37a6284eb7ae430/1750641687/hls_264_master.m3u8?t=1580320012"
+    },
+    {
+      "file": "images/arboretum-050.jpg",
+      "sha256": "38fd5a9989015de0ba56e77b908d8038b1a06bb620993b68633a2d9b0ff56e8a",
+      "source_page": "https://store.steampowered.com/app/1204130/",
+      "timestamp_seconds": 50,
+      "credit": "Motion Twin / Evil Empire",
+      "observation": "Vertical greenhouse framing and hanging plants leave a distinct playable horizontal ledge.",
+      "trailer": "Dead Cells: The Bad Seed Gameplay Trailer",
+      "trailer_id": 256773646,
+      "original_url": "https://video.akamai.steamstatic.com/store_trailers/1204130/264207/508936f91b95949eb62e6cb4f37a6284eb7ae430/1750641687/hls_264_master.m3u8?t=1580320012"
     }
-  ],
-  "rights": "Copyright remains with named rightsholders. Internal visual research references only; no license for redistribution as game assets is asserted."
+  ]
 }

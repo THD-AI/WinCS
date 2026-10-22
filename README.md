@@ -24,6 +24,7 @@ Hidden garden/lake first. Campus, confusing creek, rusty crossings, horror playg
 ### Pick a doorway
 
 - **[🖼️ Browse all 18 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery; includes the five newly named audio references.
+- **[🎞️ Playground trailer frames](references/animation/playground/README.md)** – ten captured moments tied to the photographed playground. **[How Lana builds depth](references/games/planet-of-lana/layers-and-motion.md)** includes two animated developer demonstrations.
 - **[🎲 Open the pun drawer](docs/design/play-and-puns.md)** – silly situations, playable jokes and ideas to argue about.
 - **[📝 Read the current campus proposal](docs/proposal/campus-game.md)** – lake/reflection first-slice candidate and an optional story draft. [Earlier scope options](docs/proposal/game-proposal.md) remain available.
 

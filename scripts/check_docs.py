@@ -35,9 +35,7 @@ for index, page in enumerate(pages):
     if text.count(navigation(pages, index)) != 2:
         errors.append(f'{page["path"]}: expected current Previous / Library / Next links at both ends')
     first_image = re.search(r'!\[[^\]]*\]\(', text)
-    # A story-only reference may use an original diagram when source media is unavailable.
-    first_diagram = re.search(r'```mermaid\n', text) if 'infinity-blade' in path.parts else None
-    first_visual = first_image or first_diagram
+    first_visual = first_image
     if not first_visual or first_visual.start() > 1600:
         errors.append(f'{page["path"]}: missing early visual preview')
 
@@ -65,6 +63,10 @@ if games.exists():
         manifest = folder / 'media-sources.json'
         if manifest.exists():
             data = json.loads(manifest.read_text(encoding='utf-8-sig'))
+            declared = [item['file'] for item in data['screenshots']]
+            actual = {p.relative_to(folder).as_posix() for p in (folder / 'images').glob('*')}
+            if len(declared) != len(set(declared)) or set(declared) != actual:
+                errors.append(f'{folder.relative_to(ROOT)}: image manifest must cover each image exactly once')
             for item in data['screenshots']:
                 media = folder / item['file']
                 if not media.is_file():
@@ -88,7 +90,7 @@ if campus.exists():
         errors.append('Campus source index must cover all 59 photographs exactly once')
     manifest = json.loads((campus / 'media-sources.json').read_text(encoding='utf-8'))
     expected_boards = {'campus', 'hidden-gardens', 'creek', 'crossings', 'playground', 'toxic-garden', 'campus-robot'}
-    if {Path(p['file']).stem for p in manifest['collages']} != expected_boards:
+    if len(manifest['collages']) != 7 or {p.get('id', Path(p['file']).stem) for p in manifest['collages']} != expected_boards:
         errors.append('Campus collage manifest must retain seven separate location/item identities')
     prompts = json.loads((campus / 'prompts.json').read_text(encoding='utf-8'))['prompts']
     source_ids = {p['id'] for p in sources}
@@ -110,6 +112,26 @@ if campus.exists():
     if len(voices) != 10 or len({p['id'] for p in voices}) != 10:
         errors.append('Voice source index must cover ten distinct recordings')
 
+animation = ROOT / 'references/animation/playground'
+if animation.exists():
+    frames = json.loads((animation / 'media-sources.json').read_text(encoding='utf-8'))['screenshots']
+    declared = [item['file'] for item in frames]
+    actual = {p.relative_to(animation).as_posix() for p in (animation / 'images').glob('*')}
+    if len(declared) != len(set(declared)) or set(declared) != actual:
+        errors.append('Playground manifest must cover every selected frame exactly once')
+    gallery = (animation / 'README.md').read_text(encoding='utf-8')
+    for item in frames:
+        media = animation / item['file']
+        if not media.is_file() or hashlib.sha256(media.read_bytes()).hexdigest() != item['sha256']:
+            errors.append(f'Playground frame missing or changed: {item["file"]}')
+        elif not media.read_bytes().startswith(b'\xff\xd8\xff'):
+            errors.append(f'Playground frame is not JPEG: {item["file"]}')
+        if item['file'] not in gallery or not item.get('credit') or not item.get('source_page'):
+            errors.append(f'Playground frame lacks gallery/source/credit: {item["file"]}')
+        timestamp = item.get('timestamp_seconds')
+        if not isinstance(timestamp, int) or not 0 <= timestamp < 72:
+            errors.append(f'Playground frame has invalid source time: {item["file"]}')
+
 for forbidden in ('CLAUDE.md', '.env'):
     if (ROOT / forbidden).exists():
         errors.append(f'Unexpected root file: {forbidden}')
@@ -120,3 +142,5 @@ if errors:
 print(f'Checked {len(markdown)} Markdown files, {len(expected_games)} games and {image_count} image signatures/provenance entries.')
 if campus.exists():
     print('Checked seven collage hashes/prompts, 59 source-photo IDs and ten voice-note entries; no originals imported.')
+if animation.exists():
+    print(f'Checked {len(frames)} Playground frame hashes, signatures, source times and credits.')

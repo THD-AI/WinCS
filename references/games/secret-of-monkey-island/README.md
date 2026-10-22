@@ -1,33 +1,27 @@
-# The Secret of Monkey Island: Special Edition
+# The Secret of Monkey Island · classic pixel art
 
 <!-- reference-navigation:start -->
-[← Previous: Duck Season · gallery](../duck-season/visual-reference.md) · [🖼️ Library](../../README.md) · **33 / 36** · [Next: The Secret of Monkey Island: Special Edition · gallery →](visual-reference.md)
+[← Previous: Duck Season · gallery](../duck-season/visual-reference.md) · [🖼️ Library](../../README.md) · **33 / 36** · [Next: The Secret of Monkey Island · classic · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
-![The Secret of Monkey Island: Special Edition: official gameplay reference](images/01-official-gameplay.jpg)
+[![The Secret of Monkey Island · classic pixel art: visual study](images/classic-01.png)](visual-reference.md)
 
-**Look for:** Funny actions and surprising consequences, economical scene reuse.
+**The original 1990 game’s pixel-art presentation is the reference, rather than the Special Edition repaint.**
 
-[Gallery and credits](visual-reference.md) · [Voice-note context](../../../docs/brief/voice-notes.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
 
-Research: 22 October 2026. Newly named audio reference; not a replacement for Vatsal's creative authority.
+## Pixels can describe curves
 
-## Mechanics and dependencies
+The [classic gallery](visual-reference.md) shows a curved bridge, skewed timber, rounded ship structure, irregular roofs and expressive close-up shapes. Pixel sampling does not require rectangular terrain or a tile-grid world. Shape clusters, contour stair-stepping and palette contrast can describe organic forms at low resolution.
 
-The publisher describes comic puzzles and a switch between the Special Edition art and the classic presentation. The collected frames are Special Edition screenshots; they must not be described as the original pixel-art frames.
+Sources are [ScummVM's own game captures](https://www.scummvm.org/en/screenshots/lucasarts/mi/), preserving classic **CD/DOS, EGA and VGA** variants. These are classic-style versions, not seven identical captures of the exact 1990 release. Source filenames remain in the manifest. The user's TV/arcade recollection does not establish an arcade release; this study makes no such claim.
 
-## Worldbuilding and visual observation
+**Humor interpretation:** setup → player action → unexpectedly literal consequence. For the garden, a reflection can contradict an ordinary sign and reward investigation with a small punchline. This is a proposed original interaction, not an imported puzzle or quoted dialogue.
 
-Rooms use a few prominent objects and figures to establish a scene. Study how a prop can set up a joke and how an interaction changes its meaning. Point-and-click inventory combinations are not required for our platformer.
+Borrow curved pixel contours and economical visual jokes; leave inventory chains, verb menus and a large adventure script out of the baseline. The classic images do not establish the original asset-authoring pipeline.
 
-## Proposed WinCS experiment
-
-Write one campus joke with setup, action and payoff. A sign, item or reflection can do more work than a long dialogue tree. Do not copy dialogue, puzzles, pirate characters or music.
-
-## Source and production boundary
-
-[Developer/publisher store page](https://store.steampowered.com/app/32360/). Credit: LucasArts and respective publisher/rightsholders. Three official store stills were visually inspected; frame timing and full gameplay were not tested. Engine, sprite organization and internal tools are not established by this check. For our own production, use the [layer workflow](../../../docs/design/layered-stage-workflow.md); the source game's production files are not available or licensed through these screenshots.
+Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Duck Season · gallery](../duck-season/visual-reference.md) · [🖼️ Library](../../README.md) · **33 / 36** · [Next: The Secret of Monkey Island: Special Edition · gallery →](visual-reference.md)
+[← Previous: Duck Season · gallery](../duck-season/visual-reference.md) · [🖼️ Library](../../README.md) · **33 / 36** · [Next: The Secret of Monkey Island · classic · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

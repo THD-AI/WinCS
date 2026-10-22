@@ -12,13 +12,15 @@ The owner supplied 59 photographs. Local numbered contact sheets covered C01–C
 | --- | --- | --- | --- |
 | images/hidden-gardens.png | garden | Contact sheet 1; C12 full-size garden panorama | Dedicated primary location; no campus hero panel; water glimpses are reconstructed |
 | images/campus.png | campus | Contact sheet 1; C01 courtyard | Architecture separated from garden; facade/ledge details consolidated |
-| images/creek.png | creek | Contact sheet 2 | Leafy navigation space separated from bridge architecture; forked-route interpretation |
+| images/creek-v2.png | creek-v2 | Original photos C20, C21, C22, C29 plus layout example; no prior generated creek | Regenerated after rejection: grassy channel, straight paths, high/low routes and a single stepping-block line; reviewed against originals |
 | images/crossings.png | crossings | Contact sheet 2 | Spans, rails and industrial silhouettes; rust detail intensified from sparse reference |
 | images/playground.png | playground | Contact sheet 2; C39 interior | Tower/ramp/crawl motifs retained; photographs remain daytime reference rather than horror art |
 | images/toxic-garden.png | toxic | Contact sheet 3; C52 balanced stones | Plants/rocks/rust emphasized; planter passages are an interpreted arrangement, not a site map |
 | images/campus-robot.png | robot | Contact sheet 3; C59 robot | Human hands and lettering removed; opposing view reconstructed, not verified engineering geometry |
 
 Every prompt used Alexander's supplied room collage as **layout style only**: cream gutters, large photographic panels, small handwritten tape labels and a palette footer. Room furniture, ducks and cabinet contents were not requested for these boards. The full-size style example remains outside Git.
+
+The previous creek.png and its forked-route interpretation were rejected and removed from the current library. creek-v2.png is a new generation from originals, not an edit of that board. Direct input IDs and broader reviewed IDs are recorded separately in the manifest. The old creek prompt remains historical provenance; creek-v2 is active.
 
 The first combined campus/garden, creek/crossing and “riverfront” drafts were superseded after Alexander clarified the location identities. Those drafts remain local and are not included in this change. The robot and playground photographic boards were retained. No professor screenshots, chat screenshots, source audio or original campus photographs are committed.
 

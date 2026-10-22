@@ -1,26 +1,29 @@
-# Infinity Blade · replay changes what you know
+# Infinity Blade · technology remembered as myth
 
 <!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island: Special Edition · gallery](../secret-of-monkey-island/visual-reference.md) · [🖼️ Library](../../README.md) · **35 / 36** · [Next: Infinity Blade · gallery →](visual-reference.md)
+[← Previous: The Secret of Monkey Island · classic · gallery](../secret-of-monkey-island/visual-reference.md) · [🖼️ Library](../../README.md) · **35 / 36** · [Next: Infinity Blade · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
-```mermaid
-flowchart LR
-    A[Return to a familiar place] --> B[Face the apparent answer]
-    B --> C[Discover another explanation]
-    C --> A
-```
+[![Infinity Blade · technology remembered as myth: visual study](images/iii-008.jpg)](visual-reference.md)
 
-**Story structure reference, not the visual style for WinCS.** The diagram is our analysis, not an image or map from the game.
+**Post-technological science fantasy: a medieval civilization living around vast infrastructure it only partly understands.**
 
-Alexander names the series in A05 as a reference for revealing story and lore across returns. Epic/ChAIR's official universe page describes repeated journeys and later revelations that reinterpret earlier events. A compact campus version could change one landmark or encounter after the first completion, without reproducing the series' plot or characters.
+[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
 
-**Mechanic dependency:** a replay needs a completed-state flag, an intentional reset contract and changed content worth seeing. It does not require persistent statistics, generations, a loot economy or several endings.
+## Alexander’s intended worldbuilding reference
 
-**Worldbuilding interpretation:** returning with new understanding can provide depth without large exposition dumps. The proposed first-slice ending must still stand on its own; a secret cannot substitute for a complete initial game.
+This direction applies to **all three Infinity Blade games**: enormous ancient machines and advanced underlying technology are read as temples, fortresses, divine artifacts, magic or monumental clockwork. The key relationship is **remnant technology → partial understanding → present-day culture built around it**. This is Alexander's supplied concept and interpretation; the pasted memory excerpt is context, not independently retrieved chat history.
 
-[Official story/universe page](https://www.epicgames.com/infinityblade/en-US/game-info/infinity-blade-universe) · [Visual/source notes](visual-reference.md). Checked 22 October 2026. Engine and internal production pipeline were not investigated here. Epic's linked CDN image returned HTTP 403, so it was not copied or bypassed. No screenshot is claimed.
+The [official universe material](https://www.epicgames.com/infinityblade/en-US/game-info/infinity-blade-universe) provides the source-world context. The local gallery contains **Infinity Blade III launch-trailer frames only**, illustrating architecture, machinery and scale. These frames do not independently document every society or mechanism in the trilogy. Use the linked universe page's trilogy material for further study.
+
+## Optional translation into our campus
+
+A rusted crossing might sit on an enormous forgotten mechanism. A lake gate might be treated as ceremonial even though it responds to an ordinary maintenance action. A funny original inscription could call an access token a “sacred student ID.” These are new disposable worldbuilding seeds, not accepted lore or copied Infinity Blade scenes.
+
+Build one convincing prop/reveal before explaining an entire lost civilization. A silhouette, material seam, repeated mechanical motif and a small response can imply deeper engineering. No need for photorealistic armor, an RPG equipment system or a massive 3D city. **Replay/bloodline structure is not what this reference is being used for.**
+
+Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island: Special Edition · gallery](../secret-of-monkey-island/visual-reference.md) · [🖼️ Library](../../README.md) · **35 / 36** · [Next: Infinity Blade · gallery →](visual-reference.md)
+[← Previous: The Secret of Monkey Island · classic · gallery](../secret-of-monkey-island/visual-reference.md) · [🖼️ Library](../../README.md) · **35 / 36** · [Next: Infinity Blade · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

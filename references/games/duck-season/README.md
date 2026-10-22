@@ -1,32 +1,26 @@
-# Duck Season
+# Duck Season · the mascot changes its role
 
 <!-- reference-navigation:start -->
 [← Previous: Little Nightmares · gallery](../little-nightmares/visual-reference.md) · [🖼️ Library](../../README.md) · **31 / 36** · [Next: Duck Season · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
-![Duck Season: official gameplay reference](images/01-official-gameplay.jpg)
+[![Duck Season · the mascot changes its role: visual study](images/ending-0200.jpg)](visual-reference.md)
 
-**Look for:** The familiar mascot becomes unsettling; a tone reference for optional Dexter-like transformation.
+**Study the dog mascot and contrasting endings: familiar performer, intruder, threat, then a changed explanation.**
 
-[Gallery and credits](visual-reference.md) · [Voice-note context](../../../docs/brief/voice-notes.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
 
-Research: 22 October 2026. Newly named audio reference; not a replacement for Vatsal's creative authority.
+## Follow the mascot, not the shooting game
 
-## Mechanics and dependencies
+The [selected ending frames](visual-reference.md) show the dog crossing from television into the room, a threatening presence beside the TV, a contrasting ending tableau, and a surveillance-room reversal. These are spoiler references, kept together so the escalation is visible. The source is a recorded playthrough, credited separately from developer Stress Level Zero.
 
-Stress Level Zero presents a VR game with dark undertones. The supplied screenshot matches its dog mascot. This is provisionally the intended “Duck Hunt season” spoken reference, not proof of every word in the recording.
+**Interpretation:** a repeated friendly shape can become unsettling when its position, gaze, distance or implied control changes. The same prop may acquire a second meaning without a new level. This is more relevant here than VR shooting or nostalgic room decoration.
 
-## Worldbuilding and visual observation
+**Optional original translation:** a harmless mascot prop appears in an unexpected place on a later pass; a final reveal changes who seems to be observing whom. Secret bosses remain future scope. First establish an ordinary version, one deliberate change and a payoff. Do not copy the dog costume, ending scenes, VHS props or the seven-ending structure.
 
-The selected frames show a nostalgic room, a warm outdoor shooting scene and an oversized cheerful mascot. Familiar comfort can make a later disturbance more striking.
+The recording's chapter labels identify the ending segments. They are not a verified recipe for ending triggers or a requirement for WinCS to reproduce them.
 
-## Proposed WinCS experiment
-
-Keep the original first-run game coherent, then reveal one changed detail on replay. The plush-to-humanoid idea needs its own original design; no dog mascot, branded room, gunplay or VR implementation is proposed.
-
-## Source and production boundary
-
-[Developer/publisher store page](https://store.steampowered.com/app/503580/). Credit: Stress Level Zero and respective publisher/rightsholders. Three official store stills were visually inspected; frame timing and full gameplay were not tested. Engine, sprite organization and internal tools are not established by this check. For our own production, use the [layer workflow](../../../docs/design/layered-stage-workflow.md); the source game's production files are not available or licensed through these screenshots.
+Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
 [← Previous: Little Nightmares · gallery](../little-nightmares/visual-reference.md) · [🖼️ Library](../../README.md) · **31 / 36** · [Next: Duck Season · gallery →](visual-reference.md)

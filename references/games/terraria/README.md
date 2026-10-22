@@ -1,33 +1,27 @@
-# Terraria
+# Terraria · two bosses, specific reasons
 
 <!-- reference-navigation:start -->
-[← Previous: Dead Cells Â· gallery](../dead-cells/visual-reference.md) · [🖼️ Library](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
+[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [🖼️ Library](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
-![Terraria: official gameplay reference](images/01-official-gameplay.jpg)
+[![Terraria · two bosses, specific reasons: visual study](images/moon-097.jpg)](visual-reference.md)
 
-**Look for:** Side-view terrain and oversized encounter silhouettes; optional replay-boss comparison.
+**Wall of Flesh and Moon Lord are the references. Alexander explicitly rejects Terraria as the terrain/readability model.**
 
-[Gallery and credits](visual-reference.md) · [Voice-note context](../../../docs/brief/voice-notes.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
 
-Research: 22 October 2026. Newly named audio reference; not a replacement for Vatsal's creative authority.
+## Wall of Flesh: a pursuing encounter
 
-## Mechanics and dependencies
+The selected footage shows a tall moving body with eye/mouth targets. **Visual observation:** pressure comes from a pursuer occupying one side of the view. **Optional WinCS experiment:** a short original advancing hazard with one safe response. It needs movement, a visible warning, bounded speed and a reliable retry; it does not require a destructible tile world.
 
-Digging, fighting, exploration and building are presented together by Re-Logic. For WinCS, use only a readable side-view terrain/encounter study: the sandbox, crafting, destructibility and progression economy are separate expensive systems.
+## Moon Lord: a multipart figure
 
-## Worldbuilding and visual observation
+Study the head/hands/body arrangement, changing attention between attack points, and the large directional beam in the [boss gallery](visual-reference.md). The professor comparison is a future joke-boss seed, not permission to reproduce Moon Lord or a person's portrait. Any later original multipart boss needs distinct tells, targets and safe states before visual complexity.
 
-Worldbuilding can emerge from terrain, dwellings and contrasting underground layers. The inspected frames show a settlement, a lava encounter and a dark cavern. Borrow readable ground edges and telegraphs, not tile sets, boss anatomy or maps.
+The recordings are historical gameplay references, including a Terraria 1.4 Master Mode capture. They do not establish current balance, damage values, exact attack timings or an engine pipeline. Terrain, crafting, base building and platform layout are outside this reference's requested role.
 
-## Proposed WinCS experiment
-
-A tall first-run original encounter could occupy a fixed readable arena. Professor/Moon Lord and yogurt/Wall of Flesh comparisons remain optional replay jokes, not a request to reproduce those bosses.
-
-## Source and production boundary
-
-[Developer/publisher store page](https://store.steampowered.com/app/105600/). Credit: Re-Logic and respective publisher/rightsholders. Three official store stills were visually inspected; frame timing and full gameplay were not tested. Engine, sprite organization and internal tools are not established by this check. For our own production, use the [layer workflow](../../../docs/design/layered-stage-workflow.md); the source game's production files are not available or licensed through these screenshots.
+Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Dead Cells Â· gallery](../dead-cells/visual-reference.md) · [🖼️ Library](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
+[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [🖼️ Library](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

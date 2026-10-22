@@ -4,39 +4,71 @@
 [← Previous: Terraria](README.md) · [🖼️ Library](../../README.md) · **28 / 36** · [Next: Little Nightmares →](../little-nightmares/README.md)
 <!-- reference-navigation:end -->
 
-![Terraria: selected official frame](images/01-official-gameplay.jpg)
+**Boss shapes and encounter ideas only:** Wall of Flesh and Moon Lord. The platforms in these captures are incidental, not a terrain reference.
 
-**Look for:** Side-view terrain and oversized encounter silhouettes; optional replay-boss comparison.
+[Game study](README.md) · [Hashes and full provenance](media-sources.json)
 
-[Game study](README.md) · Research 22 October 2026; official stills inspected, not a complete play session.
+Selected visual research, 22 October 2026. These are existing-game references, not our concept art or runtime assets. Video frames are captured at the listed source times without browser/player overlays. A still cannot establish responsiveness or the exact timing of an attack.
 
-## Frame 1
+## 1:53 · Wall of Flesh enters as a tall, advancing body with several attack points.
 
-![Terraria: frame 1](images/01-official-gameplay.jpg)
+[![Wall of Flesh enters as a tall, advancing body with several attack points.](images/wall-113.jpg)](https://www.youtube.com/watch?v=aXkgcce3zLA&t=113s)
 
-Credit: Re-Logic and respective rightsholders. [Source page](https://store.steampowered.com/app/105600/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/ss_8c03886f214d2108cafca13845533eaa3d87d83f.1920x1080.jpg?t=1792530636)
+Wall of Flesh enters as a tall, advancing body with several attack points.
 
-SHA-256: `2d87f640da5802848f7b4d2fb6eafe5b8b40fbe165e26dcf38b4d70618e032cb`. Research only; no runtime reuse license.
+Credit: Re-Logic; gameplay recording JoeDuh / Joseph Afflitto. [Source at 1:53](https://www.youtube.com/watch?v=aXkgcce3zLA&t=113s).
 
-## Frame 2
+## 3:08 · Large eyes and mouth remain separate focal targets along a moving wall.
 
-![Terraria: frame 2](images/02-official-gameplay.jpg)
+[![Large eyes and mouth remain separate focal targets along a moving wall.](images/wall-188.jpg)](https://www.youtube.com/watch?v=aXkgcce3zLA&t=188s)
 
-Credit: Re-Logic and respective rightsholders. [Source page](https://store.steampowered.com/app/105600/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/ss_ae168a00ab08104ba266dc30232654d4b3c919e5.1920x1080.jpg?t=1792530636)
+Large eyes and mouth remain separate focal targets along a moving wall.
 
-SHA-256: `60d2c6e96e95975f2976ab87c93624eb77657e8a88f873fb89939ac26aab9cb5`. Research only; no runtime reuse license.
+Credit: Re-Logic; gameplay recording JoeDuh / Joseph Afflitto. [Source at 3:08](https://www.youtube.com/watch?v=aXkgcce3zLA&t=188s).
 
-## Frame 3
+## 3:45 · The pursuer dominates one screen edge
 
-![Terraria: frame 3](images/03-official-gameplay.jpg)
+[![The pursuer dominates one screen edge; the encounter keeps pushing the player.](images/wall-225.jpg)](https://www.youtube.com/watch?v=aXkgcce3zLA&t=225s)
 
-Credit: Re-Logic and respective rightsholders. [Source page](https://store.steampowered.com/app/105600/) · [Original image](https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/ss_9edd98caaf9357c2f40758f354475a56e356e8b0.1920x1080.jpg?t=1792530636)
+The pursuer dominates one screen edge; the encounter keeps pushing the player.
 
-SHA-256: `3b55ff9aa76f1ccce2f6acf73a2fd38523e90b8af81c9f933a6f20a5eed3bd40`. Research only; no runtime reuse license.
+Credit: Re-Logic; gameplay recording JoeDuh / Joseph Afflitto. [Source at 3:45](https://www.youtube.com/watch?v=aXkgcce3zLA&t=225s).
+
+## 1:37 · Moon Lord
+
+[![Moon Lord: head, hands and torso form a large multipart silhouette.](images/moon-097.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=97s)
+
+Moon Lord: head, hands and torso form a large multipart silhouette.
+
+Credit: Re-Logic; gameplay recording FFM TV. [Source at 1:37](https://www.youtube.com/watch?v=rgkkUPYymzw&t=97s).
+
+## 3:14 · A bright directional beam cuts across the encounter
+
+[![A bright directional beam cuts across the encounter; compare the tell with the body pose.](images/moon-194.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=194s)
+
+A bright directional beam cuts across the encounter; compare the tell with the body pose.
+
+Credit: Re-Logic; gameplay recording FFM TV. [Source at 3:14](https://www.youtube.com/watch?v=rgkkUPYymzw&t=194s).
+
+## 6:28 · Separated hand/eye targets and body make several simultaneous points of attention.
+
+[![Separated hand/eye targets and body make several simultaneous points of attention.](images/moon-388.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=388s)
+
+Separated hand/eye targets and body make several simultaneous points of attention.
+
+Credit: Re-Logic; gameplay recording FFM TV. [Source at 6:28](https://www.youtube.com/watch?v=rgkkUPYymzw&t=388s).
+
+## 9:42 · The exposed central body contrasts with the outstretched hands
+
+[![The exposed central body contrasts with the outstretched hands; study the boss, not the platforms.](images/moon-582.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=582s)
+
+The exposed central body contrasts with the outstretched hands; study the boss, not the platforms.
+
+Credit: Re-Logic; gameplay recording FFM TV. [Source at 9:42](https://www.youtube.com/watch?v=rgkkUPYymzw&t=582s).
 
 ## Gameplay study
 
-Use official trailers on the source page to compare scale, feedback and camera behavior. Keep observation separate from developer-pipeline claims.
+Watch the Wall of Flesh sequence around 1:53–3:45 and the Moon Lord sequence around 1:37–3:14 in the linked recordings. Compare approach pressure and multipart attack attention, not the background geometry. Optional jam boss work replaces another system; it is not added to the lake prototype by default.
 
 <!-- reference-navigation:start -->
 [← Previous: Terraria](README.md) · [🖼️ Library](../../README.md) · **28 / 36** · [Next: Little Nightmares →](../little-nightmares/README.md)
