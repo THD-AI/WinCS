@@ -1,5 +1,21 @@
 # Pick a game. Follow your curiosity.
 
+[![Start with the hidden garden location collage](campus/images/hidden-gardens.png)](campus/README.md)
+
+**New: [seven campus location/item boards](campus/README.md).** Hidden garden/lake first; campus, creek, crossings, playground and Toxic Garden stay separate. [Current proposal](../docs/proposal/campus-game.md) · [Voice notes](../docs/brief/voice-notes.md).
+
+## Newly named in the recordings
+
+| Reference | What to study |
+| --- | --- |
+| [![Terraria](games/terraria/images/01-official-gameplay.jpg)](games/terraria/README.md) | [Terraria](games/terraria/README.md): terrain readability and encounter scale |
+| [![Little Nightmares](games/little-nightmares/images/01-official-gameplay.jpg)](games/little-nightmares/README.md) | [Little Nightmares](games/little-nightmares/README.md): a small figure in oversized surroundings |
+| [![Duck Season](games/duck-season/images/03-official-gameplay.jpg)](games/duck-season/README.md) | [Duck Season](games/duck-season/README.md): a familiar mascot turning unsettling |
+| [![Monkey Island Special Edition](games/secret-of-monkey-island/images/01-official-gameplay.jpg)](games/secret-of-monkey-island/README.md) | [The Secret of Monkey Island](games/secret-of-monkey-island/README.md): playful interactions and payoff; these are Special Edition frames |
+| [Infinity Blade](games/infinity-blade/README.md) | Repeated journeys change the story; diagram provided because the official image endpoint returned 403 |
+
+Also: [Playground horror-animation study and trailer](campus/playground.md), tied to the real playground structure board. All commercial screenshots retain their rightsholders; none are runtime assets.
+
 **Start with a picture, not a wall of text.** Click a frame to open its game study. Every study and gallery has Previous / Library / Next links at the top and bottom.
 
 [▶ Start the guided trail: Hollow Knight](games/hollow-knight/README.md) · [🎲 The pun drawer](../docs/design/play-and-puns.md) · [🏠 Home](../README.md)

@@ -1,7 +1,7 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 26** · [Next: Dead Cells →](../dead-cells/README.md)
+[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 36** · [Next: Dead Cells →](../dead-cells/README.md)
 <!-- reference-navigation:end -->
 
 ![Planet of Lana: start with this gameplay reference](images/01-official-gameplay.jpg)
@@ -49,5 +49,5 @@ Dark machine interior: local lighting picks out a route and interaction.
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 26** · [Next: Dead Cells →](../dead-cells/README.md)
+[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 36** · [Next: Dead Cells →](../dead-cells/README.md)
 <!-- reference-navigation:end -->

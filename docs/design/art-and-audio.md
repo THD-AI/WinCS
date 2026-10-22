@@ -4,6 +4,8 @@
 
 Status: provisional production constraints, not a final visual identity. Choose mechanics and camera before drawing a full cast. Vatsal selects two favorite gameplay screenshots from the Hollow Knight/9 Years references and says what reads well; Lex decides a comfortable contribution size.
 
+**Current preparation:** [seven collages](../../references/campus/README.md) and the [layered-stage workflow](layered-stage-workflow.md). Hidden garden/lake first; one common style test before stage masters, clean plates, alpha layers and motion masks. No seasonal/time/weather matrix. Collages are reference interpretations; no runtime art is approved. Animation budget follows the chosen mechanic.
+
 ## Two directions to compare after the loop is chosen
 
 | Direction | Borrowed quality, not copied content | Production implication |

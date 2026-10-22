@@ -1,7 +1,7 @@
 # Planet of Lana
 
 <!-- reference-navigation:start -->
-[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [🖼️ Library](../../README.md) · **23 / 26** · [Next: Planet of Lana · gallery →](visual-reference.md)
+[← Previous: Children of Morta Â· gallery](../children-of-morta/visual-reference.md) · [🖼️ Library](../../README.md) · **23 / 36** · [Next: Planet of Lana Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Let the picture tell it
@@ -17,6 +17,8 @@
 ## Go deeper (optional)
 
 Research date: 21 October 2026. Secondary team reference; Vatsal's Hollow Knight preference remains the lead.
+
+**22 October update:** Alexander now uses this as a leading composition reference for the garden/lake stage: soft terrain, horizontal views, separated depth and subtle movement. See [our layer workflow](../../../docs/design/layered-stage-workflow.md). This does not verify Wishfully's internal masks or settle pixel/painterly style. The [official site](https://www.planetoflana.com/) describes the original as a cinematic puzzle adventure; our layer breakdown is an implementation proposal.
 
 ## Evidence and presentation
 
@@ -47,5 +49,5 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [🖼️ Library](../../README.md) · **23 / 26** · [Next: Planet of Lana · gallery →](visual-reference.md)
+[← Previous: Children of Morta Â· gallery](../children-of-morta/visual-reference.md) · [🖼️ Library](../../README.md) · **23 / 36** · [Next: Planet of Lana Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

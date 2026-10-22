@@ -4,6 +4,8 @@
 
 This is our design analysis of the linked [reference library](README.md), not a ranking of the games or a locked pitch. Prioritize Vatsal's taste. Shared appearance does not imply shared game logic or production tools.
 
+**22 October synthesis:** [local location boards](campus/README.md) supply materials; Planet of Lana supplies composition/depth; Little Nightmares supplies vulnerable scale; Playground supplies familiar play spaces turned unsettling; Terraria supplies side-view terrain/encounter comparisons; Monkey Island supplies interaction humor; Infinity Blade supplies replay reinterpretation; Duck Season supplies mascot unease. These are roles to study, not seven systems to combine. The [garden/lake proposal](../docs/proposal/campus-game.md) selects one small interaction from that vocabulary.
+
 | Family | References | Shared quality | Useful tiny translation | Dependencies to avoid importing |
 | --- | --- | --- | --- | --- |
 | Ability-led exploration | Hollow Knight, 9 Years of Shadows, Metroid Dread | Revisit a place with a new capability | One visible ledge, one unlock, one return | Large maps, multiple abilities, map UI, bosses |

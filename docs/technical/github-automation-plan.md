@@ -79,6 +79,8 @@ Privileged metadata workflows must use trusted default-branch code, never execut
 
 ## PR follow-up in this chat
 
+**Status, 22 October 2026:** Alexander paused the scheduled PR watcher. Keep it paused until he asks to resume. This reference/design change does not activate issues, a board or their deferred workflows.
+
 A chat follow-up can monitor its attached WinCS PRs for merge, closure without merge, failed checks or requested changes. This is separate from GitHub's future issue/project workflows. It reports meaningful changes rather than enabling auto-merge or creating tracking. The previous PR #11 is already verified merged; it is a baseline, not a new notification to repeat.
 
 Use the app's scheduled-task configuration for the actual follow-up cadence; it is not a GitHub webhook or an instantaneous merge notification. Local scheduled checks need the app/computer and repository access available. [Official scheduled-task documentation](https://learn.chatgpt.com/docs/automations?surface=app).

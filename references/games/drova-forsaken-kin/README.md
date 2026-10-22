@@ -1,7 +1,7 @@
 # Drova – Forsaken Kin
 
 <!-- reference-navigation:start -->
-[← Previous: Soul Knight · gallery](../soul-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **13 / 26** · [Next: Drova – Forsaken Kin · gallery →](visual-reference.md)
+[← Previous: Soul Knight Â· gallery](../soul-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **13 / 36** · [Next: Drova â€“ Forsaken Kin Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · A place with a life of its own
@@ -47,5 +47,5 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Soul Knight · gallery](../soul-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **13 / 26** · [Next: Drova – Forsaken Kin · gallery →](visual-reference.md)
+[← Previous: Soul Knight Â· gallery](../soul-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **13 / 36** · [Next: Drova â€“ Forsaken Kin Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

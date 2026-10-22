@@ -18,6 +18,13 @@ Only explicit team/owner decisions become accepted. Research recommendations do 
 | D010 | Deferred | Flipper Zero port and any 3D effects | Revisit after jam only if team wants it |
 
 | D011 | Accepted direction | Visual-first browsing and Previous / Next navigation; fun, puns and playful references; keep earlier proposals as options | Alexander's feedback, 21 October 2026 |
+| D012 | Accepted preparation scope | Transcribe ten recordings; organize 59 photos into cleaned collages; keep originals/portraits/audio outside Git | Alexander, 22 October 2026 |
+| D013 | Accepted reference direction | Hidden garden/lake primary; campus separate; confusing creek separate from rusty parkour crossings; horror playground; Toxic Garden plants/rocks/rust | Alexander's written corrections, 22 October 2026 |
+| D014 | Proposed | Poncho Goblins team name, with three ponchos | Alexander; team/registration confirmation pending |
+| D015 | Proposed mechanic | Lake reflection into an alternate route; touch/spin transition or paired-anchor fallback | Friend's A07 and Alexander's A09; Vatsal/theme/spike decide |
+| D016 | Accepted role / future idea | Robot as collectible/item character, possible companion/upgrade; joke replacement bosses after one completion | Alexander; no portraits/runtime boss art approved |
+| D017 | Accepted art process | Collages → style approval → horizontal master → layers/masks → limited animation; no season/time/weather matrix | Alexander, 22 October 2026; later game art remains rule-dependent |
+| D018 | Proposed writing | “Introduction to Getting Lost” campus-orientation premise | Disposable draft; Vatsal and later story direction decide |
 
 For each accepted design choice append date, decider, reason, rejected alternatives, affected files and evidence. Reopen it if the theme, rules, available hours or a playtest invalidates the assumption. Do not use a technical decision to decide the story or visual identity by accident.
 

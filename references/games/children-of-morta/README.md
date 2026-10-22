@@ -1,7 +1,7 @@
 # Children of Morta
 
 <!-- reference-navigation:start -->
-[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 26** · [Next: Children of Morta · gallery →](visual-reference.md)
+[← Previous: Stardew Valley Â· gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 36** · [Next: Children of Morta Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Warmth around the danger
@@ -47,5 +47,5 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 26** · [Next: Children of Morta · gallery →](visual-reference.md)
+[← Previous: Stardew Valley Â· gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 36** · [Next: Children of Morta Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

@@ -35,7 +35,10 @@ for index, page in enumerate(pages):
     if text.count(navigation(pages, index)) != 2:
         errors.append(f'{page["path"]}: expected current Previous / Library / Next links at both ends')
     first_image = re.search(r'!\[[^\]]*\]\(', text)
-    if not first_image or first_image.start() > 1600:
+    # A story-only reference may use an original diagram when source media is unavailable.
+    first_diagram = re.search(r'```mermaid\n', text) if 'infinity-blade' in path.parts else None
+    first_visual = first_image or first_diagram
+    if not first_visual or first_visual.start() > 1600:
         errors.append(f'{page["path"]}: missing early visual preview')
 
 games = ROOT / 'references' / 'games'
@@ -44,6 +47,8 @@ expected_games = {
     'animal-well', 'soul-knight', 'drova-forsaken-kin', 'kingdom-two-crowns',
     'kingdom-eighties', 'stardew-valley', 'children-of-morta', 'planet-of-lana',
     'dead-cells',
+    'terraria', 'little-nightmares', 'duck-season',
+    'secret-of-monkey-island', 'infinity-blade',
 }
 image_count = 0
 if games.exists():
@@ -76,6 +81,35 @@ if games.exists():
 else:
     errors.append('Missing game reference library')
 
+campus = ROOT / 'references/campus'
+if campus.exists():
+    sources = json.loads((campus / 'source-index.json').read_text(encoding='utf-8'))['photos']
+    if len(sources) != 59 or {p['id'] for p in sources} != {f'C{i:02}' for i in range(1, 60)}:
+        errors.append('Campus source index must cover all 59 photographs exactly once')
+    manifest = json.loads((campus / 'media-sources.json').read_text(encoding='utf-8'))
+    expected_boards = {'campus', 'hidden-gardens', 'creek', 'crossings', 'playground', 'toxic-garden', 'campus-robot'}
+    if {Path(p['file']).stem for p in manifest['collages']} != expected_boards:
+        errors.append('Campus collage manifest must retain seven separate location/item identities')
+    prompts = json.loads((campus / 'prompts.json').read_text(encoding='utf-8'))['prompts']
+    source_ids = {p['id'] for p in sources}
+    for item in manifest['collages']:
+        media = campus / item['file']
+        if not media.is_file() or hashlib.sha256(media.read_bytes()).hexdigest() != item['sha256']:
+            errors.append(f'Campus collage missing or changed: {item["file"]}')
+        elif not media.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'):
+            errors.append(f'Campus collage is not PNG: {item["file"]}')
+        if item['prompt_key'] not in prompts or not set(item['source_ids']) <= source_ids:
+            errors.append(f'Campus collage has invalid prompt/source mapping: {item["file"]}')
+    original_names = {p['filename'] for p in sources}
+    for path in ROOT.rglob('*'):
+        if '.git' in path.parts or 'tmp' in path.parts:
+            continue
+        if path.is_file() and (path.name in original_names or re.match(r'^(?:\d+ )?WhatsApp ', path.name) or path.suffix.lower() == '.ogg'):
+            errors.append(f'Unexpected original photo/voice asset: {path.relative_to(ROOT)}')
+    voices = json.loads((ROOT / 'docs/brief/voice-source-index.json').read_text(encoding='utf-8'))['recordings']
+    if len(voices) != 10 or len({p['id'] for p in voices}) != 10:
+        errors.append('Voice source index must cover ten distinct recordings')
+
 for forbidden in ('CLAUDE.md', '.env'):
     if (ROOT / forbidden).exists():
         errors.append(f'Unexpected root file: {forbidden}')
@@ -84,3 +118,5 @@ if errors:
     print('\n'.join(errors))
     sys.exit(1)
 print(f'Checked {len(markdown)} Markdown files, {len(expected_games)} games and {image_count} image signatures/provenance entries.')
+if campus.exists():
+    print('Checked seven collage hashes/prompts, 59 source-photo IDs and ten voice-note entries; no originals imported.')

@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-22",
+  "screenshots": [
+    {
+      "file": "images/01-official-gameplay.jpg",
+      "sha256": "ef349edc39a7058d5ab6a795c8a691080ab14e1f0797d46a735be9d175b16a5a",
+      "source_page": "https://store.steampowered.com/app/503580/",
+      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_4357e9d4aef320b61214c9e0749130af2f71032e.1920x1080.jpg?t=1667677823",
+      "credit": "Stress Level Zero"
+    },
+    {
+      "file": "images/02-official-gameplay.jpg",
+      "sha256": "ab3e98dbea0f548539e645a9b1365af23c3c742ba998799d71bb12d4e4826e3b",
+      "source_page": "https://store.steampowered.com/app/503580/",
+      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_9c0641fe29e474cc1c61045ba97df10a447d198c.1920x1080.jpg?t=1667677823",
+      "credit": "Stress Level Zero"
+    },
+    {
+      "file": "images/03-official-gameplay.jpg",
+      "sha256": "9b31e1e965fd2d1bb822d94a95dea34b29252393fc25b3cd2f3785919ba711bb",
+      "source_page": "https://store.steampowered.com/app/503580/",
+      "original_url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/503580/ss_ee200ad135ae23956ab2236a44afe4c7af7222a8.1920x1080.jpg?t=1667677823",
+      "credit": "Stress Level Zero"
+    }
+  ]
+}

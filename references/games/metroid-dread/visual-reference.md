@@ -1,7 +1,7 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Metroid Dread](README.md) · [🖼️ Library](../../README.md) · **6 / 26** · [Next: Apple Knight →](../apple-knight/README.md)
+[← Previous: Metroid Dread](README.md) · [🖼️ Library](../../README.md) · **6 / 36** · [Next: Apple Knight →](../apple-knight/README.md)
 <!-- reference-navigation:end -->
 
 ![Metroid Dread: start with this gameplay reference](images/gallery-1.jpg)
@@ -51,5 +51,5 @@ Cinematic capture closeup: compare production cost and camera change with the ga
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
 
 <!-- reference-navigation:start -->
-[← Previous: Metroid Dread](README.md) · [🖼️ Library](../../README.md) · **6 / 26** · [Next: Apple Knight →](../apple-knight/README.md)
+[← Previous: Metroid Dread](README.md) · [🖼️ Library](../../README.md) · **6 / 36** · [Next: Apple Knight →](../apple-knight/README.md)
 <!-- reference-navigation:end -->

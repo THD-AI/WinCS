@@ -5,7 +5,7 @@
   },
   {
     "path": "references/games/hollow-knight/visual-reference.md",
-    "label": "Hollow Knight · gallery"
+    "label": "Hollow Knight Â· gallery"
   },
   {
     "path": "references/games/9-years-of-shadows/README.md",
@@ -13,7 +13,7 @@
   },
   {
     "path": "references/games/9-years-of-shadows/visual-reference.md",
-    "label": "9 Years of Shadows · gallery"
+    "label": "9 Years of Shadows Â· gallery"
   },
   {
     "path": "references/games/metroid-dread/README.md",
@@ -21,7 +21,7 @@
   },
   {
     "path": "references/games/metroid-dread/visual-reference.md",
-    "label": "Metroid Dread · gallery"
+    "label": "Metroid Dread Â· gallery"
   },
   {
     "path": "references/games/apple-knight/README.md",
@@ -29,7 +29,7 @@
   },
   {
     "path": "references/games/apple-knight/visual-reference.md",
-    "label": "Apple Knight · gallery"
+    "label": "Apple Knight Â· gallery"
   },
   {
     "path": "references/games/animal-well/README.md",
@@ -37,7 +37,7 @@
   },
   {
     "path": "references/games/animal-well/visual-reference.md",
-    "label": "Animal Well · gallery"
+    "label": "Animal Well Â· gallery"
   },
   {
     "path": "references/games/soul-knight/README.md",
@@ -45,15 +45,15 @@
   },
   {
     "path": "references/games/soul-knight/visual-reference.md",
-    "label": "Soul Knight · gallery"
+    "label": "Soul Knight Â· gallery"
   },
   {
     "path": "references/games/drova-forsaken-kin/README.md",
-    "label": "Drova – Forsaken Kin"
+    "label": "Drova â€“ Forsaken Kin"
   },
   {
     "path": "references/games/drova-forsaken-kin/visual-reference.md",
-    "label": "Drova – Forsaken Kin · gallery"
+    "label": "Drova â€“ Forsaken Kin Â· gallery"
   },
   {
     "path": "references/games/kingdom-two-crowns/README.md",
@@ -61,7 +61,7 @@
   },
   {
     "path": "references/games/kingdom-two-crowns/visual-reference.md",
-    "label": "Kingdom Two Crowns · gallery"
+    "label": "Kingdom Two Crowns Â· gallery"
   },
   {
     "path": "references/games/kingdom-eighties/README.md",
@@ -69,7 +69,7 @@
   },
   {
     "path": "references/games/kingdom-eighties/visual-reference.md",
-    "label": "Kingdom Eighties · gallery"
+    "label": "Kingdom Eighties Â· gallery"
   },
   {
     "path": "references/games/stardew-valley/README.md",
@@ -77,7 +77,7 @@
   },
   {
     "path": "references/games/stardew-valley/visual-reference.md",
-    "label": "Stardew Valley · gallery"
+    "label": "Stardew Valley Â· gallery"
   },
   {
     "path": "references/games/children-of-morta/README.md",
@@ -85,7 +85,7 @@
   },
   {
     "path": "references/games/children-of-morta/visual-reference.md",
-    "label": "Children of Morta · gallery"
+    "label": "Children of Morta Â· gallery"
   },
   {
     "path": "references/games/planet-of-lana/README.md",
@@ -93,7 +93,7 @@
   },
   {
     "path": "references/games/planet-of-lana/visual-reference.md",
-    "label": "Planet of Lana · gallery"
+    "label": "Planet of Lana Â· gallery"
   },
   {
     "path": "references/games/dead-cells/README.md",
@@ -101,6 +101,46 @@
   },
   {
     "path": "references/games/dead-cells/visual-reference.md",
-    "label": "Dead Cells · gallery"
+    "label": "Dead Cells Â· gallery"
+  },
+  {
+    "path": "references/games/terraria/README.md",
+    "label": "Terraria"
+  },
+  {
+    "path": "references/games/terraria/visual-reference.md",
+    "label": "Terraria · gallery"
+  },
+  {
+    "path": "references/games/little-nightmares/README.md",
+    "label": "Little Nightmares"
+  },
+  {
+    "path": "references/games/little-nightmares/visual-reference.md",
+    "label": "Little Nightmares · gallery"
+  },
+  {
+    "path": "references/games/duck-season/README.md",
+    "label": "Duck Season"
+  },
+  {
+    "path": "references/games/duck-season/visual-reference.md",
+    "label": "Duck Season · gallery"
+  },
+  {
+    "path": "references/games/secret-of-monkey-island/README.md",
+    "label": "The Secret of Monkey Island: Special Edition"
+  },
+  {
+    "path": "references/games/secret-of-monkey-island/visual-reference.md",
+    "label": "The Secret of Monkey Island: Special Edition · gallery"
+  },
+  {
+    "path": "references/games/infinity-blade/README.md",
+    "label": "Infinity Blade"
+  },
+  {
+    "path": "references/games/infinity-blade/visual-reference.md",
+    "label": "Infinity Blade · gallery"
   }
 ]

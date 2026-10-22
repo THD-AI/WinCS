@@ -1,0 +1,45 @@
+# Ten voice notes · design digest
+
+[← Team brief](team-and-intent.md) · [Home](../../README.md) · [Next: campus proposal →](../proposal/campus-game.md)
+
+![The hidden garden is the first stage priority](../../references/campus/images/hidden-gardens.png)
+
+**22 October 2026.** Ten supplied OGG recordings, 17.6 minutes, were machine-transcribed locally with faster-whisper/base.en. This is an edited design digest, not a verbatim transcript or authenticated speaker identification. Full timecoded working transcripts and source recordings remain local, outside Git. [Source names, durations and hashes](voice-source-index.json) allow rechecking.
+
+The first six recordings are the initial idea sequence. A07 is the friend's reflection idea; A08–A10 continue the exchange. Speaker identity is not inferred beyond Alexander's supplied context. Later written clarifications in this chat override ambiguous speech recognition.
+
+| Note / source time | Design content | Consequence |
+| --- | --- | --- |
+| A01 · 14:08:26 · 0:00–1:55 | Terraria, Planet of Lana and Kingdom Two Crowns; university surroundings; dynamic ground, creek rocks, bridge/rail parkour, falling leaves and water | Use local geography as motifs; separate art layers from tested traversal |
+| A01 · 1:56–3:29 | Student protagonist; Dexter begins plush-like and might become humanoid; professor/Moon Lord comparison and yogurt-throwing president gag | Character ideas, with later written clarification placing joke bosses on replay |
+| A01 · 3:29–4:48 | First-run drones, AI/404-like corruption and campus enemies; laptop/tablet/phone/remote progression; physical everyday-object weapons; food/defense joke | Optional combat/item vocabulary, not a commitment to all systems |
+| A01 · 4:48–5:59 | Freshman in a university-style hoodie, Little Nightmares comparison; secret replay boss assets | Original small student silhouette; browser asset visibility must be explained honestly |
+| A01 · 5:59–7:00 | Garden/bridge/park route, increasingly buggy variants, simple ambient movement, campus robotics as references | Preserve location identities and robot collectible possibility |
+| A02 · 14:12:06 · 0:00–2:33; 2:50–3:32 | Masks/layers, depth, extending horizontal banners in one visual language, image generation, collision body smaller than decorative silhouette, browser playtesting, Voyager room workflow | Approval-first art workflow; frame/pivot/seam contracts; device support requires testing |
+| A03 · 14:12:34 · 0:00–0:14 | Collect references while light/weather are good | Photos are source material; no mechanics implied |
+| A04 · 14:14:19 · 0:00–0:35 | Swinging a chair as melee; sprite pieces and in-between animation frames | One action with fixed pivots/hit timing if combat is selected; generated frames need manual QA |
+| A05 · 14:19:38 · 0:00–0:55 | Infinity Blade story/lore structure; support Vatsal's project rather than taking it over; one stage first with later sets | Cyclical reveals as optional narrative structure; Vatsal decides scope |
+| A06 · 14:25:42 · 0:00–1:28 | Playground horror-animation reference; digital corruption and surrealism; local climbing playground as a stage; masks reveal pipe/tower interiors on approach | Interior reveal zones are optional local state, not a second entire world |
+| A07 · 16:19:29 · 0:00–1:07 | Friend proposes exploration, parkour, some combat and crossing a pond reflection into a mirror world to finish traversal | Candidate signature mechanic; requires paired geometry, spawn and return rules |
+| A08 · 16:25:36 · 0:00–0:19 | Recommends **not** doing these extras during the 24 hours, but planning them as future secret bosses | Medium-model recheck corrected the initial missed negation; defer replay extras |
+| A09 · 17:10:22 · 0:00–0:34 | Simplify reflection transition: approach pond, reuse touch/pickup motion, spin like a crashed application, appear on opposite side | Cheap comic transition; safe teleport/state change rather than cinematic simulation |
+| A09 · 0:35–1:30 | Secret of Monkey Island and Planet of Lana as shared play references; playful trolling with economical interactions | Study setup/action/payoff, visual clarity and reuse, not copied jokes or scenes |
+| A10 · 17:11:18 · 0:00–0:55 | Photo-to-pixel and low-budget animation workflow recollection | Useful production inspiration; broad historical claims are recollections, not verified research |
+
+A02 includes a private account/workplace side discussion at roughly 2:33–2:50; it is omitted from shared documents. Remarks about particular tools/models are conversational evidence, not instructions to install those tools. No Claude integration is introduced.
+
+## Recognition uncertainties
+
+“Per core” is interpreted as **parkour**, “flash wall” as a possible **Wall of Flesh** reference, “labor case” as a possible **Leberkäse** joke, and “3GS” as possibly **Three.js**. These are interpretations, not silently corrected quotes. A01's “Duck Hunt season” likely refers to **Duck Season**, consistent with the supplied screenshot. Exact item names and A10's old-computer terms need source-audio review before quoting them. A04 and A08 were also rechecked with the medium transcription model; A08's missed negation was corrected in this digest. No human-audited verbatim claim is made.
+
+## Explicit written clarifications to carry forward
+
+- “Poncho Goblins” is Alexander's proposed team name; three ponchos are offered. Registration rename and game title are unconfirmed.
+- Hidden garden/lake gets priority and its own collage. Campus is separate.
+- Creek is confusing; crossings are rusty and parkour-oriented. Keep them distinct.
+- “Riverfront and stone” was the wrong design interpretation: **Toxic Garden**, with plants, rocks, rust and maze potential.
+- Playground is tied to the supplied horror-animation trailer. The robot is an **item/collectible character**, possibly companion/upgrade, not “night sim.”
+- Professor and mascot jokes are secret replacement bosses **after one completion**, not the main first-run bosses. Keep source portraits out of Git.
+- Start with cleaned collages; then agree visual direction, compose horizontal stages, isolate layers/masks and add limited animation. No seasonal/day-night/weather matrix is requested.
+
+[← Team brief](team-and-intent.md) · [Home](../../README.md) · [Next: campus proposal →](../proposal/campus-game.md)

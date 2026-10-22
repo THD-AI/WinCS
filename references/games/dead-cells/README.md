@@ -1,8 +1,10 @@
 # Dead Cells
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 26** · [Next: Dead Cells · gallery →](visual-reference.md)
+[← Previous: Planet of Lana Â· gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 36** · [Next: Dead Cells Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
+
+**22 October connection:** [Toxic Garden](../../campus/toxic-garden.md) takes plants, rocks and rusty planter walls from local photographs. The greenhouse/garden comparison is provisionally the Dilapidated Arboretum, pending confirmation, not a request to copy a biome or enemies.
 
 ## At a glance · Action with a clear reaction
 
@@ -47,5 +49,5 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 26** · [Next: Dead Cells · gallery →](visual-reference.md)
+[← Previous: Planet of Lana Â· gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 36** · [Next: Dead Cells Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

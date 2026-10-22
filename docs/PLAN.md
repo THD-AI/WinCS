@@ -4,6 +4,10 @@
 
 Research date: 21 October 2026. This is pre-jam preparation, not permission to build competition content before the rules allow it.
 
+**Updated 22 October:** [campus collages](../references/campus/README.md), [voice-note digest](brief/voice-notes.md), [current proposal](proposal/campus-game.md), [stage workflow](design/layered-stage-workflow.md) and [technical contract](technical/layered-stage-contract.md). Ten recordings (17.6 minutes) and all 59 photos are indexed. Seven final collages separate the location identities; five new studies extend the trail to 18 games. Hidden garden/lake is the first stage candidate; no runtime build is included.
+
+**Next visual gate:** review the garden and one player-scale/style test, then approve a horizontal master before extracting masks. A reference library does not promise every location in the jam. Issues/board and workflows remain deferred; the PR watcher remains paused.
+
 | Order | Work | Exit evidence |
 | --- | --- | --- |
 | 1 | Inspect workspace; create private THD-AI/WinCS; register as dotPrivate submodule | Remote privacy checked; isolated local commits; unrelated changes preserved |

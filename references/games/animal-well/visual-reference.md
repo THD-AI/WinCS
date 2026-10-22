@@ -1,7 +1,7 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Animal Well](README.md) · [🖼️ Library](../../README.md) · **10 / 26** · [Next: Soul Knight →](../soul-knight/README.md)
+[← Previous: Animal Well](README.md) · [🖼️ Library](../../README.md) · **10 / 36** · [Next: Soul Knight →](../soul-knight/README.md)
 <!-- reference-navigation:end -->
 
 ![Animal Well: start with this gameplay reference](images/catch.gif)
@@ -51,5 +51,5 @@ Creature, platform, ladder and hanging switch in a compact interaction space.
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
 
 <!-- reference-navigation:start -->
-[← Previous: Animal Well](README.md) · [🖼️ Library](../../README.md) · **10 / 26** · [Next: Soul Knight →](../soul-knight/README.md)
+[← Previous: Animal Well](README.md) · [🖼️ Library](../../README.md) · **10 / 36** · [Next: Soul Knight →](../soul-knight/README.md)
 <!-- reference-navigation:end -->

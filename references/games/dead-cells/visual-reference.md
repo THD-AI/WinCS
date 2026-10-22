@@ -1,7 +1,7 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 26** · [Next: Compare the games →](../../comparison.md)
+[← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 36** · [Next: Terraria →](../terraria/README.md)
 <!-- reference-navigation:end -->
 
 ![Dead Cells: start with this gameplay reference](images/01-official-gameplay.jpg)
@@ -49,5 +49,5 @@ Large bridge encounter: strong silhouette and attack effects against distant lig
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
 <!-- reference-navigation:start -->
-[← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 26** · [Next: Compare the games →](../../comparison.md)
+[← Previous: Dead Cells](README.md) · [🖼️ Library](../../README.md) · **26 / 36** · [Next: Terraria →](../terraria/README.md)
 <!-- reference-navigation:end -->

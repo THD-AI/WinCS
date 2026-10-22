@@ -1,7 +1,7 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Drova – Forsaken Kin](README.md) · [🖼️ Library](../../README.md) · **14 / 26** · [Next: Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
+[← Previous: Drova â€“ Forsaken Kin](README.md) · [🖼️ Library](../../README.md) · **14 / 36** · [Next: Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
 <!-- reference-navigation:end -->
 
 ![Drova – Forsaken Kin: start with this gameplay reference](images/01-official-gameplay.jpg)
@@ -49,5 +49,5 @@ Dark encounter space: local light and enemy scale affect readability.
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
 <!-- reference-navigation:start -->
-[← Previous: Drova – Forsaken Kin](README.md) · [🖼️ Library](../../README.md) · **14 / 26** · [Next: Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
+[← Previous: Drova â€“ Forsaken Kin](README.md) · [🖼️ Library](../../README.md) · **14 / 36** · [Next: Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
 <!-- reference-navigation:end -->

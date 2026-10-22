@@ -4,6 +4,8 @@
 
 Status: proposed option A. Substitute if Vatsal chooses another loop.
 
+**22 October alternative:** the [campus proposal](campus-game.md) prioritizes a hidden garden/lake route and reflection interaction. Its five-beat storyboard is the current candidate; this ability-gate sketch remains available. The [technical contract](../technical/layered-stage-contract.md) defines safe reflection anchors, collision/world state and resets.
+
 > This earlier route sketch stays as an option. The loop still needs a funny situation and a payoff worth discovering; [the pun drawer](../design/play-and-puns.md) offers alternatives rather than extra mandatory mechanics.
 
 | Read a place | Try something surprising | Return and notice the change |

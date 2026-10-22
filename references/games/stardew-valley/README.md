@@ -1,7 +1,7 @@
 # Stardew Valley
 
 <!-- reference-navigation:start -->
-[← Previous: Kingdom Eighties · gallery](../kingdom-eighties/visual-reference.md) · [🖼️ Library](../../README.md) · **19 / 26** · [Next: Stardew Valley · gallery →](visual-reference.md)
+[← Previous: Kingdom Eighties Â· gallery](../kingdom-eighties/visual-reference.md) · [🖼️ Library](../../README.md) · **19 / 36** · [Next: Stardew Valley Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Small acts, visible changes
@@ -47,5 +47,5 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Kingdom Eighties · gallery](../kingdom-eighties/visual-reference.md) · [🖼️ Library](../../README.md) · **19 / 26** · [Next: Stardew Valley · gallery →](visual-reference.md)
+[← Previous: Kingdom Eighties Â· gallery](../kingdom-eighties/visual-reference.md) · [🖼️ Library](../../README.md) · **19 / 36** · [Next: Stardew Valley Â· gallery →](visual-reference.md)
 <!-- reference-navigation:end -->

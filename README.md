@@ -1,8 +1,16 @@
-# Septim Goblin · What could possibly go right?
+# Poncho Goblins? · What could possibly go right?
 
 **A little game. A lot of questionable jokes. Something we actually want to play.**
 
-This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexander and Lex are here to brainstorm, help and enjoy the jam. The game itself is still up for grabs.
+This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexander and Lex are here to brainstorm, help and enjoy the jam. **Poncho Goblins** is the new proposed team name; registration and game title remain unconfirmed.
+
+[![Hidden garden and lake-stage reference collage](references/campus/images/hidden-gardens.png)](references/campus/hidden-gardens.md)
+
+**A familiar campus, behaving strangely.** Start in the hidden garden: reeds, soft ground and a lake whose reflection might know a way through. The new [campus proposal](docs/proposal/campus-game.md) turns 10 voice notes and 59 photos into a first-slice candidate. The image above is an AI-cleaned reference study, not final game art.
+
+**[Seven location/item collages](references/campus/README.md)** · **[Voice-note design digest](docs/brief/voice-notes.md)** · **[How we build layered stages](docs/design/layered-stage-workflow.md)**
+
+Hidden garden/lake first. Campus, confusing creek, rusty crossings, horror playground and Toxic Garden each keep their own identity. A cute campus robot is an optional collectible. Extra locations and replay bosses are future possibilities, not a promise for the jam.
 
 ## Look first. Read what catches your eye.
 
@@ -15,9 +23,9 @@ This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexa
 
 ### Pick a doorway
 
-- **[🖼️ Browse all 13 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery.
+- **[🖼️ Browse all 18 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery; includes the five newly named audio references.
 - **[🎲 Open the pun drawer](docs/design/play-and-puns.md)** – silly situations, playable jokes and ideas to argue about.
-- **[📝 Read the existing proposal](docs/proposal/game-proposal.md)** – three early scope options, kept as drafts.
+- **[📝 Read the current campus proposal](docs/proposal/campus-game.md)** – lake/reflection first-slice candidate and an optional story draft. [Earlier scope options](docs/proposal/game-proposal.md) remain available.
 
 We are looking for **funny, playful and a little meaningful**: puns that become actions, affectionate references, odd characters and discoveries worth showing each other. A funny sign is welcome; a joke you can *play* is even better. We can learn from other games while making our own characters, art and situations.
 

@@ -3,6 +3,8 @@
 ## Authority and scope
 
 - Read README.md, docs/PLAN.md, docs/brief/team-and-intent.md and docs/decisions/README.md first.
+- For current design also read docs/brief/voice-notes.md, docs/proposal/campus-game.md and docs/design/layered-stage-workflow.md. The 22 October direction prioritizes hidden garden/lake; campus, confusing creek, rusty crossings, horror playground and Toxic Garden stay separate. The robot is an optional collectible character. Poncho Goblins is a proposed team name.
+- Keep the 59 original photos, five professor screenshots, source recordings and unredacted transcript outside Git. Commit selected cleaned collages, source/provenance metadata and a design digest. Collages are interpretations, not verified maps or runtime assets. Do not import Voyager's seasonal/time/weather system.
 - This is Vatsal's project. Alexander and Lex provide support; do not assign them full-time production commitments or assume Lex will make every asset.
 - Issues and the project board have been deleted at Alexander's request. Recreate them only once the game technical design document is concluded; never recreate them from earlier instructions or historical discussion links during reference exploration.
 - After that gate and once there is a game, organize issues/projects and automate metadata like THD Room Finder, following docs/technical/github-automation-plan.md. Do not install those workflows/credentials now. PR merge remains the maintainer's decision; issue linking and board sync never imply permission to auto-merge.

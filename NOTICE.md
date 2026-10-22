@@ -10,4 +10,6 @@ No development project, commercial sprite sheet, game binary or source code was 
 
 The supplied personal chat screenshot and raw transcript are not included. The team brief is a minimal planning digest. Voyager remains a separate project and contributes no runtime assets or source code here.
 
+The [campus library](references/campus/README.md) adds seven AI-cleaned interpretations of owner-supplied photos. The 59 originals, five professor screenshots, ten recordings and unredacted transcription stay outside Git. [Generation notes](references/campus/generation.md), prompts and source/output hashes distinguish observed motifs from reconstructed details. No exact-map, identity release or runtime reuse permission is inferred. The voice-note document is an edited design digest with recognition uncertainties marked. Playground's linked still retains Rodrigo Goulão de Sousa's authorship; it is a reference, not our artwork.
+
 [← Previous](CONTRIBUTING.md) · [🏠 Home](README.md) · [🖼️ Visual library](references/README.md) · [Next →](README.md)

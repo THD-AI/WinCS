@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-22",
+  "tool": "built-in image generation",
+  "collages": [
+    {
+      "file": "images/campus-robot.png",
+      "sha256": "616de7c53590cfe3d0eae95b2e9666a36668729fdc645a94a17843488c404297",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "robot",
+      "source_ids": [
+        "C55",
+        "C56",
+        "C57",
+        "C58",
+        "C59"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/campus.png",
+      "sha256": "e47cd43011d087ab855571275619a083781e40f3f70315f739e1a53fee8d34c6",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "campus",
+      "source_ids": [
+        "C01",
+        "C02",
+        "C15",
+        "C16",
+        "C17",
+        "C18",
+        "C19"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/creek.png",
+      "sha256": "faed3b421eedeacbb55bb22ef2363df77eb00dca6d8d46698969328ca3b3d3f6",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "creek",
+      "source_ids": [
+        "C20",
+        "C21",
+        "C22",
+        "C28",
+        "C29",
+        "C30",
+        "C31",
+        "C32"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/crossings.png",
+      "sha256": "1ebf3b8dd8791a5a2bb9f3d7023b3d8721f513b021334b66cd3813c3e60b1102",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "crossings",
+      "source_ids": [
+        "C23",
+        "C24",
+        "C25",
+        "C26",
+        "C27"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/hidden-gardens.png",
+      "sha256": "02f9c1d2393b2f61187a6a4494705734f1b10bdfb22dd643da42199a088fa3a5",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "garden",
+      "source_ids": [
+        "C03",
+        "C04",
+        "C05",
+        "C06",
+        "C07",
+        "C08",
+        "C09",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/playground.png",
+      "sha256": "274ea63632e1cbba75a9341f3a6049221c2a1af159a884e3f621e2664ce4644c",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "playground",
+      "source_ids": [
+        "C33",
+        "C34",
+        "C35",
+        "C36",
+        "C37",
+        "C38",
+        "C39"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    },
+    {
+      "file": "images/toxic-garden.png",
+      "sha256": "dbafb0aab5cd9af1b102086a2a7bf93fedfafa2e1ff87524d4e78f06af7019e8",
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "prompt_key": "toxic",
+      "source_ids": [
+        "C40",
+        "C41",
+        "C42",
+        "C43",
+        "C44",
+        "C45",
+        "C46",
+        "C47",
+        "C48",
+        "C49",
+        "C50",
+        "C51",
+        "C52",
+        "C53",
+        "C54"
+      ],
+      "usage": "AI-cleaned reference interpretation; not runtime art"
+    }
+  ]
+}

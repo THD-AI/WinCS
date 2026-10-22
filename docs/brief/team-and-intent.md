@@ -4,6 +4,8 @@
 
 Source: Alexander's supplied WhatsApp excerpts and screenshot, 21 October 2026, plus his explicit task request. This is a minimal planning digest; raw messages and the personal screenshot are not redistributed.
 
+**22 October update:** [ten voice-note design digest](voice-notes.md) and [current campus proposal](../proposal/campus-game.md). Alexander proposes **Poncho Goblins** and offers three ponchos; registration rename is unconfirmed. Local photos drive the location boards, with hidden garden/lake first. Vatsal still leads. The robot is a funny collectible/item character; professor/mascot replacement bosses are future replay ideas.
+
 ## People and ownership
 
 | Person | Evidence | Planning consequence |
