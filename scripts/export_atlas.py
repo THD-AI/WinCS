@@ -18,7 +18,7 @@ first animation has no standing pose. Each frame keeps its height above the row'
 the feet of every frame land on the bottom row of its cell; an animation marked "float": true (a jump
 the model drew in the air, while the game's physics already lifts the body) puts each frame's lowest
 pixel on that row instead. The pivot is
-(0.5, 1), centred on the feet (the opaque pixels in the lowest tenth of the sprite).
+(0.5, 1): on the baseline, centred under the torso.
 
 Config, per board:
     "atlas": {"height": 76, "rows": [
@@ -148,15 +148,16 @@ def seam_cells(data: bytes, w: int, h: int, left: int, right: int, count: int) -
     return cells
 
 
-def feet_x(sprite: Image.Image) -> float:
-    """Centre of the opaque pixels in the sprite's lowest tenth (its bounding-box centre if none)."""
-    box = solid(sprite.getchannel("A")).getbbox()
+def body_x(sprite: Image.Image) -> float:
+    """Centre of the torso: the opaque pixels between 35 % and 65 % of the sprite's height. Walk and run
+    cycles keep the body still in the cell (the physics moves it), whichever foot is down."""
+    alpha = solid(sprite.getchannel("A"))
+    box = alpha.getbbox()
     if not box:
         return sprite.width / 2
     left, top, right, bottom = box
-    floor = bottom - max(1, (bottom - top) // 10)
-    alpha = solid(sprite.getchannel("A"))
-    xs = [x for y in range(floor, bottom) for x in range(left, right) if alpha.getpixel((x, y))]
+    rows = range(top + (bottom - top) * 35 // 100, top + (bottom - top) * 65 // 100 + 1)
+    xs = [x for y in rows for x in range(left, right) if alpha.getpixel((x, y))]
     return sum(xs) / len(xs) + 0.5 if xs else (left + right) / 2
 
 
@@ -246,7 +247,7 @@ def export(board: dict, image: Image.Image) -> tuple[Image.Image, dict, dict]:
         frames = []
         for sprite, lift in sprites:
             small = scale(sprite, factor)
-            frames.append((small, round(lift * factor), feet_x(small)))
+            frames.append((small, round(lift * factor), body_x(small)))
         placed.append((anim, frames))
     everything = [f for _, frames in placed for f in frames]
     half = max(max(feet, s.width - feet) for s, _, feet in everything)
