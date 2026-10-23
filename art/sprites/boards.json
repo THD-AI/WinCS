@@ -421,9 +421,44 @@
         "ref2:20261023_135554.jpg",
         "ref2:20261023_135556.jpg",
         "ref2:20261023_135558.jpg",
+        "repo:art/direction/images/cast-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Enemy sprite sheet: the big black carbon-fibre quadcopter from the photos (four long arms, red-and-black motors, two-bladed props, tall black landing legs, exposed wiring and a small electronics deck in the middle). Make it hostile and slightly uncanny: one red sensor eye on the deck. Side view, about twice as wide as the hero would be tall. Row 1: hover loop, 4 frames (props as blur discs, body bobs 1-2 pixels). Row 2: alert (eye flashes), tilt forward, dive-attack 3 frames with a speed trail, pull up. Row 3: hit flash (white silhouette), knocked sideways and spinning, crashing down, wreck on the ground with one prop still twitching and a little smoke: 5 frames. Row 4: a small projectile it drops (a loose screw / sparking battery), 3 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the big black carbon-fibre autonomous quadcopter from the photos (four long arms, red-and-black motors, two-bladed props, tall black landing legs, exposed wiring and a small electronics deck in the middle), now hostile, with ONE red sensor eye on the deck. Strict side view, FACING LEFT. 3 rows. Row 1, exactly 7 frames: HOVER loop, 4 frames (props as blur discs, the body bobs 1-2 pixels), then ALERT AND DIVE, 3 frames (the eye flashes, it tilts forward, dives with a short speed trail). Row 2, exactly 5 frames: CRASH (white hit-flash silhouette, knocked sideways and spinning, falling, wreck on the ground with one prop twitching, a little smoke and a small pool of glossy black fluid). Row 3, exactly 3 frames: a small DROPPED SCREW tumbling, drawn large enough to read. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 18,
+        "rows": [
+          [
+            {
+              "anim": "hover",
+              "frames": 4,
+              "float": true
+            },
+            {
+              "anim": "dive",
+              "frames": 3,
+              "loop": false,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "crash",
+              "frames": 5,
+              "loop": false,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "screw",
+              "frames": 3,
+              "float": true
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
       "id": "enemy-rover",
@@ -433,21 +468,108 @@
         "ref2:20261023_125948.jpg",
         "ref2:20261023_125951.jpg",
         "ref2:20261023_125952.jpg",
+        "repo:art/direction/images/cast-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Enemy sprite sheet: the small four-wheeled lab rover from the photos (aluminium chassis, four chunky yellow wheels with black tyres, plywood top deck, black cylindrical lidar on top, two round ultrasonic sensor 'eyes' at the front). Side view facing left, knee-high to the hero. Row 1: idle - lidar spins, 4 frames. Row 2: patrol drive, 6 frames (wheels turn, chassis bounces 1 pixel). Row 3: spot the player - lidar flashes red, rear up a little, then CHARGE ram 4 frames with dust kicked from the wheels. Row 4: hit flash, flipped on its back with wheels spinning, smoking wreck: 5 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the small four-wheeled autonomous lab rover from the photos (aluminium chassis, four chunky yellow wheels with black tyres, plywood top deck, a black cylindrical lidar on top, two round ultrasonic sensor 'eyes' at the front). Nobody drives it: it is autonomous and now hostile. Strict side view, FACING LEFT. 3 rows. Row 1, exactly 4 frames: IDLE (the lidar spins, the body hums). Row 2, exactly 6 frames: DRIVE patrol cycle (wheels turn, chassis bounces 1 pixel). Row 3, exactly 9 frames: SPOT AND CHARGE, 4 frames (the lidar flashes red, it rears up a little, lunges forward with dust from the wheels), then HIT, FLIP AND WRECK, 5 frames (white hit-flash silhouette, flipped onto its back, wheels spinning, stops dead, a little smoke and a small pool of glossy black fluid). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 25,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 4
+            }
+          ],
+          [
+            {
+              "anim": "drive",
+              "frames": 6
+            }
+          ],
+          [
+            {
+              "anim": "charge",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "wreck",
+              "frames": 5,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
-      "id": "enemy-walker",
-      "title": "Enemy · walker",
+      "id": "enemy-crab",
+      "title": "Enemy · crab",
       "factor": 2,
       "inputs": [
         "ref2:20261023_125939.jpg",
         "ref2:20261023_125941.jpg",
         "ref2:20261023_125944.jpg",
+        "repo:art/direction/images/cast-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Enemy sprite sheet: the six-legged hexapod robot from the photos (black and grey servo motors, orange-copper wiring nest on top, long curved black legs ending in points). Make it creep like a spider. Side view facing left, about as tall as the hero's waist, wider than tall. Row 1: idle - legs twitch, 4 frames. Row 2: walk cycle, 8 frames (alternating tripod gait, body level). Row 3: attack - rear up on the back legs with front legs raised, then stab the front legs down, recover: 5 frames. Row 4: hit flash, legs buckle, collapse into a tangled heap with sparks: 5 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the autonomous six-legged hexapod robot from the photos (a flat electronics body, six jointed servo legs, wiring and small sensors), waist-high and wide like a crab. Nobody controls it: it is autonomous and now hostile, with one small red sensor light. Strict side view, FACING LEFT. 4 rows. Row 1, exactly 4 frames: IDLE (legs shift, body bobs). Row 2, exactly 8 frames: WALK cycle (legs move in alternating tripods). Row 3, exactly 5 frames: REAR AND STAB (raises the two front legs high, holds, stabs them down forward, pulls back). Row 4, exactly 5 frames: COLLAPSE (white hit-flash silhouette, legs buckle, body drops flat, legs splay out, stops dead with a small pool of glossy black fluid). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 38,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 4
+            }
+          ],
+          [
+            {
+              "anim": "walk",
+              "frames": 8
+            }
+          ],
+          [
+            {
+              "anim": "stab",
+              "frames": 5,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "collapse",
+              "frames": 5,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
+    },
+    {
+      "id": "fx",
+      "title": "FX · black fluid",
+      "factor": 2,
+      "inputs": [
+        "repo:art/direction/images/cast-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Effect sprite sheet: the BLACK FLUID that leaks from a defeated machine. Glossy black liquid like crude oil with a faint cold blue sheen on the highlights, never red, never blood, never a goo monster. 1 row, exactly 6 frames, side view at ground level: a first drip falls from a seam, more drips, a small puddle forms on the ground, the puddle spreads wider, a last slow drip, the settled glossy puddle. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 20,
+        "rows": [
+          [
+            {
+              "anim": "black-fluid",
+              "frames": 6,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
       "id": "boss-jenny",
