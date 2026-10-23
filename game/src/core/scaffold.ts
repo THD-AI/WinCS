@@ -8,6 +8,8 @@ import { Player } from '../player/player';
 import { cameraFollow } from '../stage/camera';
 import { ChairCombat } from '../combat/chair';
 import { CoffeePoints } from '../combat/coffee';
+import { Rovers } from '../enemies/rovers';
+import { BODY_WIDTH } from '../player/body';
 
 // Bootstrap-only scenes live in lane B until lane A provides story/UI scenes.
 export class Boot extends Phaser.Scene {
@@ -36,6 +38,7 @@ export class Stage extends Phaser.Scene {
   private follow?: ReturnType<typeof cameraFollow>;
   private combat?: ChairCombat;
   private coffee?: CoffeePoints;
+  private rovers?: Rovers;
   get playerActor() { return this.player; }
   get chair() { return this.combat; }
   constructor() { super('Stage'); }
@@ -44,14 +47,18 @@ export class Stage extends Phaser.Scene {
     collisionDebug(this, data.collisions);
     const machine = import.meta.env.DEV && new URLSearchParams(location.search).has('coffee-test')
       ? data.collisions.flatMap(chunk => chunk.world.interact).find(box => box.kind === 'coffee-machine') : undefined;
+    const rover = import.meta.env.DEV && new URLSearchParams(location.search).has('rover-test')
+      ? data.collisions.flatMap(chunk => chunk.world.spawn).find(spawn => spawn.kind === 'rover') : undefined;
     this.player = new Player(this, data.collisions, data.manifest.region, this.defeatedBosses,
-      machine ? { x: machine.x + machine.w / 2, y: machine.y + machine.h } : undefined);
+      machine ? { x: machine.x + machine.w / 2, y: machine.y + machine.h }
+        : rover ? { x: rover.x - BODY_WIDTH * 3, y: rover.y } : undefined);
     this.player.onHealthChanged = health => {
       const hud = this.scene.get('HUD') as Phaser.Scene & { model?: { setHealth(health: number, at: number): void } };
       hud.model?.setHealth(health, this.time.now);
     };
     this.combat = new ChairCombat(this, this.player, data.manifest.region);
     this.coffee = new CoffeePoints(this, this.player, data.collisions);
+    this.rovers = new Rovers(this, this.player, this.combat, data.collisions);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.scene.launch('UI');
@@ -70,6 +77,7 @@ export class Stage extends Phaser.Scene {
     if (active <= 0) return;
     this.coffee?.update();
     this.player?.update(active);
+    this.rovers?.update(active);
     this.combat?.update(active);
     if (this.player) this.follow?.(this.player.body, active);
   }
