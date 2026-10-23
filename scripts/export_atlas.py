@@ -18,7 +18,9 @@ first animation has no standing pose. Each frame keeps its height above the row'
 the feet of every frame land on the bottom row of its cell; an animation marked "float": true (a jump
 the model drew in the air, while the game's physics already lifts the body) puts each frame's lowest
 pixel on that row instead. The pivot is
-(0.5, 1): on the baseline, centred under the torso.
+(0.5, 1): on the baseline, centred under the torso. When the model drew one animation smaller or bigger
+than the rest of the sheet (a run cycle with a smaller head), "scale": 1.15 on that animation corrects it;
+measure the factor with `python scripts/compare.py lineup …` (AGENTS.md: reference fidelity).
 
 Config, per board:
     "atlas": {"height": 76, "rows": [
@@ -261,9 +263,11 @@ def export(board: dict, image: Image.Image) -> tuple[Image.Image, dict, dict]:
     placed = []  # (anim, [(sprite, lift, feet)]) at game scale
     for anim, sprites in anims:
         frames = []
+        # The model sometimes draws one row smaller than the rest; "scale" corrects it, measured with compare.py lineup.
+        f = factor * anim.get("scale", 1)
         for sprite, lift in sprites:
-            small = scale(sprite, factor)
-            frames.append((small, round(lift * factor), body_x(small)))
+            small = scale(sprite, f)
+            frames.append((small, round(lift * f), body_x(small)))
         placed.append((anim, frames))
     everything = [f for _, frames in placed for f in frames]
     half = max(max(feet, s.width - feet) for s, _, feet in everything)
