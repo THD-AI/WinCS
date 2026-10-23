@@ -1,0 +1,3 @@
+html, body, #game { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+body { background: #0c1218; }
+canvas { display: block; image-rendering: pixelated; }
