@@ -3,9 +3,13 @@ export interface ChairHit { damage: number; direction: -1 | 1; position: { x: nu
 export interface Damageable { id: string; bounds(): Rect; hit(hit: ChairHit): boolean }
 export const intersects = (a: Rect, b: Rect) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 
+// docs/02 measured contact: chair-side A04/B03, cell 86×81, foot pivot (43,81).
+export const SWEEP_CONTACT = { inner: 8, reach: 33, top: 58, bottom: 23 } as const;
+const HIT_STOP_MS = 60; // docs/02: the chair is light; every accepted hit stops for 60 ms.
+
 export class HitStop {
   remaining = 0;
-  trigger() { this.remaining = 60; }
+  trigger() { this.remaining = HIT_STOP_MS; }
   consume(milliseconds: number) {
     const paused = Math.min(this.remaining, milliseconds);
     this.remaining -= paused;
@@ -46,7 +50,9 @@ export class Sweeps {
   }
   box(position: { x: number; y: number }): Rect | null {
     const contact = this.phase === 'sweep-a' && this.frame === 4 || this.phase === 'sweep-b' && this.frame === 3;
-    return contact ? { x: position.x + (this.direction > 0 ? 8 : -50), y: position.y - 52, w: 42, h: 44 } : null;
+    const { inner, reach, top, bottom } = SWEEP_CONTACT;
+    return contact ? { x: position.x + (this.direction > 0 ? inner : -reach), y: position.y - top,
+      w: reach - inner, h: top - bottom } : null;
   }
   hit(position: { x: number; y: number }, targets: Iterable<Damageable>) {
     const box = this.box(position), hits: Rect[] = [];

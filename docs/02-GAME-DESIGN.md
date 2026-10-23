@@ -71,6 +71,36 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 - Enemies show a 0.4–0.6 s **tell** (flash, rear-up, lidar turns red) before attacking.
 - **Guard:** blocks frontal damage and pushes you back a little. A heavy hit (Jenny) breaks the guard.
 
+### Chair sweep implementation – measured contact (#39)
+
+The `chair-side` atlas uses 86 × 81 px cells with the feet at (43, 81).
+The approved contact poses are A04 and B03; B is mirrored into the strike
+direction. A04 reaches 31 px forward and B03 reaches 33 px. Their wooden
+seat pixels start 8 px in front of the pivot; the highest contact wood is
+58 px above the feet. The collision envelope therefore extends **8–33 px
+forward, 23–58 px above the feet**. Its lower edge includes two pixels of
+overlap with a 25 px rover (the 2 px grain in [09](09-ART-PIPELINE.md)),
+so the short sweep can catch the small ground enemy without extending its
+horizontal reach beyond the approved pose. This envelope is gameplay
+collision, not an alpha mask of the coat or legs.
+
+```mermaid
+flowchart LR
+  IN["chair-side atlas + animation table<br/>86 × 81 cells, feet 43,81"] --> POSE["8 poses A / B at authored 12 fps<br/>release Act; buffer one tap"]
+  POSE --> MASK["A04 / B03 contact window only<br/>front 8–33; above feet 23–58 px"]
+  MASK --> HIT["Overlap target bounds<br/>one attempt per target per swing"]
+  HIT --> FX["Accepted hit: 60 ms stop<br/>spark, sound, target knockback"]
+  FX --> OUT["Finish sweep + 2 recoil poses<br/>consume buffered return swing"]
+  MASK --> CHECK["compare.py baseline comparison<br/>exact bounds + both directions in tests"]
+```
+
+The development rover fixture is 25 px tall ([05](05-ENEMIES-AND-BOSSES.md))
+and 31 px wide (the approved `enemy-rover:idle-00` alpha bounds).
+It starts 38.5 px ahead: 33 px reach + half the rover width − its 8 px test
+knockback − 2 px overlap. Both alternating sweeps can then connect while
+the hero stands still. The 8 px displacement is fixture tuning; real enemy
+knockback belongs to the enemy controller.
+
 ## The glitch meter (after Region 1)
 
 Each defeated anomaly charges a 3-segment **glitch meter**. This was Lex's idea, merged with Alexander's Dexter version. **It is not a magic system** (A14): spells would make the game too easy.

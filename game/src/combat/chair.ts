@@ -1,7 +1,12 @@
 import Phaser from 'phaser';
 import type { Player } from '../player/player';
 import { sound } from '../fx/sound/Audio';
-import { HitStop, Sweeps, type Damageable, type Rect } from './sweeps';
+import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sweeps';
+
+const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
+const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
+const FIXTURE_KNOCK = 8; // docs/02: development fixture displacement, not real enemy tuning.
+const GRAIN = 2; // docs/09: two-pixel grain; retain this overlap after the fixture moves.
 
 export class ChairCombat {
   readonly sweeps = new Sweeps();
@@ -38,14 +43,15 @@ export class ChairCombat {
   }
   private dummy() {
     const table = this.scene.cache.json.get('enemy-rover.anims');
-    const actor = this.scene.add.sprite(this.player.body.x + 48, this.player.body.y, 'enemy-rover', Object.keys(table)[0] + '-00')
+    const distance = SWEEP_CONTACT.reach + ROVER_WIDTH / 2 - FIXTURE_KNOCK - GRAIN;
+    const actor = this.scene.add.sprite(this.player.body.x + distance, this.player.body.y, 'enemy-rover', Object.keys(table)[0] + '-00')
       .setOrigin(0.5, 1).setDepth(101);
     const spawn = { x: actor.x, y: actor.y };
     let count = 0;
     const counter = this.scene.add.text(actor.x, actor.y - 40, 'hits 0', { fontSize: '14px', backgroundColor: '#17242d' }).setDepth(102);
-    const bounds = () => ({ x: actor.x - 12.5, y: actor.y - 25, w: 25, h: 25 });
+    const bounds = () => ({ x: actor.x - ROVER_WIDTH / 2, y: actor.y - ROVER_HEIGHT, w: ROVER_WIDTH, h: ROVER_HEIGHT });
     this.register({ id: 'verification-rover', bounds, hit: hit => {
-      count++; actor.x += hit.direction * 8; actor.setTintFill(0xffffff);
+      count++; actor.x += hit.direction * FIXTURE_KNOCK; actor.setTintFill(0xffffff);
       counter.setPosition(actor.x, actor.y - 40).setText('hits ' + count);
       this.scene.time.delayedCall(100, () => actor.clearTint()); return true;
     } });
