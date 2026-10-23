@@ -1,7 +1,7 @@
 # The student · death
 
 <!-- nav:start -->
-[← The student · hurt and interact](hero-hurt.md) · [Sprite boards](README.md) · **6 / 16** · [The student · jump, fall, climb →](hero-air.md)
+[← The student · hurt and interact](hero-hurt.md) · [Sprite boards](README.md) · **6 / 18** · [The student · jump, fall, climb →](hero-air.md)
 <!-- nav:end -->
 
 ![The student · death](images/hero-death-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-death.png` · rebuild: `python scripts/make_boards.py draw hero-death --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · hurt and interact](hero-hurt.md) · [Sprite boards](README.md) · **6 / 16** · [The student · jump, fall, climb →](hero-air.md)
+[← The student · hurt and interact](hero-hurt.md) · [Sprite boards](README.md) · **6 / 18** · [The student · jump, fall, climb →](hero-air.md)
 <!-- nav:end -->

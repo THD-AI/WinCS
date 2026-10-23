@@ -573,15 +573,96 @@
     },
     {
       "id": "boss-jenny",
-      "title": "Boss · Jenny, the runaway race car",
+      "title": "Boss · Jenny, attacks",
       "factor": 2,
       "inputs": [
         "ref2:20261023_130003.jpg",
         "ref2:20261023_130118.jpg",
         "ref2:20261023_130123.jpg",
+        "repo:art/direction/images/boss-jenny-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Boss sprite sheet: JENNY, the green-and-black open-wheel Formula Student race car from the team banner photos, now driving itself and haunted: glowing headlight eyes, a slightly crooked front wing, exposed suspension springs. Strict side view, about four times as long as the hero is tall. Row 1: idle - engine revving, body shakes, exhaust puffs, 4 frames. Row 2: charge - wheels spin in place with smoke, then launch forward with speed lines, 4 frames. Row 3: CRASH into a wall - front crumples, car bounces back, parts burst out (springs, bolts, a loose wheel, a wing fragment), 4 frames. Row 4: stunned and vulnerable - smoking, one wheel wobbling, a hazard light blinking, 3 frames; then rebooting and recharging with green sparks, 2 frames. Row 5: the ejected debris as separate small projectiles at the same scale - spring, bolt, wheel, wing shard, battery - each as a 2-frame tumble."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: JENNY, Fast Forest's Formula Student race car (Jenny 16GDX) from the photos: an open-wheel single-seater in carbon black with lime-green, teal and blue stripes, the race number E44 on the nose, an EMPTY cockpit (nobody inside), and a small blue autonomous-status light on the roll hoop. She drives herself and is possessed. Strict side view, FACING LEFT, the same size in every frame, about four times as long as a person is tall. 3 rows. Row 1, exactly 4 frames: REV (stands still, the body shakes, the blue light flashes, exhaust puffs). Row 2, exactly 4 frames: CHARGE (rear wheels spin with smoke, launch forward with speed lines, full speed, leaning). Row 3, exactly 4 frames: CRASH into a wall on the left (the nose crumples, the car bounces back, parts fly off, smoke). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
+      "atlas": {
+        "height": 99,
+        "rows": [
+          [
+            {
+              "anim": "rev",
+              "frames": 4
+            }
+          ],
+          [
+            {
+              "anim": "charge",
+              "frames": 4,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "crash",
+              "frames": 4,
+              "loop": false
+            }
+          ]
+        ],
+        "ref": "rev-00"
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
+    },
+    {
+      "id": "boss-jenny-2",
+      "title": "Boss · Jenny, stunned and debris",
+      "factor": 2,
+      "inputs": [
+        "ref2:20261023_130003.jpg",
+        "ref2:20261023_130118.jpg",
+        "ref2:20261023_130123.jpg",
+        "repo:art/direction/images/boss-jenny-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: JENNY, Fast Forest's Formula Student race car (Jenny 16GDX) from the photos: an open-wheel single-seater in carbon black with lime-green, teal and blue stripes, the race number E44 on the nose, an EMPTY cockpit (nobody inside), and a small blue autonomous-status light on the roll hoop. She drives herself and is possessed. Strict side view, FACING LEFT, the same size in every frame, about four times as long as a person is tall. 2 rows. Row 1, exactly 5 frames: STUNNED, 3 frames (stalled, smoking, the blue light flickering, glossy black fluid leaking from the suspension joints onto the ground), then REBOOT, 2 frames (the blue light snaps back on, the car shudders back to life). Row 2, exactly 10 small items, no car: five pieces of debris that fly off her, each drawn in 2 tumbling frames next to each other - a front wing end plate, a wheel nut, a carbon body panel shard, a cone, a spring. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
+      "atlas": {
+        "height": 111,
+        "rows": [
+          [
+            {
+              "anim": "stunned",
+              "frames": 3
+            },
+            {
+              "anim": "reboot",
+              "frames": 2,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "debris-1",
+              "frames": 2
+            },
+            {
+              "anim": "debris-2",
+              "frames": 2
+            },
+            {
+              "anim": "debris-3",
+              "frames": 2
+            },
+            {
+              "anim": "debris-4",
+              "frames": 2
+            },
+            {
+              "anim": "debris-5",
+              "frames": 2
+            }
+          ]
+        ],
+        "ref": "reboot-01"
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
       "id": "pocket-computer",

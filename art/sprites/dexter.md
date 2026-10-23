@@ -1,7 +1,7 @@
 # Dexter · moves
 
 <!-- nav:start -->
-[← FX · black fluid](fx.md) · [Sprite boards](README.md) · **15 / 16** · [Dexter · gestures →](dexter-acts.md)
+[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **17 / 18** · [Dexter · gestures →](dexter-acts.md)
 <!-- nav:end -->
 
 ![Dexter · moves](images/dexter-preview.png)
@@ -31,5 +31,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter.png` · rebuild: `python scripts/make_boards.py draw dexter --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX · black fluid](fx.md) · [Sprite boards](README.md) · **15 / 16** · [Dexter · gestures →](dexter-acts.md)
+[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **17 / 18** · [Dexter · gestures →](dexter-acts.md)
 <!-- nav:end -->
