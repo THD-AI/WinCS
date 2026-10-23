@@ -1,0 +1,43 @@
+name: Sync the WinCS board
+
+on:
+  issues:
+    types: [opened, reopened, closed, assigned, labeled]
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, converted_to_draft, closed, edited, synchronize]
+  workflow_dispatch:
+  schedule:
+    - cron: '23 5 * * *'
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+concurrency:
+  group: project-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      PROJECTS_TOKEN: ${{ secrets.PROJECTS_TOKEN }}
+    steps:
+      - name: Explain credential requirement
+        if: ${{ env.PROJECTS_TOKEN == '' }}
+        run: |
+          echo '::error::PROJECTS_TOKEN is missing. Native workflows remain active, but custom project synchronization cannot run.'
+          exit 1
+      # Never check out or execute the PR head with a privileged token.
+      - uses: actions/checkout@v4
+        if: ${{ env.PROJECTS_TOKEN != '' }}
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/github-script@v8
+        if: ${{ env.PROJECTS_TOKEN != '' }}
+        with:
+          github-token: ${{ env.PROJECTS_TOKEN }}
+          script: |
+            await require('./.github/scripts/project-sync.cjs')({github, context, core});
