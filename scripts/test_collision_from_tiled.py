@@ -12,8 +12,11 @@ from collision_from_tiled import LAYERS, convert, write_collision
 
 
 def props(**values):
-    return [{'name': key, 'type': 'int' if type(value) is int else 'string', 'value': value}
-            for key, value in values.items()]
+    def typed(value):
+        if isinstance(value, list):
+            return {'type': 'list', 'value': [typed(item) for item in value]}
+        return {'type': {int: 'int', bool: 'bool', str: 'string'}[type(value)], 'value': value}
+    return [{'name': key, **typed(value)} for key, value in values.items()]
 
 
 def fixture():
@@ -118,6 +121,26 @@ class CollisionFromTiledTests(unittest.TestCase):
         self.object('spawn')['properties'] = props(kind='player', id='climb-one')
         with self.assertRaisesRegex(ValueError, 'duplicate id'):
             convert(self.data)
+
+    def test_encounter_properties_survive_export_without_losing_types(self):
+        self.object('interact')['properties'] = props(kind='pickup', id='chair', item='chair',
+                                                     note='First weapon', enabled=True)
+        self.object('spawn')['properties'] = props(kind='rover', id='rover-1', patrol=[640, 880])
+        actual = convert(self.data)[1]
+        self.assertEqual(actual['interact'][0], dict(x=100, y=200, w=30, h=40,
+                         kind='pickup', id='chair', item='chair', note='First weapon', enabled=True))
+        self.assertEqual(actual['spawn'][0]['patrol'], [640, 880])
+
+    def test_tiled_nested_list_entries_are_decoded(self):
+        self.object('spawn')['properties'] = props(kind='rover', id='rover-1', route=[[100, 200], [300, 400]])
+        self.assertEqual(convert(self.data)[1]['spawn'][0]['route'], [[100, 200], [300, 400]])
+
+    def test_custom_properties_cannot_replace_geometry(self):
+        for key in ('x', 'y', 'w', 'h'):
+            with self.subTest(key=key):
+                self.object('interact')['properties'] = props(kind='pickup', id='chair', **{key: -1})
+                with self.assertRaisesRegex(ValueError, 'override geometry'):
+                    convert(self.data)
 
     def test_failed_conversion_does_not_overwrite_existing_output(self):
         with tempfile.TemporaryDirectory() as folder:

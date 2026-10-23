@@ -5,7 +5,8 @@ Set string map properties region (rusty-creek), chunk (rc-0-0) and state
 (clean/anomaly). Use an orthogonal 2160x720 map. Reference image layers are
 ignored; object layer names and shapes follow docs/13. Box layers require
 Tiled rectangles, not open polylines or polygons. Object properties supply
-kind/id/damage; an object's name can supply id. No image data is read.
+kind/id/damage; an object's name can supply id. Additional custom properties
+(such as pickup item) are retained unchanged. No image data is read.
 """
 from __future__ import annotations
 
@@ -48,8 +49,15 @@ def properties(data):
     result = {}
     for prop in data.get('properties', []):
         require(prop['name'] not in result, f'duplicate property {prop["name"]}')
-        result[prop['name']] = prop['value']
+        result[prop['name']] = property_value(prop)
     return result
+
+
+def property_value(prop):
+    # Tiled 1.12 list entries carry type/value wrappers, unlike plain JSON arrays.
+    if prop.get('type') == 'list':
+        return [property_value(entry) for entry in prop['value']]
+    return prop['value']
 
 
 def point(x, y, context):
@@ -115,6 +123,10 @@ def convert(data):
                 point(x + w, y + h, context)
                 item.update(w=w, h=h)
             props = properties(obj)
+            require(not {'x', 'y', 'w', 'h'} & props.keys(),
+                    f'{context}: custom properties cannot override geometry')
+            # Encounter metadata belongs to the level author, not this converter.
+            item.update({key: value for key, value in props.items() if key not in ('kind', 'id')})
             for field in ('kind', 'id'):
                 value = props.get(field, obj.get('name') if field == 'id' else None)
                 if value:
