@@ -31,13 +31,16 @@ Instructions for AI coding agents (Codex, Claude, …) working in this repositor
 
 ## Git
 
-- Work only from an issue you were given. Branch from `main` as `<type>/<issue>-<slug>` (`feature/`, `fix/`, `docs/`, `art/`, `chore/`, `ci/`). One issue, one branch, one PR. Commit as `arudaev <hlexhelftd@gmail.com>`, conventional subjects (plus `art:` for assets), no attribution trailers.
+- Work only from an issue you were given. Branch from `main` as `<type>/<issue>-<slug>` (`feature/`, `fix/`, `docs/`, `art/`, `chore/`, `ci/`). One issue, one branch, one PR. Commit as the person you work for – lane A as `arudaev <hlexhelftd@gmail.com>`, lane B with Vatsal's own Git identity – with conventional subjects (plus `art:` for assets), no attribution trailers.
 - Open a **draft** PR with `Closes #<issue>` (never an epic) and fill in the template. A change bigger than ~400 lines of code is a **stack** of PRs: titles `[n/N] type: subject`, each based on the branch below, the stack listed in every body ([CONTRIBUTING.md](CONTRIBUTING.md#stacked-prs)).
 - Don't `/take` issues, set board fields or change Design review – the team does that.
 - Before committing: `git diff --cached --check`, `python scripts/check_docs.py`, and `python -m unittest discover -s scripts -p "test_*.py"` if scripts changed.
 - Agents don't merge, don't push to `main`, don't force-push, don't enable auto-merge, and never touch `.env` or keys.
+- **Git and GitHub are the memory, not your context.** Start every session – and restart after any error or confusion – with `git fetch`, `git status`, `git log --oneline -8`, `gh pr list --author @me` and the issue you're on. Never rebuild work that is already merged or open in a PR, and never "start over" by resetting, rebasing or deleting commits and branches: add commits on top. If what you see contradicts what you expected, stop and write it in the PR instead of guessing.
 - This repo is a submodule of `dotPrivate`: commit here first; the parent gitlink is updated separately. Don't touch other gitlinks.
 
 ## When the game exists
+
+`npm run typecheck`, `npm test` (Vitest, for pure logic: controller maths, collision parsing, state machines) and `npm run build` in `game/` pass before every push.
 
 Add type/build checks and real playthrough checks (input, collision, damage/death/respawn, boss, win, clean browser load, deployed URL) before calling anything done.
