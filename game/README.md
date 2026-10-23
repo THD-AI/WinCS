@@ -27,3 +27,12 @@ JSON-hash atlases with `idle-00` frames and feet pivots `(0.5, 1)`, plus matchin
 rover: 25 px; crab: 40 px; drone: 45 px; Jenny: 200×70.
 They are development stand-ins for the [production contracts](../docs/13-PRODUCTION-PIPELINE.md),
 and are never copied to `art/`. No gameplay, HUD, or collision is included yet.
+
+Stage exports from lane A belong at `public/assets/stages/<region>/stage.json`.
+The loader preserves their list order and scroll factors, caches shared plates,
+and loads the named sprite boards from `public/assets/sprites/`. Animation tables
+are cached as `<board>.anims`. Development rejects missing assets with their URL;
+production reports the error and substitutes a bundled actor or plain stage plate.
+Use `?region=rusty-creek&state=anomaly&inspect` on the dev URL to drag-pan the stage.
+`state=clean` selects the calm version. Export the assets before starting dev;
+the loader does not generate or copy art.
