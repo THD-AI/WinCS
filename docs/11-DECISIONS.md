@@ -1,7 +1,7 @@
 # 11 – Decisions
 
 <!-- nav:start -->
-[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 13** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
+[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
 <!-- nav:end -->
 
 One line per decision: what was decided, who decided it, and when. An **open** item needs the team. Older decision history (D001–D036) is in Git history; this log restarts from the consolidated design on 23 Oct.
@@ -47,7 +47,8 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 37 | Asset frame lists revised: run start, idle↔walk↔run bridges, 3 idle variants, jump +2, ladder 4, hit and death doubled; enemies, food, HUD and the crash window approved | ✅ | Team review (A14) · 23 Oct |
 | 38 | Parked for later: Dexter possessing you (secret ending), the underground server-farm lab, the "they use you" theme, a VW boss | 🅿️ later | Team review (A14) · 23 Oct |
 | 39 | Board, labels, issue forms and PR automation follow THD Room Finder: one epic per milestone, `[M1-S3]` stories as sub-issues, one PR per story, native *blocked by*, Status/Priority/Size/Design review fields, stacked PRs with merge commits | ✅ | Alexander · 23 Oct |
+| 40 | Two agent lanes: Alexander + Claude (OpenAI API) make every image and the integration; Vatsal + Codex write the game systems against fixed hand-over formats, with placeholders. Only lane A generates art. Lex draws collision in Tiled ([13](13-PRODUCTION-PIPELINE.md)) | ✅ | Alexander · 23 Oct |
 
 <!-- nav:start -->
-[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 13** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
+[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
 <!-- nav:end -->

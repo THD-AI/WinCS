@@ -1,7 +1,7 @@
 # 03 – Story and cast
 
 <!-- nav:start -->
-[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 13** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
+[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 14** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
 <!-- nav:end -->
 
 ![Dexter, from plush to final form](../art/direction/images/dexter-stages-preview.png)
@@ -77,5 +77,5 @@ Regions 2–5 each end with a boss that Dexter absorbs. Archive notes reveal tha
 **Secret replay bosses** (after one completion, a joke layer): professors and university figures as giant bosses in the Terraria Moon Lord / Wall of Flesh mould. They tie into the corrupted subjects (the AI / algorithms professor → the pathfinding rust maze). Private portraits stay out of the repository.
 
 <!-- nav:start -->
-[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 13** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
+[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 14** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
 <!-- nav:end -->

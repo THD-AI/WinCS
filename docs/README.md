@@ -16,5 +16,6 @@ Read them in order; every page has Previous / Next at the top and bottom. The nu
 | 10 | [Jam plan](10-JAM-PLAN.md) | Timeline, owners, cut order |
 | 11 | [Decisions](11-DECISIONS.md) | What is decided, what is open |
 | 12 | [Team workflow](12-TEAM-WORKFLOW.md) | Setup, branches, PRs, rules for agents |
+| 13 | [Production pipeline](13-PRODUCTION-PIPELINE.md) | How every image, layer, sprite, stage and collision box is made; the hand-over formats; the two agent lanes |
 
 **Evidence:** [meetings and transcripts](meetings/README.md) · **Research:** [event facts](research/degdev-3.md) · [what we love in each game](research/what-we-love.md) · [engine notes](research/engine-evidence.md) · [project board and automation](research/github-automation.md)

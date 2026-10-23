@@ -1,7 +1,7 @@
 # 02 – Game design
 
 <!-- nav:start -->
-[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 13** · [03 – Story and cast →](03-STORY-AND-CAST.md)
+[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 14** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->
 
 ![What playing looks like – HUD and the pocket computer's map](../art/direction/images/hud-preview.png)
@@ -114,5 +114,5 @@ Concepts for every pair: [stage concepts](../art/locations/README.md).
 Gore, blood, an apocalypse, a minimap, crafting, an economy, procedural runs, a stamina bar, spells, **dialogue of any kind**. Nobody speaks and there are no thought bubbles (A14): Dexter acts – he points, bows, sweats, hands things over. The only text is UI: the crash window, the pocket computer, archive notes.
 
 <!-- nav:start -->
-[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 13** · [03 – Story and cast →](03-STORY-AND-CAST.md)
+[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 14** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->

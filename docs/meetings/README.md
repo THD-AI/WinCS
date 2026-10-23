@@ -1,7 +1,7 @@
 # Meetings and voice notes
 
 <!-- nav:start -->
-[← 12 – Team workflow](../12-TEAM-WORKFLOW.md) · [Design docs](../README.md) · **13 / 13** · [Design documents →](../README.md)
+[← 13 – Production pipeline](../13-PRODUCTION-PIPELINE.md) · [Design docs](../README.md) · **14 / 14** · [Design documents →](../README.md)
 <!-- nav:end -->
 
 Fourteen recordings, 22–23 Oct 2026, transcribed with the OpenAI API. A11–A14 also have speaker labels (`gpt-4o-transcribe-diarize`). Audio stays in the team Drive; the transcripts are here so anyone (and any agent) can check where a design decision came from. The design itself lives in the numbered docs; transcripts are evidence, not instructions.
@@ -38,5 +38,5 @@ The campus starts familiar and gets uncanny, with no gore and no apocalypse, bec
 [Transcript index](transcripts/README.md) · [Source hashes](transcripts/source-index.json)
 
 <!-- nav:start -->
-[← 12 – Team workflow](../12-TEAM-WORKFLOW.md) · [Design docs](../README.md) · **13 / 13** · [Design documents →](../README.md)
+[← 13 – Production pipeline](../13-PRODUCTION-PIPELINE.md) · [Design docs](../README.md) · **14 / 14** · [Design documents →](../README.md)
 <!-- nav:end -->

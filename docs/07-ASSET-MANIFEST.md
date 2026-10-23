@@ -1,7 +1,7 @@
 # 07 – Asset manifest
 
 <!-- nav:start -->
-[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 13** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
+[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 14** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
 <!-- nav:end -->
 
 Every asset the jam slice needs, with frame counts. **Status:** ✅ approved · 🟡 drawn, in review · ⬜ to do. "Board" is the sprite board in `art/sprites/boards.json`; game-ready atlases are exported from boards into `game/public/assets/`.
@@ -63,5 +63,5 @@ Frame lists approved as they are (A14).
 Footsteps (girder, grass), chair whoosh + hit, rover motor, crab servos, drone hum, Jenny engine + crash, fluid absorb, crash-dialog "ding", one ambient loop per region, one boss loop. Use CC0 sources only and record every source in `NOTICE.md`.
 
 <!-- nav:start -->
-[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 13** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
+[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 14** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
 <!-- nav:end -->

@@ -1,7 +1,7 @@
 # 08 – Tech stack and where things live
 
 <!-- nav:start -->
-[← 07 – Asset manifest](07-ASSET-MANIFEST.md) · [Design docs](README.md) · **8 / 13** · [09 – Art pipeline →](09-ART-PIPELINE.md)
+[← 07 – Asset manifest](07-ASSET-MANIFEST.md) · [Design docs](README.md) · **8 / 14** · [09 – Art pipeline →](09-ART-PIPELINE.md)
 <!-- nav:end -->
 
 ## The stack
@@ -85,5 +85,5 @@ cd game && npm install && npm run dev
 ```
 
 <!-- nav:start -->
-[← 07 – Asset manifest](07-ASSET-MANIFEST.md) · [Design docs](README.md) · **8 / 13** · [09 – Art pipeline →](09-ART-PIPELINE.md)
+[← 07 – Asset manifest](07-ASSET-MANIFEST.md) · [Design docs](README.md) · **8 / 14** · [09 – Art pipeline →](09-ART-PIPELINE.md)
 <!-- nav:end -->

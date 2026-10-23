@@ -1,7 +1,7 @@
 # 10 – Jam plan
 
 <!-- nav:start -->
-[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 13** · [11 – Decisions →](11-DECISIONS.md)
+[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 14** · [11 – Decisions →](11-DECISIONS.md)
 <!-- nav:end -->
 
 **DEGDEV 3**, Deggendorf: Fri 23 Oct 14:00 → Sat 24 Oct 13:30. Jury voting starts at **11:30 Saturday**, and that is our hard stop. Event facts: [research/degdev-3.md](research/degdev-3.md).
@@ -22,11 +22,11 @@
 
 ## Who does what
 
-Every cell below is a set of issues on the board, marked with the suggested owner; take them with `/take`.
+Every cell below is a set of issues on the board, assigned to its owner. Vatsal's Codex and Alexander's Claude work in parallel lanes – [13 – Production pipeline](13-PRODUCTION-PIPELINE.md#the-two-lanes) says who touches which folders.
 
 | | Vatsal | Lex | Alexander |
 | --- | --- | --- | --- |
-| Sprint 2 | Player controller (move, jump, ladders) | Rusty Creek design: the clean bridge, the Jenny ram, the maze as the tutorial; collision + encounters | Scaffold, Vercel, sprite pipeline → atlases |
+| Sprint 2 | Scaffold, Tiled converter, player controller (move, jump, ladders) | Rusty Creek design: the clean bridge, the Jenny ram, the maze as the tutorial; collision in Tiled + encounters | Vercel, export_atlas, hero sheets → atlases, layer split |
 | Night | Combat + enemies | Hidden Garden prologue: stretch it to about 3 minutes, less parkour (built on the layout already drawn) + Jenny arena tuning | Prologue sequence, HUD, Dexter, effects |
 | Morning | Bugs, feel | Playtest, level polish | Deploy, title, credits |
 
@@ -47,5 +47,5 @@ Every cell below is a set of issues on the board, marked with the suggested owne
 AI-generated art and code policy (does it need declaring?) · exact submission format and deadline · is a hosted HTML5 link fine · does the jury need the source.
 
 <!-- nav:start -->
-[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 13** · [11 – Decisions →](11-DECISIONS.md)
+[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 14** · [11 – Decisions →](11-DECISIONS.md)
 <!-- nav:end -->
