@@ -1,0 +1,27 @@
+{
+  "name": "Hidden Garden – stage chunks",
+  "readme": "The prologue, drawn from the approved [Hidden Garden concept](../../locations/hidden-garden-clean.md) as a flat side elevation with its figures removed. One chunk, `hg-0-0` (2160×720): the bench where Dexter sits at the start (x ≈ 190–320), the stone path and the timber jetty (path top y = 441), the end of the jetty where Dexter points (x ≈ 1290–1323), and one wrong patch in the pond's reflection below it – a rusty girder with a ladder that isn't there. Clean only.\n\n**Layers** ([layers.json](layers.json), `python scripts/split_layers.py art/stages/hidden-garden`): [03 rear](layers/hg-0-0.03-rear.png) · [04 water](layers/hg-0-0.04-water.png) · [05 play](layers/hg-0-0.05-play.png) · [07 foreground](layers/hg-0-0.07-foreground.png). Everything above the path is one rear layer at scroll 1.0, and the foreground also scrolls at 1.0: rectangles and colours would tear the big tree or the reeds at another speed, so sky/far/mid parallax waits for hand-drawn masks.",
+  "model": "gpt-image-2.5-sunburst",
+  "size": "2160x720",
+  "style": "FORMAT: a STAGE CONCEPT for a 2D side-scroller explored in all four directions - one wide 2:1 image in strict side view, drawn like an architect's ELEVATION: every path, wall, bed and building runs PARALLEL to the screen from left to right; depth comes only from layers stacked behind each other, never from things receding toward a vanishing point; no path, corridor or bed leads into the distance. The hero is small, about one ninth of the image height. Build real level structure into the scenery: a main route plus at least one higher branch and one lower branch or underground pocket, smooth hills and slopes (some steep enough to slide down), ledges with grabbable edges, something to climb (ladder, vines, scaffold, stairs), a dead end with a small reward glint. DEPTH in clear layers: hazy far background, mid-ground, the play layer, and a dark, out-of-focus foreground of leaves and grass partly covering the bottom edge and corners as if the camera sits behind foliage; reflections where there is water; a few falling leaves. LOOK: detailed hi-bit pixel art, fine 2-pixel grain, the warm palette and light of the style master. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
+  "people": "No people, no animals, no plush toys and no characters of any kind: this is an empty stage the game puts its characters into.",
+  "boards": [
+    {
+      "id": "hg-0-0",
+      "title": "Hidden Garden · the bench and the pond",
+      "factor": 1,
+      "keyed": false,
+      "colours": 256,
+      "inputs": [
+        "repo:art/locations/images/hidden-garden-clean.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Wide side-scrolling stage chunk at 3:1, drawn as an architect's elevation with everything parallel to the screen (no vanishing point, no receding paths): the Hidden Garden pond from the first image, redrawn as a flat side view. Keep its look exactly - late-afternoon autumn light, golden reeds, orange and yellow trees, the misty pine forest behind, a blue sky with small clouds, the big tree in the upper right. Ground: from the left edge a stone-slab path at ground level, its top at about two thirds of the height, runs right onto a timber jetty over the pond; the jetty ends a little right of the middle with two posts - the spot where someone would stand and look down into the water. The calm pond fills the bottom across the whole width and reflects the reeds and trees. ONE patch of the reflection just below the end of the jetty is WRONG: it shows a rusty blue-green riveted girder structure that does not exist above the water. On the right, reeds and a low mossy stone wall close the scene. Along the very bottom edge, a few dark out-of-focus reed silhouettes in the foreground. Remove the two figures of the first image: NO people, NO animals, NO plush toy, nothing standing on the jetty.",
+      "review": "🟡 Drawn 24 Oct, waiting for Alexander's Design review. The figures of the concept are removed; the bench and the wrong reflection were painted in afterwards with masked edits that change only their own rectangles.",
+      "edits": [
+        "bench: masked edit of (190, 392)–(320, 446) – an empty wooden park bench on the path",
+        "wrong reflection: masked edit of (1080, 505)–(1330, 610) – the water mirrors a rusty girder with a ladder that isn't there"
+      ]
+    }
+  ]
+}
