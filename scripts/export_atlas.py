@@ -90,18 +90,17 @@ def bands(image: Image.Image) -> list[tuple[int, int]]:
 def frames_in(image: Image.Image, top: int, ground: int, expected: int, even: bool = False) -> tuple[list, str]:
     """Frames of one row as per-row (x0, x1) bounds, and why that failed ("" if it didn't).
     Column runs first; seams when there are fewer runs than expected frames. `even` rows (a body
-    breaking into dust) are cut into equal cells over the whole row, specks included."""
+    breaking into dust) keep their specks and are cut along seams without the weight check."""
     band = solid(image.getchannel("A").crop((0, top, image.width, ground)))
     w, h = band.size
     data = band.tobytes()
     per_column = [sum(1 for y in range(h) if data[y * w + x]) for x in range(w)]
     if even:
         filled = [x for x, n in enumerate(per_column) if n]
-        edges = [round(filled[0] + (filled[-1] + 1 - filled[0]) * k / expected) for k in range(expected + 1)]
-        cells = [[(a, b)] * h for a, b in zip(edges, edges[1:])]
-        empty = [a for a, b in zip(edges, edges[1:]) if not any(per_column[a:b])]
-        return cells, (f"{expected} frames, the config expects {expected}: the cell at x = {empty[0]} is empty"
-                       if empty else "")
+        split = seam_cells(data, w, h, filled[0], filled[-1] + 1, expected, strict=False)
+        if isinstance(split, list):
+            return split, ""
+        return [[(filled[0], filled[-1] + 1)] * h], f"{expected} frames, the config expects {expected}: {split}"
     found = runs(per_column, GAP)
     heaviest = max((m for _, _, m in found), default=0)
     kept = [(left, right) for left, right, mass in found if mass >= heaviest * SPECK]
@@ -115,7 +114,8 @@ def frames_in(image: Image.Image, top: int, ground: int, expected: int, even: bo
     return (split, "") if isinstance(split, list) else (cells, f"{found}: {split}")
 
 
-def seam_cells(data: bytes, w: int, h: int, left: int, right: int, count: int) -> list[list[tuple[int, int]]] | str:
+def seam_cells(data: bytes, w: int, h: int, left: int, right: int, count: int,
+               strict: bool = True) -> list[list[tuple[int, int]]] | str:
     """Split columns left..right into `count` cells along cheap winding seams; per-row (x0, x1) bounds,
     or the reason it can't be done."""
     pitch = (right - left) / count
@@ -145,14 +145,16 @@ def seam_cells(data: bytes, w: int, h: int, left: int, right: int, count: int) -
             path.append(i)
         seam = [lo + i for i in reversed(path)]
         crossed = sum(1 for y, x in enumerate(seam) if data[y * w + x])
-        if crossed > CROSS * h:
+        if strict and crossed > CROSS * h:
             return f"no clean cut near x = {round(centre)} (it would cross {crossed} px of sprite)"
         cuts.append(seam)
-    edges = [[left - 1] * h, *cuts, [right] * h]
+    edges = [[left - 1] * h, *cuts, [right - 1] * h]  # right is exclusive
     cells = [[(a[y] + 1, b[y] + 1) for y in range(h)] for a, b in zip(edges, edges[1:])]
     masses = [sum(1 for y, (x0, x1) in enumerate(c) for x in range(x0, x1) if data[y * w + x]) for c in cells]
     middle = sorted(masses)[len(masses) // 2]
-    if min(masses) < middle / 2:
+    if not min(masses):
+        return f"the cell at x = {cells[masses.index(0)][0][0]} is empty"
+    if strict and min(masses) < middle / 2:
         return f"the cell at x = {cells[masses.index(min(masses))][0][0]} is too light to be a figure"
     return cells
 
