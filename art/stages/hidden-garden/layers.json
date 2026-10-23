@@ -1,5 +1,5 @@
 {
-  "note": "Rules run in order; the last rule that claims a pixel wins. Everything above the path stays one rear layer (scroll 1.0): rectangles would tear the big tree from its trunk at another scroll speed, so sky/far/mid parallax waits for hand-drawn masks.",
+  "note": "Rules run in order; the last rule that claims a pixel wins. Sky, far and mid come from masks of the model's depth key (scripts/depth_layers.py, #142); the exact rectangles and colours for water, path and foreground follow and win.",
   "chunks": {
     "hg-0-0": {
       "states": {
@@ -7,6 +7,18 @@
       },
       "default": "03-rear",
       "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/hg-0-0.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/hg-0-0.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/hg-0-0.02-mid.png"
+        },
         {
           "layer": "04-water",
           "rect": [

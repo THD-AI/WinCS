@@ -41,6 +41,24 @@ What Codex's runs proved on Rusty Creek, generalised:
 6. **Transition chunks** join different spaces – surface to underground, outside to the Mensa inside. They are generated with *both* neighbours as context and blend the two layer stacks over their height.
 7. **Clean and anomaly share everything they can.** The anomaly state replaces only the layers that change (on Rusty Creek, only the structure layers). Masters are rebuilt from the plates and verified pixel-exact (`creek_layers.py`).
 
+## Parallax layers from a depth key
+
+Painted chunks are one picture. To give them depth without hand masks or redrawing each layer (which drifts), the model repaints the finished chunk as a **depth key**: the same shapes, one flat colour per depth band. The masks come from that key, and a second pass paints what each slow layer has behind the faster ones ([#142](https://github.com/THD-AI/WinCS/issues/142), first used on the Hidden Garden).
+
+```mermaid
+flowchart LR
+  A["Composed chunk<br/>images/&lt;chunk&gt;.png"] --> K["depth_layers.py key<br/>sunburst repaints it:<br/>sky cyan · far blue · mid green<br/>rear yellow · play red<br/>water navy · foreground magenta"]
+  K --> M["depth_layers.py masks<br/>snap to the 7 colours · vote specks away<br/>sky edge decided by the real pixel<br/>→ masks/&lt;chunk&gt;.00-sky / 01-far / 02-mid"]
+  M --> S["split_layers.py<br/>masks first, then the exact rules<br/>for path, water, foreground<br/>every pixel in one layer"]
+  S --> F["depth_layers.py fill<br/>mask = nearer layers below the skyline<br/>the model paints only that layer<br/>→ layers/&lt;chunk&gt;.0x.filled.png"]
+  F --> E["export.json · scroll 0.1 / 0.25 / 0.6 / 1.0 / 1.2"]
+  E --> V["export_stage.py --verify (exact at rest)<br/>compare.py parallax (three camera positions)"]
+```
+
+- **The key only says which band, never which pixel.** It drifts a few pixels at fine edges, so near the sky the real pixel decides: open sky is ≈ (40–60, 120–140, 240) and hazy far treetops ≈ (80, 120, 180), so "sky" means blue above 200. Path, water and foreground keep their exact rectangles and colour rules, which run after the masks and win.
+- **Fills never change the picture at rest.** A fill is kept only under the nearer layers, and the layer's own pixels are copied from the art, so `--verify` still rebuilds the chunk exactly. The camera only ever reveals painted scenery.
+- **Several chunks:** a plate at scroll *s* belongs at `chunk.x × 2160 × s`; lane B's loader places it at `chunk.x × 2160` today (commented on [#116](https://github.com/THD-AI/WinCS/pull/116)).
+
 ## Prompting lessons (23 Oct, all runs)
 
 | What we tried | What happened | Rule now |
