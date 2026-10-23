@@ -1,6 +1,8 @@
 # Repeatable stage art · extend, repair, extract, verify
 
-[← Visual workflow](../design/layered-stage-workflow.md) · [Current maze / seam study](../../references/production/seam-pipeline/README.md) · [Coordinate contract](layered-stage-contract.md)
+**Current application:** [integrated creek mutation](../../references/production/campus-mutation/README.md), [configuration](../../references/production/campus-mutation/stage.json), [packet/source snapshot](../../references/production/campus-mutation/media-sources.json) and [report](../../references/production/campus-mutation/verification.json). The same tool repairs both joins in the combined full-scene painting. Seven center depth trials illustrate extraction only; they are not falsely configured as complete three-chunk layers. Each must gain aligned left/right plates before it can use the identical per-layer seam process. The viewer's brief row-cut/stretch reveal changes presentation, not collision. Fix registration and alpha before treating those plates as production masks.
+
+[← Visual workflow](../design/layered-stage-workflow.md) · [Earlier separate maze / seam study](../../references/production/seam-pipeline/README.md) · [Coordinate contract](layered-stage-contract.md)
 
 ![Substantial branching maze restored from the preferred reference](../../references/production/seam-pipeline/images/maze-center.png)
 

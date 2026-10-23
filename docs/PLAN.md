@@ -1,5 +1,7 @@
 # Plan and progress
 
+**Current review handoff, 23 October:** [combined creek → substantial maze study](../references/production/campus-mutation/README.md), with photo comparison, three newly integrated banners, two bounded seam repairs and seven center extraction trials in [one viewer](../references/production/campus-mutation/viewer.html). Zero outside-band changes passed offline. Registration/alpha, artistic seams and routes remain open. PR #15 continues above #13; both remote links and local tracking were verified with `gh stack`. No new branch, issue, board or watcher was introduced.
+
 [← Previous](decisions/README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](github-workspace.md)
 
 Research date: 21 October 2026. This is pre-jam preparation, not permission to build competition content before the rules allow it.

@@ -1,6 +1,8 @@
 # Rusty Crossings · substantial maze and real layer repairs
 
-[Open the current viewer](viewer.html) · [Exact pipeline / commands](../../../docs/technical/stage-art-pipeline.md) · [Campus collage](../../campus/crossings.md#location-photo-board) · [Stage library](../README.md)
+**Follow-up:** [the recognizable creek and substantial maze are now combined](../campus-mutation/README.md), with [one photo/stage/layer viewer](../campus-mutation/viewer.html). This page preserves the earlier separate-source seam demonstration.
+
+[Open this earlier study's viewer](viewer.html) · [Exact pipeline / commands](../../../docs/technical/stage-art-pipeline.md) · [Campus collage](../../campus/crossings.md#location-photo-board) · [Stage library](../README.md)
 
 ![Preferred substantial maze direction restored in the center plate](images/maze-center.png)
 

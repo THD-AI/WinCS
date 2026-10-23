@@ -1,5 +1,9 @@
 # A campus that has clearly failed its sanity check
 
+[![The recognizable creek transformed into substantial riveted maze](../../references/production/campus-mutation/images/after-center.png)](../../references/production/campus-mutation/viewer.html)
+
+**Latest visual direction, 23 October:** [one combined study](../../references/production/campus-mutation/README.md) carries the original creek identity into the substantial branching maze. Its viewer compares the photo board, clean/mutated stages, three-banner joins and seven center depth roles. A short image-cut/stretch transition demonstrates visual corruption; no player displacement or collision change is implemented. These are review candidates, not a finalized level or passed decomposition.
+
 [← Ten-recording direction](../brief/voice-notes.md) · [Location boards](../../references/campus/README.md) · [Scene-first workflow →](../design/layered-stage-workflow.md)
 
 ![Flat side-scroller location banner inspired by the Crossing collage](../../references/production/crossings-strip/images/02-center-clean.png)

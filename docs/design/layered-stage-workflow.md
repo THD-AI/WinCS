@@ -1,5 +1,7 @@
 # A long side-scrolling scene · built in staggered passes
 
+**Current combined result:** [the creek becomes the maze](../../references/production/campus-mutation/README.md). The [unified viewer](../../references/production/campus-mutation/viewer.html) connects photo identity, clean and mutated three-banner strips, actual bounded join repairs and seven center depth trials. It supersedes the prior separation into unrelated maze/location studies. Layer extraction remains diagnostic; fix registration/alpha before extending it to the wings or animating it.
+
 [← Proposal](../proposal/campus-game.md) · [Visual sequence](../../references/production/crossings-strip/README.md) · [Coordinate contract →](../technical/layered-stage-contract.md)
 
 ![Flat side-elevation creek banner](../../references/production/crossings-strip/images/02-center-clean.png)

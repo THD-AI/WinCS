@@ -1,5 +1,7 @@
 # Rusty Crossings · a maze of rusted bars
 
+**[Current combined stage study](../production/campus-mutation/README.md)** · **[Photo → clean creek → maze viewer](../production/campus-mutation/viewer.html)**. The original board below supplies recognizable materials and landmarks; the stage translates them into a flat side elevation with substantial branching girders and tall shafts.
+
 <!-- reference-navigation:start -->
 [← Previous: Lost in the Green](lost-in-the-green.md) · [Campus index](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
 

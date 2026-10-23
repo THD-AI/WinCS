@@ -16,6 +16,8 @@
 
 ## Research and design
 
+- Current combined Rusty Crossings candidate: references/production/campus-mutation/README.md and viewer.html. Retain recognizable creek materials/landmarks while transforming the scene into the substantial riveted maze. The unified viewer compares original collage, clean/mutated three-banner strips, actual bounded join repairs and seven center depth trials. Its brief glitch reveal is presentation only. Center mask registration/fringes and route connectivity remain unapproved; do not imply seven complete three-chunk layers or runtime reflections. gh stack local tracking and the remote #13 → #15 stack were verified; continue #15 for this scope, with no new branch or issue.
+
 - Favor playful experiments, puns, affectionate references and jokes expressed through player actions. Preserve existing proposals as options; small scope does not require a solemn game. Read docs/design/play-and-puns.md.
 - Write for people first: show a relevant credited image near the top, give a short observation or question, then place deeper research below. Keep Previous / Library / Next links at both ends of every game study and gallery. Use standard relative Markdown links/images for GitHub, Obsidian and Logseq.
 

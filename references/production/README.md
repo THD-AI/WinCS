@@ -2,9 +2,11 @@
 
 [📍 Campus location boards](../campus/README.md) · [🎮 Game studies](../README.md) · [Current proposal](../../docs/proposal/campus-game.md)
 
-[![Current substantial maze direction](seam-pipeline/images/maze-center.png)](seam-pipeline/README.md)
+[![The creek becomes a substantial maze](campus-mutation/images/after-center.png)](campus-mutation/README.md)
 
-**[Current: substantial maze, actual layer repairs and reproducible pipeline →](seam-pipeline/README.md)** · [Exact commands / API route](../../docs/technical/stage-art-pipeline.md). This restores the preferred thick-girder/shaft design and repairs real join canvases. The earlier thin traversal pass below remains a comparison.
+**[Start here: combined location → maze viewer](campus-mutation/viewer.html).** Photo comparison, clean/mutated three-banner panning, two actual join repairs and seven center depth trials now share one interface. [Images, prompts and limits](campus-mutation/README.md). Earlier studies below retain the steps that led here.
+
+**[Earlier separate maze / location seam demonstration →](seam-pipeline/README.md)** · [Exact commands / API route](../../docs/technical/stage-art-pipeline.md). This restored the thick-girder/shaft direction and demonstrated bounded repairs before the combined scene above. The thin traversal pass below remains a comparison.
 
 [![Flat side-elevation creek banner](crossings-strip/images/02-center-clean.png)](crossings-strip/README.md)
 

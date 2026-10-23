@@ -1,0 +1,26 @@
+{
+  "panel_size": [
+    2160,
+    720
+  ],
+  "model": "gpt-image-2.5-sunburst",
+  "normalize_inputs": true,
+  "chunks": [
+    "left",
+    "center",
+    "right"
+  ],
+  "layers": [
+    {
+      "id": "mutation",
+      "role": "integrated creek location transformed into substantial riveted traversal maze",
+      "transparent": false,
+      "repair_direction": "Join the substantial blue-green girder platforms and tall shafts while retaining autumn tree line, near grey rails, rocky bank and creek waterline. No thin pipe substitution. Keep flat side elevation.",
+      "panels": {
+        "left": "references/production/campus-mutation/images/after-left.png",
+        "center": "references/production/campus-mutation/images/after-center.png",
+        "right": "references/production/campus-mutation/images/after-right.png"
+      }
+    }
+  ]
+}
