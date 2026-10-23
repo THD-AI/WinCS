@@ -57,6 +57,23 @@ export class Audio extends Phaser.Scene {
       gameEvents.on('region-turned', ({ region, state }) => { this.loopState = state; this.setLoop(regionLoop(region)); }),
     ];
     this.input.keyboard?.on('keydown-M', () => manager.setMute(!manager.mute));
+    // Dev builds: F6 steps through the loops, F7 through the effects – for listening with headphones (#71).
+    if (import.meta.env.DEV) {
+      const effects = Object.keys(RECIPES) as SoundId[];
+      const loops: (LoopId | null)[] = [...(Object.keys(LOOPS) as LoopId[]), null];
+      let effect = 0;
+      let loop = 0;
+      this.input.keyboard?.on('keydown-F7', () => {
+        const id = effects[effect++ % effects.length];
+        console.info(`[sound] ${id}`);
+        this.play(id);
+      });
+      this.input.keyboard?.on('keydown-F6', () => {
+        const id = loops[loop++ % loops.length];
+        console.info(`[sound] loop ${id ?? 'off'}`);
+        this.setLoop(id);
+      });
+    }
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       offs.forEach((off) => off());
       this.setLoop(null);
