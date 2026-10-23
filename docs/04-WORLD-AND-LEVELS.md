@@ -55,7 +55,7 @@ Every chunk is a stack of registered layers, all the same size and position, dra
 | 8 | Particles | – | Falling leaves, dust, sparks – spawned by the game, not painted |
 | 9 | Anomaly FX | – | Cuts, stretches, 404 voids applied over the frame by a shader |
 
-The anomaly state replaces only the layers that change (usually 3 and 5, sometimes 2) and keeps the rest pixel-identical.
+The anomaly state replaces only the layers that change (usually 3 and 5, sometimes 2) and keeps the rest pixel-identical. `scripts/split_layers.py` cuts a composed chunk into these layers from ordered mask rules in the region's `layers.json` (rectangles, polygons, colours, another image's alpha). Every pixel goes to exactly one layer, so the stack rebuilds the art exactly; a layer that is identical in both states is stored once. Rusty Creek keeps its own `creek_layers.py`, because its plates are soft and overlap.
 
 ## Scale – the numbers everything follows
 

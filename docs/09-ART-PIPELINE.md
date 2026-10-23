@@ -86,6 +86,7 @@ python scripts/make_boards.py crush [ids] [--config …]            # rebuild co
 python scripts/make_boards.py pages [--config …]                  # Markdown page per image + index
 python scripts/creek_layers.py [--build]                          # Rusty Creek layers: verify / rebuild
 python scripts/stage_art.py prepare --config art/stages/rusty-creek/stage.json --out tmp/stage-art/next --band 512
+python scripts/split_layers.py art/stages/<region> [--check]      # composed chunk -> z0–z7 layers, exact
 python scripts/navigation.py && python scripts/check_docs.py
 ```
 
