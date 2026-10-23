@@ -1,0 +1,22 @@
+{
+ "guard-up": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "guard-hold": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ },
+ "guard-impact": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "guard-break": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ }
+}
