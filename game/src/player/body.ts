@@ -1,4 +1,5 @@
 import type { Box, Geometry } from '../stage/collision';
+import { GRAVITY } from './jump';
 export const BODY_WIDTH = 28;
 export const BODY_HEIGHT = 76;
 export interface Body { x: number; y: number; vx: number; vy: number; grounded: boolean }
@@ -19,7 +20,7 @@ export function stepBody(body: Body, geometry: Geometry[], dt: number) {
       body.x = wall.x + wall.w + 14; body.vx = 0;
     }
   }
-  body.vy = Math.min(900, body.vy + 1200 * dt);
+  body.vy = Math.min(900, body.vy + GRAVITY * dt);
   let nextY = body.y + body.vy * dt;
   body.grounded = false;
   for (const world of geometry) {
