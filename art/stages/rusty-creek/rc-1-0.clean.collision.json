@@ -1,0 +1,47 @@
+{
+ "chunk": "rc-1-0",
+ "state": "clean",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    132
+   ],
+   [
+    2160,
+    132
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 600,
+   "w": 2160,
+   "h": 120
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "jenny-ram",
+   "kind": "jenny-ram",
+   "x": 1080,
+   "y": 40,
+   "w": 40,
+   "h": 92,
+   "note": "Jenny crosses the bridge and rams the hero; the region turns (M4-S1 #54)"
+  }
+ ],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": []
+}

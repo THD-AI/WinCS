@@ -1,0 +1,17 @@
+{
+ "look-around": {
+  "frames": 4,
+  "fps": 6,
+  "loop": false
+ },
+ "check-tablet": {
+  "frames": 4,
+  "fps": 6,
+  "loop": false
+ },
+ "check-wounds": {
+  "frames": 4,
+  "fps": 6,
+  "loop": false
+ }
+}

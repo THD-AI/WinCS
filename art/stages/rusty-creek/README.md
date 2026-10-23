@@ -34,6 +34,21 @@ The same place before the anomaly (clean campus architecture, nature layers iden
 
 [route.json](route.json) is the authored route: 47 nodes and 47 edges (walk, ladder, jump) covering the entry, the climbs, three dead ends with rewards, a reconnection, the boss clearing and the exit. The verifier checks that it is connected, that every dead end returns, that ladders are vertical and that jumps fit the envelope. The collision data that the game uses is drawn separately: see the colour code in [04](../../../docs/04-WORLD-AND-LEVELS.md).
 
+## Collision
+
+Six files, one per chunk and state, in the [docs/13 schema](../../../docs/13-PRODUCTION-PIPELINE.md#contract-collisionjson). [chunks.json](chunks.json) maps the ids to the art: `rc-0-0` left, `rc-1-0` centre, `rc-2-0` right.
+
+- **Clean:** the bridge deck at y 132 across all three chunks, the water below as no-go, the player on the left. Jenny's ram is the `jenny-ram` trigger in the centre ([M4-S1](https://github.com/THD-AI/WinCS/issues/54)).
+- **Anomaly:** the hero walks in front of the maze, so every girder deck is a one-way platform and the quays are floors. The first chunk has the chair on the entry deck, the tutorial rover on the low deck, and a pillar down to the water that needs a ladder up: the spur ladder onto the low girder or the tall ladder onto the high beam. The lookout tower holds a muffin and note 1. In the centre, a high route (crab, Leberkäse cache) and a low route (two rovers under a drone) meet again at the coffee machine and Dexter. On the right, the top route and the low route both end at the boss gate before the open girder floor. Jenny and Dexter wait there, the overlook holds note 2, and the exit anomaly is behind the stone steps.
+
+| Chunk | Clean | Anomaly |
+| --- | --- | --- |
+| Left | ![](collision/rc-0-0.clean.png) | ![](collision/rc-0-0.anomaly.png) |
+| Centre | ![](collision/rc-1-0.clean.png) | ![](collision/rc-1-0.anomaly.png) |
+| Right | ![](collision/rc-2-0.clean.png) | ![](collision/rc-2-0.anomaly.png) |
+
+`python scripts/collision_check.py --overlay` checks them all and redraws these overlays. Colours are the [docs/04 legend](../../../docs/04-WORLD-AND-LEVELS.md#collision-and-interaction-annotation); the white box is the 28×76 body.
+
 ## Rebuild and verify
 
 ```bash

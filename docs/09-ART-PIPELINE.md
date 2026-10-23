@@ -27,7 +27,7 @@ reference games (references/)─┘                                          ▲
 | 6 | **Layers** – split the composed chunk into the registered layer stack ([04](04-WORLD-AND-LEVELS.md)) | `art/stages/<region>/images/` | `creek_layers.py`-style script per region |
 | 7 | **Annotation** – walkable lines, slides, ledges, climb zones, solids, hazards, interactables, spawns | `<chunk>.<state>.collision.json` | by hand in Tiled (Lex), then `collision_from_tiled.py` |
 | 8 | **Sprites** – boards per character/enemy/item, drawn with the hero sheet and the style master | `art/sprites/` | `make_boards.py` |
-| 9 | **Export** – atlases and plates the game loads | `game/public/assets/` | `export_atlas.py` (with the game scaffold) |
+| 9 | **Export** – atlases and plates the game loads | `game/public/assets/` | `export_atlas.py` |
 
 ## Growing a stage in four directions
 
@@ -63,6 +63,17 @@ What Codex's runs proved on Rusty Creek, generalised:
 
 `art/sprites/boards.json`: the hero sheet (locked) comes first, the pose or object photos follow, and the style master goes last. The model draws on a flat magenta key. `crush` keys the magenta at full size, downscales ×2 with premultiplied alpha (so no purple fringes), quantises to 96 colours, and writes a transparent 1× PNG plus a readable preview. Chair photos are split into **block**, **overhead/up-down** and **side** sequences by file name. Every board stays "to do" until the direction is approved; see [07](07-ASSET-MANIFEST.md).
 
+Every animation board gets an `atlas` entry when it is drawn, because the review preview is cut with it. Export into the game only once its Design review is **Approved**. `rows` lists the board's rows of sprites from top to bottom: the animations in each row, left to right, with their frame counts from [07](07-ASSET-MANIFEST.md), or `"skip"` for a row that isn't exported (close-ups, scale lineups). `height` is the game height in pixels of the tallest frame of the first animation; the hero's is 76, in an 80 px frame. When the first animation has no standing pose (a jump), `"ref": "jump-08"` names the frame that is 76 px instead. An animation may continue at the start of the next row (death 6 + 6: list it again with the rest of its frames). `"even": true` keeps a row's specks and cuts it along seams without the weight check, for frames that break into dust. `"float": true` on an animation drawn in the air (jump, fall) puts each frame's lowest pixel on the baseline, because the game already lifts the body. `fps` defaults to 12 and `loop` to true. A sheet holds at most about 30 frames in four rows; the model miscounts bigger sheets, so split them (`hero-move`, `hero-run`, `hero-idle`). Open every brief with the magenta background and the no-text rule: put later in the brief, the model sometimes draws on paper with captions.
+
+```json
+"atlas": {"height": 76, "rows": [
+  [{"anim": "idle", "frames": 6}],
+  [{"anim": "walk", "frames": 8}, {"anim": "idle-walk", "frames": 2, "loop": false}],
+  "skip"]}
+```
+
+`export_atlas.py` cuts each row into frames at the empty columns, or along winding seams where neighbours overlap (a foot under the next poncho). It **stops** if a row has more or fewer figures than its config lists, so a model that drew 7 walk frames instead of 8 is caught before the game sees it. It scales the whole board by one factor, puts every frame's feet on the bottom row of its cell (frames drawn in the air keep that height unless the animation floats), centres the pivot under the torso so walk and run cycles don't slide, and writes the atlas, its JSON and `<board>.anims.json` into `game/public/assets/sprites/` ([13 – contracts](13-PRODUCTION-PIPELINE.md#5--the-other-hand-over-contracts)). `--preview` adds a looping GIF per animation, at twice game size, to `art/sprites/previews/` for the review page; before approval, export with `--out tmp/atlas` so only the previews are kept.
+
 ## Smooth, not rubbery
 
 The team's open question in A14: how do generated frames move without looking like rubber hose animation? The rubber look comes from in-betweens that morph one pose into the next. We avoid them like this:
@@ -84,7 +95,9 @@ The region crossing uses only sprites the hero already needs (hit, knockback) pl
 python scripts/make_boards.py draw  [ids] [--redo] [--config …]   # generate (skips existing raws)
 python scripts/make_boards.py crush [ids] [--config …]            # rebuild committed images offline
 python scripts/make_boards.py pages [--config …]                  # Markdown page per image + index
+python scripts/export_atlas.py <ids> [--preview]                  # approved board -> Phaser atlas + anims
 python scripts/creek_layers.py [--build]                          # Rusty Creek layers: verify / rebuild
+python scripts/collision_check.py [--overlay]                     # collision: schema, reach, overlays
 python scripts/stage_art.py prepare --config art/stages/rusty-creek/stage.json --out tmp/stage-art/next --band 512
 python scripts/navigation.py && python scripts/check_docs.py
 ```
