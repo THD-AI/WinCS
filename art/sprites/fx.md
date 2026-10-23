@@ -1,7 +1,7 @@
 # FX · black fluid
 
 <!-- nav:start -->
-[← Enemy · crab](enemy-crab.md) · [Sprite boards](README.md) · **14 / 14** · [Sprite boards →](README.md)
+[← Enemy · crab](enemy-crab.md) · [Sprite boards](README.md) · **14 / 18** · [Boss · Jenny, attacks →](boss-jenny.md)
 <!-- nav:end -->
 
 ![FX · black fluid](images/fx-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx.png` · rebuild: `python scripts/make_boards.py draw fx --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Enemy · crab](enemy-crab.md) · [Sprite boards](README.md) · **14 / 14** · [Sprite boards →](README.md)
+[← Enemy · crab](enemy-crab.md) · [Sprite boards](README.md) · **14 / 18** · [Boss · Jenny, attacks →](boss-jenny.md)
 <!-- nav:end -->
