@@ -49,6 +49,11 @@ describe('stage manifest', () => {
 });
 
 describe('asset loading', () => {
+  it('loads an intentional pending-art placeholder without requesting a missing real board', async () => {
+    const h = harness('/sprites/');
+    expect(await new Assets(h.scene, true, h.request).placeholder('coffee-placeholder')).toEqual(clips);
+    expect(h.loadAtlas).toHaveBeenCalledWith('coffee-placeholder', '/assets/placeholder/hero.png', atlas);
+  });
   it('does not bind the native browser fetch receiver to the asset loader', async () => {
     const h = harness();
     vi.stubGlobal('fetch', function(this: unknown, ...args: Parameters<typeof fetch>) {

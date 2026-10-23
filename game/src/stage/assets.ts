@@ -91,4 +91,11 @@ export class Assets {
       return this.atlas(board, `/assets/placeholder/${fallback}`);
     }
   }
+
+  /** Intentional pending-art placeholder; never request an unexported board. */
+  async placeholder(key: string): Promise<AnimationTable> {
+    if (!/^[a-z][a-z0-9-]*$/.test(key)) throw new Error('Invalid placeholder id');
+    if (this.scene.textures.exists(key)) return this.scene.cache.json.get(`${key}.anims`);
+    return this.atlas(key, '/assets/placeholder/hero');
+  }
 }

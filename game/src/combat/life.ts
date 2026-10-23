@@ -52,7 +52,7 @@ export class Life {
   }
   save(position: Position) {
     if (this.dead > 0) return false;
-    this.checkpoint = { ...position }; this.safe = { ...position }; this.health = MAX_HEALTH;
+    this.checkpoint = { x: position.x, y: position.y }; this.safe = { ...this.checkpoint }; this.health = MAX_HEALTH;
     return true;
   }
   register(id: string, reset: () => void, boss = false) {

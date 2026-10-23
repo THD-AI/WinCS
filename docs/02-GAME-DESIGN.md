@@ -57,6 +57,36 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 - **Healing:** Mensa food that **Dexter leaves on your path**. Each item heals a set amount, and some add a small extra: muffin 1 cell, cake slice 1, wafer 1, Leberkäse roll 2 + a short defence boost (it's heavy food). Drinks give small boosts (sparkling water: a short speed-up). Numbers and joke effects get tuned in playtests. Drinking coffee at a save point refills everything.
 - **Pits and hazards** (creek current, toxic sap): lose 1 cell and reappear at the last safe ground. No full death.
 
+### Coffee save implementation (#43)
+
+Use the authored `interact` box with `kind: coffee-machine`, translated by
+the chunk grid. Rusty Creek's `coffee-1` occupies local (1770, 457),
+40 × 80 px in `rc-1-0.anomaly`; its bottom sits on the y=537 walk line.
+The placeholder uses that exact box through the existing atlas contract.
+`mensa-drinks` remains pending in [07](07-ASSET-MANIFEST.md); its named
+idle/flicker/pour clips will replace the placeholder when lane A exports it.
+Until then, flicker dims the rectangle for one 12 fps frame every two
+seconds (placeholder timing). The hero uses the approved three-frame
+`hero-hurt:interact` clip at its authored 12 fps, a quarter-second drink.
+Its leaning poses measure 72 px high in the approved atlas; preserve their
+native size against the 76 px standing body in the comparison.
+
+```mermaid
+flowchart LR
+  DATA["Collision interact box + chunk origin<br/>hero-hurt interact atlas/table"] --> MASK["Grounded living hero overlaps machine<br/>no damage knockback or ladder"]
+  UP["New Up / W / pad Up edge<br/>held input never repeats"] --> MASK
+  MASK --> DRINK["Stop movement; play 3 interact poses<br/>ignore attacks and climbing during drink"]
+  DRINK --> SAVE["Refill all 5 cells<br/>copy current feet into life checkpoint<br/>emit unchanged save payload once"]
+  SAVE --> DEATH["On later death: return to checkpoint<br/>full health, normal enemies reset"]
+  DATA --> IDLE["40 × 80 atlas placeholder at authored box<br/>one-frame idle flicker"]
+  IDLE --> PROOF["compare.py ruler + real-box tests<br/>browser drink, die, respawn"]
+```
+
+This checkpoint lasts for the running game, as does the existing life state.
+Disk persistence is outside this issue's acceptance criteria. A development
+`coffee-test` URL starts at the real machine's foot position to check the
+interaction without moving or duplicating its collision annotation.
+
 ## Combat
 
 Every weapon is a real object we photographed and posed with on 23 Oct.

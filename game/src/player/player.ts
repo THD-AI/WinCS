@@ -8,6 +8,8 @@ import { catalogue, LocomotionAnimation, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
 import { deathDust, lifePose, paintLife } from '../combat/life-visuals';
+import type { Position } from '../core/events';
+import { Interaction } from './interaction';
 
 export class Player {
   readonly body: Body;
@@ -24,11 +26,12 @@ export class Player {
   private air;
   private traversal = traversal();
   private animation: LocomotionAnimation;
-  get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0; }
+  private interaction = new Interaction();
+  get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active; }
   get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
-    private region = 'rusty-creek', bosses = new Set<string>()) {
-    this.spawn = chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
+    private region = 'rusty-creek', bosses = new Set<string>(), spawnOverride?: Position) {
+    this.spawn = spawnOverride ?? chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
     this.body = { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true };
     this.life = new Life(this.body, bosses);
     this.air = jumpState(this.body.y);
@@ -58,6 +61,7 @@ export class Player {
   }
   damage(amount: number, sourceX: number) {
     if (!this.life.hit(amount, this.body.x >= sourceX ? 1 : -1)) return false;
+    this.interaction.cancel();
     const position = { x: this.body.x, y: this.body.y };
     gameEvents.emit('player-hit', { health: this.life.health, damage: amount, position });
     if (this.life.dead > 0) {
@@ -74,6 +78,13 @@ export class Player {
     this.onHealthChanged(this.life.health);
     gameEvents.emit('save', { checkpoint: id, region: this.region, position: { x: this.body.x, y: this.body.y } });
   }
+  beginInteraction() {
+    if (!this.canAttack || !this.body.grounded) return false;
+    const clip = this.scene.cache.json.get('hero-hurt.anims').interact;
+    this.interaction.begin(clip);
+    this.motion = { ...movement(), facing: this.motion.facing }; this.body.vx = 0; this.body.vy = 0;
+    return true;
+  }
   private resetPosition(position: { x: number; y: number }) {
     Object.assign(this.body, position, { vx: 0, vy: 0, grounded: true, sliding: false, slope: 0 });
     this.motion = movement(); this.air = jumpState(this.body.y); this.traversal = traversal();
@@ -84,10 +95,12 @@ export class Player {
   }
   update(milliseconds: number) {
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const axis = horizontal(this.keys.A.isDown || this.keys.LEFT.isDown, this.keys.D.isDown || this.keys.RIGHT.isDown,
+    const interacting = this.interaction.active;
+    const interactionPose = this.interaction.step(milliseconds / 1000);
+    const axis = interacting ? 0 : horizontal(this.keys.A.isDown || this.keys.LEFT.isDown, this.keys.D.isDown || this.keys.RIGHT.isDown,
       pad?.leftStick.x, pad?.left, pad?.right);
-    const jumpDown = this.keys.SPACE.isDown || this.keys.K.isDown || !!pad?.A;
-    const vertical = horizontal(this.keys.W.isDown || this.keys.UP.isDown, this.keys.S.isDown || this.keys.DOWN.isDown,
+    const jumpDown = !interacting && (this.keys.SPACE.isDown || this.keys.K.isDown || !!pad?.A);
+    const vertical = interacting ? 0 : horizontal(this.keys.W.isDown || this.keys.UP.isDown, this.keys.S.isDown || this.keys.DOWN.isDown,
       pad?.leftStick.y, pad?.up, pad?.down);
     const geometry = this.chunks.map(c => c.world);
     // Substeps keep wall and floor contacts stable during slow rendered frames.
@@ -136,7 +149,7 @@ export class Player {
       : !this.body.grounded ? this.body.vy < 0 ? 'jump' : 'fall'
       : Math.abs(this.body.vx) > 180 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
     const locomotion = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000);
-    const pose = lifePose(this.life) ?? locomotion;
+    const pose = lifePose(this.life) ?? interactionPose ?? locomotion;
     if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');
     this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y)).setFlipX(this.motion.facing < 0);
