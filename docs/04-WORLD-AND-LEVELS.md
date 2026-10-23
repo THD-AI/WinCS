@@ -66,6 +66,7 @@ The anomaly state replaces only the layers that change (usually 3 and 5, sometim
 | 1 ft | 0.30 m | ≈ 13 px |
 | Dexter (plush) | 1.5 ft | 20 px |
 | Dexter (final, the mascot) | 8.5 ft | 113 px |
+| Jenny (boss car) | ≈ 6.3 m drawn, as in the approved direction (Alexander, 24 Oct) | **≈ 270 px long**, body ≈ 95 px; rear wing and beacon above |
 | Chair seat height | 0.45 m | 20 px |
 | Jump (tap / hold) | 1.2 m / 2.2 m | 52 px / 96 px |
 | Ledge reach (grab height above feet) | 2.4 m | 105 px |
