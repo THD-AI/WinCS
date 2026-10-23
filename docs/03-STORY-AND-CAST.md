@@ -61,6 +61,27 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 5. The boss clearing: **Jenny** again, now for real (see [enemies](05-ENEMIES-AND-BOSSES.md)).
 6. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller, and he hops off ahead of you. The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
 
+### The ending sequence ([#58](https://github.com/THD-AI/WinCS/issues/58))
+
+One overlay scene, `Ending` (`game/src/story/`), runs it after lane B emits `boss-defeated` for Jenny. It reads Jenny's position from the event and draws over the frozen stage; nothing in it is a cinematic – Dexter's frames come from the approved `dexter` and `dexter-acts` atlases, the fluid from `fx`, the window from the THD.exe crossing.
+
+```mermaid
+flowchart LR
+  E["boss-defeated<br/>(Jenny, position)"] --> L["leak<br/>fx black-fluid pool<br/>under Jenny"]
+  L --> A["appear<br/>Dexter hops in<br/>beside the pool, 20 px"]
+  A --> B["absorb<br/>dexter-acts absorb ×4,<br/>pool shrinks, fluid-absorb sound"]
+  B --> G["grow<br/>20 → 43 px,<br/>one creepy frame"]
+  G --> H["leave<br/>hops off ahead,<br/>off screen"]
+  H --> X["glitch<br/>the frame tears"]
+  X --> D["dialog<br/>THD.exe – To be continued.<br/>[OK]"]
+  D --> C["credits<br/>(credits.ts)"]
+  C --> T["title"]
+```
+
+**Sizes, measured from [04 – Scale](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows):** Dexter is the 20 px plush when he hops in. He reaches 113 px (8.5 ft) as the final boss of region 5, after absorbing the bosses of regions 1–4, so each absorb adds a quarter of the 93 px: after Jenny he is **43 px (≈ 3.3 ft)**, about half the hero's 76 px body. The pool is drawn at the `fx` atlas size, centred under Jenny.
+
+Lane B's `boss-defeated` starts it; in dev builds **Shift + F8** runs it anywhere.
+
 ## The rest of the arc (post-jam)
 
 Regions 2–5 each end with a boss that Dexter absorbs. Archive notes reveal that the experiment's logs mention a "mascot-shaped containment vessel". In the Playground region Dexter stops pretending. The final fight is Dexter at 8.5 ft. **Endings** (Duck Season style): defeat him (he collapses back into a torn plush), or refuse to feed him (skip the absorbs), which leads to a different, quieter ending.

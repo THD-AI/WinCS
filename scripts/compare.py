@@ -6,7 +6,8 @@
     python scripts/compare.py lineup hero-move:walk-00 hero-run:run-03 enemy-drone:hover-00 --out …
         frames from the game's atlases (game/public/assets/sprites) on one baseline, at game scale ×3,
         with a 1 ft ruler (13 px, docs/04) and the documented height of each thing marked;
-        --atlas-dir tmp/atlas reads a review export instead of the game's atlases
+        --atlas-dir tmp/atlas reads a review export instead of the game's atlases;
+        atlas:frame*2.15 draws a frame the game scales in code (and scales its documented height too)
 
 Paths are relative to the repository. Images and crops are in their own pixels; `--width` sets the common width.
 """
@@ -74,11 +75,24 @@ def documented(atlas: str) -> int | None:
     return DOCUMENTED.get(atlas)
 
 
+def wanted(spec: str) -> int | None:
+    """The documented height for a lineup spec, times its `*scale` if it has one."""
+    name, _, scale = spec.partition("*")
+    want = documented(name.split(":")[0])
+    return round(want * float(scale)) if want and scale else want
+
+
 def lineup(specs: list[str], zoom: int = 3) -> tuple[Image.Image, list[str]]:
     """Frames on one baseline at game scale ×zoom, a foot ruler on the left, documented heights as ticks."""
-    pieces = [(spec, frame(*spec.split(":", 1))) for spec in specs]
+    pieces = []
+    for spec in specs:
+        name, _, scale = spec.partition("*")
+        p = frame(*name.split(":", 1))
+        if scale:
+            p = p.resize((round(p.width * float(scale)), round(p.height * float(scale))), Image.Resampling.NEAREST)
+        pieces.append((spec, p))
     gap = 24
-    tallest = max(max(p.height for _, p in pieces), *(documented(s.split(":")[0]) or 0 for s, _ in pieces))
+    tallest = max(max(p.height for _, p in pieces), *(wanted(s) or 0 for s, _ in pieces))
     width = 40 + sum(p.width + gap for _, p in pieces)
     out = Image.new("RGB", (width * zoom, (tallest + 20) * zoom), (232, 228, 220))
     draw = ImageDraw.Draw(out)
@@ -91,7 +105,7 @@ def lineup(specs: list[str], zoom: int = 3) -> tuple[Image.Image, list[str]]:
     for spec, p in pieces:
         out.paste(p.resize((p.width * zoom, p.height * zoom), Image.Resampling.NEAREST), (x * zoom, base - p.height * zoom),
                   p.resize((p.width * zoom, p.height * zoom), Image.Resampling.NEAREST))
-        want = documented(spec.split(":")[0])
+        want = wanted(spec)
         if want:
             y = base - want * zoom
             draw.line([(x * zoom, y), ((x + p.width) * zoom, y)], fill=GRID, width=zoom)

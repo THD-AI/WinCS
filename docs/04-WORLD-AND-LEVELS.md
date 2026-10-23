@@ -65,6 +65,7 @@ The anomaly state replaces only the layers that change (usually 3 and 5, sometim
 | Hero | 6 ft / 1.83 m | **80 px tall**, body box 28×76 |
 | 1 ft | 0.30 m | ≈ 13 px |
 | Dexter (plush) | 1.5 ft | 20 px |
+| Dexter (after Jenny, end of the slice) | ≈ 3.3 ft | 43 px (each region boss he absorbs adds a quarter of the way to 113 px) |
 | Dexter (final, the mascot) | 8.5 ft | 113 px |
 | Jenny (boss car) | ≈ 6.3 m drawn, as in the approved direction (Alexander, 24 Oct) | **≈ 270 px long**, body ≈ 95 px; rear wing and beacon above |
 | Chair seat height | 0.45 m | 20 px |
