@@ -6,7 +6,7 @@
 
 ![Dexter · moves](images/dexter-preview.png)
 
-**Review:** 🟡 Drawn 23 Oct, waiting for Alexander's Design review.
+**Review:** ✅ Approved 24 Oct by Alexander. 20 px as documented (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
