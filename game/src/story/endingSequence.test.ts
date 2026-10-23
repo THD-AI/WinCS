@@ -35,11 +35,11 @@ describe('the ending', () => {
     expect(run.phase).toBe('appear');
   });
 
-  it('grows Dexter from the 20 px plush to 43 px, as docs/04 says', () => {
-    expect(DEXTER_AFTER_JENNY_PX).toBe(43);
-    expect(dexterScale('absorb', 1) * 20).toBe(20);
-    expect(dexterScale('grow', 0) * 20).toBe(20);
-    expect(dexterScale('grow', 1) * 20).toBeCloseTo(43);
-    expect(dexterScale('leave', 0) * 20).toBeCloseTo(43);
+  it('grows Dexter from the 27 px plush to 46 px, as docs/04 says', () => {
+    expect(DEXTER_AFTER_JENNY_PX).toBe(46);
+    expect(dexterScale('absorb', 1) * 27).toBe(27);
+    expect(dexterScale('grow', 0) * 27).toBe(27);
+    expect(dexterScale('grow', 1) * 27).toBeCloseTo(46);
+    expect(dexterScale('leave', 0) * 27).toBeCloseTo(46);
   });
 });

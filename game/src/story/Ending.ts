@@ -25,7 +25,7 @@ const FALLBACK: Position = { x: VIEW_WIDTH / 2, y: 600 };
 
 /**
  * The end of the slice (docs/03 "The ending sequence", #58). Waits for lane B's `boss-defeated`, then
- * draws over the frozen stage: the pool under Jenny, Dexter absorbing it and growing to 43 px, the
+ * draws over the frozen stage: the pool under Jenny, Dexter absorbing it and growing to 46 px, the
  * glitch, the "to be continued" window, the credits, and back to the title.
  */
 export class Ending extends Phaser.Scene {

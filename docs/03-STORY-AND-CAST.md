@@ -31,7 +31,7 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 
 | Stage | Height | Look | When |
 | --- | --- | --- | --- |
-| Plush | 1.5 ft | The Campus Store plush: black velvet fur, ice-blue eyes, orange nose, grey THD T-shirt | Prologue → Region 1 |
+| Plush | 1.5 ft (drawn 27 px, [04](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows)) | The Campus Store plush: black velvet fur, ice-blue eyes, orange nose, grey THD T-shirt | Prologue → Region 1 |
 | Big plush | 3–4 ft | The same plush, too big; stitching strained, posture slightly too upright | Regions 2–3 |
 | **Mascot (final form)** | **8.5 ft** | THD's real Deggster **mascot costume** – big fluffy head, grey crest T-shirt, furry gloves and feet – but far too tall. Friendly at first glance, like Duck Season's mascot. On a second look: thick black fluid seeps out exactly where the costume pieces join – the gap between the head and the neck sleeve, the glove cuffs, the ankles – the head sits a little too far forward, the eyes are too glossy. Nobody is inside, or something is | Region 4 → final boss |
 
@@ -68,9 +68,9 @@ One overlay scene, `Ending` (`game/src/story/`), runs it after lane B emits `bos
 ```mermaid
 flowchart LR
   E["boss-defeated<br/>(Jenny, position)"] --> L["leak<br/>fx black-fluid pool<br/>under Jenny"]
-  L --> A["appear<br/>Dexter hops in<br/>beside the pool, 20 px"]
+  L --> A["appear<br/>Dexter hops in<br/>beside the pool, 27 px"]
   A --> B["absorb<br/>dexter-acts absorb ×4,<br/>pool shrinks, fluid-absorb sound"]
-  B --> G["grow<br/>20 → 43 px,<br/>one creepy frame"]
+  B --> G["grow<br/>27 → 46 px,<br/>one creepy frame"]
   G --> H["leave<br/>hops off ahead,<br/>off screen"]
   H --> X["glitch<br/>the frame tears"]
   X --> D["dialog<br/>THD.exe – To be continued.<br/>[OK]"]
@@ -78,7 +78,7 @@ flowchart LR
   C --> T["title"]
 ```
 
-**Sizes, measured from [04 – Scale](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows):** Dexter is the 20 px plush when he hops in. He reaches 113 px (8.5 ft) as the final boss of region 5, after absorbing the bosses of regions 1–4, so each absorb adds a quarter of the 93 px: after Jenny he is **43 px (≈ 3.3 ft)**, about half the hero's 76 px body. The pool is drawn at the `fx` atlas size, centred under Jenny.
+**Sizes, measured from [04 – Scale](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows):** Dexter is the 27 px plush when he hops in. He reaches 101 px (8.5 ft) as the final boss of region 5, after absorbing the bosses of regions 1–4, so each absorb adds a quarter of the 74 px: after Jenny he is **46 px (≈ 3.5 ft)**, about 0.6 of the hero's 76 px body – on the way to the approved 4 ft plush (56 px). The pool is drawn at the `fx` atlas size, centred under Jenny.
 
 Lane B's `boss-defeated` starts it; in dev builds **Shift + F8** runs it anywhere.
 

@@ -64,14 +64,17 @@ The anomaly state replaces only the layers that change (usually 3 and 5, sometim
 | Screen | – | 1280×720 view of a 720-tall stage (pixel grain 2 px) |
 | Hero | 6 ft / 1.83 m | **80 px tall**, body box 28×76 |
 | 1 ft | 0.30 m | ≈ 13 px |
-| Dexter (plush) | 1.5 ft | 20 px |
-| Dexter (after Jenny, end of the slice) | ≈ 3.3 ft | 43 px (each region boss he absorbs adds a quarter of the way to 113 px) |
-| Dexter (final, the mascot) | 8.5 ft | 113 px |
+| Dexter (plush) | 1.5 ft in the story; drawn ≈ 2 ft, head just above the hero's knee | **27 px** (0.35 of the hero) |
+| Dexter (after Jenny, end of the slice) | ≈ 3.5 ft | 46 px (each region boss he absorbs adds a quarter of the way from 27 to 101 px) |
+| Dexter (bigger plush, mid-arc) | 4 ft | 56 px (0.73 of the hero) |
+| Dexter (final, the mascot) | 8.5 ft | 101 px (1.33 of the hero) |
 | Jenny (boss car) | ≈ 6.3 m drawn, as in the approved direction (Alexander, 24 Oct) | **≈ 270 px long**, body ≈ 95 px; rear wing and beacon above |
 | Chair seat height | 0.45 m | 20 px |
 | Jump (tap / hold) | 1.2 m / 2.2 m | 52 px / 96 px |
 | Ledge reach (grab height above feet) | 2.4 m | 105 px |
 | Ladder rung spacing | 0.3 m | 13 px |
+
+Dexter's three sizes are measured from the approved [Dexter stages](../art/direction/dexter-stages.md) (reviewed "perfect"), not computed from feet: there the hero is 547 px tall, the plush 191, the 4 ft plush 400 and the mascot 730, so each is that share of the hero's 76 px ([#139](https://github.com/THD-AI/WinCS/issues/139)). The plush is drawn bigger than 1.5 ft would be – a toy's head reads at small size – and the art wins.
 
 `route.json` in Rusty Creek still records an older 18×32 body. Collision authoring replaces it with the 28×76 box above.
 

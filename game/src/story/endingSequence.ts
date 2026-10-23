@@ -19,8 +19,8 @@ export const TIMING = {
   creditsGuard: 1500,
 } as const;
 
-/** docs/04 scale: the 20 px plush grows a quarter of the way to the 113 px mascot per region boss. */
-export const DEXTER_PX = { plush: 20, final: 113, regionBosses: 4 } as const;
+/** docs/04 scale: the 27 px plush grows a quarter of the way to the 101 px mascot per region boss. */
+export const DEXTER_PX = { plush: 27, final: 101, regionBosses: 4 } as const;
 export const DEXTER_AFTER_JENNY_PX = Math.round(DEXTER_PX.plush + (DEXTER_PX.final - DEXTER_PX.plush) / DEXTER_PX.regionBosses);
 
 export class EndingSequence {
