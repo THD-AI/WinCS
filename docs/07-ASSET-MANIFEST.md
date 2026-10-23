@@ -24,7 +24,7 @@ The frame lists below were reviewed by the team on 23 Oct ([A14](meetings/transc
 | Hero – chair | `chair-side`, `chair-overhead`, `chair-block` | side sweep A 8 · side sweep B 8 (the return swing) · up attack 6 · down slam 7 · recoil 2 · air pogo 4 · guard up 4 · guard hold 3 · guard impact 4 · guard break 4 · chair pickup 1 | ✅ |
 | Hero – tray (post-jam) | `tray-throw` | throw 6 · tray spin 8 · catch 4 | ⬜ |
 | Hero – anomaly crossing | – | none extra: reuses hit + knockback; the THD.exe window is UI | ✅ by design |
-| Dexter (plush) | `dexter` | idle 3 · hop 4 · walk 6 · point at the ground 3 · shove 4 · beckon 3 · bow · sweat · proud · creepy shadow. More for the boss fights later | ⬜ |
+| Dexter (plush) | `dexter`, `dexter-acts` | idle 3 · hop 4 · walk 6 · point at the ground 3 · shove 4 · beckon 3 · bow 1 · sweat 2 · proud 1 · creepy shadow 1 · absorb 4 (the black fluid, for the slice ending). More for the boss fights later | 🟡 |
 | Dexter (final) | `dexter` | stand · menace · lunge | ⬜ |
 
 ## Enemies and boss
@@ -36,7 +36,7 @@ Frame lists approved as they are (A14).
 | Rover | `enemy-rover` | idle 4 · drive 6 · spot + charge 4 · hit/flip/wreck 5 | ✅ |
 | Crab | `enemy-crab` | idle 4 · walk 8 · rear + stab 5 · collapse 5 | ✅ |
 | Drone | `enemy-drone` | hover 4 · alert/dive 3 · crash 5 · dropped screw 3 | ✅ |
-| Jenny | `boss-jenny` | rev 4 · charge 4 · crash 4 · stunned 3 · reboot 2 · debris ×5 (2 each) | ⬜ |
+| Jenny | `boss-jenny`, `boss-jenny-2` | rev 4 · charge 4 · crash 4 · stunned 3 (leaking black fluid) · reboot 2 · debris ×5 (2 each) | 🟡 |
 | Black-fluid leak (shared death FX) | `fx` | 6 | ✅ |
 
 ## Items, props, UI

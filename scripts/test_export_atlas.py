@@ -54,6 +54,19 @@ class ExportAtlasTests(unittest.TestCase):
             self.assertLessEqual(r['x'] + r['w'], sheet.width)
             self.assertLessEqual(r['y'] + r['h'], sheet.height)
 
+    def test_scale_corrects_an_animation_drawn_smaller(self):
+        # The run row was drawn at 30 px instead of 40: "scale" brings it back in line with idle.
+        image = board_image([[(40, 0)] * 2, [(30, 0)] * 2])
+        board = config([[{'anim': 'idle', 'frames': 2}], [{'anim': 'run', 'frames': 2, 'scale': 4 / 3}]])
+        sheet, atlas, _ = ea.export(board, image)
+
+        def height(name):
+            f = atlas['frames'][name]['frame']
+            box = sheet.crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h'])).getchannel('A').getbbox()
+            return box[3] - box[1]
+        self.assertEqual(height('idle-00'), 20)
+        self.assertEqual(height('run-00'), 20)
+
     def test_frame_count_mismatch_fails_loudly(self):
         image = board_image([[(40, 0)] * 3])
         with self.assertRaisesRegex(ea.AtlasError, r'row 1 has 3 frames, the config expects 4 \(idle 4\)'):

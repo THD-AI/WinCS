@@ -1,0 +1,17 @@
+{
+ "rev": {
+  "frames": 4,
+  "fps": 12,
+  "loop": true
+ },
+ "charge": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "crash": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ }
+}
