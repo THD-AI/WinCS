@@ -27,7 +27,7 @@ The oldest Lost in the Green image is used for leaf-screen mood only, as request
 
 All 59 photographs were inspected in numbered contact sheets; selected originals and all active outputs were viewed at larger size. The new creek uses four distinct photographed angles, not an invented turnaround. AI cleanup still changes vegetation, perspective and small arrangements; these are not archival composites. Rust intensification, reconstructed water and hidden sides do not prove real geography.
 
-The route, rising/falling terrain and normal/corrupted crossing diagrams under docs/proposal/diagrams/ are original editable **design schematics**. They are deliberately separate from photo interpretation, final pixel style and runtime assets. The proposed hills are not measured stepping-block heights. Six earlier approved boards are unchanged by the latest split.
+The earlier route, rising/falling terrain and normal/corrupted crossing diagrams under docs/proposal/diagrams/ are original editable **design schematics**, retained only as optional exploration in the current proposal appendix. The 23 October whole-scene production trial now supplies the primary visual example. They are deliberately separate from photo interpretation, final pixel style and runtime assets. The proposed hills are not measured stepping-block heights. Six earlier approved boards are unchanged by the latest split.
 
 No original photos, five professor screenshots, raw chats, source audio, full videos or unredacted transcripts are committed. Source rightsholders and people depicted do not acquire a blanket release through image cleanup. Runtime art will need its own original/licensed sources and provenance. No public-sharing or game-use license for the commercial references is inferred.
 

@@ -4,6 +4,7 @@ import hashlib
 import json
 import re
 import sys
+import struct
 from urllib.parse import unquote
 import xml.etree.ElementTree as ET
 from refresh_reference_navigation import navigation
@@ -147,6 +148,37 @@ if animation.exists():
         if not isinstance(timestamp, int) or not 0 <= timestamp < 72:
             errors.append(f'Playground frame has invalid source time: {item["file"]}')
 
+production = ROOT / 'references/production/master-first'
+if production.exists():
+    trial = json.loads((production / 'media-sources.json').read_text(encoding='utf-8'))
+    trial_prompts = json.loads((production / 'prompts.json').read_text(encoding='utf-8'))['prompts']
+    declared = [item['file'] for item in trial['images']]
+    actual = {p.relative_to(production).as_posix() for p in (production / 'images').glob('*')}
+    if len(declared) != len(set(declared)) or set(declared) != actual:
+        errors.append('Scene-first trial manifest must cover every image exactly once')
+    for item in trial['images']:
+        media = production / item['file']
+        if not media.is_file():
+            errors.append(f'Scene-first trial missing: {item["file"]}')
+            continue
+        raw = media.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != item['sha256']:
+            errors.append(f'Scene-first trial hash mismatch: {item["file"]}')
+        if not raw.startswith(b'\x89PNG\r\n\x1a\n') or len(raw) < 26:
+            errors.append(f'Scene-first trial is not PNG: {item["file"]}')
+        elif list(struct.unpack('>II', raw[16:24])) != item['dimensions']:
+            errors.append(f'Scene-first trial dimensions differ: {item["file"]}')
+        elif item['mode'] == 'RGBA' and raw[25] != 6:
+            errors.append(f'Scene-first alpha trial lacks RGBA color type: {item["file"]}')
+        if item['prompt_key'] not in trial_prompts or item['file'] not in (production / 'README.md').read_text(encoding='utf-8'):
+            errors.append(f'Scene-first trial lacks prompt/gallery entry: {item["file"]}')
+    if len({tuple(item['dimensions']) for item in trial['images']}) != 1:
+        errors.append('Scene-first trial images must share a canvas')
+    for item in trial['source_inputs']:
+        source = production / item['file']
+        if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != item['sha256']:
+            errors.append(f'Scene-first input board missing or changed: {item["file"]}')
+
 for diagram in (ROOT / 'docs/proposal/diagrams').glob('*.svg'):
     try:
         svg = ET.parse(diagram).getroot()
@@ -170,3 +202,5 @@ if campus.exists():
     print('Checked eight collage hashes/prompts and reading-trail pages, 59 source-photo IDs and ten voice-note entries; no originals imported.')
 if animation.exists():
     print(f'Checked {len(frames)} Playground frame hashes, signatures, source times and credits.')
+if production.exists():
+    print('Checked three scene-first trial hashes, PNG dimensions/type, prompts and source boards; this does not certify extraction quality or playability.')

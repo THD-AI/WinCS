@@ -6,6 +6,8 @@
 
 **This is a real developer demonstration, not our reconstruction.** Credit: Wishfully; [developer interview and original demonstration](https://www.gamedeveloper.com/business/exploring-the-art-and-animation-behind-hand-painted-odyssey-i-planet-of-lana-i-). Full source URLs and hashes are in [the media manifest](media-sources.json).
 
+**WinCS production update, 23 October:** these depth bands are a visual analysis, not a request to reconstruct a scene from independent assets. Our [current workflow](../../../docs/design/layered-stage-workflow.md) composes/edits the whole image first, then derives only necessary aligned plates/props.
+
 ## Verified process, then our interpretation
 
 In the 2021 interview, Wishfully describes hand-painted textures, some projected onto planes and given shallow modeled depth. The studio names Unity, Maya LT for characters/environment work, Maya for some baked lighting, Photoshop concept painting, and a custom wind system. The original is a hand-painted hybrid; it is not evidence for a pixel-art pipeline or an entirely flat-mask renderer. This is historical development evidence, not a claim that every shipped scene uses identical techniques.

@@ -1,22 +1,27 @@
-# The crossings · rust and parkour
+# Rusty Crossings · a maze of rusted bars
 
 <!-- reference-navigation:start -->
 [← Previous: Lost in the Green](lost-in-the-green.md) · [🖼️ Library](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
 <!-- reference-navigation:end -->
 
-![Bridge spans, rails and weathered steel collage](images/crossings.png)
+![Whole-scene rusted-bar maze direction candidate](../production/master-first/images/rust-maze-master.png)
 
-**An industrial traversal location.** Alexander requested rusty exteriors and a more parkour-oriented environment, between Lost in the Green and the stepping-stone creek.
+**Latest direction, 23 October:** a horizontal/vertical maze of rusted bars, turns, branches, shafts and loops, inspired by pathfinding imagery and the algorithms-and-data-structures secret-villain seed. This is not primarily one bridge with a parkour shortcut. The complete composition is generated first; its [edit/extraction trial](../production/master-first/README.md) explains what was actually achieved.
 
-Low overhead spans, rails, narrow paths and vertical supports suggest a clear direction of movement. **Latest proposed beat:** show the normal path under the bridge and the upper rail route → warn that the lower path is failing → make it disappear → climb/traverse over the railing to a stable exit.
+| Visual ingredient | Possible action/exploration use | Scope |
+| --- | --- | --- |
+| Horizontal bars, vertical connections and right-angle turns | Trace a route, choose a branch, discover a dead end or shortcut | Author one small viable route; no procedural maze required |
+| Repeated intersections and loops | Search/pathfinding metaphor | A predetermined highlight is enough if selected; no search simulation assumed |
+| Rust, concrete and attached vegetation | Distinguish structure from organic surroundings | Shared scene scale/material language |
+| Background image sampled incorrectly | Cut/stretch/repeat pixels through maze openings | Visual-only default; no collision change implied |
 
-![Normal and corrupted crossing states](../../docs/proposal/diagrams/crossing-change.svg)
+The professor/degree connection is an owner-supplied **fictional villain premise**; portrait, name, encounter and degree-to-stage roster are not specified here. Earlier floor-deletion/rail-traversal sketches remain optional mechanics only.
 
-This is actual authored terrain change, not only a screen overlay. Art and collision must switch together; provide a safe staging point and retry. The diagram is an original schematic, not Voyager artwork or a measured bridge. A higher route should be seen from below before it is reached. Rail grabs, wall jumps and rope physics are separate scope decisions; the photo of a railing does not require all three.
+## Photographs supply materials, not the maze layout
 
-**Material direction:** weathered metal, rust accents, mossy masonry, cold shade and a bright exit. Photographed corrosion is a reference; heavier rust is an art-direction interpretation. Keep useful silhouette breaks instead of filling every empty space with debris.
+![Original rust/steel/rail reference collage; its earlier parkour label is not the current level brief](images/crossings.png)
 
-Sources C23–C27. Requested parkour positions must first be tested in the greybox; a generated photograph cannot establish reachable jump distances.
+Source photos C23–C27 show bridge structures and rails. Their steel, corrosion and concrete are reference material; they do not prescribe the generated maze or prove its reachability. The approved photographic board is retained unchanged. Test the chosen movement verbs and one traced route before promoting any composition into a game level.
 
 <!-- reference-navigation:start -->
 [← Previous: Lost in the Green](lost-in-the-green.md) · [🖼️ Library](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)

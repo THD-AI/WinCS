@@ -1,74 +1,70 @@
-# From reference collage to a place you can walk through
+# Whole image first · then only the layers we need
 
-[← Campus proposal](../proposal/campus-game.md) · [Home](../../README.md) · [Next: technical contract →](../technical/layered-stage-contract.md)
+[← Visual proposal](../proposal/campus-game.md) · [Trial images and QA](../../references/production/master-first/README.md) · [Technical contract →](../technical/layered-stage-contract.md)
 
-![The hidden garden reference board](../../references/campus/images/hidden-gardens.png)
+![A complete composed rust-maze scene, before extraction](../../references/production/master-first/images/rust-maze-master.png)
 
-**The current deliverables are reference collages and planning.** This workflow defines later art production; no horizontal runtime stage, masks, animation sheet or playable build is claimed yet. Generated competition assets still depend on organizer rules.
+**Current production approach, 23 October 2026:** Codex and built-in image generation compose an entire horizontal scene first, refine that same image, then derive aligned layers/props from it. We are not starting from a bag of independent trees, bars, ledges and rocks to arrange manually. Today’s images are visual-direction/pipeline trials; runtime production remains subject to team/theme/rules.
 
-```mermaid
-flowchart LR
-    A[Photos and voice ideas] --> B[Cleaned location collages]
-    B --> C[Approve style and player scale]
-    C --> D[Greybox route and camera]
-    D --> E[Compose horizontal master]
-    E --> F[Review and refine]
-    F --> G[Separate layers and clean plates]
-    G --> H[Mask limited motion]
-    H --> I[Integrate and playtest]
-    I --> F
-```
+## 1. Establish one scene, one scale and one visual language
 
-## 1. Reference first, style second
+Supply the relevant location board, desired play emphasis and a short layout brief: entry/exit, broad route, open spaces, materials, light, character scale and protected silhouettes. The output is a whole-scene candidate, not automatically playable geometry. Review it at camera/player scale; choose one common pixel treatment before asking for more stages.
 
-Use the [eight location/item boards](../../references/campus/README.md) to choose actual shapes and materials. Start with the hidden garden. A photographic board is not a pixel-art style decision. Make one small style test at the intended player/camera scale before a long painting: terrain, one tree, water, a character silhouette and a small interaction prop. Use the [Planet of Lana developer demonstrations and layer analysis](../../references/games/planet-of-lana/layers-and-motion.md) for depth, soft contours and small motion; translate them into a consistent pixel treatment. The original uses hand-painted hybrid techniques, not pixel art. Classic Monkey Island supplies complementary curved pixel-contour examples. A pixel world need not use square terrain tiles.
+The [Rusty Crossings trial](../../references/production/master-first/README.md) shows rusted orthogonal branches/shafts as a maze. Hidden Garden, Lost in the Green, creek and Toxic Garden retain organic contours and may support exploration/action or an alternative hiding puzzle. Location photographs supply motifs; they do not dictate every game surface.
 
-**Proposed starting contract to approve:** a 640×360 design viewport, integer scaling where practical, one common pixel density, no rotation/filter that makes isolated assets look smoother than the world. A 24–32 pixel tall student is a test range, not an accepted sprite size. Readability at actual scale decides it.
+A quick greybox/collision trace tests the *chosen composition* and proposed route. Image and controller iterate together: fix an unreachable platform with a same-image edit or simplify the planned route. Do not spend the jam building a separate scene editor or reproducing every pictured object in physics.
 
-## 2. Make horizontal composition support the route
+## 2. Keep editing the accepted canvas
 
-Draw the entry, exit, ground profile, camera bounds, safe landings and lake anchors in a greybox first. Plan a three-screen strip (for example 1920×360 design pixels) rather than asking for an arbitrary huge banner. A generated reference/master may be higher resolution; reduce and inspect the entire scene consistently before runtime use.
+Ask for a precise change to the current master: add a ledge, open a passage, refine a stone/plant cluster, improve an entry or simplify an overcomplicated section. State what must stay fixed. Keep the previous accepted image and compare the whole output, not just the requested addition. A regenerated image may change pixels or geometry elsewhere.
 
-Block the lake reveal as the main wide composition. Extend with overlapping crops of the **accepted** master: same horizon, light direction, scale, palette and landmark positions. Check the overlap and ground silhouette side by side; “same style” alone does not make adjacent images continuous. Reject duplicated trees, inconsistent path heights and new objects obstructing the exit. No endless-world generation is required.
+The generation/extraction request packet includes: accepted image + source recording/clarification, canvas/camera, change region, protected route, shared pixel language and the review needed. No lengthy new layout coordinates are needed for every object; it is already drawn in place.
 
-## 3. Separate depth from collision
+## 3. Derive a minimal set from that scene
 
-| Layer | Proposed content | Motion / rule |
+| Derivative | How it relates to the master | Why it exists |
 | --- | --- | --- |
-| Sky / clouds | Quiet negative space, slow cloud strip | Small drift, optional |
-| Far landscape | Distant campus/tree shapes | Slow parallax |
-| Far lake / bank | Water horizon, opposite reeds | Slow parallax; no collision |
-| Mid vegetation | Willow canopy and reed groups | Modest parallax |
-| Play plane | Ground, deliberate platforms, interaction props | Same world transform as collision |
-| Front framing | Branches, reeds, ground lip | Slightly faster parallax; never hide essential landings |
-| FX / UI | Shimmer, leaves, interaction cue | Local masks or screen layer |
+| Flattened accepted scene | Original complete image | Baseline stage visual; always available as fallback |
+| Background clean plate, if needed | Remove foreground from the same canvas; fill exposed pixels | Allows background effects or limited depth without duplicate scenery |
+| Foreground/play-plane plate, if needed | Extract existing structure on alpha, preserve canvas/placement | Covers the background effect and keeps the route readable |
+| FX region mask | Full-canvas white/black region or equivalent clip; black/transparent means unaffected | Restricts a smear, shimmer or reveal without moving collision |
+| In-place prop crop | Grab the existing prop; record its crop offset automatically | Local motion, pickup or a repeated action without hand-rebuilding its placement |
+| Character/action canvas | One separately approved actor design with fixed feet/pivot | Controllable actors need coherent poses and timing |
 
-These are proposed layers for our implementation, **not an extracted Wishfully layer stack**. The developer interview verifies a hybrid Unity workflow with some shallow modeled painted elements; our simple strip method is a separate jam-sized translation. Soft visual terrain can use hand-authored simple collision: broad slopes, clear cliff breaks and flat interaction/landing patches. Test a representative slope route before the master, so art does not lock in a controller problem. An alpha mask defines where pixels show; it does not tell the physics engine what is walkable.
+**Full-canvas layers inherit the same origin `[0,0]`.** A crop retains where it came from; tools can record that rectangle/offset. The coordinate contract preserves existing composition rather than forcing manual placement of a fresh prop kit. These are possible derivatives, not a requirement to extract seven depth planes.
 
-## 4. Extract once, preserve the accepted scene
+When an object moves, remove its static copy and supply a clean plate behind it. A foreground layer over an unchanged flattened master does not create true parallax: the stationary duplicate would still be visible. If a valid clean plate cannot be obtained quickly, keep that part static.
 
-Each isolated object/layer needs genuine alpha, a fixed scene origin and a clean plate behind it. If a willow moves, remove the stationary willow copy below it and paint the newly exposed area once. Repeated generation must not drift the accepted terrain, platform edges or doorway geometry. Keep a flattened proof composite and compare it with the accepted master at every extraction.
+## 4. Prove extraction before trusting it
 
-Separate **alpha cutouts**, **FX region masks**, **interior reveal masks** and **collision geometry** in names and documentation. A black/white region mask is not itself a transparent sprite. Test premultiplied-alpha/fringing behavior over both light and dark backgrounds; do not ship a painted checkerboard as transparency.
+![Same-canvas foreground extraction trial, not approved](../../references/production/master-first/images/rust-maze-foreground-trial.png)
 
-### One visual contract for every increment
+The actual trial has genuine RGBA transparency and the same 2172×724 canvas, but visible edge residue and incomplete cleanup remain. No background clean plate/recomposition has passed. Equal dimensions alone do not prove alignment or a clean reusable sprite.
 
-Use the [shared art/animation brief](art-and-audio.md) for scale, silhouette, palette roles, terrain contours and animation-state names. Each request carries the accepted master/endpoint poses, location + mechanic ID, recording/clarification source, fixed scene origin/canvas/pivots, the change to make, protected geometry and the proof required. Do not ask for all stages, characters and transitions in one generation.
+Review alpha edges over light/dark backgrounds, source positions/scale, missing geometry, unintended semi-transparent residue and color drift. Recompose the extracted plate with its clean background and compare against the accepted master. Inspect the moving camera only after that still proof passes. A failed layer stays a trial, not an approved asset.
 
-For a terrain fault, first choose the affected shape: an irregular tear, displaced slice, duplicated silhouette, stale reflection or folded connection. Use a different local silhouette for each place rather than stamping one rectangle everywhere. Compose normal and corrupted states on the same coordinates. Separate the removable lower-path art, upper-route supports, glitch region and both collision states. The [crossing schematic](../proposal/diagrams/crossing-change.svg) defines the intended behavior; exact 404 styling remains open. After any layer extension, rebuild the proof composite and retest both states before moving to the next strip.
+**Jam limit:** one extraction/clean-plate cycle plus one bounded correction, then decide. If it remains poor, use the flattened master with a small clipped effect and no parallax in that region. Do not spend the remaining jam repairing a full scene graph.
 
-## 5. Add just enough motion
+## 5. Make visual corruption cheap
 
-First animation budget: one water shimmer region, one reed cluster and a sparse leaf emitter. Character budget: idle, walk, jump/fall, interact; hurt/attack only if their mechanic exists. Fixed frame canvas, feet/pivot and silhouette make the controller stable. Generated in-between frames need review for limb duplication, scale drift and changing costumes; image generation does not guarantee a coherent sprite sheet. Supply both approved endpoint poses, fixed canvas/facing/foot anchors and timing. Review the whole transition, including attack anticipation/active/recovery and authored hit events if combat is selected.
+![Background slice/stretch effect direction](../../references/production/master-first/images/rust-maze-background-smear.png)
 
-For the playground, an authored trigger can fade the exterior cutout to an aligned interior plate. Keep collision and player position stable. For reflection travel, reuse the interaction pose plus a short comic spin and an explicit safe destination. Avoid a cinematic transformation pipeline in the baseline.
+Default effects change image presentation: stretch/repeat a narrow row, offset a background strip, reveal a missing-image patch or animate a small corruption mask. A renderer can sample the accepted image differently inside that mask. The collision contour and input stay the same. The generated smeared image is an appearance reference; widespread pixel changes make it unsuitable as an exact runtime swap.
 
-## 6. Review on the moving camera
+If a foreground plate is not clean, choose a small background opening/region that avoids important route silhouettes. Whole-scene cuts are another visual option only if the player can still read the real route and attack cues. A 404 motif does not require an elaborate encroaching creature, spreading geometry or a new world-state system.
 
-Scrub across every seam at actual zoom; check tree/ground continuity, distant strips exposing blank edges, collision feet, water readability, foreground occlusion and the mirrored state. Pause/blur and reduced-motion settings should stop decorative animation without breaking play. Keep a still art review and a gameplay review: a beautiful collage does not prove a good jump.
+A terrain-changing event is separately scoped: explicit before/after collision, safe actor placement and reset. The earlier diagram ideas remain optional, not the baseline for every error.
 
-Voyager's inspected cabinet documentation demonstrates a useful discipline: approved masters, explicit masks, protected scene geometry and proof checks. Apply that discipline here. Its seasonal/time/weather matrix, palette, room assets and rendering constraints do not transfer to WinCS.
+## 6. Characters, attacks and in-betweens use the same review discipline
 
-**Approval stops:** boards → one style test → one composed stage → layer proof → limited motion → playable review. Do not generate all biomes, character variants and weather sets before the first stage is understood.
+Make one student and the selected action states, not a cast. Approve endpoint poses, fixed frame size, feet/pivot, facing and held prop. Ask for a few in-betweens within that canvas; review the complete loop/transition for sliding, limb duplication, scale and costume drift. Attack hit timing, hurt state and recovery are gameplay decisions, not inferred from generated pictures.
 
-[← Campus proposal](../proposal/campus-game.md) · [Home](../../README.md) · [Next: technical contract →](../technical/layered-stage-contract.md)
+A placed campus object can seed a prop sprite; a rigged actor still needs a coherent action canvas. Keep movement and the chosen signature action first. Add one weapon/enemy only if the team chooses combat, then verify anticipation/active/recovery and reset. Optional robot collection can use a short beep/flash rather than companion AI.
+
+## 7. Extend only the accepted result
+
+An extension starts from the accepted scene edge or overlap: same contour language, horizon, scale, materials and light. Generate a bounded continuation, compare seams and route continuity, then derive only its necessary masks. Adjacent images are not continuous merely because their prompt names the same style. No seasonal/time/weather matrix or procedural map generator is requested.
+
+**Review order:** full composition → route/scale check → same-image edits → minimal derivative proof → one visual effect → playable integration → next bounded scene/action. [Art and audio brief](art-and-audio.md) · [Jam gates](../delivery/jam-plan.md).
+
+[← Visual proposal](../proposal/campus-game.md) · [Trial images and QA](../../references/production/master-first/README.md) · [Technical contract →](../technical/layered-stage-contract.md)

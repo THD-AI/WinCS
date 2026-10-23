@@ -10,7 +10,7 @@ This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexa
 
 **[Eight location/item collages](references/campus/README.md)** · **[Voice-note design digest](docs/brief/voice-notes.md)** · **[How we build layered stages](docs/design/layered-stage-workflow.md)**
 
-Proposed route: **Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden**. Gentle rises/dips belong to the creek; the lower path disappearing under a bridge creates a distinct climb at the crossings. Playground remains an optional detour. A cute campus robot is an optional collectible. Extra locations and replay bosses are future possibilities, not a promise for the jam.
+Proposed route: **Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden**. Rusty Crossings is now an algorithm-inspired maze of rusted bars; the creek retains flowing contours. Image cuts, stretched pixels and 404-like errors are the default visual corruption, with secret-villain influences connecting the stages. Playground remains an optional detour. A cute campus robot is an optional collectible. Extra locations and replay bosses are future possibilities, not a promise for the jam.
 
 ## Look first. Read what catches your eye.
 
@@ -26,7 +26,7 @@ Proposed route: **Hidden Garden → campus ledges → Lost in the Green → rust
 - **[🖼️ Browse all 18 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery; includes the five newly named audio references.
 - **[🎞️ Playground trailer frames](references/animation/playground/README.md)** – ten captured moments tied to the photographed playground. **[How Lana builds depth](references/games/planet-of-lana/layers-and-motion.md)** includes two animated developer demonstrations.
 - **[🎲 Open the pun drawer](docs/design/play-and-puns.md)** – silly situations, playable jokes and ideas to argue about.
-- **[📝 Read the current visual proposal](docs/proposal/campus-game.md)** – route diagram, six location previews, flowing-terrain study, changing-crossing states, production order and a short playable-slice candidate. [Earlier scope options](docs/proposal/game-proposal.md) remain available.
+- **[📝 Read the current visual proposal](docs/proposal/campus-game.md)** – six location previews, a complete rust-maze scene and visual-smear example, subject-linked villain seeds, scene-first production and a short playable-slice candidate. [Earlier scope options](docs/proposal/game-proposal.md) remain available.
 
 We are looking for **funny, playful and a little meaningful**: puns that become actions, affectionate references, odd characters and discoveries worth showing each other. A funny sign is welcome; a joke you can *play* is even better. We can learn from other games while making our own characters, art and situations.
 

@@ -10,17 +10,17 @@ Research, ask organizer questions, verify repository access and install a team-a
 
 ## Agenda mapped to deliverables
 
-**Current candidate:** lake entry → mirror arrival in Hidden Garden → one short changed route / exit from the [campus proposal](../proposal/campus-game.md). Recheck theme/rules. Voice note A08 recommends deferring secret-boss extras beyond the event.
+**Current candidate:** lake entry → mirror arrival in Hidden Garden → one short exploration/action route, visual fault and exit from the [campus proposal](../proposal/campus-game.md). Recheck theme/rules. Voice note A08 recommends deferring secret-boss extras beyond the event.
 
 | Gate | Garden deliverable | Fallback |
 | --- | --- | --- |
 | First 45 minutes | Choose reflection variant, controls, scale, route and ending | Paired-shore transition in one world |
 | First two sprint hours | Plain shapes traverse the garden; interaction/reset/export work | One short route and comic reveal |
-| Friday evening | Complete beginning/lake arrival/changed route/ending; one art frame integrates | One background and static foreground |
-| Night handoff | One stage master, bounded layers, proven transition | No second collision layout |
+| Friday evening | Complete beginning/lake arrival/route/ending; one whole-scene image integrates | One background and static foreground |
+| Night handoff | One accepted master, one visual FX region, proven lake transition; derived plates only if clean | Flattened master; no terrain mutation or parallax |
 | Saturday morning | Fix seams, readability, collision, restart and export | Cut effects, combat and companion behavior |
 
-Do not schedule all environments, weapons and replay bosses into this window. One robot pickup is optional after completion works. Timebox style iteration and carry one accepted master forward.
+Do not schedule all environments, weapons and replay bosses into this window. One robot pickup is optional after completion works. Timebox style iteration and carry one accepted master forward. Use Codex/image generation to compose and edit the whole scene, not assemble an independently generated prop kit. After one extraction attempt and one correction, keep the flat image if the proof still fails.
 
 | Local time | Official activity / available block | Proposed outcome |
 | --- | --- | --- |

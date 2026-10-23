@@ -2,7 +2,7 @@
 
 [![Start with the hidden garden location collage](campus/images/hidden-gardens.png)](campus/README.md)
 
-**[Eight campus location/item boards in route order](campus/README.md).** Hidden Garden → campus → Lost in the Green → crossings → stepping-stone creek → Toxic Garden; Playground/robot are optional material. [Terrain rhythm and changing-route diagrams](../docs/proposal/campus-game.md) connect the photos to mechanics. [Current proposal](../docs/proposal/campus-game.md) · [Voice notes](../docs/brief/voice-notes.md).
+**[Eight campus location/item boards in route order](campus/README.md).** Hidden Garden → campus → Lost in the Green → crossings → stepping-stone creek → Toxic Garden; Playground/robot are optional material. [Complete-scene production trial](production/master-first/README.md) and the [current proposal](../docs/proposal/campus-game.md) connect the photos to the rust-maze, visual errors and gameplay direction. [Current proposal](../docs/proposal/campus-game.md) · [Voice notes](../docs/brief/voice-notes.md).
 
 ## Newly named in the recordings
 

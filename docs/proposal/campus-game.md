@@ -1,139 +1,103 @@
 # A campus that has clearly failed its sanity check
 
-[← Voice-note direction](../brief/voice-notes.md) · [Visual boards](../../references/campus/README.md) · [How we make it →](../design/layered-stage-workflow.md)
+[← Ten-recording direction](../brief/voice-notes.md) · [Location boards](../../references/campus/README.md) · [Scene-first workflow →](../design/layered-stage-workflow.md)
 
-![Fragmented world route with distinct localized fault families](diagrams/route-overview.svg)
+![Complete Rusty Crossings maze composition candidate](../../references/production/master-first/images/rust-maze-master.png)
 
-**Proposal for team discussion, 22 October 2026.** A student touches a lake reflection and enters a familiar campus whose geometry keeps misbehaving. The player learns to read the faults: follow a misleading reflection, cross a soft rise and dip, or take the upper railing when the normal path glitches away. Funny, curious and sometimes unsettling; the controls themselves remain dependable.
+**Current proposal · 23 October 2026.** An original pixel-art exploration/action game: a student touches a lake reflection and enters a familiar campus whose images misbehave. The environments carry the influence of fictional secret university villains. Rusty Crossings becomes an algorithm-inspired maze of rusted horizontal/vertical bars, turns, branches and shafts. The surrounding gardens keep flowing natural contours.
 
-The ten [voice recordings](../brief/voice-notes.md), followed by Alexander's written clarifications, are the design source. Vatsal remains creative lead. **Today’s deliverable is a reviewable visual direction and proposal**, not a game, finished story or approved runtime art. Poncho Goblins is the proposed team name. [Earlier scope options](game-proposal.md) remain alternatives.
+The image above is a **whole-scene visual-direction trial**, composed before any extraction. It is not a validated level, a final palette or a promise to build this entire maze during the jam. The ten recordings and later written corrections guide the proposal; Vatsal remains creative lead. The team will discuss the draft before building. Poncho Goblins remains the proposed team name. [Earlier scope options](game-proposal.md) remain available.
 
-## See the places; read them in route order
+## The important distinction: the image can fail while the game still works
+
+![Background image cut and stretched into horizontal pixel bands](../../references/production/master-first/images/rust-maze-background-smear.png)
+
+**Default corruption is visual:** cut a background band, stretch its pixels, offset/repeat a strip, sample the wrong region, briefly show a missing-image/404-like presentation or distort a scene-aligned FX region. These can convey a villain's influence without building an elaborate spreading organism or changing the physics world for every error.
+
+The normal and smeared examples are two full-image generation results, not a verified runtime transition. Their canvases match, but regeneration changes pixels outside the target too. The [production trial](../../references/production/master-first/README.md) records that limitation. A small renderer effect on the accepted master/background region is the practical runtime target; collision remains unchanged for visual-only faults.
+
+**Terrain changes remain an optional earlier idea.** Removing a floor, changing a maze lane or teleporting between anchors needs a separately authored mechanic. Visual corruption does not automatically require any of those systems. Exact Voyager 404 styling still awaits owner references; the pixel-smear study is an independent candidate.
+
+## See the places in the proposed world order
+
+Lake approach → touch / inexpensive crash-spin → **Hidden Garden → campus → Lost in the Green → Rusty Crossings → stepping-stone creek → Toxic Garden**. This is a fictional route, not real campus geography. Playground is an optional detour; the robot is an item. The full route is expansion material.
 
 | 1. Hidden Garden / lake | 2. Campus architecture | 3. Lost in the Green |
 | --- | --- | --- |
-| [![Hidden Garden collage](../../references/campus/images/hidden-gardens.png)](../../references/campus/hidden-gardens.md) | [![Campus ledges collage](../../references/campus/images/campus.png)](../../references/campus/campus.md) | [![Lost in the Green collage](../../references/campus/images/lost-in-the-green.png)](../../references/campus/lost-in-the-green.md) |
-| Touch the lake, arrive in mirror space; soft banks and a quiet reveal. | Familiar colonnades and ledges begin to break their own rules. | Grassy channels and screened high/low routes invite observation. |
+| [![Hidden Garden reference](../../references/campus/images/hidden-gardens.png)](../../references/campus/hidden-gardens.md) | [![Campus reference](../../references/campus/images/campus.png)](../../references/campus/campus.md) | [![Lost in the Green reference](../../references/campus/images/lost-in-the-green.png)](../../references/campus/lost-in-the-green.md) |
+| Soft banks, water entry and layered reeds. | Ledges, passages and recognizable building rhythms. | Grassy channels, high/low routes and vegetation screens. |
 
-| 4. Rusty crossings | 5. Stepping-stone creek | 6. Toxic Garden |
+| 4. Rusty Crossings | 5. Stepping-stone creek | 6. Toxic Garden |
 | --- | --- | --- |
-| [![Rusty crossings collage](../../references/campus/images/crossings.png)](../../references/campus/crossings.md) | [![Creek crossing from four angles](../../references/campus/images/creek-stones-v3.png)](../../references/campus/creek.md) | [![Toxic Garden collage](../../references/campus/images/toxic-garden.png)](../../references/campus/toxic-garden.md) |
-| A failing lower path redirects the player over the rails. | Broad up/down contours, generous footholds, water and reflections. | Plants, rocks and rusted enclosures support a compact maze or encounter. |
+| [![Rust/steel material references, not the proposed maze layout](../../references/campus/images/crossings.png)](../../references/campus/crossings.md) | [![Creek from four crossing angles](../../references/campus/images/creek-stones-v3.png)](../../references/campus/creek.md) | [![Toxic Garden reference](../../references/campus/images/toxic-garden.png)](../../references/campus/toxic-garden.md) |
+| Angular bar maze; pathfinding-like route choices. | Irregular rising/falling contours, water and reflection motifs. | Plants, rocks and rust-edged passages; greenhouse influence. |
 
-**Proposed sequence:** ordinary lake approach → touch / crash-spin → Hidden Garden → campus ledges → Lost in the Green → crossings → creek → Toxic Garden. It is a fictional world route, not a claim that the real places connect this way. The full sequence is an expansion vision; the jam starts with a complete short slice.
+**Preferred play direction:** exploration, movement and possible combat inspired by Hollow Knight / Dead Cells-like action. Gardens and creek are not locked into quiet walking or stealth-only stages. Hiding and line-of-sight puzzles remain an alternative for team discussion. The terrain language stays flowing and authored; procedural level assembly is not required.
 
-[Playground](../../references/campus/playground.md) is an optional horror detour, supported by the [supplied animation trailer study](../../references/animation/playground/README.md); placement stays open. The [robot](../../references/campus/campus-robot.md) is an optional collectible character, not another stage or an assumed companion simulation.
+## Why these errors exist · the secret-villain premise
 
-## The common rule: a fault changes how a place is traversed
+**Owner's story direction:** errors, corruptions and mutations reflect the secret villains at the university. This is fictional campus mythology, not a claim about real people. An antagonist's subject can influence a stage's visual language, routes, encounter pattern and cheap visual errors.
 
-**Look → notice a mismatch → try one clear action → see the geometry/state change → traverse → reach a stable checkpoint.** The same rule links the environments, so each place can vary its emphasis without becoming a separate game.
-
-| Place | Candidate emphasis | One small authored change | Extra system only if selected |
-| --- | --- | --- | --- |
-| Hidden Garden | Exploration / reflection puzzle | A reflection survives after its shore disappears; touch the detached reflection to reach a safe paired shore | One interaction/anchor pair; full mirror physics optional |
-| Campus | Ledge navigation / visual puzzle | Copied ledges appear one storey out of alignment; one settled copy completes the route | One authored offset, not unrestricted object duplication |
-| Lost in the Green | Observation / navigation | A repeated landmark sends the player around a short spatial loop; a recognizable changed detail identifies the exit | One bounded loop/shortcut; stealth separate |
-| Crossings | Deliberate parkour | A local cascade deletes the lower route and shears the structure; the upper rail fragments settle into a usable contour | One climb/mantle verb; settled layout fixed during traversal |
-| Creek | Gentle terrain rhythm / reflection clues | A soft bank slips, its old position remains in water, or two shores share a folded address; choose one variant | Broad active footing; alternatives shown in the terrain diagram |
-| Toxic Garden | Maze / possible combat | Root-like overflow displaces planter passages and opens a new lane around an encounter | One paired lane layout; combat behavior/reset separate |
-
-These are candidate variants, not six mechanics automatically approved for the jam. Stealth, puzzles and combat can be composed around the same art/state contract; their behavior and testing still cost work. Dead Cells-like combat is an option from the latest clarification, while its greenhouse remains the material reference. Random level assembly is not the proposed method.
-
-### Fault families: surprise with a playable consequence
-
-**New design candidates, not additional transcript requirements.** Diagram colors are an authoring legend; the game palette still comes from the agreed pixel-style test. The diagrams now exaggerate different failures instead of repeating a regular hill or rectangular corruption patch. Each has a clear relationship between what looks wrong and what the player can do:
-
-- **Reference error:** water retains the image of a missing shore. Investigate the impossible image; the familiar touch action becomes the transition.
-- **Copy / paste:** a ledge or doorway has a displaced twin. Compare the copies, then use the one that settles into the active route. An optional sign can insist “You are here” in both places.
-- **Recursive path:** a short passage returns beside its own landmark. A changed reflection, leaf or prop marks the useful exit; repeated exploration should reveal the rule rather than silently shuffle it.
-- **Null path / shear:** a missing strip and displaced bridge pieces create the upper route. A small visible cascade can look complex while resolving to one authored state swap.
-- **Stale reflection:** a bank's old shape persists in the water after the real contour changes. It is a clue, not an invisible collider. The creek diagram compares slip, echo and fold alternatives; they are not a three-mechanic requirement.
-- **Root overflow:** organic forms and planter lanes invade each other's space. A different lane can change the approach to a puzzle or selected enemy without requiring an entire procedural maze.
-
-**Buildable chaos budget:** one collision-changing fault family in the first slice, plus cheap displaced silhouettes/afterimages that have no collision. Choose a local trigger, an affected region, a known destination and a stable recovery anchor. Give the player a place to witness the failure and a short quiet beat after it. The fault should change a decision, route or interpretation; decorative fragmentation alone is not the mechanic.
-
-**Possible later variation:** choose among a small set of prevalidated layouts at a checkpoint. Store that variant/seed with the checkpoint so retry teaches a consistent result. Scenery-only offsets, leaf echoes and effect fragments may vary within bounds that preserve cues. Do not randomize input, hit timing or actor-supporting collision every frame. The full world map shows a vocabulary to discuss, not six runtime systems to implement during the jam.
-
-### The under-bridge change, made concrete
-
-![Normal path and corrupted upper-route alternative](diagrams/crossing-change.svg)
-
-1. Let the player see the ordinary lower path **and** an attainable upper route.
-2. From a safe staging area, show a local cascade: a stale lower-path trace, misaligned span and torn fault region. The lower support still exists during this warning.
-3. Commit one authored normal/corrupted state pair. Freeze the chosen rail-fragment arrangement and change artwork, collision and interaction targets together.
-4. The lower path is gone; the player climbs over the railing and reaches stable ground.
-5. Retry restores a coherent checkpoint state; the player never reloads inside a vanished floor.
-
-The 404/glitch idea comes from Alexander's account of Voyager. **Exact visual styling is pending his screenshots**; no Voyager asset or unseen effect is claimed as inspected. A whole-screen filter alone would not deliver this terrain-change mechanic. [State/reset contract](../technical/layered-stage-contract.md).
-
-## Soft terrain is a design constraint
-
-![Three asymmetric creek fault alternatives: slip, stale reflection and folded shore](diagrams/terrain-rhythm.svg)
-
-The stepping-stone photos are a rhythm and shape reference, not instructions to build a block grid. The updated schematic deliberately varies crest width, sag depth, undercuts, detached sections and mirrored traces. Its three fault cases are alternative studies; select one for a prototype. The creek should flow through broad crests, shallow troughs, low banks and occasional small gaps. Give walking room and breathing space after the crossing's more deliberate climb. Distinct cliff/ledge breaks remain possible where they serve the route; they should not make every surface a square-tile staircase.
-
-Our pixel treatment will translate the contour/depth qualities admired in [Planet of Lana](../../references/games/planet-of-lana/layers-and-motion.md). That original uses a painted hybrid pipeline; our target is original pixel art with similarly flowing composition. Hollow Knight supplies exploration/character readability and possible combat qualities without dictating our terrain construction. Classic [Monkey Island](../../references/games/secret-of-monkey-island/visual-reference.md) provides complementary curved pixel-contour references.
-
-## One visual system, expanded in a controlled order
-
-| Make first | Depends on | Accept it when |
+| Known seed | World / gameplay connection | Still open |
 | --- | --- | --- |
-| Location boards and this proposal | Ten recordings + photographs + explicit corrections | Places, route and mechanic relationships are understandable |
-| One player-scale style test | Agreed contour language, palette roles, light and pixel density | Student, bank, tree, water and one prop belong together |
-| Greybox and horizontal master | Stable camera, reachable profile, entry/exit and interaction anchors | One complete short route works at the intended scale |
-| Depth layers and clean plates | Accepted master and shared scene coordinates | Recomposition matches the master; moving objects reveal no holes/duplicates |
-| One normal / corrupted terrain pair | Safe staging point and tested alternate route | Both visual and physical states work, including retry |
-| Character / item / weapon packs | Selected verbs, fixed canvas/pivots and timing | Poses, transitions and hit events are consistent at gameplay scale |
-| More strips, masks and effects | Proven export names, seams, source records and a complete loop | Each addition joins the accepted world without style or state drift |
+| AI / algorithms-and-data-structures professor as a personal secret-villain seed | Rusty Crossings: orthogonal branches, loops, dead ends, search/pathfinding imagery; perhaps a brief search-front highlight or wrong image sample | Boss identity/art, dialogue, exact attack/encounter and whether a search visualization is used |
+| Other degrees and secret villains | Their influence can supply different imagery/errors in the gardens, campus, creek or later stages | No unprovided professor, degree-to-biome mapping or villain roster is invented |
 
-**Iterate → review → fill the gap → recompose → playtest.** A missing in-between pose is requested between two approved endpoints, with fixed proportions, feet/pivot, facing and frame canvas. Review the whole transition, not only the new frame. For attacks, anticipation/active/recovery and the hit event are authored timing decisions; image generation does not infer a correct hitbox or guarantee coherent animation.
+Do not turn every visual motif into a new algorithm or simulation. The maze can be one hand-reviewed authored route; a search-front visual can be a short predetermined animation. Earlier notes put comic replacement bosses after one completion. Reconcile that reveal/replay timing with the broader villain premise in the team's recorded discussion; causation in the world does not require fighting every villain in the jam.
 
-Use the [art workflow](../design/layered-stage-workflow.md) as the production order and the [art/animation brief](../design/art-and-audio.md) as the shared design contract. Layers and masks enable expansion after the baseline works; they do not remove controller, collision, enemy behavior or integration costs.
+## How Codex and image generation actually produce the art
 
-## A complete jam slice before the full route
+**Compose → edit the same scene → derive what is needed → recompose/check → integrate → expand.**
 
-**Proposed minimum:** ordinary lake approach → touch / comic crash-spin → Hidden Garden traversal → one clear changed-route reveal → stable exit, playful payoff and restart. Use walk, jump and interact. Make one small terrain-state change only after the basic route is complete; a distinct rail-climb module is an expansion candidate, not assumed to be free.
+| Pass | What is created | Avoided work |
+| --- | --- | --- |
+| 1. Whole-scene master | One horizontal composition with terrain, structures, background, materials and light already arranged | Generating a prop kit and hand-placing every object |
+| 2. Same-scene edits | Add/refine a ledge, doorway, plants or a region in the existing image | Rebuilding the scene in a separate coordinate layout |
+| 3. Minimal derived plates | Keep full-canvas alignment for the few cutouts, clean plates or FX regions actually needed | An elaborate scene graph and many independent pivots |
+| 4. Local animation / props | Grab a placed object or define one actor canvas; supply endpoints and fill a small number of reviewed transition frames | Regenerating every stage or expecting coherent giant sprite sheets automatically |
+| 5. Bounded extension | Extend an accepted edge or add one reviewed scene in the same design language | Designing all environments and weapons before the first loop works |
 
-The main lake transition now leads **into** the mirror space. Returning to the original shore can be an ending option, not a requirement imposed on every stage. If a second collision layout is unstable, use paired safe anchors on one authored route while preserving the reveal. Do not advertise a full mirror world when only a teleport was built.
+A shared coordinate space is bookkeeping for an image that already exists. Full-canvas plates inherit `[0,0]`; cropped sprites retain their crop offset from the master. The default is not manual x/y placement of newly generated trees, bars and rocks. [Practical workflow](../design/layered-stage-workflow.md) · [Minimal technical contract](../technical/layered-stage-contract.md).
 
-| Gate | Evidence before expansion |
-| --- | --- |
-| Theme / first 45 minutes | Vatsal chooses core action, intended joke, route, scale and ending |
-| First two sprint hours | Movement, lake interaction, safe retry, win/restart and browser export work |
-| Friday evening | One full rough playthrough; one approved style frame integrates |
-| Next content increment | One master, bounded layers, one state pair and stable scene transitions |
-| Final block | Outside playtest, seam/collision fixes, credits, clean export and submission buffer |
+The trial also includes a same-size alpha extraction, which **needs edge cleanup and has not passed recomposition**. Layer work is timeboxed. If it fails, keep the flattened approved composition and one small visual effect; parallax and extra masks are optional polish. Generation cannot guarantee exact geometry, an animation rig, collision or a solvable maze.
 
-The event's [published agenda](../delivery/jam-plan.md) contains 18 sprint hours inside its advertised 24-hour format; support availability and rest further limit production time. Expand a proven slice rather than planning all environments, weapon tiers, enemies and bosses as baseline deliverables.
+## Buildable jam recommendation
 
-**Cut order:** replay bosses → extra locations / optional detours → extra weapons / enemies → companion behavior → stealth/combat → extra terrain-state variants. Keep the chosen signature reveal, clear controls, reliable collision, retry, ending and export. If necessary, make the one changed route shorter instead of removing its visual identity.
+**One complete short scene first**, with Hidden Garden/lake still the first location candidate. The Rusty Crossings master demonstrates the production method rather than replacing that priority. After theme reveal, Vatsal chooses the actual scene and signature action.
 
-## Characters, tone and story seeds
+Proposed action/exploration slice: walk/jump → touch the lake and arrive at a safe anchor → traverse an authored route → experience one visual error → reach a clear payoff/exit → restart. If combat is selected, budget one simple melee action and one enemy with a clear tell/recovery. Choose that instead of adding a separate stealth system. A robot pickup is optional after the loop works.
 
-A small original student in an oversized hoodie/poncho is the current character candidate. [Little Nightmares](../../references/games/little-nightmares/README.md) informs proportions/garment silhouette only; it does not set ambience. [Morta](../../references/games/children-of-morta/README.md) informs pixel design and magic/effects. [Terraria](../../references/games/terraria/README.md) means Wall of Flesh/Moon Lord boss references only. [Duck Season](../../references/games/duck-season/README.md) informs future mascot escalation and contrasting endings.
+| Gate | Concrete result | Cut if it slips |
+| --- | --- | --- |
+| First 45 minutes | Choose theme fit, controls, scene, action/combat choice and ending | Extra locations and villain encounters |
+| First two sprint hours | Controller, collision, interaction, retry, ending and export work with rough art | Extra movement verbs, enemy variants |
+| Friday evening | Full rough playthrough plus one approved whole-scene image | Long maze, additional rooms and props |
+| Art integration | Accepted master; one visual effect; only proven derived plates | Failed extraction/parallax, elaborate terrain mutation |
+| Final block | Outside playtest, geometry/readability fixes, credits, fresh export and submission buffer | Unreviewed polish rather than core completion |
 
-A chair swing, tray/shield, bottle and shrinking computing-device chain are preserved item/weapon seeds from A01/A04, not a required inventory. One selected action needs original art, reach, timing, hit rules and feedback. The cute robot may simply beep when collected. Professor/campus gag bosses and plush-to-humanoid Dexter remain future replay ideas after one completion; source portraits stay out of Git.
+The advertised 24-hour event has [18 scheduled sprint hours](../delivery/jam-plan.md), before individual rest/support limits. A complete small game with one master and a few consistent animations is the target. The six-stage route, weapon tiers, boss roster and every secret reveal are later expansion candidates.
 
-**Optional writing seed: Introduction to Getting Lost.** A student needs an orientation stamp; the map insists the route is fine while the campus rearranges itself. “Path not found” becomes a situation the player solves, not only a label. A found robot supplies an extremely official beep. The eventual task and ending are open for the team's recorded discussion.
+## Characters, tone and references
 
-[Infinity Blade](../../references/games/infinity-blade/README.md) contributes the post-technological civilization idea: enormous advanced remnants are partly understood and treated as ancient machinery, ritual or magic. A ceremonial lake gate responding to a mundane student ID is one disposable original seed. This does not finalize the lore or make replay its defining contribution.
+Original small student in an oversized hoodie/poncho; original campus-object actions and a cute robot item. Little Nightmares contributes character shape only. Morta contributes pixel design/magic; Terraria means Wall of Flesh/Moon Lord bosses only. Duck Season contributes future mascot/endings ideas. Infinity Blade contributes partly understood advanced remnants presented as ancient machinery or magic. [Reference comparison](../../references/comparison.md).
 
-## Source trail and next review
+**Optional writing seed:** a student seeks an orientation stamp while the campus image buffer increasingly disagrees with reality. “Path not found” fits the algorithmic maze, while an ordinary task supplies the ending. The secret-villain influences can connect the places without a long lore exposition. Final story, names and degree mappings await discussion.
 
-| Source | Direction carried into this proposal |
-| --- | --- |
-| A01 | Local terrain, student/weapon/enemy seeds, layered nature, future joke bosses |
-| A02 / A10 | Reference → composed art → masks/layers → animation/in-between iteration |
-| A03 | Reference collection; no implied mechanic |
-| A04 | Chair action and animation-state work if selected |
-| A05 | Vatsal's ownership, one stage first, Infinity Blade worldbuilding clarified in writing |
-| A06 | Playground horror reference and interior reveal |
-| A07 / A09 | Lake touch, reflection travel and inexpensive crash-spin transition |
-| A08 | Secret-boss extras deferred beyond the jam |
-| Latest written clarifications | Separate Lost in the Green from the stone creek; route order, soft rises/dips, disappearing lower path and rail traversal; stronger chaotic shapes and localized bug consequences |
+## Evidence and review
 
-Recording names, time ranges, transcription uncertainties and hashes remain in the [voice digest/index](../brief/voice-notes.md). New schemas, jokes and diagrams are proposals, not invented transcript quotes. Photographic boards, game screenshots and original schematics have different evidence roles; none are runtime assets.
+A01 supplies local geography, student/weapon/enemy seeds; A02/A10 supply scene/layer/animation iteration; A03 supplies reference collection; A04 supplies the chair-action seed; A05 preserves Vatsal's ownership and the clarified worldbuilding interest; A06 supplies Playground; A07/A09 supply lake travel/crash-spin; A08 defers secret-boss extras. [Timecoded digest and source hashes](../brief/voice-notes.md).
 
-**For the team review:** agree the route/rhythm, choose the first slice and one signature change, compare the pixel-style test, then record mechanics/asset limits in the game technical design document. Future recorded discussions can revise this draft. Issues, board creation and their automation remain deferred until that document is concluded and there is a game.
+The latest written corrections prioritize visual image errors, the algorithms-inspired bar maze, subject-linked villain influences and whole-image-first production. New art, mechanics and jokes remain proposals, not transcript quotes. Photos, commercial references and generated trials have distinct provenance and are not automatically runtime assets.
 
-[← Voice-note direction](../brief/voice-notes.md) · [Visual boards](../../references/campus/README.md) · [How we make it →](../design/layered-stage-workflow.md)
+Review the scene language, action/exploration choice, villain connection and one-scene budget; record the agreed game technical design document before creating issues/board/workflows. AI/pre-work rules still require organizer confirmation. The scheduled watcher remains paused.
+
+<details>
+<summary>Earlier schematic ideas · retained as optional exploration, not the current visual brief</summary>
+
+The three simplified diagrams are kept following the later “do keep this” clarification. They are removed from the primary visual story. Their physical terrain faults, bridge interpretation and fault families are unapproved earlier alternatives; the current maze and visual-only-error approach supersede their baseline assumptions.
+
+[Earlier route map](diagrams/route-overview.svg) · [Earlier creek fault alternatives](diagrams/terrain-rhythm.svg) · [Earlier bridge cascade](diagrams/crossing-change.svg)
+
+</details>
+
+[← Ten-recording direction](../brief/voice-notes.md) · [Location boards](../../references/campus/README.md) · [Scene-first workflow →](../design/layered-stage-workflow.md)
