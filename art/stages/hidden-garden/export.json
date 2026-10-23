@@ -1,0 +1,12 @@
+{
+  "note": "Layers from split_layers.py (layers.json). Everything scrolls at 1.0 until sky/far/mid get hand-drawn masks.",
+  "chunks": {"hg-0-0": {"x": 0, "y": 0}},
+  "layers": {
+    "03-rear": {"file": "layers/{name}.03-rear.png", "z": 3, "scroll": 1.0},
+    "04-water": {"file": "layers/{name}.04-water.png", "z": 4, "scroll": 1.0},
+    "05-play": {"file": "layers/{name}.05-play.png", "z": 5, "scroll": 1.0},
+    "07-foreground": {"file": "layers/{name}.07-foreground.png", "z": 7, "scroll": 1.0}
+  },
+  "states": {"clean": ["03-rear", "04-water", "05-play", "07-foreground"]},
+  "composed": {"clean": "images/{name}.png"}
+}
