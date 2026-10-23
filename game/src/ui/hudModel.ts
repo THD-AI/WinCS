@@ -43,6 +43,12 @@ export class HudModel {
     });
   }
 
+  /** How far a lost cell's crack has run, 0 → 1 over CRACK_MS (0 when the cell isn't cracking). */
+  crackProgress(cell: number, at: number): number {
+    const crack = this.cracks.find((c) => c.cell === cell);
+    return crack ? Math.max(0, Math.min(1, 1 - (crack.until - at) / CRACK_MS)) : 0;
+  }
+
   /** Jenny's fight (M4) starts the bar; it is hidden everywhere else. */
   showBoss(name: string, max: number): void { this.boss = { name, health: max, max }; }
   setBossHealth(health: number): void {
