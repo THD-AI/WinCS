@@ -25,7 +25,7 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 15 | No HTML viewers; Markdown pages with Previous / Next only | ✅ | Alexander · 23 Oct |
 | 16 | Visual-direction pack approved before any sprite boards are drawn | ✅ | Alexander · 23 Oct |
 | 17 | Boss of Region 1: **Jenny**, the possessed Fast Forest race car (charge → crash → debris → stunned) | ✅ | Alexander · 23 Oct |
-| 18 | Issues and project board are created after this design is reviewed | ✅ | Alexander · 23 Oct |
+| 18 | Issues and project board are created after this design is reviewed | ✅ done | Alexander · 23 Oct |
 | 19 | AI-generated art: allowed? needs declaring? | ❓ ask organisers | – |
 | 20 | A **secret horror** game: cozy first, wrong on a second look | ✅ | Alexander · 23 Oct |
 | 21 | Dexter's final form is THD's Deggster **mascot costume**, 8.5 ft, leaking black fluid where the costume pieces join (Duck Season) – not a goo monster | ✅ | Alexander · 23 Oct |
@@ -46,6 +46,7 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 36 | Jenny is a shielded enemy: hit her from behind or while stunned; she throws scrap | ✅ | Lex (A14) · 23 Oct |
 | 37 | Asset frame lists revised: run start, idle↔walk↔run bridges, 3 idle variants, jump +2, ladder 4, hit and death doubled; enemies, food, HUD and the crash window approved | ✅ | Team review (A14) · 23 Oct |
 | 38 | Parked for later: Dexter possessing you (secret ending), the underground server-farm lab, the "they use you" theme, a VW boss | 🅿️ later | Team review (A14) · 23 Oct |
+| 39 | Board, labels, issue forms and PR automation follow THD Room Finder: one epic per milestone, `[M1-S3]` stories as sub-issues, one PR per story, native *blocked by*, Status/Priority/Size/Design review fields, stacked PRs with merge commits | ✅ | Alexander · 23 Oct |
 
 <!-- nav:start -->
 [← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 13** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)

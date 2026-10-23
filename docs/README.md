@@ -17,4 +17,4 @@ Read them in order; every page has Previous / Next at the top and bottom. The nu
 | 11 | [Decisions](11-DECISIONS.md) | What is decided, what is open |
 | 12 | [Team workflow](12-TEAM-WORKFLOW.md) | Setup, branches, PRs, rules for agents |
 
-**Evidence:** [meetings and transcripts](meetings/README.md) · **Research:** [event facts](research/degdev-3.md) · [what we love in each game](research/what-we-love.md) · [engine notes](research/engine-evidence.md) · [GitHub automation plan](research/github-automation.md)
+**Evidence:** [meetings and transcripts](meetings/README.md) · **Research:** [event facts](research/degdev-3.md) · [what we love in each game](research/what-we-love.md) · [engine notes](research/engine-evidence.md) · [project board and automation](research/github-automation.md)
