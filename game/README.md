@@ -55,3 +55,8 @@ F2 shows the contact slope and slide state. Yellow one-way decks catch falling f
 Down + Jump drops through them. W/S, up/down arrows or gamepad up/down enter and
 move along blue climb zones at 70px/s. Release to hold, move sideways or jump to
 leave. `Player.canAttack` is false while climbing. Reserved ledge points stay inactive.
+
+The camera leads movement by up to 120px and eases vertical changes, clamped to
+the complete chunk grid. Rendered camera coordinates stay on whole pixels; layers
+retain the export's scroll factors. Development `?inspect` keeps manual drag panning
+instead of following the hero, for collision review.
