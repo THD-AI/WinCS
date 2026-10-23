@@ -144,13 +144,82 @@
     },
     {
       "id": "hero-hurt",
-      "title": "The student · hurt, death, interact",
+      "title": "The student · hurt and interact",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, side view, identical scale in every frame. Row 1: take damage - white hit-flash silhouette, recoil backwards, stagger, recover: 4 frames; then knockback launched backwards through the air, 3 frames. Row 2: death - collapse to knees, fall forward, lying still with the poncho spread out, fade into pixel dust: 6 frames. Row 3: interact - reach out and touch something at chest height, 3 frames; crouch and pick up an item from the ground, 4 frames; hold up a small glowing handheld device and look at its screen, 3 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 8 figures: TAKE A HIT, cartoonish and simple - a pure white flash silhouette of the hero, recoil backwards with arms flung up, stagger, wobble, catch balance, straighten, shake it off, back to standing. Row 2, exactly 6 figures: KNOCKBACK, 3 frames (launched backwards, poncho and tassels whipping forward, tumbling, curled up), then INTERACT, 3 frames (reach out and touch something at chest height, hold, pull the hand back). Row 3, exactly 7 figures: PICK UP, 4 frames (crouch, reach to the ground, grab, stand up holding a small item), then LOOK AT THE DEVICE, 3 frames (raise a small brushed-aluminium handheld computer with a glowing blue screen, look down at it, lower it). The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "hit",
+              "frames": 8,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "knockback",
+              "frames": 3,
+              "loop": false,
+              "float": true
+            },
+            {
+              "anim": "interact",
+              "frames": 3,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "pick-up",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "look-at-device",
+              "frames": 3,
+              "loop": false,
+              "fps": 6
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size."
+    },
+    {
+      "id": "hero-death",
+      "title": "The student · death",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows that form ONE death animation of 12 frames, read left to right, row 1 then row 2. Row 1, exactly 6 figures: hit stagger, knees buckle, collapse onto both knees, slump forward, hands catch the ground, fall flat forward. Row 2, exactly 6 figures: lying still face-down with the poncho spread out, the hood dark and empty, a last twitch, then the whole figure breaks into square pixel dust in three steps until only a few drifting pixels are left. It is final and quiet, never gory: no blood. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "death",
+              "frames": 6,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "death",
+              "frames": 6,
+              "even": true
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size."
     },
     {
       "id": "hero-air",
