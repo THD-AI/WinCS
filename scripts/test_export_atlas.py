@@ -97,6 +97,18 @@ class ExportAtlasTests(unittest.TestCase):
         with self.assertRaisesRegex(ea.AtlasError, 'listed twice'):
             ea.export(board, image)
 
+    def test_even_rows_keep_dust(self):
+        image = board_image([[(40, 0)] * 2])
+        draw = ImageDraw.Draw(image)
+        for x in (72, 78, 84):  # a third frame that is only dust
+            draw.rectangle((x, 44, x + 1, 45), fill=(200, 200, 200, 255))
+        board = config([[{'anim': 'dust', 'frames': 3, 'even': True}]])
+        _, atlas, _ = ea.export(board, image)
+        self.assertEqual(len(atlas['frames']), 3)
+        board = config([[{'anim': 'dust', 'frames': 5, 'even': True}]])
+        with self.assertRaisesRegex(ea.AtlasError, 'is empty'):
+            ea.export(board, image)
+
     def test_skipped_rows_and_specks_are_ignored(self):
         image = board_image([[(40, 0)] * 2, [(40, 0)] * 5])
         image.putpixel((image.width - 3, 20), (255, 255, 255, 255))  # a stray pixel in row 1
