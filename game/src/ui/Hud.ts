@@ -49,8 +49,8 @@ export class Hud extends Phaser.Scene {
     this.input.gamepad?.on('down', (_pad: Phaser.Input.Gamepad.Gamepad, button: Phaser.Input.Gamepad.Button) => {
       if (button.index === MENU_PAD) toggleMap(this.scene);
     });
-    // Dev builds: F2 hands over the pocket computer and marks the first rooms visited (#69 verification).
-    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F2', () => {
+    // Dev builds: F4 hands over the pocket computer and marks the first rooms visited (#69 verification; F2 is the player's debug readout).
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F4', () => {
       pocketMap.unlock();
       pocketMap.visit('hidden-garden', 'hg-0-0');
       pocketMap.visit('rusty-creek', 'rc-0-0');
