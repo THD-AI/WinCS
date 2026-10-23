@@ -1,0 +1,302 @@
+{
+ "frames": {
+  "rev-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "rev-01": {
+   "frame": {
+    "x": 426,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "rev-02": {
+   "frame": {
+    "x": 852,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "rev-03": {
+   "frame": {
+    "x": 1278,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "charge-00": {
+   "frame": {
+    "x": 0,
+    "y": 221,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "charge-01": {
+   "frame": {
+    "x": 426,
+    "y": 221,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "charge-02": {
+   "frame": {
+    "x": 852,
+    "y": 221,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "charge-03": {
+   "frame": {
+    "x": 1278,
+    "y": 221,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "crash-00": {
+   "frame": {
+    "x": 0,
+    "y": 442,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "crash-01": {
+   "frame": {
+    "x": 426,
+    "y": 442,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "crash-02": {
+   "frame": {
+    "x": 852,
+    "y": 442,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "crash-03": {
+   "frame": {
+    "x": 1278,
+    "y": 442,
+    "w": 424,
+    "h": 219
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 424,
+    "h": 219
+   },
+   "sourceSize": {
+    "w": 424,
+    "h": 219
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "boss-jenny.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 1702,
+   "h": 661
+  },
+  "scale": "1"
+ }
+}
