@@ -36,3 +36,9 @@ production reports the error and substitutes a bundled actor or plain stage plat
 Use `?region=rusty-creek&state=anomaly&inspect` on the dev URL to drag-pan the stage.
 `state=clean` selects the calm version. Export the assets before starting dev;
 the loader does not generate or copy art.
+
+Press **F2** to toggle the authored collision overlay (docs/04 colours). It uses
+the same world polylines and boxes that the controller consumes. Collision files
+are fetched next to the exported manifest, validated against the chunk and state,
+then shifted from chunk-local pixels by the manifest's grid coordinates. Original
+metadata is retained; reserved ledges and glide lifts do not become solid surfaces.
