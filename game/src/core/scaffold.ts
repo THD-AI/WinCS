@@ -6,6 +6,7 @@ import { loadCollisions, type CollisionChunk } from '../stage/collision';
 import { collisionDebug } from '../stage/collision-debug';
 import { Player } from '../player/player';
 import { cameraFollow } from '../stage/camera';
+import { ChairCombat } from '../combat/chair';
 
 // Bootstrap-only scenes live in lane B until lane A provides story/UI scenes.
 export class Boot extends Phaser.Scene {
@@ -31,6 +32,9 @@ export class Stage extends Phaser.Scene {
   private player?: Player;
   private defeatedBosses = new Set<string>();
   private follow?: ReturnType<typeof cameraFollow>;
+  private combat?: ChairCombat;
+  get playerActor() { return this.player; }
+  get chair() { return this.combat; }
   constructor() { super('Stage'); }
   create(data: { manifest: StageManifest; state: RegionState; collisions: CollisionChunk[] }) {
     drawStage(this, data.manifest, data.state);
@@ -40,6 +44,7 @@ export class Stage extends Phaser.Scene {
       const hud = this.scene.get('HUD') as Phaser.Scene & { model?: { setHealth(health: number, at: number): void } };
       hud.model?.setHealth(health, this.time.now);
     };
+    this.combat = new ChairCombat(this, this.player, data.manifest.region);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.scene.launch('UI');
@@ -54,8 +59,11 @@ export class Stage extends Phaser.Scene {
     }
   }
   update(_time: number, delta: number) {
-    this.player?.update(delta);
-    if (this.player) this.follow?.(this.player.body, delta);
+    const active = Math.min(100, this.combat?.pause.consume(delta) ?? delta);
+    if (active <= 0) return;
+    this.player?.update(active);
+    this.combat?.update(active);
+    if (this.player) this.follow?.(this.player.body, active);
   }
 }
 

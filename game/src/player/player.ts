@@ -25,6 +25,7 @@ export class Player {
   private traversal = traversal();
   private animation: LocomotionAnimation;
   get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0; }
+  get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
     private region = 'rusty-creek', bosses = new Set<string>()) {
     this.spawn = chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };

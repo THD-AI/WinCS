@@ -71,3 +71,9 @@ Actors register reset callbacks with Player.life; defeated boss ids persist.
 Orange hazards damage and return to safe ground; black no-go resets are free.
 Development F5 tests a normal hit, Shift+F5 a two-cell hit, Ctrl+F5 a hazard reset,
 and Alt+F5 a free no-go reset. These keys are absent from production builds.
+
+Tap J or gamepad X/Square for alternating chair sweeps, each followed by the
+two-frame recoil. Only contact poses deal damage; a hit freezes stage actors for
+60ms and creates a small spark. F2 shows the active hitbox. Development
+`?region=rusty-creek&state=anomaly&combat-test` adds a stationary rover target.
+Story integration can gate chair use through `Stage.chair.enabled`.
