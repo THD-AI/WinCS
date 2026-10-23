@@ -6,7 +6,7 @@
 
 ![Hidden Garden · the lake anomaly](images/hidden-garden-preview.png)
 
-**Review:** ✅ Second take. Dexter on the deck pointing, the hero behind him, and the reflection shows the girder maze that isn't there, with torn cyan edges. That is the prologue's key frame. (First take lost Dexter and the wrong reflection.)
+**Review:** ✅ Owner: "absolutely a masterpiece – the first introductory zone." Dexter pointing at the first anomaly is how every region's anomaly gets introduced.
 
 ## Brief
 

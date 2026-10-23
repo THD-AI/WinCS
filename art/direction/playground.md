@@ -1,26 +1,29 @@
 # Playground · the slide
 
 <!-- nav:start -->
-[← Toxic Garden · the greenhouse](toxic-garden.md) · [Visual direction](README.md) · **7 / 14** · [Boss · Jenny, the runaway race car →](boss-jenny.md)
+[← Toxic Garden · the corten beds](toxic-garden.md) · [Visual direction](README.md) · **7 / 14** · [Boss · Jenny, the runaway race car →](boss-jenny.md)
 <!-- nav:end -->
 
 ![Playground · the slide](images/playground-preview.png)
 
-**Review:** ✅ The real playground's leaning poles, net bridge and tower, with the tube slide twisted into a dark mouth. Uncanny without gore. Purple dusk sets it apart from the other regions.
+**Review:** ✅ Revised: strict side view, towers, net bridge, ramp and slide as one readable climb route; the slide's opening only a little too dark.
 
 ## Brief
 
-Match the first image's style exactly. Scene: the real campus adventure playground from the collage - leaning green and yellow timber poles, a rope-net bridge, a timber climbing tower, a tube slide - at dusk turning uncanny: the tube slide's entrance has stretched and twisted into a wide dark mouth, a fast-travel anomaly. Sand ground, long shadows. The hero stands small at the slide entrance; empty swings move on their own. Psychological unease, no gore.
+Match the first image's pixel style and Planet of Lana framing. The real campus adventure playground from the photos (images 3-6) in strict side view: leaning green and yellow timber poles, a rope-net tunnel bridge between two timber towers, a wooden climbing house, a timber plank ramp, sand ground, a metal tube slide. Its towers, bridge and ramp form a readable climb route. Late golden light turning to dusk, long shadows. The hero (second image) small, halfway up the plank ramp. Secret horror, subtle: the tube slide's opening is just a little too dark and a little too wide, and one swing hangs perfectly still while the others sway. Blurred foreground grass at the bottom edge. No monster mouth, no gore.
 
 ## Inputs
 
 - [style-master](style-master.md) (this pack)
-- [playground.png](../../references/campus/images/playground.png)
-- [frame-020.jpg](../../references/animation/playground/images/frame-020.jpg)
 - [hero-preview.png](../sprites/images/hero-preview.png)
+- [playground.png](../../references/campus/images/playground.png)
+- `20261022_142552.jpg` (GameJam_ References, outside Git)
+- `20261022_142555.jpg` (GameJam_ References, outside Git)
+- `20261022_142620.jpg` (GameJam_ References, outside Git)
+- [frame-020.jpg](../../references/animation/playground/images/frame-020.jpg)
 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/playground.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo playground`
 
 <!-- nav:start -->
-[← Toxic Garden · the greenhouse](toxic-garden.md) · [Visual direction](README.md) · **7 / 14** · [Boss · Jenny, the runaway race car →](boss-jenny.md)
+[← Toxic Garden · the corten beds](toxic-garden.md) · [Visual direction](README.md) · **7 / 14** · [Boss · Jenny, the runaway race car →](boss-jenny.md)
 <!-- nav:end -->

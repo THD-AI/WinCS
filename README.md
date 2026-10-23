@@ -14,7 +14,7 @@ A 2D side-scrolling exploration-action game in hi-bit pixel art. You are a facel
 | --- | --- |
 | 📖 **[Design documents](docs/README.md)** | Proposal → game design → story → levels → enemies → visuals → assets → stack → pipeline → jam plan → decisions → workflow |
 | 🎨 **[Visual direction](art/direction/README.md)** | The look of every region, the cast, combat, HUD – one style |
-| 🏞️ **[Location strips](art/locations/README.md)** | Every region as a horizontal side-scrolling background, extended left and right |
+| 🏞️ **[Stage concepts](art/locations/README.md)** | Every region clean and after its anomaly, explored up, down, left and right |
 | 🧍 **[Sprite boards](art/sprites/README.md)** | Hero sheet (approved) and the sprite boards that follow |
 | 🌉 **[Rusty Creek stage](art/stages/rusty-creek/README.md)** | The first level: 3 chunks × 7 layers, route graph |
 | 🎙️ **[Meetings](docs/meetings/README.md)** | 13 transcribed recordings and what each one decided |

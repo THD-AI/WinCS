@@ -6,7 +6,7 @@
 
 ![Style master · Rusty Creek, first light](images/style-master-preview.png)
 
-**Review:** ✅ The anchor. Real Rusty Creek plate, hero at Lana scale on the low deck, foreground leaves and rail, haze, creek glints. The girders came out greyer than the stage's blue-green steel, so stage plates keep their own steel colour.
+**Review:** ✅ Owner: "perfect." The anchor for the whole pack – our real Rusty Creek plate with the hero at Planet of Lana scale.
 
 ## Brief
 

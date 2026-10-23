@@ -30,7 +30,13 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 20 | A **secret horror** game: cozy first, wrong on a second look | ✅ | Alexander · 23 Oct |
 | 21 | Dexter's final form is THD's Deggster **mascot costume**, 8.5 ft, leaking black fluid where the costume pieces join (Duck Season) – not a goo monster | ✅ | Alexander · 23 Oct |
 | 22 | Enemies are THD's real **autonomous** machines (rover, crab hexapod, drone, Fast Forest's driverless Jenny); the anomaly takes over their autonomy | ✅ | Alexander · 23 Oct |
-| 23 | Locations are horizontal side-scrolling strips built from the campus collages, extendable left and right | ✅ | Alexander · 23 Oct |
+| 23 | Locations are side-scrolling stages built from the campus collages; wide "wallpaper" strips are rejected | ✅ revised | Alexander · 23 Oct |
+| 24 | Every region has a **clean** and an **anomaly** state; touching the region's own anomaly turns it and pushes you back to its start (Rusty Creek: bridge → rust maze) | ✅ | Alexander · 23 Oct |
+| 25 | Region crossing is cheap: damage sprite → "THD.exe has stopped responding." window → land in the new place, finish the damage sprite | ✅ | Alexander · 23 Oct |
+| 26 | Exploration in four directions: chunk grid (left, right, up, down), transition chunks (e.g. underground), slopes to slide, ledge grab | ✅ | Alexander · 23 Oct |
+| 27 | **Glide** (poncho as a sail) – the Region 2 upgrade, after the jam slice | ✅ | Lex, Alexander · 23 Oct |
+| 28 | Layer stack with foreground blur, reflections, falling leaves; every chunk gets a collision annotation (walk, slide, one-way, ledge, climb, solid, no-go, hazard, interactable, spawn, glide lift) | ✅ | Alexander · 23 Oct |
+| 29 | First boss: **Jenny**; other bosses discussed later | ✅ | Alexander · 23 Oct |
 
 <!-- nav:start -->
 [← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 13** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)

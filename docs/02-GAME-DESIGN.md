@@ -4,7 +4,12 @@
 [← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 13** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->
 
-![The hero – THD poncho, hood of pure shadow, 6 ft](../art/sprites/images/hero-preview.png)
+![What playing looks like – HUD and the pocket computer's map](../art/direction/images/hud-preview.png)
+
+| Explore | Fight | Rest | Cross |
+| --- | --- | --- | --- |
+| [![Lost in the Green](../art/direction/images/lost-in-the-green-preview.png)](../art/direction/lost-in-the-green.md) | [![Combat](../art/direction/images/combat-preview.png)](../art/direction/combat.md) | [![Mensa](../art/direction/images/mensa-interior-preview.png)](../art/direction/mensa-interior.md) | [![Anomaly crossing](../art/direction/images/anomaly-language-preview.png)](../art/direction/anomaly-language.md) |
+| Hills, branches up and down, secrets behind grass | The chair against autonomous robots | Coffee machine save point; Dexter trades | Touch the anomaly, crash, land somewhere else |
 
 ## Core loop
 
@@ -33,10 +38,14 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 
 - **Walk / run:** one speed curve, about 3.5 m/s walking and 6 m/s running, with a short acceleration so the poncho has weight.
 - **Jump:** variable height, from about 1.2 m (tap) to 2.2 m (hold). Coyote time is 0.1 s and jump buffering 0.12 s. These two are the cheapest things that make a platformer feel good.
-- **Hills:** the ground is a smooth polyline. You walk up and down slopes up to 40°, like Planet of Lana. There are no staircase blocks.
-- **One-way platforms:** girder decks, scaffold planks. ↓ + Jump drops through.
-- **Ladders:** press ↑ in a ladder zone. Climbing is slow, and you can't attack on a ladder.
-- **No wall-jump, no dash, no ledge-grab in the jam slice.** Later regions can add one ability each (see Progression).
+- **Hills:** the ground is a smooth polyline. You walk up and down slopes up to 40°, like Planet of Lana and Ori. There are no staircase blocks.
+- **Slides:** slopes steeper than 40° are slides. You skid down them fast with the poncho flapping, and can jump off at any point.
+- **Ledge grab:** jump at a marked ledge edge and the hero catches it, hangs, and pulls up with ↑ (or drops with ↓). Ledges are authored in the collision data, never guessed from pixels.
+- **One-way platforms:** girder decks, scaffold planks, tray stacks. ↓ + Jump drops through.
+- **Climbing:** ladders, vines, scaffold and stairs. Press ↑ in a climb zone. Climbing is slow, and you can't attack while climbing.
+- **Glide (later, Lex's proposal):** hold Jump in the air and the poncho opens like a sail for a slow, steerable fall. It's the Region 2 upgrade that opens Lost in the Green's upper routes. It's in the design and the collision data from day one, but not in the jam slice.
+- **Four directions:** every region is explored left/right *and* up/down: a mountainside route, a lower branch, an underground pocket ([04](04-WORLD-AND-LEVELS.md)).
+- **No wall-jump, no dash in the jam slice.**
 
 ## Health, damage, death
 
@@ -75,24 +84,29 @@ The jam slice ships without the meter if time runs out (cut item 2 in the [jam p
 | Item | Where | What it unlocks |
 | --- | --- | --- |
 | **Pocket computer** (the aluminium experiment suitcase, shrunk to a handheld) | Dexter gives it in Rusty Creek after the crash | Map (rooms fill in as you explore; no minimap), archive (notes, enemy entries), items, weapon switch |
-| Region upgrade | Dexter, at the end of each region | One new movement or combat ability per region: double jump (R2), tray recall (R3), wall-slide (R4) – post-jam |
+| Region upgrade | Dexter, at the end of each region | One new movement or combat ability per region: glide (R2), tray recall (R3), wall-slide (R4) – post-jam |
 | Notes / archive entries | Hidden in secret spots | Lore about the experiment and about Dexter. They are what makes "secret paths" worth finding |
 | Food | Lying around, from Dexter | Healing |
 
 **Backtracking:** a new ability makes an earlier visible ledge reachable. There is no free teleporting. Fast travel comes only through anomalies you have already crossed (see [world](04-WORLD-AND-LEVELS.md)).
 
-## Region transitions – the anomalies
+## Every region has two states – clean and anomaly
 
-Each region is entered through a different **anomaly**: a surface that looks like a reflection and is really a door into a parallel dimension.
+You enter every region in its **clean** state: the real campus place, calm and pretty. Somewhere in it is that region's **anomaly**, which is always a different thing and always pointed out the first time (Dexter points at the pond). When you touch it, the region **turns**. The same place becomes its anomaly version, you're pushed back to the region's start, and the stage you now explore is the broken one. Rusty Creek is the model: first the normal creek and bridge, then the rust maze that looks like a pathfinding algorithm.
 
-| Order | Anomaly | Into |
-| --- | --- | --- |
-| 1 | The pond in the Hidden Garden | Rusty Creek |
-| 2 | A polished granite obelisk ("Bayerwald-Granit" boulders) | Lost in the Green |
-| 3 | A puddle of black fluid | Campus / Mensa |
-| 4 | The playground tube slide, twisted into a mouth (Lex's slide idea) | Toxic Garden / Playground |
+| Region | Clean | Its anomaly (what you touch) | Anomaly state |
+| --- | --- | --- | --- |
+| Hidden Garden | Pond, deck, reeds | The patch of the pond that reflects girders | The reflection climbs out; girders grow through the reeds |
+| Rusty Creek | Creek, rails, bridge | The bridge's railing shimmers | The rust maze |
+| Lost in the Green | Pampas hills, slab path | A granite boulder with one mirror face | Hedge maze, birches repeated, leaves fall upward |
+| Campus | Plaza, scaffolded Mensa facade | A black puddle that reflects nothing | Scaffolding grows into the sky; facade cut and repeated |
+| Mensa | Night cafeteria | The coffee machine screen shows a pond | Chairs stack into towers; trays float as steps |
+| Toxic Garden | Corten beds under the highway bridge | One flower turned the wrong way | Plants huge and leaning; every flower watches you |
+| Playground | Towers, net bridge, slide | The slide's opening is too dark | Towers stretch; the slide coils across the stage |
 
-**Every crossing uses one shared animation:** touch → the regular damage reaction → the hero is lifted and spins like a starfish → an error dialog freezes the frame → cut → you land in the new region and the damage animation finishes. One reusable sequence, no bespoke cinematics. That was the explicit reason for this design.
+Concepts for every pair: [stage concepts](../art/locations/README.md).
+
+**Crossing is cheap: sprites plus one window.** Touch → the regular damage sprite → freeze → an old Windows-style error window, **"THD.exe has stopped responding."** [OK] → cut → you land in the new state, and the damage sprite finishes. No cinematic, no special animation: the hit and knockback sprites the hero needs anyway, plus one UI window rendered by the game (real text, not art). The same sequence carries you into the next region at its exit anomaly.
 
 ## What is NOT in the game (on purpose)
 

@@ -1,12 +1,12 @@
 # Dexter · plush to mascot
 
 <!-- nav:start -->
-[← The cast · machines and companion](cast.md) · [Visual direction](README.md) · **10 / 14** · [Combat · the chair →](combat.md)
+[← The cast · machines and companion](cast.md) · [Visual direction](README.md) · **10 / 14** · [Combat · the chair in Rusty Creek →](combat.md)
 <!-- nav:end -->
 
 ![Dexter · plush to mascot](images/dexter-stages-preview.png)
 
-**Review:** ✅ Second take, after the owner's correction: the final form is THD's real Deggster mascot costume, 8.5 ft, waving like Duck Season's mascot – and black fluid seeps out exactly where the costume pieces join (neck sleeve, glove cuffs, feet). Friendly first, wrong second: the secret horror in one picture. Note: the backdrop's gothic building isn't THD; scenery comes from the location strips. (First take had a goo monster, now rejected.)
+**Review:** ✅ Owner: "perfect." The plush becomes the 8.5 ft mascot costume, black fluid seeping where the pieces join.
 
 ## Brief
 
@@ -23,5 +23,5 @@ ABSOLUTELY NO TEXT, NO LABELS. Four figures on one ground line, side views, TRUE
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter-stages.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo dexter-stages`
 
 <!-- nav:start -->
-[← The cast · machines and companion](cast.md) · [Visual direction](README.md) · **10 / 14** · [Combat · the chair →](combat.md)
+[← The cast · machines and companion](cast.md) · [Visual direction](README.md) · **10 / 14** · [Combat · the chair in Rusty Creek →](combat.md)
 <!-- nav:end -->

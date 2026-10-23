@@ -8,7 +8,7 @@
 
 Usage:
     python scripts/make_boards.py draw [ids...]   # API calls; skips raws that exist
-    python scripts/make_boards.py extend --config art/locations/locations.json   # grow strips left/right
+    python scripts/make_boards.py neighbour <id> --dir down --brief 'a culvert' --config ...  # next chunk
     python scripts/make_boards.py pages [--config ...]   # one Markdown page per board + index
     python scripts/make_boards.py draw --redo hero
     python scripts/make_boards.py crush           # offline; rebuilds every committed image
@@ -111,7 +111,8 @@ def edit(name: str, fields: dict, images: list[Path], key: str, mask: Path | Non
 def draw(board: dict, config: dict, key: str) -> None:
     out = RAW / f"{board['id']}.png"
     # The board's own brief goes first: with the style text first the model paints a scene.
-    prompt = "\n\n".join([f"BOARD: {board['title']}.", board["prompt"], config["style"], config["people"]])
+    # No title line: the model printed "BOARD: <title>" into an image as a sign.
+    prompt = "\n\n".join([board["prompt"], config["style"], config["people"]])
     with tempfile.TemporaryDirectory() as folder:
         images = [upload_copy(resolve(ref), Path(folder)) for ref in board["inputs"]]
         png = edit(board["id"], {"model": board.get("model", config["model"]), "prompt": prompt,
@@ -123,39 +124,46 @@ def draw(board: dict, config: dict, key: str) -> None:
     print(f"{board['id']}: drew {out.relative_to(ROOT)}", flush=True)
 
 
-EXTEND = ("Extend this side-scrolling background strip to the {side}. The {kept} third of the image is existing "
-          "art: keep it exactly. Paint the transparent two thirds as the natural continuation of the same "
-          "location - the ground line continues at the same height across the seam and runs off the {side} "
-          "edge, same horizon, same light, palette and fine 2-pixel grain, same scale - with new but matching "
-          "features, not a copy of what is already there. No characters, no text.\n\n{brief}")
+NEIGHBOUR = ("This image is one chunk of a side-scrolling stage; the strip along its {edge} edge is existing art "
+             "from the neighbouring chunk: keep it exactly. Paint the transparent rest as the next chunk {direction} "
+             "it - the ground, walls and structures continue across the seam at the same positions, same light, "
+             "palette, fine 2-pixel grain and scale, with new features that fit the route (not a copy of the "
+             "neighbour). Strict side view. No characters, no text.\n\n{brief}")
+EDGES = {  # direction: (edge of the NEW chunk that shows the neighbour, crop of the neighbour, paste offset)
+    "right": ("left", lambda w, h, b: (w - b, 0, w, h), lambda w, h, b: (0, 0)),
+    "left": ("right", lambda w, h, b: (0, 0, b, h), lambda w, h, b: (w - b, 0)),
+    "up": ("bottom", lambda w, h, b: (0, 0, w, b), lambda w, h, b: (0, h - b)),
+    "down": ("top", lambda w, h, b: (0, h - b, w, h), lambda w, h, b: (0, 0)),
+}
+WHERE = {"right": "to the right of", "left": "to the left of", "up": "above", "down": "below"}
 
 
-def extend(board: dict, config: dict, key: str) -> None:
-    """Grow a strip left and right from its own edges: [left 2/3][strip][right 2/3]."""
-    strip = Image.open(RAW / f"{board['id']}.png").convert("RGBA")
-    w, h = strip.size
-    third = w // 3
-    pieces = {}
+def neighbour(board: dict, config: dict, key: str, direction: str, brief: str = "") -> None:
+    """Paint the next chunk in one direction from this chunk's edge band (a third of its size).
+
+    Writes tmp/.../<id>--<direction>.png with the shared band pixel-exact. The seam is then
+    repaired with stage_art.py, and a chunk is only kept if Lex's route needs it.
+    """
+    chunk = Image.open(RAW / f"{board['id']}.png").convert("RGBA")
+    w, h = chunk.size
+    band = (w if direction in ("left", "right") else h) // 3
+    edge, crop, at = EDGES[direction]
+    context = chunk.crop(crop(w, h, band))
+    canvas = Image.new("RGBA", (w, h))
+    canvas.paste(context, at(w, h, band))
     with tempfile.TemporaryDirectory() as folder:
-        for side, kept, src, at in (("right", "left", (w - third, 0, w, h), 0),
-                                    ("left", "right", (0, 0, third, h), w - third)):
-            canvas = Image.new("RGBA", (w, h))
-            canvas.paste(strip.crop(src), (at, 0))
-            path = Path(folder) / f"{side}.png"
-            canvas.save(path)  # transparent pixels are the area to paint (also used as the mask)
-            prompt = EXTEND.format(side=side, kept=kept, brief=board["prompt"])
-            png = edit(f"{board['id']}-{side}", {"model": board.get("model", config["model"]), "prompt": prompt,
-                                                  "size": f"{w}x{h}"}, [path], key, mask=path)
-            if png is None:
-                return
-            pieces[side] = Image.open(io.BytesIO(png)).convert("RGBA").resize((w, h))
-    wide = Image.new("RGBA", (w + 4 * third, h))
-    wide.paste(pieces["left"].crop((0, 0, w - third, h)), (0, 0))
-    wide.paste(strip, (w - third, 0))  # the approved strip stays pixel-exact in the middle
-    wide.paste(pieces["right"].crop((third, 0, w, h)), (2 * w - third, 0))
-    wide.convert("RGB").save(RAW / f"{board['id']}-wide.png")
-    print(f"{board['id']}: extended to {wide.width}x{h}", flush=True)
-    crush({**board, "id": f"{board['id']}-wide"})
+        path = Path(folder) / "context.png"
+        canvas.save(path)  # transparent pixels are the area to paint (also used as the mask)
+        prompt = NEIGHBOUR.format(edge=edge, direction=WHERE[direction], brief=brief or board["prompt"])
+        png = edit(f"{board['id']}--{direction}", {"model": board.get("model", config["model"]), "prompt": prompt,
+                                                   "size": f"{w}x{h}"}, [path], key, mask=path)
+    if png is None:
+        return
+    new = Image.open(io.BytesIO(png)).convert("RGBA").resize((w, h))
+    new.paste(context, at(w, h, band))
+    out = RAW / f"{board['id']}--{direction}.png"
+    new.convert("RGB").save(out)
+    print(f"{board['id']}: neighbour {direction} -> {out.relative_to(ROOT)}", flush=True)
 
 
 def is_magenta(r: int, g: int, b: int) -> bool:
@@ -213,10 +221,7 @@ def pages(config: dict) -> None:
             continue
         image = preview.relative_to(folder).as_posix()
         review = board.get("review", "Not reviewed yet.")
-        wide = OUT / f"{board['id']}-wide-preview.png"
-        extra = [f"**Extended left and right** from its own edges (the original strip is the middle, pixel-exact):", "",
-                 f"![{board['title']} – extended]({wide.relative_to(folder).as_posix()})", ""] if wide.exists() else []
-        lines = [f"# {board['title']}", "", f"![{board['title']}]({image})", "", *extra,
+        lines = [f"# {board['title']}", "", f"![{board['title']}]({image})", "",
                  f"**Review:** {review}", "", "## Brief", "", board["prompt"], "",
                  "## Inputs", "", *[f"- {describe(r)}" for r in board["inputs"]], "",
                  f"Model `{board.get('model', config['model'])}` · pixel factor {board['factor']} · "
@@ -234,10 +239,12 @@ def pages(config: dict) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("step", choices=["draw", "crush", "pages", "extend"])
+    parser.add_argument("step", choices=["draw", "crush", "pages", "neighbour"])
     parser.add_argument("ids", nargs="*")
     parser.add_argument("--redo", action="store_true", help="draw again even if a raw exists")
     parser.add_argument("--config", type=Path, help="board set to use (default: art/sprites/boards.json)")
+    parser.add_argument("--dir", choices=list(EDGES), help="neighbour: which side to grow")
+    parser.add_argument("--brief", default="", help="neighbour: what the new chunk contains (Lex's route)")
     args = parser.parse_args()
     if args.config:
         use_config(args.config)
@@ -251,10 +258,12 @@ def main() -> None:
     if args.step == "pages":
         pages(config)
         return
-    if args.step == "extend":
+    if args.step == "neighbour":
+        if not args.dir:
+            sys.exit("neighbour needs --dir left|right|up|down")
         key = api_key()
-        with ThreadPoolExecutor(3) as pool:
-            list(pool.map(lambda b: extend(b, config, key), boards))
+        for board in boards:
+            neighbour(board, config, key, args.dir, args.brief)
         return
 
     key = api_key()

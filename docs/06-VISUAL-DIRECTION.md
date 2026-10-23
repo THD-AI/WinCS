@@ -22,7 +22,9 @@ Everything in the game must look like it belongs in the **style master** above. 
 | [![Combat](../art/direction/images/combat-preview.png)](../art/direction/combat.md) **Combat** – the chair | [![Anomalies](../art/direction/images/anomaly-language-preview.png)](../art/direction/anomaly-language.md) **Anomalies** – how the world breaks |
 | [![HUD](../art/direction/images/hud-preview.png)](../art/direction/hud.md) **HUD** and pocket computer | [![Props](../art/direction/images/props-preview.png)](../art/direction/props.md) **Props and pickups** |
 
-**Locations as strips:** the pack sets the look; the playable backgrounds are the horizontal [location strips](../art/locations/README.md), extended to both sides.
+**Owner review, 23 Oct 18:40:** perfect – style master, Hidden Garden ("a masterpiece"), Dexter stages, Lost in the Green, HUD; good – Jenny, cast, Mensa, props. Redone after feedback: combat, Toxic Garden (outdoors, collage palette), Playground, the crash frame (cheap: sprites + one window), Campus.
+
+**Stages:** the pack sets the look; the playable places are the [stage concepts](../art/locations/README.md) – each region clean and after its anomaly – built into layered chunks ([09](09-ART-PIPELINE.md)).
 
 **Reviewed 23 Oct:** 14 images; 12 approved, 2 with notes (Jenny's livery, the machines lineup). Seven needed a second or third take; every image's page says what changed and why. The two lessons that fixed it: the hero sheet always goes in as the second input, and "copy the style, not the composition".
 
@@ -62,7 +64,7 @@ Everything in the game must look like it belongs in the **style master** above. 
 
 ## What each reference game gives the look
 
-Hollow Knight: silhouettes, rim light, HUD restraint · Planet of Lana: scale, layers, soft hills · Dead Cells: Toxic Garden greenhouse, hit impact · 9 Years of Shadows: pixel richness · Kingdom Two Crowns: water reflections, goo · Children of Morta: concentrated colourful FX · Little Nightmares: the hooded silhouette · Terraria: boss size and readability · Monkey Island (classic): small funny details in scenes.
+Hollow Knight: silhouettes, rim light, HUD restraint · Planet of Lana: scale, layers, soft hills (Lana is hand-painted, not pixel art – we take its framing and layering, not its rendering) · Dead Cells: Toxic Garden greenhouse, hit impact · 9 Years of Shadows: pixel richness · Kingdom Two Crowns: water reflections, goo · Children of Morta: concentrated colourful FX · Little Nightmares: the hooded silhouette · Terraria: boss size and readability · Monkey Island (classic): small funny details in scenes.
 
 <!-- nav:start -->
 [← 05 – Enemies and bosses](05-ENEMIES-AND-BOSSES.md) · [Design docs](README.md) · **6 / 13** · [07 – Asset manifest →](07-ASSET-MANIFEST.md)

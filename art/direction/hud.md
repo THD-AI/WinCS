@@ -1,12 +1,12 @@
 # HUD and pocket computer
 
 <!-- nav:start -->
-[← Anomalies · how the world breaks](anomaly-language.md) · [Visual direction](README.md) · **13 / 14** · [Props and pickups →](props.md)
+[← Anomaly crossing · the crash frame](anomaly-language.md) · [Visual direction](README.md) · **13 / 14** · [Props and pickups →](props.md)
 <!-- nav:end -->
 
 ![HUD and pocket computer](images/hud-preview.png)
 
-**Review:** ✅ Five battery cells, a 3-charge glitch meter, the pocket computer's green CRT map as an overlay. Restrained, Hollow Knight-like. Glitch-meter charges came out as circles; segments or circles are both fine.
+**Review:** ✅ Owner: "magnificent." Battery cells, glitch meter, the pocket computer's green CRT map.
 
 ## Brief
 
@@ -22,5 +22,5 @@ Match the first image's style exactly. A gameplay screenshot in Rusty Creek with
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hud.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo hud`
 
 <!-- nav:start -->
-[← Anomalies · how the world breaks](anomaly-language.md) · [Visual direction](README.md) · **13 / 14** · [Props and pickups →](props.md)
+[← Anomaly crossing · the crash frame](anomaly-language.md) · [Visual direction](README.md) · **13 / 14** · [Props and pickups →](props.md)
 <!-- nav:end -->

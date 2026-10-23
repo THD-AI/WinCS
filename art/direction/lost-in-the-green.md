@@ -1,12 +1,12 @@
 # Lost in the Green · secret paths
 
 <!-- nav:start -->
-[← Hidden Garden · the lake anomaly](hidden-garden.md) · [Visual direction](README.md) · **3 / 14** · [Campus · the Mensa facade →](campus-mensa.md)
+[← Hidden Garden · the lake anomaly](hidden-garden.md) · [Visual direction](README.md) · **3 / 14** · [Campus · the plaza and the Mensa scaffold →](campus-mensa.md)
 <!-- nav:end -->
 
 ![Lost in the Green · secret paths](images/lost-in-the-green-preview.png)
 
-**Review:** ✅ Third take. Slab path up a soft grassy hill, pampas screens, the rover on the path ahead of the hero, a cyan secret gap in the hedge. (Earlier takes added a creek, then ruins, and dropped the rover.)
+**Review:** ✅ Owner: "perfect." Keep: hills going up like a mountain, diverging paths, up-down exploration, leaves over the camera.
 
 ## Brief
 
@@ -22,5 +22,5 @@ No water and no ruins in this scene. A natural hillside: a narrow path of grey s
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/lost-in-the-green.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo lost-in-the-green`
 
 <!-- nav:start -->
-[← Hidden Garden · the lake anomaly](hidden-garden.md) · [Visual direction](README.md) · **3 / 14** · [Campus · the Mensa facade →](campus-mensa.md)
+[← Hidden Garden · the lake anomaly](hidden-garden.md) · [Visual direction](README.md) · **3 / 14** · [Campus · the plaza and the Mensa scaffold →](campus-mensa.md)
 <!-- nav:end -->

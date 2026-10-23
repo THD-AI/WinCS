@@ -6,7 +6,7 @@
 
 ![Props and pickups](images/props-preview.png)
 
-**Review:** ✅ Food, drinks, tray, chair, sign and pocket computer at true scale next to the hero, with real wrinkles and wear rather than catalogue shots. Background follows the creek; the sprite boards draw them on magenta.
+**Review:** ✅ Owner: good. Real wrinkles and wear, true scale next to the hero.
 
 ## Brief
 

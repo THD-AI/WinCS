@@ -6,7 +6,7 @@
 
 ![The cast · machines and companion](images/cast-preview.png)
 
-**Review:** 🟡 The machines read well at a shared pixel scale: drone, rover, walker, the THD box robot and the pocket-computer case, with no text. Two misses: the Dexter plush came out hip-height (he is knee-height, 1.5 ft), and Jenny is missing. Dexter's growth has its own image; Jenny's scale is in the boss image.
+**Review:** ✅ Owner: pretty good. The machines at a shared scale; Dexter's growth has its own image.
 
 ## Brief
 

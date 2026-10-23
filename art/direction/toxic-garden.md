@@ -1,24 +1,26 @@
-# Toxic Garden · the greenhouse
+# Toxic Garden · the corten beds
 
 <!-- nav:start -->
 [← Mensa · coffee machine save point](mensa-interior.md) · [Visual direction](README.md) · **6 / 14** · [Playground · the slide →](playground.md)
 <!-- nav:end -->
 
-![Toxic Garden · the greenhouse](images/toxic-garden-preview.png)
+![Toxic Garden · the corten beds](images/toxic-garden-preview.png)
 
-**Review:** ✅ The palette shift works: acid green and magenta-red inside a ruined greenhouse, pods, a venus-flytrap mutant. It reads as more dangerous than Rusty Creek and still belongs to the same game.
+**Review:** ✅ Redone outdoors after owner feedback (the greenhouse was wrong): corten beds, granite and the cairn, crimson, purple and silver plantings under the highway bridge, the collage's own palette. Secret-horror detail kept subtle.
 
 ## Brief
 
-Match the first image's pixel style, but this region shifts the palette: sickly greens, magenta-red foliage, corten-steel rust planters and granite boulders from the collage, built into a ruined glass greenhouse structure like Dead Cells' arboretum - broken glass panes, iron ribs, vines, hanging pods. Mutated plants with mouths line the walls. The hero crosses a rusted planter ledge mid-screen; a long hanging vine is the only route up. Dangerous, lush, more uncanny than Rusty Creek.
+Match the first image's pixel style and Planet of Lana framing. OUTDOORS, from the Toxic Garden collage and photos (images 3-7) - NOT a greenhouse, NO glass roof, NO interior: long raised beds edged with rust-orange corten steel, gravel paths, big granite boulders and a cairn of stacked stones, dense plantings of deep crimson and burgundy foliage, purple asters and silver-grey shrubs, red maples, all under the concrete underside of a huge highway bridge that cuts across the top of the frame. The palette comes from the collage: rust orange, crimson, purple, silver-grey, concrete. Strict side view; the corten beds step up and down as platforms. The hero (second image) small on a corten edge. Toxic, but secret horror: the plants look almost normal - a few too many red leaves, the flower heads all slightly turned toward the hero, a faint shimmer over the gravel. Blurred crimson leaves in the foreground. No gore, no monsters with mouths.
 
 ## Inputs
 
 - [style-master](style-master.md) (this pack)
-- [toxic-garden.png](../../references/campus/images/toxic-garden.png)
-- [arboretum-040.jpg](../../references/games/dead-cells/images/arboretum-040.jpg)
-- `plant-dungeon-v0-zddbdviir6821.webp` (Downloads, outside Git)
 - [hero-preview.png](../sprites/images/hero-preview.png)
+- [toxic-garden.png](../../references/campus/images/toxic-garden.png)
+- `20261022_142942.jpg` (GameJam_ References, outside Git)
+- `20261022_142948.jpg` (GameJam_ References, outside Git)
+- `20261022_143102.jpg` (GameJam_ References, outside Git)
+- `20261022_143206.jpg` (GameJam_ References, outside Git)
 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/toxic-garden.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo toxic-garden`
 

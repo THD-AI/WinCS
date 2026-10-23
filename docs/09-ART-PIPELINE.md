@@ -4,73 +4,84 @@
 [← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 13** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->
 
-![Rusty Creek – seven layers composed](../art/stages/rusty-creek/images/after-center.png)
+![Rusty Creek – seven registered layers composed](../art/stages/rusty-creek/images/after-center.png)
 
-One rule above all: **every image comes from real references through a rerunnable script.** No one-off drawings that nobody can regenerate, and no text-only prompts.
+One rule above everything: **every image comes from real references through a rerunnable script and a config.** No hand-saved images from a chat window, and no text-only prompts. The configs live next to their outputs (`art/**/*.json`), and every image has a Markdown page with its brief, inputs and review.
 
 ```
-real photos (Drive, outside Git) ─┐
-reference games (references/)  ──┼─▶ config (*.json, prompts) ─▶ scripts/*.py ─▶ tmp/ raw ─▶ crush/verify ─▶ art/ (committed)
-approved art (art/)            ──┘
+photos (Drive, outside Git) ──┐
+approved art (art/)          ─┼─▶ config + brief ─▶ scripts/*.py ─▶ tmp/ raw ─▶ review ─▶ crush / split / verify ─▶ art/ (committed)
+reference games (references/)─┘                                          ▲            │
+                                                                         └── redo ◀───┘ (rejected takes stay in tmp/…/rejected)
 ```
 
-## 1 · Visual direction (first, always)
+## The order – never skip a step
 
-`art/direction/direction.json` → `python scripts/make_boards.py draw --config art/direction/direction.json`
-
-1. **Style master:** the real Rusty Creek plate + the hero sheet, finished as one in-game screenshot.
-2. Every other direction image takes **the style master as its first input**, then its location collage, the hero sheet and one reference game. That is what keeps the pack in sync.
-3. Review: one look at the whole pack side by side ([06](06-VISUAL-DIRECTION.md)). Redo an image with `--redo <id>`.
-
-## 1b · Location strips
-
-`art/locations/locations.json`, then:
-
-- `python scripts/make_boards.py draw --config art/locations/locations.json` draws one 2160×720 flat side-view strip per region from its collage, in the style master's look, with no characters.
-- `python scripts/make_boards.py extend --config art/locations/locations.json` grows each strip from its own edges. The outer third of the strip goes on an otherwise transparent canvas, and the model paints only the transparent part (it doubles as the mask). This runs once to the right and once to the left. The original strip stays pixel-exact in the middle of the `-wide` panorama (5040×720). Run it again on a panorama to keep growing.
-- Lesson from the first run: a direction image or the Rusty Creek strip used as an input gets *copied* (its characters, its girders). Strips take only the collage, the style master and a clean, character-free strip as a format example.
-
-## 2 · Sprite boards
-
-`art/sprites/boards.json` → `python scripts/make_boards.py draw [ids]`
-
-- Inputs: the hero sheet (`art/sprites/images/hero-preview.png`, locked), the style master, and the photos of the actual pose or object. The chair photos are split into **block**, **overhead/up-down** and **side** sequences by file name.
-- The model draws on a flat **magenta** key. `crush` keys the magenta at full size, downscales by 2 with premultiplied alpha (no purple fringes), quantises to 96 colours, and writes:
-  - `art/sprites/images/<id>.png` – transparent 1× source
-  - `art/sprites/images/<id>-preview.png` – the same image on paper, upscaled for reading
-- People in pose photos are references only: the brief always says to draw our hero instead.
-- What failed on 23 Oct, so nobody repeats it: style text placed before the brief (the model paints a scene), a whole stage plate passed as a "style sample" (the model redraws the stage), the "flare" model (it ignores layouts), and pose photos given without the hero sheet first (the model draws the photographed person).
-
-## 3 · Stages – seven layers
-
-`art/stages/rusty-creek/` – `python scripts/creek_layers.py --build`, then `python scripts/creek_layers.py` to verify.
-
-| # | Role | Scroll | Collides? |
+| # | Step | Output | Tool |
 | --- | --- | --- | --- |
-| 01 | Sky / distant trees | 0.2 | no |
-| 02 | Rear masonry and supports (cut from the same structure as 05, so it scrolls with it) | 1.0 | no |
-| 03 | Rocky bank | 1.0 | no (collision is authored separately) |
-| 04 | Water / reflection mask | 1.0 | hazard zone |
-| 05 | Broad girders and ladders (traversal) | 1.0 | authored polylines on top |
-| 06 | Near rails (decorative) | 1.1 | never |
-| 07 | Near foliage | 1.15 | never |
+| 1 | **Collage** – our photos of the real place | `references/campus/` | earlier pass |
+| 2 | **Direction** – the look, one style master, everything drawn from it | `art/direction/` | `make_boards.py --config art/direction/direction.json` |
+| 3 | **Stage concept** – the region in its clean and anomaly states, with routes up and down | `art/locations/` | `make_boards.py --config art/locations/locations.json` |
+| 4 | **Lex's route sketch** on top of the concept: chunks, branches, secrets, enemies, boss room | sketch + chunk list | by hand |
+| 5 | **Chunks** – a clean side-view banner per chunk, then neighbours left, right, up, down | `art/stages/<region>/sources/` | generation + `stage_art.py prepare/apply` |
+| 6 | **Layers** – split the composed chunk into the registered layer stack ([04](04-WORLD-AND-LEVELS.md)) | `art/stages/<region>/images/` | `creek_layers.py`-style script per region |
+| 7 | **Annotation** – walkable lines, slides, ledges, climb zones, solids, hazards, interactables, spawns | `<chunk>.collision.json` | by hand (Lex) |
+| 8 | **Sprites** – boards per character/enemy/item, drawn with the hero sheet and the style master | `art/sprites/` | `make_boards.py` |
+| 9 | **Export** – atlases and plates the game loads | `game/public/assets/` | `export_atlas.py` (with the game scaffold) |
 
-How a stage is made: draw the clean centre banner → extend left and right at the same width → repair the two join windows (`stage_art.py prepare/apply`, which copies back only the bounded band and checks that protected pixels are untouched) → split the repaired structure with the authored masks → export each role per chunk → recompose the previews and verify they match exactly. Shared scenery on the right chunk is stored once and referenced by an alias in `media-sources.json`.
+## Growing a stage in four directions
 
-**Previews are build outputs.** `after-*.png` (maze) and `before-*.png` (clean campus) are rebuilt from the plates by `--build`; nobody edits them by hand.
+What Codex's runs proved on Rusty Creek, generalised:
 
-## 4 · Collision
+1. **Scene first, then masks.** Generate the whole chunk as one picture, repair it, and only *then* derive the layers from it by masks. Each layer redrawn on its own drifts (Codex's first combined study did exactly that and was replaced).
+2. **Neighbours from the edge.** A new chunk starts from the neighbour's edge band as context (same 2160×720 size): a right neighbour sees the left chunk's right band, an upper neighbour sees the chunk's top band, and so on. The original chunk is never redrawn.
+3. **Repair only the join.** `stage_art.py prepare` cuts a join window across the seam (512 px), the model repairs only that band, and `apply` copies back just that band and checks that every protected pixel outside it is unchanged. Left/right join windows are implemented today; **up/down join windows** use the same code on rotated bands (an issue on the board).
+4. **Stable chunk IDs, recomputed origins.** Chunks are addressed by grid ID (`x,y`); inserting one in the middle recomputes positions, never the source images.
+5. **Shared scenery is stored once.** Layers that repeat (sky, far trees, water) are aliases, not copies.
+6. **Transition chunks** join different spaces – surface to underground, outside to the Mensa inside. They are generated with *both* neighbours as context and blend the two layer stacks over their height.
+7. **Clean and anomaly share everything they can.** The anomaly state replaces only the layers that change (on Rusty Creek, only the structure layers). Masters are rebuilt from the plates and verified pixel-exact (`creek_layers.py`).
 
-Draw the colour-coded annotation from [04](04-WORLD-AND-LEVELS.md) over the composed stage → export `collision.json` (polylines, boxes, spawns) → the game loads it. Pixel masks are never used as collision.
+## Prompting lessons (23 Oct, all runs)
 
-## 5 · Export to the game
+| What we tried | What happened | Rule now |
+| --- | --- | --- |
+| Style text before the brief | Painted a scene instead of a sheet | Brief first, style after |
+| A whole stage plate as a "style sample" | Redrew the stage | Never pass a full scene as a style sample |
+| `gpt-image-2.5-flare` | Ignored layouts | `sunburst` only |
+| Pose photos with people, no hero sheet first | Drew the photographed teammate | Hero sheet is always first (sprites) or second (scenes) |
+| A collage as the main input | Redrew the collage – panels, labels, perspective | Use the raw photos, plus an approved flat image as format anchor |
+| A direction image as input for a background | Copied its characters | Backgrounds: no character images as inputs |
+| A title line ("BOARD: …") in the prompt | Printed it into the image as a sign | No titles in prompts |
+| "No perspective" alone | Corridors and paths still receded | Say "architect's elevation, everything parallel to the screen" |
+| Wallpaper extension of strips | Looked like repeated wallpaper, no gameplay | Grow chunks only where Lex's route needs them, via join repairs |
+| Many figures in one lineup | Wrong scales, missing figures | At most ~5 figures per image |
+| 15-min timeout, key on the command line | Timeouts; the key printed in a traceback | 30-min limit, key via a header file |
+| Photorealistic mannequin collages (Codex) | Pointless for sprites | Pixel art from the start, our hero in every pose |
+| Perspective repaints of photos (Codex) | Rejected | Flat side elevation only |
 
-`scripts/export_atlas.py <board>` (written when the game scaffold lands): it slices frames out of a board by connected alpha regions, groups them by row into animations, scales them to game size (hero = 80 px), and writes a Phaser atlas (`.png` + `.json`) into `game/public/assets/`.
+## Sprite boards
+
+`art/sprites/boards.json`: the hero sheet (locked) comes first, the pose or object photos follow, and the style master goes last. The model draws on a flat magenta key. `crush` keys the magenta at full size, downscales ×2 with premultiplied alpha (so no purple fringes), quantises to 96 colours, and writes a transparent 1× PNG plus a readable preview. Chair photos are split into **block**, **overhead/up-down** and **side** sequences by file name. Every board stays "to do" until the direction is approved; see [07](07-ASSET-MANIFEST.md).
+
+## The crossing (no animation budget)
+
+The region crossing uses only sprites the hero already needs (hit, knockback) plus one UI window the game renders with real text: **"THD.exe has stopped responding."** See the [crash frame](../art/direction/anomaly-language.md).
+
+## Commands
+
+```bash
+python scripts/make_boards.py draw  [ids] [--redo] [--config …]   # generate (skips existing raws)
+python scripts/make_boards.py crush [ids] [--config …]            # rebuild committed images offline
+python scripts/make_boards.py pages [--config …]                  # Markdown page per image + index
+python scripts/creek_layers.py [--build]                          # Rusty Creek layers: verify / rebuild
+python scripts/stage_art.py prepare --config art/stages/rusty-creek/stage.json --out tmp/stage-art/next --band 512
+python scripts/navigation.py && python scripts/check_docs.py
+```
 
 ## What gets committed
 
-- ✅ configs, prompts, crushed images and previews, stage plates, route and collision data
-- ❌ photos, audio, raw API drawings (`tmp/`), contact sheets, HTML viewers
+- ✅ configs, briefs, crushed images and previews, stage plates, routes, collision data
+- ❌ photos, audio, raw API output and rejected takes (`tmp/`), contact sheets, HTML viewers
 
 <!-- nav:start -->
 [← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 13** · [10 – Jam plan →](10-JAM-PLAN.md)

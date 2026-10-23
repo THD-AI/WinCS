@@ -6,7 +6,7 @@
 
 ![Boss · Jenny, the runaway race car](images/boss-jenny-preview.png)
 
-**Review:** ✅ Second take, from Fast Forest's own photos: Jenny's real livery (carbon black, lime/teal/blue stripes, E44, DEGGENDORF IT), an empty cockpit, the roll-hoop sensor and the blue autonomous-status light, on the Rusty Creek deck with the hero. Calmer than the first take (no crash, no boss bar), but the identity is right, which is what the boss sprite board needs. (First take: a generic black/gold car with a driver's cockpit.)
+**Review:** ✅ Owner: good. Fast Forest's real livery, empty cockpit, autonomy light. Animation plan: the boss sprite board (rev, charge, crash, stunned) on the same pipeline as every sprite.
 
 ## Brief
 

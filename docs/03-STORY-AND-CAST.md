@@ -48,13 +48,13 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 | 3 | Dexter stops at the pond and points. One patch of the reflection shows a rusty girder maze that isn't there | ↑ to interact |
 | 4 | Touch → white flash, the normal damage recoil… | – |
 | 5 | …but instead of landing, the hero lifts and spins like a starfish; pixels tear | – |
-| 6 | Freeze. An old-desktop error dialog: **"pond.exe has stopped responding."** [OK] | Press Act to click OK |
+| 6 | Freeze. An old Windows-style error window: **"THD.exe has stopped responding."** [OK] | Press Act to click OK |
 | 7 | Black. Glitch lines. | – |
 | 8 | The hero lands in Rusty Creek and the damage animation finishes. Dexter is gone | Control returns |
 
 ## Region 1 story beats
 
-1. Alone among the rusted girders. A plywood chair lies in the first room. **Pick it up** (combat tutorial against one rover).
+1. You land in **clean** Rusty Creek: the real creek, rails and bridge, quiet. A plywood chair lies by the path. **Pick it up.** On the bridge the railing shimmers; touching it **turns the region** into the rust maze and throws you back to its start ([02](02-GAME-DESIGN.md)). First fight: one autonomous rover (combat tutorial).
 2. Midway, at the first coffee machine: **Dexter is already sitting there.** "Sorry. That wasn't supposed to happen." He gives you the **pocket computer** and a muffin. A line hints at the experiment.
 3. The boss clearing: **Jenny**, the possessed race car (see [enemies](05-ENEMIES-AND-BOSSES.md)).
 4. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller. "We should keep going." The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.

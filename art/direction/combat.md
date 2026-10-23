@@ -1,26 +1,26 @@
-# Combat · the chair
+# Combat · the chair in Rusty Creek
 
 <!-- nav:start -->
-[← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomalies · how the world breaks →](anomaly-language.md)
+[← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomaly crossing · the crash frame →](anomaly-language.md)
 <!-- nav:end -->
 
-![Combat · the chair](images/combat-preview.png)
+![Combat · the chair in Rusty Creek](images/combat-preview.png)
 
-**Review:** ✅ Second take: it's our hero (THD poncho, shadowed hood) bringing the chair down on the walker, with sparks and debris. The camera is closer than the gameplay camera, which is fine for key art. (The first take drew the photographed teammate instead of the hero – that's why the hero sheet is now always the second input.)
+**Review:** ✅ Third take, after the owner asked for a complete redo: now a real gameplay frame – wide side view, the hero small, a horizontal chair sweep into the autonomous crab robot, the rover charging in. (Earlier takes: the photographed teammate instead of the hero, then a close-up on a slope.)
 
 ## Brief
 
-The fighter is OUR HERO from the second image and nobody else: the hooded figure in the grey/blue/teal THD poncho with cream tassels, hood showing only black shadow, black backpack, grey jeans, white sneakers - no visible hair, no visible face, no jacket. Action moment on a grassy slope in Lost in the Green: the hero, mid overhead slam, brings a honey-coloured bent-plywood stacking chair with thin black steel legs down onto a six-legged hexapod walker robot; a bright pixel impact burst and sparks in the concentrated, colourful style of Children of Morta's effects; a small yellow-wheeled rover approaches from the right; a black quadcopter drone hovers out of reach above. Hero small-to-medium in frame, readable silhouettes, no gore.
+A real GAMEPLAY screenshot, same camera as the first image: strict side view, wide, the hero small (one eighth of the screen height). Location: the rusty blue-green girder maze of Rusty Creek (third image). On a broad girder deck the hero from the second image (THD poncho, shadow-filled hood) swings a honey-plywood stacking chair with thin black steel legs in a HORIZONTAL SIDE SWEEP into a six-legged autonomous crab robot, which is knocked back with a small white impact flash and a few sparks and bolts (Dead Cells-style hit feel: short, crisp, readable). Further along the deck a small yellow-wheeled autonomous rover charges in, its lidar glowing red; above, a black autonomous quadcopter drone hovers out of reach. Minimal HUD in the top-left: five battery cells (four full) and a three-segment glitch meter. Dark blurred foreground leaves at the bottom edge. Clean readable silhouettes, no gore.
 
 ## Inputs
 
 - [style-master](style-master.md) (this pack)
 - [hero-preview.png](../sprites/images/hero-preview.png)
-- [lost-in-the-green.png](../../references/campus/images/lost-in-the-green.png)
-- [02-official-gameplay.jpg](../../references/games/children-of-morta/images/02-official-gameplay.jpg)
+- [after-center.png](../stages/rusty-creek/images/after-center.png)
+- [bad-seed-02.jpg](../../references/games/dead-cells/images/bad-seed-02.jpg)
 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/combat.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo combat`
 
 <!-- nav:start -->
-[← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomalies · how the world breaks →](anomaly-language.md)
+[← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomaly crossing · the crash frame →](anomaly-language.md)
 <!-- nav:end -->

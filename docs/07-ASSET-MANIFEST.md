@@ -18,7 +18,7 @@ Sprite boards come **after** the [visual direction](06-VISUAL-DIRECTION.md) is a
 | Hero – hurt & interact | `hero-hurt` | hit 4 · knockback 3 · death 6 · interact 3 · pick up 4 · look at device 3 | ⬜ |
 | Hero – chair | `chair-side`, `chair-overhead`, `chair-block` | side sweep 8 · up attack 6 · down slam 7 · air pogo 4 · guard up 4 · guard hold 3 · guard impact 4 · guard break 4 | ⬜ |
 | Hero – tray (post-jam) | `tray-throw` | throw 6 · tray spin 8 · catch 4 | ⬜ |
-| Hero – anomaly crossing | `intro-anomaly` | starfish spin 6 (reuses hit + knockback) | ⬜ |
+| Hero – anomaly crossing | – | none extra: reuses hit + knockback; the THD.exe window is UI | ✅ by design |
 | Dexter (plush) | `dexter` | idle 3 · hop 4 · beckon 3 · bow · sweat · proud · creepy shadow | ⬜ |
 | Dexter (final) | `dexter` | stand · menace · lunge | ⬜ |
 
@@ -42,16 +42,16 @@ Sprite boards come **after** the [visual direction](06-VISUAL-DIRECTION.md) is a
 | Sign pole (post-jam weapon) | `wayfinder` | prop, pull-out 5, thrust 5 | ⬜ |
 | Campus robot (collectible companion, post-jam) | `companion-robot` | idle 4 · drive 6 · hop/scan/sleep | ⬜ |
 | HUD | – | 5 battery cells (full/cracked/empty), glitch meter 3 segments, boss bar | ⬜ |
-| Crash dialog | – | grey title bar, red X, OK button; text is real text rendered by the game | ⬜ |
+| Crash window "THD.exe has stopped responding." | – | grey window, blue title bar, red X, OK; real game text | ⬜ |
 | Glitch FX | – | image cut, pixel stretch, 404 void (shader or sprite slices) | ⬜ |
 
 ## Stages
 
 | Stage | Plates | Status |
 | --- | --- | --- |
-| Rusty Creek | 3 chunks × 7 layers + clean architecture, route graph | ✅ art · ⬜ collision |
-| Location strips (7 regions) | 2160×720 strip + left/right extension each ([art/locations](../art/locations/README.md)) | 🟡 drawn, in review |
-| Hidden Garden (prologue) | 1–2 chunks × 7 layers, split from its location strip | ⬜ |
+| Rusty Creek | 3 chunks × 7 layers, clean + anomaly states, route graph | ✅ art · ⬜ collision · ⬜ foreground-blur + particle layers |
+| Stage concepts (6 regions × clean/anomaly) | 2176×1088 concepts with up/down routes ([art/locations](../art/locations/README.md)) | 🟡 in review |
+| Hidden Garden (prologue) | 1–2 chunks, layer stack + collision, from its stage concept | ⬜ |
 | Jenny's arena | right chunk of Rusty Creek (boss clearing) | ✅ art · ⬜ collision |
 
 ## Audio (to source during the jam)
