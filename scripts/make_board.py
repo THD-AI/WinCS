@@ -181,15 +181,21 @@ def main() -> None:
 
     if apply:
         owner = REPO.split("/")[0]
-        result = subprocess.run(["gh", "project", "create", "--owner", owner, "--title", PROJECT, "--format", "json"],
-                                capture_output=True, text=True, encoding="utf-8")
-        if result.returncode:
-            print(f"\nProject not created ({result.stderr.strip()}). Run `gh auth refresh -s project` and rerun.")
-            return
-        number = json.loads(result.stdout)["number"]
+        projects = json.loads(gh(["project", "list", "--owner", owner, "--format", "json"], True))["projects"]
+        # Lowest number = the original, if a duplicate was ever made.
+        number = min((p["number"] for p in projects if p["title"] == PROJECT), default=None)
+        if number is None:
+            result = subprocess.run(["gh", "project", "create", "--owner", owner, "--title", PROJECT, "--format", "json"],
+                                    capture_output=True, text=True, encoding="utf-8")
+            if result.returncode:
+                print(f"\nProject not created ({result.stderr.strip()}). Run `gh auth refresh -s project` and rerun.")
+                return
+            number = json.loads(result.stdout)["number"]
         for issue in created:
-            gh(["project", "item-add", str(number), "--owner", owner, "--url", f"https://github.com/{REPO}/issues/{issue}"], True)
-        print(f"\nProject #{number} created with {len(created)} items.")
+            # GitHub may already have added an issue (e.g. as a sub-issue of an item): skip those.
+            subprocess.run(["gh", "project", "item-add", str(number), "--owner", owner,
+                            "--url", f"https://github.com/{REPO}/issues/{issue}"], capture_output=True)
+        print(f"\nProject #{number} has all {len(created)} issues.")
     else:
         stories = sum(len(e[4]) for e in BOARD)
         print(f"\nDry run: {len(LABELS)} labels, {len(MILESTONES)} milestones, {len(BOARD)} epics, {stories} stories. Use --apply.")
