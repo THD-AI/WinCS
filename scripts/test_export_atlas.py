@@ -109,6 +109,10 @@ class ExportAtlasTests(unittest.TestCase):
         self.assertAlmostEqual((left + right) / 2, idle['w'] / 2, delta=1)  # pivot centred on the feet
         self.assertEqual(jump['h'] - box(jump)[3], 5)  # still in the air, at game scale
 
+        floating = config([[{'anim': 'idle', 'frames': 1}, {'anim': 'jump', 'frames': 1, 'float': True}]])
+        sheet, atlas, _ = ea.export(floating, image)
+        self.assertEqual(box(atlas['frames']['jump-00']['frame'])[3], atlas['frames']['jump-00']['frame']['h'])
+
     def test_ref_frame_sets_the_scale(self):
         # The first animation is a 60 px tall pose; the standing frame (40 px) is the reference.
         image = board_image([[(60, 0), (40, 0)]])

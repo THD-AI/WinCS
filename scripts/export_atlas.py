@@ -15,7 +15,9 @@ lists: a seam that would cut through a body, or a cell too light to be a figure,
 Scaling: one factor per board, so the tallest frame of the first animation becomes `height` game
 pixels (hero: 76, in an 80 px frame), or the frame named by `ref` (e.g. "jump-08", standing) when the
 first animation has no standing pose. Each frame keeps its height above the row's ground line, so
-the feet of every frame land on the bottom row of its cell and jumps stay in the air. The pivot is
+the feet of every frame land on the bottom row of its cell; an animation marked "float": true (a jump
+the model drew in the air, while the game's physics already lifts the body) puts each frame's lowest
+pixel on that row instead. The pivot is
 (0.5, 1), centred on the feet (the opaque pixels in the lowest tenth of the sprite).
 
 Config, per board:
@@ -213,7 +215,8 @@ def slice_board(board: dict, image: Image.Image) -> list[tuple[dict, list[tuple[
                     keep.paste(255, (x0 - left, y, x1 - left, y + 1))
                 cell.putalpha(Image.composite(cell.getchannel("A"), keep, keep))
                 box = solid(cell.getchannel("A")).getbbox()
-                sprites.append((cell.crop((0, box[1], cell.width, box[3])), ground - top - box[3]))
+                lift = 0 if anim.get("float") else ground - top - box[3]
+                sprites.append((cell.crop((0, box[1], cell.width, box[3])), lift))
             out.append((anim, sprites))
     return out
 
