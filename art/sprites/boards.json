@@ -22,13 +22,111 @@
     },
     {
       "id": "hero-move",
-      "title": "The student · movement",
+      "title": "The student · walk",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, side view, identical scale in every frame. Row 1: idle breathing loop, 6 frames (poncho rises and settles, tassels sway). Row 2: walk cycle, 8 frames (contact, down, passing, up for each leg; poncho hem swings against the legs). Row 3: run cycle, 8 frames (leaning forward, poncho and tassels streaming back, backpack bouncing)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows. Row 1, exactly 8 figures: IDLE breathing loop, 6 frames (relaxed stance, the poncho rises and settles, tassels sway a little), then IDLE TO WALK, 2 frames (weight shifts forward, the front foot lifts). Row 2, exactly 8 figures: WALK cycle in key poses with clearly different leg positions - contact (legs wide apart, heel down), down, passing (legs together), up, for the right leg, then the same four for the left leg; the poncho hem swings against the legs, the backpack bobs. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 6
+            },
+            {
+              "anim": "idle-walk",
+              "frames": 2,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "walk",
+              "frames": 8
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size."
+    },
+    {
+      "id": "hero-idle",
+      "title": "The student · idle variants",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 4 figures: LOOK AROUND - the hood turns slowly back over the shoulder and returns (the inside of the hood stays pure black shadow, no face ever). Row 2, exactly 4 figures: CHECK THE TABLET - lifts a small glowing handheld device from under the poncho, looks down at its screen, lowers it again. Row 3, exactly 4 figures: CHECK WOUNDS - pats the side of the body under the poncho, looks down at the hand, shakes it off. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "look-around",
+              "frames": 4,
+              "loop": false,
+              "fps": 6
+            }
+          ],
+          [
+            {
+              "anim": "check-tablet",
+              "frames": 4,
+              "loop": false,
+              "fps": 6
+            }
+          ],
+          [
+            {
+              "anim": "check-wounds",
+              "frames": 4,
+              "loop": false,
+              "fps": 6
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size."
+    },
+    {
+      "id": "hero-run",
+      "title": "The student · run",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows. Row 1, exactly 5 figures: WALK TO RUN, 2 frames (lean forward, arms start to pump), then RUN START from standing, 3 frames (crouch, push off, first long stride). Row 2, exactly 8 figures: RUN cycle in key poses - contact, down, passing, up for each leg, with long strides and one foot clearly off the ground; leaning forward, poncho and tassels streaming back, backpack bouncing. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "ref": "walk-run-00",
+        "rows": [
+          [
+            {
+              "anim": "walk-run",
+              "frames": 2,
+              "loop": false
+            },
+            {
+              "anim": "run-start",
+              "frames": 3,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "run",
+              "frames": 8
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size."
     },
     {
       "id": "companion-robot",
@@ -62,7 +160,41 @@
         "repo:art/sprites/images/hero-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, side view, identical scale in every frame. Row 1: jump - crouch anticipation, take-off, rise, apex (poncho billows up), fall, land squash, recover: 7 frames. Row 2: fall loop, 3 frames (poncho flapping upward), and a hard landing roll, 4 frames. Row 3: climbing a ladder seen from the side, 6-frame loop (hands and feet alternating on rungs; draw only a short ladder segment in grey steel), then pulling up over a ledge, 4 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 9 figures: JUMP - crouch anticipation, take-off, rise, rise higher, apex (the poncho billows up, tassels float), turn over, descend, landing squash, recover to standing. Row 2, exactly 7 figures: FALL loop, 3 frames (poncho flapping upward, arms out for balance), then HARD LANDING, 4 frames (deep impact crouch with one hand on the ground and a puff of dust, push up, straighten, stand). Row 3, exactly 4 figures: CLIMBING A LADDER seen from BEHIND (back to the viewer, the THD crest patch on the poncho's back visible, hood up), hands and feet alternating on invisible rungs in a 4-frame loop; do not draw the ladder itself. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "jump",
+              "frames": 9,
+              "loop": false,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "fall",
+              "frames": 3,
+              "float": true
+            },
+            {
+              "anim": "hard-landing",
+              "frames": 4,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "ladder",
+              "frames": 4,
+              "fps": 8
+            }
+          ]
+        ],
+        "ref": "jump-08"
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size."
     },
     {
       "id": "chair-side",
