@@ -1,0 +1,24 @@
+{
+  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order.",
+  "chunks": {
+    "rc-0-0": {"x": 0, "y": 0, "name": "left"},
+    "rc-1-0": {"x": 1, "y": 0, "name": "center"},
+    "rc-2-0": {"x": 2, "y": 0, "name": "right"}
+  },
+  "layers": {
+    "01-distance": {"file": "images/01-distance-{name}.png", "z": 1, "scroll": 0.2},
+    "03-bank": {"file": "images/03-bank-{name}.png", "z": 2, "scroll": 1.0},
+    "02-supports": {"file": "images/02-supports-{name}.png", "z": 3, "scroll": 1.0},
+    "clean-architecture": {"file": "images/clean-architecture-{name}.png", "z": 3, "scroll": 1.0},
+    "05-traversal": {"file": "images/05-traversal-{name}.png", "z": 5, "scroll": 1.0},
+    "06-near-rails": {"file": "images/06-near-rails-{name}.png", "z": 6, "scroll": 1.1},
+    "07-foliage": {"file": "images/07-foliage-{name}.png", "z": 7, "scroll": 1.15},
+    "04-water": {"file": "images/04-water-{name}.png", "z": 4, "scroll": 1.0}
+  },
+  "states": {
+    "anomaly": ["01-distance", "03-bank", "02-supports", "05-traversal", "06-near-rails", "07-foliage", "04-water"],
+    "clean": ["01-distance", "03-bank", "clean-architecture", "06-near-rails", "07-foliage", "04-water"]
+  },
+  "composed": {"anomaly": "images/after-{name}.png", "clean": "images/before-{name}.png"},
+  "aliases": "media-sources.json"
+}
