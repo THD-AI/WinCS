@@ -1,0 +1,27 @@
+{
+ "idle": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ },
+ "hop": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "walk": {
+  "frames": 6,
+  "fps": 12,
+  "loop": true
+ },
+ "point": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ },
+ "shove": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ }
+}

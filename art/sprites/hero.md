@@ -1,7 +1,7 @@
 # The student · hero design
 
 <!-- nav:start -->
-[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 14** · [The student · walk →](hero-move.md)
+[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 18** · [The student · walk →](hero-move.md)
 <!-- nav:end -->
 
 ![The student · hero design](images/hero-preview.png)
@@ -21,5 +21,5 @@ Keep the body, height (6 ft adult), proportions, pose, backpack, grey slim jeans
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero.png` · rebuild: `python scripts/make_boards.py draw hero --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 14** · [The student · walk →](hero-move.md)
+[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 18** · [The student · walk →](hero-move.md)
 <!-- nav:end -->
