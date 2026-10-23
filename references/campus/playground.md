@@ -1,10 +1,8 @@
 # Playground · familiar shapes, something wrong
 
-<!-- reference-navigation:start -->
-[← Previous: Toxic Garden](toxic-garden.md) · [Campus index](README.md) · **7 / 8** · [Next: Robot collectible →](campus-robot.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Toxic Garden · plants, rocks and rust](toxic-garden.md) · [Campus collages](README.md) · **7 / 8** · [The little campus robot · pocket-sized trouble →](campus-robot.md)
+<!-- nav:end -->
 
 ![Real playground structure and material collage](images/playground.png)
 
@@ -26,8 +24,6 @@ Our optional interpretation: a round crawl opening first reads as shelter; an al
 
 Source photos C33–C39. The current board deliberately remains photographic; a dusk/horror stage painting comes after approval of the reference and composition.
 
-<!-- reference-navigation:start -->
-[← Previous: Toxic Garden](toxic-garden.md) · [Campus index](README.md) · **7 / 8** · [Next: Robot collectible →](campus-robot.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Toxic Garden · plants, rocks and rust](toxic-garden.md) · [Campus collages](README.md) · **7 / 8** · [The little campus robot · pocket-sized trouble →](campus-robot.md)
+<!-- nav:end -->

@@ -1,10 +1,8 @@
 # Little Nightmares · visual reference
 
-<!-- reference-navigation:start -->
-[← Previous: Little Nightmares](README.md) · [Game index](../../README.md) · **30 / 36** · [Next: Duck Season →](../duck-season/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Little Nightmares · character shape](README.md) · [Game references](../../README.md) · **30 / 36** · [Duck Season · the mascot changes its role →](../duck-season/README.md)
+<!-- nav:end -->
 
 **Look at proportions and garment shape.** This is publisher character art from the sequel gallery, not an ambience reference.
 
@@ -24,8 +22,6 @@ Credit: Tarsier Studios / Bandai Namco Entertainment. [Source](https://en.bandai
 
 A single pose cannot demonstrate locomotion. Before making our original student sheet, draw idle/walk/jump silhouettes at the proposed 24–32 pixel height and test feet, readability and prop clearance. Do not copy Six or infer her rig from this image.
 
-<!-- reference-navigation:start -->
-[← Previous: Little Nightmares](README.md) · [Game index](../../README.md) · **30 / 36** · [Next: Duck Season →](../duck-season/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Little Nightmares · character shape](README.md) · [Game references](../../README.md) · **30 / 36** · [Duck Season · the mascot changes its role →](../duck-season/README.md)
+<!-- nav:end -->

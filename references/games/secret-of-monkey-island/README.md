@@ -1,16 +1,14 @@
 # The Secret of Monkey Island · classic pixel art
 
-<!-- reference-navigation:start -->
-[← Previous: Duck Season · gallery](../duck-season/visual-reference.md) · [Game index](../../README.md) · **33 / 36** · [Next: The Secret of Monkey Island · classic · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Duck Season · visual reference](../duck-season/visual-reference.md) · [Game references](../../README.md) · **33 / 36** · [The Secret of Monkey Island · classic · visual reference →](visual-reference.md)
+<!-- nav:end -->
 
 [![The Secret of Monkey Island · classic pixel art: visual study](images/classic-01.png)](visual-reference.md)
 
 **The original 1990 game’s pixel-art presentation is the reference, rather than the Special Edition repaint.**
 
-[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../../docs/research/what-we-love.md)
 
 ## Pixels can describe curves
 
@@ -24,8 +22,6 @@ Borrow curved pixel contours and economical visual jokes; leave inventory chains
 
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
-<!-- reference-navigation:start -->
-[← Previous: Duck Season · gallery](../duck-season/visual-reference.md) · [Game index](../../README.md) · **33 / 36** · [Next: The Secret of Monkey Island · classic · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Duck Season · visual reference](../duck-season/visual-reference.md) · [Game references](../../README.md) · **33 / 36** · [The Secret of Monkey Island · classic · visual reference →](visual-reference.md)
+<!-- nav:end -->

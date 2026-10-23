@@ -13,7 +13,9 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = ROOT / 'references/production/campus-mutation'
+BASE = ROOT / 'art/stages/rusty-creek'
+INPUTS = BASE / 'inputs'
+WORK = ROOT / 'tmp/stages/rusty-creek'  # derived seam-repair inputs, never committed
 W, H = 2160, 720
 CHUNKS = ('left', 'center', 'right')
 ROLES = ('01-distance', '02-supports', '03-bank', '04-water',
@@ -83,6 +85,21 @@ def split_structure(image, boxes):
     return rear, front
 
 
+def save_once(image, path, aliases):
+    """Shared scenery repeats on the right chunk: keep one file, record an alias."""
+    twin = path.with_name(path.name.replace('-right.png', '-left.png'))
+    if path != twin and twin.exists() and not changed(Image.open(twin).convert('RGBA'), image.convert('RGBA')):
+        aliases[path.name] = twin.name
+        return
+    image.save(path)
+
+
+def plate_path(name, data=None):
+    """An export's file, following the alias for a right chunk stored as its left twin."""
+    data = data or read(BASE / 'media-sources.json')
+    return BASE / 'images' / data.get('aliases', {}).get(name, name)
+
+
 def compose(plates, architecture=None):
     # Bank is behind the architecture; near rails and leaves can occlude it.
     out = blank()
@@ -137,7 +154,8 @@ def route_errors(route):
 
 def build():
     config = read(BASE / 'assembly.json')
-    old = ROOT / 'references/production/crossings-strip/images'
+    old = INPUTS
+    WORK.mkdir(parents=True, exist_ok=True)
     original = {}
     removals = {}
     for chunk in CHUNKS:
@@ -146,7 +164,7 @@ def build():
         removals[chunk] = changed(source, clean)
         # Preserve the exact input bytes used to prepare the recorded packet.
         normalized = remove_matte(Image.open(BASE / 'sources' / f'{chunk}.png').convert('RGBA').resize((W, H), Image.Resampling.NEAREST))
-        normalized.save(BASE / 'sources' / f'{chunk}-normalized.png')
+        normalized.save(WORK / f'{chunk}-normalized.png')
         original[chunk] = clean
     world = blank(3 * W)
     for i, chunk in enumerate(CHUNKS):
@@ -180,7 +198,9 @@ def build():
     plants.alpha_composite(plants_source.resize((W, 504), Image.Resampling.NEAREST), (0, 263))
     outputs = BASE / 'images'
     outputs.mkdir(exist_ok=True)
-    all_files = []
+    for stale in outputs.glob('*.png'):
+        stale.unlink()
+    aliases = {}
     for i, chunk in enumerate(CHUNKS):
         structure = canonical(cleaned_world.crop((i * W, 0, (i + 1) * W, H)))
         rear, traversal = split_structure(structure, config['masonry_regions'][chunk])
@@ -193,12 +213,10 @@ def build():
         plates = dict(zip(ROLES, (mirrored(far, i), rear, mirrored(bank, i),
                                  mirrored(water, i), traversal, mirrored(rails, i), foliage)))
         for role, plate in plates.items():
-            path = outputs / f'{role}-{chunk}.png'
-            plate.save(path)
-            all_files.append(path)
+            save_once(plate, outputs / f'{role}-{chunk}.png', aliases)
         architecture = mirrored(clean_arch, i)
-        architecture.save(outputs / f'clean-architecture-{chunk}.png')
-        compose(plates).convert('RGB').save(outputs / f'after-{chunk}.png')
+        save_once(architecture, outputs / f'clean-architecture-{chunk}.png', aliases)
+        compose(plates).convert('RGB').save(outputs / f'after-{chunk}.png')  # previews: rebuilt, never edited
         compose(plates, architecture).convert('RGB').save(outputs / f'before-{chunk}.png')
     errors = route_errors(read(BASE / 'route.json'))
     if errors:
@@ -212,10 +230,11 @@ def build():
                         'alpha_extrema': list(im.getchannel('A').getextrema()) if im.mode == 'RGBA' else None})
     inputs = [old / f'depth-{name}.png' for name in ('01-far', '02-structure', '03-bank', '04-water', '06-rails')]
     inputs += [ROOT / 'references/campus/images/crossings.png']
-    inputs += [ROOT / 'references/production/seam-pipeline/images' / f'maze-{chunk}.png' for chunk in CHUNKS]
+    inputs += [INPUTS / f'maze-{chunk}.png' for chunk in CHUNKS]
     write(BASE / 'media-sources.json', {'date': '2026-10-23',
           'method': 'Built-in image generation; exact prompts in prompts.json. Deterministic masks and assembly in scripts/creek_layers.py.',
           'images': records, 'source_inputs': [{'project_file': p.relative_to(ROOT).as_posix(), 'sha256': digest(p)} for p in inputs],
+          'aliases': aliases,
           'layer_order': list(ROLES), 'shared_roles': [ROLES[i] for i in (0, 2, 3, 5, 6)],
           'packet': read(BASE / 'packet.json'),
           'configuration_hashes': {name: digest(BASE / name) for name in ('assembly.json', 'route.json', 'stage.json', 'prompts.json')},
@@ -252,12 +271,12 @@ def verify():
         if digest(ROOT / item['project_file']) != item['sha256']:
             raise ValueError('Changed fixed input: ' + item['project_file'])
     for chunk in CHUNKS:
-        plates = {role: Image.open(BASE / 'images' / f'{role}-{chunk}.png').convert('RGBA') for role in ROLES}
+        plates = {role: Image.open(plate_path(f'{role}-{chunk}.png', data)).convert('RGBA') for role in ROLES}
         for role, im in plates.items():
             low, high = im.getchannel('A').getextrema()
             if im.size != (W, H) or (role != ROLES[0] and (low != 0 or high == 0)):
                 raise ValueError('Noncanonical or missing alpha: ' + role)
-        for name, architecture in (('after', None), ('before', Image.open(BASE / 'images' / f'clean-architecture-{chunk}.png'))):
+        for name, architecture in (('after', None), ('before', Image.open(plate_path(f'clean-architecture-{chunk}.png', data)))):
             expected = compose(plates, architecture).convert('RGB')
             master = Image.open(BASE / 'images' / f'{name}-{chunk}.png').convert('RGB')
             if ImageChops.difference(master, expected).getbbox():
@@ -265,8 +284,8 @@ def verify():
     # Shared nature uses exact matching edge columns, not an opacity blend.
     for role in data['shared_roles']:
         for left, right in zip(CHUNKS, CHUNKS[1:]):
-            a = Image.open(BASE / 'images' / f'{role}-{left}.png').convert('RGBA')
-            b = Image.open(BASE / 'images' / f'{role}-{right}.png').convert('RGBA')
+            a = Image.open(plate_path(f'{role}-{left}.png', data)).convert('RGBA')
+            b = Image.open(plate_path(f'{role}-{right}.png', data)).convert('RGBA')
             # The authored boss window only touches the interior of the right chunk.
             if a.crop((W-1, 0, W, H)).tobytes() != b.crop((0, 0, 1, H)).tobytes():
                 raise ValueError('Shared scenery boundary differs: ' + role)

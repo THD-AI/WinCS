@@ -1,10 +1,8 @@
 # The Secret of Monkey Island · classic · visual reference
 
-<!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island · classic](README.md) · [Game index](../../README.md) · **34 / 36** · [Next: Infinity Blade →](../infinity-blade/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← The Secret of Monkey Island · classic pixel art](README.md) · [Game references](../../README.md) · **34 / 36** · [Infinity Blade · technology remembered as myth →](../infinity-blade/README.md)
+<!-- nav:end -->
 
 **Classic pixel art only.** CD/DOS, EGA and VGA captures are labeled below; Special Edition repaint screenshots have been removed.
 
@@ -72,8 +70,6 @@ Credit: Lucasfilm Games / LucasArts; capture hosted by ScummVM. [Source](https:/
 
 [Primary gallery and platform/variant labels](https://www.scummvm.org/en/screenshots/lucasarts/mi/). These stills support a contour, color-cluster and staging study. They do not prove collision geometry or that WinCS should use an adventure-game camera or interface.
 
-<!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island · classic](README.md) · [Game index](../../README.md) · **34 / 36** · [Next: Infinity Blade →](../infinity-blade/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← The Secret of Monkey Island · classic pixel art](README.md) · [Game references](../../README.md) · **34 / 36** · [Infinity Blade · technology remembered as myth →](../infinity-blade/README.md)
+<!-- nav:end -->

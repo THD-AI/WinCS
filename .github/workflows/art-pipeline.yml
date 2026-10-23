@@ -8,8 +8,9 @@ on:
       - scripts/test_creek_layers.py
       - requirements-art.txt
       - .github/workflows/art-pipeline.yml
-      - references/production/seam-pipeline/stage.json
-      - references/production/campus-mutation/**
+      - scripts/make_boards.py
+      - scripts/navigation.py
+      - art/**
   workflow_dispatch:
 permissions:
   contents: read

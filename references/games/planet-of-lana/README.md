@@ -1,16 +1,14 @@
 # Planet of Lana · soft terrain and layered depth
 
-<!-- reference-navigation:start -->
-[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [Game index](../../README.md) · **23 / 36** · [Next: Planet of Lana · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Visual reference views](../children-of-morta/visual-reference.md) · [Game references](../../README.md) · **23 / 36** · [Planet of Lana · visual reference →](visual-reference.md)
+<!-- nav:end -->
 
 [![Planet of Lana · soft terrain and layered depth: visual study](images/gameplay-035.jpg)](visual-reference.md)
 
 **Borrow the flowing silhouettes, horizontal composition and separated depth, then translate them into our own pixel-art language.**
 
-[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../../docs/research/what-we-love.md)
 
 [Six gameplay frames, five developer-supplied art views and two animated process demonstrations](visual-reference.md) · **[How the layers work, and our proposed translation](layers-and-motion.md)**
 
@@ -28,8 +26,6 @@ Companion puzzles, stealth AI and cinematic transitions are not baseline require
 
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
-<!-- reference-navigation:start -->
-[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [Game index](../../README.md) · **23 / 36** · [Next: Planet of Lana · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Visual reference views](../children-of-morta/visual-reference.md) · [Game references](../../README.md) · **23 / 36** · [Planet of Lana · visual reference →](visual-reference.md)
+<!-- nav:end -->

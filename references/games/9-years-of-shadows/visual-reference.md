@@ -1,10 +1,8 @@
 # Visual reference views
 
-<!-- reference-navigation:start -->
-[← Previous: 9 Years of Shadows](README.md) · [Game index](../../README.md) · **4 / 36** · [Next: Metroid Dread →](../metroid-dread/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← 9 Years of Shadows](README.md) · [Game references](../../README.md) · **4 / 36** · [Metroid Dread →](../metroid-dread/README.md)
+<!-- nav:end -->
 
 ![9 Years of Shadows: start with this gameplay reference](images/scene-3.png)
 
@@ -52,8 +50,6 @@ Vertical shaft framing and airborne enemies; compare character contrast against 
 
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
 
-<!-- reference-navigation:start -->
-[← Previous: 9 Years of Shadows](README.md) · [Game index](../../README.md) · **4 / 36** · [Next: Metroid Dread →](../metroid-dread/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← 9 Years of Shadows](README.md) · [Game references](../../README.md) · **4 / 36** · [Metroid Dread →](../metroid-dread/README.md)
+<!-- nav:end -->

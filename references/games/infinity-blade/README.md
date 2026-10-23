@@ -1,16 +1,14 @@
 # Infinity Blade · technology remembered as myth
 
-<!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island · classic · gallery](../secret-of-monkey-island/visual-reference.md) · [Game index](../../README.md) · **35 / 36** · [Next: Infinity Blade · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← The Secret of Monkey Island · classic · visual reference](../secret-of-monkey-island/visual-reference.md) · [Game references](../../README.md) · **35 / 36** · [Infinity Blade · visual reference →](visual-reference.md)
+<!-- nav:end -->
 
 [![Infinity Blade · technology remembered as myth: visual study](images/iii-008.jpg)](visual-reference.md)
 
 **Post-technological science fantasy: a medieval civilization living around vast infrastructure it only partly understands.**
 
-[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../../docs/research/what-we-love.md)
 
 ## Alexander’s intended worldbuilding reference
 
@@ -26,8 +24,6 @@ Build one convincing prop/reveal before explaining an entire lost civilization. 
 
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
-<!-- reference-navigation:start -->
-[← Previous: The Secret of Monkey Island · classic · gallery](../secret-of-monkey-island/visual-reference.md) · [Game index](../../README.md) · **35 / 36** · [Next: Infinity Blade · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← The Secret of Monkey Island · classic · visual reference](../secret-of-monkey-island/visual-reference.md) · [Game references](../../README.md) · **35 / 36** · [Infinity Blade · visual reference →](visual-reference.md)
+<!-- nav:end -->

@@ -1,10 +1,8 @@
 # Visual reference views
 
-<!-- reference-navigation:start -->
-[← Previous: Apple Knight](README.md) · [Game index](../../README.md) · **8 / 36** · [Next: Animal Well →](../animal-well/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Apple Knight](README.md) · [Game references](../../README.md) · **8 / 36** · [Animal Well →](../animal-well/README.md)
+<!-- nav:end -->
 
 ![Apple Knight: start with this gameplay reference](images/store-1.png)
 
@@ -52,8 +50,6 @@ Dragon encounter demonstrates the extra boss and effect workload.
 
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
 
-<!-- reference-navigation:start -->
-[← Previous: Apple Knight](README.md) · [Game index](../../README.md) · **8 / 36** · [Next: Animal Well →](../animal-well/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Apple Knight](README.md) · [Game references](../../README.md) · **8 / 36** · [Animal Well →](../animal-well/README.md)
+<!-- nav:end -->

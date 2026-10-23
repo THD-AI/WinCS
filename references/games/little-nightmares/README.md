@@ -1,16 +1,14 @@
 # Little Nightmares · character shape
 
-<!-- reference-navigation:start -->
-[← Previous: Terraria · gallery](../terraria/visual-reference.md) · [Game index](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Terraria · visual reference](../terraria/visual-reference.md) · [Game references](../../README.md) · **29 / 36** · [Little Nightmares · visual reference →](visual-reference.md)
+<!-- nav:end -->
 
 [![Little Nightmares · character shape: visual study](images/six-character.png)](visual-reference.md)
 
 **Character design only: a simple garment mass, concealed face, small exposed limbs and a readable silhouette.**
 
-[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../../docs/research/what-we-love.md)
 
 The [publisher's Six character art](https://en.bandainamcoent.eu/little-nightmares/little-nightmares-ii) is explicitly from **Little Nightmares II**, showing the returning character. It is a character reference, not a screenshot from the first game or a model sheet.
 
@@ -20,8 +18,6 @@ Alexander does not want this game's ambience, horror pacing or general game desi
 
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
-<!-- reference-navigation:start -->
-[← Previous: Terraria · gallery](../terraria/visual-reference.md) · [Game index](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Terraria · visual reference](../terraria/visual-reference.md) · [Game references](../../README.md) · **29 / 36** · [Little Nightmares · visual reference →](visual-reference.md)
+<!-- nav:end -->

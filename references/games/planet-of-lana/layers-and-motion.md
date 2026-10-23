@@ -1,12 +1,12 @@
 # A painting with depth · translating Planet of Lana
 
-[← Game study](README.md) · [Full visual gallery](visual-reference.md) · [Our stage workflow →](../../../docs/design/layered-stage-workflow.md)
+[← Game study](README.md) · [Full visual gallery](visual-reference.md) · [Our stage workflow →](../../../docs/09-ART-PIPELINE.md)
 
 ![Developer demonstration of painted scenery arranged on shallow geometry](images/tree-depth.gif)
 
 **This is a real developer demonstration, not our reconstruction.** Credit: Wishfully; [developer interview and original demonstration](https://www.gamedeveloper.com/business/exploring-the-art-and-animation-behind-hand-painted-odyssey-i-planet-of-lana-i-). Full source URLs and hashes are in [the media manifest](media-sources.json).
 
-**WinCS production update, 23 October:** these depth bands are a visual analysis, not a request to reconstruct a scene from independent assets. Our [current workflow](../../../docs/design/layered-stage-workflow.md) composes/edits the whole image first, then derives only necessary aligned plates/props.
+**WinCS production update, 23 October:** these depth bands are a visual analysis, not a request to reconstruct a scene from independent assets. Our [current workflow](../../../docs/09-ART-PIPELINE.md) composes/edits the whole image first, then derives only necessary aligned plates/props.
 
 ## Verified process, then our interpretation
 
@@ -58,4 +58,4 @@ Water shimmer, a reed loop and drifting leaves are separate local effects. A clo
 
 The local footage captures are selected samples of the official Gameplay Trailer (Steam movie 256891854), not a frame-by-frame pipeline audit. Published demonstrations substantiate depth/wind; our table, coordinate formula, collision plan and production budget are independent proposals.
 
-[← Game study](README.md) · [Full visual gallery](visual-reference.md) · [Our stage workflow →](../../../docs/design/layered-stage-workflow.md)
+[← Game study](README.md) · [Full visual gallery](visual-reference.md) · [Our stage workflow →](../../../docs/09-ART-PIPELINE.md)

@@ -1,16 +1,14 @@
 # Terraria · two bosses, specific reasons
 
-<!-- reference-navigation:start -->
-[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [Game index](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Dead Cells · Dilapidated Arboretum · visual reference](../dead-cells/visual-reference.md) · [Game references](../../README.md) · **27 / 36** · [Terraria · visual reference →](visual-reference.md)
+<!-- nav:end -->
 
 [![Terraria · two bosses, specific reasons: visual study](images/moon-097.jpg)](visual-reference.md)
 
 **Wall of Flesh and Moon Lord are the references. Alexander explicitly rejects Terraria as the terrain/readability model.**
 
-[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
+[More pictures and credits](visual-reference.md) · [Compare references](../../../docs/research/what-we-love.md)
 
 ## Wall of Flesh: a pursuing encounter
 
@@ -24,8 +22,6 @@ The recordings are historical gameplay references, including a Terraria 1.4 Mast
 
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
-<!-- reference-navigation:start -->
-[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [Game index](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Dead Cells · Dilapidated Arboretum · visual reference](../dead-cells/visual-reference.md) · [Game references](../../README.md) · **27 / 36** · [Terraria · visual reference →](visual-reference.md)
+<!-- nav:end -->

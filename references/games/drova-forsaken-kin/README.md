@@ -1,10 +1,8 @@
 # Drova – Forsaken Kin
 
-<!-- reference-navigation:start -->
-[← Previous: Soul Knight · gallery](../soul-knight/visual-reference.md) · [Game index](../../README.md) · **13 / 36** · [Next: Drova â€“ Forsaken Kin · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Visual reference views](../soul-knight/visual-reference.md) · [Game references](../../README.md) · **13 / 36** · [Visual reference views →](visual-reference.md)
+<!-- nav:end -->
 
 ## At a glance · A place with a life of its own
 
@@ -48,8 +46,6 @@ For our own asset organization, group player states, terrain, interaction props 
 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
-<!-- reference-navigation:start -->
-[← Previous: Soul Knight · gallery](../soul-knight/visual-reference.md) · [Game index](../../README.md) · **13 / 36** · [Next: Drova â€“ Forsaken Kin · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Visual reference views](../soul-knight/visual-reference.md) · [Game references](../../README.md) · **13 / 36** · [Visual reference views →](visual-reference.md)
+<!-- nav:end -->

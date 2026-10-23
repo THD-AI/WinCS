@@ -1,14 +1,10 @@
-# Campus field notes · a route through the glitch
+# Campus collages
 
-[← Game references](../README.md) · [Home](../../README.md) · [Read the proposal →](../../docs/proposal/campus-game.md)
+![Hidden Garden photo board](images/hidden-gardens.png)
 
-**Additional references:** [eight new object/action collages from 67 photos](../campus-objects/README.md) · [HTML review](../campus-objects/viewer.html). These complement the eight location boards below.
+Our 22 Oct campus walk: 59 photos organised into eight location boards. These are the source material for every region (see [04 – World and levels](../../docs/04-WORLD-AND-LEVELS.md)) and for the [visual-direction pack](../../art/direction/README.md). The boards are cleaned-up photo interpretations, not game art; the original photos stay in the team Drive.
 
-**You are in the campus photo-board library.** [Rusty Crossings source board](crossings.md#location-photo-board) · [🎨 Generated stage experiments](../production/README.md) · [Flat banners and seven layers](../production/crossings-strip/README.md). Generated art is a separate section; location Previous/Next stays within the eight boards.
-
-![Primary Hidden Garden photographic reference](images/hidden-gardens.png)
-
-**Lake touch → mirror arrival in Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden.** This is the proposed fictional route, not a geographical campus map or six promised jam levels. Playground is an optional detour with placement still open; the robot is an item. The current preference across nature stages is exploration/action, with hiding as an alternative. Visual image errors can mark villain influences without changing terrain.
+Route through the game: **Hidden Garden → Rusty Creek (crossings + creek) → Lost in the Green → Campus → Toxic Garden → Playground**.
 
 | First, reveal a different world | Then, lose the familiar route | Finally, find a different rhythm |
 | --- | --- | --- |
@@ -22,8 +18,4 @@
 | [![Playground photographic board](images/playground.png)](playground.md) | [![Campus robot board](images/campus-robot.png)](campus-robot.md) |
 | [Playground + animation reference](playground.md) | [Cute robot item](campus-robot.md) |
 
-Eight cleaned photographic boards organize 59 owner-supplied photos. They are interpretations, not final pixel art, measured geometry or a collision map. The [source index](source-index.json) preserves every original ID; [generation notes](generation.md) record inputs, prompts, hashes and reconstruction limits. Raw photos, portraits, recordings and unredacted transcripts stay outside Git.
-
-Use Previous / Library / Next through the eight location/item studies. The first six follow the proposed main route; Playground and robot follow as optional material. Sources can inform more than one design study without duplicating the original files.
-
-**Current production study:** a new flat side-scroller layout based on the collage → left/center/right banners → staggered join windows → traversal additions → five-plus depth roles. [See all 15 generated trials](../production/crossings-strip/README.md); seams and extraction are still under review. [Layered stage workflow](../../docs/design/layered-stage-workflow.md) · [Current proposal](../../docs/proposal/campus-game.md).
+Each board page has Previous / Next at both ends. The [source index](source-index.json) lists every original photo ID; [generation notes](generation.md) record the prompts and hashes.

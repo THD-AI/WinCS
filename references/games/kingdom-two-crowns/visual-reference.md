@@ -1,10 +1,8 @@
 # Visual reference views
 
-<!-- reference-navigation:start -->
-[← Previous: Kingdom Two Crowns](README.md) · [Game index](../../README.md) · **16 / 36** · [Next: Kingdom Eighties →](../kingdom-eighties/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Kingdom Two Crowns](README.md) · [Game references](../../README.md) · **16 / 36** · [Kingdom Eighties →](../kingdom-eighties/README.md)
+<!-- nav:end -->
 
 ![Kingdom Two Crowns: start with this gameplay reference](images/01-official-gameplay.jpg)
 
@@ -50,8 +48,6 @@ Daylight forest shrine/landmark: foreground silhouette and water reflection.
 
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
-<!-- reference-navigation:start -->
-[← Previous: Kingdom Two Crowns](README.md) · [Game index](../../README.md) · **16 / 36** · [Next: Kingdom Eighties →](../kingdom-eighties/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Kingdom Two Crowns](README.md) · [Game references](../../README.md) · **16 / 36** · [Kingdom Eighties →](../kingdom-eighties/README.md)
+<!-- nav:end -->

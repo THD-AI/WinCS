@@ -1,61 +1,36 @@
-# Poncho Goblins? · What could possibly go right?
+# DEGGSTER.EXE *(working title)*
 
-**A little game. A lot of questionable jokes. Something we actually want to play.**
+**Poncho Goblins · DEGDEV 3 game jam · THD Deggendorf, 23–24 Oct 2026**
 
-This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexander and Lex are here to brainstorm, help and enjoy the jam. **Poncho Goblins** is the new proposed team name; registration and game title remain unconfirmed.
+![Rusty Creek – the visual style master](art/direction/images/style-master-preview.png)
 
-[![Hidden garden and lake-stage reference collage](references/campus/images/hidden-gardens.png)](references/campus/hidden-gardens.md)
+> A familiar campus. A plush mascot that wants you to keep fighting. A quantum experiment that broke the pond.
 
-**A familiar campus, behaving strangely.** Touch the lake and enter the Hidden Garden mirror space; explore a campus whose routes can glitch into new shapes. The new [campus proposal](docs/proposal/campus-game.md) combines the original 10 notes/59 photos with three new recordings/67 new photos into a first-slice discussion draft. The image above is an AI-cleaned reference study, not final game art.
+A 2D side-scrolling exploration-action game in hi-bit pixel art. You are a faceless THD student in a poncho. You follow Dexter, the university's panther plush, to the Hidden Garden pond, touch a reflection that is wrong, crash like a Windows app, and wake up in a version of campus where anomalies live inside the machines. You fight them with a chair. Dexter keeps showing up to help, and keeps getting bigger.
 
-**New: [eight object/action collages](references/campus-objects/README.md) · [HTML review](references/campus-objects/viewer.html) · [all 13 API transcripts + summaries](docs/brief/transcripts/README.md) · [latest discussion](docs/brief/meeting-2026-10-23.md).** The three new recordings develop an uncanny campus/quantum-experiment direction, chair-first weapon idea and competing Dexter/reflection mechanics. Source photos and audio stay outside Git.
+## Start here
 
-**[Eight location/item collages](references/campus/README.md)** · **[Voice-note design digest](docs/brief/voice-notes.md)** · **[How we build layered stages](docs/design/layered-stage-workflow.md)**
-
-**[📍 Campus boards](references/campus/README.md)** · **[🎮 Game studies](references/README.md)** · **[🎨 Stage experiments](references/production/README.md)** · **[Rusty Crossings: source collage → flat banners → layers](references/production/crossings-strip/README.md)**
-
-**[Current Rusty Crossings location](references/production/campus-mutation/README.md)** · **[Open the location viewer](references/production/campus-mutation/viewer.html)** · **[Exact reusable pipeline](docs/technical/stage-art-pipeline.md)**. One recognizable creek, shared scenery, substantial climbing structures and a route from entry through exploration to a boss clearing and exit. Pan three banners, see both joins and isolate seven roles across all chunks. Exact recomposition passes; collision, movement and final art approval remain separate. PRs #13/#15 are merged; this replacement uses one new feature branch and PR. The project board stays deferred.
-
-The location uses a flat side elevation inspired by the collage. Repair scene-first architecture, then derive registered masks; do not independently redraw each depth plate. Five nature/foreground roles stay identical between clean and corrupted states.
-
-Proposed route: **Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden**. Rusty Crossings is now an algorithm-inspired maze of rusted bars; the creek retains flowing contours. Image cuts, stretched pixels and 404-like errors are the default visual corruption, with secret-villain influences connecting the stages. Playground remains an optional detour. A cute campus robot is an optional collectible. Extra locations and replay bosses are future possibilities, not a promise for the jam.
-
-## Look first. Read what catches your eye.
-
-| Explore a strange place | Make the pixels sing | Cause a little chaos |
-| --- | --- | --- |
-| [![Hollow Knight: a bright character in a blue cavern](references/games/hollow-knight/images/blue-cave.jpg)](references/games/hollow-knight/README.md) | [![9 Years of Shadows: side-view pixel scenery](references/games/9-years-of-shadows/images/scene-3.png)](references/games/9-years-of-shadows/README.md) | [![Soul Knight: combat in a small room](references/games/soul-knight/images/switch-02.jpg)](references/games/soul-knight/README.md) |
-| **Hollow Knight** · Vatsal's starting reference | **9 Years of Shadows** · Lex's pixel comparison | **Soul Knight** · Lex's taste for action |
-
-*Existing-game reference images, not our game or usable assets. Credits and sources live on each linked page.*
-
-### Pick a doorway
-
-- **[🖼️ Browse all 18 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery; includes the five newly named audio references.
-- **[🎞️ Playground trailer frames](references/animation/playground/README.md)** – ten captured moments tied to the photographed playground. **[How Lana builds depth](references/games/planet-of-lana/layers-and-motion.md)** includes two animated developer demonstrations.
-- **[🎲 Open the pun drawer](docs/design/play-and-puns.md)** – silly situations, playable jokes and ideas to argue about.
-- **[📝 Read the current visual proposal](docs/proposal/campus-game.md)** – six location previews, flat location banners, multi-pass depth production, subject-linked villain seeds and a short playable-slice candidate. [Earlier scope options](docs/proposal/game-proposal.md) remain available.
-
-We are looking for **funny, playful and a little meaningful**: puns that become actions, affectionate references, odd characters and discoveries worth showing each other. A funny sign is welcome; a joke you can *play* is even better. We can learn from other games while making our own characters, art and situations.
-
-## Where we are
-
-**References collected → try ideas together → conclude the game technical design document → create issues and a board.**
-
-The earlier issues and board have been removed. Keep brainstorming in documents and [Discussions](https://github.com/THD-AI/WinCS/discussions). Recreate tracking **only once the game technical design document is concluded**. No title, engine or final design is locked.
-
-## When we need the details
-
-| Question | Open |
+| | |
 | --- | --- |
-| Who wants what? | [Team brief](docs/brief/team-and-intent.md) |
-| When and where is the jam? | [Event and exact agenda](docs/events/degdev-3.md) |
-| How do these games connect? | [Reference comparison](references/comparison.md) |
-| What have we actually decided? | [Decision log](docs/decisions/README.md) |
-| What might we build, and with what? | [Mechanics and level](docs/proposal/mechanics-and-level.md) · [Technical proposal](docs/technical/technical-proposal.md) |
-| How much art and time? | [Art/audio](docs/design/art-and-audio.md) · [Jam plan](docs/delivery/jam-plan.md) |
-| How do we edit this workspace? | [Contributing](CONTRIBUTING.md) · [AGENTS.md](AGENTS.md) · [Planning status](docs/PLAN.md) |
+| 📖 **[Design documents](docs/README.md)** | Proposal → game design → story → levels → enemies → visuals → assets → stack → pipeline → jam plan → decisions → workflow |
+| 🎨 **[Visual direction](art/direction/README.md)** | The look of every region, the cast, combat, HUD – one style |
+| 🧍 **[Sprite boards](art/sprites/README.md)** | Hero sheet (approved) and the sprite boards that follow |
+| 🌉 **[Rusty Creek stage](art/stages/rusty-creek/README.md)** | The first level: 3 chunks × 7 layers, route graph |
+| 🎙️ **[Meetings](docs/meetings/README.md)** | 13 transcribed recordings and what each one decided |
+| 📍 **[Campus collages](references/campus/README.md)** · 🎮 **[Reference games](references/README.md)** | Our photos turned into location boards; the 18 games we learn from |
 
-**23–24 October 2026:** the published agenda contains 18 scheduled sprint hours, before personal rest. AI and prebuilt-content rules still need an organizer answer; the [event brief](docs/events/degdev-3.md) has the evidence and questions.
+## Team
 
-Voyager is a separate project. “Memory of a goldfish” is still just a promising joke from the chat. See [rights and provenance](NOTICE.md) for reference-media boundaries. Document checks: `python scripts/check_docs.py`.
+Vatsal (creative lead, gameplay) · Lex (level design) · Alexander (pipeline, art, build). How we work: [docs/12-TEAM-WORKFLOW.md](docs/12-TEAM-WORKFLOW.md). Agents: [AGENTS.md](AGENTS.md).
+
+## Run things
+
+```bash
+python scripts/check_docs.py                     # links, images, no HTML, no duplicates
+python scripts/creek_layers.py                   # verify the Rusty Creek layers
+python scripts/navigation.py                     # refresh Previous / Next links
+```
+
+The game itself (Phaser 3 + TypeScript + Vite, deployed on Vercel) lands in `game/` – see [08 – Tech stack](docs/08-TECH-STACK.md).
+
+[Rights and provenance](NOTICE.md) · [Contributing](CONTRIBUTING.md)

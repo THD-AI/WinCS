@@ -1,16 +1,14 @@
 # Rusty Crossings · a maze of rusted bars
 
-**[Current combined stage study](../production/campus-mutation/README.md)** · **[Photo → clean creek → maze viewer](../production/campus-mutation/viewer.html)**. The original board below supplies recognizable materials and landmarks; the stage translates them into a flat side elevation with substantial branching girders and tall shafts.
+<!-- nav:start -->
+[← Lost in the Green · grassy channels and screened routes](lost-in-the-green.md) · [Campus collages](README.md) · **4 / 8** · [The creek · stepping stones, reflections and a rise–dip rhythm →](creek.md)
+<!-- nav:end -->
 
-<!-- reference-navigation:start -->
-[← Previous: Lost in the Green](lost-in-the-green.md) · [Campus index](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
+**This board became [Rusty Creek](../../art/stages/rusty-creek/README.md)**, the first level: the creek, rails and riveted steel from these photos, rebuilt as a flat side view with a girder maze.
 
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+![Rusty Creek, the stage made from this board](../../art/stages/rusty-creek/images/before-center.png)
 
-![Flat side-scrolling creek and rusted steel banner](../production/crossings-strip/images/02-center-clean.png)
-
-**Latest direction, 23 October:** a recognizable creek/steel location redesigned as a **flat side-scroller**, not a perspective repaint. First a clean banner, then same-width extensions left/right and two staggered join views. Add the horizontal/vertical rusted-bar maze onto that accepted scene; derive five-plus depth/interaction roles afterwards. The algorithm/pathfinding villain seed guides the maze, while the collage's landmarks keep the place recognizable. **[See all banners and seven depth trials →](../production/crossings-strip/README.md)**
+**Latest direction, 23 October:** a recognizable creek/steel location redesigned as a **flat side-scroller**, not a perspective repaint. First a clean banner, then same-width extensions left/right and two staggered join views. Add the horizontal/vertical rusted-bar maze onto that accepted scene; derive five-plus depth/interaction roles afterwards. The algorithm/pathfinding villain seed guides the maze, while the collage's landmarks keep the place recognizable. **[See all banners and seven depth trials →](../../art/stages/rusty-creek/README.md)**
 
 | Visual ingredient | Possible action/exploration use | Scope |
 | --- | --- | --- |
@@ -27,14 +25,10 @@ The professor/degree connection is an owner-supplied **fictional villain premise
 
 Source photos C23–C27 show overhead riveted spans, mossy concrete, tubular rails, creek and ivy. Keep those identifying motifs in the newly designed side-on game layout. Do not copy the photographic vanishing point or substitute a generic fantasy maze. The approved board remains unchanged. The added traversal pass is visible below; routes, seams and mask cleanup still need review.
 
-![Preferred substantial riveted maze](../production/seam-pipeline/images/maze-center.png)
+![The substantial riveted maze used for the girders](../../art/stages/rusty-creek/inputs/maze-center.png)
 
-**Latest correction:** this broad platform / tall shaft maze is the traversal reference. The thin orange-bar pass is superseded. [Current layer and seam viewer](../production/seam-pipeline/README.md) · [Exact pipeline](../../docs/technical/stage-art-pipeline.md). The photo-derived clean location and maze are not yet one approved composition.
+The broad-platform, tall-shaft maze above is the traversal reference for the girders. How the stage is built: [09 – Art pipeline](../../docs/09-ART-PIPELINE.md).
 
-[Clean banners → staggered joins → traversal → seven depth plates](../production/crossings-strip/README.md) · [Layered workflow](../../docs/design/layered-stage-workflow.md)
-
-<!-- reference-navigation:start -->
-[← Previous: Lost in the Green](lost-in-the-green.md) · [Campus index](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Lost in the Green · grassy channels and screened routes](lost-in-the-green.md) · [Campus collages](README.md) · **4 / 8** · [The creek · stepping stones, reflections and a rise–dip rhythm →](creek.md)
+<!-- nav:end -->
