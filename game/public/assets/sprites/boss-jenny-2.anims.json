@@ -1,0 +1,37 @@
+{
+ "stunned": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ },
+ "reboot": {
+  "frames": 2,
+  "fps": 12,
+  "loop": false
+ },
+ "debris-1": {
+  "frames": 2,
+  "fps": 12,
+  "loop": true
+ },
+ "debris-2": {
+  "frames": 2,
+  "fps": 12,
+  "loop": true
+ },
+ "debris-3": {
+  "frames": 2,
+  "fps": 12,
+  "loop": true
+ },
+ "debris-4": {
+  "frames": 2,
+  "fps": 12,
+  "loop": true
+ },
+ "debris-5": {
+  "frames": 2,
+  "fps": 12,
+  "loop": true
+ }
+}

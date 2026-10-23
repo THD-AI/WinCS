@@ -1,7 +1,7 @@
 # The student · jump, fall, climb
 
 <!-- nav:start -->
-[← The student · death](hero-death.md) · [Sprite boards](README.md) · **7 / 14** · [Chair · side sweep →](chair-side.md)
+[← The student · death](hero-death.md) · [Sprite boards](README.md) · **7 / 18** · [Chair · side sweep →](chair-side.md)
 <!-- nav:end -->
 
 ![The student · jump, fall, climb](images/hero-air-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-air.png` · rebuild: `python scripts/make_boards.py draw hero-air --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · death](hero-death.md) · [Sprite boards](README.md) · **7 / 14** · [Chair · side sweep →](chair-side.md)
+[← The student · death](hero-death.md) · [Sprite boards](README.md) · **7 / 18** · [Chair · side sweep →](chair-side.md)
 <!-- nav:end -->
