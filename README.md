@@ -1,8 +1,22 @@
-# Septim Goblin · What could possibly go right?
+# Poncho Goblins? · What could possibly go right?
 
 **A little game. A lot of questionable jokes. Something we actually want to play.**
 
-This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexander and Lex are here to brainstorm, help and enjoy the jam. The game itself is still up for grabs.
+This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexander and Lex are here to brainstorm, help and enjoy the jam. **Poncho Goblins** is the new proposed team name; registration and game title remain unconfirmed.
+
+[![Hidden garden and lake-stage reference collage](references/campus/images/hidden-gardens.png)](references/campus/hidden-gardens.md)
+
+**A familiar campus, behaving strangely.** Touch the lake and enter the Hidden Garden mirror space; explore a campus whose routes can glitch into new shapes. The new [campus proposal](docs/proposal/campus-game.md) turns 10 voice notes and 59 photos into a first-slice candidate. The image above is an AI-cleaned reference study, not final game art.
+
+**[Eight location/item collages](references/campus/README.md)** · **[Voice-note design digest](docs/brief/voice-notes.md)** · **[How we build layered stages](docs/design/layered-stage-workflow.md)**
+
+**[📍 Campus boards](references/campus/README.md)** · **[🎮 Game studies](references/README.md)** · **[🎨 Stage experiments](references/production/README.md)** · **[Rusty Crossings: source collage → flat banners → layers](references/production/crossings-strip/README.md)**
+
+**[Current combined study: the recognizable creek becomes the substantial maze](references/production/campus-mutation/README.md)** · **[Open the unified viewer](references/production/campus-mutation/viewer.html)** · **[Exact reusable pipeline / API route](docs/technical/stage-art-pipeline.md)**. Compare the photographic collage, clean location and integrated maze; pan three banners, inspect two bounded join repairs and toggle seven center plates. The glitch transition is a visual prototype; seams, layer registration and collision routes remain review gates. One explicitly requested [pipeline issue](https://github.com/THD-AI/WinCS/issues/14) and PR #15 above #13 keep this iteration reviewable; the project board stays deferred.
+
+The latest art study starts with a **flat side-scroller location**, extends left/right to three banners, tests two staggered join windows, adds traversal and displays seven center depth trials. It is a new layout inspired by the collage, not a perspective repaint. Seams and masks remain under review.
+
+Proposed route: **Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden**. Rusty Crossings is now an algorithm-inspired maze of rusted bars; the creek retains flowing contours. Image cuts, stretched pixels and 404-like errors are the default visual corruption, with secret-villain influences connecting the stages. Playground remains an optional detour. A cute campus robot is an optional collectible. Extra locations and replay bosses are future possibilities, not a promise for the jam.
 
 ## Look first. Read what catches your eye.
 
@@ -15,9 +29,10 @@ This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexa
 
 ### Pick a doorway
 
-- **[🖼️ Browse all 13 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery.
+- **[🖼️ Browse all 18 games](references/README.md)** – a visual shelf, then Previous / Next through every study and gallery; includes the five newly named audio references.
+- **[🎞️ Playground trailer frames](references/animation/playground/README.md)** – ten captured moments tied to the photographed playground. **[How Lana builds depth](references/games/planet-of-lana/layers-and-motion.md)** includes two animated developer demonstrations.
 - **[🎲 Open the pun drawer](docs/design/play-and-puns.md)** – silly situations, playable jokes and ideas to argue about.
-- **[📝 Read the existing proposal](docs/proposal/game-proposal.md)** – three early scope options, kept as drafts.
+- **[📝 Read the current visual proposal](docs/proposal/campus-game.md)** – six location previews, flat location banners, multi-pass depth production, subject-linked villain seeds and a short playable-slice candidate. [Earlier scope options](docs/proposal/game-proposal.md) remain available.
 
 We are looking for **funny, playful and a little meaningful**: puns that become actions, affectionate references, odd characters and discoveries worth showing each other. A funny sign is welcome; a joke you can *play* is even better. We can learn from other games while making our own characters, art and situations.
 

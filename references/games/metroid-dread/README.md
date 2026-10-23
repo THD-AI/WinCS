@@ -1,7 +1,9 @@
 # Metroid Dread
 
 <!-- reference-navigation:start -->
-[← Previous: 9 Years of Shadows · gallery](../9-years-of-shadows/visual-reference.md) · [🖼️ Library](../../README.md) · **5 / 26** · [Next: Metroid Dread · gallery →](visual-reference.md)
+[← Previous: 9 Years of Shadows · gallery](../9-years-of-shadows/visual-reference.md) · [Game index](../../README.md) · **5 / 36** · [Next: Metroid Dread · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Learn a move, see a new route
@@ -54,5 +56,7 @@ Minimum evidence before art expansion: a new player understands the gate without
 All retained Nintendo imagery is reference-only. No source meshes, textures or sprites were extracted.
 
 <!-- reference-navigation:start -->
-[← Previous: 9 Years of Shadows · gallery](../9-years-of-shadows/visual-reference.md) · [🖼️ Library](../../README.md) · **5 / 26** · [Next: Metroid Dread · gallery →](visual-reference.md)
+[← Previous: 9 Years of Shadows · gallery](../9-years-of-shadows/visual-reference.md) · [Game index](../../README.md) · **5 / 36** · [Next: Metroid Dread · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

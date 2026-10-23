@@ -4,6 +4,8 @@
 
 Status: **proposed**, no engine installed. See [engine evidence](engine-evidence.md) for primary documentation and current constraints.
 
+**22 October extension:** [layered-stage contract](layered-stage-contract.md) covers banner origins/parallax, independent collision, lake anchors, safe transitions, collectible state and interior reveals. Use it to scope the spike. Generated layers alone do not solve collision, animation or cross-device support; no runtime implementation is included.
+
 ## Choose by a small spike, not language folklore
 
 Provisional recommendation: **TypeScript + Vite + Phaser**, a static single-player browser build. Phaser supplies scenes, input, cameras, animation and 2D collision facilities; that saves manual integration only if the team can use them. Vatsal's Python knowledge does not imply JavaScript familiarity. Pair on one small state or interaction rather than hand him an unexplained framework.

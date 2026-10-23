@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-22",
+  "usage": "Credited visual research only; not runtime assets or a reuse license.",
+  "screenshots": [
+    {
+      "file": "images/frame-005.jpg",
+      "sha256": "4b04270e96e084ef3752fb74527937003e357db4e14f93564d84fb2fec6f605d",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 5,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Tiny figures and a light beam inside a mouth-like play structure; drawings keep the setting recognizably child-made."
+    },
+    {
+      "file": "images/frame-010.jpg",
+      "sha256": "db16e850acb30d532fdc612a3b76794b5a75d0ad00d9ae11721d6924b4bf6ed2",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 10,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "A creature emerging into a rope-net space; a familiar tube becomes a threat frame."
+    },
+    {
+      "file": "images/frame-015.jpg",
+      "sha256": "573b70b1f093a41eede70c1225dd00cd8420b8e9ccfcd480b0465201028dd543",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 15,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Small warm refuge under a looming creature: scale and light isolate the children."
+    },
+    {
+      "file": "images/frame-020.jpg",
+      "sha256": "39802cf4a7fe24ab6a0396ab532e5f7441561961f0fab3dab11fd978566f01f0",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 20,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Glossy organic eye-like forms contrast with constructed equipment."
+    },
+    {
+      "file": "images/frame-025.jpg",
+      "sha256": "9aaf182a09bcd5ba9ca559cdc694548138b03e1d4eae53a581c82b0814a148db",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 25,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "One-eyed rounded creature and a balloon-like accent; toy softness against an unsettling face."
+    },
+    {
+      "file": "images/frame-030.jpg",
+      "sha256": "cd8cc073003f7891371cde4b9b62ae1e856150cd2a45c05ecbeb4ffe6b175267",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 30,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Long limbs cross a red-lit construction of toy blocks and tubes."
+    },
+    {
+      "file": "images/frame-035.jpg",
+      "sha256": "68a01cc0373e4ddd719ded0461c49cbca98555e90c436d131657a99717e18a65",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 35,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Bright confetti and climbing-wall holds interrupt the darkness."
+    },
+    {
+      "file": "images/frame-040.jpg",
+      "sha256": "bbd6f668afc2f562533544511fd3bacb9b87f1bd2c7fdaba8e405e0e935a92ba",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 40,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Rope-grid barriers separate the figures from a large creature."
+    },
+    {
+      "file": "images/frame-045.jpg",
+      "sha256": "1fab207f8628086842db921fc9279a3a32a54a211878eedd9d63a26b2917fa57",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 45,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "A creature interrupts the climbing route; the playground becomes an occupied space."
+    },
+    {
+      "file": "images/frame-050.jpg",
+      "sha256": "dc70ad46180f95e065a8e90a4289847053b0672a42fad0499edc3f8a034b717c",
+      "source_page": "https://www.youtube.com/watch?v=P8U22dvli4w",
+      "timestamp_seconds": 50,
+      "credit": "Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar",
+      "observation": "Children sit at the opening of a tall play tower against a starry sky."
+    }
+  ]
+}

@@ -4,13 +4,17 @@
 
 This is our design analysis of the linked [reference library](README.md), not a ranking of the games or a locked pitch. Prioritize Vatsal's taste. Shared appearance does not imply shared game logic or production tools.
 
+**22 October synthesis:** [local location boards](campus/README.md) supply materials; Planet of Lana supplies composition/depth and flowing contours; Little Nightmares supplies character silhouettes/proportions, not ambience; Playground supplies familiar play spaces turned unsettling; Terraria supplies Wall of Flesh/Moon Lord boss references only; classic Monkey Island supplies curved pixel contours and interaction humor; Infinity Blade supplies a post-technological civilization whose advanced remnants read as ancient machinery or magic; Duck Season supplies mascot escalation and contrasting endings. The latest route adds optional combat qualities from Dead Cells while keeping its greenhouse as the material reference. These are qualities to study, not systems to combine automatically. The [garden/lake proposal](../docs/proposal/campus-game.md) selects one small interaction from that vocabulary.
+
 | Family | References | Shared quality | Useful tiny translation | Dependencies to avoid importing |
 | --- | --- | --- | --- | --- |
 | Ability-led exploration | Hollow Knight, 9 Years of Shadows, Metroid Dread | Revisit a place with a new capability | One visible ledge, one unlock, one return | Large maps, multiple abilities, map UI, bosses |
 | Environmental discovery | Animal Well, some Hollow Knight moments | Observe, experiment, reinterpret | One object behaves consistently in two contexts | Many tools, opaque puzzle chains, secret endings |
-| Combat excursions | Soul Knight, Dead Cells, Children of Morta | Clear threats, action feedback and retry | One enemy tell and one response, if chosen | Weapon inventories, random generation, character rosters |
+| Bounded combat option | Soul Knight; possible Dead Cells qualities | Clear threats, action feedback and retry | One enemy tell and one response, if chosen | Weapon inventories, random generation, character rosters |
+| Pixel design and spell effects | Children of Morta | Detailed pixel forms and concentrated magical effects | One original interaction effect | Family/roster systems, skill trees, top-down camera |
+| Overgrown structure | Dead Cells: Dilapidated Arboretum | Plants growing through greenhouse architecture | Toxic Garden material/maze vocabulary | Procedural runs, full combat system, copied biome |
 | Side-view indirect strategy | Kingdom Two Crowns, Kingdom Eighties | Tiny input vocabulary, meaningful investment | One action causes visible change | Economy, recruit AI, defense waves, day/night balance |
-| Place and care | Stardew Valley, Children of Morta, Drova | People/routines make actions matter | One recurring prop and a changed return | Faction state, relationship meters, schedules, farming |
+| Place and care | Stardew Valley, Drova | People/routines make actions matter | One recurring prop and a changed return | Faction state, relationship meters, schedules, farming |
 | Cinematic environmental narrative | Planet of Lana | Small figure in a legible large world | One carefully framed reveal | Companion AI, cinematics and bespoke puzzle sequence |
 | Direct platformer clarity | Apple Knight | Immediate movement and obstacle reading | Short authored route with obvious feedback | Content volume and generic copied identity |
 

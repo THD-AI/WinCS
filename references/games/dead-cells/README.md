@@ -1,51 +1,29 @@
-# Dead Cells
+# Dead Cells · the greenhouse
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 26** · [Next: Dead Cells · gallery →](visual-reference.md)
+[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [Game index](../../README.md) · **25 / 36** · [Next: Dead Cells · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
-## At a glance · Action with a clear reaction
+[![Dead Cells · the greenhouse: visual study](images/bad-seed-02.jpg)](visual-reference.md)
 
-[![Dead Cells: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
+**The Dilapidated Arboretum’s overgrown greenhouse is the visual target: plants, rusting structure, enclosed paths and broken geometry.**
 
-**Look for:** Read the attack silhouette against the background. Motion and recovery matter more than extra particles.
+[More pictures and credits](visual-reference.md) · [Compare references](../../comparison.md)
 
-[▶ Gameplay / trailer sources](visual-reference.md#gameplay-study) · [🖼️ More views and credits](visual-reference.md)
+The [official Bad Seed listing](https://store.steampowered.com/app/1204130/Dead_Cells__The_Bad_Seed/) explicitly identifies the **Dilapidated Arboretum** as a greenhouse. Its official images include several biomes; this selection keeps the greenhouse views rather than treating every DLC screenshot as Arboretum.
 
-*Existing-game reference, not our concept art or a runtime asset. Image credit and original source: [visual reference](visual-reference.md).*
+**Observation:** dense organic growth competes with repetitive windows, framing and broken floors. The recognizable building skeleton helps separate passages and height changes. [Interior, exterior and gameplay frames](visual-reference.md) make that combination visible.
 
-## Go deeper (optional)
+**Our Toxic Garden translation:** local plants + stones + rust-edged enclosures, staggered paths and one clear landmark. The campus photos do not show an actual greenhouse; the greenhouse is the *game reference*, not an invented fact about the site. Give potential enemies distinct silhouettes against foliage and keep the route legible through the maze.
 
-Research date: 21 October 2026. Secondary team reference; Vatsal's Hollow Knight preference remains the lead.
+Alexander also likes some boss designs, but has not specified which here. Do not select an arbitrary boss as an accepted target. The latest written clarification also allows Dead Cells-like combat as a possible mode. A bounded original experiment would select one enemy tell, one response and one attack/recovery cycle; it does not commit WinCS to weapon rosters, procedural runs or roguelite resets.
 
-## Evidence and presentation
-
-Motion Twin's action-platformer combines repeated runs, combat and Metroidvania-inspired exploration. Its lead developer identifies Haxe/Heaps and a GameBase foundation. [Developer/publisher store listing and trailers](https://store.steampowered.com/app/588650/). Screenshots are publisher-supplied promotional/gameplay views, not extracted development files. [Visual views](visual-reference.md) and [source manifest](media-sources.json) retain provenance.
-
-Side-scrolling action with layered pixel-looking environments and emphatic combat effects.
-
-## Design interpretation
-
-The following is our analysis for a tiny prototype, not a claim about the developer's internal architecture.
-
-**Loop:** Read threats, execute an action, receive immediate feedback, fail and improve on another run. Fast feedback depends on timings and readable encounters, not just particle density.
-
-**Dependencies:** Weapons multiply animation/hitbox/recovery combinations; randomized routes need valid connectivity; run resets and permanent progression must be separated. Those costs are inappropriate additions to a traversal-focused jam baseline.
-
-**Worldbuilding:** Architecture, props and recurring threats imply a ruined society. One coherent space is enough for a vignette; procedural biomes are not needed to convey decay.
-
-Verified pipeline evidence: artist Thomas Vasseur explains starting from a pixel model sheet, constructing/animating simple 3D models and rendering them at low resolution without antialiasing. This makes retiming practical but is a real custom production pipeline, not a free AI sprite generator. [Artist's first-person article](https://www.gamedeveloper.com/production/art-design-deep-dive-using-a-3d-pipeline-for-2d-animation-in-i-dead-cells-i-). [Lead developer's engine account](https://deepnight.net/games/motion-twin/dead-cells/). Internal source assets and exact atlas layout are not available here.
-
-## Jam experiment and question
-
-Borrow readable anticipation and responsive recovery if combat is selected. Keep one attack and one enemy. Do not adopt its production tools merely because the output appears pixelated.
-
-Is Vatsal looking for responsive movement, or repeated high-skill combat runs? Choose before budgeting combat animation.
-
-For our own asset organization, group player states, terrain, interaction props and feedback separately, with fixed pivots and explicit frame durations. That is a proposed export contract, not the original game's source folder structure. Before making a whole sheet, test one frame at actual camera scale.
-
-Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
+Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 26** · [Next: Dead Cells · gallery →](visual-reference.md)
+[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [Game index](../../README.md) · **25 / 36** · [Next: Dead Cells · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

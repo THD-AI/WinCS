@@ -1,5 +1,7 @@
 # Game proposal v0.1 – for Vatsal to choose
 
+> **Current direction, 22 October:** open the [campus proposal](campus-game.md) for the garden/lake reflection slice, wider locations, optional story draft and replay boundaries. The three options below remain earlier alternatives, not the latest selected design.
+
 [← Previous](../design/play-and-puns.md) · [🏠 Home](../../README.md) · [🖼️ Visual library](../../references/README.md) · [Next →](mechanics-and-level.md)
 
 **Status: draft, not an approved game design.** The actual theme is not yet known. All premises below are placeholders. Aim for a 3–5 minute complete game before adding content.

@@ -1,7 +1,9 @@
 # Apple Knight
 
 <!-- reference-navigation:start -->
-[← Previous: Metroid Dread · gallery](../metroid-dread/visual-reference.md) · [🖼️ Library](../../README.md) · **7 / 26** · [Next: Apple Knight · gallery →](visual-reference.md)
+[← Previous: Metroid Dread · gallery](../metroid-dread/visual-reference.md) · [Game index](../../README.md) · **7 / 36** · [Next: Apple Knight · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Immediate platforming
@@ -52,5 +54,7 @@ The developer and official store screenshot galleries are verified. A first-part
 Retained screenshots are credited to Limitless LLC and are reference-only, not production assets.
 
 <!-- reference-navigation:start -->
-[← Previous: Metroid Dread · gallery](../metroid-dread/visual-reference.md) · [🖼️ Library](../../README.md) · **7 / 26** · [Next: Apple Knight · gallery →](visual-reference.md)
+[← Previous: Metroid Dread · gallery](../metroid-dread/visual-reference.md) · [Game index](../../README.md) · **7 / 36** · [Next: Apple Knight · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

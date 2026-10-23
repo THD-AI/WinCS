@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-22",
+  "usage": "Credited visual research only; not runtime assets or a reuse license.",
+  "screenshots": [
+    {
+      "file": "images/wall-113.jpg",
+      "sha256": "80d5f76c70f5f99a8104f1b81cde9d52715b420eb8563580f4d9c4dac625f6e0",
+      "source_page": "https://www.youtube.com/watch?v=aXkgcce3zLA",
+      "timestamp_seconds": 113,
+      "credit": "Re-Logic; gameplay recording JoeDuh / Joseph Afflitto",
+      "observation": "Wall of Flesh enters as a tall, advancing body with several attack points."
+    },
+    {
+      "file": "images/wall-188.jpg",
+      "sha256": "9818d9b645b01ed077acc2464f01696f53c36e02361624d75aa09a79a9a56d27",
+      "source_page": "https://www.youtube.com/watch?v=aXkgcce3zLA",
+      "timestamp_seconds": 188,
+      "credit": "Re-Logic; gameplay recording JoeDuh / Joseph Afflitto",
+      "observation": "Large eyes and mouth remain separate focal targets along a moving wall."
+    },
+    {
+      "file": "images/wall-225.jpg",
+      "sha256": "1a154cd6f6eb691b7373bc8be682ef4965c9ec8c7c533c1951d132a9f23ae8d1",
+      "source_page": "https://www.youtube.com/watch?v=aXkgcce3zLA",
+      "timestamp_seconds": 225,
+      "credit": "Re-Logic; gameplay recording JoeDuh / Joseph Afflitto",
+      "observation": "The pursuer dominates one screen edge; the encounter keeps pushing the player."
+    },
+    {
+      "file": "images/moon-097.jpg",
+      "sha256": "57ba8a4cbb48b4d024e7ea891139c073f638be6ffe70168bc57e9a0a27751acd",
+      "source_page": "https://www.youtube.com/watch?v=rgkkUPYymzw",
+      "timestamp_seconds": 97,
+      "credit": "Re-Logic; gameplay recording FFM TV",
+      "observation": "Moon Lord: head, hands and torso form a large multipart silhouette."
+    },
+    {
+      "file": "images/moon-194.jpg",
+      "sha256": "f542d9fe3f1cd90785502e98f8329374ebd83e9116b73585b215e688cf3de71a",
+      "source_page": "https://www.youtube.com/watch?v=rgkkUPYymzw",
+      "timestamp_seconds": 194,
+      "credit": "Re-Logic; gameplay recording FFM TV",
+      "observation": "A bright directional beam cuts across the encounter; compare the tell with the body pose."
+    },
+    {
+      "file": "images/moon-388.jpg",
+      "sha256": "b1dc430be8a97dcbaf4c1bbda7934739488f2ab6d409dd5964a4ca76fd8b0b83",
+      "source_page": "https://www.youtube.com/watch?v=rgkkUPYymzw",
+      "timestamp_seconds": 388,
+      "credit": "Re-Logic; gameplay recording FFM TV",
+      "observation": "Separated hand/eye targets and body make several simultaneous points of attention."
+    },
+    {
+      "file": "images/moon-582.jpg",
+      "sha256": "17cb9a3d3d4f809c6929fc2f0695b825afebcce2e3fb5db76016c7cb6d47d5a9",
+      "source_page": "https://www.youtube.com/watch?v=rgkkUPYymzw",
+      "timestamp_seconds": 582,
+      "credit": "Re-Logic; gameplay recording FFM TV",
+      "observation": "The exposed central body contrasts with the outstretched hands; study the boss, not the platforms."
+    }
+  ]
+}

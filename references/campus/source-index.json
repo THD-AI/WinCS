@@ -1,0 +1,484 @@
+{
+  "date": "2026-10-22",
+  "source": "59 owner-supplied campus photographs; originals remain outside Git",
+  "photos": [
+    {
+      "id": "C01",
+      "filename": "20261022_141501.jpg",
+      "sha256": "7b0f6286bf892974056b4d9ee6ccc2cfa773b8af16e625a50b2e78679e66df58",
+      "board": "campus",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "peach courtyard"
+    },
+    {
+      "id": "C02",
+      "filename": "20261022_141518.jpg",
+      "sha256": "f7d45b7358fc935bb34af68d29d7f33e062bd0f45a90104c1d487e9df4c7b614",
+      "board": "campus",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "colonnade passage"
+    },
+    {
+      "id": "C03",
+      "filename": "20261022_141546.jpg",
+      "sha256": "516ec96b295beecaa3df0ec30f61d3bc58e1533525df056315d3e72fe309e5f0",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "garden approach"
+    },
+    {
+      "id": "C04",
+      "filename": "20261022_141550.jpg",
+      "sha256": "77e6987bfca63f98ea6267aedba6f45b1181737bdf0ec51c3d7a9d0b090b33bc",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "golden leaves"
+    },
+    {
+      "id": "C05",
+      "filename": "20261022_141642.jpg",
+      "sha256": "5b6ea9826150e8d3917c49c6bde687a68f68fbb53883f8a7056a42ef4fd8011a",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "reeds and distant water"
+    },
+    {
+      "id": "C06",
+      "filename": "20261022_141701.jpg",
+      "sha256": "0798a6155af109969cd8cefc8d9788ee152b0908b7529500bc5e5e1090982b6b",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "stepping slab path",
+      "related_studies": [
+        "creek: slab rhythm and terrain translation; no extra direct generation input"
+      ]
+    },
+    {
+      "id": "C07",
+      "filename": "20261022_141709.jpg",
+      "sha256": "f2dbe4002dcd07e0bf9e68458e728d73e7386e732b42d704cf4cb789863314a6",
+      "board": "hidden-gardens",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "alternate slab path",
+      "related_studies": [
+        "creek: slab rhythm and terrain translation; no extra direct generation input"
+      ]
+    },
+    {
+      "id": "C08",
+      "filename": "20261022_141717.jpg",
+      "sha256": "d3ad7f7ca1e67504c4eaef0a9a8cff331245f70014f9c679e4b6d529e7ad5d98",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "garden stone edge"
+    },
+    {
+      "id": "C09",
+      "filename": "20261022_141726.jpg",
+      "sha256": "f03184d3c4f72247cb57f9c727285e9301f78fbd793bf31634383903db476f42",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "willow and path"
+    },
+    {
+      "id": "C10",
+      "filename": "20261022_141735.jpg",
+      "sha256": "80d7a86e427e85ec2ebfbabac5073f6bdffab97ca49b13a191738dde27f07ddc",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "reeds and skyline"
+    },
+    {
+      "id": "C11",
+      "filename": "20261022_141737.jpg",
+      "sha256": "a62ba5d4bfeea661406aea29ec5ba1a6a98a2fcaa707a6d0dd9336a40b9d862a",
+      "board": "hidden-gardens",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "layered garden"
+    },
+    {
+      "id": "C12",
+      "filename": "20261022_141741.jpg",
+      "sha256": "101b25a9ba212e14233547543765e204cf805fb3132e15bc0cbe6135dfb98b84",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "wide willow garden"
+    },
+    {
+      "id": "C13",
+      "filename": "20261022_141750.jpg",
+      "sha256": "9c6db83b31f953044c43b54d12bf82f2b15379a42fb8d589dd8be04a8b522d4c",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "mushrooms in lawn"
+    },
+    {
+      "id": "C14",
+      "filename": "20261022_141757.jpg",
+      "sha256": "9b5b31f662cbdb785b1a9e0f29678f7cb9256c82c1a27a818959bf4a0a93a890",
+      "board": "hidden-gardens",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "seed heads in lawn"
+    },
+    {
+      "id": "C15",
+      "filename": "20261022_142002.jpg",
+      "sha256": "ddcc31eaa4cd1e9d896ffb6d8d765bd72878c429c852d50c7b9a6350144b4136",
+      "board": "campus",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "distant campus"
+    },
+    {
+      "id": "C16",
+      "filename": "20261022_142008.jpg",
+      "sha256": "f2df292956011d5b7bf8fec9d028afd1fe91ee3ec472998de4b9ae8c872f3a7a",
+      "board": "campus",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "campus framed by trees"
+    },
+    {
+      "id": "C17",
+      "filename": "20261022_142014.jpg",
+      "sha256": "394c47801df06e906d8071685708be4bc0586cd56959132dfafd3925c7899d50",
+      "board": "campus",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "grey glass facade"
+    },
+    {
+      "id": "C18",
+      "filename": "20261022_142020.jpg",
+      "sha256": "caa033ab277ab1919bc96ad63a6d2908229b8815925c35687f370c71d9f8a36e",
+      "board": "campus",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "metal facade ledges"
+    },
+    {
+      "id": "C19",
+      "filename": "20261022_142033.jpg",
+      "sha256": "28d5f30208e9cc18cf3c4477bc344dd5b6dda877cd20e273a5cf25dde803123d",
+      "board": "campus",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "scaffolding"
+    },
+    {
+      "id": "C20",
+      "filename": "20261022_142113.jpg",
+      "sha256": "1f6f73d6e44f98c397cf1aca142d54fd25292e0855f67d972acc525cea16c0a7",
+      "board": "lost-in-the-green",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "open stream bank"
+    },
+    {
+      "id": "C21",
+      "filename": "20261022_142120.jpg",
+      "sha256": "1f4c5747618d704ebf96c1879d4d29d94e9272e065da82717eed93c5983b4542",
+      "board": "lost-in-the-green",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "creek and path"
+    },
+    {
+      "id": "C22",
+      "filename": "20261022_142204.jpg",
+      "sha256": "b08f9f91748afdfe50d94a0322b1637722de232b5cf83437ad262157320cffc1",
+      "board": "lost-in-the-green",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "forked creek paths"
+    },
+    {
+      "id": "C23",
+      "filename": "20261022_142226.jpg",
+      "sha256": "0fadb4c5583d0cae6f44a92febfde64ea7d17769829f843b5e5eb777955eb9c0",
+      "board": "crossings",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "bridge spans"
+    },
+    {
+      "id": "C24",
+      "filename": "20261022_142237.jpg",
+      "sha256": "74ac6eb86a8d1f7e32de4826c8e97787e7fbd3af09b173f2e962b443a1b7f09f",
+      "board": "crossings",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "paired underpasses"
+    },
+    {
+      "id": "C25",
+      "filename": "20261022_142246.jpg",
+      "sha256": "a595a989cb2484fccf35eb695d99a7da5cbfadf092b4ee4d3eadbe49856abec1",
+      "board": "crossings",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "rail and water"
+    },
+    {
+      "id": "C26",
+      "filename": "20261022_142256.jpg",
+      "sha256": "f30a7c70fa7d5d6240db7f65ddb06e40d1ae1f3aff87c9c1d1f1ab2801168e2e",
+      "board": "crossings",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "narrow path below bridge"
+    },
+    {
+      "id": "C27",
+      "filename": "20261022_142307.jpg",
+      "sha256": "bcbefcc92d610b5307a750c192ebb7e922182646a5002d57294174a137b333a1",
+      "board": "crossings",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "masonry and bridge"
+    },
+    {
+      "id": "C28",
+      "filename": "20261022_142322.jpg",
+      "sha256": "b96bf0921e0488c3429115f4cbad8a4da94b689770a6ba779f8bd388db4947fe",
+      "board": "creek",
+      "disposition": "context approach angle; four closer crossing views drive the dedicated board",
+      "observation": "tree-framed creek junction"
+    },
+    {
+      "id": "C29",
+      "filename": "20261022_142332.jpg",
+      "sha256": "4c463ea92d429ee1a18ff3a5c65cf24ec7b43b6b96aca5faf5b5e0530628eddf",
+      "board": "creek",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
+      "observation": "steps across water"
+    },
+    {
+      "id": "C30",
+      "filename": "20261022_142341.jpg",
+      "sha256": "ab2ca861d13d0cceca3ddbc3ad1946bcee29f5710b6affd87a5b08c6708f879f",
+      "board": "creek",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
+      "observation": "alternate water steps"
+    },
+    {
+      "id": "C31",
+      "filename": "20261022_142351.jpg",
+      "sha256": "8c5b04acc00da2b9009722f82d8bd13738a971b551c54e7c11b2bf371c8e4458",
+      "board": "creek",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
+      "observation": "close creek steps"
+    },
+    {
+      "id": "C32",
+      "filename": "20261022_142401.jpg",
+      "sha256": "9faa5485b282b1d209183b72aaa9a33e60ff4ecb9c663d3a8b0e1bbf4eea8adb",
+      "board": "creek",
+      "disposition": "selected alternate crossing angle for the dedicated stepping-stone board",
+      "observation": "willow bank"
+    },
+    {
+      "id": "C33",
+      "filename": "20261022_142545.jpg",
+      "sha256": "d6d3080891c65428fb184f198d22949746e36112d78c9a8d11f5a036c709f18c",
+      "board": "playground",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "wide play towers"
+    },
+    {
+      "id": "C34",
+      "filename": "20261022_142552.jpg",
+      "sha256": "459ec96e4e2ec2c4ce8ee73c17b091bfea9cf30dc35c423b02722067fc6583e2",
+      "board": "playground",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "green tower low view"
+    },
+    {
+      "id": "C35",
+      "filename": "20261022_142555.jpg",
+      "sha256": "8140ef583961ca803e375e6286207788b5fc2832aa1ce5576e162f63b4985f17",
+      "board": "playground",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "rope bridge low view"
+    },
+    {
+      "id": "C36",
+      "filename": "20261022_142603.jpg",
+      "sha256": "1b28050b6813c5bb9c5b828b18c02513ab1091a793de92486cf297d55cb11aed",
+      "board": "playground",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "playground overview"
+    },
+    {
+      "id": "C37",
+      "filename": "20261022_142608.jpg",
+      "sha256": "19ded2c6af0764d90841f6366bd42b65e59a018e48dfea6ca69f80700a3f171f",
+      "board": "playground",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "tower exterior"
+    },
+    {
+      "id": "C38",
+      "filename": "20261022_142620.jpg",
+      "sha256": "20e76b3a57fda8ee9315448a9d0e0d61e34e68418c502794fa1d8f4bda097756",
+      "board": "playground",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "wooden ramp"
+    },
+    {
+      "id": "C39",
+      "filename": "20261022_142633.jpg",
+      "sha256": "8035234a954b0b797e16e96d4ef96e9f3ee603b8226dfdc59d94bf929729b421",
+      "board": "playground",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "crawl opening interior"
+    },
+    {
+      "id": "C40",
+      "filename": "20261022_142902.jpg",
+      "sha256": "61df93aae31b43b4212e986229027dbb91508578eaebd8cffc6cd92548f27dce",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "planters and bicycles"
+    },
+    {
+      "id": "C41",
+      "filename": "20261022_142905.jpg",
+      "sha256": "6cf85482e2843fb4d4fe50dc6ad3acf7a4727beab6c9b81ee827ea714b31b193",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "bicycle detail"
+    },
+    {
+      "id": "C42",
+      "filename": "20261022_142915.jpg",
+      "sha256": "f236d709222e41f76ff3ce2bf1c68d32082d6c98ea0a3b3849db00f916fbe6d8",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "vegetated channel context"
+    },
+    {
+      "id": "C43",
+      "filename": "20261022_142922.jpg",
+      "sha256": "a4e407a969b8fac9e5d6e84355f1b5056318044e96e8552cbc8cfb721a529368",
+      "board": "toxic-garden",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "red trees and planters"
+    },
+    {
+      "id": "C44",
+      "filename": "20261022_142927.jpg",
+      "sha256": "8473da34647b7f8d9d4e7795c122028ac6bafc96e082a9d15a76fca8badf378b",
+      "board": "toxic-garden",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "red canopy detail"
+    },
+    {
+      "id": "C45",
+      "filename": "20261022_142942.jpg",
+      "sha256": "a626efde602592d2560f1cacfd2e68d76e1446a7180caec161510f3c16e10180",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "gravel and rust edge"
+    },
+    {
+      "id": "C46",
+      "filename": "20261022_142948.jpg",
+      "sha256": "f40836ce7a445a1d6e259e18b0f072d0a421643ee1c0b643d73ee0319dae3cea",
+      "board": "toxic-garden",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "flower bed"
+    },
+    {
+      "id": "C47",
+      "filename": "20261022_143044.jpg",
+      "sha256": "142d783eff6265bc9772e551f7cccf74f7c96447b00934694632c53bcc822ef3",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "long planted path"
+    },
+    {
+      "id": "C48",
+      "filename": "20261022_143052.jpg",
+      "sha256": "7b3b44e972aeb2912d63112424293060af47e41b969303b3bea67cb6d50c24f7",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "wide rust planters"
+    },
+    {
+      "id": "C49",
+      "filename": "20261022_143102.jpg",
+      "sha256": "bd4a63eefc484f3a14849e58d62066e57774495eb9e4b476f66663664dbd3326",
+      "board": "toxic-garden",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "dense flowers"
+    },
+    {
+      "id": "C50",
+      "filename": "20261022_143152.jpg",
+      "sha256": "b632751552b8ee6c22b190bdf243ec279058420dab1ba28dbac1570ebf195c0c",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "stone beds under concrete"
+    },
+    {
+      "id": "C51",
+      "filename": "20261022_143200.jpg",
+      "sha256": "665720f9e45c8cee668f3422eacac00e627046e044ab3c7fad7ce766afa209f0",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "granite label context"
+    },
+    {
+      "id": "C52",
+      "filename": "20261022_143206.jpg",
+      "sha256": "9224efdc46d46b3c1d85ac37b1326e4fd00a87c10e7272fd2ff718515a131965",
+      "board": "toxic-garden",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "balanced granite stones"
+    },
+    {
+      "id": "C53",
+      "filename": "20261022_143212.jpg",
+      "sha256": "6b4b55d017c89aa815f2fbd2de53ff4b4bdf296f083f5b0804b6d834e73f1f69",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "stone beds detail"
+    },
+    {
+      "id": "C54",
+      "filename": "20261022_143226.jpg",
+      "sha256": "135f2ef3c601079a6fa10518719aa4d1fa4e7e240d3c4f5ac5efa33800cdfc0a",
+      "board": "toxic-garden",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "underpass stone corridor"
+    },
+    {
+      "id": "C55",
+      "filename": "20261022_145921.jpg",
+      "sha256": "386439d098298a54ca70aafe96985582ad8ccd6000e3bdcbccd18dcc337b5304",
+      "board": "campus-robot",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "robot held front angle"
+    },
+    {
+      "id": "C56",
+      "filename": "20261022_145922.jpg",
+      "sha256": "8efdcc9848b252351574a3f791b44bedb2a189a0b64975db90a2a6d078fbc0b4",
+      "board": "campus-robot",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "robot held opposite angle"
+    },
+    {
+      "id": "C57",
+      "filename": "20261022_145925.jpg",
+      "sha256": "15bc829106b4abda3094551b5fe75bf46c7bf0d280c860c2811558f22b09d4eb",
+      "board": "campus-robot",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "robot sensor side"
+    },
+    {
+      "id": "C58",
+      "filename": "20261022_145927.jpg",
+      "sha256": "2e3181ed7229ee29e717b49f74c21b4dc1c91a659da75733f2711b0c0cd66592",
+      "board": "campus-robot",
+      "disposition": "context or alternate angle; consolidated, not a separate panel",
+      "observation": "robot three-quarter"
+    },
+    {
+      "id": "C59",
+      "filename": "20261022_145940.jpg",
+      "sha256": "fba05bee627eb2a7e96dd7a113aee7c4311f6011aa94e62eb1b29eccb2b8869f",
+      "board": "campus-robot",
+      "disposition": "selected motif for cleaned collage; not a runtime asset",
+      "observation": "robot isolated close angle"
+    }
+  ]
+}

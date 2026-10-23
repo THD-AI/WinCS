@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-22",
+  "usage": "Credited visual research only; not runtime assets or a reuse license.",
+  "screenshots": [
+    {
+      "file": "images/iii-008.jpg",
+      "sha256": "d8753e956a2ae8c72d6560f82ada609c849e022a0ddfc7cb95f3ebc87eb5008d",
+      "source_page": "https://www.youtube.com/watch?v=zh0bVa9waXM",
+      "timestamp_seconds": 8,
+      "credit": "Epic Games / ChAIR",
+      "observation": "A monumental circular mechanism embedded in a heavy architectural enclosure.",
+      "game": "Infinity Blade III",
+      "trailer": "Official launch trailer"
+    },
+    {
+      "file": "images/iii-016.jpg",
+      "sha256": "d9a053fe9f9d4f576f09f07643b7a4256bed9d6beffe0470f2ef594a634157cf",
+      "source_page": "https://www.youtube.com/watch?v=zh0bVa9waXM",
+      "timestamp_seconds": 16,
+      "credit": "Epic Games / ChAIR",
+      "observation": "Vast rocky remains dwarf the figure; ancient mass takes priority over modern panels.",
+      "game": "Infinity Blade III",
+      "trailer": "Official launch trailer"
+    },
+    {
+      "file": "images/iii-024.jpg",
+      "sha256": "2c6ce1ef7f5f30ecfddab58de049f60d987973fac3233ac889c65aa524b3aebd",
+      "source_page": "https://www.youtube.com/watch?v=zh0bVa9waXM",
+      "timestamp_seconds": 24,
+      "credit": "Epic Games / ChAIR",
+      "observation": "A fortified temple/castle grows into the cliff face.",
+      "game": "Infinity Blade III",
+      "trailer": "Official launch trailer"
+    },
+    {
+      "file": "images/iii-064.jpg",
+      "sha256": "88337835b896a91339db6c6e95644aec98cde94ce6bffa8b7dbd0738740232bc",
+      "source_page": "https://www.youtube.com/watch?v=zh0bVa9waXM",
+      "timestamp_seconds": 64,
+      "credit": "Epic Games / ChAIR",
+      "observation": "Stone ornament and concentrated violet light share the same chamber.",
+      "game": "Infinity Blade III",
+      "trailer": "Official launch trailer"
+    },
+    {
+      "file": "images/iii-080.jpg",
+      "sha256": "bab7c9089e4a5170b789e7a7df2e77c638ff030bf6c86d4edd96eb5b3de218ab",
+      "source_page": "https://www.youtube.com/watch?v=zh0bVa9waXM",
+      "timestamp_seconds": 80,
+      "credit": "Epic Games / ChAIR",
+      "observation": "A long stone gallery repeats massive columns and weathered surfaces.",
+      "game": "Infinity Blade III",
+      "trailer": "Official launch trailer"
+    },
+    {
+      "file": "images/iii-088.jpg",
+      "sha256": "737e718755ab7298fb3efc0c74906452dab5c6f89004b467346fce91be3ed86b",
+      "source_page": "https://www.youtube.com/watch?v=zh0bVa9waXM",
+      "timestamp_seconds": 88,
+      "credit": "Epic Games / ChAIR",
+      "observation": "A bulky armored figure stands inside a gothic stone hall under concentrated blue light.",
+      "game": "Infinity Blade III",
+      "trailer": "Official launch trailer"
+    }
+  ]
+}

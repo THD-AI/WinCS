@@ -1,0 +1,57 @@
+{
+  "automatic_art_approval": false,
+  "visual_seams_approved": false,
+  "packet_sha256": "251a04503d7e2b218308a4ae0cae388fd5cd2af0d20da219346df8dd047633b9",
+  "layers": [
+    {
+      "id": "mutation",
+      "file": "mutation-repaired.png",
+      "sha256": "9da8869a4f076e280e6e9582c3d2dbdadfd8dd7cb2f8c6e548ab33f05e515966",
+      "dimensions": [
+        6480,
+        720
+      ],
+      "outside_repair_changed_pixels": 0
+    }
+  ],
+  "repairs": [
+    {
+      "job": "mutation--left--center",
+      "candidate_sha256": "aa140bbb2ce9afdd2a7458d4a3464212fa7ef7630b3eab59e9bd51fce288fa83",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        1904,
+        0,
+        2416,
+        720
+      ]
+    },
+    {
+      "job": "mutation--center--right",
+      "candidate_sha256": "b4526f8782b83985d3af3d55fa2b20eb6a745eb801153607113213b5fd7fd296",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        4064,
+        0,
+        4576,
+        720
+      ]
+    }
+  ]
+}

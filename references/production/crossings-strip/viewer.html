@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rusty Crossings · scene and layer review</title>
+<style>
+:root{color-scheme:dark;--paper:#172522;--ink:#eceddd;--line:#4c6255;--gold:#e5ba65}*{box-sizing:border-box}body{margin:0;background:#101a18;color:var(--ink);font:16px/1.55 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:28px}a{color:#e5ba65}nav{display:flex;flex-wrap:wrap;gap:10px 22px}h1{font-size:clamp(28px,4vw,48px);line-height:1.12;margin-bottom:12px}h2{margin:38px 0 10px}p{max-width:90ch}.tag{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#d3c49c}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:18px 0}button,select{background:#293c33;color:var(--ink);border:1px solid #7c8c70;border-radius:5px;padding:9px 14px;font:inherit}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}input[type=range]{min-width:180px;accent-color:var(--gold)}.note{padding:12px 16px;border-left:3px solid var(--gold);background:var(--paper)}.scroll{overflow-x:auto;border:1px solid var(--line);background:#24312c}.strip{position:relative;display:flex;width:300%;min-width:1800px;aspect-ratio:9/1}.panel{position:relative;flex:0 0 33.333333%;overflow:hidden}.panel img,.join img{display:block;width:100%;height:100%;image-rendering:pixelated}.badge{position:absolute;top:6px;left:6px;padding:3px 8px;background:#10221dee;color:white;font-size:12px;z-index:2}.panel+.panel{border-left:2px dashed #fae3a8}.join{position:absolute;top:0;width:33.333333%;height:100%;border:2px solid #e3a247;opacity:.65}.join.one{left:16.666667%}.join.two{left:50%}.join[hidden]{display:none}.stack{position:relative;width:100%;aspect-ratio:3/1;border:1px solid var(--line);overflow:hidden;background:#e5e2d5}.stack img{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated}.stack.dark{background:#10221e}.toggles{display:flex;flex-wrap:wrap;gap:8px 20px}.toggles label{padding:6px 9px;background:var(--paper);border:1px solid var(--line);border-radius:4px}.plates{display:grid;gap:18px;margin-top:20px}.plate{border:1px solid var(--line);background:var(--paper);padding:12px}.plate h3{margin:0 0 8px}.plate img{width:100%;display:block;background:repeating-conic-gradient(#e5e2d5 0% 25%,#c0c2b6 0% 50%) 50%/24px 24px;image-rendering:pixelated}.plate p{font-size:14px;margin-bottom:0}details{margin-top:22px}details img{max-width:720px;width:100%}footer{margin:35px 0}output{font-variant-numeric:tabular-nums}@media(max-width:700px){main{padding:16px}.strip{min-width:1500px}.controls{gap:8px}}
+</style>
+<main>
+<p class="note"><a href="../campus-mutation/viewer.html"><strong>Current combined viewer: photographic creek → substantial maze, three banners and seven center plates →</strong></a></p>
+<p><a href="../seam-pipeline/viewer.html">Earlier substantial-maze seam demonstration</a> · This thin-bar pass remains a comparison; its clean location paintings supply the combined study.</p>
+<nav aria-label="Reference sections"><a href="../../campus/README.md">Campus boards</a><a href="../../README.md">Game studies</a><a href="../README.md">Stage experiments</a><a href="../../../docs/proposal/campus-game.md">Proposal</a><a href="README.md">Full study and provenance</a></nav>
+<p class="tag">WinCS · 23 October 2026 · visual research</p>
+<h1>The location, stretched into a stage.</h1>
+<p>Flat side elevation: familiar riveted steel, creek, moss and rails arranged for a side-scroller. Start clean, extend in both directions, repair joins, then build up the layers. This viewer is a review document, not a playable prototype.</p>
+<details><summary>Compare the original photographic collage</summary><p>The photos guide identity and materials. Their perspective is not the game camera.</p><img src="../../campus/images/crossings.png" alt="Original Crossings photographic collage showing rusty riveted spans and creek paths"></details>
+
+<h2>1. Pan across three banners</h2>
+<div class="controls"><label>Pass <select id="pass"><option value="clean">Clean location</option><option value="traversal">Traversal added</option></select></label><button id="prev" type="button">← Pan left</button><button id="next" type="button">Pan right →</button><label>Camera <input id="camera" type="range" min="0" max="100" value="0"></label><output id="position">0%</output></div>
+<div id="scroller" class="scroll" tabindex="0" aria-label="Horizontally scrollable three-banner stage"><div class="strip">
+<div class="panel"><span class="badge">LEFT · [0,W]</span><img class="scene-panel" src="images/01-left-clean.png" alt="Clean left extension in flat side elevation"></div>
+<div class="panel"><span class="badge">CENTER · [W,2W]</span><img class="scene-panel" src="images/02-center-clean.png" alt="Clean center in flat side elevation"></div>
+<div class="panel"><span class="badge">RIGHT · [2W,3W]</span><img class="scene-panel" src="images/03-right-clean.png" alt="Clean right extension in flat side elevation"></div>
+<div class="join one" hidden><span class="badge">JOIN WINDOW · [0.5W,1.5W]</span><img src="images/04-left-center-overlap.png" alt="Staggered left-center seam candidate"></div>
+<div class="join two" hidden><span class="badge">JOIN WINDOW · [1.5W,2.5W]</span><img src="images/05-center-right-overlap.png" alt="Staggered center-right seam candidate"></div>
+</div></div>
+<div class="controls"><label><input type="checkbox" id="joins"> Compare staggered join windows (clean pass)</label><label>Window opacity <input id="joinAlpha" type="range" min="0" max="100" value="65"></label></div>
+<p class="note">Hard joins are deliberately visible. The two windows overlap the three originals; they do not add world length. Trees, clouds, native dimensions and route endpoints still differ. This is not a certified seamless export. The common review rectangle is W=2172, H=724; native PNG dimensions are preserved in the provenance file.</p>
+
+<h2>2. Inspect seven center-layer trials</h2>
+<p>The wings above are not decomposed. This center proof separates the roles before repeating the method. Toggle layers, then compare with the master. The generated rail is shifted and several cutouts have edge residue or content drift.</p>
+<div class="controls"><button id="mode" type="button" aria-pressed="false">Show dressed master instead</button><button id="all" type="button">All layers</button><button id="none" type="button">No layers</button><button id="backdrop" type="button" aria-pressed="false">Dark backdrop</button></div>
+<div id="toggles" class="toggles" aria-label="Center depth plate visibility"></div>
+<div id="stack" class="stack" style="margin-top:16px" aria-label="Center layer recomposition diagnostic"></div>
+<p id="stackStatus" class="note" aria-live="polite">Recomposition diagnostic · generation drift remains; not approved for runtime.</p>
+<div id="plates" class="plates"></div>
+<footer><a href="README.md">Full sequence, actual limits and prompts</a> · <a href="../../../docs/design/layered-stage-workflow.md">Layered production method</a> · <a href="../../campus/crossings.md#location-photo-board">Back to the source board</a></footer>
+</main>
+<script>
+const panelSets={clean:['01-left-clean.png','02-center-clean.png','03-right-clean.png'],traversal:['06-left-traversal.png','07-center-traversal.png','08-right-traversal.png']};
+const layers=[
+['depth-01-far.png','1 · Far sky / trees','Opaque clean-plate trial; no collision. Filled foliage needs contrast review.'],
+['depth-02-structure.png','2 · Bridge / supports','Rear architecture on alpha; edge residue and omissions remain.'],
+['depth-03-bank.png','3 · Bank / ground','Walking contour candidate; alpha does not define collision.'],
+['depth-04-water.png','4 · Creek / reflections','Separate water region for later local motion.'],
+['depth-05-traversal.png','5 · Bars / ladders','Traversal network on alpha; per-piece IDs, anchors and route verification remain.'],
+['depth-06-rails.png','6 · Near safety rails','Decorative occlusion; extraction is vertically displaced and fails alignment.'],
+['depth-07-plants.png','7 · Front plants','Sparse clusters for later grabs/pivots; remove source duplicates before motion.']];
+const $=id=>document.getElementById(id),scroller=$('scroller'),camera=$('camera');
+function syncCamera(){const max=scroller.scrollWidth-scroller.clientWidth;camera.value=max?scroller.scrollLeft/max*100:0;$('position').textContent=Math.round(Number(camera.value))+'%';}
+camera.addEventListener('input',()=>scroller.scrollLeft=(scroller.scrollWidth-scroller.clientWidth)*Number(camera.value)/100);
+scroller.addEventListener('scroll',syncCamera);window.addEventListener('resize',syncCamera);
+$('prev').onclick=()=>scroller.scrollBy({left:-scroller.clientWidth*.7});$('next').onclick=()=>scroller.scrollBy({left:scroller.clientWidth*.7});
+function updateJoins(){const clean=$('pass').value==='clean';$('joins').disabled=!clean;$('joinAlpha').disabled=!clean||!$('joins').checked;document.querySelectorAll('.join').forEach(e=>{e.hidden=!$('joins').checked||!clean;e.style.opacity=Number($('joinAlpha').value)/100;});}
+$('pass').onchange=()=>{document.querySelectorAll('.scene-panel').forEach((e,i)=>{e.src='images/'+panelSets[$('pass').value][i];e.alt=$('pass').value+' '+['left','center','right'][i]+' flat side-elevation panel';});updateJoins();};$('joins').onchange=updateJoins;$('joinAlpha').oninput=updateJoins;
+let masterMode=false;const checks=[],plates=[];
+layers.forEach(([file,title,note],i)=>{const image=new Image();image.src='images/'+file;image.alt=title;image.dataset.layer=String(i);$('stack').append(image);plates.push(image);const label=document.createElement('label'),check=document.createElement('input');check.type='checkbox';check.checked=true;check.onchange=refresh;label.append(check,' '+title);$('toggles').append(label);checks.push(check);const card=document.createElement('section');card.className='plate';const h=document.createElement('h3');h.textContent=title;const img=new Image();img.src=image.src;img.alt=title+' isolated plate';const p=document.createElement('p');p.textContent=note;card.append(h,img,p);$('plates').append(card);});
+const master=new Image();master.src='images/07-center-traversal.png';master.alt='Dressed center master for comparison';master.hidden=true;$('stack').append(master);
+function refresh(){plates.forEach((img,i)=>img.hidden=masterMode||!checks[i].checked);master.hidden=!masterMode;$('mode').setAttribute('aria-pressed',String(masterMode));$('mode').textContent=masterMode?'Return to layer recomposition':'Show dressed master instead';$('stackStatus').textContent=masterMode?'Dressed master · compare against the generated plate positions.':'Recomposition diagnostic · '+checks.filter(c=>c.checked).length+' / 7 plates visible; generation drift remains, not approved for runtime.';}
+$('mode').onclick=()=>{masterMode=!masterMode;refresh();};$('all').onclick=()=>{masterMode=false;checks.forEach(c=>c.checked=true);refresh();};$('none').onclick=()=>{masterMode=false;checks.forEach(c=>c.checked=false);refresh();};$('backdrop').onclick=()=>{const dark=$('stack').classList.toggle('dark');$('backdrop').setAttribute('aria-pressed',String(dark));$('backdrop').textContent=dark?'Light backdrop':'Dark backdrop';document.querySelectorAll('.plate img').forEach(e=>e.style.background=dark?'#10221e':'');};
+refresh();updateJoins();
+</script>
+</html>

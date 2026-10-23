@@ -1,7 +1,9 @@
 # Kingdom Eighties
 
 <!-- reference-navigation:start -->
-[← Previous: Kingdom Two Crowns · gallery](../kingdom-two-crowns/visual-reference.md) · [🖼️ Library](../../README.md) · **17 / 26** · [Next: Kingdom Eighties · gallery →](visual-reference.md)
+[← Previous: Kingdom Two Crowns · gallery](../kingdom-two-crowns/visual-reference.md) · [Game index](../../README.md) · **17 / 36** · [Next: Kingdom Eighties · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Ordinary places, strange trouble
@@ -47,5 +49,7 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Kingdom Two Crowns · gallery](../kingdom-two-crowns/visual-reference.md) · [🖼️ Library](../../README.md) · **17 / 26** · [Next: Kingdom Eighties · gallery →](visual-reference.md)
+[← Previous: Kingdom Two Crowns · gallery](../kingdom-two-crowns/visual-reference.md) · [Game index](../../README.md) · **17 / 36** · [Next: Kingdom Eighties · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

@@ -1,0 +1,353 @@
+{
+  "date": "2026-10-23",
+  "tool": "built-in image generation; deterministic Pillow canvas preparation/splice explicitly requested",
+  "images": [
+    {
+      "file": "images/location--center--right-candidate.png",
+      "sha256": "cd57f19f49059c4edfecaec442cea801e5130a16ce2d4643046d81b66efa5890",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "prompt_key": "location--center--right",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate"
+    },
+    {
+      "file": "images/location--left--center-candidate.png",
+      "sha256": "53de79212235f1d15874dae8739897ea851374a978a8d1d8218f933b6f69602f",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "prompt_key": "location--left--center",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate"
+    },
+    {
+      "file": "images/maze--center--right-candidate.png",
+      "sha256": "cb4d6c1b66eaecf5e454547579b47753d2c866f285ad71b7e3c7eeabae0b1f9b",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "prompt_key": "maze--center--right",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate",
+      "fully_transparent_fraction": 0.32545
+    },
+    {
+      "file": "images/maze--left--center-candidate.png",
+      "sha256": "595fdbb27380822504592bcd23f84153b3971abb9ea55170a02a05878cf790a9",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "prompt_key": "maze--left--center",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate",
+      "fully_transparent_fraction": 0.51414
+    },
+    {
+      "file": "images/maze-center.png",
+      "sha256": "755ad4b57e457496c5aba12b4bbf9cc298e69a96138402ea678d8fe08c659bc0",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "prompt_key": "center",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate",
+      "fully_transparent_fraction": 0.4325,
+      "normalization": {
+        "native_size": [
+          2172,
+          724
+        ],
+        "operation": "nearest-neighbor resize",
+        "canonical_size": [
+          2160,
+          720
+        ]
+      }
+    },
+    {
+      "file": "images/maze-left.png",
+      "sha256": "504d7e65bbfb91766f6722004889780a9bbfa17b9a641163c23a0484e43a7966",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "prompt_key": "left",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate",
+      "fully_transparent_fraction": 0.43125,
+      "normalization": {
+        "native_size": [
+          2172,
+          724
+        ],
+        "operation": "nearest-neighbor resize",
+        "canonical_size": [
+          2160,
+          720
+        ]
+      }
+    },
+    {
+      "file": "images/maze-right.png",
+      "sha256": "d2dbfa146797fa147f561485f95a8034bcd9930e259cd0c502d40875ff995240",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "prompt_key": "right",
+      "status": "review candidate; alpha/seam/gameplay approval remains separate",
+      "fully_transparent_fraction": 0.37421,
+      "normalization": {
+        "native_size": [
+          2172,
+          724
+        ],
+        "operation": "nearest-neighbor resize",
+        "canonical_size": [
+          2160,
+          720
+        ]
+      }
+    }
+  ],
+  "source_inputs": [
+    {
+      "project_file": "references/production/master-first/images/rust-maze-foreground-trial.png",
+      "sha256": "8d2783252b1de26891f04ed495413a211e4553723e8ff2765e5586aa8f3a6036"
+    },
+    {
+      "project_file": "references/campus/images/crossings.png",
+      "sha256": "1ebf3b8dd8791a5a2bb9f3d7023b3d8721f513b021334b66cd3813c3e60b1102"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/01-left-clean.png",
+      "sha256": "a1ec3667b79656d8e0741e443d00506d453c7aa35962d633c94856c8a4ce9374"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/02-center-clean.png",
+      "sha256": "6d22e84cb0ce284717951dae1e07b775c7474b23879edba6150524d491517d72"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/03-right-clean.png",
+      "sha256": "78407c6bdd52c810371ad48029035644eb089ac2fbb5b0978e1876fa534a1f81"
+    }
+  ],
+  "lineage": "Center/left/right generation uses the native predecessor of the normalized center plate; final panels are explicitly normalized. Join candidates use exact prepared contexts and masks. Original native outputs remain local.",
+  "packet": {
+    "version": 1,
+    "config_sha256": "35f55bc5882cde13b76a6a741de1c1a2909840fbaebc0e416fae301802f1f147",
+    "panel_size": [
+      2160,
+      720
+    ],
+    "world_size": [
+      6480,
+      720
+    ],
+    "chunks": [
+      "left",
+      "center",
+      "right"
+    ],
+    "chunk_origins": {
+      "left": [
+        0,
+        0
+      ],
+      "center": [
+        2160,
+        0
+      ],
+      "right": [
+        4320,
+        0
+      ]
+    },
+    "model": "gpt-image-2.5-sunburst",
+    "layers": [
+      {
+        "id": "maze",
+        "role": "substantial riveted-steel traversal maze on alpha",
+        "world": "maze-before.png",
+        "sha256": "89900823f382d420cf4557b984e6b48fe40aec0af93027f86a6baa1f4a419944",
+        "inputs": [
+          {
+            "chunk": "left",
+            "file": "references/production/seam-pipeline/images/maze-left.png",
+            "sha256": "504d7e65bbfb91766f6722004889780a9bbfa17b9a641163c23a0484e43a7966",
+            "native_size": [
+              2160,
+              720
+            ],
+            "normalized_size": [
+              2160,
+              720
+            ]
+          },
+          {
+            "chunk": "center",
+            "file": "references/production/seam-pipeline/images/maze-center.png",
+            "sha256": "755ad4b57e457496c5aba12b4bbf9cc298e69a96138402ea678d8fe08c659bc0",
+            "native_size": [
+              2160,
+              720
+            ],
+            "normalized_size": [
+              2160,
+              720
+            ]
+          },
+          {
+            "chunk": "right",
+            "file": "references/production/seam-pipeline/images/maze-right.png",
+            "sha256": "d2dbfa146797fa147f561485f95a8034bcd9930e259cd0c502d40875ff995240",
+            "native_size": [
+              2160,
+              720
+            ],
+            "normalized_size": [
+              2160,
+              720
+            ]
+          }
+        ]
+      },
+      {
+        "id": "location",
+        "role": "clean creek-location banner, including water reflection color",
+        "world": "location-before.png",
+        "sha256": "5a293435595e13af45d0add8c6fea13885a63aaec3e5e32719c38c8b85e0ec46",
+        "inputs": [
+          {
+            "chunk": "left",
+            "file": "references/production/crossings-strip/images/01-left-clean.png",
+            "sha256": "a1ec3667b79656d8e0741e443d00506d453c7aa35962d633c94856c8a4ce9374",
+            "native_size": [
+              2170,
+              725
+            ],
+            "normalized_size": [
+              2160,
+              720
+            ]
+          },
+          {
+            "chunk": "center",
+            "file": "references/production/crossings-strip/images/02-center-clean.png",
+            "sha256": "6d22e84cb0ce284717951dae1e07b775c7474b23879edba6150524d491517d72",
+            "native_size": [
+              2170,
+              725
+            ],
+            "normalized_size": [
+              2160,
+              720
+            ]
+          },
+          {
+            "chunk": "right",
+            "file": "references/production/crossings-strip/images/03-right-clean.png",
+            "sha256": "78407c6bdd52c810371ad48029035644eb089ac2fbb5b0978e1876fa534a1f81",
+            "native_size": [
+              2171,
+              724
+            ],
+            "normalized_size": [
+              2160,
+              720
+            ]
+          }
+        ]
+      }
+    ],
+    "jobs": [
+      {
+        "id": "maze--left--center",
+        "layer": "maze",
+        "context_origin": [
+          1080,
+          0
+        ],
+        "copy_box": [
+          824,
+          0,
+          1336,
+          720
+        ],
+        "context_sha256": "0d96a6d940d2602b5056a0a9ce8d97ca970cd68dbb0fdb1241e221691dd568c1",
+        "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
+        "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
+        "prompt_sha256": "f5477ff85a79286b3ca024b98d91903f8810911db11f79fdc3954789678b237f",
+        "request_sha256": "2e7ba325b9fcb357d0ca26a0f6aa76d2bd332e171d95a6ad046fd9f3c588cf38"
+      },
+      {
+        "id": "maze--center--right",
+        "layer": "maze",
+        "context_origin": [
+          3240,
+          0
+        ],
+        "copy_box": [
+          824,
+          0,
+          1336,
+          720
+        ],
+        "context_sha256": "bb2abd5edfa97dbd81dda14c421f9db95aa0dd50358dea56ef07ee2902d397ca",
+        "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
+        "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
+        "prompt_sha256": "f5477ff85a79286b3ca024b98d91903f8810911db11f79fdc3954789678b237f",
+        "request_sha256": "2e7ba325b9fcb357d0ca26a0f6aa76d2bd332e171d95a6ad046fd9f3c588cf38"
+      },
+      {
+        "id": "location--left--center",
+        "layer": "location",
+        "context_origin": [
+          1080,
+          0
+        ],
+        "copy_box": [
+          824,
+          0,
+          1336,
+          720
+        ],
+        "context_sha256": "f00f78ef407f2d0c385de23ce07b0086f6ab389b208b41ee9e969d61a821de7b",
+        "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
+        "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
+        "prompt_sha256": "d5d081cd4b88162650119a247a1460012c194bb267fb0e07fb1ddf138737f8a1",
+        "request_sha256": "a5a47aebbb9e2a2df704a3f709f53d26b393e0f3b8b58a40c02dae9bd5f6b4d1"
+      },
+      {
+        "id": "location--center--right",
+        "layer": "location",
+        "context_origin": [
+          3240,
+          0
+        ],
+        "copy_box": [
+          824,
+          0,
+          1336,
+          720
+        ],
+        "context_sha256": "4645fb4eddcab2acf23ae14099326cb302083114b4ff67907ec9cf10fc261d3e",
+        "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
+        "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
+        "prompt_sha256": "d5d081cd4b88162650119a247a1460012c194bb267fb0e07fb1ddf138737f8a1",
+        "request_sha256": "a5a47aebbb9e2a2df704a3f709f53d26b393e0f3b8b58a40c02dae9bd5f6b4d1"
+      }
+    ]
+  },
+  "api_execution": "dry run only; built-in tool model ID not exposed",
+  "visual_approval": false,
+  "pipeline_source_sha256": "7522d125eb496d0072ed1a4e013e815f4b24b0da34c63ac92b40da0fbc354a34"
+}

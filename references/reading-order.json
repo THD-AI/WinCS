@@ -49,11 +49,11 @@
   },
   {
     "path": "references/games/drova-forsaken-kin/README.md",
-    "label": "Drova – Forsaken Kin"
+    "label": "Drova â€“ Forsaken Kin"
   },
   {
     "path": "references/games/drova-forsaken-kin/visual-reference.md",
-    "label": "Drova – Forsaken Kin · gallery"
+    "label": "Drova â€“ Forsaken Kin · gallery"
   },
   {
     "path": "references/games/kingdom-two-crowns/README.md",
@@ -102,5 +102,45 @@
   {
     "path": "references/games/dead-cells/visual-reference.md",
     "label": "Dead Cells · gallery"
+  },
+  {
+    "path": "references/games/terraria/README.md",
+    "label": "Terraria"
+  },
+  {
+    "path": "references/games/terraria/visual-reference.md",
+    "label": "Terraria · gallery"
+  },
+  {
+    "path": "references/games/little-nightmares/README.md",
+    "label": "Little Nightmares"
+  },
+  {
+    "path": "references/games/little-nightmares/visual-reference.md",
+    "label": "Little Nightmares · gallery"
+  },
+  {
+    "path": "references/games/duck-season/README.md",
+    "label": "Duck Season"
+  },
+  {
+    "path": "references/games/duck-season/visual-reference.md",
+    "label": "Duck Season · gallery"
+  },
+  {
+    "path": "references/games/secret-of-monkey-island/README.md",
+    "label": "The Secret of Monkey Island · classic"
+  },
+  {
+    "path": "references/games/secret-of-monkey-island/visual-reference.md",
+    "label": "The Secret of Monkey Island · classic · gallery"
+  },
+  {
+    "path": "references/games/infinity-blade/README.md",
+    "label": "Infinity Blade"
+  },
+  {
+    "path": "references/games/infinity-blade/visual-reference.md",
+    "label": "Infinity Blade · gallery"
   }
 ]

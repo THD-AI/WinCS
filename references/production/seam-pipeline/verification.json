@@ -1,0 +1,105 @@
+{
+  "automatic_art_approval": false,
+  "visual_seams_approved": false,
+  "packet_sha256": "8b44253a985ac4ed4fb22c1ff61265dabdacd375965af92382b1d5d2dfe26d95",
+  "layers": [
+    {
+      "id": "maze",
+      "file": "maze-repaired.png",
+      "sha256": "550ee87409354c0d1f635db707d83113353ad1686158aa9b46adee3b3e175e12",
+      "dimensions": [
+        6480,
+        720
+      ],
+      "outside_repair_changed_pixels": 0
+    },
+    {
+      "id": "location",
+      "file": "location-repaired.png",
+      "sha256": "76345533b4a665596f34635f175411310f199d9dff13fd260f3211f0c41efc3e",
+      "dimensions": [
+        6480,
+        720
+      ],
+      "outside_repair_changed_pixels": 0
+    }
+  ],
+  "repairs": [
+    {
+      "job": "maze--left--center",
+      "candidate_sha256": "595fdbb27380822504592bcd23f84153b3971abb9ea55170a02a05878cf790a9",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        1904,
+        0,
+        2416,
+        720
+      ]
+    },
+    {
+      "job": "maze--center--right",
+      "candidate_sha256": "cb4d6c1b66eaecf5e454547579b47753d2c866f285ad71b7e3c7eeabae0b1f9b",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        4064,
+        0,
+        4576,
+        720
+      ]
+    },
+    {
+      "job": "location--left--center",
+      "candidate_sha256": "53de79212235f1d15874dae8739897ea851374a978a8d1d8218f933b6f69602f",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        1904,
+        0,
+        2416,
+        720
+      ]
+    },
+    {
+      "job": "location--center--right",
+      "candidate_sha256": "cd57f19f49059c4edfecaec442cea801e5130a16ce2d4643046d81b66efa5890",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        4064,
+        0,
+        4576,
+        720
+      ]
+    }
+  ]
+}

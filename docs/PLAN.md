@@ -1,8 +1,20 @@
 # Plan and progress
 
+**Current review handoff, 23 October:** [combined creek → substantial maze study](../references/production/campus-mutation/README.md), with photo comparison, three newly integrated banners, two bounded seam repairs and seven center extraction trials in [one viewer](../references/production/campus-mutation/viewer.html). Zero outside-band changes passed offline. Registration/alpha, artistic seams and routes remain open. PR #15 continues above #13; both remote links and local tracking were verified with `gh stack`. No new branch, issue, board or watcher was introduced.
+
 [← Previous](decisions/README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](github-workspace.md)
 
 Research date: 21 October 2026. This is pre-jam preparation, not permission to build competition content before the rules allow it.
+
+**Updated 23 October:** [campus collages](../references/campus/README.md), [voice-note digest](brief/voice-notes.md), [current proposal](proposal/campus-game.md), [stage workflow](design/layered-stage-workflow.md) and [technical contract](technical/layered-stage-contract.md). Ten recordings (17.6 minutes) and all 59 photos are indexed. Eight active collages separate the location/item identities; five new studies extend the trail to 18 games. Hidden garden/lake is the first stage candidate; no runtime build is included.
+
+**Reference correction pass:** regenerated creek from original photos; ten Playground trailer frames; classic Monkey Island pixel captures; focused boss/mascot/greenhouse/character/worldbuilding galleries; Lana developer depth/wind demonstrations and a [layer translation study](../references/games/planet-of-lana/layers-and-motion.md). Corrected reference roles are in the decision log and brief.
+
+**Latest clarification:** recognizable location motifs must become a newly designed **flat side-scroller**, not a photographic perspective repaint. [Three clean banners, two staggered join windows, three traversal passes and seven center depth trials](../references/production/crossings-strip/README.md) now show the multi-pass method. Five-plus depth/interaction roles are the target; flattening is only a delivery fallback. Native dimensions/seams and mask alignment/cleanup remain under review, and wings/individual-object rigs are not completed. Visual image bugs, algorithmic maze and subject-linked villains remain. The earlier scene study is superseded; three schematics stay in the optional appendix. Campus and game trails now expose distinct cross-section links to avoid the ambiguous Library loop.
+
+**Next visual gate:** review flat projection, location identity, player scale, strip continuity and the center layer proof before propagating decomposition to the wings or generating animation. Hidden Garden remains the first gameplay candidate. A reference library does not promise every location in the jam. Issues/board and workflows remain deferred; the PR watcher remains paused.
+
+**Latest follow-up:** [substantial maze + actual seam pipeline](../references/production/seam-pipeline/README.md) restores broad girders/tall shafts. The [executable process](technical/stage-art-pipeline.md) prepares layer-local masked jobs, applies bounded RGBA repairs, supports shared chunk insertion and records protected-pixel proof. Seven source/candidate assets demonstrate four repairs across two separate studies; this is not a final seven-layer composition. Ten offline tests and the GPT Image 2.5 adapter dry run pass. One owner-authorized [pipeline issue #14](https://github.com/THD-AI/WinCS/issues/14) and child PR form an explicit exception to the deferred backlog. The project board/general issue automation stay deferred.
 
 | Order | Work | Exit evidence |
 | --- | --- | --- |

@@ -1,7 +1,9 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Kingdom Eighties](README.md) · [🖼️ Library](../../README.md) · **18 / 26** · [Next: Stardew Valley →](../stardew-valley/README.md)
+[← Previous: Kingdom Eighties](README.md) · [Game index](../../README.md) · **18 / 36** · [Next: Stardew Valley →](../stardew-valley/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Kingdom Eighties: start with this gameplay reference](images/03-official-gameplay.jpg)
@@ -49,5 +51,7 @@ Side-view group near an ordinary building; reflections reinforce a single ground
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
 <!-- reference-navigation:start -->
-[← Previous: Kingdom Eighties](README.md) · [🖼️ Library](../../README.md) · **18 / 26** · [Next: Stardew Valley →](../stardew-valley/README.md)
+[← Previous: Kingdom Eighties](README.md) · [Game index](../../README.md) · **18 / 36** · [Next: Stardew Valley →](../stardew-valley/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

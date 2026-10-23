@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-23",
+  "tool": "built-in image generation",
+  "status": "visual-direction / pipeline trials only; no runtime approval",
+  "images": [
+    {
+      "file": "images/rust-maze-master.png",
+      "role": "complete-scene concept",
+      "sha256": "998956a8e9f410f970b271a1176e9159cd4d77bcedf135e4841d127dca5e19d0",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "prompt_key": "master"
+    },
+    {
+      "file": "images/rust-maze-background-smear.png",
+      "role": "same-scene visual-corruption study",
+      "sha256": "95e50f2f77c91b4f82c7e54f48a82c6ea689d8ce2e285a5357a1c4cadc48ffaf",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGB",
+      "prompt_key": "background_smear_selected"
+    },
+    {
+      "file": "images/rust-maze-foreground-trial.png",
+      "role": "full-canvas extraction trial; not approved runtime layer",
+      "sha256": "8d2783252b1de26891f04ed495413a211e4553723e8ff2765e5586aa8f3a6036",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "fully_transparent_fraction": 0.465,
+      "alpha_range": [
+        0,
+        255
+      ],
+      "opaque_or_partial_bounds": [
+        0,
+        0,
+        2172,
+        724
+      ],
+      "prompt_key": "foreground_extraction_trial"
+    }
+  ],
+  "qa": {
+    "equal_canvas": true,
+    "corruption_pixel_identity_outside_target": "not established; regenerated pixels vary",
+    "foreground_extraction": "genuine alpha and equal canvas; visible colored edge residue requires cleanup/review"
+  },
+  "source_inputs": [
+    {
+      "file": "../../campus/images/crossings.png",
+      "sha256": "1ebf3b8dd8791a5a2bb9f3d7023b3d8721f513b021334b66cd3813c3e60b1102",
+      "role": "rust/steel/concrete material cues only; bridge layout not copied"
+    },
+    {
+      "file": "../../campus/images/lost-in-the-green.png",
+      "sha256": "79f97d79766771c69493a443d60b78a6bd044fd92c843ffe6949a17330411fca",
+      "role": "organic bank, foliage and water motifs"
+    }
+  ]
+}

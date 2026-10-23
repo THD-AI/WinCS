@@ -1,7 +1,9 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Hollow Knight](README.md) · [🖼️ Library](../../README.md) · **2 / 26** · [Next: 9 Years of Shadows →](../9-years-of-shadows/README.md)
+[← Previous: Hollow Knight](README.md) · [Game index](../../README.md) · **2 / 36** · [Next: 9 Years of Shadows →](../9-years-of-shadows/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Hollow Knight: start with this gameplay reference](images/blue-cave.jpg)
@@ -51,5 +53,7 @@ Enemy scale and ground combat silhouette against layered architecture. Source fi
 Choose one view and name the exact quality you want: camera scale, readable terrain, color mood, animation economy or interaction feedback. Then identify one quality to omit. A still cannot establish movement feel, input latency or exact animation timing; use the README's gameplay sources or a played session for those questions.
 
 <!-- reference-navigation:start -->
-[← Previous: Hollow Knight](README.md) · [🖼️ Library](../../README.md) · **2 / 26** · [Next: 9 Years of Shadows →](../9-years-of-shadows/README.md)
+[← Previous: Hollow Knight](README.md) · [Game index](../../README.md) · **2 / 36** · [Next: 9 Years of Shadows →](../9-years-of-shadows/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
