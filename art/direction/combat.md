@@ -1,7 +1,7 @@
 # Combat · the chair
 
 <!-- nav:start -->
-[← Dexter · four stages of growing](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomalies · how the world breaks →](anomaly-language.md)
+[← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomalies · how the world breaks →](anomaly-language.md)
 <!-- nav:end -->
 
 ![Combat · the chair](images/combat-preview.png)
@@ -22,5 +22,5 @@ The fighter is OUR HERO from the second image and nobody else: the hooded figure
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/combat.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo combat`
 
 <!-- nav:start -->
-[← Dexter · four stages of growing](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomalies · how the world breaks →](anomaly-language.md)
+[← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomalies · how the world breaks →](anomaly-language.md)
 <!-- nav:end -->

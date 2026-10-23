@@ -22,6 +22,14 @@ approved art (art/)            ──┘
 2. Every other direction image takes **the style master as its first input**, then its location collage, the hero sheet and one reference game. That is what keeps the pack in sync.
 3. Review: one look at the whole pack side by side ([06](06-VISUAL-DIRECTION.md)). Redo an image with `--redo <id>`.
 
+## 1b · Location strips
+
+`art/locations/locations.json`, then:
+
+- `python scripts/make_boards.py draw --config art/locations/locations.json` draws one 2160×720 flat side-view strip per region from its collage, in the style master's look, with no characters.
+- `python scripts/make_boards.py extend --config art/locations/locations.json` grows each strip from its own edges. The outer third of the strip goes on an otherwise transparent canvas, and the model paints only the transparent part (it doubles as the mask). This runs once to the right and once to the left. The original strip stays pixel-exact in the middle of the `-wide` panorama (5040×720). Run it again on a panorama to keep growing.
+- Lesson from the first run: a direction image or the Rusty Creek strip used as an input gets *copied* (its characters, its girders). Strips take only the collage, the style master and a clean, character-free strip as a format example.
+
 ## 2 · Sprite boards
 
 `art/sprites/boards.json` → `python scripts/make_boards.py draw [ids]`

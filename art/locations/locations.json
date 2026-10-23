@@ -1,0 +1,109 @@
+{
+  "name": "Location strips",
+  "readme": "Every region as a horizontal side-scrolling background, 2160×720 – the same size as one Rusty Creek stage chunk – then **extended to the left and right** from its own edges to prove it keeps going. Each strip comes from its [campus collage](../../references/campus/README.md) plus its [visual-direction](../direction/README.md) image, drawn in the style master's look. No characters: these are backgrounds. Next step per region: split into the seven layers like [Rusty Creek](../stages/rusty-creek/README.md). Pipeline: [09 – Art pipeline](../../docs/09-ART-PIPELINE.md).",
+  "model": "gpt-image-2.5-sunburst",
+  "size": "2160x720",
+  "style": "FORMAT: a HORIZONTAL SIDE-SCROLLING GAME BACKGROUND STRIP, 3:1, for a 2D side-scroller - exactly like the attached example strip format: strict flat side elevation, no perspective, no vanishing point, no path or bridge receding into the distance. A continuous walkable ground line runs across the bottom quarter of the image and leaves BOTH the left and the right edge at a similar height, so the strip can be extended in both directions; nothing important is cut by the frame; no vignette, no border. Layered depth: hazy far background, detailed mid-ground, walkable ground with occasional near-foreground plants. SCALE: a 6 ft person standing on the ground line would be one ninth of the image height (doors, chairs, railings sized to match). LOOK: detailed hi-bit pixel art with a fine 2-pixel grain, the palette and warm light of the style master. TONE: secret horror - familiar, pretty and calm at first glance, with exactly one subtle wrong detail that a careful player would notice. NO characters, NO people, NO animals, NO text, NO logos, NO UI.",
+  "people": "",
+  "boards": [
+    {
+      "id": "hidden-garden",
+      "title": "Hidden Garden · the pond",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:references/campus/images/hidden-gardens.png",
+        "out:stepping-stones",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Prologue region, drawn ONLY from the first image (the Hidden Garden collage): reed beds and ornamental grasses, a stone-slab path, a small timber deck along a still pond across the middle third with mirrored reflections, autumn trees behind. The second image is only an example of the strip FORMAT (flat side view, ground line leaving both edges) - do not copy its creek or stones. No buildings, no steel, no structures besides the deck. The subtle wrong detail: the pond's reflection shows one tree that isn't on the bank.",
+      "review": "✅ Second take: flat side view, the pond with mirrored autumn trees, the timber deck, a stone ledge as the continuous ground line. (First take copied the hero, Dexter and girders from its direction image – direction images are no longer inputs for strips.)"
+    },
+    {
+      "id": "stepping-stones",
+      "title": "Stepping-stone creek",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:references/campus/images/creek-stones-v3.png",
+        "repo:art/stages/rusty-creek/images/before-center.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Connector region along the creek. From the collage: large flat granite stepping stones and stone steps crossing a shallow, clear creek with gentle ripples, reeds and willows, a grassy bank that rises and dips in broad soft curves. Seen strictly from the side, the stones form a row of low platforms at slightly different heights. The subtle wrong detail: one stone's reflection is missing.",
+      "review": "✅ The model strip: flat side elevation, stepping stones as a row of low platforms at different heights, clean reflections, ground leaving both edges. It is the format example for the others. Extension repeats the stone staircase once – acceptable, vary it when cutting layers."
+    },
+    {
+      "id": "lost-in-the-green",
+      "title": "Lost in the Green",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:hidden-garden",
+        "ref1:20261022_141709.jpg",
+        "ref1:20261022_141701.jpg",
+        "ref1:20261022_142002.jpg"
+      ],
+      "prompt": "Make ONE single continuous image, the same FORMAT, flatness, pixel grain and light as the FIRST image (a flat side-view game background strip) - but a different place: the meadow from the photos (images 2-4 are perspective photos used only for materials). Tall cream pampas grass, ornamental grasses, white birches and autumn shrubs. A band of rolling grassy ground across the bottom third rises into two soft round hills and dips between them, with grey stone slabs laid along its surface following the curves. Layered screens of grass in front of and behind the ground line; birches and autumn trees behind. NO water, NO creek, NO panels, NO borders, NO labels, NO text, NO path receding into the distance. A dark gap in a hedge on the right hints at a secret path. The subtle wrong detail: one patch of grass bends against the wind.",
+      "review": "✅ Fourth take: rolling hills with the slab path following the curves, pampas screens, birches, no water. Takes 1–3 copied the Rusty Creek maze, turned into a perspective creek, and then redrew the whole collage with labels; the fix was to use the raw photos (not the collage) with the Hidden Garden strip first as the format anchor."
+    },
+    {
+      "id": "campus",
+      "title": "Campus · the Mensa facade",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:references/campus/images/campus.png",
+        "repo:art/direction/images/campus-mensa-preview.png",
+        "ref2:20261023_131401.jpg",
+        "repo:art/stages/rusty-creek/images/after-center.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "From the collage: modern campus buildings in pink render with long window bands and grey columns, seen exactly front-on as a flat facade; in the middle the Mensa facade under construction with scaffolding decks, ladders and planks that form climbable platforms; a paved plaza as the walkable ground with the yellow town-sign-style post and a green assembly-point sign, bike racks, a bin, young autumn trees. Dusk, warm lit windows. The subtle wrong detail: one window shows the room in daylight.",
+      "review": "🟡 Flat pink-render campus with lit windows, a reflective plaza and autumn trees; the extension adds two more wings. Missing: the Mensa scaffolding and the yellow sign – add them as separate props/layers. The left join shows a hard building edge; hide it behind a tree layer."
+    },
+    {
+      "id": "mensa",
+      "title": "Mensa · inside at night",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "ref2:20261023_125138.jpg",
+        "ref2:20261023_125150.jpg",
+        "ref2:20261023_130817.jpg",
+        "ref2:20261023_124941.jpg",
+        "repo:art/direction/images/mensa-interior-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Interior cross-section of the university cafeteria at night, seen exactly from the side like a dollhouse cut: glossy red counter fronts with speckled granite tops, glass display cases with cling-filmed muffins and cake, tall stacks of yellow trays, the black-and-steel self-service coffee machine glowing (save point), tables and plywood stacking chairs, big windows to the dark campus at the back. Warm pools of light, deep blue shadow elsewhere. The subtle wrong detail: every chair faces the coffee machine.",
+      "review": "✅ A dollhouse cross-section at night: red counters, display cases, the glowing coffee machine, chairs, big windows; the extension continues the hall naturally. Menu boards carry text – replace with real game text later."
+    },
+    {
+      "id": "toxic-garden",
+      "title": "Toxic Garden · the greenhouse",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:references/campus/images/toxic-garden.png",
+        "repo:art/direction/images/toxic-garden-preview.png",
+        "repo:references/games/dead-cells/images/arboretum-040.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "From the collage: corten-steel rust planters, granite boulders and gravel beds with red and purple autumn plantings, built into the skeleton of a ruined glass greenhouse (iron ribs, broken panes) like Dead Cells' arboretum. Sickly green and magenta-red palette, hanging pods, vines that can be climbed. Planters form stepped platforms. The subtle wrong detail: one of the flowers is turned toward the viewer.",
+      "review": "✅ Ruined greenhouse ribs, corten planters as stepped platforms, hanging pods, red and purple plantings; the extension keeps the rhythm without copying."
+    },
+    {
+      "id": "playground",
+      "title": "Playground · the slide",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:references/campus/images/playground.png",
+        "repo:art/direction/images/playground-preview.png",
+        "repo:references/animation/playground/images/frame-020.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "From the collage: the adventure playground - leaning green and yellow timber poles, a rope-net bridge between timber towers, a timber climbing house, a tube slide, a sand ground, seen strictly from the side at dusk. Platforms on the towers and the net bridge are climbable. The subtle wrong detail: the slide's exit is far too dark.",
+      "review": "✅ Leaning green and yellow poles, net bridges, towers, slides, purple dusk; the extension adds two more towers and a second slide – exactly the 'keeps going' we want."
+    }
+  ]
+}

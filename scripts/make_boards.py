@@ -8,12 +8,15 @@
 
 Usage:
     python scripts/make_boards.py draw [ids...]   # API calls; skips raws that exist
+    python scripts/make_boards.py extend --config art/locations/locations.json   # grow strips left/right
+    python scripts/make_boards.py pages [--config ...]   # one Markdown page per board + index
     python scripts/make_boards.py draw --redo hero
     python scripts/make_boards.py crush           # offline; rebuilds every committed image
 
 Photos are found under WINCS_PHOTOS (default: ~/Downloads), with the prefixes
 ref1: "GameJam_ References", ref2: "GameJam_References-2", gam: "gam",
-merch: "GameJam_Merch" (public THD Campus Store product photos, webshop.th-deg.de).
+merch: "GameJam_Merch" (public reference photos: THD Campus Store webshop.th-deg.de, the
+Deggster costume from th-deg.de, Jenny from fast-forest.de).
 "repo:" paths are inside this repository; "out:<id>" is another board's raw.
 Needs OPENAI_API_KEY (environment or .env) for `draw`.
 """
@@ -80,32 +83,79 @@ def upload_copy(path: Path, folder: Path) -> Path:
     return out
 
 
-def draw(board: dict, config: dict, key: str) -> None:
-    out = RAW / f"{board['id']}.png"
-    # The board's own brief goes first: with the style text first the model paints a scene.
-    prompt = "\n\n".join([f"BOARD: {board['title']}.", board["prompt"], config["style"], config["people"]])
-    model = board.get("model", config["model"])
+def edit(name: str, fields: dict, images: list[Path], key: str, mask: Path | None = None) -> bytes | None:
+    """One images/edits call; returns PNG bytes or None (failure printed)."""
     with tempfile.TemporaryDirectory() as folder:
         # The key goes in a header file, never on the command line (it would show in tracebacks and ps).
         header = Path(folder) / "auth.txt"
         header.write_text(f"Authorization: Bearer {key}\n", encoding="utf-8")
-        cmd = ["curl", "-sS", "--max-time", "1800", "https://api.openai.com/v1/images/edits",
-               "-H", f"@{header}",
-               "-F", f"model={model}", "-F", f"prompt={prompt}",
-               "-F", f"size={board.get('size', config['size'])}", "-F", "quality=high", "-F", "n=1"]
-        for ref in board["inputs"]:
-            cmd += ["-F", f"image[]=@{upload_copy(resolve(ref), Path(folder))};type=image/jpeg"]
+        cmd = ["curl", "-sS", "--max-time", "1800", "https://api.openai.com/v1/images/edits", "-H", f"@{header}"]
+        for field, value in {**fields, "quality": "high", "n": "1"}.items():
+            cmd += ["-F", f"{field}={value}"]
+        for image in images:
+            kind = "png" if image.suffix == ".png" else "jpeg"
+            cmd += ["-F", f"image[]=@{image};type=image/{kind}"]
+        if mask:
+            cmd += ["-F", f"mask=@{mask};type=image/png"]
         result = subprocess.run(cmd, capture_output=True)
     if result.returncode:
-        print(f"{board['id']}: FAILED curl exit {result.returncode} {result.stderr.decode()[:200]}", flush=True)
-        return
+        print(f"{name}: FAILED curl exit {result.returncode} {result.stderr.decode()[:200]}", flush=True)
+        return None
     data = json.loads(result.stdout or b"{}")
     if "error" in data or "data" not in data:
-        print(f"{board['id']}: FAILED {data.get('error', result.stderr.decode()[:300])}", flush=True)
+        print(f"{name}: FAILED {data.get('error', result.stderr.decode()[:300])}", flush=True)
+        return None
+    return base64.b64decode(data["data"][0]["b64_json"])
+
+
+def draw(board: dict, config: dict, key: str) -> None:
+    out = RAW / f"{board['id']}.png"
+    # The board's own brief goes first: with the style text first the model paints a scene.
+    prompt = "\n\n".join([f"BOARD: {board['title']}.", board["prompt"], config["style"], config["people"]])
+    with tempfile.TemporaryDirectory() as folder:
+        images = [upload_copy(resolve(ref), Path(folder)) for ref in board["inputs"]]
+        png = edit(board["id"], {"model": board.get("model", config["model"]), "prompt": prompt,
+                                 "size": board.get("size", config["size"])}, images, key)
+    if png is None:
         return
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_bytes(base64.b64decode(data["data"][0]["b64_json"]))
+    out.write_bytes(png)
     print(f"{board['id']}: drew {out.relative_to(ROOT)}", flush=True)
+
+
+EXTEND = ("Extend this side-scrolling background strip to the {side}. The {kept} third of the image is existing "
+          "art: keep it exactly. Paint the transparent two thirds as the natural continuation of the same "
+          "location - the ground line continues at the same height across the seam and runs off the {side} "
+          "edge, same horizon, same light, palette and fine 2-pixel grain, same scale - with new but matching "
+          "features, not a copy of what is already there. No characters, no text.\n\n{brief}")
+
+
+def extend(board: dict, config: dict, key: str) -> None:
+    """Grow a strip left and right from its own edges: [left 2/3][strip][right 2/3]."""
+    strip = Image.open(RAW / f"{board['id']}.png").convert("RGBA")
+    w, h = strip.size
+    third = w // 3
+    pieces = {}
+    with tempfile.TemporaryDirectory() as folder:
+        for side, kept, src, at in (("right", "left", (w - third, 0, w, h), 0),
+                                    ("left", "right", (0, 0, third, h), w - third)):
+            canvas = Image.new("RGBA", (w, h))
+            canvas.paste(strip.crop(src), (at, 0))
+            path = Path(folder) / f"{side}.png"
+            canvas.save(path)  # transparent pixels are the area to paint (also used as the mask)
+            prompt = EXTEND.format(side=side, kept=kept, brief=board["prompt"])
+            png = edit(f"{board['id']}-{side}", {"model": board.get("model", config["model"]), "prompt": prompt,
+                                                  "size": f"{w}x{h}"}, [path], key, mask=path)
+            if png is None:
+                return
+            pieces[side] = Image.open(io.BytesIO(png)).convert("RGBA").resize((w, h))
+    wide = Image.new("RGBA", (w + 4 * third, h))
+    wide.paste(pieces["left"].crop((0, 0, w - third, h)), (0, 0))
+    wide.paste(strip, (w - third, 0))  # the approved strip stays pixel-exact in the middle
+    wide.paste(pieces["right"].crop((third, 0, w, h)), (2 * w - third, 0))
+    wide.convert("RGB").save(RAW / f"{board['id']}-wide.png")
+    print(f"{board['id']}: extended to {wide.width}x{h}", flush=True)
+    crush({**board, "id": f"{board['id']}-wide"})
 
 
 def is_magenta(r: int, g: int, b: int) -> bool:
@@ -163,7 +213,10 @@ def pages(config: dict) -> None:
             continue
         image = preview.relative_to(folder).as_posix()
         review = board.get("review", "Not reviewed yet.")
-        lines = [f"# {board['title']}", "", f"![{board['title']}]({image})", "",
+        wide = OUT / f"{board['id']}-wide-preview.png"
+        extra = [f"**Extended left and right** from its own edges (the original strip is the middle, pixel-exact):", "",
+                 f"![{board['title']} – extended]({wide.relative_to(folder).as_posix()})", ""] if wide.exists() else []
+        lines = [f"# {board['title']}", "", f"![{board['title']}]({image})", "", *extra,
                  f"**Review:** {review}", "", "## Brief", "", board["prompt"], "",
                  "## Inputs", "", *[f"- {describe(r)}" for r in board["inputs"]], "",
                  f"Model `{board.get('model', config['model'])}` · pixel factor {board['factor']} · "
@@ -181,7 +234,7 @@ def pages(config: dict) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("step", choices=["draw", "crush", "pages"])
+    parser.add_argument("step", choices=["draw", "crush", "pages", "extend"])
     parser.add_argument("ids", nargs="*")
     parser.add_argument("--redo", action="store_true", help="draw again even if a raw exists")
     parser.add_argument("--config", type=Path, help="board set to use (default: art/sprites/boards.json)")
@@ -197,6 +250,11 @@ def main() -> None:
         return
     if args.step == "pages":
         pages(config)
+        return
+    if args.step == "extend":
+        key = api_key()
+        with ThreadPoolExecutor(3) as pool:
+            list(pool.map(lambda b: extend(b, config, key), boards))
         return
 
     key = api_key()

@@ -6,7 +6,7 @@
 
 > A familiar campus. A plush mascot that wants you to keep fighting. A quantum experiment that broke the pond.
 
-A 2D side-scrolling exploration-action game in hi-bit pixel art. You are a faceless THD student in a poncho. You follow Dexter, the university's panther plush, to the Hidden Garden pond, touch a reflection that is wrong, crash like a Windows app, and wake up in a version of campus where anomalies live inside the machines. You fight them with a chair. Dexter keeps showing up to help, and keeps getting bigger.
+A 2D side-scrolling exploration-action game in hi-bit pixel art. You are a faceless THD student in a poncho. You follow Dexter, the university's panther plush, to the Hidden Garden pond, touch a reflection that is wrong, crash like a Windows app, and wake up in a version of campus where anomalies have taken over THD's autonomous machines. You fight them with a chair. Dexter keeps showing up to help, and keeps getting bigger, until he is the mascot. A secret horror game: cozy first, wrong on a second look.
 
 ## Start here
 
@@ -14,6 +14,7 @@ A 2D side-scrolling exploration-action game in hi-bit pixel art. You are a facel
 | --- | --- |
 | 📖 **[Design documents](docs/README.md)** | Proposal → game design → story → levels → enemies → visuals → assets → stack → pipeline → jam plan → decisions → workflow |
 | 🎨 **[Visual direction](art/direction/README.md)** | The look of every region, the cast, combat, HUD – one style |
+| 🏞️ **[Location strips](art/locations/README.md)** | Every region as a horizontal side-scrolling background, extended left and right |
 | 🧍 **[Sprite boards](art/sprites/README.md)** | Hero sheet (approved) and the sprite boards that follow |
 | 🌉 **[Rusty Creek stage](art/stages/rusty-creek/README.md)** | The first level: 3 chunks × 7 layers, route graph |
 | 🎙️ **[Meetings](docs/meetings/README.md)** | 13 transcribed recordings and what each one decided |

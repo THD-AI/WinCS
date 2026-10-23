@@ -27,10 +27,10 @@ Sprite boards come **after** the [visual direction](06-VISUAL-DIRECTION.md) is a
 | Asset | Board | Animations | Status |
 | --- | --- | --- | --- |
 | Rover | `enemy-rover` | idle 4 · drive 6 · spot + charge 4 · hit/flip/wreck 5 | ⬜ |
-| Walker | `enemy-walker` | idle 4 · walk 8 · rear + stab 5 · collapse 5 | ⬜ |
+| Crab | `enemy-crab` | idle 4 · walk 8 · rear + stab 5 · collapse 5 | ⬜ |
 | Drone | `enemy-drone` | hover 4 · alert/dive 3 · crash 5 · dropped screw 3 | ⬜ |
 | Jenny | `boss-jenny` | rev 4 · charge 4 · crash 4 · stunned 3 · reboot 2 · debris ×5 (2 each) | ⬜ |
-| Goo burst (shared death FX) | `fx` | 6 | ⬜ |
+| Black-fluid leak (shared death FX) | `fx` | 6 | ⬜ |
 
 ## Items, props, UI
 
@@ -50,12 +50,13 @@ Sprite boards come **after** the [visual direction](06-VISUAL-DIRECTION.md) is a
 | Stage | Plates | Status |
 | --- | --- | --- |
 | Rusty Creek | 3 chunks × 7 layers + clean architecture, route graph | ✅ art · ⬜ collision |
-| Hidden Garden (prologue) | 1–2 chunks × 7 layers, generated from the approved direction image | ⬜ |
+| Location strips (7 regions) | 2160×720 strip + left/right extension each ([art/locations](../art/locations/README.md)) | 🟡 drawn, in review |
+| Hidden Garden (prologue) | 1–2 chunks × 7 layers, split from its location strip | ⬜ |
 | Jenny's arena | right chunk of Rusty Creek (boss clearing) | ✅ art · ⬜ collision |
 
 ## Audio (to source during the jam)
 
-Footsteps (girder, grass), chair whoosh + hit, rover motor, walker servos, drone hum, Jenny engine + crash, goo absorb, crash-dialog "ding", one ambient loop per region, one boss loop. Use CC0 sources only and record every source in `NOTICE.md`.
+Footsteps (girder, grass), chair whoosh + hit, rover motor, crab servos, drone hum, Jenny engine + crash, fluid absorb, crash-dialog "ding", one ambient loop per region, one boss loop. Use CC0 sources only and record every source in `NOTICE.md`.
 
 <!-- nav:start -->
 [← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 13** · [08 – Tech stack and where things live →](08-TECH-STACK.md)

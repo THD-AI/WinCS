@@ -11,7 +11,10 @@ Instructions for AI coding agents (Codex, Claude, …) working in this repositor
 ## Fixed facts (don't re-decide them)
 
 - Hero: 6 ft THD student, grey/blue/teal THD poncho with cream tassels and a THD crest on the back. **The face is never shown.** Gender is never shown or implied.
-- Dexter = the THD panther mascot plush "Deggster", 1.5 ft; final form 8.5 ft with black goo. He guides you and is the secret boss.
+- Dexter = THD's panther mascot "Deggster": a 1.5 ft plush at first; his final form is the real mascot costume at 8.5 ft, friendly at first glance, black fluid seeping where the costume pieces join (Duck Season). He guides you and is the secret boss.
+- A **secret horror** game: cozy first, wrong on a second look. No gore.
+- Enemies are THD's real **autonomous** machines (rover, crab hexapod, drone, Fast Forest's driverless Jenny) taken over by anomalies.
+- Locations are **horizontal side-scrolling strips** that extend left and right ([art/locations](art/locations/README.md)); never perspective scenes.
 - Look: hi-bit pixel art matching `art/direction/images/style-master-preview.png`; hero ≈ 1/8 of screen height (80 px on a 720 px stage).
 - Jam slice: Prologue (Hidden Garden) + Region 1 (Rusty Creek) + boss Jenny. Nothing else until that ships.
 - Stack: Phaser 3 + TypeScript + Vite in `game/`, deployed on Vercel.

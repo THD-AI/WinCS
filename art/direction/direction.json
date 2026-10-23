@@ -113,14 +113,15 @@
       "keyed": false,
       "inputs": [
         "out:style-master",
-        "ref2:20261023_130003.jpg",
-        "ref2:20261023_130123.jpg",
+        "merch:Jenny15GDX_4.jpg",
+        "merch:Jenny14GDX-rollout.jpg",
+        "merch:RolloutJenny16_9.jpeg",
         "repo:art/stages/rusty-creek/images/after-right.png",
-        "repo:references/games/terraria/images/wall-188.jpg",
-        "repo:art/sprites/images/hero-preview.png"
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:references/games/terraria/images/wall-188.jpg"
       ],
-      "prompt": "Match the first image's style exactly. Boss arena: the open boss clearing at the end of Rusty Creek (fourth image) - a broad flat girder floor with the creek below. Boss: JENNY, the green-and-black Formula Student race car from the team banner, haunted - glowing headlight eyes, black goo leaking from the bodywork, crooked front wing - mid-charge toward the hero with speed lines and smoke, springs and bolts flying off. The hero (small) is jumping over it. A thin boss health bar at the bottom of the screen with no text. Big readable boss silhouette like Terraria's Wall of Flesh fight: huge, simple to read.",
-      "review": "🟡 The boss read is right: a huge crashing car, debris, goo, the hero jumping it, a boss bar. But the car came out black/gold with a '78' and isn't Fast Forest's green and black. The boss sprite board fixes the livery from the team-banner photos."
+      "prompt": "Match the first image's style exactly. Boss arena: the open boss clearing at the end of Rusty Creek (fifth image) - a broad flat girder floor with the creek below. Boss: JENNY, THD's autonomous Formula Student race car from the photos - carbon black and dark-grey bodywork with lime-green, teal and blue stripe graphics, wide front wing, big rear wing, slick tyres, roll hoop - DRIVING ITSELF: the cockpit is EMPTY (no driver, no helmet), a camera and lidar sensor sit on the roll hoop, the blue autonomous-status light on the roll hoop is flashing. The anomaly has taken over her self-driving: headlight-like sensors glow, a little black fluid seeps from the panel seams. She is mid-charge toward the hero with speed lines and tyre smoke; springs and bolts fly off. The hero from the sixth image (small) jumps over her. A thin boss health bar at the bottom of the screen, no text. Huge, readable boss silhouette like Terraria's Wall of Flesh fight.",
+      "review": "✅ Second take, from Fast Forest's own photos: Jenny's real livery (carbon black, lime/teal/blue stripes, E44, DEGGENDORF IT), an empty cockpit, the roll-hoop sensor and the blue autonomous-status light, on the Rusty Creek deck with the hero. Calmer than the first take (no crash, no boss bar), but the identity is right, which is what the boss sprite board needs. (First take: a generic black/gold car with a driver's cockpit.)"
     },
     {
       "id": "cast",
@@ -142,18 +143,18 @@
     },
     {
       "id": "dexter-stages",
-      "title": "Dexter · four stages of growing",
+      "title": "Dexter · plush to mascot",
       "factor": 2,
       "keyed": false,
       "inputs": [
         "out:style-master",
         "repo:art/sprites/images/hero-preview.png",
         "merch:Deggster-9487_1280x1280.jpg",
-        "merch:Deggster-9499_1280x1280.jpg",
-        "repo:references/games/kingdom-two-crowns/images/02-official-gameplay.jpg"
+        "merch:deggster-costume-store.jpg",
+        "repo:references/games/duck-season/images/ending-0800.jpg"
       ],
-      "prompt": "ABSOLUTELY NO TEXT, NO LABELS, NO MEASUREMENT LINES. Only FIVE figures standing on one ground line on a plain warm-grey backdrop, side views, at TRUE relative scale, in the first image's pixel style and light. From left: (1) the hero from the second image, 6 ft tall - the ruler. (2) DEXTER as the black panther plush mascot from the photos (black velvet fur, ice-blue eyes, orange nose, small fangs, light-grey T-shirt with faint crest, pale grey trousers), TINY: only 1.5 ft, his head reaches the hero's KNEE. (3) Dexter grown to 4 ft (up to the hero's chest): limbs longer, one seam splitting, a little black goo at the joints. (4) Dexter at 6 ft, as tall as the hero, mascot-costume size, T-shirt torn, goo dripping. (5) Dexter FINAL FORM, 8.5 ft - his head is far above the hero's head, lanky uncanny panther-humanoid, black glossy goo leaking from every seam and joint like the Greed in Kingdom Two Crowns (last image), ice-blue light glowing through the torn seams. Same character throughout, getting bigger and wronger.",
-      "review": "✅ The plush, two in-between stages and the 8.5 ft final form: one character getting bigger and wronger, goo dripping and blue light through the torn seams. Uncanny, no gore. The relative scale is a little exaggerated (the hero reads slightly small next to the 6 ft stage); the sprite board uses the exact heights from doc 04."
+      "prompt": "ABSOLUTELY NO TEXT, NO LABELS. Four figures on one ground line, side views, TRUE relative scale, in the first image's pixel style and light, on a quiet late-afternoon campus lawn. (1) The hero from the second image, 6 ft - the ruler. (2) DEXTER as the small black panther plush from the third image (grey T-shirt, ice-blue eyes, orange nose), 1.5 ft, his head at the hero's knee. (3) Dexter as a bigger plush, 4 ft, chest height, stitching slightly strained. (4) Dexter's FINAL FORM: the university's full-size panther MASCOT COSTUME from the fourth photo (big fluffy black panther head with ice-blue eyes, orange nose, white whiskers and fangs, black furry neck sleeve, light-grey crest T-shirt, black furry gloves and feet) but 8.5 ft tall, towering over the hero. It looks friendly and harmless at first glance - a waving university mascot like in Duck Season - and is WRONG on a second look: thick black fluid seeps out exactly where the costume pieces join - the gap between the head and the neck sleeve, the glove cuffs at the wrists, the ankles - and drips down; the head sits very slightly too far forward; the eyes are a little too glossy. Secret horror: subtle, no gore, no monster transformation.",
+      "review": "✅ Second take, after the owner's correction: the final form is THD's real Deggster mascot costume, 8.5 ft, waving like Duck Season's mascot – and black fluid seeps out exactly where the costume pieces join (neck sleeve, glove cuffs, feet). Friendly first, wrong second: the secret horror in one picture. Note: the backdrop's gothic building isn't THD; scenery comes from the location strips. (First take had a goo monster, now rejected.)"
     },
     {
       "id": "combat",

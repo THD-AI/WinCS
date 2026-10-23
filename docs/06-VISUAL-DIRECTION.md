@@ -22,6 +22,8 @@ Everything in the game must look like it belongs in the **style master** above. 
 | [![Combat](../art/direction/images/combat-preview.png)](../art/direction/combat.md) **Combat** – the chair | [![Anomalies](../art/direction/images/anomaly-language-preview.png)](../art/direction/anomaly-language.md) **Anomalies** – how the world breaks |
 | [![HUD](../art/direction/images/hud-preview.png)](../art/direction/hud.md) **HUD** and pocket computer | [![Props](../art/direction/images/props-preview.png)](../art/direction/props.md) **Props and pickups** |
 
+**Locations as strips:** the pack sets the look; the playable backgrounds are the horizontal [location strips](../art/locations/README.md), extended to both sides.
+
 **Reviewed 23 Oct:** 14 images; 12 approved, 2 with notes (Jenny's livery, the machines lineup). Seven needed a second or third take; every image's page says what changed and why. The two lessons that fixed it: the hero sheet always goes in as the second input, and "copy the style, not the composition".
 
 ## Rules
@@ -52,11 +54,11 @@ Everything in the game must look like it belongs in the **style master** above. 
 2. **Pixel stretch** – a column of scenery smeared into vertical streaks.
 3. **404 void** – flat grey nothing with a broken-image icon; torn edges.
 4. **Crash dialog** – old-desktop error window, red X, OK button. It is the region transition. Its text is real game text, never drawn into art.
-5. **Goo** – black, glossy, slow (Kingdom Two Crowns' Greed). It leaks from possessed machines and, later, from Dexter.
+5. **Black fluid** – glossy, slow, seeping from seams and joins: panel gaps on machines, the costume joins on Dexter. Never splattered, never red.
 
 **UI.** Minimal and diegetic where possible: 5 battery cells for health, a 3-segment glitch meter, no minimap. The map lives on the pocket computer's green-on-black CRT screen.
 
-**Never:** gore or blood, text baked into art, real people's faces, brand logos other than THD's own, photographic perspective (everything is a flat side elevation).
+**Secret horror:** every scene is pretty and calm first; it carries exactly one wrong detail for a careful player to notice. **Never:** gore or blood, jump-scare spam, text baked into art, real people's faces, brand logos other than THD's own, photographic perspective (everything is a flat side elevation).
 
 ## What each reference game gives the look
 

@@ -10,7 +10,7 @@
 
 **Explore a broken region → fight the anomalies living in machines → find the region's object or upgrade → reach the region's anomaly → cross into the next dimension.** Between fights you rest at coffee machines, where Dexter trades with you and takes the anomaly energy you collected.
 
-The loop in one minute: walk right, something is wrong in the scenery, a rover spots you, you swing the chair, it bursts into goo that Dexter later absorbs, you climb a ladder to a branch you couldn't reach before, you find a muffin, you save at the coffee machine.
+The loop in one minute: walk right, something is wrong in the scenery, a rover spots you, you swing the chair, it stops dead and leaks black fluid that Dexter later absorbs, you climb a ladder to a branch you couldn't reach before, you find a muffin, you save at the coffee machine.
 
 ## Controls – four directions, two buttons
 
@@ -89,7 +89,7 @@ Each region is entered through a different **anomaly**: a surface that looks lik
 | --- | --- | --- |
 | 1 | The pond in the Hidden Garden | Rusty Creek |
 | 2 | A polished granite obelisk ("Bayerwald-Granit" boulders) | Lost in the Green |
-| 3 | A puddle of black goo | Campus / Mensa |
+| 3 | A puddle of black fluid | Campus / Mensa |
 | 4 | The playground tube slide, twisted into a mouth (Lex's slide idea) | Toxic Garden / Playground |
 
 **Every crossing uses one shared animation:** touch → the regular damage reaction → the hero is lifted and spins like a starfish → an error dialog freezes the frame → cut → you land in the new region and the damage animation finishes. One reusable sequence, no bespoke cinematics. That was the explicit reason for this design.

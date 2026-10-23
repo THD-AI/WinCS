@@ -21,6 +21,23 @@ Every region is a real THD Deggendorf place we photographed on 22–23 Oct, rebu
 
 Stepping-stone creek and Playground slides work as connectors (fast travel between anomalies you have already crossed), as Lex proposed.
 
+## Every region is a horizontal strip
+
+This is a side-scroller: every location is drawn as a **horizontal background strip** in flat side view, 2160×720 (one stage chunk), with a ground line that leaves both edges. Each strip is then **extended left and right from its own edges**, so a region can keep growing in either direction. The [location strips](../art/locations/README.md) cover all seven places, each from its campus collage plus its direction image:
+
+![Stepping-stone creek, extended to both sides](../art/locations/images/stepping-stones-wide-preview.png)
+
+| Strip | Becomes |
+| --- | --- |
+| [Hidden Garden](../art/locations/hidden-garden.md) | Prologue |
+| [Stepping-stone creek](../art/locations/stepping-stones.md) | Connector between Rusty Creek and Lost in the Green |
+| [Lost in the Green](../art/locations/lost-in-the-green.md) | Region 2 |
+| [Campus](../art/locations/campus.md) · [Mensa](../art/locations/mensa.md) | Region 3 (outside, inside) |
+| [Toxic Garden](../art/locations/toxic-garden.md) | Region 4 |
+| [Playground](../art/locations/playground.md) | Region 5 |
+
+A strip becomes a playable stage the way Rusty Creek did: split it into the seven layers, author the collision, add chunks where Lex's route needs them ([09](09-ART-PIPELINE.md)).
+
 ## How a region is laid out
 
 - **Left to right, but not only.** Each region is a row of 2160×720 chunks; Rusty Creek has three (6480×720). Chunks can grow left, right or in the middle, and later up and down (see the [art pipeline](09-ART-PIPELINE.md)).
@@ -68,8 +85,8 @@ The route already exists as a graph ([route.json](../art/stages/rusty-creek/rout
 | Chunk | Beat | Content |
 | --- | --- | --- |
 | Left – *entry, first climb* | Land from the pond crash. Quiet. | The **chair** lies on the first deck. One **rover** patrols the low deck (tutorial fight). Ladder up to the first branch. Optional lookout dead end: muffin + note #1 |
-| Center – *branches, reconnection* | The maze opens up | Two routes: high (ladders, a **walker** on a deck) and low (along the creek, two rovers). A **drone** hovers over the low route: too hard to kill with the chair, so avoid it under girders. **Coffee machine** + **Dexter** (pocket computer) at the reconnection. Cache dead end: Leberkäse roll |
-| Right – *boss clearing, exit* | Wide open girder floor | Boss gate closes behind you. **Jenny**. After the fight, Dexter absorbs the goo and the exit anomaly opens. Overlook dead end: note #2 (first hint about Dexter) |
+| Center – *branches, reconnection* | The maze opens up | Two routes: high (ladders, a **crab** on a deck) and low (along the creek, two rovers). A **drone** hovers over the low route: too hard to kill with the chair, so avoid it under girders. **Coffee machine** + **Dexter** (pocket computer) at the reconnection. Cache dead end: Leberkäse roll |
+| Right – *boss clearing, exit* | Wide open girder floor | Boss gate closes behind you. **Jenny**. After the fight, Dexter absorbs the black fluid and the exit anomaly opens. Overlook dead end: note #2 (first hint about Dexter) |
 
 Target play time for the slice: 8–12 minutes.
 

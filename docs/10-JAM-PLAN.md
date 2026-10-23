@@ -13,7 +13,7 @@
 | Fri 15:30–19:30 (Sprint 1) | References, recordings, design docs, visual direction, repo clean | This folder + the direction pack, reviewed ✅ |
 | 19:30–20:00 | Pizza. **Team review of the direction pack and the GDD**; lock title | Decisions logged |
 | 20:00–00:00 (Sprint 2) | GitHub board + issues · `game/` scaffold on Vercel · player controller on Rusty Creek collision · sprite boards from the approved direction | Hero walks, jumps and climbs on the real stage, on a preview URL |
-| 00:30–03:00 | Chair combat (3 attacks + guard) · rover + walker AI · health/death/respawn · coffee machine save | You can fight through chunk 1 |
+| 00:30–03:00 | Chair combat (3 attacks + guard) · rover + crab AI · health/death/respawn · coffee machine save | You can fight through chunk 1 |
 | 03:00–07:00 | Prologue (Hidden Garden walk, Dexter, pond crash) · Jenny boss · drone · pickups · HUD | Full slice playable start to finish |
 | 07:00–08:00 | Breakfast. **Playtest by someone outside the team** | Bug list |
 | 08:00–11:00 | Fix · sound · juice (hit-stop, shake, goo) · title + credits · final deploy | Production URL stable |
@@ -33,7 +33,7 @@
 2. Glitch meter and its abilities
 3. Drone (keep it as scenery that hovers)
 4. Jenny phase 3 (the jumping charge)
-5. Walker (keep rovers only)
+5. Crab (keep rovers only)
 6. Pocket computer *map* (keep the item and the Dexter scene)
 7. Prologue walk (start at the pond with a single interact)
 

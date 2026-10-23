@@ -1,7 +1,7 @@
 # The cast · machines and companion
 
 <!-- nav:start -->
-[← Boss · Jenny, the runaway race car](boss-jenny.md) · [Visual direction](README.md) · **9 / 14** · [Dexter · four stages of growing →](dexter-stages.md)
+[← Boss · Jenny, the runaway race car](boss-jenny.md) · [Visual direction](README.md) · **9 / 14** · [Dexter · plush to mascot →](dexter-stages.md)
 <!-- nav:end -->
 
 ![The cast · machines and companion](images/cast-preview.png)
@@ -26,5 +26,5 @@ ABSOLUTELY NO TEXT, NO LABELS, NO NAMES, NO MEASUREMENTS. A character lineup on 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/cast.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo cast`
 
 <!-- nav:start -->
-[← Boss · Jenny, the runaway race car](boss-jenny.md) · [Visual direction](README.md) · **9 / 14** · [Dexter · four stages of growing →](dexter-stages.md)
+[← Boss · Jenny, the runaway race car](boss-jenny.md) · [Visual direction](README.md) · **9 / 14** · [Dexter · plush to mascot →](dexter-stages.md)
 <!-- nav:end -->

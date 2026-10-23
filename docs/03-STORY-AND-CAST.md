@@ -8,7 +8,7 @@
 
 ## Premise
 
-THD is running a **quantum-computing field experiment** on campus. It works too well: the campus now overlaps with copies of itself from other dimensions. In those copies, **anomalies** – living errors – have moved into the machines: the lab robots in the display cases, the drones, the Formula Student car. Where an anomaly is strong, the world shows it the way a computer would: image cuts, stretched pixels, 404 holes, crash dialogs.
+THD is running a **quantum-computing field experiment** on campus. It works too well: the campus now overlaps with copies of itself from other dimensions. In those copies, **anomalies** – living errors – have moved into everything that thinks for itself: the **autonomous** lab rover and hexapod from the display cases, the quadcopter drone, and Jenny, Fast Forest's driverless race car. They don't need a driver, so the anomaly simply becomes one. Where an anomaly is strong, the world shows it the way a computer would: image cuts, stretched pixels, 404 holes, crash dialogs.
 
 You are an ordinary student who touched the wrong pond.
 
@@ -16,7 +16,7 @@ The idea is fiction: no real experiment, person or department is depicted. The u
 
 ## Tone
 
-Familiar → uncanny → psychological horror. The first minutes are cozy, funny and pretty. The horror comes from things being *almost* right (the mimic and doppelganger idea from the meeting) and from slowly understanding Dexter. No gore, no blood, no apocalypse. Jokes are things you *do* (hit a robot with a chair, get thrown by a crash dialog), not text.
+**A secret horror game.** It looks and plays like a cozy, funny campus adventure, and the horror hides in plain sight: a reflection that shows the wrong thing, every chair facing the coffee machine, a mascot that waves a little too long. The player should be able to finish the first minutes thinking it's a cute game. Familiar → uncanny → psychological horror, built on the mimic and doppelganger idea from the meeting and on Duck Season's friendly mascot. No gore, no blood, no apocalypse, no jump-scare spam. Jokes are things you *do* (hit a robot with a chair, get thrown by a crash dialog), not text.
 
 ## The hero
 
@@ -31,12 +31,11 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 
 | Stage | Height | Look | When |
 | --- | --- | --- | --- |
-| Plush | 1.5 ft | The shop plush, slightly worn | Prologue → Region 1 |
-| Grown | 3–4 ft | Longer limbs, seams starting to split, one stitch eye | Regions 2–3 |
-| Mascot | 6 ft | Costume-mascot size, as tall as you; T-shirt torn, black goo at the joints | Region 4 |
-| **Final form** | **8.5 ft** | Lanky, uncanny, black goo leaking from the seams like Kingdom Two Crowns' Greed, glowing blue light through the splits | Final boss |
+| Plush | 1.5 ft | The Campus Store plush: black velvet fur, ice-blue eyes, orange nose, grey THD T-shirt | Prologue → Region 1 |
+| Big plush | 3–4 ft | The same plush, too big; stitching strained, posture slightly too upright | Regions 2–3 |
+| **Mascot (final form)** | **8.5 ft** | THD's real Deggster **mascot costume** – big fluffy head, grey crest T-shirt, furry gloves and feet – but far too tall. Friendly at first glance, like Duck Season's mascot. On a second look: thick black fluid seeps out exactly where the costume pieces join – the gap between the head and the neck sleeve, the glove cuffs, the ankles – the head sits a little too far forward, the eyes are too glossy. Nobody is inside, or something is | Region 4 → final boss |
 
-**What he does:** he doesn't follow you around. He *appears* – at coffee machines, at the start of each region, sometimes sitting just out of reach. He apologises, explains a little, gives you food, the pocket computer and the region upgrade. Every anomaly you defeat dissolves into goo, and **Dexter absorbs it**. That is why no bodies are left behind. The more you fight, the bigger he gets. He grows between visits; you see the change and nobody comments on it.
+**What he does:** he doesn't follow you around. He *appears* – at coffee machines, at the start of each region, sometimes sitting just out of reach. He apologises, explains a little, gives you food, the pocket computer and the region upgrade. Every anomaly you defeat leaves a pool of black fluid, and **Dexter absorbs it**. That is why no bodies are left behind. The more you fight, the bigger he gets. He grows between visits; you see the change and nobody comments on it.
 
 **The twist:** he wants you to keep clearing anomalies so he can become *the* anomaly. Inspired by the ally who betrays you in Little Nightmares and the friendly mascot who turns in Duck Season.
 
@@ -58,7 +57,7 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 1. Alone among the rusted girders. A plywood chair lies in the first room. **Pick it up** (combat tutorial against one rover).
 2. Midway, at the first coffee machine: **Dexter is already sitting there.** "Sorry. That wasn't supposed to happen." He gives you the **pocket computer** and a muffin. A line hints at the experiment.
 3. The boss clearing: **Jenny**, the possessed race car (see [enemies](05-ENEMIES-AND-BOSSES.md)).
-4. Jenny bursts into goo. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller. "We should keep going." The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
+4. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller. "We should keep going." The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
 
 ## The rest of the arc (post-jam)
 

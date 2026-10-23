@@ -12,9 +12,9 @@
 
 You are a first-year student at THD Deggendorf, hood up, poncho on. Nobody ever sees your face. On a quiet afternoon you find **Dexter**, the university's black panther mascot plush, sitting by the Hidden Garden pond. He hops away like the White Rabbit, and you follow. The pond's reflection is wrong. You touch it. You take damage, get lifted into the air spinning like a starfish, and a Windows-style crash dialog freezes the screen. Then you land somewhere that is almost the campus, and isn't.
 
-A quantum-computing field experiment has torn the campus into overlapping dimensions. Each region is a familiar place that has become uncanny. Ordinary campus objects are your weapons: a plywood chair, a cafeteria tray, a road sign. Lab robots, drones and the Formula Student race car have been possessed by **anomalies**. Dexter keeps turning up. He apologises, explains, hands you upgrades and quietly absorbs every anomaly you defeat. He grows each time.
+A quantum-computing field experiment has torn the campus into overlapping dimensions. Each region is a familiar place that has become uncanny. Ordinary campus objects are your weapons: a plywood chair, a cafeteria tray, a road sign. THD's **autonomous** machines – the lab rover, the hexapod crab robot, the quadcopter drone and Jenny, Fast Forest's driverless race car – have had their self-driving taken over by **anomalies**. Dexter keeps turning up. He apologises, explains, hands you upgrades and quietly absorbs every anomaly you defeat. He grows each time.
 
-**Genre:** 2D side-scrolling exploration-action (light Metroidvania). **Camera:** flat side view; the hero is small in a wide world, like Planet of Lana. **Look:** detailed hi-bit pixel art. **Tone:** cozy → uncanny → psychological horror. No gore and no apocalypse. **Platform:** browser, deployed on Vercel.
+**Genre:** 2D side-scrolling exploration-action (light Metroidvania). **Camera:** flat side view; the hero is small in a wide world, like Planet of Lana. **Look:** detailed hi-bit pixel art. **Tone:** a **secret horror game** – it plays and looks like a cozy campus adventure, and the horror is hidden in plain sight: details that are slightly wrong, a mascot that is a little too friendly. No gore, no jump-scare spam, no apocalypse. **Platform:** browser, deployed on Vercel.
 
 **Jam theme:** "spooky outside", as participants reported it in the 23 Oct meeting. The keynote wording still needs confirming on site.
 
@@ -42,10 +42,10 @@ Team name: **Poncho Goblins** (registered as Septim Goblins).
 | Dead Cells | The overgrown arboretum; punchy combat; boss designs | Toxic Garden; hit-stop and knockback on every chair swing |
 | Little Nightmares | The small hooded figure; the betrayal by an ally | Faceless hooded hero; Dexter's betrayal |
 | 9 Years of Shadows (Lex) | Rich pixel scenery | Hi-bit pixel density for stages |
-| Kingdom Two Crowns | Pixel water reflections; the Greed's black goo | Pond reflection anomaly; goo leaking from possessed machines and from Dexter |
-| Terraria | Wall of Flesh / Moon Lord: huge, simple, readable bosses | Jenny the race car; Dexter's final form |
+| Kingdom Two Crowns | Pixel water reflections; the Greed's black goo | Pond reflection anomaly; black fluid seeping from possessed machines |
+| Terraria | Wall of Flesh / Moon Lord: huge, simple, readable bosses | Jenny, the self-driving race car |
 | Children of Morta | Concentrated, colourful effects | Impact bursts, glitch-meter abilities |
-| Duck Season | A friendly mascot that slowly turns | Dexter's arc; multiple endings later |
+| Duck Season | A friendly mascot costume that is wrong on a second look; secret horror | Dexter's final form is the mascot costume, leaking where its pieces join; multiple endings later |
 | Monkey Island (classic) | Pixel charm, jokes you do, not read | Interactions with a payoff; no wall-of-text jokes |
 | Infinity Blade | Advanced tech read as ancient relics | The experiment's hardware feels like temples and artefacts |
 

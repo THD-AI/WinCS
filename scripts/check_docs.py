@@ -67,11 +67,11 @@ for path in tracked:
         errors.append(f'{rel}: duplicate of {seen[digest]}')
     seen.setdefault(digest, rel)
 
-for config in ('art/sprites/boards.json', 'art/direction/direction.json'):
+for config in ('art/sprites/boards.json', 'art/direction/direction.json', 'art/locations/locations.json'):
     data = json.loads((ROOT / config).read_text(encoding='utf-8'))
     ids = {b['id'] for b in data['boards']}
     for image in (ROOT / config).parent.glob('images/*.png'):
-        board = image.stem.removesuffix('-preview')
+        board = image.stem.removesuffix('-preview').removesuffix('-wide')
         if board not in ids:
             errors.append(f'{image.relative_to(ROOT)}: no board "{board}" in {config}')
 

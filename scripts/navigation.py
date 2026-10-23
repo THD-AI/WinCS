@@ -41,6 +41,7 @@ def trails() -> list[tuple[str, str, list[str]]]:
         ('Design docs', 'docs/README.md', docs + ['docs/meetings/README.md']),
         ('Transcripts', 'docs/meetings/transcripts/README.md', transcripts),
         ('Visual direction', 'art/direction/README.md', board_pages('art/direction/direction.json')),
+        ('Location strips', 'art/locations/README.md', board_pages('art/locations/locations.json')),
         ('Sprite boards', 'art/sprites/README.md', board_pages('art/sprites/boards.json')),
         ('Game references', 'references/README.md', pages_from_json('references/reading-order.json')),
         ('Campus collages', 'references/campus/README.md', pages_from_json('references/campus/reading-order.json')),

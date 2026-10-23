@@ -27,6 +27,10 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 17 | Boss of Region 1: **Jenny**, the possessed Fast Forest race car (charge → crash → debris → stunned) | ✅ | Alexander · 23 Oct |
 | 18 | Issues and project board are created after this design is reviewed | ✅ | Alexander · 23 Oct |
 | 19 | AI-generated art: allowed? needs declaring? | ❓ ask organisers | – |
+| 20 | A **secret horror** game: cozy first, wrong on a second look | ✅ | Alexander · 23 Oct |
+| 21 | Dexter's final form is THD's Deggster **mascot costume**, 8.5 ft, leaking black fluid where the costume pieces join (Duck Season) – not a goo monster | ✅ | Alexander · 23 Oct |
+| 22 | Enemies are THD's real **autonomous** machines (rover, crab hexapod, drone, Fast Forest's driverless Jenny); the anomaly takes over their autonomy | ✅ | Alexander · 23 Oct |
+| 23 | Locations are horizontal side-scrolling strips built from the campus collages, extendable left and right | ✅ | Alexander · 23 Oct |
 
 <!-- nav:start -->
 [← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 13** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
