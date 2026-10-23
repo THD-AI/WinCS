@@ -1,0 +1,37 @@
+{
+  "frames": {
+    "idle-00": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 45,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 45,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 45,
+        "h": 45
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 1
+      }
+    }
+  },
+  "meta": {
+    "image": "drone.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 45,
+      "h": 45
+    },
+    "scale": "1"
+  }
+}
