@@ -10,7 +10,7 @@ Usage:
     python scripts/make_boards.py draw [ids...]   # API calls; skips raws that exist
     python scripts/make_boards.py neighbour <id> --dir down --brief 'a culvert' --config ...  # next chunk
     python scripts/make_boards.py pages [--config ...]   # one Markdown page per board + index
-    python scripts/make_boards.py draw --redo hero
+    python scripts/make_boards.py draw hero --redo        # ids before --redo
     python scripts/make_boards.py crush           # offline; rebuilds every committed image
 
 Photos are found under WINCS_PHOTOS (default: ~/Downloads), with the prefixes
@@ -211,6 +211,18 @@ def describe(ref: str) -> str:
     return f"`{name}` ({PREFIX.get(kind, 'Downloads')}, outside Git)"
 
 
+def motion(folder: Path, board: dict) -> list[str]:
+    """The looping previews export_atlas.py --preview wrote for this board, in atlas order."""
+    names = [a["anim"] for row in board.get("atlas", {}).get("rows", []) if row != "skip" for a in row]
+    gifs = [(n, folder / "previews" / f"{board['id']}--{n}.gif") for n in names]
+    gifs = [(n, g) for n, g in gifs if g.exists()]
+    if not gifs:
+        return []
+    cells = " ".join(f"![{n}](previews/{g.name})" for n, g in gifs)
+    return ["## In motion", "", "At twice game size, 12 fps unless the atlas says otherwise: "
+            + ", ".join(n for n, _ in gifs) + ".", "", cells, ""]
+
+
 def pages(config: dict) -> None:
     """One Markdown page per board plus the index grid; navigation.py adds Previous / Next."""
     folder = CONFIG.parent
@@ -222,11 +234,11 @@ def pages(config: dict) -> None:
         image = preview.relative_to(folder).as_posix()
         review = board.get("review", "Not reviewed yet.")
         lines = [f"# {board['title']}", "", f"![{board['title']}]({image})", "",
-                 f"**Review:** {review}", "", "## Brief", "", board["prompt"], "",
+                 f"**Review:** {review}", "", *motion(folder, board), "## Brief", "", board["prompt"], "",
                  "## Inputs", "", *[f"- {describe(r)}" for r in board["inputs"]], "",
                  f"Model `{board.get('model', config['model'])}` · pixel factor {board['factor']} · "
                  f"source image `{image.replace('-preview', '')}` · rebuild: "
-                 f"`python scripts/make_boards.py draw --config {CONFIG.relative_to(ROOT).as_posix()} --redo {board['id']}`", ""]
+                 f"`python scripts/make_boards.py draw {board['id']} --redo --config {CONFIG.relative_to(ROOT).as_posix()}`", ""]
         (folder / f"{board['id']}.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
         cells.append(f"[![{board['title']}]({image})]({board['id']}.md)<br>**[{board['title']}]({board['id']}.md)**")
     rows = ["| | |", "| --- | --- |"] + [

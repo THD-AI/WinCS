@@ -1,0 +1,158 @@
+{
+ "frames": {
+  "black-fluid-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 24
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "black-fluid-01": {
+   "frame": {
+    "x": 28,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 24
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "black-fluid-02": {
+   "frame": {
+    "x": 56,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 24
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "black-fluid-03": {
+   "frame": {
+    "x": 84,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 24
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "black-fluid-04": {
+   "frame": {
+    "x": 112,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 24
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "black-fluid-05": {
+   "frame": {
+    "x": 140,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 26,
+    "h": 24
+   },
+   "sourceSize": {
+    "w": 26,
+    "h": 24
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "fx.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 166,
+   "h": 24
+  },
+  "scale": "1"
+ }
+}

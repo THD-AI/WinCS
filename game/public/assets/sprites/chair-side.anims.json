@@ -1,0 +1,22 @@
+{
+ "sweep-a": {
+  "frames": 8,
+  "fps": 12,
+  "loop": false
+ },
+ "sweep-b": {
+  "frames": 8,
+  "fps": 12,
+  "loop": false
+ },
+ "recoil": {
+  "frames": 2,
+  "fps": 12,
+  "loop": false
+ },
+ "chair-pickup": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ }
+}

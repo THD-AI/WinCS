@@ -1,0 +1,27 @@
+{
+ "hit": {
+  "frames": 8,
+  "fps": 12,
+  "loop": false
+ },
+ "knockback": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ },
+ "interact": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ },
+ "pick-up": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "look-at-device": {
+  "frames": 3,
+  "fps": 6,
+  "loop": false
+ }
+}
