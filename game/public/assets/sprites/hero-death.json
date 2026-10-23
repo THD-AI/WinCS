@@ -1,0 +1,302 @@
+{
+ "frames": {
+  "death-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-01": {
+   "frame": {
+    "x": 90,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-02": {
+   "frame": {
+    "x": 180,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-03": {
+   "frame": {
+    "x": 270,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-04": {
+   "frame": {
+    "x": 360,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-05": {
+   "frame": {
+    "x": 450,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-06": {
+   "frame": {
+    "x": 540,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-07": {
+   "frame": {
+    "x": 630,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-08": {
+   "frame": {
+    "x": 720,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-09": {
+   "frame": {
+    "x": 810,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-10": {
+   "frame": {
+    "x": 900,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "death-11": {
+   "frame": {
+    "x": 990,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 88,
+    "h": 80
+   },
+   "sourceSize": {
+    "w": 88,
+    "h": 80
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "hero-death.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 1078,
+   "h": 80
+  },
+  "scale": "1"
+ }
+}
