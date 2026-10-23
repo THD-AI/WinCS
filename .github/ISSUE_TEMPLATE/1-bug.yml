@@ -1,0 +1,47 @@
+name: Bug
+description: Something in the game or the pipeline is wrong or broken.
+title: "Bug: "
+labels: [type:bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. Say where in the game it happened (region, chunk, what you were doing) so someone else can see it too.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what should have
+      placeholder: "The rover in the left chunk of Rusty Creek falls through the low deck when it charges."
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to see it
+      placeholder: |
+        1. Start from the coffee machine in the center chunk
+        2. Walk left until the rover spots you
+        3. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where?
+      multiple: true
+      options:
+        - Vercel preview of a PR
+        - The jam URL (main)
+        - Local dev server
+        - An art or build script
+    validations:
+      required: true
+  - type: input
+    id: build
+    attributes:
+      label: URL, browser and input
+      description: Preview or jam URL, browser, keyboard or gamepad.
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshot or recording

@@ -1,0 +1,34 @@
+# Path-based area labels for pull requests (actions/labeler v5 syntax). Lanes: docs/12-TEAM-WORKFLOW.md.
+area:player:
+  - changed-files:
+      - any-glob-to-any-file: ['game/src/player/**']
+area:combat:
+  - changed-files:
+      - any-glob-to-any-file: ['game/src/combat/**']
+area:enemies:
+  - changed-files:
+      - any-glob-to-any-file: ['game/src/enemies/**']
+area:stage:
+  - changed-files:
+      - any-glob-to-any-file: ['game/src/stage/**', 'art/stages/**']
+area:story:
+  - changed-files:
+      - any-glob-to-any-file: ['game/src/story/**', 'docs/03-STORY-AND-CAST.md']
+area:art:
+  - changed-files:
+      - any-glob-to-any-file: ['art/**', 'game/public/assets/**']
+area:pipeline:
+  - changed-files:
+      - any-glob-to-any-file: ['scripts/**', 'requirements-art.txt']
+area:ui:
+  - changed-files:
+      - any-glob-to-any-file: ['game/src/ui/**']
+area:audio:
+  - changed-files:
+      - any-glob-to-any-file: ['game/public/audio/**', 'game/src/audio/**']
+area:docs:
+  - changed-files:
+      - any-glob-to-any-file: ['docs/**', '*.md']
+area:delivery:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/**', 'game/package.json', 'game/vercel.json', 'game/vite.config.ts', 'game/tsconfig.json']

@@ -1,0 +1,32 @@
+name: Task
+description: Work a player doesn't see – tooling, pipeline, collision data, docs – delivered in one PR.
+title: "[M?-S?] "
+labels: [type:task, needs-triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is missing or wrong today, and what it costs the team.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes and dependencies
+      description: Doc sections, parent epic, blocking issues (set them in Relationships too), suggested owner.
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+    validations:
+      required: true

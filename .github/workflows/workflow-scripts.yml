@@ -1,0 +1,22 @@
+name: Workflow scripts
+
+# The board automation scripts run with privileged tokens from main, so their behaviour is tested on every PR first.
+on:
+  pull_request:
+    paths: ['.github/**']
+  push:
+    branches: [main]
+    paths: ['.github/**']
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test .github/scripts/*.checks.cjs
