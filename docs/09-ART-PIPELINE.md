@@ -89,6 +89,56 @@ The team's open question in A14: how do generated frames move without looking li
 
 The region crossing uses only sprites the hero already needs (hit, knockback) plus one UI window the game renders with real text: **"THD.exe has stopped responding."** See the [crash frame](../art/direction/anomaly-language.md).
 
+## UI sprites – HUD and pocket computer
+
+The approved [HUD direction](../art/direction/hud.md) ("magnificent") is the target: battery cells, the glitch meter and the pocket computer's green CRT map. Until these are approved, the game draws placeholders in code (`ui/Hud.ts`, `ui/PocketComputer.ts`). The UI boards go through the same pipeline as sprites, with three differences: **crops of the approved direction image are the references**, one board is a **masked edit**, and the map pieces are keyed on the **screen colour** instead of magenta.
+
+```mermaid
+flowchart LR
+  subgraph refs [References]
+    D["hud-preview.png<br/>(approved direction)"] -->|"crop @x,y,w,h"| C1[cells crop]
+    D -->|crop| C2[case crop]
+    D -->|crop| C3[CRT map crop]
+    S[style master] --> L[last input of every board]
+  end
+  subgraph draw [make_boards.py draw --config art/ui/ui.json]
+    C1 --> B1[hud-battery<br/>magenta]
+    C1 --> B2[hud-meters<br/>magenta]
+    C2 --> B3[pocket-frame<br/>magenta, screen hole magenta]
+    B3 -->|"mask: enclosed magenta = hole"| B4[crt-screen<br/>masked edit, rest re-pasted]
+    C3 --> B5[map-tiles<br/>on screen green]
+  end
+  B1 & B2 & B3 & B4 & B5 --> K["crush: key, ÷2, 96 colours"]
+  K --> R{Design review<br/>Alexander}
+  R -->|Changes needed| draw
+  R -->|Approved| E["export_ui.py: cut named pieces,<br/>count check, scale, pack"]
+  E --> G["game/public/assets/ui/<br/>ui.png + ui.json + layout"]
+  G --> H[Hud / PocketComputer<br/>swap code drawing for frames]
+```
+
+**The boards** (`art/ui/ui.json`, raws in `tmp/boards/ui/raw/`):
+
+| Board | Rows (left to right) | Key | Game size |
+| --- | --- | --- | --- |
+| `hud-battery` | full · cracked · empty / crack animation, 4 frames | magenta | cell 36 px tall |
+| `hud-meters` | glitch segment empty · charged glow, 3 frames / boss bar frame · fill · Jenny icon | magenta | segment 28 px, bar 560 px wide |
+| `pocket-frame` | the handheld case: rusted aluminium, handle, bolts, antenna, screen area flat magenta | magenta | about 800 px wide |
+| `crt-screen` | the screen glass only, painted into `pocket-frame`'s hole | masked edit | same as the frame |
+| `map-tiles` | room visited · current · unexplored / corridor H · V · junction / icons: leaf, gear, ladder, grass, mountain, waves, cup, player dot × 2 | screen green | room 44 px tall |
+
+**Generation steps:**
+
+1. **Crop the references.** An input written `repo:art/direction/images/hud-preview.png@x,y,w,h` is cropped before upload, so the model sees only the cells, only the case or only the map – never the whole screenshot (a full scene as input makes the model redraw the scene).
+2. **Draw the magenta boards** (`hud-battery`, `hud-meters`, `pocket-frame`) like sprite boards: brief first with the magenta and no-text rule, crop second, style master last. One element per cell, evenly spaced, same scale.
+3. **Masked edit for the screen** (`crt-screen`, `"edit": "pocket-frame"`). The base image is the `pocket-frame` raw. The mask is built from it: magenta that touches the image border is background and stays; **the largest region of magenta enclosed by the case is the screen hole** and becomes transparent in the mask – the only area the model may paint. Smaller enclosed regions (inside the handle, behind a latch) are openings and stay see-through. The OpenAI edit treats the mask as guidance, so after the call every pixel outside the hole is pasted back from the base and checked unchanged (as `stage_art.py apply` does for seams).
+4. **Map pieces on the screen colour** (`map-tiles`, `"key": "#0B2418"`). Glowing green on magenta leaves purple halos when keyed. The pieces are drawn on the CRT's own dark green instead, keyed on that colour with a tolerance, and composed back onto the same green in the game, so the glow edges blend.
+5. **Crush** as usual: key at full size, box-downscale ×2 with premultiplied alpha, 96 colours. `crt-screen` keeps only the hole (everything else transparent), so it lies exactly under the frame.
+6. **Review.** `make_boards.py pages --config art/ui/ui.json` writes a page per board; `export_ui.py --out tmp/ui --preview` adds a contact sheet at game size with the HUD and the open map composed over a Rusty Creek frame. Alexander sets **Design review** on the board.
+7. **Export after approval.** `export_ui.py` cuts each row into pieces at empty columns (like `export_atlas.py`) and **stops if a row has more or fewer pieces than its names**. Frames of one animation share a cell size (bottom-centred) so they don't jitter. Each row is scaled to its game height, everything is packed into one atlas `game/public/assets/ui/ui.png` + `ui.json`, and `ui-layout.json` records the screen hole inside the frame (where the map is drawn).
+8. **Game.** `Hud` and `PocketComputer` load the atlas and use the frames; the code drawing stays as the fallback when the atlas is missing.
+
+**Masks in one line each:** the mask is a PNG the size of the first input; transparent = may change, opaque = keep. It always comes from a board's own raw (never hand-painted), and protected pixels are re-pasted after the call.
+
 ## Commands
 
 ```bash
@@ -96,6 +146,7 @@ python scripts/make_boards.py draw  [ids] [--redo] [--config …]   # generate (
 python scripts/make_boards.py crush [ids] [--config …]            # rebuild committed images offline
 python scripts/make_boards.py pages [--config …]                  # Markdown page per image + index
 python scripts/export_atlas.py <ids> [--preview]                  # approved board -> Phaser atlas + anims
+python scripts/export_ui.py [--out tmp/ui] [--preview]            # approved UI boards -> ui atlas + layout
 python scripts/creek_layers.py [--build]                          # Rusty Creek layers: verify / rebuild
 python scripts/collision_check.py [--overlay]                     # collision: schema, reach, overlays
 python scripts/stage_art.py prepare --config art/stages/rusty-creek/stage.json --out tmp/stage-art/next --band 512
