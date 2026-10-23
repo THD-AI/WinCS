@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
 import { layoutMap, MapLayout } from './mapLayout';
 import { pocketMap, REGION_ORDER, StageManifest } from './mapModel';
-import { UI_ATLAS, UI_LAYOUT } from './uiAtlas';
+import { UI_ATLAS, UI_LAYOUT, UiLayout } from './uiAtlas';
 
 const C = { case: 0xb9bec4, caseDark: 0x6f767d, screen: 0x041006, room: 0x39ff6a, roomEdge: 0x1c8a3a, scan: 0x000000 };
 /** Placeholder sizes, used only without the UI atlas. */
@@ -13,8 +13,6 @@ const STAGE = 'Stage';
 /** Menu: Tab or Esc on the keyboard, Start on a pad (docs/02 controls). */
 export const MENU_KEYS = ['TAB', 'ESC'];
 export const MENU_PAD = 9;
-
-interface UiLayout { 'pocket-frame'?: { size: [number, number]; screen: [number, number, number, number] } }
 
 /** The menu key: opens the map once you have the pocket computer, closes it if open. One owner (the HUD) calls this. */
 export function toggleMap(scenes: Phaser.Scenes.ScenePlugin): void {
@@ -42,8 +40,8 @@ export class PocketComputer extends Phaser.Scene {
     if (this.scene.isActive(STAGE)) this.scene.pause(STAGE);
     this.add.rectangle(0, 0, VIEW_WIDTH, VIEW_HEIGHT, 0x000000, 0.55).setOrigin(0);
 
-    const frame = (this.cache.json.get(UI_LAYOUT) as UiLayout | undefined)?.['pocket-frame'];
-    if (this.textures.exists(UI_ATLAS) && frame) this.drawArt(frame);
+    const layout = this.cache.json.get(UI_LAYOUT) as UiLayout | undefined;
+    if (this.textures.exists(UI_ATLAS) && layout?.['pocket-frame'] && layout.room) this.drawArt(layout);
     else this.drawPlaceholder();
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -52,14 +50,16 @@ export class PocketComputer extends Phaser.Scene {
     this.scene.bringToTop();
   }
 
-  private drawArt(frame: NonNullable<UiLayout['pocket-frame']>): void {
+  /** The case where the direction puts it, the screen under it, and the rooms nine-sliced to the measured size. */
+  private drawArt(layout: UiLayout): void {
+    const frame = layout['pocket-frame']!;
+    const room = layout.room!;
     const [w, h] = frame.size;
-    const ox = Math.round((VIEW_WIDTH - w) / 2);
-    const oy = Math.round((VIEW_HEIGHT - h) / 2);
+    const ox = layout.pocket?.x ?? Math.round((VIEW_WIDTH - w) / 2);
+    const oy = layout.pocket?.y ?? Math.round((VIEW_HEIGHT - h) / 2);
     this.add.image(ox, oy, UI_ATLAS, 'crt-screen').setOrigin(0);
     const [sx, sy, sw, sh] = frame.screen;
-    const room = this.textures.getFrame(UI_ATLAS, 'room-visited');
-    const map = layoutMap(pocketMap.rooms(), { w: room.width, h: room.height }, GAP);
+    const map = layoutMap(pocketMap.rooms(), { w: room.w, h: room.h }, room.gap);
     const left = ox + sx + Math.round((sw - map.width) / 2);
     const top = oy + sy + Math.round((sh - map.height) / 2);
     for (const c of map.corridors) {
@@ -70,10 +70,12 @@ export class PocketComputer extends Phaser.Scene {
       else img.setDisplaySize(c.length + 8, img.height).setX(img.x - 4);
     }
     for (const p of map.rooms) {
-      this.add.image(left + p.x, top + p.y, UI_ATLAS, p.frame).setOrigin(0);
+      // Nine-sliced: the tile's glowing border keeps its width at the direction's 4:3 room size.
+      this.add.nineslice(left + p.x, top + p.y, UI_ATLAS, p.frame, room.w, room.h, room.inset, room.inset, room.inset,
+        room.inset).setOrigin(0);
       if (!p.icon) continue;
-      const cx = left + p.x + room.width / 2;
-      const cy = top + p.y + room.height / 2;
+      const cx = left + p.x + room.w / 2;
+      const cy = top + p.y + room.h / 2;
       if (p.icon !== 'player-dot') {
         this.add.image(cx, cy, UI_ATLAS, p.icon);
         continue;

@@ -4,7 +4,7 @@ import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
 import { CellState, HudModel, MAX_CELLS } from './hudModel';
 import { pocketMap } from './mapModel';
 import { MENU_KEYS, MENU_PAD, toggleMap } from './PocketComputer';
-import { UI_ATLAS, UI_LAYOUT } from './uiAtlas';
+import { UI_ATLAS, UI_LAYOUT, UiLayout } from './uiAtlas';
 
 const CELL = { x: 28, y: 28, w: 18, h: 32, gap: 8, cap: 4 };
 const COLOURS = { full: 0x46d1b4, shine: 0xb8f5e6, cracked: 0xf2a24a, empty: 0x22313a, edge: 0x0d1418, text: '#e8e4dc' };
@@ -88,10 +88,9 @@ export class Hud extends Phaser.Scene {
 
   /** The sprites, built once; update only swaps frames and sizes. */
   private buildArt(): Art {
-    const cells = Array.from({ length: MAX_CELLS }, (_, i) => {
-      const cell = this.add.image(0, CELL.y, UI_ATLAS, 'cell-full').setOrigin(0);
-      return cell.setX(CELL.x + i * (cell.width + 6));
-    });
+    const at = (this.cache.json.get(UI_LAYOUT) as UiLayout | undefined)?.cells ?? { x: CELL.x, y: CELL.y, pitch: 48 };
+    const cells = Array.from({ length: MAX_CELLS }, (_, i) =>
+      this.add.image(at.x + i * at.pitch, at.y, UI_ATLAS, 'cell-full').setOrigin(0));
     const bar = this.add.image(VIEW_WIDTH / 2, VIEW_HEIGHT - BAR.bottom, UI_ATLAS, 'boss-bar-frame').setOrigin(0.5, 1);
     // A frame for the fill's middle third: tiling the whole piece would repeat its end caps.
     const source = this.textures.getFrame(UI_ATLAS, 'boss-bar-fill');
