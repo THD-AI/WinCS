@@ -6,7 +6,7 @@
 
 ![Boss · Jenny, attacks](images/boss-jenny-preview.png)
 
-**Review:** 🟡 Drawn 23 Oct, waiting for Alexander's Design review.
+**Review:** ✅ Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
