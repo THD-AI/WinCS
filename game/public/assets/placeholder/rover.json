@@ -1,0 +1,37 @@
+{
+  "frames": {
+    "idle-00": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 25,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 25,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 25,
+        "h": 25
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 1
+      }
+    }
+  },
+  "meta": {
+    "image": "rover.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 25,
+      "h": 25
+    },
+    "scale": "1"
+  }
+}

@@ -2,14 +2,9 @@ name: Art pipeline invariants
 on:
   pull_request:
     paths:
-      - scripts/stage_art.py
-      - scripts/test_stage_art.py
-      - scripts/creek_layers.py
-      - scripts/test_creek_layers.py
+      - scripts/**
       - requirements-art.txt
       - .github/workflows/art-pipeline.yml
-      - scripts/make_boards.py
-      - scripts/navigation.py
       - art/**
   workflow_dispatch:
 permissions:
