@@ -176,7 +176,7 @@ Lane B codes against these from day one, with placeholders; lane A fills them wi
 
 | Contract | Path | Shape | Made by → used by |
 | --- | --- | --- | --- |
-| Atlas | `game/public/assets/sprites/<board>.png` + `.json` | Phaser JSON hash; frame names `<animation>-<nn>`; pivot at the feet (0.5, 1) | `export_atlas.py` (A) → loader (B) |
+| Atlas | `game/public/assets/sprites/<board>.png` + `.json` | Phaser JSON hash; frame names `<animation>-<nn>` from `00`, one cell size per board; pivot at the feet (0.5, 1) | `export_atlas.py` (A) → loader (B) |
 | Animations | `game/public/assets/sprites/<board>.anims.json` | `{"walk": {"frames": 8, "fps": 12, "loop": true}, …}` – names and counts as in docs/07 | `export_atlas.py` (A) → state machine (B) |
 | Stage manifest | `game/public/assets/stages/<region>/stage.json` | chunk ids with grid x/y, per chunk the layer files z0–z7 for each state, scroll factors | stage export (A) → loader (B) |
 | Collision | `art/stages/<region>/<chunk>.<state>.collision.json` | above | Lex via converter → loader (B) |
