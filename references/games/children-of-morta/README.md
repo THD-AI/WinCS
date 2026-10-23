@@ -1,7 +1,9 @@
 # Children of Morta · pixels and magic
 
 <!-- reference-navigation:start -->
-[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 36** · [Next: Children of Morta · gallery →](visual-reference.md)
+[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [Game index](../../README.md) · **21 / 36** · [Next: Children of Morta · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 [![Children of Morta · pixels and magic: visual study](images/01-official-gameplay.jpg)](visual-reference.md)
@@ -21,5 +23,7 @@ The top-down/oblique camera is not the platforming camera for WinCS. Family narr
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [🖼️ Library](../../README.md) · **21 / 36** · [Next: Children of Morta · gallery →](visual-reference.md)
+[← Previous: Stardew Valley · gallery](../stardew-valley/visual-reference.md) · [Game index](../../README.md) · **21 / 36** · [Next: Children of Morta · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

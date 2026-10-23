@@ -1,7 +1,9 @@
 # Terraria · visual reference
 
 <!-- reference-navigation:start -->
-[← Previous: Terraria](README.md) · [🖼️ Library](../../README.md) · **28 / 36** · [Next: Little Nightmares →](../little-nightmares/README.md)
+[← Previous: Terraria](README.md) · [Game index](../../README.md) · **28 / 36** · [Next: Little Nightmares →](../little-nightmares/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 **Boss shapes and encounter ideas only:** Wall of Flesh and Moon Lord. The platforms in these captures are incidental, not a terrain reference.
@@ -71,5 +73,7 @@ Credit: Re-Logic; gameplay recording FFM TV. [Source at 9:42](https://www.youtub
 Watch the Wall of Flesh sequence around 1:53–3:45 and the Moon Lord sequence around 1:37–3:14 in the linked recordings. Compare approach pressure and multipart attack attention, not the background geometry. Optional jam boss work replaces another system; it is not added to the lake prototype by default.
 
 <!-- reference-navigation:start -->
-[← Previous: Terraria](README.md) · [🖼️ Library](../../README.md) · **28 / 36** · [Next: Little Nightmares →](../little-nightmares/README.md)
+[← Previous: Terraria](README.md) · [Game index](../../README.md) · **28 / 36** · [Next: Little Nightmares →](../little-nightmares/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

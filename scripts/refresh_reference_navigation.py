@@ -18,12 +18,20 @@ def navigation(pages, index, library='references/README.md'):
     previous = pages[index - 1] if index else {'path': library, 'label': 'Visual library'}
     end = {'path': 'references/comparison.md', 'label': 'Compare the games'} if library == 'references/README.md' else {'path': library, 'label': 'Location library'}
     following = pages[index + 1] if index + 1 < len(pages) else end
+    campus_trail = library == 'references/campus/README.md'
+    context = (
+        ('📍 Campus boards', 'references/campus/README.md'),
+        ('🎮 Game studies', 'references/README.md'),
+        ('🎨 Stage experiments', 'references/production/README.md'),
+        ('Proposal', 'docs/proposal/campus-game.md'),
+    )
     return (
         START + '\n'
         + f'[← Previous: {previous["label"]}]({relative(page["path"], previous["path"])})'
-        + f' · [🖼️ Library]({relative(page["path"], library)})'
+        + f' · [{"Campus index" if campus_trail else "Game index"}]({relative(page["path"], library)})'
         + f' · **{index + 1} / {len(pages)}**'
-        + f' · [Next: {following["label"]} →]({relative(page["path"], following["path"])})\n'
+        + f' · [Next: {following["label"]} →]({relative(page["path"], following["path"])})\n\n'
+        + ' · '.join(f'[{label}]({relative(page["path"], target)})' for label, target in context) + '\n'
         + END
     )
 

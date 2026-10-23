@@ -8,6 +8,8 @@
 
 The first six recordings are the initial idea sequence. A07 is the friend's reflection idea; A08–A10 continue the exchange. Speaker identity is not inferred beyond Alexander's supplied context. Later written clarifications in this chat override ambiguous speech recognition.
 
+**Latest written correction, 23 October:** the production sequence is a clean flat side-elevation banner inspired by the collage, same-width left/right extensions, two staggered join windows, then traversal dressing and at least five depth/interaction roles. Photographic perspective is explicitly rejected. Retain recognizable location motifs while designing a new side-scrolling layout. Extrapolate/grab the needed bars, ladders and plants from that composition with inherited offsets and pivots; separate near occluders from climb/stand/interact bodies. The proposed entry/expansion/pushback/parkour beat is a later authored event. [Current visual sequence and actual limits](../../references/production/crossings-strip/README.md) · [Workflow](../design/layered-stage-workflow.md).
+
 | Note / source time | Design content | Consequence |
 | --- | --- | --- |
 | A01 · 14:08:26 · 0:00–1:55 | Terraria, Planet of Lana and Kingdom Two Crowns; university surroundings; dynamic ground, creek rocks, bridge/rail parkour, falling leaves and water | Use local geography as motifs; separate art layers from tested traversal |

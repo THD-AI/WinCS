@@ -179,6 +179,53 @@ if production.exists():
         if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != item['sha256']:
             errors.append(f'Scene-first input board missing or changed: {item["file"]}')
 
+strip_study = ROOT / 'references/production/crossings-strip'
+if strip_study.exists():
+    strip_data = json.loads((strip_study / 'media-sources.json').read_text(encoding='utf-8'))
+    strip_prompts = json.loads((strip_study / 'prompts.json').read_text(encoding='utf-8'))['prompts']
+    strip_images = strip_data['images']
+    strip_declared = [item['file'] for item in strip_images]
+    strip_actual = {p.relative_to(strip_study).as_posix() for p in (strip_study / 'images').glob('*')}
+    if len(strip_declared) != len(set(strip_declared)) or set(strip_declared) != strip_actual:
+        errors.append('Flat-strip provenance must cover every image exactly once')
+    strip_gallery = (strip_study / 'README.md').read_text(encoding='utf-8')
+    for item in strip_images:
+        media = strip_study / item['file']
+        if not media.is_file():
+            errors.append(f'Flat-strip image missing: {item["file"]}')
+            continue
+        raw = media.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != item['sha256']:
+            errors.append(f'Flat-strip image changed: {item["file"]}')
+        if not raw.startswith(b'\x89PNG\r\n\x1a\n') or len(raw) < 26:
+            errors.append(f'Flat-strip image is not PNG: {item["file"]}')
+        elif list(struct.unpack('>II', raw[16:24])) != item['dimensions']:
+            errors.append(f'Flat-strip native dimensions differ: {item["file"]}')
+        elif raw[25] != {'RGB': 2, 'RGBA': 6}.get(item['mode']):
+            errors.append(f'Flat-strip PNG color type differs: {item["file"]}')
+        if item['prompt_key'] not in strip_prompts or item['file'] not in strip_gallery:
+            errors.append(f'Flat-strip image lacks prompt/gallery entry: {item["file"]}')
+        for source in item['inputs']:
+            source_file = strip_study / source['file']
+            if not source_file.is_file() or hashlib.sha256(source_file.read_bytes()).hexdigest() != source['sha256']:
+                errors.append(f'Flat-strip source missing or changed: {source["file"]}')
+    expected_origins = {
+        'clean': [[0, 0], [2172, 0], [4344, 0]],
+        'overlap': [[1086, 0], [3258, 0]],
+        'traversal': [[0, 0], [2172, 0], [4344, 0]],
+        'depth': [[2172, 0]] * 7,
+    }
+    for kind, origins in expected_origins.items():
+        if [item['review_origin'] for item in strip_images if item['kind'] == kind] != origins:
+            errors.append(f'Flat-strip {kind} windows differ from the documented review coordinates')
+    viewer = (strip_study / 'viewer.html').read_text(encoding='utf-8')
+    for target in re.findall(r'(?:src|href)="([^"]+)"', viewer):
+        if not re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) and not (strip_study / target.split('#')[0]).exists():
+            errors.append(f'Flat-strip viewer missing target: {target}')
+    for item in strip_images:
+        if Path(item['file']).name not in viewer:
+            errors.append(f'Flat-strip viewer lacks image: {item["file"]}')
+
 for diagram in (ROOT / 'docs/proposal/diagrams').glob('*.svg'):
     try:
         svg = ET.parse(diagram).getroot()
@@ -204,3 +251,5 @@ if animation.exists():
     print(f'Checked {len(frames)} Playground frame hashes, signatures, source times and credits.')
 if production.exists():
     print('Checked three scene-first trial hashes, PNG dimensions/type, prompts and source boards; this does not certify extraction quality or playability.')
+if strip_study.exists():
+    print(f'Checked {len(strip_images)} flat-strip images, source graph, native sizes/types, prompts, review origins and viewer paths; seams/recomposition remain unapproved.')

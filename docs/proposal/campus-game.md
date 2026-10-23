@@ -2,21 +2,21 @@
 
 [← Ten-recording direction](../brief/voice-notes.md) · [Location boards](../../references/campus/README.md) · [Scene-first workflow →](../design/layered-stage-workflow.md)
 
-![Complete Rusty Crossings maze composition candidate](../../references/production/master-first/images/rust-maze-master.png)
+![Flat side-scroller location banner inspired by the Crossing collage](../../references/production/crossings-strip/images/02-center-clean.png)
 
 **Current proposal · 23 October 2026.** An original pixel-art exploration/action game: a student touches a lake reflection and enters a familiar campus whose images misbehave. The environments carry the influence of fictional secret university villains. Rusty Crossings becomes an algorithm-inspired maze of rusted horizontal/vertical bars, turns, branches and shafts. The surrounding gardens keep flowing natural contours.
 
-The image above is a **whole-scene visual-direction trial**, composed before any extraction. It is not a validated level, a final palette or a promise to build this entire maze during the jam. The ten recordings and later written corrections guide the proposal; Vatsal remains creative lead. The team will discuss the draft before building. Poncho Goblins remains the proposed team name. [Earlier scope options](game-proposal.md) remain available.
+The image above is the **clean center of a three-banner side-scroller study**, before traversal or corruption. It redesigns the photo motifs into flat side elevation: no receding paths, diagonal bridge perspective or vanishing point. Recognizable steel, creek, moss and railings matter; the photographed layout is not copied. [See all banners, staggered joins and seven depth trials](../../references/production/crossings-strip/README.md). These are not an approved level or final palette. Vatsal remains creative lead; Poncho Goblins remains the proposed team name. [Earlier scope options](game-proposal.md) remain available.
 
 ## The important distinction: the image can fail while the game still works
 
-![Background image cut and stretched into horizontal pixel bands](../../references/production/master-first/images/rust-maze-background-smear.png)
+Corruption comes **after the clean strip and layers**, not in the initial location render. The [earlier smear study](../../references/production/master-first/README.md) illustrates an effect family; its free-standing maze is superseded as the location direction.
 
 **Default corruption is visual:** cut a background band, stretch its pixels, offset/repeat a strip, sample the wrong region, briefly show a missing-image/404-like presentation or distort a scene-aligned FX region. These can convey a villain's influence without building an elaborate spreading organism or changing the physics world for every error.
 
 The normal and smeared examples are two full-image generation results, not a verified runtime transition. Their canvases match, but regeneration changes pixels outside the target too. The [production trial](../../references/production/master-first/README.md) records that limitation. A small renderer effect on the accepted master/background region is the practical runtime target; collision remains unchanged for visual-only faults.
 
-**Terrain changes remain an optional earlier idea.** Removing a floor, changing a maze lane or teleporting between anchors needs a separately authored mechanic. Visual corruption does not automatically require any of those systems. Exact Voyager 404 styling still awaits owner references; the pixel-smear study is an independent candidate.
+**Proposed reveal beat:** enter the stage → sudden expansion/reveal → pushed back → parkour. This latest owner idea needs a safe telegraph, displacement, reachable route, control recovery and reset if selected. Removing a floor, changing a maze lane or teleporting between anchors likewise needs a separately authored mechanic. Visual corruption does not automatically change physics. Exact Voyager 404 styling still awaits owner references.
 
 ## See the places in the proposed world order
 
@@ -47,19 +47,22 @@ Do not turn every visual motif into a new algorithm or simulation. The maze can 
 
 ## How Codex and image generation actually produce the art
 
-**Compose → edit the same scene → derive what is needed → recompose/check → integrate → expand.**
+![Traversal dressing on the clean center scene](../../references/production/crossings-strip/images/07-center-traversal.png)
 
-| Pass | What is created | Avoided work |
-| --- | --- | --- |
-| 1. Whole-scene master | One horizontal composition with terrain, structures, background, materials and light already arranged | Generating a prop kit and hand-placing every object |
-| 2. Same-scene edits | Add/refine a ledge, doorway, plants or a region in the existing image | Rebuilding the scene in a separate coordinate layout |
-| 3. Minimal derived plates | Keep full-canvas alignment for the few cutouts, clean plates or FX regions actually needed | An elaborate scene graph and many independent pivots |
-| 4. Local animation / props | Grab a placed object or define one actor canvas; supply endpoints and fill a small number of reviewed transition frames | Regenerating every stage or expecting coherent giant sprite sheets automatically |
-| 5. Bounded extension | Extend an accepted edge or add one reviewed scene in the same design language | Designing all environments and weapons before the first loop works |
+**Clean center → same-width left/right extensions → two staggered join windows → dress the strip → five-plus layers → individual grabs/rigs → recompose → motion/corruption.**
+
+| Pass | Visible result |
+| --- | --- |
+| 1. Clean location | Newly designed flat side-scrolling banner based on collage landmarks/materials |
+| 2. Extend and join | Left/center/right span 3W; two W-wide windows straddle the joins like staggered bricks |
+| 3. Dress in place | Add route bars, ladders and plants onto the accepted composition; repair added-route joins |
+| 4. Separate depth | Far scenery, rear structure, bank, water, traversal/interactables, near rails and front plants |
+| 5. Extrapolate/grab | Recover hidden parts of each needed bar, ladder or plant; retain source offsets, IDs and pivots |
+| 6. Recompose and animate | Clean static duplicates/holes; verify alignment, then add limited water/plant/actor motion and effects |
 
 A shared coordinate space is bookkeeping for an image that already exists. Full-canvas plates inherit `[0,0]`; cropped sprites retain their crop offset from the master. The default is not manual x/y placement of newly generated trees, bars and rocks. [Practical workflow](../design/layered-stage-workflow.md) · [Minimal technical contract](../technical/layered-stage-contract.md).
 
-The trial also includes a same-size alpha extraction, which **needs edge cleanup and has not passed recomposition**. Layer work is timeboxed. If it fails, keep the flattened approved composition and one small visual effect; parallax and extra masks are optional polish. Generation cannot guarantee exact geometry, an animation rig, collision or a solvable maze.
+The [current trial](../../references/production/crossings-strip/README.md) includes three clean banners, two overlap candidates, three traversal passes and seven center depth plates. Native dimensions vary slightly; seams and the generated recomposition have **not passed**. Some cutouts drift or retain fringe pixels. Wing decomposition and every-object grabs/rigs remain future production work. Five-plus depth roles are the requested direction; a flat approved strip is a delivery fallback if time expires. Generation does not guarantee exact extraction, a rig, collision or a solvable route.
 
 ## Buildable jam recommendation
 
@@ -87,7 +90,7 @@ Original small student in an oversized hoodie/poncho; original campus-object act
 
 A01 supplies local geography, student/weapon/enemy seeds; A02/A10 supply scene/layer/animation iteration; A03 supplies reference collection; A04 supplies the chair-action seed; A05 preserves Vatsal's ownership and the clarified worldbuilding interest; A06 supplies Playground; A07/A09 supply lake travel/crash-spin; A08 defers secret-boss extras. [Timecoded digest and source hashes](../brief/voice-notes.md).
 
-The latest written corrections prioritize visual image errors, the algorithms-inspired bar maze, subject-linked villain influences and whole-image-first production. New art, mechanics and jokes remain proposals, not transcript quotes. Photos, commercial references and generated trials have distinct provenance and are not automatically runtime assets.
+The latest written corrections require recognizable photo-inspired locations redesigned in flat side elevation, a three-banner strip with staggered joins, multi-pass dressing and five-plus depth roles. Visual bugs and subject-linked villains remain. New art, mechanics and jokes are proposals, not transcript quotes. Photos, commercial references and generated trials have distinct provenance and are not automatically runtime assets.
 
 Review the scene language, action/exploration choice, villain connection and one-scene budget; record the agreed game technical design document before creating issues/board/workflows. AI/pre-work rules still require organizer confirmation. The scheduled watcher remains paused.
 

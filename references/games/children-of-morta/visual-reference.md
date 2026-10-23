@@ -1,7 +1,9 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Children of Morta](README.md) · [🖼️ Library](../../README.md) · **22 / 36** · [Next: Planet of Lana →](../planet-of-lana/README.md)
+[← Previous: Children of Morta](README.md) · [Game index](../../README.md) · **22 / 36** · [Next: Planet of Lana →](../planet-of-lana/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Children of Morta: start with this gameplay reference](images/01-official-gameplay.jpg)
@@ -49,5 +51,7 @@ Top-down battle: character spacing, enemy tells and visibility under effects.
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
 <!-- reference-navigation:start -->
-[← Previous: Children of Morta](README.md) · [🖼️ Library](../../README.md) · **22 / 36** · [Next: Planet of Lana →](../planet-of-lana/README.md)
+[← Previous: Children of Morta](README.md) · [Game index](../../README.md) · **22 / 36** · [Next: Planet of Lana →](../planet-of-lana/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

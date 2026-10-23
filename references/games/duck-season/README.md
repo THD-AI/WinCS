@@ -1,7 +1,9 @@
 # Duck Season · the mascot changes its role
 
 <!-- reference-navigation:start -->
-[← Previous: Little Nightmares · gallery](../little-nightmares/visual-reference.md) · [🖼️ Library](../../README.md) · **31 / 36** · [Next: Duck Season · gallery →](visual-reference.md)
+[← Previous: Little Nightmares · gallery](../little-nightmares/visual-reference.md) · [Game index](../../README.md) · **31 / 36** · [Next: Duck Season · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 [![Duck Season · the mascot changes its role: visual study](images/ending-0200.jpg)](visual-reference.md)
@@ -23,5 +25,7 @@ The recording's chapter labels identify the ending segments. They are not a veri
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Little Nightmares · gallery](../little-nightmares/visual-reference.md) · [🖼️ Library](../../README.md) · **31 / 36** · [Next: Duck Season · gallery →](visual-reference.md)
+[← Previous: Little Nightmares · gallery](../little-nightmares/visual-reference.md) · [Game index](../../README.md) · **31 / 36** · [Next: Duck Season · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

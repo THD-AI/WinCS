@@ -1,7 +1,9 @@
 # Lost in the Green · grassy channels and screened routes
 
 <!-- reference-navigation:start -->
-[← Previous: Campus architecture](campus.md) · [🖼️ Library](README.md) · **3 / 8** · [Next: Rusty Crossings / maze →](crossings.md)
+[← Previous: Campus architecture](campus.md) · [Campus index](README.md) · **3 / 8** · [Next: Rusty Crossings / maze →](crossings.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Merged grassy-channel and leaf-screen reference board](images/lost-in-the-green.png)
@@ -22,5 +24,7 @@
 Source family C20–C22. Direct originals C20/C22 ground the merge; previous generated boards supply selected grass/path motifs and leafy mood only. Extra cascades and fantasy stone rows from the oldest draft are excluded. [Generation record](generation.md) · [World route](../../docs/proposal/campus-game.md).
 
 <!-- reference-navigation:start -->
-[← Previous: Campus architecture](campus.md) · [🖼️ Library](README.md) · **3 / 8** · [Next: Rusty Crossings / maze →](crossings.md)
+[← Previous: Campus architecture](campus.md) · [Campus index](README.md) · **3 / 8** · [Next: Rusty Crossings / maze →](crossings.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

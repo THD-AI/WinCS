@@ -1,72 +1,86 @@
-# Scene coordinates preserve the generated composition
+# Coordinates preserve the composed strip and its objects
 
-[← Scene-first workflow](../design/layered-stage-workflow.md) · [Image trial / limits](../../references/production/master-first/README.md) · [Jam plan →](../delivery/jam-plan.md)
+[← Layered workflow](../design/layered-stage-workflow.md) · [Visual sequence / limits](../../references/production/crossings-strip/README.md) · [Jam plan →](../delivery/jam-plan.md)
 
-**Proposed, not implemented · 23 October 2026.** The complete horizontal image is the composition authority. Its derivatives inherit that canvas. This contract does not ask a developer to generate each tree, bar or ledge separately and hand-place a scene. Phaser/browser delivery remains a candidate; use the [technical spike](technical-proposal.md) to prove movement/export after theme and rules.
+**Proposed, not implemented · 23 October.** One flat side elevation, one shared pixel treatment, multiple generated banners and inherited scene positions. The composition comes before object extraction. Phaser/browser delivery remains a candidate, not a new runtime introduced by this document.
 
-## Minimal stage record
+## Strip coordinates, not five appended chunks
+
+Use a top-left origin, x right, y down. For the requested W=2172, H=724 review canvas:
+
+| Source | Origin | Extent |
+| --- | --- | --- |
+| Left / center / right | `[0,0]`, `[2172,0]`, `[4344,0]` | Each W×H |
+| Left–center join window | `[1086,0]` | W×H |
+| Center–right join window | `[3258,0]` | W×H |
+
+The world is **6516×724**. The viewport is separate and chosen after a character-scale test; a banner is not necessarily one screen. Join windows overlap existing world coordinates. Accepted seam repairs replace bounded source pixels; they do not extend world length.
+
+[Current provenance](../../references/production/crossings-strip/media-sources.json) preserves actual PNG sizes, hashes, source graph and intended review origins. Native outputs differ slightly around W×H. The viewer maps them to a common display rectangle for comparison only. A production export needs a deliberate common native size, edge/pixel-density review and accepted seam repairs. Do not silently stretch individual layers to hide geometry drift.
+
+## Five-plus roles, with explicit semantics
+
+Illustrative production record; paths below are not implemented game files:
 
 ```json
 {
   "id": "rusty-crossings",
-  "masterSize": [2172, 724],
-  "sceneOrigin": [0, 0],
-  "baseImage": "scene/master.png",
-  "derivedLayers": [],
-  "visualFx": [
-    {
-      "type": "row-stretch",
-      "mask": "scene/background-fault-mask.png",
-      "affectsCollision": false
-    }
+  "projection": "flat-side-elevation",
+  "worldSize": [6516, 724],
+  "panelSize": [2172, 724],
+  "panelOrigins": [[0, 0], [2172, 0], [4344, 0]],
+  "joinOrigins": [[1086, 0], [3258, 0]],
+  "depthRoles": [
+    "far-scenery", "rear-structure", "ground-bank", "water",
+    "traversal-interactables", "near-rails", "front-plants"
   ],
-  "collision": "scene/collision.json",
-  "actors": "scene/actors.json"
+  "objects": "scene/reviewed-objects.json",
+  "collision": "scene/reviewed-collision.json",
+  "actors": "scene/reviewed-actors.json",
+  "visualFx": [{"type": "row-stretch", "affectsCollision": false}]
 }
 ```
 
-Illustrative runtime names, not existing game assets. 2172×724 is the measured trial canvas, not an approved game viewport or pixel density. The camera viewport is chosen after a player-scale test; it need not display the full world at once. No separate renderer/engine is needed per scene.
+Full-panel plates inherit their panel origin. A cropped object inherits `panelOrigin + sourceRect.topLeft`; its pivot is local to that crop. Extrapolation may add transparent padding or hidden geometry, so record a trim/padding offset too. This keeps the original placement without hand-rebuilding every tree or beam. Object IDs and reviewed anchors are necessary for interactive pieces, not for arranging a new prop kit.
 
-## One canvas; optional crops instead of object reconstruction
+| Role | Rendering | Gameplay data |
+| --- | --- | --- |
+| Distant trees/sky | Slow background depth | None |
+| Rear bridge/piers | Behind the actor | Only selected blockers, if authored |
+| Ground/bank | Play-plane position | Reviewed walkable contour |
+| Water | Local reflection/ripple region | Hazard/interaction only if explicitly designed |
+| Orange bars/ladders | Same camera transform as actor | Standable top / climb anchor / trigger per selected piece |
+| Grey near rails | Occlude actor where appropriate | Decorative by default |
+| Front plants | Sparse near occlusion; tiny pivoted motion | None unless an interaction is selected |
 
-- Default full-scene image and any approved full-canvas plate share `[0,0]`, size and orientation. One common world-to-camera transform applies; do not reposition every drawn object.
-- A cropped prop records its source rectangle and inherited scene offset. A tool can retain that metadata when grabbing it; only a changed placement needs a new authored position.
-- A separate actor has a fixed canvas and feet/pivot. Actors, spawn points and interactions still need a few authored anchors; that is distinct from laying out the scenery object by object.
-- A global image scale must be applied consistently to all derivatives and collision. Do not independently stretch a foreground plate to hide mismatched extraction.
-- Empty `derivedLayers` is valid. Add background/foreground depth only after clean-plate and recomposition checks pass. Alpha bounds, visible fringes and shifted geometry need review, even when output dimensions match.
+Do not move physical play surfaces at a different parallax factor from the character. Render-only depth motion cannot be allowed to separate a ladder from its climb anchor or the drawn floor from collision. Depth order can split by local overlap; seven roles do not demand exactly seven universal draw calls.
 
-For parallax or local object motion, replace the static copy with a clean plate first. Drawing a moving cutout over the original copy produces duplicates. No automatic 3D scene reconstruction is required.
+## Clean plates and individual grabs
 
-## Collision follows the accepted route
+Generate the complete scene first. Recover every needed bar/ladder endpoint and plant silhouette from that scene, extrapolating occluded parts. Preserve full-canvas alignment until a crop and its source offset/pivot are verified. Name standable bars, climbable ladders, decorative rails, movable bodies and animated plants separately.
 
-The AI can help identify/trace a small set of walkable contours, platforms and blockers from the composition. These remain authored gameplay data: review slope limits, jump clearance, platform thickness, headroom, spawn/exit and retry. Alpha pixels, rust textures and drawn ladders do not automatically become collision or a climb mechanic.
+Remove moving art from the static plate and fill revealed pixels. Recompose all still plates against the accepted dressed scene before parallax or animation. Check missing/duplicated material, edge halos, scale, registration and occlusion on light/dark. The current seven center trials have genuine alpha but shifted features/residue; they are **not a passed recomposition**. Wings and per-object sprite/rig catalogs are not completed.
 
-For the maze, mark one viable start-to-exit route, a few branches and dead ends. Use only the movement verbs selected by the team. If vertical progress needs a ladder/mantle mechanic beyond the controller, budget one or edit/simplify the image. A graph-like picture is not proof of a solvable platforming level. Do not build a pathfinding or procedural-maze system solely because the art uses a maze motif.
+## Controller and collision review
 
-## Visual errors are the default
+Trace a small authored route and check slopes, jump clearance, platform thickness, ladder entry/exit, headroom, spawn/exit and retry. Alpha is not a collider. Confirm connectivity across panel and seam boundaries. A picture resembling pathfinding does not require a pathfinding simulation or prove solvability. If an added movement verb cannot fit the budget, edit the scene or simplify the route.
 
-A visual effect changes rendering inside an inherited scene mask/clip. Examples: sample a narrow source row repeatedly, offset a strip, stretch a background patch or show a missing-image cue. Keep collision, interaction anchors, attack timing and input unchanged. A small known background opening is a sufficient first test; a full perfect foreground extraction is not a prerequisite for one clipped effect.
+## Visual faults versus physical events
 
-If the effect runs behind the play plane, use an approved foreground plate to occlude it. Otherwise choose a region that avoids critical route/attack cues. A whole-image visual cut needs readability review even though physics remains unchanged. Each effect's subject/motif can express a secret villain's influence without adding an actor or simulation.
+Row cuts, repeated samples, stretched image bands and missing-image cues can remain render-only. Apply them inside a reviewed region, behind occluders when needed, preserving route/attack readability and collision.
 
-The generated normal/smeared frames are appearance studies. Widespread pixel changes mean they are not an exact masked edit or a validated frame-swap pair. Prefer an effect applied to the accepted image/plate for stable runtime geometry. The extraction trial has real alpha but has not passed cleanup or recomposition; do not promote it silently to an approved layer.
+The proposed entry → expansion/reveal → pushback → parkour beat is a separately authored physical event if chosen. Define warning, safe actor position, bounded displacement, control recovery and a reachable alternate route. Switch art/collision/interaction state together only when physics changes. Checkpoint/retry must restore the state. A screen smear does not imply any physics change.
 
-## Lake transition and optional physical mutations
+Lake travel needs named anchors, input debounce, valid destination feet placement, velocity reset and recovery. Reflections alone implement none of this.
 
-The lake touch/crash-spin still needs named source/destination anchors. Trigger in range from a valid pose, debounce input, move to a clear feet position, reset velocity/held action, then restore control and checkpoint. Rendering a reflection does not implement another physical world.
+## Motion and verification
 
-A disappearing floor, changing lane, spatial fold or normal/corrupted collision pair is an **optional separate mechanic**, retained from earlier exploration. If selected, preload both states, warn from safe ground, validate actor clearance/reachable exit and switch art/collision/interaction data together. Checkpoint/reset must store the physical state and safe spawn. Decorative image smearing never triggers this automatically.
+Each animated object/actor needs fixed canvas, source offset, pivot/feet, endpoint poses and timing. Review in-betweens for sliding, scale or limb drift. Rigged bodies need deliberate joints/constraints for the chosen mechanic.
 
-## Character and effect iteration
+Art acceptance: flat projection, location identity, common native canvas, fixed pixel treatment, accepted seams, clean alpha, still recomposition and camera-motion proof. Current trials satisfy only parts of that list.
 
-Use approved endpoint poses, one frame canvas, fixed feet/pivot/facing and explicit durations. Review generated in-betweens in sequence. Attack anticipation/active/recovery, damage events and enemy recovery are authored logic, not inferred from art. Timebox cleanup; a smaller coherent action set is better than many drifting poses.
+Future gameplay acceptance: full route, selected climb/action, lake interaction, physical reveal if selected, safe retry, two restarts, focus recovery, win condition and clean export. No runtime, hosting change, issue board or workflow automation is introduced here.
 
-## Verification before claiming the workflow works
+The delivery fallback is a shorter coherent flattened strip plus separately authored collision and a small visual effect. It does not redefine the owner's desired multi-pass five-plus-layer art method.
 
-**Art:** same canvas/origin, clean alpha on light/dark, no static duplicate beneath moving art, recomposition against the accepted master, no seam or empty edge on camera movement. Generation/extraction trials are not passed tests by themselves.
-
-**Gameplay:** full chosen route with walk/jump/selected climb, lake interaction, optional attack/enemy reset, death before/after transition, two restarts, focus loss/recovery, readable effect on/off, clear ending and clean browser export. A visual-only fault must leave collision unchanged. Mobile/hosting remain unverified until actually tested.
-
-No runtime code, hosting change, project board or issue automation is introduced here. The practical fallback is one flattened master, minimal collision/actors and one small visual effect; additional masks/depth are optional polish.
-
-[← Scene-first workflow](../design/layered-stage-workflow.md) · [Image trial / limits](../../references/production/master-first/README.md) · [Jam plan →](../delivery/jam-plan.md)
+[← Layered workflow](../design/layered-stage-workflow.md) · [Visual sequence](../../references/production/crossings-strip/README.md) · [Jam plan →](../delivery/jam-plan.md)

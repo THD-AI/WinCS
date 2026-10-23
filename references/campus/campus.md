@@ -1,7 +1,9 @@
 # Campus · architecture and landmarks
 
 <!-- reference-navigation:start -->
-[← Previous: Hidden Garden / lake](hidden-gardens.md) · [🖼️ Library](README.md) · **2 / 8** · [Next: Lost in the Green →](lost-in-the-green.md)
+[← Previous: Hidden Garden / lake](hidden-gardens.md) · [Campus index](README.md) · **2 / 8** · [Next: Lost in the Green →](lost-in-the-green.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Campus architecture collage](images/campus.png)
@@ -13,5 +15,7 @@ Proposed use: a short recognizable architecture/ledge passage where image-level 
 Sources C01–C02 and C15–C19 in [source-index.json](source-index.json). Crop human subjects, signs and incidental clutter. The collage consolidates angles and reconstructs details; use original photos later if exact architecture matters.
 
 <!-- reference-navigation:start -->
-[← Previous: Hidden Garden / lake](hidden-gardens.md) · [🖼️ Library](README.md) · **2 / 8** · [Next: Lost in the Green →](lost-in-the-green.md)
+[← Previous: Hidden Garden / lake](hidden-gardens.md) · [Campus index](README.md) · **2 / 8** · [Next: Lost in the Green →](lost-in-the-green.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

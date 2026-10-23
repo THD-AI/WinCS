@@ -1,7 +1,9 @@
 # Planet of Lana · visual reference
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 36** · [Next: Dead Cells →](../dead-cells/README.md)
+[← Previous: Planet of Lana](README.md) · [Game index](../../README.md) · **24 / 36** · [Next: Dead Cells →](../dead-cells/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 **Follow the contour and depth bands.** Developer art and gameplay frames are labeled separately; none are extracted runtime layers.
@@ -143,5 +145,7 @@ Credit: Wishfully; developer demonstration accompanying the Game Developer inter
 [Layer and motion study](layers-and-motion.md). Six timecoded captures sample the official Gameplay Trailer (Steam movie 256891854). Camera-relative motion and local animation are different; a still does not establish parallax speed. Treat the depth split as our reconstruction, while the developer interview establishes the hybrid production approach.
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana](README.md) · [🖼️ Library](../../README.md) · **24 / 36** · [Next: Dead Cells →](../dead-cells/README.md)
+[← Previous: Planet of Lana](README.md) · [Game index](../../README.md) · **24 / 36** · [Next: Dead Cells →](../dead-cells/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

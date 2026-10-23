@@ -1,7 +1,9 @@
 # Kingdom Two Crowns
 
 <!-- reference-navigation:start -->
-[← Previous: Drova â€“ Forsaken Kin · gallery](../drova-forsaken-kin/visual-reference.md) · [🖼️ Library](../../README.md) · **15 / 36** · [Next: Kingdom Two Crowns · gallery →](visual-reference.md)
+[← Previous: Drova â€“ Forsaken Kin · gallery](../drova-forsaken-kin/visual-reference.md) · [Game index](../../README.md) · **15 / 36** · [Next: Kingdom Two Crowns · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · Tiny controls, large consequences
@@ -47,5 +49,7 @@ For our own asset organization, group player states, terrain, interaction props 
 Use the store's official trailers to compare movement, feedback and transitions with the stills. We verified the page/trailer inventory, not a frame-by-frame play session. No commercial sprites, music, source code or maps are licensed for our runtime by this research.
 
 <!-- reference-navigation:start -->
-[← Previous: Drova â€“ Forsaken Kin · gallery](../drova-forsaken-kin/visual-reference.md) · [🖼️ Library](../../README.md) · **15 / 36** · [Next: Kingdom Two Crowns · gallery →](visual-reference.md)
+[← Previous: Drova â€“ Forsaken Kin · gallery](../drova-forsaken-kin/visual-reference.md) · [Game index](../../README.md) · **15 / 36** · [Next: Kingdom Two Crowns · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

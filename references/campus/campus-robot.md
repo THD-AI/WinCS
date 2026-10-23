@@ -1,7 +1,9 @@
 # The little campus robot · pocket-sized trouble
 
 <!-- reference-navigation:start -->
-[← Previous: Playground detour](playground.md) · [🖼️ Library](README.md) · **8 / 8** · [Next: Location library →](README.md)
+[← Previous: Playground detour](playground.md) · [Campus index](README.md) · **8 / 8** · [Next: Location library →](README.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Small wheeled campus robot reference collage](images/campus-robot.png)
@@ -15,5 +17,7 @@ Proposed jam version: one small collectible sprite and a happy beep when found. 
 Sources C55–C59. Hands, people and institutional lettering were removed from the generated board. Keep exact hardware/brand replication out of the runtime brief.
 
 <!-- reference-navigation:start -->
-[← Previous: Playground detour](playground.md) · [🖼️ Library](README.md) · **8 / 8** · [Next: Location library →](README.md)
+[← Previous: Playground detour](playground.md) · [Campus index](README.md) · **8 / 8** · [Next: Location library →](README.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

@@ -1,7 +1,9 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Stardew Valley](README.md) · [🖼️ Library](../../README.md) · **20 / 36** · [Next: Children of Morta →](../children-of-morta/README.md)
+[← Previous: Stardew Valley](README.md) · [Game index](../../README.md) · **20 / 36** · [Next: Children of Morta →](../children-of-morta/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Stardew Valley: start with this gameplay reference](images/01-official-gameplay.jpg)
@@ -49,5 +51,7 @@ Settlement path and riverbank: landmarks and boundaries make navigation readable
 Use official trailers on the source page to compare camera behavior, movement, transitions and visual feedback. Still images cannot establish responsiveness. See media-sources.json for the named trailer inventory where available.
 
 <!-- reference-navigation:start -->
-[← Previous: Stardew Valley](README.md) · [🖼️ Library](../../README.md) · **20 / 36** · [Next: Children of Morta →](../children-of-morta/README.md)
+[← Previous: Stardew Valley](README.md) · [Game index](../../README.md) · **20 / 36** · [Next: Children of Morta →](../children-of-morta/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

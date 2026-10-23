@@ -1,12 +1,14 @@
 # Rusty Crossings · a maze of rusted bars
 
 <!-- reference-navigation:start -->
-[← Previous: Lost in the Green](lost-in-the-green.md) · [🖼️ Library](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
+[← Previous: Lost in the Green](lost-in-the-green.md) · [Campus index](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
-![Whole-scene rusted-bar maze direction candidate](../production/master-first/images/rust-maze-master.png)
+![Flat side-scrolling creek and rusted steel banner](../production/crossings-strip/images/02-center-clean.png)
 
-**Latest direction, 23 October:** a horizontal/vertical maze of rusted bars, turns, branches, shafts and loops, inspired by pathfinding imagery and the algorithms-and-data-structures secret-villain seed. This is not primarily one bridge with a parkour shortcut. The complete composition is generated first; its [edit/extraction trial](../production/master-first/README.md) explains what was actually achieved.
+**Latest direction, 23 October:** a recognizable creek/steel location redesigned as a **flat side-scroller**, not a perspective repaint. First a clean banner, then same-width extensions left/right and two staggered join views. Add the horizontal/vertical rusted-bar maze onto that accepted scene; derive five-plus depth/interaction roles afterwards. The algorithm/pathfinding villain seed guides the maze, while the collage's landmarks keep the place recognizable. **[See all banners and seven depth trials →](../production/crossings-strip/README.md)**
 
 | Visual ingredient | Possible action/exploration use | Scope |
 | --- | --- | --- |
@@ -17,12 +19,18 @@
 
 The professor/degree connection is an owner-supplied **fictional villain premise**; portrait, name, encounter and degree-to-stage roster are not specified here. Earlier floor-deletion/rail-traversal sketches remain optional mechanics only.
 
-## Photographs supply materials, not the maze layout
+## Location photo board
 
 ![Original rust/steel/rail reference collage; its earlier parkour label is not the current level brief](images/crossings.png)
 
-Source photos C23–C27 show bridge structures and rails. Their steel, corrosion and concrete are reference material; they do not prescribe the generated maze or prove its reachability. The approved photographic board is retained unchanged. Test the chosen movement verbs and one traced route before promoting any composition into a game level.
+Source photos C23–C27 show overhead riveted spans, mossy concrete, tubular rails, creek and ivy. Keep those identifying motifs in the newly designed side-on game layout. Do not copy the photographic vanishing point or substitute a generic fantasy maze. The approved board remains unchanged. The added traversal pass is visible below; routes, seams and mask cleanup still need review.
+
+![Maze added onto the same location banner](../production/crossings-strip/images/07-center-traversal.png)
+
+[Clean banners → staggered joins → traversal → seven depth plates](../production/crossings-strip/README.md) · [Layered workflow](../../docs/design/layered-stage-workflow.md)
 
 <!-- reference-navigation:start -->
-[← Previous: Lost in the Green](lost-in-the-green.md) · [🖼️ Library](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
+[← Previous: Lost in the Green](lost-in-the-green.md) · [Campus index](README.md) · **4 / 8** · [Next: Creek / stepping stones →](creek.md)
+
+[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

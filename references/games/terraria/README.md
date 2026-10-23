@@ -1,7 +1,9 @@
 # Terraria · two bosses, specific reasons
 
 <!-- reference-navigation:start -->
-[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [🖼️ Library](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
+[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [Game index](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 [![Terraria · two bosses, specific reasons: visual study](images/moon-097.jpg)](visual-reference.md)
@@ -23,5 +25,7 @@ The recordings are historical gameplay references, including a Terraria 1.4 Mast
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [🖼️ Library](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
+[← Previous: Dead Cells · gallery](../dead-cells/visual-reference.md) · [Game index](../../README.md) · **27 / 36** · [Next: Terraria · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

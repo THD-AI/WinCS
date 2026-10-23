@@ -1,7 +1,9 @@
 # Animal Well
 
 <!-- reference-navigation:start -->
-[← Previous: Apple Knight · gallery](../apple-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **9 / 36** · [Next: Animal Well · gallery →](visual-reference.md)
+[← Previous: Apple Knight · gallery](../apple-knight/visual-reference.md) · [Game index](../../README.md) · **9 / 36** · [Next: Animal Well · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ## At a glance · What happens if I try this?
@@ -51,5 +53,7 @@ This option supports 'funny but deep' through a repeated rule with surprising co
 YouTube embed fetching was throttled during research. Links were verified through the developer's press kit; the videos were not watched in this pass, and no timestamp claims are made. All local GIFs remain Shared Memory reference media, not licensed WinCS assets.
 
 <!-- reference-navigation:start -->
-[← Previous: Apple Knight · gallery](../apple-knight/visual-reference.md) · [🖼️ Library](../../README.md) · **9 / 36** · [Next: Animal Well · gallery →](visual-reference.md)
+[← Previous: Apple Knight · gallery](../apple-knight/visual-reference.md) · [Game index](../../README.md) · **9 / 36** · [Next: Animal Well · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

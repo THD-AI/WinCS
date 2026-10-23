@@ -20,7 +20,7 @@ Research, ask organizer questions, verify repository access and install a team-a
 | Night handoff | One accepted master, one visual FX region, proven lake transition; derived plates only if clean | Flattened master; no terrain mutation or parallax |
 | Saturday morning | Fix seams, readability, collision, restart and export | Cut effects, combat and companion behavior |
 
-Do not schedule all environments, weapons and replay bosses into this window. One robot pickup is optional after completion works. Timebox style iteration and carry one accepted master forward. Use Codex/image generation to compose and edit the whole scene, not assemble an independently generated prop kit. After one extraction attempt and one correction, keep the flat image if the proof still fails.
+Do not schedule all environments, weapons and replay bosses into this window. One robot pickup is optional after completion works. The desired [art method](../design/layered-stage-workflow.md) is clean flat banner → extend left/right → staggered joins → traversal → five-plus depth roles → individual grabs/motion. It composes the scene first, not an independent prop kit. Prove one short section before replicating the method. Cut stage count, optional animation and extra objects first; after a bounded failed extraction/correction, a shorter flattened strip remains the delivery fallback. Today's seven center plates are diagnostic trials, not integrated assets or a passed recomposition.
 
 | Local time | Official activity / available block | Proposed outcome |
 | --- | --- | --- |

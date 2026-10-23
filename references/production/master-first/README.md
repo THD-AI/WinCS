@@ -1,5 +1,7 @@
 # Compose the scene first · Rusty Crossings trial
 
+**Superseded visual direction.** The owner rejected the location disconnect. Use the [current flat-strip study](../crossings-strip/README.md): a newly designed side-scroller based on the collage, extended left/right, with staggered join windows and seven center depth trials. This older set remains provenance/pipeline evidence only.
+
 [← Current proposal](../../../docs/proposal/campus-game.md) · [Photo materials](../../campus/crossings.md) · [Production workflow →](../../../docs/design/layered-stage-workflow.md)
 
 ![Complete horizontal rust-maze master candidate](images/rust-maze-master.png)

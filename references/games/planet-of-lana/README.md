@@ -1,7 +1,9 @@
 # Planet of Lana · soft terrain and layered depth
 
 <!-- reference-navigation:start -->
-[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [🖼️ Library](../../README.md) · **23 / 36** · [Next: Planet of Lana · gallery →](visual-reference.md)
+[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [Game index](../../README.md) · **23 / 36** · [Next: Planet of Lana · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 [![Planet of Lana · soft terrain and layered depth: visual study](images/gameplay-035.jpg)](visual-reference.md)
@@ -27,5 +29,7 @@ Companion puzzles, stealth AI and cinematic transitions are not baseline require
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [🖼️ Library](../../README.md) · **23 / 36** · [Next: Planet of Lana · gallery →](visual-reference.md)
+[← Previous: Children of Morta · gallery](../children-of-morta/visual-reference.md) · [Game index](../../README.md) · **23 / 36** · [Next: Planet of Lana · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

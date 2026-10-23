@@ -1,7 +1,9 @@
 # Visual reference views
 
 <!-- reference-navigation:start -->
-[← Previous: Soul Knight](README.md) · [🖼️ Library](../../README.md) · **12 / 36** · [Next: Drova â€“ Forsaken Kin →](../drova-forsaken-kin/README.md)
+[← Previous: Soul Knight](README.md) · [Game index](../../README.md) · **12 / 36** · [Next: Drova â€“ Forsaken Kin →](../drova-forsaken-kin/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 ![Soul Knight: start with this gameplay reference](images/switch-02.jpg)
@@ -86,5 +88,7 @@ Dense projectile encounter: safe-space readability and effect contrast become cr
 - SHA-256: `1ee33c183d972ec741b117317fc593a9806bc2927c3e17e6c6a1a9500db29d3c`.
 
 <!-- reference-navigation:start -->
-[← Previous: Soul Knight](README.md) · [🖼️ Library](../../README.md) · **12 / 36** · [Next: Drova â€“ Forsaken Kin →](../drova-forsaken-kin/README.md)
+[← Previous: Soul Knight](README.md) · [Game index](../../README.md) · **12 / 36** · [Next: Drova â€“ Forsaken Kin →](../drova-forsaken-kin/README.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

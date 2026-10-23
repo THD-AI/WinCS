@@ -1,7 +1,9 @@
 # Dead Cells · the greenhouse
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 36** · [Next: Dead Cells · gallery →](visual-reference.md)
+[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [Game index](../../README.md) · **25 / 36** · [Next: Dead Cells · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 [![Dead Cells · the greenhouse: visual study](images/bad-seed-02.jpg)](visual-reference.md)
@@ -21,5 +23,7 @@ Alexander also likes some boss designs, but has not specified which here. Do not
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [🖼️ Library](../../README.md) · **25 / 36** · [Next: Dead Cells · gallery →](visual-reference.md)
+[← Previous: Planet of Lana · gallery](../planet-of-lana/visual-reference.md) · [Game index](../../README.md) · **25 / 36** · [Next: Dead Cells · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

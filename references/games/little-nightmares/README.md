@@ -1,7 +1,9 @@
 # Little Nightmares · character shape
 
 <!-- reference-navigation:start -->
-[← Previous: Terraria · gallery](../terraria/visual-reference.md) · [🖼️ Library](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
+[← Previous: Terraria · gallery](../terraria/visual-reference.md) · [Game index](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 [![Little Nightmares · character shape: visual study](images/six-character.png)](visual-reference.md)
@@ -19,5 +21,7 @@ Alexander does not want this game's ambience, horror pacing or general game desi
 Research updated 22 October 2026. Observations and WinCS translations below are design analysis, not extracted development files or accepted game requirements. Reference media remains with its credited rightsholders; no runtime reuse license is inferred.
 
 <!-- reference-navigation:start -->
-[← Previous: Terraria · gallery](../terraria/visual-reference.md) · [🖼️ Library](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
+[← Previous: Terraria · gallery](../terraria/visual-reference.md) · [Game index](../../README.md) · **29 / 36** · [Next: Little Nightmares · gallery →](visual-reference.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->

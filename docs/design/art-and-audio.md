@@ -2,9 +2,9 @@
 
 [← Current proposal](../proposal/campus-game.md) · [Home](../../README.md) · [Next: layered workflow →](layered-stage-workflow.md)
 
-![Complete rust-maze visual-direction candidate](../../references/production/master-first/images/rust-maze-master.png)
+![Flat side-scrolling creek location candidate](../../references/production/crossings-strip/images/02-center-clean.png)
 
-**Current direction, 23 October:** original pixel art produced as a complete horizontal composition first, then edited on that canvas and minimally extracted. Natural terrain flows; Rusty Crossings uses an angular bar-maze motif. Derived depth is optional after a proof passes. The photographic boards supply real motifs; the [Lana study](../../references/games/planet-of-lana/layers-and-motion.md) supplies depth/contour/process references. Neither is a runtime asset pack. Final pixel style awaits a small team-reviewed test.
+**Current direction, 23 October:** collage-inspired new flat side-elevation layout, clean center banner extended left/right, two staggered join windows, then in-place traversal dressing and five-plus layers. The current [visual sequence](../../references/production/crossings-strip/README.md) displays seven center roles, including water, interactables and near occluders. Natural terrain flows; bars/maze are added without losing location identity. Perspective repaints fail this brief. Masks/seams are not production-approved; flattening remains a delivery fallback only. The [Lana study](../../references/games/planet-of-lana/layers-and-motion.md) contributes depth/contours, not a pixel-art asset pack. Final pixel treatment awaits team review.
 
 ## Agree the design system on one small scene
 

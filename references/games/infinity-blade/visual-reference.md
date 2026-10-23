@@ -1,7 +1,9 @@
 # Infinity Blade · visual reference
 
 <!-- reference-navigation:start -->
-[← Previous: Infinity Blade](README.md) · [🖼️ Library](../../README.md) · **36 / 36** · [Next: Compare the games →](../../comparison.md)
+[← Previous: Infinity Blade](README.md) · [Game index](../../README.md) · **36 / 36** · [Next: Compare the games →](../../comparison.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
 
 **Ancient, monumental, mechanical, mysterious.** All six local captures are from Infinity Blade III; the intended civilization concept spans the trilogy.
@@ -63,5 +65,7 @@ Credit: Epic Games / ChAIR. [Source at 1:28](https://www.youtube.com/watch?v=zh0
 [Official trilogy universe page](https://www.epicgames.com/infinityblade/en-US/game-info/infinity-blade-universe) · [III launch trailer](https://www.youtube.com/watch?v=zh0bVa9waXM). Compare stone architecture with embedded mechanisms and concentrated light. The interpretation that a society mistakes technology for magic comes from Alexander’s supplied worldbuilding direction; a glowing image alone cannot establish that lore.
 
 <!-- reference-navigation:start -->
-[← Previous: Infinity Blade](README.md) · [🖼️ Library](../../README.md) · **36 / 36** · [Next: Compare the games →](../../comparison.md)
+[← Previous: Infinity Blade](README.md) · [Game index](../../README.md) · **36 / 36** · [Next: Compare the games →](../../comparison.md)
+
+[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 <!-- reference-navigation:end -->
