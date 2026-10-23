@@ -11,7 +11,7 @@
 | When (Fri → Sat) | Goal | Done when |
 | --- | --- | --- |
 | Fri 15:30–18:40 (Sprint 1) | References, recordings, design docs, visual direction, stage concepts, repo clean | This folder, reviewed by the team ✅ |
-| **18:40–19:30** | **Issue board**: milestones (M0 setup → M1 movement → M2 combat → M3 prologue → M4 Rusty Creek + Jenny → M5 polish + submit), epics with sub-issue stories, every story with acceptance criteria; the reusable pipelines (chunks left/right/up/down, transition chunks, layer split, collision annotation) as their own epic | Board live, everyone has a first issue |
+| **18:40–20:30** | **[Issue board](https://github.com/orgs/THD-AI/projects/7)**: six milestones (M0 setup → M1 movement → M2 combat → M3 prologue → M4 Rusty Creek + Jenny → M5 polish + submit), one epic each with sub-issue stories, every story with acceptance criteria and its blockers; the reusable pipelines (layer split, chunks in four directions, collision annotation) sit in M0. How to pick work: [12 – Team workflow](12-TEAM-WORKFLOW.md) | Board live, everyone has a first issue ✅ |
 | 19:30–20:00 | Pizza. Walk the board together; lock the title | Decisions logged |
 | 20:00–00:00 (Sprint 2) | `game/` scaffold on Vercel · player controller (walk, run, jump, slopes, ladders) on Rusty Creek collision · sprite boards from the approved direction | Hero moves on the real stage, on a preview URL |
 | 00:30–03:00 | Chair combat (3 attacks + guard) · rover + crab AI · health/death/respawn · coffee machine save · clean → anomaly switch | You can fight through chunk 1 |
@@ -21,6 +21,8 @@
 | 11:00–11:30 | Freeze. Submit. Rehearse the 2-minute demo | – |
 
 ## Who does what
+
+Every cell below is a set of issues on the board, marked with the suggested owner; take them with `/take`.
 
 | | Vatsal | Lex | Alexander |
 | --- | --- | --- | --- |
