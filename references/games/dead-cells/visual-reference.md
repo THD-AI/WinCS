@@ -1,10 +1,8 @@
 # Dead Cells · Dilapidated Arboretum · visual reference
 
-<!-- reference-navigation:start -->
-[← Previous: Dead Cells](README.md) · [Game index](../../README.md) · **26 / 36** · [Next: Terraria →](../terraria/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Dead Cells · the greenhouse](README.md) · [Game references](../../README.md) · **26 / 36** · [Terraria · two bosses, specific reasons →](../terraria/README.md)
+<!-- nav:end -->
 
 **Greenhouse before generic combat.** Official Bad Seed images and two greenhouse gameplay frames; adjacent swamp/boss screenshots are excluded.
 
@@ -56,8 +54,6 @@ Credit: Motion Twin / Evil Empire. [Source at 0:50](https://store.steampowered.c
 
 The official Gameplay Trailer is a montage of Bad Seed environments; only selected greenhouse shots are retained. [Official DLC description and trailers](https://store.steampowered.com/app/1204130/). Separate window/structure planes, hanging growth, playable ledges and front framing for our own original stage; this is analysis, not the developer’s source-layer organization.
 
-<!-- reference-navigation:start -->
-[← Previous: Dead Cells](README.md) · [Game index](../../README.md) · **26 / 36** · [Next: Terraria →](../terraria/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Dead Cells · the greenhouse](README.md) · [Game references](../../README.md) · **26 / 36** · [Terraria · two bosses, specific reasons →](../terraria/README.md)
+<!-- nav:end -->

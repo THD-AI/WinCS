@@ -1,10 +1,8 @@
 # Toxic Garden · plants, rocks and rust
 
-<!-- reference-navigation:start -->
-[← Previous: Creek / stepping stones](creek.md) · [Campus index](README.md) · **6 / 8** · [Next: Playground detour →](playground.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← The creek · stepping stones, reflections and a rise–dip rhythm](creek.md) · [Campus collages](README.md) · **6 / 8** · [Playground · familiar shapes, something wrong →](playground.md)
+<!-- nav:end -->
 
 ![Toxic Garden material-reference collage](images/toxic-garden.png)
 
@@ -18,8 +16,6 @@ The [official Bad Seed listing](https://store.steampowered.com/app/1204130/Dead_
 
 Sources C40–C54 in [source-index.json](source-index.json). Bike/promenade views provide context, not the hero composition. Detail boards preserve granite, gravel, rust and planting relationships without importing the original files.
 
-<!-- reference-navigation:start -->
-[← Previous: Creek / stepping stones](creek.md) · [Campus index](README.md) · **6 / 8** · [Next: Playground detour →](playground.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← The creek · stepping stones, reflections and a rise–dip rhythm](creek.md) · [Campus collages](README.md) · **6 / 8** · [Playground · familiar shapes, something wrong →](playground.md)
+<!-- nav:end -->

@@ -1,0 +1,12 @@
+# Stage concepts
+
+Every region in two states: **clean** – the real campus place, cozy and calm – and **anomaly** – the same place after you touch that region's anomaly, when the stage turns, pushes you back to its start and becomes the version you actually explore. [Rusty Creek](../stages/rusty-creek/README.md) already exists as a pair: the clean creek and bridge, then the rust maze. Each concept is 2176×1088 (2:1), so routes go up and down as well as left and right: hills, slopes to slide down, ledges to grab, vines and ladders to climb, an underground pocket. Foreground leaves and grass blur over the camera like Planet of Lana. The concepts become playable stages through the layer pipeline in [09 – Art pipeline](../../docs/09-ART-PIPELINE.md).
+
+| | |
+| --- | --- |
+| [![Hidden Garden · clean](images/hidden-garden-clean-preview.png)](hidden-garden-clean.md)<br>**[Hidden Garden · clean](hidden-garden-clean.md)** | [![Hidden Garden · anomaly](images/hidden-garden-anomaly-preview.png)](hidden-garden-anomaly.md)<br>**[Hidden Garden · anomaly](hidden-garden-anomaly.md)** |
+| [![Lost in the Green · clean](images/lost-in-the-green-clean-preview.png)](lost-in-the-green-clean.md)<br>**[Lost in the Green · clean](lost-in-the-green-clean.md)** | [![Lost in the Green · anomaly](images/lost-in-the-green-anomaly-preview.png)](lost-in-the-green-anomaly.md)<br>**[Lost in the Green · anomaly](lost-in-the-green-anomaly.md)** |
+| [![Campus · clean](images/campus-clean-preview.png)](campus-clean.md)<br>**[Campus · clean](campus-clean.md)** | [![Campus · anomaly](images/campus-anomaly-preview.png)](campus-anomaly.md)<br>**[Campus · anomaly](campus-anomaly.md)** |
+| [![Mensa · clean](images/mensa-clean-preview.png)](mensa-clean.md)<br>**[Mensa · clean](mensa-clean.md)** | [![Mensa · anomaly](images/mensa-anomaly-preview.png)](mensa-anomaly.md)<br>**[Mensa · anomaly](mensa-anomaly.md)** |
+| [![Toxic Garden · clean](images/toxic-garden-clean-preview.png)](toxic-garden-clean.md)<br>**[Toxic Garden · clean](toxic-garden-clean.md)** | [![Toxic Garden · anomaly](images/toxic-garden-anomaly-preview.png)](toxic-garden-anomaly.md)<br>**[Toxic Garden · anomaly](toxic-garden-anomaly.md)** |
+| [![Playground · clean](images/playground-clean-preview.png)](playground-clean.md)<br>**[Playground · clean](playground-clean.md)** | [![Playground · anomaly](images/playground-anomaly-preview.png)](playground-anomaly.md)<br>**[Playground · anomaly](playground-anomaly.md)** |

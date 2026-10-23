@@ -1,10 +1,8 @@
 # 9 Years of Shadows
 
-<!-- reference-navigation:start -->
-[← Previous: Hollow Knight · gallery](../hollow-knight/visual-reference.md) · [Game index](../../README.md) · **3 / 36** · [Next: 9 Years of Shadows · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Visual reference views](../hollow-knight/visual-reference.md) · [Game references](../../README.md) · **3 / 36** · [Visual reference views →](visual-reference.md)
+<!-- nav:end -->
 
 ## At a glance · Pixel spectacle
 
@@ -56,8 +54,6 @@ Ask Vatsal whether the appeal is richly colored pixel scenery, responsive melee,
 
 All retained images remain Halberd Studios' reference media; they are not a usable WinCS sprite library.
 
-<!-- reference-navigation:start -->
-[← Previous: Hollow Knight · gallery](../hollow-knight/visual-reference.md) · [Game index](../../README.md) · **3 / 36** · [Next: 9 Years of Shadows · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Visual reference views](../hollow-knight/visual-reference.md) · [Game references](../../README.md) · **3 / 36** · [Visual reference views →](visual-reference.md)
+<!-- nav:end -->

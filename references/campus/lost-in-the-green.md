@@ -1,10 +1,8 @@
 # Lost in the Green · grassy channels and screened routes
 
-<!-- reference-navigation:start -->
-[← Previous: Campus architecture](campus.md) · [Campus index](README.md) · **3 / 8** · [Next: Rusty Crossings / maze →](crossings.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Campus · architecture and landmarks](campus.md) · [Campus collages](README.md) · **3 / 8** · [Rusty Crossings · a maze of rusted bars →](crossings.md)
+<!-- nav:end -->
 
 ![Merged grassy-channel and leaf-screen reference board](images/lost-in-the-green.png)
 
@@ -21,10 +19,8 @@
 
 **Layer palette:** distant canopy → grassy far bank / water → middle bushes → walkable curved bank → sparse front trunks/reeds. Keep the path plane stable when decorative foliage moves.
 
-Source family C20–C22. Direct originals C20/C22 ground the merge; previous generated boards supply selected grass/path motifs and leafy mood only. Extra cascades and fantasy stone rows from the oldest draft are excluded. [Generation record](generation.md) · [World route](../../docs/proposal/campus-game.md).
+Source family C20–C22. Direct originals C20/C22 ground the merge; previous generated boards supply selected grass/path motifs and leafy mood only. Extra cascades and fantasy stone rows from the oldest draft are excluded. [Generation record](generation.md) · [World route](../../docs/04-WORLD-AND-LEVELS.md).
 
-<!-- reference-navigation:start -->
-[← Previous: Campus architecture](campus.md) · [Campus index](README.md) · **3 / 8** · [Next: Rusty Crossings / maze →](crossings.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Campus · architecture and landmarks](campus.md) · [Campus collages](README.md) · **3 / 8** · [Rusty Crossings · a maze of rusted bars →](crossings.md)
+<!-- nav:end -->

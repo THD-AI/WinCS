@@ -1,10 +1,8 @@
 # Duck Season · visual reference
 
-<!-- reference-navigation:start -->
-[← Previous: Duck Season](README.md) · [Game index](../../README.md) · **32 / 36** · [Next: The Secret of Monkey Island · classic →](../secret-of-monkey-island/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Duck Season · the mascot changes its role](README.md) · [Game references](../../README.md) · **32 / 36** · [The Secret of Monkey Island · classic pixel art →](../secret-of-monkey-island/README.md)
+<!-- nav:end -->
 
 **Mascot escalation and ending contrasts.** Includes ending spoilers; ordinary shooting scenes have been removed from this selection.
 
@@ -64,8 +62,6 @@ Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 16
 
 [Source recorder chapter guide](https://steamcommunity.com/app/503580/discussions/0/1495615865217183797/): Trapped Forever 0:00; Death 2:11; Revenge At Last 4:16; Nuke 7:18; Best Men 9:08; Fiesta 11:44; Dog 14:59. Selected frames concentrate on the mascot, altered staging and the reversal in Dog. Chapter names follow this recorder; no ending-trigger rules are asserted. A source timestamp is relative to this compilation, not in-game elapsed time.
 
-<!-- reference-navigation:start -->
-[← Previous: Duck Season](README.md) · [Game index](../../README.md) · **32 / 36** · [Next: The Secret of Monkey Island · classic →](../secret-of-monkey-island/README.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Duck Season · the mascot changes its role](README.md) · [Game references](../../README.md) · **32 / 36** · [The Secret of Monkey Island · classic pixel art →](../secret-of-monkey-island/README.md)
+<!-- nav:end -->

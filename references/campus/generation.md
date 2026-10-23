@@ -1,6 +1,6 @@
 # Collage provenance and review
 
-[← Location library](README.md) · [Proposal](../../docs/proposal/campus-game.md) · [Start with Hidden Garden →](hidden-gardens.md)
+[← Location library](README.md) · [Proposal](../../docs/04-WORLD-AND-LEVELS.md) · [Start with Hidden Garden →](hidden-gardens.md)
 
 Eight active photographic reference boards, generated 22 October 2026 with built-in image generation. [Exact prompt set](prompts.json) · [Output hashes, dimensions and inputs](media-sources.json) · [59 original-photo IDs](source-index.json). No model version was exposed; none is claimed. These are opaque reference boards, not transparent runtime layers or measured maps.
 
@@ -27,8 +27,8 @@ The oldest Lost in the Green image is used for leaf-screen mood only, as request
 
 All 59 photographs were inspected in numbered contact sheets; selected originals and all active outputs were viewed at larger size. The new creek uses four distinct photographed angles, not an invented turnaround. AI cleanup still changes vegetation, perspective and small arrangements; these are not archival composites. Rust intensification, reconstructed water and hidden sides do not prove real geography.
 
-The earlier route, rising/falling terrain and normal/corrupted crossing diagrams under docs/proposal/diagrams/ are original editable **design schematics**, retained only as optional exploration in the proposal appendix. The current [flat-strip production study](../production/crossings-strip/README.md) supplies the primary example: a newly designed side elevation inspired by this collage, three clean banners, two staggered joins, traversal passes and seven center depth trials. It does not copy the photos' vanishing point. The study is separate from photo interpretation and is not a verified seamless strip or runtime asset pack. Proposed hills are not measured stepping-block heights. All eight active photographic boards remain unchanged in this revision.
+The earlier route, rising/falling terrain and normal/corrupted crossing diagrams (removed 23 Oct; in Git history) are original editable **design schematics**, retained only as optional exploration in the proposal appendix. The current [flat-strip production study](../../art/stages/rusty-creek/README.md) supplies the primary example: a newly designed side elevation inspired by this collage, three clean banners, two staggered joins, traversal passes and seven center depth trials. It does not copy the photos' vanishing point. The study is separate from photo interpretation and is not a verified seamless strip or runtime asset pack. Proposed hills are not measured stepping-block heights. All eight active photographic boards remain unchanged in this revision.
 
 No original photos, five professor screenshots, raw chats, source audio, full videos or unredacted transcripts are committed. Source rightsholders and people depicted do not acquire a blanket release through image cleanup. Runtime art will need its own original/licensed sources and provenance. No public-sharing or game-use license for the commercial references is inferred.
 
-[← Location library](README.md) · [Proposal](../../docs/proposal/campus-game.md) · [Start with Hidden Garden →](hidden-gardens.md)
+[← Location library](README.md) · [Proposal](../../docs/04-WORLD-AND-LEVELS.md) · [Start with Hidden Garden →](hidden-gardens.md)

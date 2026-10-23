@@ -1,0 +1,57 @@
+{
+  "automatic_art_approval": false,
+  "visual_seams_approved": false,
+  "packet_sha256": "a457614e0029d74d0357955f6b076216dcc5a9480ce7635a109f3f91b7b871e3",
+  "layers": [
+    {
+      "id": "structure",
+      "file": "structure-repaired.png",
+      "sha256": "8793e7606a61bc670a9833e78ce4f70b4c1c56946a0eb15f8f41cd380a6fa9fd",
+      "dimensions": [
+        6480,
+        720
+      ],
+      "outside_repair_changed_pixels": 0
+    }
+  ],
+  "repairs": [
+    {
+      "job": "structure--left--center",
+      "candidate_sha256": "c2959d99b9a96e8fadd44fe9fd87aace3942afe6dfbb874b7d8769e67b240ca6",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        1904,
+        0,
+        2416,
+        720
+      ]
+    },
+    {
+      "job": "structure--center--right",
+      "candidate_sha256": "6c1f64a1502711f7e5d04e98bd4d58996d03c985bc8a6dc31345ebe338642166",
+      "native_size": [
+        2172,
+        724
+      ],
+      "applied_size": [
+        2160,
+        720
+      ],
+      "normalization": "nearest-neighbor",
+      "world_box": [
+        4064,
+        0,
+        4576,
+        720
+      ]
+    }
+  ]
+}

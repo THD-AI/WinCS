@@ -1,0 +1,121 @@
+{
+  "version": 1,
+  "config_sha256": "765700b16a4fc7b73bf85ef93c35a71bc335014c4f12884945d520da77aa2195",
+  "panel_size": [
+    2160,
+    720
+  ],
+  "world_size": [
+    6480,
+    720
+  ],
+  "chunks": [
+    "left",
+    "center",
+    "right"
+  ],
+  "chunk_origins": {
+    "left": [
+      0,
+      0
+    ],
+    "center": [
+      2160,
+      0
+    ],
+    "right": [
+      4320,
+      0
+    ]
+  },
+  "model": "gpt-image-2.5-sunburst",
+  "layers": [
+    {
+      "id": "structure",
+      "role": "scene-first broad steel and masonry; separate after seam repair",
+      "world": "structure-before.png",
+      "sha256": "47108c4573dd1423a469b16734404013bd6b92ff2cd5b873b2960c638fbadf5a",
+      "inputs": [
+        {
+          "chunk": "left",
+          "file": "tmp/stages/rusty-creek/left-normalized.png",
+          "sha256": "3d2bba0475a97c8db7db861f04d27e63b3999faf1eabd2f13bf1d4616a0ac11c",
+          "native_size": [
+            2160,
+            720
+          ],
+          "normalized_size": [
+            2160,
+            720
+          ]
+        },
+        {
+          "chunk": "center",
+          "file": "tmp/stages/rusty-creek/center-normalized.png",
+          "sha256": "2d9d31a326cfb3aeec774ef723ca967b71c927416271b25717b75060ac15ff3b",
+          "native_size": [
+            2160,
+            720
+          ],
+          "normalized_size": [
+            2160,
+            720
+          ]
+        },
+        {
+          "chunk": "right",
+          "file": "tmp/stages/rusty-creek/right-normalized.png",
+          "sha256": "c8d9e0e51bfbddf1ce65f934aec9bf04d83d43f0480b26a153900d53e0f9048f",
+          "native_size": [
+            2160,
+            720
+          ],
+          "normalized_size": [
+            2160,
+            720
+          ]
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "id": "structure--left--center",
+      "layer": "structure",
+      "context_origin": [
+        1080,
+        0
+      ],
+      "copy_box": [
+        824,
+        0,
+        1336,
+        720
+      ],
+      "context_sha256": "3d305e3a57c6877ba142d9517e166c83ce48b802c7b170702ff2105518f28f57",
+      "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
+      "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
+      "prompt_sha256": "6708719bf9b17d0f9eebfbdad4a72241c4d83739913706f15a28292332485775",
+      "request_sha256": "2e7ba325b9fcb357d0ca26a0f6aa76d2bd332e171d95a6ad046fd9f3c588cf38"
+    },
+    {
+      "id": "structure--center--right",
+      "layer": "structure",
+      "context_origin": [
+        3240,
+        0
+      ],
+      "copy_box": [
+        824,
+        0,
+        1336,
+        720
+      ],
+      "context_sha256": "0968aabf6cb5cbe2cd0bd40bd156d3fd26888b77e39d4d55053b25eee1855e5b",
+      "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
+      "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
+      "prompt_sha256": "6708719bf9b17d0f9eebfbdad4a72241c4d83739913706f15a28292332485775",
+      "request_sha256": "2e7ba325b9fcb357d0ca26a0f6aa76d2bd332e171d95a6ad046fd9f3c588cf38"
+    }
+  ]
+}

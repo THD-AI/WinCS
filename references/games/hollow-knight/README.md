@@ -1,10 +1,8 @@
 # Hollow Knight
 
-<!-- reference-navigation:start -->
-[← Previous: Visual library](../../README.md) · [Game index](../../README.md) · **1 / 36** · [Next: Hollow Knight · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Reference games](../../README.md) · [Game references](../../README.md) · **1 / 36** · [Visual reference views →](visual-reference.md)
+<!-- nav:end -->
 
 ## At a glance · Vatsal’s starting point
 
@@ -54,8 +52,6 @@ Ask Vatsal to rank: movement feel, lonely exploration, melee combat, mystery and
 
 No source sprites or game code were extracted. Engine choice for WinCS remains independent of this reference.
 
-<!-- reference-navigation:start -->
-[← Previous: Visual library](../../README.md) · [Game index](../../README.md) · **1 / 36** · [Next: Hollow Knight · gallery →](visual-reference.md)
-
-[📍 Campus boards](../../campus/README.md) · [🎮 Game studies](../../README.md) · [🎨 Stage experiments](../../production/README.md) · [Proposal](../../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Reference games](../../README.md) · [Game references](../../README.md) · **1 / 36** · [Visual reference views →](visual-reference.md)
+<!-- nav:end -->

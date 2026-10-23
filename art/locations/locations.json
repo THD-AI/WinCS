@@ -1,0 +1,168 @@
+{
+  "name": "Stage concepts",
+  "readme": "Every region in two states: **clean** – the real campus place, cozy and calm – and **anomaly** – the same place after you touch that region's anomaly, when the stage turns, pushes you back to its start and becomes the version you actually explore. [Rusty Creek](../stages/rusty-creek/README.md) already exists as a pair: the clean creek and bridge, then the rust maze. Each concept is 2176×1088 (2:1), so routes go up and down as well as left and right: hills, slopes to slide down, ledges to grab, vines and ladders to climb, an underground pocket. Foreground leaves and grass blur over the camera like Planet of Lana. The concepts become playable stages through the layer pipeline in [09 – Art pipeline](../../docs/09-ART-PIPELINE.md).",
+  "model": "gpt-image-2.5-sunburst",
+  "size": "2176x1088",
+  "style": "FORMAT: a STAGE CONCEPT for a 2D side-scroller explored in all four directions - one wide 2:1 image in strict side view, drawn like an architect's ELEVATION: every path, wall, bed and building runs PARALLEL to the screen from left to right; depth comes only from layers stacked behind each other, never from things receding toward a vanishing point; no path, corridor or bed leads into the distance. The hero is small, about one ninth of the image height. Build real level structure into the scenery: a main route plus at least one higher branch and one lower branch or underground pocket, smooth hills and slopes (some steep enough to slide down), ledges with grabbable edges, something to climb (ladder, vines, scaffold, stairs), a dead end with a small reward glint. DEPTH in clear layers: hazy far background, mid-ground, the play layer, and a dark, out-of-focus foreground of leaves and grass partly covering the bottom edge and corners as if the camera sits behind foliage; reflections where there is water; a few falling leaves. LOOK: detailed hi-bit pixel art, fine 2-pixel grain, the warm palette and light of the style master. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
+  "people": "If the hero appears, it is OUR hero from the hero sheet: small, grey/blue/teal THD poncho, shadow-filled hood, never a face. Never draw real people from photos.",
+  "boards": [
+    {
+      "id": "hidden-garden-clean",
+      "title": "Hidden Garden · clean",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:art/direction/images/hidden-garden-preview.png",
+        "repo:references/campus/images/hidden-gardens.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The prologue, built from the first image (approved: keep its look, its pond, deck, reeds and trees exactly) widened into a stage: the timber deck and stone-slab path along the pond in the middle; a grassy hill rising on the left with a path that climbs to a lookout under a big tree; on the right a mossy stone wall with a ledge to grab and a gap leading down to a damp hollow under the bank. Dexter, the small black panther plush in a grey T-shirt, sits at the end of the deck pointing at the water; the hero stands behind him. In the pond, one patch of the reflection shows a rusty girder maze that isn't there - the region's anomaly.",
+      "review": "✅ True to the approved Hidden Garden: the deck, Dexter pointing, the wrong reflection. Calm and flat – right for the tutorial walk; the up/down routes arrive in the anomaly state."
+    },
+    {
+      "id": "hidden-garden-anomaly",
+      "title": "Hidden Garden · anomaly",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:hidden-garden-clean",
+        "repo:art/stages/rusty-creek/images/after-center.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The SAME stage as the first image - same camera, same layout, same landmarks - a second after the hero touched the pond. The reflection has climbed out of the water: rusty blue-green girders from the second image grow up through the reeds and the deck, the hill path is cut and shifted sideways in places, a strip of trees is stretched into vertical streaks, a rectangle of sky has become flat grey with torn edges. Dexter is gone. Still beautiful, now wrong.",
+      "review": "✅ The strongest stage image so far: girders grown through the reeds, a grey 404 rectangle in the sky, stretched trees, lit caves and an underwater layer – routes in every direction."
+    },
+    {
+      "id": "lost-in-the-green-clean",
+      "title": "Lost in the Green · clean",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:art/direction/images/lost-in-the-green-preview.png",
+        "ref1:20261022_141709.jpg",
+        "ref1:20261022_143200.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Built from the first image (approved: keep its pampas grass, birches, slab path and golden light) into a stage that climbs like a mountainside: the slab path winds up over soft grassy hills from bottom-left toward a high ridge at the top right; a second path splits off and dives down into a hollow under the roots of a big birch (an underground pocket); a steep grassy slope to slide down; tall grass screens you can walk behind. Near the ridge stands a tall grey Bayerwald granite boulder shaped like an obelisk (from the photo) with one face polished like a mirror - the region's anomaly. The hero small on the lower path. Blurred pampas plumes over the bottom corners.",
+      "review": "✅ A real mountainside: the slab path climbs to the upper right, a branch dips to a hollow under the roots, rock ledges, pampas blurring the foreground."
+    },
+    {
+      "id": "lost-in-the-green-anomaly",
+      "title": "Lost in the Green · anomaly",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:lost-in-the-green-clean",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The SAME stage as the first image after the hero touched the mirror-faced obelisk: the grass screens have grown into a tall hedge maze with paths that loop back on themselves, the same three birches repeat across the frame as if copy-pasted, a slice of the hillside is shifted sideways leaving a ledge that wasn't there, falling leaves drift UPWARD. Same camera and landmarks; lush, golden, quietly wrong.",
+      "review": "✅ The grass became a terraced hedge maze up the mountain, stone steps between the levels, leaves drifting."
+    },
+    {
+      "id": "campus-clean",
+      "title": "Campus · clean",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:playground-clean",
+        "ref1:20261022_142033.jpg",
+        "ref1:20261022_141518.jpg",
+        "ref2:20261023_131401.jpg"
+      ],
+      "prompt": "Same FORMAT, flatness, layering and pixel style as the FIRST image (a side-view stage with ground and an underground layer) - but a different place: THD's campus from the photos (images 2-4 are only material references). NO water, NO pond, NO canal. Composition left to right: a long salmon-pink building facade with white columns and glass ground floor, PARALLEL to the screen; in the middle a tall section wrapped from pavement to roof in construction SCAFFOLDING that fills a third of the image width: aluminium tubes, wide plank decks on four levels, zigzag ladders between them - empty, no people; a flat roof terrace at the top right; along the bottom a paved plaza with a bike rack, two young autumn trees and the yellow town-sign with a green assembly-point sign on a pole; BELOW the plaza, cut away like the first image's underground, a basement corridor with pipes reached by a stairwell on the left. Under the scaffold a small puddle of black fluid that reflects nothing - the region's anomaly. Golden late afternoon. No text.",
+      "review": "🟡 Third take: a flat facade with an underground basement (stairs, ladder, corridors), the plaza and THD sign. Still no scaffold – the model drops it every time; add it as its own layer. (Takes 1–2: a printed title label, then a canal from the style master.)"
+    },
+    {
+      "id": "campus-anomaly",
+      "title": "Campus · anomaly",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:campus-clean",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The SAME stage as the first image after the hero stepped into the black puddle: the scaffolding has kept growing into an impossible tower of decks and ladders up into the sky, the facade is cut into slices shifted sideways and repeated, several windows are flat grey with torn edges, the plaza floor tiles stretch into streaks at one spot, the sky has turned to dusk too early. Same camera and landmarks, quietly wrong, no people.",
+      "review": "✅ The scaffold finally appears – grown into impossible stacks of decks and ladders over cut, shifted facades; the basement route is unchanged."
+    },
+    {
+      "id": "mensa-clean",
+      "title": "Mensa · clean",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:art/direction/images/mensa-interior-preview.png",
+        "ref2:20261023_125138.jpg",
+        "ref2:20261023_130817.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Built from the first image (approved: keep its red counters, display cases, glowing coffee machine, night windows) as a cross-section stage of the cafeteria at night: ground floor with the counter and the coffee machine save point; a mezzanine gallery reached by a staircase on the left; tall stacks of yellow trays to climb; a service hatch leading down to a kitchen cellar. In the foreground, OUT-OF-FOCUS tables and chair backs blur across the bottom edge like a camera behind the furniture. The coffee machine's screen shows a tiny pond instead of the menu - the region's anomaly. Warm pools of light, deep blue shadow.",
+      "review": "✅ Second take (the first printed a label): two floors joined by a staircase, the coffee machine with the hero resting, blurred tables and chairs across the foreground."
+    },
+    {
+      "id": "mensa-anomaly",
+      "title": "Mensa · anomaly",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:mensa-clean",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The SAME stage as the first image after the hero touched the coffee machine screen: the hall stretches too long, chairs are stacked into wobbling towers that become platforms, trays hang in the air like steps, the counter repeats three times, every chair faces the coffee machine, the windows show the same moon twice. Same camera and landmarks, quietly wrong.",
+      "review": "✅ The counter repeats three times, chairs stack into towers, trays float as steps – the clean layout, quietly wrong."
+    },
+    {
+      "id": "toxic-garden-clean",
+      "title": "Toxic Garden · clean",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:playground-clean",
+        "ref1:20261022_142942.jpg",
+        "ref1:20261022_143102.jpg",
+        "ref1:20261022_143206.jpg",
+        "ref1:20261022_142927.jpg"
+      ],
+      "prompt": "Same FORMAT, flatness, layering and PIXEL-ART style as the FIRST image - but a different place, outdoors, from the photos (images 2-5 are only material references): raised beds edged with rust-orange corten steel seen exactly from the side as rectangular steps rising and falling left to right, gravel between them, big granite boulders and a cairn of stacked stones, dense crimson and burgundy plantings, purple asters and silver-grey shrubs, red maples; the concrete underside of a huge highway bridge spans the whole top of the image with a maintenance ledge under it; BELOW the ground, cut away like the first image's underground, a drainage culvert running left to right. Palette: rust orange, crimson, purple, silver-grey, concrete. One purple flower head turned toward the camera while all others face the sun - the region's anomaly. No greenhouse, no text.",
+      "review": "✅ Third take: flat stepped corten beds as platforms, the cairn, crimson and silver plantings, the bridge behind – the collage's palette, outdoors, in pixel art."
+    },
+    {
+      "id": "toxic-garden-anomaly",
+      "title": "Toxic Garden · anomaly",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:toxic-garden-clean",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The SAME stage as the first image after the hero touched the turned flower: the crimson plantings have grown huge and leaning, leaves as big as umbrellas form bouncy platforms, corten beds tilt at odd angles, every flower now faces the hero's position, a faint shimmer hangs over the gravel, the bridge in the background has a flat grey 404 hole with torn edges. NO red liquid, NO dripping, NO blood, NO sap streams - if anything leaks it is a thin clear amber resin. Same camera and landmarks; lush, beautiful and only quietly wrong.",
+      "review": "✅ Third take: crimson leaves as big as umbrellas form platforms, corten beds tilt, the background bridge has a hole, only amber droplets. (Take 2 dripped red sap that read as blood – rejected for no-gore.) A small stray figure on the left isn't our hero; it goes when the chunk is layered."
+    },
+    {
+      "id": "playground-clean",
+      "title": "Playground · clean",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "repo:references/campus/images/playground.png",
+        "ref1:20261022_142552.jpg",
+        "ref1:20261022_142555.jpg",
+        "ref1:20261022_142620.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The real campus adventure playground from the photos as a side-view stage: leaning green and yellow timber poles, two timber towers joined by a rope-net tunnel bridge high up, a wooden climbing house, a timber plank ramp, a sand pit dipping below the ground line, a metal tube slide from the top of a tower down to the sand. Its towers, bridge, ramp and slide form a full up-and-down route. Golden light turning to dusk. The tube slide's lower opening is a little too dark - the region's anomaly.",
+      "review": "✅ Towers, net bridge, slide, and an underground den below the sand with a ladder and a tunnel – up, down and sideways in one frame."
+    },
+    {
+      "id": "playground-anomaly",
+      "title": "Playground · anomaly",
+      "factor": 2,
+      "keyed": false,
+      "inputs": [
+        "out:playground-clean",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The SAME stage as the first image after the hero slid into the dark slide: the towers have stretched far too tall, the net bridge loops back into itself, the tube slide coils across the whole frame as a passage you can walk inside, swings hang perfectly still, the sand pit is a flat grey 404 hole with torn edges. Purple dusk. Same camera and landmarks, quietly wrong, no gore.",
+      "review": "✅ The slide coils across the stage, the towers stretch, the sand pit is a 404 hole; the den below stays as the lower route."
+    }
+  ]
+}

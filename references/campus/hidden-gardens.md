@@ -1,10 +1,8 @@
 # Hidden garden · the lake stage
 
-<!-- reference-navigation:start -->
-[← Previous: Visual library](README.md) · [Campus index](README.md) · **1 / 8** · [Next: Campus architecture →](campus.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Campus collages](README.md) · [Campus collages](README.md) · **1 / 8** · [Campus · architecture and landmarks →](campus.md)
+<!-- nav:end -->
 
 ![Hidden garden and lake-stage source motifs](images/hidden-gardens.png)
 
@@ -36,8 +34,6 @@ C03–C14 in [source-index.json](source-index.json). C04/C13/C14 are foliage/gro
 
 Later, capture an unobstructed lake-wide view, both edges of its intended crossing, a low side-on bank profile and where the garden meets the creek. Keep unknown space flexible instead of claiming generated fill is real geography.
 
-<!-- reference-navigation:start -->
-[← Previous: Visual library](README.md) · [Campus index](README.md) · **1 / 8** · [Next: Campus architecture →](campus.md)
-
-[📍 Campus boards](README.md) · [🎮 Game studies](../README.md) · [🎨 Stage experiments](../production/README.md) · [Proposal](../../docs/proposal/campus-game.md)
-<!-- reference-navigation:end -->
+<!-- nav:start -->
+[← Campus collages](README.md) · [Campus collages](README.md) · **1 / 8** · [Campus · architecture and landmarks →](campus.md)
+<!-- nav:end -->
