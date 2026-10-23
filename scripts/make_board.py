@@ -125,6 +125,33 @@ def gh(args: list[str], apply: bool) -> str:
     return result.stdout
 
 
+def setup_project(owner: str, number: int) -> None:
+    """Link the project to the repo, add a Priority field, and give every item a Status and Priority."""
+    subprocess.run(["gh", "project", "link", str(number), "--owner", owner, "--repo", REPO], capture_output=True)
+    fields = json.loads(gh(["project", "field-list", str(number), "--owner", owner, "--format", "json"], True))["fields"]
+    if not any(f["name"] == "Priority" for f in fields):
+        gh(["project", "field-create", str(number), "--owner", owner, "--name", "Priority",
+            "--data-type", "SINGLE_SELECT", "--single-select-options", "must,should,could"], True)
+        fields = json.loads(gh(["project", "field-list", str(number), "--owner", owner, "--format", "json"], True))["fields"]
+    by_name = {f["name"]: f for f in fields}
+    status, priority = by_name["Status"], by_name["Priority"]
+    todo = next(o["id"] for o in status["options"] if o["name"] == "Todo")
+    project_id = json.loads(gh(["project", "view", str(number), "--owner", owner, "--format", "json"], True))["id"]
+    items = json.loads(gh(["project", "item-list", str(number), "--owner", owner, "--limit", "500",
+                           "--format", "json"], True))["items"]
+    for item in items:
+        edits = []
+        if not item.get("status"):
+            edits.append((status["id"], todo))
+        wanted = next((l for l in ("must", "should", "could") if l in item.get("labels", [])), None)
+        if wanted and item.get("priority") != wanted:
+            edits.append((priority["id"], next(o["id"] for o in priority["options"] if o["name"] == wanted)))
+        for field_id, option_id in edits:
+            gh(["project", "item-edit", "--project-id", project_id, "--id", item["id"],
+                "--field-id", field_id, "--single-select-option-id", option_id], True)
+    print(f"Project #{number}: linked to {REPO}; Status and Priority set on {len(items)} items.")
+
+
 def story_body(epic: str, criteria: list[str], priority: str) -> str:
     return (f"Part of **{epic}**.\n\n## Acceptance criteria\n\n" + "\n".join(f"- [ ] {c}" for c in criteria)
             + f"\n\nPriority: `{priority}` · cut order in docs/10-JAM-PLAN.md\n")
@@ -196,6 +223,7 @@ def main() -> None:
             subprocess.run(["gh", "project", "item-add", str(number), "--owner", owner,
                             "--url", f"https://github.com/{REPO}/issues/{issue}"], capture_output=True)
         print(f"\nProject #{number} has all {len(created)} issues.")
+        setup_project(owner, number)
     else:
         stories = sum(len(e[4]) for e in BOARD)
         print(f"\nDry run: {len(LABELS)} labels, {len(MILESTONES)} milestones, {len(BOARD)} epics, {stories} stories. Use --apply.")
