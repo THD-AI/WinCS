@@ -4,7 +4,7 @@
 
 ![The hidden garden is the first stage priority](../../references/campus/images/hidden-gardens.png)
 
-**22 October 2026.** Ten supplied OGG recordings, 17.6 minutes, were machine-transcribed locally with faster-whisper/base.en. This is an edited design digest, not a verbatim transcript or authenticated speaker identification. Full timecoded working transcripts and source recordings remain local, outside Git. [Source names, durations and hashes](voice-source-index.json) allow rechecking.
+**22 October 2026.** Ten supplied OGG recordings, 17.6 minutes, were initially drafted locally and have now been **retranscribed through the OpenAI API** on 23 October. [All 13 complete readable API transcripts and individual summaries](transcripts/README.md) are committed at Alexander’s latest request, including the three new recordings. Raw recordings/API responses remain outside Git. This older edited digest is historical synthesis, not the new transcript or authenticated speaker identification. [Source names, durations and hashes](voice-source-index.json) allow rechecking.
 
 The first six recordings are the initial idea sequence. A07 is the friend's reflection idea; A08–A10 continue the exchange. Speaker identity is not inferred beyond Alexander's supplied context. Later written clarifications in this chat override ambiguous speech recognition.
 
@@ -23,16 +23,16 @@ The first six recordings are the initial idea sequence. A07 is the friend's refl
 | A05 · 14:19:38 · 0:00–0:55 | Infinity Blade story/lore structure; support Vatsal's project rather than taking it over; one stage first with later sets | Later written clarification: post-technological science-fantasy civilization, not cyclical narrative; Vatsal decides scope |
 | A06 · 14:25:42 · 0:00–1:28 | Playground horror-animation reference; digital corruption and surrealism; local climbing playground as a stage; masks reveal pipe/tower interiors on approach | Interior reveal zones are optional local state, not a second entire world |
 | A07 · 16:19:29 · 0:00–1:07 | Friend proposes exploration, parkour, some combat and crossing a pond reflection into a mirror world to finish traversal | Candidate signature mechanic; requires paired geometry, spawn and return rules |
-| A08 · 16:25:36 · 0:00–0:19 | Recommends **not** doing these extras during the 24 hours, but planning them as future secret bosses | Medium-model recheck corrected the initial missed negation; defer replay extras |
+| A08 · 16:25:36 · 0:00–0:19 | Discusses jam-time work versus future secret bosses; the intended recommend/not recommend wording is disputed | API passes disagree with the earlier local negation review; retain uncertainty and follow the later written deferral |
 | A09 · 17:10:22 · 0:00–0:34 | Simplify reflection transition: approach pond, reuse touch/pickup motion, spin like a crashed application, appear on opposite side | Cheap comic transition; safe teleport/state change rather than cinematic simulation |
 | A09 · 0:35–1:30 | Secret of Monkey Island and Planet of Lana as shared play references; playful trolling with economical interactions | Study setup/action/payoff, visual clarity and reuse, not copied jokes or scenes |
 | A10 · 17:11:18 · 0:00–0:55 | Photo-to-pixel and low-budget animation workflow recollection | Useful production inspiration; broad historical claims are recollections, not verified research |
 
-A02 includes a private account/workplace side discussion at roughly 2:33–2:50; it is omitted from shared documents. Remarks about particular tools/models are conversational evidence, not instructions to install those tools. No Claude integration is introduced.
+A02 includes an account/workplace side discussion omitted from this digest; the owner subsequently requested complete readable transcripts, so the API transcript preserves that context without credentials. Remarks about particular tools/models are conversational evidence, not instructions to install those tools. No Claude integration is introduced.
 
 ## Recognition uncertainties
 
-“Per core” is interpreted as **parkour**, “flash wall” as the later-confirmed **Wall of Flesh** reference, “labor case” as a possible **Leberkäse** joke, and “3GS” as possibly **Three.js**. These are interpretations, not silently corrected quotes. A01's “Duck Hunt season” likely refers to **Duck Season**, consistent with the supplied screenshot. Exact item names and A10's old-computer terms need source-audio review before quoting them. A04 and A08 were also rechecked with the medium transcription model; A08's missed negation was corrected in this digest. No human-audited verbatim claim is made.
+“Per core” is interpreted as **parkour**, “flash wall” as the later-confirmed **Wall of Flesh** reference, “labor case” as a possible **Leberkäse** joke, and “3GS” as possibly **Three.js**. These are interpretations, not silently corrected quotes. A01's “Duck Hunt season” likely refers to **Duck Season**, consistent with the supplied screenshot. Exact item names and A10's old-computer terms need source-audio review before quoting them. The earlier local A08 negation review conflicts with both new API outputs; its intended wording is now flagged rather than resolved by assertion. No human-audited verbatim claim is made.
 
 ## Explicit written clarifications to carry forward
 

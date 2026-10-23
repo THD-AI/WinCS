@@ -1,5 +1,7 @@
 # Plan and progress
 
+**Latest intake complete:** 67 additional photos organized into eight object/action collages; three new recordings transcribed through OpenAI API; earlier ten also retranscribed through the API. [Readable transcripts and per-recording summaries](brief/transcripts/README.md) · [discussion synthesis](brief/meeting-2026-10-23.md) · [HTML review](../references/campus-objects/viewer.html). Next: team selects first scene, reflection/Dexter variants, controls/body scale and organizer-approved track. Reference follow-up is one child PR on #17; no issue/board/watcher changes.
+
 **Current review handoff, 23 October:** [replacement creek location](../references/production/campus-mutation/README.md) at the same [viewer address](../references/production/campus-mutation/viewer.html). Three architecture sectors, two bounded repairs, 21 registered layer plates, six masters and a connected route proposal. Five shared scenery roles retain location identity. Exact recomposition and protected-pixel checks pass; detailed collision/clearance, art approval and physics remain open. PRs #13/#15 are merged; one new feature branch carries this replacement. No new issue, board or watcher.
 
 [← Previous](decisions/README.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](github-workspace.md)

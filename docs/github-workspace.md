@@ -29,3 +29,7 @@ Merge commits and merged-branch deletion are enabled; branch protection and PR-t
 The repository stays private. Organization Projects was enabled during initial setup and remains enabled for other organizational use; removing this project's board does not change that organization-wide setting. No collaborators, billing resources or public hosts have been added.
 
 [← Previous](PLAN.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](../CONTRIBUTING.md)
+
+## Current reference follow-up
+
+`feature/campus-action-references` is stacked on PR #17 (`feature/creek-route-layers`). It adds object collages, complete API transcripts/summaries and a proposal update. Keep at most these two active review layers; maintainer handles merging/restacking. No issue or board is created.

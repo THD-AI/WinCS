@@ -1,68 +1,78 @@
 {
   "date": "2026-10-22",
-  "transcription": "faster-whisper 1.2.1; base.en; CPU int8; beam 5; English; VAD; machine draft, not audited verbatim",
-  "raw_transcripts": "kept outside repository; design digest is the shared version",
+  "transcription": "OpenAI Audio Transcriptions API; gpt-transcribe; retranscribed 23 October 2026; replaces local-model draft",
+  "raw_transcripts": "Cleaned readable text and summaries committed under transcripts/ at the owner’s latest request; raw audio/API responses remain outside Git.",
   "recordings": [
     {
       "id": "audio-01",
       "source": "WhatsApp Ptt 2026-10-22 at 14.08.26.ogg",
       "duration_seconds": 420.8335,
-      "sha256": "d577eb962d57b71ac74ef48a50d261f6ee56a495cf41c92bc2ee81276e3ddbe6"
+      "sha256": "d577eb962d57b71ac74ef48a50d261f6ee56a495cf41c92bc2ee81276e3ddbe6",
+      "transcript": "transcripts/A01.md"
     },
     {
       "id": "audio-02",
       "source": "WhatsApp Ptt 2026-10-22 at 14.12.06.ogg",
       "duration_seconds": 211.5535,
-      "sha256": "256498c76e8e8ad9e00e94a25f4ce50a43d4dde03da915e8f17b385e061e3dd2"
+      "sha256": "256498c76e8e8ad9e00e94a25f4ce50a43d4dde03da915e8f17b385e061e3dd2",
+      "transcript": "transcripts/A02.md"
     },
     {
       "id": "audio-03",
       "source": "WhatsApp Ptt 2026-10-22 at 14.12.34.ogg",
       "duration_seconds": 14.3935,
-      "sha256": "4fc9c1a3c5ef81568f7815a05bff50f34fc3c65c07a7dbdc7541c85a8512191c"
+      "sha256": "4fc9c1a3c5ef81568f7815a05bff50f34fc3c65c07a7dbdc7541c85a8512191c",
+      "transcript": "transcripts/A03.md"
     },
     {
       "id": "audio-04",
       "source": "WhatsApp Ptt 2026-10-22 at 14.14.19.ogg",
       "duration_seconds": 35.0535,
-      "sha256": "c5fcfc91f6f5cf3ec07324563f9bf4c8dc536ba609ff5ae571fffca0aaf2821a"
+      "sha256": "c5fcfc91f6f5cf3ec07324563f9bf4c8dc536ba609ff5ae571fffca0aaf2821a",
+      "transcript": "transcripts/A04.md"
     },
     {
       "id": "audio-05",
       "source": "WhatsApp Ptt 2026-10-22 at 14.19.38.ogg",
       "duration_seconds": 54.9735,
-      "sha256": "c3b3a97340e3327ded37b1b27c84fe81e687e04f357a573b5ba237468cfa5275"
+      "sha256": "c3b3a97340e3327ded37b1b27c84fe81e687e04f357a573b5ba237468cfa5275",
+      "transcript": "transcripts/A05.md"
     },
     {
       "id": "audio-06",
       "source": "WhatsApp Ptt 2026-10-22 at 14.25.42.ogg",
       "duration_seconds": 87.7135,
-      "sha256": "6f873efcca28b503e3ad7a6f1ea4615076321882f23f3432e87670ba69e370df"
+      "sha256": "6f873efcca28b503e3ad7a6f1ea4615076321882f23f3432e87670ba69e370df",
+      "transcript": "transcripts/A06.md"
     },
     {
       "id": "audio-07",
       "source": "WhatsApp Ptt 2026-10-22 at 16.19.29.ogg",
       "duration_seconds": 66.5135,
-      "sha256": "78293c6c0db381c5f9990246f77b18e3780776037fd853da10a38abd0bb6e99e"
+      "sha256": "78293c6c0db381c5f9990246f77b18e3780776037fd853da10a38abd0bb6e99e",
+      "transcript": "transcripts/A07.md"
     },
     {
       "id": "audio-08",
       "source": "WhatsApp Ptt 2026-10-22 at 16.25.36.ogg",
       "duration_seconds": 19.2335,
-      "sha256": "88e29cb67bb23bf5e52fec689551ee83b3648965c417aeaa04771b2b67099998"
+      "sha256": "88e29cb67bb23bf5e52fec689551ee83b3648965c417aeaa04771b2b67099998",
+      "transcript": "transcripts/A08.md"
     },
     {
       "id": "audio-09",
       "source": "WhatsApp Ptt 2026-10-22 at 17.10.22.ogg",
       "duration_seconds": 90.2735,
-      "sha256": "bd2f82ea36cd4904c08c9b1b56aac4ddb490d39179e2ef387fa399ac9b6b4785"
+      "sha256": "bd2f82ea36cd4904c08c9b1b56aac4ddb490d39179e2ef387fa399ac9b6b4785",
+      "transcript": "transcripts/A09.md"
     },
     {
       "id": "audio-10",
       "source": "WhatsApp Ptt 2026-10-22 at 17.11.18.ogg",
       "duration_seconds": 55.4735,
-      "sha256": "6935bf573cd950393b41507165ac07d7332e7fcd49b952b5eb3f46500b55d5bb"
+      "sha256": "6935bf573cd950393b41507165ac07d7332e7fcd49b952b5eb3f46500b55d5bb",
+      "transcript": "transcripts/A10.md"
     }
   ],
-  "review": "A04 and A08 retranscribed with faster-whisper medium; A08 explicitly says would not recommend during the 24 hours"
+  "review": "A08 has conflicting recognition of recommend/not recommend. Both API passes say recommend; older local review says not recommend. Retain dispute; follow later written scope instructions."
 }

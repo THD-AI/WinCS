@@ -10,7 +10,7 @@ Research, ask organizer questions, verify repository access and install a team-a
 
 ## Agenda mapped to deliverables
 
-**Current candidate:** lake entry → mirror arrival in Hidden Garden → one short exploration/action route, visual fault and exit from the [campus proposal](../proposal/campus-game.md). Recheck theme/rules. Voice note A08 recommends deferring secret-boss extras beyond the event.
+**Current candidate:** lake entry → mirror arrival in Hidden Garden → one short exploration/action route, visual fault and exit from the [campus proposal](../proposal/campus-game.md). Recheck theme/rules. A08 has disputed recognition; later written scope instructions defer replay-boss extras. The latest discussion favors completing one character and one level before expansion; first-scene choice is open. [Team handoff](team-workflow.md).
 
 | Gate | Garden deliverable | Fallback |
 | --- | --- | --- |

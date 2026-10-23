@@ -2,6 +2,8 @@
 
 [![Start with the hidden garden location collage](campus/images/hidden-gardens.png)](campus/README.md)
 
+**New object library:** [eight cleaned character/equipment/enemy collages](campus-objects/README.md) · [HTML review with all 13 API transcripts](campus-objects/viewer.html).
+
 **You are in the game library.** [📍 Campus photo boards](campus/README.md) · [🎨 Generated stage experiments](production/README.md) · [Rusty Crossings flat-strip study](production/crossings-strip/README.md) · [Current proposal](../docs/proposal/campus-game.md) · [Voice notes](../docs/brief/voice-notes.md).
 
 Campus route: Hidden Garden → campus → Lost in the Green → crossings → stepping-stone creek → Toxic Garden; Playground/robot are optional material. The stage experiments connect those references to newly composed side-scrolling art, separate from this library of existing games.

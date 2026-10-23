@@ -1,5 +1,21 @@
 # A campus that has clearly failed its sanity check
 
+**New discussion and references, 23 October:** [eight object/action collages from 67 additional photos](../../references/campus-objects/README.md) · **[HTML review](../../references/campus-objects/viewer.html)** · [three-recording synthesis](../brief/meeting-2026-10-23.md) · [all 13 readable API transcripts and individual summaries](../brief/transcripts/README.md).
+
+![The campus chair as an everyday-object action reference](../../references/campus-objects/images/chair.png)
+
+**Current discussion direction:** familiar campus comedy gradually becomes uncanny psychological horror, without gore or an apocalypse. A fictional quantum-computing field experiment is a positively received story seed. Finish one character and one level before expansion. Rusty Crossings and Toxic Garden attract interest; the first playable scene is still a team decision, rather than a promise to build the full route.
+
+| Keep for the first review | Choose before implementation | Leave expandable |
+| --- | --- | --- |
+| Student silhouette, authored route, chair-first melee proposal, readable threat, one anomaly beat, ending/retry | First scene; movement/body scale; exact controls; reflection as area conduit or fast travel; Dexter companion or trader | Returning tray, directional strikes/block, signpost weapon, food boss, map/device tiers, extra stages and replay bosses |
+
+**Dexter thread:** a plush guide absorbs defeated anomalies, grows less reassuring and may betray the player. The attached three-charge companion and intermittent upgrade trader are competing versions. The jam can hint at the change without implementing a multi-stage evolution or final boss. The [food and equipment boards](../../references/campus-objects/README.md) are reference vocabulary, not a commitment to every item or enemy.
+
+**Draft loop for discussion:** enter a familiar place → find a chair → learn one strike against one ground threat → notice a cheap visual fault → choose a short branch/return route → reach a safe anomaly transfer or exit → restart. If reflection travel is selected, pair two authored anchors and reset safely; do not require generated mirrored physics. This loop is an engineering recommendation, not a recorded unanimous vote.
+
+**Rule update:** participants report “spooky outside” as the theme, but AI/freestyle remarks conflict. Confirm the organizer's actual track/AI/pre-work terms. Full transcript quotations do not authorize a board, tool installation or runtime development. [Team handoff and staged delivery](../delivery/team-workflow.md).
+
 [![The recognizable creek transformed into substantial riveted maze](../../references/production/campus-mutation/images/after-center.png)](../../references/production/campus-mutation/viewer.html)
 
 **Latest visual direction, 23 October:** [the replacement creek](../../references/production/campus-mutation/README.md) keeps sky, trees, bank, water, near rails and plants fixed while architecture becomes a substantial branching maze. Its journey has an entry, climbs, return routes, optional dead ends, a reserved boss clearing and an exit. All seven roles cover three chunks and recompose exactly. The viewer exposes seams, source collage, layer proof and route intent. The graph is not a physics playtest; final level approval remains with the team.
@@ -53,7 +69,7 @@ Do not turn every visual motif into a new algorithm or simulation. The maze can 
 
 ![Substantial pathfinding-like maze direction restored](../../references/production/seam-pipeline/images/maze-center.png)
 
-**Latest follow-up:** broad blue-green riveted structures, substantial concrete shafts and a full-height branching maze are the preferred traversal language. Thin bars under one long bridge are superseded. [Actual per-layer seam repairs and expandable chunk pipeline](../technical/stage-art-pipeline.md) now have executable offline tooling and a separate [visual study](../../references/production/seam-pipeline/README.md). The clean location and maze remain separate studies awaiting final composition, not a completed layered level.
+**Latest follow-up:** broad blue-green riveted structures, substantial concrete shafts and a full-height branching maze are the preferred traversal language. Thin bars under one long bridge are superseded. [Actual per-layer seam repairs and expandable chunk pipeline](../technical/stage-art-pipeline.md) now have executable offline tooling and a separate [visual study](../../references/production/seam-pipeline/README.md). The older clean/maze studies are historical inputs; the current replacement combines their roles in one registered review scene, still without gameplay physics.
 
 **Clean center → same-width left/right extensions → two staggered join windows → dress the strip → five-plus layers → individual grabs/rigs → recompose → motion/corruption.**
 
@@ -72,7 +88,7 @@ The [current location](../../references/production/campus-mutation/README.md) ex
 
 ## Buildable jam recommendation
 
-**One complete short scene first**, with Hidden Garden/lake still the first location candidate. The Rusty Crossings master demonstrates the production method rather than replacing that priority. After theme reveal, Vatsal chooses the actual scene and signature action.
+**One complete short scene first**, with Hidden Garden/lake an arrival candidate alongside the newly discussed Crossings/Toxic Garden options. The Rusty Crossings master demonstrates the production method rather than replacing that priority. After theme reveal, Vatsal chooses the actual scene and signature action.
 
 Proposed action/exploration slice: walk/jump → touch the lake and arrive at a safe anchor → traverse an authored route → experience one visual error → reach a clear payoff/exit → restart. If combat is selected, budget one simple melee action and one enemy with a clear tell/recovery. Choose that instead of adding a separate stealth system. A robot pickup is optional after the loop works.
 

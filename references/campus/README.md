@@ -2,6 +2,8 @@
 
 [← Game references](../README.md) · [Home](../../README.md) · [Read the proposal →](../../docs/proposal/campus-game.md)
 
+**Additional references:** [eight new object/action collages from 67 photos](../campus-objects/README.md) · [HTML review](../campus-objects/viewer.html). These complement the eight location boards below.
+
 **You are in the campus photo-board library.** [Rusty Crossings source board](crossings.md#location-photo-board) · [🎨 Generated stage experiments](../production/README.md) · [Flat banners and seven layers](../production/crossings-strip/README.md). Generated art is a separate section; location Previous/Next stays within the eight boards.
 
 ![Primary Hidden Garden photographic reference](images/hidden-gardens.png)

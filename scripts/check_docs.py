@@ -5,6 +5,7 @@ import json
 import re
 import sys
 import struct
+import subprocess
 from urllib.parse import unquote
 import xml.etree.ElementTree as ET
 from refresh_reference_navigation import navigation
@@ -332,9 +333,20 @@ for diagram in (ROOT / 'docs/proposal/diagrams').glob('*.svg'):
     except ET.ParseError as exc:
         errors.append(f'{diagram.relative_to(ROOT)}: invalid SVG: {exc}')
 
-for forbidden in ('CLAUDE.md', '.env'):
+for forbidden in ('CLAUDE.md',):
     if (ROOT / forbidden).exists():
         errors.append(f'Unexpected root file: {forbidden}')
+if (ROOT / '.env').exists():
+    tracked = subprocess.run(['git', 'ls-files', '--', '.env'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
+    ignored = subprocess.run(['git', 'check-ignore', '-q', '--', '.env'], cwd=ROOT).returncode == 0
+    if tracked or not ignored:
+        errors.append('Local .env must be ignored and untracked; never commit credentials')
+
+from check_intake import verify as verify_intake
+try:
+    verify_intake()
+except (AssertionError, KeyError, ValueError, OSError) as exc:
+    errors.append('Reference/transcript intake verification failed: ' + str(exc))
 
 if errors:
     print('\n'.join(errors))

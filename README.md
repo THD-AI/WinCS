@@ -6,7 +6,9 @@ This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexa
 
 [![Hidden garden and lake-stage reference collage](references/campus/images/hidden-gardens.png)](references/campus/hidden-gardens.md)
 
-**A familiar campus, behaving strangely.** Touch the lake and enter the Hidden Garden mirror space; explore a campus whose routes can glitch into new shapes. The new [campus proposal](docs/proposal/campus-game.md) turns 10 voice notes and 59 photos into a first-slice candidate. The image above is an AI-cleaned reference study, not final game art.
+**A familiar campus, behaving strangely.** Touch the lake and enter the Hidden Garden mirror space; explore a campus whose routes can glitch into new shapes. The new [campus proposal](docs/proposal/campus-game.md) combines the original 10 notes/59 photos with three new recordings/67 new photos into a first-slice discussion draft. The image above is an AI-cleaned reference study, not final game art.
+
+**New: [eight object/action collages](references/campus-objects/README.md) · [HTML review](references/campus-objects/viewer.html) · [all 13 API transcripts + summaries](docs/brief/transcripts/README.md) · [latest discussion](docs/brief/meeting-2026-10-23.md).** The three new recordings develop an uncanny campus/quantum-experiment direction, chair-first weapon idea and competing Dexter/reflection mechanics. Source photos and audio stay outside Git.
 
 **[Eight location/item collages](references/campus/README.md)** · **[Voice-note design digest](docs/brief/voice-notes.md)** · **[How we build layered stages](docs/design/layered-stage-workflow.md)**
 
