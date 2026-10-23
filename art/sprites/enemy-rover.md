@@ -1,7 +1,7 @@
 # Enemy · rover
 
 <!-- nav:start -->
-[← Enemy · drone](enemy-drone.md) · [Sprite boards](README.md) · **12 / 14** · [Enemy · crab →](enemy-crab.md)
+[← Enemy · drone](enemy-drone.md) · [Sprite boards](README.md) · **12 / 16** · [Enemy · crab →](enemy-crab.md)
 <!-- nav:end -->
 
 ![Enemy · rover](images/enemy-rover-preview.png)
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/enemy-rover.png` · rebuild: `python scripts/make_boards.py draw enemy-rover --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Enemy · drone](enemy-drone.md) · [Sprite boards](README.md) · **12 / 14** · [Enemy · crab →](enemy-crab.md)
+[← Enemy · drone](enemy-drone.md) · [Sprite boards](README.md) · **12 / 16** · [Enemy · crab →](enemy-crab.md)
 <!-- nav:end -->
