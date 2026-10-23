@@ -6,7 +6,7 @@
 
 ![The student · hurt and interact](images/hero-hurt-preview.png)
 
-**Review:** 🟡 Drawn 23 Oct, waiting for Alexander's Design review. Counts match docs/07 and the atlas slices cleanly; the looping previews below are at twice game size.
+**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
