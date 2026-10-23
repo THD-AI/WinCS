@@ -29,6 +29,17 @@ Instructions for AI coding agents (Codex, Claude, …) working in this repositor
 - **No HTML viewers.** Every page is Markdown; run `python scripts/navigation.py` after adding or reordering pages.
 - Never commit photos, audio, raw API output (`tmp/`), contact sheets or duplicates.
 
+## Reference fidelity – every agent, every change you can see
+
+Alexander, 24 Oct: everything is done the way the HUD and the pocket computer were ([#127](https://github.com/THD-AI/WinCS/issues/127), [09 – UI sprites](docs/09-ART-PIPELINE.md#ui-sprites--hud-and-pocket-computer)). This applies to art, UI, animation, physics and stage work alike.
+
+1. **Plan first.** Before generating or coding, write the plan into the doc the work belongs to: a mermaid diagram of the steps, the inputs, the masks and the outputs. Code and art follow the plan; when they diverge, update the plan in the same PR.
+2. **Art only through the pipeline** (lane A): `make_boards.py` with `gpt-image-2.5-sunburst`, references **cropped** to the part that matters (`repo:<image>@x,y,w,h`), masks derived from a board's own raw (never hand-painted), magenta or a board's own background as the key. Lane B uses placeholders at the documented sizes until the art lands.
+3. **Measure, never guess.** Every size, ratio and position on screen comes from the approved references in `art/` or the numbers in [docs/04](docs/04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows), [docs/02](docs/02-GAME-DESIGN.md) and [docs/05](docs/05-ENEMIES-AND-BOSSES.md) (hero 76 px body, rover 25 px, drone 45 px span, walk 3.5 m/s, jump 52–96 px …). Store the measured numbers in config or code constants with a comment saying where they come from. Physics is measured the same way: its tests assert the documented numbers.
+4. **Prove it with a comparison.** Every PR that changes what's on screen includes a comparison made with `python scripts/compare.py` – the reference above, ours below at game size, one ruler grid (`images`), or frames on one baseline against their documented heights (`lineup`) – and links it in the PR body. A mismatch is fixed before review, not after.
+5. **Review, then merge.** Alexander reviews with the steps in [CONTRIBUTING – Test and review](CONTRIBUTING.md#test-and-review-a-pr). Nothing merges before his review and corrections.
+6. **Finished work may be corrected across lanes.** An open stack belongs to its author: comment on it, don't push to it. Once its author has moved on (merged, or working on something else), either lane may correct it to match the docs and references – docs, code, ratios, sprites, masks, animations, physics – in its own PR, with the comparison and Alexander's review.
+
 ## Git
 
 - Work only from an issue you were given. Branch from `main` as `<type>/<issue>-<slug>` (`feature/`, `fix/`, `docs/`, `art/`, `chore/`, `ci/`). One issue, one branch, one PR. Commit as `arudaev <hlexhelftd@gmail.com>`, conventional subjects (plus `art:` for assets), no attribution trailers.
