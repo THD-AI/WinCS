@@ -1,7 +1,7 @@
 # Playground · clean
 
 <!-- nav:start -->
-[← Toxic Garden · anomaly](toxic-garden-anomaly.md) · [Location strips](README.md) · **11 / 12** · [Playground · anomaly →](playground-anomaly.md)
+[← Toxic Garden · anomaly](toxic-garden-anomaly.md) · [Stage concepts](README.md) · **11 / 12** · [Playground · anomaly →](playground-anomaly.md)
 <!-- nav:end -->
 
 ![Playground · clean](images/playground-clean-preview.png)
@@ -23,5 +23,5 @@ The real campus adventure playground from the photos as a side-view stage: leani
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/playground-clean.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo playground-clean`
 
 <!-- nav:start -->
-[← Toxic Garden · anomaly](toxic-garden-anomaly.md) · [Location strips](README.md) · **11 / 12** · [Playground · anomaly →](playground-anomaly.md)
+[← Toxic Garden · anomaly](toxic-garden-anomaly.md) · [Stage concepts](README.md) · **11 / 12** · [Playground · anomaly →](playground-anomaly.md)
 <!-- nav:end -->

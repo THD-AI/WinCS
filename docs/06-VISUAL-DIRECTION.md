@@ -48,6 +48,8 @@ Everything in the game must look like it belongs in the **style master** above. 
 | Toxic Garden | Sickly diffuse | Acid green, magenta-red foliage, corten | Glowing pods |
 | Playground | Purple dusk | Timber, green and yellow poles, sand | The black slide mouth |
 
+**Light.** God rays come from a sun that sits off to one side, so the shafts fall at an angle. They are not a perfectly vertical fan as if the sun were straight overhead (Vatsal, A14). Falling leaves drifting past as you walk stay; the team liked them.
+
 **Silhouettes.** Characters and enemies get a thin warm rim light and read as clean shapes against any background (Hollow Knight). The hero's hood is solid black inside, always.
 
 **The anomaly language** (the one way the world breaks):

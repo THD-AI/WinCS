@@ -1,7 +1,7 @@
 # Hidden Garden · anomaly
 
 <!-- nav:start -->
-[← Hidden Garden · clean](hidden-garden-clean.md) · [Location strips](README.md) · **2 / 12** · [Lost in the Green · clean →](lost-in-the-green-clean.md)
+[← Hidden Garden · clean](hidden-garden-clean.md) · [Stage concepts](README.md) · **2 / 12** · [Lost in the Green · clean →](lost-in-the-green-clean.md)
 <!-- nav:end -->
 
 ![Hidden Garden · anomaly](images/hidden-garden-anomaly-preview.png)
@@ -21,5 +21,5 @@ The SAME stage as the first image - same camera, same layout, same landmarks - a
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hidden-garden-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo hidden-garden-anomaly`
 
 <!-- nav:start -->
-[← Hidden Garden · clean](hidden-garden-clean.md) · [Location strips](README.md) · **2 / 12** · [Lost in the Green · clean →](lost-in-the-green-clean.md)
+[← Hidden Garden · clean](hidden-garden-clean.md) · [Stage concepts](README.md) · **2 / 12** · [Lost in the Green · clean →](lost-in-the-green-clean.md)
 <!-- nav:end -->

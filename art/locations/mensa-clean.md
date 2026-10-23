@@ -1,7 +1,7 @@
 # Mensa · clean
 
 <!-- nav:start -->
-[← Campus · anomaly](campus-anomaly.md) · [Location strips](README.md) · **7 / 12** · [Mensa · anomaly →](mensa-anomaly.md)
+[← Campus · anomaly](campus-anomaly.md) · [Stage concepts](README.md) · **7 / 12** · [Mensa · anomaly →](mensa-anomaly.md)
 <!-- nav:end -->
 
 ![Mensa · clean](images/mensa-clean-preview.png)
@@ -22,5 +22,5 @@ Built from the first image (approved: keep its red counters, display cases, glow
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/mensa-clean.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo mensa-clean`
 
 <!-- nav:start -->
-[← Campus · anomaly](campus-anomaly.md) · [Location strips](README.md) · **7 / 12** · [Mensa · anomaly →](mensa-anomaly.md)
+[← Campus · anomaly](campus-anomaly.md) · [Stage concepts](README.md) · **7 / 12** · [Mensa · anomaly →](mensa-anomaly.md)
 <!-- nav:end -->

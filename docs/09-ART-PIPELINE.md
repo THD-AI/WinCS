@@ -63,6 +63,17 @@ What Codex's runs proved on Rusty Creek, generalised:
 
 `art/sprites/boards.json`: the hero sheet (locked) comes first, the pose or object photos follow, and the style master goes last. The model draws on a flat magenta key. `crush` keys the magenta at full size, downscales ×2 with premultiplied alpha (so no purple fringes), quantises to 96 colours, and writes a transparent 1× PNG plus a readable preview. Chair photos are split into **block**, **overhead/up-down** and **side** sequences by file name. Every board stays "to do" until the direction is approved; see [07](07-ASSET-MANIFEST.md).
 
+## Smooth, not rubbery
+
+The team's open question in A14: how do generated frames move without looking like rubber hose animation? The rubber look comes from in-betweens that morph one pose into the next. We avoid them like this:
+
+1. **Poses, not in-betweens.** Each sheet is drawn as distinct key poses (contact, down, passing, up for a walk; anticipation, swing, follow-through, recoil for the chair) in **one** generation, so the proportions, palette and pixel size match. We never ask the model to interpolate between two frames.
+2. **Stepped timing.** Play on twos at 12 fps, and hold the strong poses longer (anticipation, impact). Pixel art reads crisp when it snaps, not when it slides.
+3. **Transitions at matching poses.** Idle→walk, walk→run and run start are short bridge clips that start and end on poses shared with the loops. The controller only switches on those frames (on a contact frame, the feet match).
+4. **Smears instead of blends** for fast motion: one stretched smear frame on the chair swing and the knockback, as in Spider-Verse. No motion blur or warp.
+5. **One grid, one palette.** Everything is crushed to the same pixel scale and 96-colour palette, and the feet are anchored to one baseline row, so frames don't wobble.
+6. **Preview before approval.** Every sheet gets a looping preview at game size on its review page. A frame that pops is redrawn on its own against its neighbours as inputs.
+
 ## The crossing (no animation budget)
 
 The region crossing uses only sprites the hero already needs (hit, knockback) plus one UI window the game renders with real text: **"THD.exe has stopped responding."** See the [crash frame](../art/direction/anomaly-language.md).

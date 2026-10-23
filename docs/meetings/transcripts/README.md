@@ -1,6 +1,6 @@
 # Transcripts
 
-All 13 recordings, transcribed with the OpenAI API on 23 Oct 2026. A01–A10 are WhatsApp voice notes (mostly Alexander; A07 is Lex). A11–A13 are the 23 Oct meetings and are labelled by speaker. What each one contributed is in the [meetings overview](../README.md); source hashes, durations and models are in [source-index.json](source-index.json). Audio stays in the team Drive.
+All 14 recordings, transcribed with the OpenAI API on 23 Oct 2026. A01–A10 are WhatsApp voice notes (mostly Alexander; A07 is Lex). A11–A14 are the 23 Oct meetings and are labelled by speaker. What each one contributed is in the [meetings overview](../README.md); source hashes, durations and models are in [source-index.json](source-index.json). Audio stays in the team Drive.
 
 | Recording | Topic | Length |
 | --- | --- | --- |
@@ -17,5 +17,6 @@ All 13 recordings, transcribed with the OpenAI API on 23 Oct 2026. A01–A10 are
 | [A11](A11.md) | Team meeting: scope, tone, level design | 36.4 min |
 | [A12](A12.md) | Lex and Alexander: travel and Dexter | 12.7 min |
 | [A13](A13.md) | Travel clarification: conduit or fast travel | 0.9 min |
+| [A14](A14.md) | Team review: reading the design docs | 27.5 min |
 
-Re-transcribe or add a recording: `python scripts/transcribe_recordings.py "<audio>" --id A14` (raw output goes to `tmp/transcripts/`).
+Re-transcribe or add a recording: `python scripts/transcribe_recordings.py "<audio>" --id A15` (raw output goes to `tmp/transcripts/`).

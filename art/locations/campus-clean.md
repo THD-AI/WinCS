@@ -1,7 +1,7 @@
 # Campus · clean
 
 <!-- nav:start -->
-[← Lost in the Green · anomaly](lost-in-the-green-anomaly.md) · [Location strips](README.md) · **5 / 12** · [Campus · anomaly →](campus-anomaly.md)
+[← Lost in the Green · anomaly](lost-in-the-green-anomaly.md) · [Stage concepts](README.md) · **5 / 12** · [Campus · anomaly →](campus-anomaly.md)
 <!-- nav:end -->
 
 ![Campus · clean](images/campus-clean-preview.png)
@@ -22,5 +22,5 @@ Same FORMAT, flatness, layering and pixel style as the FIRST image (a side-view 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/campus-clean.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo campus-clean`
 
 <!-- nav:start -->
-[← Lost in the Green · anomaly](lost-in-the-green-anomaly.md) · [Location strips](README.md) · **5 / 12** · [Campus · anomaly →](campus-anomaly.md)
+[← Lost in the Green · anomaly](lost-in-the-green-anomaly.md) · [Stage concepts](README.md) · **5 / 12** · [Campus · anomaly →](campus-anomaly.md)
 <!-- nav:end -->

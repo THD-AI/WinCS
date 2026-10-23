@@ -233,6 +233,25 @@
         "chunk_seconds": 600,
         "script": "scripts/transcribe_recordings.py"
       }
+    },
+    {
+      "id": "A14",
+      "title": "Team review · reading the design docs",
+      "file": "A14.md",
+      "summary": "The team reviews docs 01–07 out loud. Slice order fixed: Hidden Garden prologue (longer) → Rusty Creek, opened clean and turned by Jenny's ram → Jenny. Ledge pull-up cut, no stamina, no glitch spells; HUD, crash window, enemy animations and food approved; title still open.",
+      "source": "GameJam 2.m4a",
+      "source_sha256": "334967104b44b3fc90517a13450ffbf4b095d08fbcc5359c96fe2daebf584fd1",
+      "upload_sha256": "334967104b44b3fc90517a13450ffbf4b095d08fbcc5359c96fe2daebf584fd1",
+      "duration_seconds": 1651.558188,
+      "requested_model": "gpt-4o-transcribe-diarize",
+      "method": "OpenAI Audio Transcriptions API",
+      "date": "2026-10-23",
+      "speaker_labels": {
+        "model": "gpt-4o-transcribe-diarize",
+        "date": "2026-10-23",
+        "chunk_seconds": 600,
+        "script": "scripts/transcribe_recordings.py"
+      }
     }
   ],
   "raw_audio": "Outside Git; only cleaned text and summaries committed."

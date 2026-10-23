@@ -1,7 +1,7 @@
 # Playground · anomaly
 
 <!-- nav:start -->
-[← Playground · clean](playground-clean.md) · [Location strips](README.md) · **12 / 12** · [Stage concepts →](README.md)
+[← Playground · clean](playground-clean.md) · [Stage concepts](README.md) · **12 / 12** · [Stage concepts →](README.md)
 <!-- nav:end -->
 
 ![Playground · anomaly](images/playground-anomaly-preview.png)
@@ -20,5 +20,5 @@ The SAME stage as the first image after the hero slid into the dark slide: the t
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/playground-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo playground-anomaly`
 
 <!-- nav:start -->
-[← Playground · clean](playground-clean.md) · [Location strips](README.md) · **12 / 12** · [Stage concepts →](README.md)
+[← Playground · clean](playground-clean.md) · [Stage concepts](README.md) · **12 / 12** · [Stage concepts →](README.md)
 <!-- nav:end -->

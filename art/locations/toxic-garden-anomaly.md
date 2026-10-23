@@ -1,7 +1,7 @@
 # Toxic Garden · anomaly
 
 <!-- nav:start -->
-[← Toxic Garden · clean](toxic-garden-clean.md) · [Location strips](README.md) · **10 / 12** · [Playground · clean →](playground-clean.md)
+[← Toxic Garden · clean](toxic-garden-clean.md) · [Stage concepts](README.md) · **10 / 12** · [Playground · clean →](playground-clean.md)
 <!-- nav:end -->
 
 ![Toxic Garden · anomaly](images/toxic-garden-anomaly-preview.png)
@@ -20,5 +20,5 @@ The SAME stage as the first image after the hero touched the turned flower: the 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/toxic-garden-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo toxic-garden-anomaly`
 
 <!-- nav:start -->
-[← Toxic Garden · clean](toxic-garden-clean.md) · [Location strips](README.md) · **10 / 12** · [Playground · clean →](playground-clean.md)
+[← Toxic Garden · clean](toxic-garden-clean.md) · [Stage concepts](README.md) · **10 / 12** · [Playground · clean →](playground-clean.md)
 <!-- nav:end -->

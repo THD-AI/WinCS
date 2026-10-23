@@ -1,7 +1,7 @@
 # Mensa · anomaly
 
 <!-- nav:start -->
-[← Mensa · clean](mensa-clean.md) · [Location strips](README.md) · **8 / 12** · [Toxic Garden · clean →](toxic-garden-clean.md)
+[← Mensa · clean](mensa-clean.md) · [Stage concepts](README.md) · **8 / 12** · [Toxic Garden · clean →](toxic-garden-clean.md)
 <!-- nav:end -->
 
 ![Mensa · anomaly](images/mensa-anomaly-preview.png)
@@ -20,5 +20,5 @@ The SAME stage as the first image after the hero touched the coffee machine scre
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/mensa-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo mensa-anomaly`
 
 <!-- nav:start -->
-[← Mensa · clean](mensa-clean.md) · [Location strips](README.md) · **8 / 12** · [Toxic Garden · clean →](toxic-garden-clean.md)
+[← Mensa · clean](mensa-clean.md) · [Stage concepts](README.md) · **8 / 12** · [Toxic Garden · clean →](toxic-garden-clean.md)
 <!-- nav:end -->

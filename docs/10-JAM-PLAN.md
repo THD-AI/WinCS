@@ -13,7 +13,7 @@
 | Fri 15:30–18:40 (Sprint 1) | References, recordings, design docs, visual direction, stage concepts, repo clean | This folder, reviewed by the team ✅ |
 | **18:40–19:30** | **Issue board**: milestones (M0 setup → M1 movement → M2 combat → M3 prologue → M4 Rusty Creek + Jenny → M5 polish + submit), epics with sub-issue stories, every story with acceptance criteria; the reusable pipelines (chunks left/right/up/down, transition chunks, layer split, collision annotation) as their own epic | Board live, everyone has a first issue |
 | 19:30–20:00 | Pizza. Walk the board together; lock the title | Decisions logged |
-| 20:00–00:00 (Sprint 2) | `game/` scaffold on Vercel · player controller (walk, run, jump, slopes, ledge grab, ladders) on Rusty Creek collision · sprite boards from the approved direction | Hero moves on the real stage, on a preview URL |
+| 20:00–00:00 (Sprint 2) | `game/` scaffold on Vercel · player controller (walk, run, jump, slopes, ladders) on Rusty Creek collision · sprite boards from the approved direction | Hero moves on the real stage, on a preview URL |
 | 00:30–03:00 | Chair combat (3 attacks + guard) · rover + crab AI · health/death/respawn · coffee machine save · clean → anomaly switch | You can fight through chunk 1 |
 | 03:00–07:00 | Prologue (Hidden Garden walk, Dexter, pond, THD.exe crash) · Jenny boss · drone · pickups · HUD | Full slice playable start to finish |
 | 07:00–08:00 | Breakfast. **Playtest by someone outside the team** | Bug list |
@@ -24,8 +24,8 @@
 
 | | Vatsal | Lex | Alexander |
 | --- | --- | --- | --- |
-| Sprint 2 | Player controller (move, jump, ladders) | Rusty Creek collision annotation + encounter placement | Scaffold, Vercel, sprite pipeline → atlases |
-| Night | Combat + enemies | Prologue map (Hidden Garden) + Jenny arena tuning | Prologue sequence, HUD, Dexter, effects |
+| Sprint 2 | Player controller (move, jump, ladders) | Rusty Creek design: the clean bridge, the Jenny ram, the maze as the tutorial; collision + encounters | Scaffold, Vercel, sprite pipeline → atlases |
+| Night | Combat + enemies | Hidden Garden prologue: stretch it to about 3 minutes, less parkour (built on the layout already drawn) + Jenny arena tuning | Prologue sequence, HUD, Dexter, effects |
 | Morning | Bugs, feel | Playtest, level polish | Deploy, title, credits |
 
 ## Cut order (if we are late, cut from the top)
@@ -36,7 +36,7 @@
 4. Jenny phase 3 (the jumping charge)
 5. Crab (keep rovers only)
 6. Pocket computer *map* (keep the item and the Dexter scene)
-7. Prologue walk (start at the pond with a single interact)
+7. Prologue walk (start at the pond: Dexter points, then shoves)
 
 **Never cut:** the THD.exe crash transition, the clean → anomaly switch in Rusty Creek, the chair, Dexter absorbing Jenny's black fluid, the deploy.
 

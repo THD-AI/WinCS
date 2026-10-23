@@ -10,9 +10,9 @@
 
 ## The pitch
 
-You are a first-year student at THD Deggendorf, hood up, poncho on. Nobody ever sees your face. On a quiet afternoon you find **Dexter**, the university's black panther mascot plush, sitting by the Hidden Garden pond. He hops away like the White Rabbit, and you follow. The pond's reflection is wrong. You touch it. You take damage, get lifted into the air spinning like a starfish, and a Windows-style crash dialog freezes the screen. Then you land somewhere that is almost the campus, and isn't.
+You are a first-year student at THD Deggendorf, hood up, poncho on. Nobody ever sees your face. On a quiet afternoon you find **Dexter**, the university's black panther mascot plush, sitting by the Hidden Garden pond. He hops away like the White Rabbit, and you follow him to the pond. Its reflection is wrong. You lean in, and the little plush gives you a shove. You take damage, get lifted into the air spinning like a starfish, and a Windows-style crash dialog freezes the screen. Then you land somewhere that is almost the campus, and isn't.
 
-A quantum-computing field experiment has torn the campus into overlapping dimensions. Each region is a familiar place that has become uncanny. Ordinary campus objects are your weapons: a plywood chair, a cafeteria tray, a road sign. THD's **autonomous** machines – the lab rover, the hexapod crab robot, the quadcopter drone and Jenny, Fast Forest's driverless race car – have had their self-driving taken over by **anomalies**. Dexter keeps turning up. He apologises, explains, hands you upgrades and quietly absorbs every anomaly you defeat. He grows each time.
+A quantum-computing field experiment has torn the campus into overlapping dimensions. Each region is a familiar place that has become uncanny. Ordinary campus objects are your weapons: a plywood chair, a cafeteria tray, a road sign. THD's **autonomous** machines – the lab rover, the hexapod crab robot, the quadcopter drone and Jenny, Fast Forest's driverless race car – have had their self-driving taken over by **anomalies**. Dexter keeps turning up. He never speaks and never fights: he bows, points, leaves food on your path, hands you upgrades and quietly absorbs every anomaly you defeat. He grows each time.
 
 **Genre:** 2D side-scrolling exploration-action (light Metroidvania). **Camera:** flat side view; the hero is small in a wide world, like Planet of Lana. **Look:** detailed hi-bit pixel art. **Tone:** a **secret horror game** – it plays and looks like a cozy campus adventure, and the horror is hidden in plain sight: details that are slightly wrong, a mascot that is a little too friendly. No gore, no jump-scare spam, no apocalypse. **Platform:** browser, deployed on Vercel.
 
@@ -20,9 +20,9 @@ A quantum-computing field experiment has torn the campus into overlapping dimens
 
 ## Working title
 
-**DEGGSTER.EXE** – *"has stopped responding."*
+**DEGGSTER.EXE** – *"has stopped responding."* (placeholder)
 
-The mascot is the secret villain, and a crash dialog is the transition between worlds, so the title is the twist hidden in plain sight. Alternates: *Pond Not Found*, *Field Experiment*, *Office Hours: Out of Bounds*. Nobody has checked yet whether these names are taken. The team still picks the title together; see [decisions](11-DECISIONS.md).
+The mascot is the secret villain, and a crash dialog is the transition between worlds, so the title is the twist hidden in plain sight. In the 23 Oct review (A14) the team said it **needs more work**: too obvious, and it should read a little ironic to someone who doesn't know the twist. Suggestions so far: *Deggendorf Simulator* (Vatsal), *Pond Not Found*, *Field Experiment*, *Office Hours: Out of Bounds*. Nobody has checked yet whether these names are taken. The team picks the title together; see [decisions](11-DECISIONS.md).
 
 Team name: **Poncho Goblins** (registered as Septim Goblins).
 
@@ -44,7 +44,7 @@ Team name: **Poncho Goblins** (registered as Septim Goblins).
 | 9 Years of Shadows (Lex) | Rich pixel scenery | Hi-bit pixel density for stages |
 | Kingdom Two Crowns | Pixel water reflections; the Greed's black goo | Pond reflection anomaly; black fluid seeping from possessed machines |
 | Terraria | Wall of Flesh / Moon Lord: huge, simple, readable bosses | Jenny, the self-driving race car |
-| Children of Morta | Concentrated, colourful effects | Impact bursts, glitch-meter abilities |
+| Children of Morta | Concentrated, colourful effects | Impact bursts, glitch FX |
 | Duck Season | A friendly mascot costume that is wrong on a second look; secret horror | Dexter's final form is the mascot costume, leaking where its pieces join; multiple endings later |
 | Monkey Island (classic) | Pixel charm, jokes you do, not read | Interactions with a payoff; no wall-of-text jokes |
 | Infinity Blade | Advanced tech read as ancient relics | The experiment's hardware feels like temples and artefacts |
@@ -55,8 +55,8 @@ The full research notes are in [what we love](research/what-we-love.md).
 
 The jam runs Fri 23 Oct 14:00 → Sat 24 Oct 11:30 (jury). We build **one vertical slice** and stop:
 
-1. **Prologue – Hidden Garden** (tutorial walk, Dexter, the pond anomaly, the crash)
-2. **Region 1 – Rusty Creek** (find the chair, first enemies, Dexter's apology and the pocket computer, boss: **Jenny**)
+1. **Prologue – Hidden Garden**, about 3 minutes (a calm walk, Dexter, the pond, the shove, the crash)
+2. **Region 1 – Rusty Creek**: the clean creek, then Jenny rams you and the creek turns into the rust maze. This is where you learn everything (jump, climb, ladders, the chair, the first enemies); Dexter's apology and the pocket computer; boss: **Jenny**
 3. Credits card with a "to be continued" glitch and a first creepy hint about Dexter
 
 Everything else in this folder is the full game, kept so the jam slice is built on a design that can keep growing. The cut order is in the [jam plan](10-JAM-PLAN.md).

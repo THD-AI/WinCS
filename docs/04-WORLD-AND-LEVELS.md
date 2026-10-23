@@ -13,7 +13,7 @@ Every region is a real THD Deggendorf place we photographed on 22–23 Oct, rebu
 | # | Region | Real place | Its anomaly | New weapon / upgrade | Boss | Jam slice? |
 | --- | --- | --- | --- | --- | --- | --- |
 | 0 | **Hidden Garden** (prologue) | Garden and pond behind the campus | The pond's wrong reflection | – | – | ✅ |
-| 1 | **Rusty Creek** | The creek, rails, steel bridges | The bridge railing | Chair; pocket computer | **Jenny** | ✅ |
+| 1 | **Rusty Creek** | The creek, rails, steel bridges | Jenny rams you on the bridge | Chair; pocket computer | **Jenny** | ✅ |
 | 2 | **Lost in the Green** | Pampas grass, birches, slab paths, the granite boulders | A boulder with a mirror face | Tray; **glide** | Drone swarm queen | – |
 | 3 | **Campus / Mensa** | Pink-render buildings, the scaffolded Mensa, the cafeteria | Black puddle; the coffee machine screen | Sign pole; tray recall | The Lunch Rush | – |
 | 4 | **Toxic Garden** | Corten beds, granite, crimson plantings under the highway bridge | The turned flower | Wall-slide | Mutant planter | – |
@@ -82,7 +82,7 @@ Every time a chunk's layers are made, it also gets an annotation drawn over the 
 | 🟩 Green | line | Walkable ground and gentle slopes (≤ 40°) |
 | 🟫 Brown | line | Slide slope (> 40°): you skid down |
 | 🟨 Yellow | line | One-way platform (decks, planks, tray stacks): stand on top, jump up through, ↓ + Jump to drop |
-| 🩵 Cyan | point | Ledge: a grabbable edge – hang, pull up, drop |
+| 🩵 Cyan | point | Ledge: a grabbable edge (reserved – the pull-up was cut for the jam) |
 | 🟦 Blue | box | Climb zone: ladder, vines, scaffold, stairs |
 | 🟥 Red | box | Solid: wall or ceiling you can't enter |
 | ⬛ Black | box | No-go / kill-free reset: out of bounds, deep water – respawn at last safe ground |

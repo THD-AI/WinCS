@@ -1,7 +1,7 @@
 # Toxic Garden · clean
 
 <!-- nav:start -->
-[← Mensa · anomaly](mensa-anomaly.md) · [Location strips](README.md) · **9 / 12** · [Toxic Garden · anomaly →](toxic-garden-anomaly.md)
+[← Mensa · anomaly](mensa-anomaly.md) · [Stage concepts](README.md) · **9 / 12** · [Toxic Garden · anomaly →](toxic-garden-anomaly.md)
 <!-- nav:end -->
 
 ![Toxic Garden · clean](images/toxic-garden-clean-preview.png)
@@ -23,5 +23,5 @@ Same FORMAT, flatness, layering and PIXEL-ART style as the FIRST image - but a d
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/toxic-garden-clean.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo toxic-garden-clean`
 
 <!-- nav:start -->
-[← Mensa · anomaly](mensa-anomaly.md) · [Location strips](README.md) · **9 / 12** · [Toxic Garden · anomaly →](toxic-garden-anomaly.md)
+[← Mensa · anomaly](mensa-anomaly.md) · [Stage concepts](README.md) · **9 / 12** · [Toxic Garden · anomaly →](toxic-garden-anomaly.md)
 <!-- nav:end -->

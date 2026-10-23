@@ -1,7 +1,7 @@
 # Campus · anomaly
 
 <!-- nav:start -->
-[← Campus · clean](campus-clean.md) · [Location strips](README.md) · **6 / 12** · [Mensa · clean →](mensa-clean.md)
+[← Campus · clean](campus-clean.md) · [Stage concepts](README.md) · **6 / 12** · [Mensa · clean →](mensa-clean.md)
 <!-- nav:end -->
 
 ![Campus · anomaly](images/campus-anomaly-preview.png)
@@ -20,5 +20,5 @@ The SAME stage as the first image after the hero stepped into the black puddle: 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/campus-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo campus-anomaly`
 
 <!-- nav:start -->
-[← Campus · clean](campus-clean.md) · [Location strips](README.md) · **6 / 12** · [Mensa · clean →](mensa-clean.md)
+[← Campus · clean](campus-clean.md) · [Stage concepts](README.md) · **6 / 12** · [Mensa · clean →](mensa-clean.md)
 <!-- nav:end -->

@@ -1,7 +1,7 @@
 # Hidden Garden · clean
 
 <!-- nav:start -->
-[← Stage concepts](README.md) · [Location strips](README.md) · **1 / 12** · [Hidden Garden · anomaly →](hidden-garden-anomaly.md)
+[← Stage concepts](README.md) · [Stage concepts](README.md) · **1 / 12** · [Hidden Garden · anomaly →](hidden-garden-anomaly.md)
 <!-- nav:end -->
 
 ![Hidden Garden · clean](images/hidden-garden-clean-preview.png)
@@ -21,5 +21,5 @@ The prologue, built from the first image (approved: keep its look, its pond, dec
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hidden-garden-clean.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo hidden-garden-clean`
 
 <!-- nav:start -->
-[← Stage concepts](README.md) · [Location strips](README.md) · **1 / 12** · [Hidden Garden · anomaly →](hidden-garden-anomaly.md)
+[← Stage concepts](README.md) · [Stage concepts](README.md) · **1 / 12** · [Hidden Garden · anomaly →](hidden-garden-anomaly.md)
 <!-- nav:end -->

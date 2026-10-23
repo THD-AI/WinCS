@@ -1,7 +1,7 @@
 # Lost in the Green · anomaly
 
 <!-- nav:start -->
-[← Lost in the Green · clean](lost-in-the-green-clean.md) · [Location strips](README.md) · **4 / 12** · [Campus · clean →](campus-clean.md)
+[← Lost in the Green · clean](lost-in-the-green-clean.md) · [Stage concepts](README.md) · **4 / 12** · [Campus · clean →](campus-clean.md)
 <!-- nav:end -->
 
 ![Lost in the Green · anomaly](images/lost-in-the-green-anomaly-preview.png)
@@ -20,5 +20,5 @@ The SAME stage as the first image after the hero touched the mirror-faced obelis
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/lost-in-the-green-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo lost-in-the-green-anomaly`
 
 <!-- nav:start -->
-[← Lost in the Green · clean](lost-in-the-green-clean.md) · [Location strips](README.md) · **4 / 12** · [Campus · clean →](campus-clean.md)
+[← Lost in the Green · clean](lost-in-the-green-clean.md) · [Stage concepts](README.md) · **4 / 12** · [Campus · clean →](campus-clean.md)
 <!-- nav:end -->

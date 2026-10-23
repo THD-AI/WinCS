@@ -35,7 +35,7 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 | Big plush | 3–4 ft | The same plush, too big; stitching strained, posture slightly too upright | Regions 2–3 |
 | **Mascot (final form)** | **8.5 ft** | THD's real Deggster **mascot costume** – big fluffy head, grey crest T-shirt, furry gloves and feet – but far too tall. Friendly at first glance, like Duck Season's mascot. On a second look: thick black fluid seeps out exactly where the costume pieces join – the gap between the head and the neck sleeve, the glove cuffs, the ankles – the head sits a little too far forward, the eyes are too glossy. Nobody is inside, or something is | Region 4 → final boss |
 
-**What he does:** he doesn't follow you around. He *appears* – at coffee machines, at the start of each region, sometimes sitting just out of reach. He apologises, explains a little, gives you food, the pocket computer and the region upgrade. Every anomaly you defeat leaves a pool of black fluid, and **Dexter absorbs it**. That is why no bodies are left behind. The more you fight, the bigger he gets. He grows between visits; you see the change and nobody comments on it.
+**What he does:** he doesn't follow you around. He *appears* – at coffee machines, at the start of each region, sometimes sitting just out of reach. He **never speaks and never fights**: he is a proxy who needs someone to fight for him (A14). He bows, sweats, points, leaves food on your path, and hands over the pocket computer and the region upgrade. Every anomaly you defeat leaves a pool of black fluid, and **Dexter absorbs it**. That is why no bodies are left behind. The more you fight, the bigger he gets. He grows between visits; you see the change and nobody comments on it.
 
 **The twist:** he wants you to keep clearing anomalies so he can become *the* anomaly. Inspired by the ally who betrays you in Little Nightmares and the friendly mascot who turns in Duck Season.
 
@@ -44,24 +44,35 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 | Beat | What the player sees | What the player does |
 | --- | --- | --- |
 | 1 | Hidden Garden, late afternoon. Birdsong. A small black plush sits on a bench. | Walk right (movement tutorial) |
-| 2 | The plush hops off and waddles away, looking back, like the White Rabbit | Follow; jump a log; climb a slope |
-| 3 | Dexter stops at the pond and points. One patch of the reflection shows a rusty girder maze that isn't there | ↑ to interact |
-| 4 | Touch → white flash, the normal damage recoil… | – |
+| 2 | The plush hops off and waddles away, looking back, like the White Rabbit. About 3 minutes of calm garden: hills, the deck, reeds, secrets behind grass. Lex's layout, toned down – less parkour, nothing fantastical yet | Follow; jump a log; climb a slope |
+| 3 | Dexter stops at the pond and points at the ground. One patch of the reflection shows a rusty girder maze that isn't there | Walk up to the edge |
+| 4 | Dexter shoves (or trips) you in → white flash, the normal damage recoil… No cutscene, no dialogue | – |
 | 5 | …but instead of landing, the hero lifts and spins like a starfish; pixels tear | – |
 | 6 | Freeze. An old Windows-style error window: **"THD.exe has stopped responding."** [OK] | Press Act to click OK |
 | 7 | Black. Glitch lines. | – |
-| 8 | The hero lands in Rusty Creek and the damage animation finishes. Dexter is gone | Control returns |
+| 8 | The hero lands in clean Rusty Creek, by the metal bridge, and the damage animation finishes. Dexter is gone | Control returns |
 
 ## Region 1 story beats
 
-1. You land in **clean** Rusty Creek: the real creek, rails and bridge, quiet. A plywood chair lies by the path. **Pick it up.** On the bridge the railing shimmers; touching it **turns the region** into the rust maze and throws you back to its start ([02](02-GAME-DESIGN.md)). First fight: one autonomous rover (combat tutorial).
-2. Midway, at the first coffee machine: **Dexter is already sitting there.** "Sorry. That wasn't supposed to happen." He gives you the **pocket computer** and a muffin. A line hints at the experiment.
-3. The boss clearing: **Jenny**, the possessed race car (see [enemies](05-ENEMIES-AND-BOSSES.md)).
-4. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller. "We should keep going." The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
+1. You land in **clean** Rusty Creek: the real creek, rails and the metal bridge. Quiet, no enemies, nothing wrong yet.
+2. On the bridge, **Jenny**, the driverless race car, comes out of nowhere and rams you. You fly back with the same cartoon knockback, and the anomaly activates: the region **turns** into the rust maze and you are back at its start ([02](02-GAME-DESIGN.md)).
+3. The maze is the real tutorial: jumping, climbing, ladders. A plywood chair lies by the path – **pick it up**. First fight: one autonomous rover.
+4. Midway, at the first coffee machine: **Dexter is already sitting there.** He bows and sweats – sorry – and hands you the **pocket computer** and a muffin. No words.
+5. The boss clearing: **Jenny** again, now for real (see [enemies](05-ENEMIES-AND-BOSSES.md)).
+6. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller, and he hops off ahead of you. The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
 
 ## The rest of the arc (post-jam)
 
 Regions 2–5 each end with a boss that Dexter absorbs. Archive notes reveal that the experiment's logs mention a "mascot-shaped containment vessel". In the Playground region Dexter stops pretending. The final fight is Dexter at 8.5 ft. **Endings** (Duck Season style): defeat him (he collapses back into a torn plush), or refuse to feed him (skip the absorbs), which leads to a different, quieter ending.
+
+**Why did the machines turn?** Left open on purpose (A14): the archive notes hint at the experiment, and a later version explains it.
+
+**Parked for later (A14), not for the jam:**
+
+- Dexter in mascot form tries to **possess you** – a secret ending.
+- An **underground lab with server farms** under the I-building car park, where the black fluid gathers: a candidate for the final area.
+- The theme "the people and things you meet at university help you, then use you" – without real people, so it needs care.
+- A Volkswagen boss; more humanoid monsters.
 
 **Secret replay bosses** (after one completion, a joke layer): professors and university figures as giant bosses in the Terraria Moon Lord / Wall of Flesh mould. They tie into the corrupted subjects (the AI / algorithms professor → the pathfinding rust maze). Private portraits stay out of the repository.
 

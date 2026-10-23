@@ -23,6 +23,8 @@ All of them: contact damage 1 cell, white hit flash, 3–4 frame knockback, and 
 
 Jenny is **Fast Forest**'s car – THD's Formula Student team, founded 2008. Every car they build is called Jenny; the current one is **Jenny 16GDX** (rolled out 22 May 2026), carbon-black with lime-green, teal and blue stripes. Fast Forest has worked on a **driverless** Jenny since 2017: a camera finds the track's cones and the car steers itself (sources: fast-forest.de, PNP 12 Oct 2023). In the game the cockpit is empty, the blue autonomous-status light on the roll hoop flashes, and the anomaly is doing the driving. 30 chair hits, three phases. The pattern comes straight from the brief: she tries to run you over, crashes into things, sheds parts you have to dodge, slows down, you hit her, she charges up again, and it repeats.
 
+Lex's read (A14), which the fight follows: Jenny is a **shielded** enemy. Her nose is armoured and chair hits bounce off the front. You jump over her charge and hit her **from behind** or while she is stunned. She crashes into the rusted pillars and throws scrap, so there is a ranged threat too. You meet her once before the fight: in clean Rusty Creek she rams you on the bridge, and that is what turns the creek.
+
 | Phase | HP | Pattern |
 | --- | --- | --- |
 | 1 | 30→20 | **Rev** (1 s, engine shakes, exhaust) → **charge** across the arena → **crash** into the far wall → 3 parts fly out in arcs (spring, bolt, wing shard) → **stunned** 3 s (hazard light blinking): hit her → reboot with green sparks → repeat |

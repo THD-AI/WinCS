@@ -34,16 +34,18 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 
 The weapon is switched in the pocket computer menu (or ←/→ while the menu is open). The menu key is a system button, like Start, and does not count against "two buttons".
 
+**Open (Lex, A14):** put Jump on ↑ (as in many arcade platformers) and free the second button for a skill – later glide and double jump on the same input. Then interact would move to ↓ or happen on contact. The team decides this once the controller is playable; the table above stays the default until then.
+
 ## Movement
 
 - **Walk / run:** one speed curve, about 3.5 m/s walking and 6 m/s running, with a short acceleration so the poncho has weight.
 - **Jump:** variable height, from about 1.2 m (tap) to 2.2 m (hold). Coyote time is 0.1 s and jump buffering 0.12 s. These two are the cheapest things that make a platformer feel good.
 - **Hills:** the ground is a smooth polyline. You walk up and down slopes up to 40°, like Planet of Lana and Ori. There are no staircase blocks.
 - **Slides:** slopes steeper than 40° are slides. You skid down them fast with the poncho flapping, and can jump off at any point.
-- **Ledge grab:** jump at a marked ledge edge and the hero catches it, hangs, and pulls up with ↑ (or drops with ↓). Ledges are authored in the collision data, never guessed from pixels.
+- **No ledge pull-up.** Cut in the 23 Oct review (A14): our hero is a student, not a parkour athlete. Maybe a later update. Hanging from a rope or pipe and shimmying along it is possible post-jam. Ledge points stay in the annotation format so that update needs no re-annotation.
 - **One-way platforms:** girder decks, scaffold planks, tray stacks. ↓ + Jump drops through.
 - **Climbing:** ladders, vines, scaffold and stairs. Press ↑ in a climb zone. Climbing is slow, and you can't attack while climbing.
-- **Glide (later, Lex's proposal):** hold Jump in the air and the poncho opens like a sail for a slow, steerable fall. It's the Region 2 upgrade that opens Lost in the Green's upper routes. It's in the design and the collision data from day one, but not in the jam slice.
+- **Glide (later, Lex's proposal):** hold Jump in the air and the poncho opens like a sail for a slow, steerable fall. You glide for as long as you're in the air – **there is no stamina bar** (decided in A14). It's the Region 2 upgrade that opens Lost in the Green's upper routes. It's in the design and the collision data from day one, but not in the jam slice.
 - **Four directions:** every region is explored left/right *and* up/down: a mountainside route, a lower branch, an underground pocket ([04](04-WORLD-AND-LEVELS.md)).
 - **No wall-jump, no dash in the jam slice.**
 
@@ -52,7 +54,7 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 - **Health:** 5 battery cells (HUD top-left, Hollow Knight-sized). Enemy contact or a hit costs 1 cell; Jenny's charge costs 2.
 - **On hit:** white flash, knockback (about 1.5 m), 1 s of invulnerability with flicker.
 - **Death:** the hero collapses into pixel dust. You respawn at the last coffee machine with full health. Defeated normal enemies return; bosses stay defeated.
-- **Healing:** food pickups (muffin 1 cell, cake slice 1, Leberkäse roll 2, wafer 1). Drinking coffee at a save point refills everything.
+- **Healing:** Mensa food that **Dexter leaves on your path**. Each item heals a set amount, and some add a small extra: muffin 1 cell, cake slice 1, wafer 1, Leberkäse roll 2 + a short defence boost (it's heavy food). Drinks give small boosts (sparkling water: a short speed-up). Numbers and joke effects get tuned in playtests. Drinking coffee at a save point refills everything.
 - **Pits and hazards** (creek current, toxic sap): lose 1 cell and reappear at the last safe ground. No full death.
 
 ## Combat
@@ -61,7 +63,7 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 
 | Weapon | Found | Verbs | Feel |
 | --- | --- | --- | --- |
-| **Chair** (plywood + black steel legs) | Rusty Creek, first room | Side sweep, up attack, down slam / air pogo, **guard** (hold Act: legs pointed forward like a shield) | Weak, slow-ish, honest. Big hit-stop (60 ms) |
+| **Chair** (plywood + black steel legs) | Rusty Creek, first room | Side sweep, up attack, down slam / air pogo, **guard** (hold Act: legs pointed forward like a shield) | A **light** weapon with short range, not a heavy one. Repeated taps alternate the swing (back, forth, up, down), and each ends in a slight recoil. The slam has no ground crack and no shockwave. Hit-stop 60 ms |
 | **Tray** (yellow Mensa tray) | Lost in the Green (region 2) | Throw: flies like a boomerang and returns; catch it to throw again | Ranged; lets you kite drones |
 | **Sign pole** (yellow town-sign on a steel pole) | Campus (region 3) | Heavy forward thrust, long reach; breaks guards | Slow, strong |
 
@@ -71,11 +73,10 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 
 ## The glitch meter (after Region 1)
 
-Each defeated anomaly charges a 3-segment **glitch meter**. This was Lex's idea, merged with Alexander's Dexter version:
+Each defeated anomaly charges a 3-segment **glitch meter**. This was Lex's idea, merged with Alexander's Dexter version. **It is not a magic system** (A14): spells would make the game too easy.
 
-- **1 charge – Ctrl+Z:** rewind yourself 1 second (dodge through an attack, or undo a bad jump).
-- **3 charges – 404:** every enemy on screen glitches out for 3 s (stunned, and takes double damage).
-- **At a coffee machine, Dexter takes whatever is left in the meter** and, once enough has piled up, gives you the region's upgrade. This is the hook for the story: you are feeding him.
+- **Charges open anomaly interactions:** a glitched door, a pixel-stretched bridge you can walk while it holds, a puzzle object that only exists in the anomaly state.
+- **At a coffee machine, Dexter takes whatever is left in the meter** and, once enough has piled up, gives you the region's upgrade. This is the hook for the story: you are feeding him. You don't need the energy; he does.
 
 The jam slice ships without the meter if time runs out (cut item 2 in the [jam plan](10-JAM-PLAN.md)).
 
@@ -92,12 +93,12 @@ The jam slice ships without the meter if time runs out (cut item 2 in the [jam p
 
 ## Every region has two states – clean and anomaly
 
-You enter every region in its **clean** state: the real campus place, calm and pretty. Somewhere in it is that region's **anomaly**, which is always a different thing and always pointed out the first time (Dexter points at the pond). When you touch it, the region **turns**. The same place becomes its anomaly version, you're pushed back to the region's start, and the stage you now explore is the broken one. Rusty Creek is the model: first the normal creek and bridge, then the rust maze that looks like a pathfinding algorithm.
+You enter every region in its **clean** state: the real campus place, calm and pretty. Somewhere in it is that region's **anomaly**, which is always a different thing and always pointed out the first time (Dexter points at the pond). When you touch it (or, in Rusty Creek, when it hits you), the region **turns**. The same place becomes its anomaly version, you're pushed back to the region's start, and the stage you now explore is the broken one. Rusty Creek is the model: first the normal creek and bridge, then the rust maze that looks like a pathfinding algorithm.
 
 | Region | Clean | Its anomaly (what you touch) | Anomaly state |
 | --- | --- | --- | --- |
 | Hidden Garden | Pond, deck, reeds | The patch of the pond that reflects girders | The reflection climbs out; girders grow through the reeds |
-| Rusty Creek | Creek, rails, bridge | The bridge's railing shimmers | The rust maze |
+| Rusty Creek | Creek, rails, bridge | **Jenny** – the driverless car rams you on the bridge | The rust maze |
 | Lost in the Green | Pampas hills, slab path | A granite boulder with one mirror face | Hedge maze, birches repeated, leaves fall upward |
 | Campus | Plaza, scaffolded Mensa facade | A black puddle that reflects nothing | Scaffolding grows into the sky; facade cut and repeated |
 | Mensa | Night cafeteria | The coffee machine screen shows a pond | Chairs stack into towers; trays float as steps |
@@ -110,7 +111,7 @@ Concepts for every pair: [stage concepts](../art/locations/README.md).
 
 ## What is NOT in the game (on purpose)
 
-Gore, blood, an apocalypse, a minimap, crafting, an economy, procedural runs, dialogue trees. Dexter speaks in short lines, three at most per visit.
+Gore, blood, an apocalypse, a minimap, crafting, an economy, procedural runs, a stamina bar, spells, **dialogue of any kind**. Nobody speaks and there are no thought bubbles (A14): Dexter acts – he points, bows, sweats, hands things over. The only text is UI: the crash window, the pocket computer, archive notes.
 
 <!-- nav:start -->
 [← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 13** · [03 – Story and cast →](03-STORY-AND-CAST.md)

@@ -4,7 +4,7 @@
 [← 12 – Team workflow](../12-TEAM-WORKFLOW.md) · [Design docs](../README.md) · **13 / 13** · [Design documents →](../README.md)
 <!-- nav:end -->
 
-Thirteen recordings, 22–23 Oct 2026, transcribed with the OpenAI API. A11–A13 also have speaker labels (`gpt-4o-transcribe-diarize`). Audio stays in the team Drive; the transcripts are here so anyone (and any agent) can check where a design decision came from. The design itself lives in the numbered docs; transcripts are evidence, not instructions.
+Fourteen recordings, 22–23 Oct 2026, transcribed with the OpenAI API. A11–A14 also have speaker labels (`gpt-4o-transcribe-diarize`). Audio stays in the team Drive; the transcripts are here so anyone (and any agent) can check where a design decision came from. The design itself lives in the numbered docs; transcripts are evidence, not instructions.
 
 ## What each recording gave the design
 
@@ -23,6 +23,7 @@ Thirteen recordings, 22–23 Oct 2026, transcribed with the OpenAI API. A11–A1
 | [A11](transcripts/A11.md) | **Team meeting** (36 min) | Theme "spooky outside"; uncanny psychological horror, no gore; quantum experiment; one level first; 4 directions + 2 buttons; map item; Lana-style hills; colour-coded collision; Lex designs stages; team workflow file | everywhere |
 | [A12](transcripts/A12.md) | **Lex + Alexander** (13 min) | Dexter is the **panther**; absorbs anomalies and grows to ~9 ft with black goo; slides as fast travel; chair → tray → sign; drones are hard, so avoid them and come back; backtracking yes, cheap teleport no | [02](../02-GAME-DESIGN.md), [03](../03-STORY-AND-CAST.md) |
 | [A13](transcripts/A13.md) | Travel clarification (1 min) | Reflections are either the main conduit or fast travel; skip the dramatic teleport animation | [02](../02-GAME-DESIGN.md) |
+| [A14](transcripts/A14.md) | **Team review of the docs** (27.5 min) | Slice = Hidden Garden (longer) → Rusty Creek → Jenny; Jenny's ram turns the creek; Dexter shoves you into the pond, no dialogue; ladders yes, ledge pull-up no; no stamina, no spells; food heals a set share; HUD and crash window approved; title open | [01](../01-PROPOSAL.md), [02](../02-GAME-DESIGN.md), [03](../03-STORY-AND-CAST.md), [05](../05-ENEMIES-AND-BOSSES.md), [07](../07-ASSET-MANIFEST.md), [11](../11-DECISIONS.md) |
 
 ## 23 Oct in one paragraph
 
@@ -30,7 +31,7 @@ The campus starts familiar and gets uncanny, with no gore and no apocalypse, bec
 
 ## Reading notes
 
-- Speaker labels: in A12 and A13, speaker **A** is Alexander and **B** is Lex, inferred from content (A describes "my initial idea… the Dexter plushie"; B proposes the slides and the meter). In A11, labels restart in every 10-minute chunk. Alexander, Lex and Vatsal are named wherever the content makes it certain; other labels stay raw.
+- Speaker labels: in A14, labels restart per chunk like A11; Alexander, Lex and Vatsal are named where the content makes it certain (Lex: "what I'm designing", Vatsal takes the notes). In A12 and A13, speaker **A** is Alexander and **B** is Lex, inferred from content (A describes "my initial idea… the Dexter plushie"; B proposes the slides and the meter). In A11, labels restart in every 10-minute chunk. Alexander, Lex and Vatsal are named wherever the content makes it certain; other labels stay raw.
 - Speech recognition misses: "THZ" means THD; "Dexter" is the mascot Deggster; "night sim" means "item"; "Septin Goblins" means Septim Goblins.
 - Off-topic chat (moving house, jokes) is left in the transcripts and ignored by the design.
 
