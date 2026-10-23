@@ -277,7 +277,38 @@
         "ref2:20261023_130804.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Weapon: the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). Animation for a HORIZONTAL SIDE ATTACK with the chair, hero facing right, 8 frames in one row, then the same 8 frames repeated in row 2 as a clean silhouette-only version in dark grey (for timing review). Frames: 1 ready stance holding the chair by the seat at hip height, legs pointing back; 2 anticipation, body twists back, chair pulled behind; 3 start of swing; 4 fast swing smear (chair blurred into a pixel smear arc, legs forward); 5 contact frame, chair fully extended in front at waist height with a small white impact spark; 6 follow-through past the body; 7 recovery, weight back on the rear foot; 8 back to ready. Copy the grips and the low wide stance from the photos (the images after the first). Row 3: the chair alone at the same pixel scale in 4 orientations (upright side view, upside-down, held horizontally, legs-forward)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 3 rows. Row 1, exactly 8 figures: SWEEP A, a horizontal forehand swing - ready (chair held by the seat at hip height, legs pointing back), wind-up turning the body back, swing start, ONE SMEAR frame (the chair stretched into a blurred pixel arc), contact (chair fully extended in front at waist height with a small white impact spark), follow-through past the body, settle, ready. Row 2, exactly 8 figures: SWEEP B, the return backhand swing the other way, starting where sweep A ended - wind-up, swing start, ONE SMEAR frame, contact with a small spark, follow-through, settle, ready. Row 3, exactly 3 items: RECOIL, 2 frames (the chair bounces back off something hard and the hero leans back, then steadies), then THE CHAIR ALONE lying on its side on the ground (no hero), at the same pixel scale. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "sweep-a",
+              "frames": 8,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "sweep-b",
+              "frames": 8,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "recoil",
+              "frames": 2,
+              "loop": false
+            },
+            {
+              "anim": "chair-pickup",
+              "frames": 1
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
       "id": "chair-overhead",
@@ -292,7 +323,36 @@
         "ref2:20261023_130948.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Weapon: the bent-plywood chair with thin black steel legs from the photos (the images after the first). Two attack animations, hero facing right. Row 1, UP ATTACK (hits enemies above), 6 frames: crouch with chair low, lift, chair thrust straight overhead seat-up legs to the sky (as in the photos), hold at peak with a small impact spark above, start lowering, back to ready. Row 2, DOWN SLAM (overhead to ground), 7 frames: chair raised high behind the head, peak, fast downward smear arc, chair slammed upright onto the ground in front with a dust burst and small pixel debris, a 1-frame screen-shake pose, hero pulls the chair back up, ready. Row 3, air version of the down slam: hero in the air pointing the chair legs downward (pogo, like a downward strike in Hollow Knight), 4 frames. Copy the weight shift and grips from the photos (the images after the first)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 3 rows. Row 1, exactly 6 figures: UP ATTACK - crouch with the chair low, lift, ONE SMEAR frame upward, the chair thrust straight overhead seat-up with the legs to the sky and a small spark above, start lowering, ready. Row 2, exactly 7 figures: DOWN SLAM - chair raised high behind the head, peak, ONE SMEAR frame of the downward arc, the chair slammed upright onto the ground in front with a small puff of dust (no crack, no shockwave, no debris), a short hold, pull the chair back up, ready. Row 3, exactly 4 figures: AIR POGO - the hero in the air pointing the chair legs straight down below the feet: tuck, thrust down, bounce up off a hit, recover. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "ref": "slam-06",
+        "rows": [
+          [
+            {
+              "anim": "up",
+              "frames": 6,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "slam",
+              "frames": 7,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "pogo",
+              "frames": 4,
+              "loop": false,
+              "float": true
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
       "id": "chair-block",
@@ -306,7 +366,36 @@
         "ref2:20261023_130959.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Weapon: the bent-plywood chair with thin black steel legs. BLOCK / GUARD animation, hero facing right, holding the chair seat in front of the chest like a shield with the four legs pointing forward at the enemy, exactly as in the photos. Row 1: raise guard, 4 frames (from ready to full guard). Row 2: hold guard loop, 3 frames (tiny breathing shift); then block-impact reaction, 4 frames: a hit spark on the seat, the hero skids back a few pixels, the chair wobbles, recover. Row 3: guard break, 4 frames: the chair is knocked up and away, hero stumbles back with arms out, then catches the chair again. Keep the sturdy wide stance from the photos (the images after the first)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 2 rows. Row 1, exactly 7 figures: GUARD UP, 4 frames (from ready to holding the chair seat in front of the chest like a shield with the four legs pointing forward at the enemy, as in the photos), then GUARD HOLD, 3 frames (a tiny breathing shift). Row 2, exactly 8 figures: GUARD IMPACT, 4 frames (a small spark on the seat, the hero skids back a little, the chair wobbles, steady again), then GUARD BREAK, 4 frames (the chair is knocked up and away, the hero stumbles back with arms out, then catches the chair again). The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "guard-up",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "guard-hold",
+              "frames": 3
+            }
+          ],
+          [
+            {
+              "anim": "guard-impact",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "guard-break",
+              "frames": 4,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 23 Oct, waiting for Alexander's Design review."
     },
     {
       "id": "tray-throw",
