@@ -37,7 +37,8 @@ export class Player {
     let remaining = Math.min(milliseconds / 1000, 0.1);
     while (remaining > 1e-9) {
       const dt = Math.min(remaining, 1 / 120);
-      move(this.motion, axis, dt); this.body.vx = this.motion.vx;
+      move(this.motion, axis, dt);
+      if (!this.body.sliding) this.body.vx = this.motion.vx;
       jump(this.body, this.air, jumpDown, dt);
       const wasGrounded = this.body.grounded;
       stepBody(this.body, this.chunks.map(c => c.world), dt);
@@ -46,13 +47,14 @@ export class Player {
       remaining -= dt;
     }
     if (this.body.y > 900 || this.chunks.some(c => c.world.noGo.some(box => overlaps(this.body, box)))) {
-      Object.assign(this.body, { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true });
+      Object.assign(this.body, { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true, sliding: false, slope: 0 });
       this.motion = movement();
       this.air = jumpState(this.body.y);
     }
     const pose = this.air.landing > 0 ? this.air.hard
       ? `hard-landing-${String(Math.min(3, Math.floor((4 / 12 - this.air.landing) * 12))).padStart(2, '0')}`
-      : 'jump-08' : !this.body.grounded ? this.body.vy < 0 ? 'jump-02' : 'fall-00' : null;
+      : 'jump-08' : this.body.sliding ? `fall-${String(Math.floor(this.scene.time.now * 12 / 1000) % 3).padStart(2, '0')}`
+      : !this.body.grounded ? this.body.vy < 0 ? 'jump-02' : 'fall-00' : null;
     if (pose && this.scene.textures.get('hero-air').has(pose)) this.sprite.setTexture('hero-air', pose);
     else this.sprite.setTexture('hero-move', 'idle-00');
     this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y)).setFlipX(this.motion.facing < 0);
@@ -60,6 +62,6 @@ export class Player {
     this.debug.clear();
     if (this.showDebug) this.debug.lineStyle(2, 0xffffff).strokeRect(this.body.x - BODY_WIDTH / 2,
       this.body.y - BODY_HEIGHT, BODY_WIDTH, BODY_HEIGHT);
-    this.label.setText(`vx ${this.body.vx.toFixed(1)} px/s | last ${this.lastSpeed.toFixed(1)} (${(this.lastSpeed / 43).toFixed(2)} m/s)\nheld ${this.motion.held.toFixed(2)}s | x ${this.body.x.toFixed(1)} y ${this.body.y.toFixed(1)}\njump ${this.air.height.toFixed(1)}px | landing ${this.air.hard ? 'hard' : 'normal'}`);
+    this.label.setText(`vx ${this.body.vx.toFixed(1)} px/s | last ${this.lastSpeed.toFixed(1)} (${(this.lastSpeed / 43).toFixed(2)} m/s)\nheld ${this.motion.held.toFixed(2)}s | x ${this.body.x.toFixed(1)} y ${this.body.y.toFixed(1)}\njump ${this.air.height.toFixed(1)}px | ${this.body.sliding ? 'slide' : 'walk'} slope ${(Math.atan(this.body.slope ?? 0) * 180 / Math.PI).toFixed(1)}°`);
   }
 }

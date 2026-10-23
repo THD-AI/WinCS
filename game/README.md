@@ -49,4 +49,6 @@ F2 shows speed, hold time, position and the 28×76 player body. The hero current
 uses the idle atlas pose on the ground; full animation switching is delivered by #31.
 Space/K or gamepad A/Cross jumps, with about 52px tap height and 96px held height,
 0.1s coyote time and 0.12s buffering. Landing uses the drawn landing pose; falls
-of at least 152px use the four-frame hard landing. Slopes and ladders follow separately.
+of at least 152px use the four-frame hard landing. Authored walk polylines follow
+slopes through 40°; steeper surfaces accelerate downhill, with jumping still available.
+F2 shows the contact slope and slide state. One-way platforms and ladders follow separately.
