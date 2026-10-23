@@ -24,7 +24,8 @@ Config, per board:
     "atlas": {"height": 76, "rows": [
         [{"anim": "idle", "frames": 6}],
         [{"anim": "walk", "frames": 8}, {"anim": "jump", "frames": 9, "loop": false, "fps": 10}],
-        "skip"]}
+        "skip",
+        [{"anim": "death", "frames": 6}], [{"anim": "death", "frames": 6}]]}   # continues: death 12
 
 Usage:
     python scripts/export_atlas.py hero-move [more ids] [--config …] [--out …] [--preview]
@@ -169,18 +170,20 @@ def plan(board: dict) -> list[dict]:
     if not atlas.get("height"):
         raise AtlasError(f"{board['id']}: atlas needs a game \"height\" in pixels")
     seen: set[str] = set()
+    last = None  # an animation may continue at the start of the next row (death 6 + 6)
     rows = []
     for row in atlas["rows"]:
         if row == "skip":
             rows.append(None)
             continue
-        for anim in row:
+        for place, anim in enumerate(row):
             name, count = anim.get("anim"), anim.get("frames")
             if not name or not isinstance(count, int) or count < 1:
                 raise AtlasError(f"{board['id']}: every animation needs a name and a frame count: {anim}")
-            if name in seen:
+            if name in seen and not (place == 0 and name == last):
                 raise AtlasError(f"{board['id']}: animation {name!r} is listed twice")
             seen.add(name)
+            last = name
         rows.append(row)
     if not any(rows):
         raise AtlasError(f"{board['id']}: every row is skipped")
@@ -218,7 +221,10 @@ def slice_board(board: dict, image: Image.Image) -> list[tuple[dict, list[tuple[
                 box = solid(cell.getchannel("A")).getbbox()
                 lift = 0 if anim.get("float") else ground - top - box[3]
                 sprites.append((cell.crop((0, box[1], cell.width, box[3])), lift))
-            out.append((anim, sprites))
+            if out and out[-1][0]["anim"] == anim["anim"]:
+                out[-1][1].extend(sprites)
+            else:
+                out.append((anim, sprites))
     return out
 
 

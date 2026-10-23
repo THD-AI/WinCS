@@ -87,6 +87,16 @@ class ExportAtlasTests(unittest.TestCase):
         with self.assertRaisesRegex(ea.AtlasError, 'frame count'):
             ea.export(config([[{'anim': 'a', 'frames': 0}]]), image)
 
+    def test_an_animation_continues_on_the_next_row(self):
+        image = board_image([[(40, 0)] * 3, [(40, 0)] * 3])
+        board = config([[{'anim': 'death', 'frames': 3, 'loop': False}], [{'anim': 'death', 'frames': 3}]])
+        _, atlas, table = ea.export(board, image)
+        self.assertEqual(table, {'death': {'frames': 6, 'fps': 12, 'loop': False}})
+        self.assertIn('death-05', atlas['frames'])
+        board = config([[{'anim': 'a', 'frames': 2}, {'anim': 'b', 'frames': 1}], [{'anim': 'a', 'frames': 3}]])
+        with self.assertRaisesRegex(ea.AtlasError, 'listed twice'):
+            ea.export(board, image)
+
     def test_skipped_rows_and_specks_are_ignored(self):
         image = board_image([[(40, 0)] * 2, [(40, 0)] * 5])
         image.putpixel((image.width - 3, 20), (255, 255, 255, 255))  # a stray pixel in row 1
