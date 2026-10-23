@@ -51,4 +51,7 @@ Space/K or gamepad A/Cross jumps, with about 52px tap height and 96px held heigh
 0.1s coyote time and 0.12s buffering. Landing uses the drawn landing pose; falls
 of at least 152px use the four-frame hard landing. Authored walk polylines follow
 slopes through 40°; steeper surfaces accelerate downhill, with jumping still available.
-F2 shows the contact slope and slide state. One-way platforms and ladders follow separately.
+F2 shows the contact slope and slide state. Yellow one-way decks catch falling feet;
+Down + Jump drops through them. W/S, up/down arrows or gamepad up/down enter and
+move along blue climb zones at 70px/s. Release to hold, move sideways or jump to
+leave. `Player.canAttack` is false while climbing. Reserved ledge points stay inactive.

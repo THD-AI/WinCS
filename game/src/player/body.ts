@@ -9,7 +9,7 @@ export function overlaps(body: Body, box: Box) {
 }
 
 /** Feet origin and continuous polylines; one-way policy follows separately. */
-export function stepBody(body: Body, geometry: Geometry[], dt: number) {
+export function stepBody(body: Body, geometry: Geometry[], dt: number, ignoreOneWay = false) {
   const oldX = body.x, oldY = body.y;
   const wasGrounded = body.grounded;
   const oldSlope = body.slope ?? 0;
@@ -33,7 +33,7 @@ export function stepBody(body: Body, geometry: Geometry[], dt: number) {
   body.sliding = false;
   body.slope = 0;
   for (const world of geometry) {
-    for (const line of [...world.walk, ...world.slide]) for (let i = 1; i < line.length; i++) {
+    for (const line of [...world.walk, ...world.slide, ...(ignoreOneWay ? [] : world.oneWay)]) for (let i = 1; i < line.length; i++) {
       const [a, b] = [line[i - 1], line[i]];
       if (body.x < a[0] || body.x > b[0]) continue;
       const slope = (b[1] - a[1]) / (b[0] - a[0]);
