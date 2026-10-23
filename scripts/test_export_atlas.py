@@ -59,6 +59,20 @@ class ExportAtlasTests(unittest.TestCase):
         with self.assertRaisesRegex(ea.AtlasError, r'row 1 has 3 frames, the config expects 4 \(idle 4\)'):
             ea.export(config([[{'anim': 'idle', 'frames': 4}]]), image)
 
+    def test_overlapping_neighbours_are_cut_along_seams(self):
+        # Each figure's foot reaches under the next one's body: no empty column between them.
+        image = Image.new('RGBA', (130, 70), (0, 0, 0, 0))
+        draw = ImageDraw.Draw(image)
+        for i in range(4):
+            x = 10 + 28 * i
+            draw.rectangle((x, 10, x + 17, 53), fill=(40, 90, 160, 255))       # body, ends 6 px up
+            draw.rectangle((x + 10, 57, x + 32, 59), fill=(160, 90, 40, 255))  # foot under the neighbour
+        _, atlas, _ = ea.export(config([[{'anim': 'walk', 'frames': 4}]]), image)
+        self.assertEqual(len(atlas['frames']), 4)
+        # One figure too few for the config: a seam would cut through a body.
+        with self.assertRaisesRegex(ea.AtlasError, r'row 1 has 1 frames, the config expects 5 \(walk 5\).*;'):
+            ea.export(config([[{'anim': 'walk', 'frames': 5}]]), image)
+
     def test_row_count_mismatch_fails_loudly(self):
         image = board_image([[(40, 0)] * 2, [(40, 0)] * 2])
         with self.assertRaisesRegex(ea.AtlasError, 'has 2 rows of sprites, the config lists 1'):

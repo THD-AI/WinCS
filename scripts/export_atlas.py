@@ -8,7 +8,9 @@
 
 Slicing: the board's rows are bands of opaque pixels separated by empty lines; inside a row,
 frames are column runs separated by empty columns. Specks below 2 % of a row's biggest frame are
-dropped. Every row must hold exactly the frames its config lists, or the export stops.
+dropped. When neighbours overlap (a foot under the next poncho), the row is cut along the cheapest
+winding seams instead, one near each expected gap. Every row must hold exactly the frames its config
+lists: a seam that would cut through a body, or a cell too light to be a figure, stops the export.
 
 Scaling: one factor per board, so the tallest frame of the first animation becomes `height` game
 pixels (hero: 76, in an 80 px frame), or the frame named by `ref` (e.g. "jump-08", standing) when the
@@ -46,6 +48,7 @@ GAP = 4         # empty lines that separate two rows or two frames on the 1x boa
 SPECK = 0.02    # runs lighter than this share of the row's heaviest frame are noise
 PAD_TOP = 4     # head room above the tallest frame (hero: 76 + 4 = 80 px cell)
 SPACING = 2     # transparent pixels between cells, so filtering never bleeds
+CROSS = 0.25    # a seam may cut through at most this share of the row height (feet, hands)
 
 
 class AtlasError(Exception):
@@ -81,15 +84,66 @@ def bands(image: Image.Image) -> list[tuple[int, int]]:
     return [(top, end) for top, end, mass in found if mass >= heaviest * SPECK]
 
 
-def frames_in(image: Image.Image, top: int, ground: int) -> list[tuple[int, int]]:
-    """Frames of one row: (left, right) column runs, specks dropped."""
+def frames_in(image: Image.Image, top: int, ground: int, expected: int) -> tuple[list, str]:
+    """Frames of one row as per-row (x0, x1) bounds, and why that failed ("" if it didn't).
+    Column runs first; seams when there are fewer runs than expected frames."""
     band = solid(image.getchannel("A").crop((0, top, image.width, ground)))
     w, h = band.size
     data = band.tobytes()
     per_column = [sum(1 for y in range(h) if data[y * w + x]) for x in range(w)]
     found = runs(per_column, GAP)
     heaviest = max((m for _, _, m in found), default=0)
-    return [(left, right) for left, right, mass in found if mass >= heaviest * SPECK]
+    kept = [(left, right) for left, right, mass in found if mass >= heaviest * SPECK]
+    cells = [[(left, right)] * h for left, right in kept]
+    if len(kept) == expected or not kept:
+        return cells, ""
+    found = f"{len(kept)} frames, the config expects {expected}"
+    if len(kept) > expected:
+        return cells, found
+    split = seam_cells(data, w, h, kept[0][0], kept[-1][1], expected)
+    return (split, "") if isinstance(split, list) else (cells, f"{found}: {split}")
+
+
+def seam_cells(data: bytes, w: int, h: int, left: int, right: int, count: int) -> list[list[tuple[int, int]]] | str:
+    """Split columns left..right into `count` cells along cheap winding seams; per-row (x0, x1) bounds,
+    or the reason it can't be done."""
+    pitch = (right - left) / count
+    cuts = []
+    for k in range(1, count):
+        centre = left + k * pitch
+        lo, hi = max(left + 1, int(centre - pitch / 2)), min(right - 1, int(centre + pitch / 2))
+        xs = range(lo, hi + 1)
+
+        def cost(y, x):
+            return (1 if data[y * w + x] else 0) + 0.001 * abs(x - centre)
+
+        total = [cost(0, x) for x in xs]
+        back = []
+        for y in range(1, h):
+            step, came = [], []
+            for i, x in enumerate(xs):
+                j = min((j for j in (i - 1, i, i + 1) if 0 <= j < len(total)), key=total.__getitem__)
+                step.append(total[j] + cost(y, x))
+                came.append(j)
+            total = step
+            back.append(came)
+        i = min(range(len(total)), key=total.__getitem__)
+        path = [i]
+        for came in reversed(back):
+            i = came[i]
+            path.append(i)
+        seam = [lo + i for i in reversed(path)]
+        crossed = sum(1 for y, x in enumerate(seam) if data[y * w + x])
+        if crossed > CROSS * h:
+            return f"no clean cut near x = {round(centre)} (it would cross {crossed} px of sprite)"
+        cuts.append(seam)
+    edges = [[left - 1] * h, *cuts, [right] * h]
+    cells = [[(a[y] + 1, b[y] + 1) for y in range(h)] for a, b in zip(edges, edges[1:])]
+    masses = [sum(1 for y, (x0, x1) in enumerate(c) for x in range(x0, x1) if data[y * w + x]) for c in cells]
+    middle = sorted(masses)[len(masses) // 2]
+    if min(masses) < middle / 2:
+        return f"the cell at x = {cells[masses.index(min(masses))][0][0]} is too light to be a figure"
+    return cells
 
 
 def feet_x(sprite: Image.Image) -> float:
@@ -141,17 +195,23 @@ def slice_board(board: dict, image: Image.Image) -> list[tuple[dict, list[tuple[
     for number, (row, (top, ground)) in enumerate(zip(rows, found), 1):
         if row is None:
             continue
-        columns = frames_in(image, top, ground)
         expected = sum(anim["frames"] for anim in row)
-        if len(columns) != expected:
+        columns, problem = frames_in(image, top, ground, expected)
+        if problem:
             names = " + ".join(f"{a['anim']} {a['frames']}" for a in row)
-            raise AtlasError(f"{board['id']}: row {number} has {len(columns)} frames, the config expects "
-                             f"{expected} ({names}); frames found at x = {[left for left, _ in columns]}")
+            counts, _, reason = problem.partition(": ")
+            raise AtlasError(f"{board['id']}: row {number} has {counts} ({names}); frames found at "
+                             f"x = {[bounds[0][0] for bounds in columns]}" + (f"; {reason}" if reason else ""))
         for anim in row:
             cut, columns = columns[:anim["frames"]], columns[anim["frames"]:]
             sprites = []
-            for left, right in cut:
+            for bounds in cut:
+                left, right = min(b[0] for b in bounds), max(b[1] for b in bounds)
                 cell = image.crop((left, top, right, ground))
+                keep = Image.new("L", cell.size, 0)
+                for y, (x0, x1) in enumerate(bounds):
+                    keep.paste(255, (x0 - left, y, x1 - left, y + 1))
+                cell.putalpha(Image.composite(cell.getchannel("A"), keep, keep))
                 box = solid(cell.getchannel("A")).getbbox()
                 sprites.append((cell.crop((0, box[1], cell.width, box[3])), ground - top - box[3]))
             out.append((anim, sprites))
