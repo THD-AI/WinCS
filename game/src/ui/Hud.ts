@@ -22,6 +22,10 @@ export class Hud extends Phaser.Scene {
     }).setOrigin(0.5, 0);
     const stop = this.model.listen(gameEvents, () => this.time.now);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, stop);
+    // Dev builds: F8 runs the crossing anywhere (#51 verification).
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F8', () => {
+      if (!this.scene.isActive('Crossing')) this.scene.launch('Crossing');
+    });
   }
 
   update(): void {
