@@ -33,11 +33,11 @@ Frame lists approved as they are (A14).
 
 | Asset | Board | Animations | Status |
 | --- | --- | --- | --- |
-| Rover | `enemy-rover` | idle 4 · drive 6 · spot + charge 4 · hit/flip/wreck 5 | 🟡 |
-| Crab | `enemy-crab` | idle 4 · walk 8 · rear + stab 5 · collapse 5 | 🟡 |
-| Drone | `enemy-drone` | hover 4 · alert/dive 3 · crash 5 · dropped screw 3 | 🟡 |
+| Rover | `enemy-rover` | idle 4 · drive 6 · spot + charge 4 · hit/flip/wreck 5 | ✅ |
+| Crab | `enemy-crab` | idle 4 · walk 8 · rear + stab 5 · collapse 5 | ✅ |
+| Drone | `enemy-drone` | hover 4 · alert/dive 3 · crash 5 · dropped screw 3 | ✅ |
 | Jenny | `boss-jenny` | rev 4 · charge 4 · crash 4 · stunned 3 · reboot 2 · debris ×5 (2 each) | ⬜ |
-| Black-fluid leak (shared death FX) | `fx` | 6 | 🟡 |
+| Black-fluid leak (shared death FX) | `fx` | 6 | ✅ |
 
 ## Items, props, UI
 
