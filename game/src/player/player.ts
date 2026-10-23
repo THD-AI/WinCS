@@ -4,6 +4,7 @@ import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement } from './movement';
 import { jump, jumpState, landing } from './jump';
 import { climb, dropThrough, traversal } from './traversal';
+import { catalogue, LocomotionAnimation, type MotionPose } from './animation';
 
 export class Player {
   readonly body: Body;
@@ -17,11 +18,14 @@ export class Player {
   private spawn;
   private air;
   private traversal = traversal();
+  private animation: LocomotionAnimation;
   get canAttack() { return this.traversal.ladder === null; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[]) {
     this.spawn = chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
     this.body = { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true };
     this.air = jumpState(this.body.y);
+    this.animation = new LocomotionAnimation(catalogue(Object.fromEntries(
+      ['hero-move', 'hero-run', 'hero-idle', 'hero-air'].map(board => [board, scene.cache.json.get(`${board}.anims`)]))));
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
     this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K') as Record<string, Phaser.Input.Keyboard.Key>;
     this.debug = scene.add.graphics().setDepth(10001);
@@ -66,18 +70,23 @@ export class Player {
       this.air = jumpState(this.body.y);
       this.traversal = traversal();
     }
-    const pose = this.traversal.ladder ? `ladder-${String(Math.floor(this.body.y / 13) % 4).padStart(2, '0')}`
-      : this.air.landing > 0 ? this.air.hard
-      ? `hard-landing-${String(Math.min(3, Math.floor((4 / 12 - this.air.landing) * 12))).padStart(2, '0')}`
-      : 'jump-08' : this.body.sliding ? `fall-${String(Math.floor(this.scene.time.now * 12 / 1000) % 3).padStart(2, '0')}`
-      : !this.body.grounded ? this.body.vy < 0 ? 'jump-02' : 'fall-00' : null;
-    if (pose && this.scene.textures.get('hero-air').has(pose)) this.sprite.setTexture('hero-air', pose);
+    const desired: MotionPose = this.traversal.ladder ? 'ladder' : this.air.landing > 0
+      ? this.air.hard ? 'hard-landing' : 'land' : this.body.sliding ? 'fall'
+      : !this.body.grounded ? this.body.vy < 0 ? 'jump' : 'fall'
+      : Math.abs(this.body.vx) > 180 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
+    const pose = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000);
+    if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');
     this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y)).setFlipX(this.motion.facing < 0);
     if (axis) this.lastSpeed = Math.abs(this.body.vx);
     this.debug.clear();
     if (this.showDebug) this.debug.lineStyle(2, 0xffffff).strokeRect(this.body.x - BODY_WIDTH / 2,
       this.body.y - BODY_HEIGHT, BODY_WIDTH, BODY_HEIGHT);
-    this.label.setText(`vx ${this.body.vx.toFixed(1)} px/s | last ${this.lastSpeed.toFixed(1)} (${(this.lastSpeed / 43).toFixed(2)} m/s)\nheld ${this.motion.held.toFixed(2)}s | x ${this.body.x.toFixed(1)} y ${this.body.y.toFixed(1)}\njump ${this.air.height.toFixed(1)}px | ${this.traversal.ladder ? 'climb' : this.body.sliding ? 'slide' : 'walk'} slope ${(Math.atan(this.body.slope ?? 0) * 180 / Math.PI).toFixed(1)}° | land ${this.air.hard ? 'hard' : 'normal'}`);
+    this.label.setText([
+      `vx ${this.body.vx.toFixed(1)} px/s | last ${this.lastSpeed.toFixed(1)} (${(this.lastSpeed / 43).toFixed(2)} m/s)`,
+      `held ${this.motion.held.toFixed(2)}s | x ${this.body.x.toFixed(1)} y ${this.body.y.toFixed(1)}`,
+      `jump ${this.air.height.toFixed(1)}px | ${this.traversal.ladder ? 'climb' : this.body.sliding ? 'slide' : 'walk'} slope ${(Math.atan(this.body.slope ?? 0) * 180 / Math.PI).toFixed(1)}°`,
+      `anim ${this.animation.clip} | ${pose.frame} | land ${this.air.hard ? 'hard' : 'normal'}`,
+    ]);
   }
 }

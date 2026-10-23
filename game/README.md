@@ -46,7 +46,10 @@ metadata is retained; reserved ledges and glide lifts do not become solid surfac
 Walk with A/D or left/right arrows, or a gamepad stick/D-pad. Holding the same
 direction for 0.4 seconds accelerates from 150.5 to 258 px/s (3.5 to 6 m/s).
 F2 shows speed, hold time, position and the 28×76 player body. The hero currently
-uses the idle atlas pose on the ground; full animation switching is delivered by #31.
+uses the supplied locomotion clips, switching walk/run at contact poses 00 and 04
+through the authored bridges. Playback is stepped at 12fps, retaining slower authored
+idle and ladder timing, with takeoff and impact holds. After five seconds still,
+one of the supplied idle variants plays. F2 shows the current clip and frame.
 Space/K or gamepad A/Cross jumps, with about 52px tap height and 96px held height,
 0.1s coyote time and 0.12s buffering. Landing uses the drawn landing pose; falls
 of at least 152px use the four-frame hard landing. Authored walk polylines follow
