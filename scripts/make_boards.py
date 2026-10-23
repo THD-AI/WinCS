@@ -187,7 +187,8 @@ def crush(board: dict) -> None:
     else:
         small = image.resize(size, Image.Resampling.BOX).convert("RGBA")
     alpha = small.getchannel("A").point(lambda a: 255 if a >= 128 else 0)
-    colours = small.convert("RGB").quantize(COLOURS, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    colours = small.convert("RGB").quantize(board.get("colours", COLOURS), method=Image.Quantize.MEDIANCUT,
+                                             dither=Image.Dither.NONE)
     sprite = colours.convert("RGBA")
     sprite.putalpha(alpha)
     small = sprite
