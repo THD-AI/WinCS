@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { Boot, Preload, Stage, UI } from './core/scaffold';
 import { displayScale, VIEW_HEIGHT, VIEW_WIDTH } from './core/viewport';
+import { Hud } from './ui/Hud';
 import './style.css';
 
 const game = new Phaser.Game({
@@ -13,7 +14,7 @@ const game = new Phaser.Game({
   roundPixels: true,
   input: { gamepad: true },
   scale: { mode: Phaser.Scale.NONE, autoCenter: Phaser.Scale.CENTER_BOTH },
-  scene: [Boot, Preload, Stage, UI],
+  scene: [Boot, Preload, Stage, UI, Hud],
 });
 
 function resize() {
