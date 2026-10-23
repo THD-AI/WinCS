@@ -1,0 +1,162 @@
+{
+  "name": "UI sprites",
+  "readme": "HUD and pocket computer sprites, drawn from crops of the approved [HUD direction](../direction/hud.md) ('magnificent'). Plan, masks and steps: [09 – UI sprites](../../docs/09-ART-PIPELINE.md#ui-sprites--hud-and-pocket-computer). Each board waits for Alexander's Design review before `export_ui.py` puts it into the game.\n\n![The HUD and the open map composed over Rusty Creek at game size](previews/contact.png)\n\n*Contact sheet at game size (1280×720): `python scripts/export_ui.py --out tmp/ui --preview`.*",
+  "model": "gpt-image-2.5-sunburst",
+  "size": "1536x1024",
+  "style": "Detailed modern HI-BIT PIXEL ART exactly like the approved game HUD (the cropped reference): crisp square pixels at a fine 2-pixel grain, rich palette, careful pixel shading on metal and glass (rust, scratches, bevels, rivets), glowing elements with a soft pixel halo, no anti-aliasing blur, no smooth vector gradients, not chunky 8-bit. This is a UI SPRITE SHEET, not a scene: no landscape, no sky, no scenery, no hands, no characters, flat front view, no perspective. Every element evenly spaced with wide clear gaps so each can be cut out; elements of one row share the same size and outline. ABSOLUTELY NO TEXT: no titles, no numbers, no labels, no letters, no captions. Match the pixel grain and palette of the style master (the LAST image) but draw none of its scenery.",
+  "people": "",
+  "boards": [
+    {
+      "id": "hud-battery",
+      "title": "HUD · battery cells",
+      "factor": 2,
+      "inputs": [
+        "repo:art/direction/images/hud-preview.png@40,45,300,135",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Solid flat pure magenta #FF00FF background everywhere. Draw the health battery cell of the game HUD, copied closely from the top row of the first image: a small upright battery with a dark bevelled metal casing, a short terminal cap on top, a glass front, filled with glowing pale teal charge. Each cell about 150 px tall. Row 1, three cells side by side: FULL (teal charge fills the glass), CRACKED (same cell, glass split by a diagonal lightning-shaped crack, the charge dimmer), EMPTY (dark glass, no charge). Row 2, four frames of a full cell cracking, left to right: full, a first hairline crack with a small spark, the crack spreading and the charge flickering, cracked. Every cell identical in size and outline, upright, front view, on the same baseline.",
+      "ui": {
+        "rows": [
+          {
+            "names": [
+              "cell-full",
+              "cell-cracked",
+              "cell-empty"
+            ],
+            "height": 36,
+            "cell": true
+          },
+          {
+            "names": [
+              "crack-0",
+              "crack-1",
+              "crack-2",
+              "crack-3"
+            ],
+            "height": 36,
+            "cell": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "hud-meters",
+      "title": "HUD · glitch meter and boss bar",
+      "factor": 2,
+      "inputs": [
+        "repo:art/direction/images/hud-preview.png@40,45,300,135",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Solid flat pure magenta #FF00FF background everywhere. Row 1: the glitch meter orb from the second row of the first image, each about 120 px across: a round dark metal socket with a glowing cyan core and torn, broken pixel edges around the glow. Four orbs: EMPTY (dark socket, no glow), then three frames of the CHARGED orb glowing, the glow pulsing and the torn pixel bits shifting a little each frame (a looping shimmer). Row 2, below with a wide gap: the boss health bar, as three separate pieces: a long thin EMPTY BAR FRAME (dark rusted metal with rivets at both ends, about 1100 px long and 50 px tall, hollow inside), a short FILL piece (a straight glowing red-orange bar segment that can repeat, same inner height as the frame), and a small ICON of a race car seen head-on with glowing headlights (the boss Jenny), about 80 px.",
+      "ui": {
+        "rows": [
+          {
+            "names": [
+              "glitch-empty",
+              "glitch-charged-0",
+              "glitch-charged-1",
+              "glitch-charged-2"
+            ],
+            "height": 28,
+            "cell": true
+          },
+          {
+            "names": [
+              "boss-bar-frame"
+            ],
+            "width": 560
+          },
+          {
+            "names": [
+              "boss-bar-fill",
+              "boss-icon"
+            ],
+            "factor_of": "boss-bar-frame"
+          }
+        ]
+      }
+    },
+    {
+      "id": "pocket-frame",
+      "title": "Pocket computer · case",
+      "factor": 2,
+      "inputs": [
+        "repo:art/direction/images/hud-preview.png@425,65,710,520",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Solid flat pure magenta #FF00FF background everywhere. Draw only the pocket computer case from the first image, alone, front view, centred, about 1300 px wide and 900 px tall: the rusted aluminium handheld case with its carry handle on top, the thick bevelled frame with a bolt in each corner, a short antenna and side latches on the right edge. The screen area inside the bezel is EMPTY: fill it completely with the same solid flat magenta #FF00FF, edge to edge inside the bezel - no glass, no map, no reflections, no scanlines. The bezel must enclose the screen completely on all four sides.",
+      "ui": {
+        "rows": [
+          {
+            "names": [
+              "pocket-frame"
+            ],
+            "width": 820
+          }
+        ]
+      }
+    },
+    {
+      "id": "crt-screen",
+      "title": "Pocket computer · CRT screen",
+      "factor": 2,
+      "edit": "pocket-frame",
+      "inputs": [
+        "repo:art/direction/images/hud-preview.png@482,155,585,390",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The first image is the pocket computer case with its screen cut out. Paint ONLY the transparent area, the empty screen inside the bezel: the dark green CRT glass of the screen in the second image but completely EMPTY - very dark green #071E16 base, faint fine horizontal scanlines, a soft lighter green glow toward the centre and darker corners, a faint fine square grid, a slight glass reflection in the top-left corner. No map, no rooms, no lines, no icons, no text. Keep the case exactly as it is.",
+      "ui": {
+        "like": "pocket-frame",
+        "name": "crt-screen"
+      }
+    },
+    {
+      "id": "map-tiles",
+      "title": "Pocket computer · map tiles and icons",
+      "factor": 2,
+      "key": "#071E16",
+      "tolerance": 14,
+      "inputs": [
+        "repo:art/direction/images/hud-preview.png@482,155,585,390",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Solid flat dark green #071E16 background everywhere - exactly this one colour, no scanlines, no texture, no grid, no vignette. Draw the pieces of the CRT map from the first image, separately, glowing mint and teal like the map. Row 1, three room tiles, each a rectangle exactly three times as wide as it is tall, about 300 px wide: VISITED (filled darker green with a glowing mint outline and a fine inner dither), CURRENT (the same tile with a brighter, thicker glowing outline), UNEXPLORED (no fill, only a dim dashed outline). Row 2: a short HORIZONTAL CORRIDOR (two thin parallel glowing mint lines, about 120 px long), a short VERTICAL CORRIDOR (the same, upright), and a round JUNCTION node. Row 3, nine small glowing mint icons, each about 60 px, no frames around them: a leaf, a gear, a ladder, a grass tuft, two mountain peaks, three water waves, a coffee cup, and the player dot as a bright white-mint glowing point twice: bright, then dimmer.",
+      "ui": {
+        "rows": [
+          {
+            "names": [
+              "room-visited",
+              "room-current",
+              "room-unexplored"
+            ],
+            "height": 56,
+            "cell": true
+          },
+          {
+            "names": [
+              "corridor-h",
+              "corridor-v",
+              "junction"
+            ],
+            "factor_of": "room-visited"
+          },
+          {
+            "names": [
+              "icon-leaf",
+              "icon-gear",
+              "icon-ladder",
+              "icon-grass",
+              "icon-mountains",
+              "icon-waves",
+              "icon-cup",
+              "player-dot-0",
+              "player-dot-1"
+            ],
+            "factor_of": "room-visited"
+          }
+        ]
+      }
+    }
+  ]
+}
