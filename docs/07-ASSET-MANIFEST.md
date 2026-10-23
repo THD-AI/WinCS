@@ -21,7 +21,7 @@ The frame lists below were reviewed by the team on 23 Oct ([A14](meetings/transc
 | Hero – air & climb | `hero-air` | jump 9 · fall 3 · hard landing 4 · ladder 4 (seen from behind) | ✅ |
 | Hero – hurt & interact | `hero-hurt` | hit 8 (cartoonish, simple) · knockback 3 · interact 3 · pick up 4 · look at device 3 | 🟡 |
 | Hero – death | `hero-death` | death 12 (two rows of 6) | 🟡 |
-| Hero – chair | `chair-side`, `chair-overhead`, `chair-block` | side sweep A 8 · side sweep B 8 (the return swing) · up attack 6 · down slam 7 · recoil 2 · air pogo 4 · guard up 4 · guard hold 3 · guard impact 4 · guard break 4 | ⬜ |
+| Hero – chair | `chair-side`, `chair-overhead`, `chair-block` | side sweep A 8 · side sweep B 8 (the return swing) · up attack 6 · down slam 7 · recoil 2 · air pogo 4 · guard up 4 · guard hold 3 · guard impact 4 · guard break 4 · chair pickup 1 | 🟡 |
 | Hero – tray (post-jam) | `tray-throw` | throw 6 · tray spin 8 · catch 4 | ⬜ |
 | Hero – anomaly crossing | – | none extra: reuses hit + knockback; the THD.exe window is UI | ✅ by design |
 | Dexter (plush) | `dexter` | idle 3 · hop 4 · walk 6 · point at the ground 3 · shove 4 · beckon 3 · bow · sweat · proud · creepy shadow. More for the boss fights later | ⬜ |
