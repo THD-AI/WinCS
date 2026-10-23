@@ -28,6 +28,7 @@ Config, per board:
 
 Usage:
     python scripts/export_atlas.py hero-move [more ids] [--config …] [--out …] [--preview]
+    python scripts/export_atlas.py hero-move --out tmp/atlas --preview   # review only: GIFs, no game files
 """
 
 from __future__ import annotations
@@ -43,7 +44,6 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "art" / "sprites" / "boards.json"
 OUT = ROOT / "game" / "public" / "assets" / "sprites"
-PREVIEW = ROOT / "tmp" / "atlas"
 PAPER = (232, 228, 220)
 FPS = 12
 GAP = 4         # empty lines that separate two rows or two frames on the 1x board
@@ -276,9 +276,9 @@ def export(board: dict, image: Image.Image) -> tuple[Image.Image, dict, dict]:
     return sheet, atlas, table
 
 
-def preview(board_id: str, sheet: Image.Image, atlas: dict, table: dict, zoom: int = 3) -> None:
-    """One looping GIF per animation on paper, nearest-upscaled, for the review page (not committed)."""
-    PREVIEW.mkdir(parents=True, exist_ok=True)
+def preview(folder: Path, board_id: str, sheet: Image.Image, atlas: dict, table: dict, zoom: int = 2) -> None:
+    """One looping GIF per animation on paper at twice game size, for the board's review page."""
+    folder.mkdir(parents=True, exist_ok=True)
     for name, anim in table.items():
         frames = []
         for n in range(anim["frames"]):
@@ -287,7 +287,7 @@ def preview(board_id: str, sheet: Image.Image, atlas: dict, table: dict, zoom: i
             paper = Image.new("RGB", cell.size, PAPER)
             paper.paste(cell, mask=cell)
             frames.append(paper.resize((cell.width * zoom, cell.height * zoom), Image.Resampling.NEAREST))
-        frames[0].save(PREVIEW / f"{board_id}--{name}.gif", save_all=True, append_images=frames[1:],
+        frames[0].save(folder / f"{board_id}--{name}.gif", save_all=True, append_images=frames[1:],
                        duration=round(1000 / anim["fps"]), loop=0 if anim["loop"] else 1, disposal=1)
 
 
@@ -296,7 +296,7 @@ def main() -> None:
     parser.add_argument("ids", nargs="+", help="board ids from the config")
     parser.add_argument("--config", type=Path, default=CONFIG, help="board set (default: art/sprites/boards.json)")
     parser.add_argument("--out", type=Path, default=OUT, help="atlas folder (default: game/public/assets/sprites)")
-    parser.add_argument("--preview", action="store_true", help="also write looping GIFs to tmp/atlas/")
+    parser.add_argument("--preview", action="store_true", help="also write looping GIFs to <config folder>/previews/")
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
     boards = {b["id"]: b for b in config["boards"]}
@@ -313,7 +313,7 @@ def main() -> None:
             (args.out / f"{board_id}.json").write_text(json.dumps(atlas, indent=1) + "\n", encoding="utf-8")
             (args.out / f"{board_id}.anims.json").write_text(json.dumps(table, indent=1) + "\n", encoding="utf-8")
             if args.preview:
-                preview(board_id, sheet, atlas, table)
+                preview(args.config.parent / "previews", board_id, sheet, atlas, table)
             frame = next(iter(atlas["frames"].values()))["frame"]
             print(f"{board_id}: {len(atlas['frames'])} frames of {frame['w']}x{frame['h']} in "
                   f"{len(table)} animations -> {args.out / board_id}.png")
