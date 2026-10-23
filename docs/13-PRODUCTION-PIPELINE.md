@@ -14,7 +14,9 @@ How every image, layer, sprite, animation, stage and collision box gets from a p
 | Agent | Claude, **with** the OpenAI API (`OPENAI_API_KEY` in `.env`) | Codex, **without** an OpenAI key |
 | Owns | `scripts/`, `art/`, `game/public/assets/`, `game/src/scenes/`, `game/src/story/`, `game/src/ui/`, `game/src/fx/` (atmosphere, anomaly effects), deploy | `game/` scaffold and config, `game/src/core/`, `game/src/player/`, `game/src/combat/`, `game/src/enemies/`, `game/src/stage/` |
 | Makes | Every image: direction, concepts, chunks, layers, sprite sheets, atlases | Every system: movement, collision, combat, enemies, bosses, region swap |
-| Never | Edits lane B's folders | Generates or commits art; edits `art/` or `scripts/make_boards.py` |
+| Never | Pushes to lane B's open stacks (finished work may be corrected – [AGENTS.md rule 6](../AGENTS.md#reference-fidelity--every-agent-every-change-you-can-see)) | Generates or commits art; edits `art/` or `scripts/make_boards.py` |
+
+**Both lanes follow [reference fidelity](../AGENTS.md#reference-fidelity--every-agent-every-change-you-can-see):** plan with a diagram, measure every size, ratio and position against `art/` and the docs' numbers, and prove it with a `scripts/compare.py` comparison in the PR.
 
 **Lex** owns collision and encounters: the Tiled files and `*.collision.json` in `art/stages/`, and the beat placement. **Only lane A generates art.** One generator, one style master and one review keep the game in one style; Codex's own image generation would drift from the approved direction. Lane B uses **placeholders** until the real art lands: coloured rectangles at the documented sizes, loaded through the same contracts, kept in `game/public/assets/placeholder/` and never in `art/`.
 
