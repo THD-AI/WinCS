@@ -1,0 +1,853 @@
+{
+  "version": 2,
+  "world_size": [
+    6480,
+    720
+  ],
+  "body_size": [
+    18,
+    32
+  ],
+  "proposed_jump": {
+    "max_horizontal": 180,
+    "max_rise": 120
+  },
+  "entry": "entry",
+  "exit": "exit",
+  "boss": "boss",
+  "nodes": [
+    {
+      "id": "entry",
+      "at": [
+        80,
+        460
+      ],
+      "purpose": "entry"
+    },
+    {
+      "id": "l-approach",
+      "at": [
+        410,
+        460
+      ]
+    },
+    {
+      "id": "l-slope",
+      "at": [
+        480,
+        505
+      ]
+    },
+    {
+      "id": "l-ladder-foot",
+      "at": [
+        610,
+        505
+      ]
+    },
+    {
+      "id": "l-ladder-top",
+      "at": [
+        610,
+        145
+      ]
+    },
+    {
+      "id": "l-upper-step",
+      "at": [
+        735,
+        165
+      ]
+    },
+    {
+      "id": "l-return-top",
+      "at": [
+        1350,
+        165
+      ]
+    },
+    {
+      "id": "l-return-foot",
+      "at": [
+        1350,
+        495
+      ]
+    },
+    {
+      "id": "l-low",
+      "at": [
+        1530,
+        520
+      ]
+    },
+    {
+      "id": "l-ramp",
+      "at": [
+        1770,
+        460
+      ]
+    },
+    {
+      "id": "join-lc",
+      "at": [
+        2160,
+        460
+      ],
+      "purpose": "boundary"
+    },
+    {
+      "id": "c-entry",
+      "at": [
+        2480,
+        460
+      ]
+    },
+    {
+      "id": "c-foot",
+      "at": [
+        2780,
+        500
+      ]
+    },
+    {
+      "id": "c-climb",
+      "at": [
+        2780,
+        220
+      ]
+    },
+    {
+      "id": "c-tower-jump",
+      "at": [
+        3060,
+        220
+      ]
+    },
+    {
+      "id": "c-upper",
+      "at": [
+        3120,
+        145
+      ]
+    },
+    {
+      "id": "c-return-top",
+      "at": [
+        3570,
+        145
+      ]
+    },
+    {
+      "id": "c-return-foot",
+      "at": [
+        3570,
+        405
+      ]
+    },
+    {
+      "id": "c-middle",
+      "at": [
+        3740,
+        405
+      ]
+    },
+    {
+      "id": "c-step",
+      "at": [
+        3790,
+        465
+      ]
+    },
+    {
+      "id": "c-low-ladder",
+      "at": [
+        3910,
+        465
+      ]
+    },
+    {
+      "id": "c-low",
+      "at": [
+        3910,
+        540
+      ]
+    },
+    {
+      "id": "c-ramp",
+      "at": [
+        4100,
+        465
+      ]
+    },
+    {
+      "id": "join-cr",
+      "at": [
+        4320,
+        465
+      ],
+      "purpose": "boundary"
+    },
+    {
+      "id": "r-approach",
+      "at": [
+        4510,
+        480
+      ]
+    },
+    {
+      "id": "r-foot",
+      "at": [
+        4690,
+        520
+      ]
+    },
+    {
+      "id": "r-climb",
+      "at": [
+        4690,
+        250
+      ]
+    },
+    {
+      "id": "r-jump-start",
+      "at": [
+        4830,
+        250
+      ]
+    },
+    {
+      "id": "r-upper",
+      "at": [
+        4890,
+        180
+      ]
+    },
+    {
+      "id": "r-return-top",
+      "at": [
+        5370,
+        180
+      ]
+    },
+    {
+      "id": "r-return-foot",
+      "at": [
+        5370,
+        565
+      ]
+    },
+    {
+      "id": "arena-entry",
+      "at": [
+        5500,
+        565
+      ]
+    },
+    {
+      "id": "boss",
+      "at": [
+        5760,
+        565
+      ],
+      "purpose": "boss clearing"
+    },
+    {
+      "id": "arena-exit",
+      "at": [
+        6050,
+        565
+      ]
+    },
+    {
+      "id": "r-exit-ramp",
+      "at": [
+        6280,
+        480
+      ]
+    },
+    {
+      "id": "exit",
+      "at": [
+        6400,
+        480
+      ],
+      "purpose": "exit"
+    },
+    {
+      "id": "l-lookout",
+      "at": [
+        1120,
+        285
+      ],
+      "purpose": "optional dead end"
+    },
+    {
+      "id": "c-cache",
+      "at": [
+        3380,
+        245
+      ],
+      "purpose": "optional dead end"
+    },
+    {
+      "id": "r-overlook",
+      "at": [
+        6040,
+        180
+      ],
+      "purpose": "optional dead end"
+    },
+    {
+      "id": "c-loop-a",
+      "at": [
+        2780,
+        355
+      ]
+    },
+    {
+      "id": "c-loop-b",
+      "at": [
+        3120,
+        355
+      ]
+    },
+    {
+      "id": "l-spur-base",
+      "at": [
+        875,
+        505
+      ]
+    },
+    {
+      "id": "l-spur-climb",
+      "at": [
+        875,
+        400
+      ]
+    },
+    {
+      "id": "l-spur-foot",
+      "at": [
+        1040,
+        400
+      ]
+    },
+    {
+      "id": "l-spur-top",
+      "at": [
+        1040,
+        285
+      ]
+    },
+    {
+      "id": "c-spur-foot",
+      "at": [
+        3300,
+        355
+      ]
+    },
+    {
+      "id": "c-spur-top",
+      "at": [
+        3300,
+        245
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "entry",
+      "to": "l-approach",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-approach",
+      "to": "l-slope",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-slope",
+      "to": "l-ladder-foot",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-ladder-foot",
+      "to": "l-ladder-top",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "l-ladder-top",
+      "to": "l-upper-step",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-upper-step",
+      "to": "l-return-top",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-return-top",
+      "to": "l-return-foot",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "l-return-foot",
+      "to": "l-low",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-low",
+      "to": "l-ramp",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-ramp",
+      "to": "join-lc",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "join-lc",
+      "to": "c-entry",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-entry",
+      "to": "c-foot",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-foot",
+      "to": "c-climb",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "c-climb",
+      "to": "c-tower-jump",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-tower-jump",
+      "to": "c-upper",
+      "kind": "jump",
+      "bidirectional": true
+    },
+    {
+      "from": "c-upper",
+      "to": "c-return-top",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-return-top",
+      "to": "c-return-foot",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "c-return-foot",
+      "to": "c-middle",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-middle",
+      "to": "c-step",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-step",
+      "to": "c-low-ladder",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-low-ladder",
+      "to": "c-low",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "c-low",
+      "to": "c-ramp",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-ramp",
+      "to": "join-cr",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "join-cr",
+      "to": "r-approach",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "r-approach",
+      "to": "r-foot",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "r-foot",
+      "to": "r-climb",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "r-climb",
+      "to": "r-jump-start",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "r-jump-start",
+      "to": "r-upper",
+      "kind": "jump",
+      "bidirectional": true
+    },
+    {
+      "from": "r-upper",
+      "to": "r-return-top",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "r-return-top",
+      "to": "r-return-foot",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "r-return-foot",
+      "to": "arena-entry",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "arena-entry",
+      "to": "boss",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "boss",
+      "to": "arena-exit",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "arena-exit",
+      "to": "r-exit-ramp",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "r-exit-ramp",
+      "to": "exit",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "r-return-top",
+      "to": "r-overlook",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-climb",
+      "to": "c-loop-a",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "c-loop-a",
+      "to": "c-loop-b",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-loop-b",
+      "to": "c-upper",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "l-ladder-foot",
+      "to": "l-spur-base",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-spur-base",
+      "to": "l-spur-climb",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "l-spur-climb",
+      "to": "l-spur-foot",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "l-spur-foot",
+      "to": "l-spur-top",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "l-spur-top",
+      "to": "l-lookout",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-loop-b",
+      "to": "c-spur-foot",
+      "kind": "walk",
+      "bidirectional": true
+    },
+    {
+      "from": "c-spur-foot",
+      "to": "c-spur-top",
+      "kind": "ladder",
+      "bidirectional": true
+    },
+    {
+      "from": "c-spur-top",
+      "to": "c-cache",
+      "kind": "walk",
+      "bidirectional": true
+    }
+  ],
+  "notes": [
+    "Authoring intent traced over the generated structure; not collision geometry or a physics playtest.",
+    "Spurs have intermediate walk/climb anchors; every segment still needs pixel-to-collider and headroom review.",
+    "Boss clearing is reserved space; no boss or encounter is implemented.",
+    "All mutation is disabled while inspecting the clean location. Physical route activation requires a separate safe checkpoint transition."
+  ],
+  "interaction_anchors": [
+    {
+      "id": "l-ladder-foot--l-ladder-top",
+      "role": "climb",
+      "feet_start": [
+        610,
+        505
+      ],
+      "feet_end": [
+        610,
+        145
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "l-return-top--l-return-foot",
+      "role": "climb",
+      "feet_start": [
+        1350,
+        165
+      ],
+      "feet_end": [
+        1350,
+        495
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "c-foot--c-climb",
+      "role": "climb",
+      "feet_start": [
+        2780,
+        500
+      ],
+      "feet_end": [
+        2780,
+        220
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "c-return-top--c-return-foot",
+      "role": "climb",
+      "feet_start": [
+        3570,
+        145
+      ],
+      "feet_end": [
+        3570,
+        405
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "c-low-ladder--c-low",
+      "role": "climb",
+      "feet_start": [
+        3910,
+        465
+      ],
+      "feet_end": [
+        3910,
+        540
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "r-foot--r-climb",
+      "role": "climb",
+      "feet_start": [
+        4690,
+        520
+      ],
+      "feet_end": [
+        4690,
+        250
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "r-return-top--r-return-foot",
+      "role": "climb",
+      "feet_start": [
+        5370,
+        180
+      ],
+      "feet_end": [
+        5370,
+        565
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "c-climb--c-loop-a",
+      "role": "climb",
+      "feet_start": [
+        2780,
+        220
+      ],
+      "feet_end": [
+        2780,
+        355
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "c-loop-b--c-upper",
+      "role": "climb",
+      "feet_start": [
+        3120,
+        355
+      ],
+      "feet_end": [
+        3120,
+        145
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "l-spur-base--l-spur-climb",
+      "role": "climb",
+      "feet_start": [
+        875,
+        505
+      ],
+      "feet_end": [
+        875,
+        400
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "l-spur-foot--l-spur-top",
+      "role": "climb",
+      "feet_start": [
+        1040,
+        400
+      ],
+      "feet_end": [
+        1040,
+        285
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    },
+    {
+      "id": "c-spur-foot--c-spur-top",
+      "role": "climb",
+      "feet_start": [
+        3300,
+        355
+      ],
+      "feet_end": [
+        3300,
+        245
+      ],
+      "body_size": [
+        18,
+        32
+      ],
+      "status": "proposed; not collision-verified"
+    }
+  ]
+}

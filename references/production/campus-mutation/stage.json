@@ -4,7 +4,7 @@
     720
   ],
   "model": "gpt-image-2.5-sunburst",
-  "normalize_inputs": true,
+  "normalize_inputs": false,
   "chunks": [
     "left",
     "center",
@@ -12,14 +12,14 @@
   ],
   "layers": [
     {
-      "id": "mutation",
-      "role": "integrated creek location transformed into substantial riveted traversal maze",
-      "transparent": false,
-      "repair_direction": "Join the substantial blue-green girder platforms and tall shafts while retaining autumn tree line, near grey rails, rocky bank and creek waterline. No thin pipe substitution. Keep flat side elevation.",
+      "id": "structure",
+      "role": "scene-first broad steel and masonry; separate after seam repair",
+      "transparent": true,
+      "repair_direction": "Connect the broad low deck at y=460 across this join, preserving footings down to y=630 and matching edge heights at both sides of the editable band. No thin bars, foliage, red matte fringes, water, sky or new towers. Keep opening/headroom and transparent background.",
       "panels": {
-        "left": "references/production/campus-mutation/images/after-left.png",
-        "center": "references/production/campus-mutation/images/after-center.png",
-        "right": "references/production/campus-mutation/images/after-right.png"
+        "left": "references/production/campus-mutation/sources/left-normalized.png",
+        "center": "references/production/campus-mutation/sources/center-normalized.png",
+        "right": "references/production/campus-mutation/sources/right-normalized.png"
       }
     }
   ]

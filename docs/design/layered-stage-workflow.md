@@ -1,6 +1,6 @@
 # A long side-scrolling scene · built in staggered passes
 
-**Current combined result:** [the creek becomes the maze](../../references/production/campus-mutation/README.md). The [unified viewer](../../references/production/campus-mutation/viewer.html) connects photo identity, clean and mutated three-banner strips, actual bounded join repairs and seven center depth trials. It supersedes the prior separation into unrelated maze/location studies. Layer extraction remains diagnostic; fix registration/alpha before extending it to the wings or animating it.
+**Current result:** [one recognizable creek](../../references/production/campus-mutation/README.md), with shared nature and independently switchable architecture. The [viewer](../../references/production/campus-mutation/viewer.html) replaces the rejected combined painting in place. Three sectors and 21 registered plates recompose exactly. Repair the scene-first structure before splitting its masks; never redraw each extraction independently. The route graph is an interaction proposal, not physics verification.
 
 [← Proposal](../proposal/campus-game.md) · [Visual sequence](../../references/production/crossings-strip/README.md) · [Coordinate contract →](../technical/layered-stage-contract.md)
 
@@ -38,7 +38,7 @@ Draw the whole arrangement first, then derive its parts at inherited positions. 
 
 ## 4. Separate at least five depth/interaction roles
 
-The current **center-panel trial displays seven plates**, individually and as a recomposition.
+The current location displays **seven roles across all three chunks**, individually and as an exact recomposition. Repair architecture before deriving its disjoint masks; keep the other five roles shared between states. The earlier center-only trial remains historical.
 
 | Back to front | Contents | Behavior |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ For every eventual ladder, bar, plant or moving object, retain its place in the 
 
 Remove the static copy wherever something will move, and fill exposed scenery. Otherwise motion creates duplicates or holes. Recompose plates against the dressed master, inspect alpha on light/dark, then test camera movement.
 
-**Actual status:** three clean banners, two overlap candidates, three traversal passes and seven center depth trials. Layers have edge residue and alignment/content drift; the recomposition is a diagnostic, not a passed extraction. Wings are not fully decomposed. No completed every-object inventory, animation, rig or collision map is claimed. Review this center proof before multiplying flawed extractions across the whole world.
+**Actual status:** the current replacement has all seven roles across all three chunks, exact master recomposition, fixed scenery across states, marked repair edges and a route contract. The older center-only extraction trials remain historical. Per-object rigs, hidden-surface fill, colliders, movement and final art approval are not completed. Static masonry cuts cannot safely move independently.
 
 ## 6. Animate and reveal later
 

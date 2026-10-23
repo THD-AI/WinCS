@@ -4,7 +4,7 @@
 
 ![Flat side-scrolling creek location candidate](../../references/production/crossings-strip/images/02-center-clean.png)
 
-**Current direction, 23 October:** collage-inspired new flat side-elevation layout, clean center banner extended left/right, two staggered join windows, then in-place traversal dressing and five-plus layers. The current [visual sequence](../../references/production/crossings-strip/README.md) displays seven center roles, including water, interactables and near occluders. Natural terrain flows; bars/maze are added without losing location identity. Perspective repaints fail this brief. Masks/seams are not production-approved; flattening remains a delivery fallback only. The [Lana study](../../references/games/planet-of-lana/layers-and-motion.md) contributes depth/contours, not a pixel-art asset pack. Final pixel treatment awaits team review.
+**Current direction, 23 October:** [one registered creek location](../../references/production/campus-mutation/README.md): collage identity, flat side elevation, scene-first architecture, bounded repairs, disjoint masks and seven roles across three chunks. Shared nature stays fixed during architectural corruption. Exact recomposition passes; palette/art approval, collision and individual-object animation remain separate. The [Lana study](../../references/games/planet-of-lana/layers-and-motion.md) contributes depth/contours, not a pixel asset pack.
 
 ## Agree the design system on one small scene
 

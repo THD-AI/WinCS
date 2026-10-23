@@ -273,58 +273,53 @@ if seams.exists():
 mutation = ROOT / 'references/production/campus-mutation'
 if mutation.exists():
     data = json.loads((mutation / 'media-sources.json').read_text(encoding='utf-8'))
-    prompts = json.loads((mutation / 'prompts.json').read_text(encoding='utf-8'))['prompts']
-    gallery = (mutation / 'README.md').read_text(encoding='utf-8')
     viewer = (mutation / 'viewer.html').read_text(encoding='utf-8')
     declared = [item['file'] for item in data['images']]
-    actual = {p.relative_to(mutation).as_posix() for p in (mutation / 'images').glob('*')}
-    if len(declared) != 12 or len(set(declared)) != 12 or set(declared) != actual:
-        errors.append('Combined study must declare all twelve selected images exactly once')
+    actual = {p.relative_to(mutation).as_posix() for folder in ('images', 'sources')
+              for p in (mutation / folder).glob('*.png')}
+    if len(declared) != len(set(declared)) or set(declared) != actual:
+        errors.append('Creek replacement must declare every selected image exactly once')
     for item in data['images']:
         path = mutation / item['file']
         if not path.is_file():
-            errors.append(f'Combined study missing image: {item["file"]}')
+            errors.append('Creek image missing: ' + item['file'])
             continue
         raw = path.read_bytes()
         if hashlib.sha256(raw).hexdigest() != item['sha256']:
-            errors.append(f'Combined study hash differs: {item["file"]}')
+            errors.append('Creek image hash differs: ' + item['file'])
         if not raw.startswith(b'\x89PNG\r\n\x1a\n') or len(raw) < 26:
-            errors.append(f'Combined study invalid PNG: {item["file"]}')
+            errors.append('Creek image is not PNG: ' + item['file'])
         elif list(struct.unpack('>II', raw[16:24])) != item['dimensions'] or raw[25] != {'RGB': 2, 'RGBA': 6}.get(item['mode']):
-            errors.append(f'Combined study native dimensions/type differ: {item["file"]}')
-        if item['file'] not in gallery or item['prompt_key'] not in prompts:
-            errors.append(f'Combined study lacks gallery/prompt: {item["file"]}')
-    for layer in data['layer_order'][1:]:
-        item = next((x for x in data['images'] if x['prompt_key'] == layer), None)
-        if not item or item['mode'] != 'RGBA' or item['alpha_extrema'] != [0, 255]:
-            errors.append(f'Combined study lacks recorded genuine alpha: {layer}')
+            errors.append('Creek image dimensions/type differ: ' + item['file'])
     for source in data['source_inputs']:
         path = ROOT / source['project_file']
         if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != source['sha256']:
-            errors.append(f'Combined study input changed: {source["project_file"]}')
-    packet = data['packet']
-    if hashlib.sha256((mutation / 'stage.json').read_bytes()).hexdigest() != packet['config_sha256']:
-        errors.append('Combined study config differs from recorded packet')
-    for layer in packet['layers']:
+            errors.append('Creek fixed input changed: ' + source['project_file'])
+    for layer in data['packet']['layers']:
         for source in layer['inputs']:
             path = ROOT / source['file']
             if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != source['sha256']:
-                errors.append(f'Combined packet input differs: {source["file"]}')
-    report = json.loads((mutation / 'verification.json').read_text(encoding='utf-8'))
-    packet_hash = hashlib.sha256((json.dumps(packet, indent=2) + '\n').encode()).hexdigest()
+                errors.append('Creek packet input changed: ' + source['file'])
+    if hashlib.sha256((mutation / 'stage.json').read_bytes()).hexdigest() != data['packet']['config_sha256']:
+        errors.append('Creek packet config changed')
+    report = json.loads((mutation / 'repair-report.json').read_text(encoding='utf-8'))
+    packet_hash = hashlib.sha256((json.dumps(data['packet'], indent=2) + '\n').encode()).hexdigest()
     if report['packet_sha256'] != packet_hash or any(x['outside_repair_changed_pixels'] for x in report['layers']):
-        errors.append('Combined study packet/protected-pixel evidence differs')
+        errors.append('Creek repair report protected-pixel evidence differs')
     for repair in report['repairs']:
-        path = mutation / 'images' / (repair['job'] + '-candidate.png')
-        if not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != repair['candidate_sha256']:
-            errors.append(f'Combined study candidate differs: {repair["job"]}')
+        candidate = mutation / 'sources' / (repair['job'] + '-candidate.png')
+        if hashlib.sha256(candidate.read_bytes()).hexdigest() != repair['candidate_sha256']:
+            errors.append('Creek repair candidate changed: ' + repair['job'])
+    for role in data['layer_order']:
+        for chunk in ('left', 'center', 'right'):
+            item = next((x for x in data['images'] if x['file'] == f'images/{role}-{chunk}.png'), None)
+            if not item or item['dimensions'] != [2160, 720] or item['mode'] != 'RGBA':
+                errors.append(f'Creek role/chunk missing or noncanonical: {role}/{chunk}')
+    if len(data['layer_order']) != 7 or any(data['acceptance'].values()):
+        errors.append('Creek must expose seven roles without claiming final approval')
     for target in re.findall(r'(?:src|href)="([^"]+)"', viewer):
         if not re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) and not (mutation / target.split('#')[0]).exists():
-            errors.append(f'Combined viewer missing target: {target}')
-    if len(data['layer_order']) != 7 or any(key not in viewer for key in data['layer_order']):
-        errors.append('Combined viewer must expose all seven center roles')
-    if any(data['acceptance'].values()) or report['visual_seams_approved'] or report['automatic_art_approval']:
-        errors.append('Combined study must not silently promote review candidates to accepted assets')
+            errors.append('Creek viewer missing target: ' + target)
 
 for diagram in (ROOT / 'docs/proposal/diagrams').glob('*.svg'):
     try:
@@ -356,4 +351,4 @@ if strip_study.exists():
 if seams.exists():
     print(f'Checked {len(seam_declared)} seam-study images, prompts/sources, configuration and protected-pixel report; visual approval remains separate.')
 if mutation.exists():
-    print('Checked twelve combined-study images, seven recorded depth roles, source/packet hashes, two bounded repairs and viewer paths; artistic acceptance remains open.')
+    print('Checked the creek replacement inventory, 21 registered role/chunk exports, fixed inputs, packet/repair evidence and viewer paths; art/physics approval remains open.')

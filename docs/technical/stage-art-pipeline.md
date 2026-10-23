@@ -1,6 +1,6 @@
 # Repeatable stage art · extend, repair, extract, verify
 
-**Current application:** [integrated creek mutation](../../references/production/campus-mutation/README.md), [configuration](../../references/production/campus-mutation/stage.json), [packet/source snapshot](../../references/production/campus-mutation/media-sources.json) and [report](../../references/production/campus-mutation/verification.json). The same tool repairs both joins in the combined full-scene painting. Seven center depth trials illustrate extraction only; they are not falsely configured as complete three-chunk layers. Each must gain aligned left/right plates before it can use the identical per-layer seam process. The viewer's brief row-cut/stretch reveal changes presentation, not collision. Fix registration and alpha before treating those plates as production masks.
+**Current application:** [replacement creek location](../../references/production/campus-mutation/README.md). Repair transparent scene-first architecture, then derive registered rear/traversal masks with `scripts/creek_layers.py`. Shared nature stays fixed in both states. Twenty-one plates recompose exactly into six masters; [assembly](../../references/production/campus-mutation/assembly.json), [route](../../references/production/campus-mutation/route.json) and [verification](../../references/production/campus-mutation/verification.json) make coordinates, authored cuts and limits explicit. This replaces the rejected combined full-scene repaint and its drifting extractions.
 
 [← Visual workflow](../design/layered-stage-workflow.md) · [Earlier separate maze / seam study](../../references/production/seam-pipeline/README.md) · [Coordinate contract](layered-stage-contract.md)
 
@@ -14,11 +14,11 @@
 2. **Compose a clean location:** no corruption, actors or gameplay dressing. Build center, then same-size left/right extensions. World length is three panels, not three camera screens.
 3. **Repair real joins:** form a panel-width context from the right half of the left neighbor and left half of the right neighbor. Generate a repair of the narrow central band. Copy back only that band, including alpha; preserve all other pixels exactly. Repeat for every depth layer, not a semitransparent overlay over a different layer.
 4. **Dress the accepted layout:** compose the full traversal network in place. The preferred maze is a design authority alongside the real location references; a giant straight bridge must not squeeze all traversal into a shallow band.
-5. **Derive five-plus roles:** far scenery, rear architecture, bank, water, traversal/interactables, near rails and plants. Preserve source positions; fill occluded geometry and clean plates before moving anything. Run the same join method on each role. Use a distinct layer configuration/repair direction for each.
+5. **Derive registered roles:** keep sky/trees, bank, water, near rails and plants fixed; repair the scene-first architecture, then partition rear masonry and traversal with disjoint authored masks. This preserves exact registration. If a role later receives an independent art edit, prepare its own layer-local repair and rerun recomposition. Fill occluded material before moving any extracted object.
 6. **Grab/rig selected objects:** retain chunk ID, local source rectangle, padding offset, feet/pivot, semantic role and explicit movement/collision anchors. Clean the static duplicate, then test limited motion/in-betweens. No per-object pack or rig is automatically implemented by extraction.
 7. **Verify/review:** recompose still layers; inspect transparent edges, every repair boundary, camera motion, route and reflection coverage. Code protection is one gate; artistic continuity and playable geometry are separate gates. Add corruption and the selected reveal/physical event only after the clean composition works.
 
-The current example proves step 3 on **two distinct layer studies**, not a completed seven-layer game scene. The clean location source includes a straight bridge and remains a separate study; it is not composited behind the full-height maze as an approved final background.
+The earlier separate-source example below proves bounded replacement. The current creek applies it to architecture before disjoint layer partitioning; this prevents a seam fix in one role from drifting away from another role. Fixed scenery uses shared mirrored boundary samples. Individual extracted objects still require occlusion fill and motion tests; exact static recomposition does not prove independently movable props.
 
 ## A shared expandable strip
 
@@ -57,7 +57,7 @@ python scripts/stage_art.py apply --packet tmp/stage-art/my-review --candidates 
 
 `--normalize` explicitly permits at most 2% dimension drift and uses nearest-neighbor sampling. Without it, mismatched sizes fail. The tool requires the complete selected packet, rejects stale/tampered packets and existing output versions, replaces alpha instead of merely blending over it, and proves zero changed pixels outside all copied bands. Its report **never marks visual seams approved**. Do not use a broad feather/crossfade to hide a broken ladder or girder endpoint.
 
-Scratch packets, composed strips and replay outputs remain in ignored `tmp/`. Selected original generation results and prompts are committed as review assets; reproducible derived strips are rendered by the viewer rather than committed again.
+Scratch packets, wide composed strips and replay outputs remain in ignored `tmp/`. Selected generation sources/prompts and the requested registered plate exports are committed as review assets. The current creek also commits six per-chunk masters for visual review; its builder proves exact recomposition. Full-width strips are assembled by the viewer rather than duplicated in Git.
 
 ## GPT Image 2.5 API route
 
@@ -82,11 +82,12 @@ The viewer includes an optional **schematic reflection preview** of the maze, no
 ## Validation and change review
 
 ```powershell
-python -m unittest discover -s scripts -p test_stage_art.py -v
+python -m unittest discover -s scripts -p 'test_*.py' -v
+python scripts/creek_layers.py
 python scripts/check_docs.py
 git diff --check
 ```
 
-Ten offline tests cover protected RGBA pixels, deleting old alpha, correct join windows/edit-mask convention, missing layers/candidates, explicit size normalization, immutable versions, stale inputs, middle insertion and dry-run/model preservation. The art CI runs these without API credentials. The actual two-layer demo also reports zero outside-band pixel changes. Visual edge residue and some repair-boundary mismatch remain; no seamless or playable-art acceptance is claimed.
+Sixteen offline tests cover protected RGBA pixels, old-alpha deletion, staggered masks, missing/stale inputs, immutable versions, normalization, middle insertion, dry-run model preservation, disjoint alpha partitioning, matte cleanup and route failures. The creek verifier also checks 21 plates, six exact recompositions, matching scenery boundaries, source/configuration hashes and graph reachability. CI needs no API credentials. Artistic seams, precise colliders and physics remain separate review gates.
 
-Issue [#14](https://github.com/THD-AI/WinCS/issues/14) tracks this explicitly requested pipeline. One child PR targets #13's branch so it can be reviewed or rejected separately. After #13 merges, retarget the child to `main` and recheck its diff; do not merge or restack automatically. The project board and general issue/board automation remain deferred.
+Issue [#14](https://github.com/THD-AI/WinCS/issues/14) records the explicitly requested pipeline scope. PRs #13/#15 are merged. The owner requested one new replacement PR from current `main`; no active dependency stack or new issue is needed. The project board, issue automation and paused watcher remain deferred. Do not merge automatically.

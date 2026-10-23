@@ -1,6 +1,6 @@
 # Workspace now; project tracking later
 
-**23 October stack verification:** `gh stack link https://github.com/THD-AI/WinCS/pull/13 https://github.com/THD-AI/WinCS/pull/15 --base main` reported the existing remote stack up to date. `gh stack init --base main docs/campus-collages feature/stage-art-pipeline` adopted the two existing local feature branches; `gh stack view --json` then resolved #13 and #15 with neither needing a rebase. The local main trunk was created from origin/main for tracking; no commits were made there. Continue #15 for the combined art study. No submit, rebase, force push, automatic merge or watcher restart was performed.
+**23 October update:** PRs #13/#15 are merged. The replacement creek uses one feature branch from current main and one new PR. No active stack, new issue, board or watcher is needed. Earlier remote stack links and local `gh stack` tracking were verified before those merges; keep that as history, not an instruction to continue a merged PR. No automatic merge, rebase or restack.
 
 [← Previous](PLAN.md) · [🏠 Home](../README.md) · [🖼️ Visual library](../references/README.md) · [Next →](../CONTRIBUTING.md)
 

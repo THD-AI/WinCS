@@ -4,7 +4,7 @@
 
 [![The creek becomes a substantial maze](campus-mutation/images/after-center.png)](campus-mutation/README.md)
 
-**[Start here: combined location → maze viewer](campus-mutation/viewer.html).** Photo comparison, clean/mutated three-banner panning, two actual join repairs and seven center depth trials now share one interface. [Images, prompts and limits](campus-mutation/README.md). Earlier studies below retain the steps that led here.
+**[Start here: one creek, a route worth finding](campus-mutation/viewer.html).** This replaces the rejected combined study at the same address: fixed scenery, substantial climbing structures, 21 registered plates, exact recomposition and a connected route proposal. Photo comparison, three-banner panning, explicit seams, whole-stage overview and all-layer isolation share one interface. [Sources, process and limits](campus-mutation/README.md). Earlier studies below remain history.
 
 **[Earlier separate maze / location seam demonstration →](seam-pipeline/README.md)** · [Exact commands / API route](../../docs/technical/stage-art-pipeline.md). This restored the thick-girder/shaft direction and demonstrated bounded repairs before the combined scene above. The thin traversal pass below remains a comparison.
 

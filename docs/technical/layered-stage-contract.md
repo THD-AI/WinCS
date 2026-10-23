@@ -61,7 +61,7 @@ Do not move physical play surfaces at a different parallax factor from the chara
 
 Generate the complete scene first. Recover every needed bar/ladder endpoint and plant silhouette from that scene, extrapolating occluded parts. Preserve full-canvas alignment until a crop and its source offset/pivot are verified. Name standable bars, climbable ladders, decorative rails, movable bodies and animated plants separately.
 
-Remove moving art from the static plate and fill revealed pixels. Recompose all still plates against the accepted dressed scene before parallax or animation. Check missing/duplicated material, edge halos, scale, registration and occlusion on light/dark. The current seven center trials have genuine alpha but shifted features/residue; they are **not a passed recomposition**. Wings and per-object sprite/rig catalogs are not completed.
+Remove moving art from the static plate and fill revealed pixels. Recompose all still plates against the accepted dressed scene before parallax or animation. Check missing/duplicated material, edge halos, scale, registration and occlusion on light/dark. The earlier seven center trials failed registration. The [current replacement](../../references/production/campus-mutation/README.md) instead derives disjoint masks from the repaired scene: all seven roles cover three chunks and recompose exactly. Per-object reconstruction, rigs and collision remain future work.
 
 ## Controller and collision review
 

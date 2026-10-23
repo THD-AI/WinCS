@@ -2,7 +2,7 @@
 
 [![The recognizable creek transformed into substantial riveted maze](../../references/production/campus-mutation/images/after-center.png)](../../references/production/campus-mutation/viewer.html)
 
-**Latest visual direction, 23 October:** [one combined study](../../references/production/campus-mutation/README.md) carries the original creek identity into the substantial branching maze. Its viewer compares the photo board, clean/mutated stages, three-banner joins and seven center depth roles. A short image-cut/stretch transition demonstrates visual corruption; no player displacement or collision change is implemented. These are review candidates, not a finalized level or passed decomposition.
+**Latest visual direction, 23 October:** [the replacement creek](../../references/production/campus-mutation/README.md) keeps sky, trees, bank, water, near rails and plants fixed while architecture becomes a substantial branching maze. Its journey has an entry, climbs, return routes, optional dead ends, a reserved boss clearing and an exit. All seven roles cover three chunks and recompose exactly. The viewer exposes seams, source collage, layer proof and route intent. The graph is not a physics playtest; final level approval remains with the team.
 
 [← Ten-recording direction](../brief/voice-notes.md) · [Location boards](../../references/campus/README.md) · [Scene-first workflow →](../design/layered-stage-workflow.md)
 
@@ -68,7 +68,7 @@ Do not turn every visual motif into a new algorithm or simulation. The maze can 
 
 A shared coordinate space is bookkeeping for an image that already exists. Full-canvas plates inherit `[0,0]`; cropped sprites retain their crop offset from the master. The default is not manual x/y placement of newly generated trees, bars and rocks. [Practical workflow](../design/layered-stage-workflow.md) · [Minimal technical contract](../technical/layered-stage-contract.md).
 
-The [current trial](../../references/production/crossings-strip/README.md) includes three clean banners, two overlap candidates, three traversal passes and seven center depth plates. Native dimensions vary slightly; seams and the generated recomposition have **not passed**. Some cutouts drift or retain fringe pixels. Wing decomposition and every-object grabs/rigs remain future production work. Five-plus depth roles are the requested direction; a flat approved strip is a delivery fallback if time expires. Generation does not guarantee exact extraction, a rig, collision or a solvable route.
+The [current location](../../references/production/campus-mutation/README.md) exports seven registered roles across left, center and right, with exact master recomposition. Five roles share the same sources in both states. Its [route contract](../../references/production/campus-mutation/route.json) marks proposed walks, ladders, jumps, branches and a boss clearing. Headroom, collider tracing, collision, object rigs and physics remain review gates. Earlier center-only trials remain historical evidence of why independent extraction redraws failed.
 
 ## Buildable jam recommendation
 

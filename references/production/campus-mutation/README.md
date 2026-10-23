@@ -1,71 +1,75 @@
-# Rusty Crossings · the creek becomes the maze
+# Rusty Crossings · one creek, a route worth finding
 
-**[Open the combined viewer](viewer.html)** · [Original photo board](../../campus/crossings.md#location-photo-board) · [Stage library](../README.md) · [Reusable process](../../../docs/technical/stage-art-pipeline.md)
+**[Open the location viewer](viewer.html)** · [Photo board](../../campus/crossings.md#location-photo-board) · [Stage library](../README.md) · [Pipeline](../../../docs/technical/stage-art-pipeline.md)
 
-![Creek materials and vegetation integrated with the substantial maze](images/after-center.png)
+![Branching steel, climbing shafts and the familiar creek](images/after-center.png)
 
-**23 October · current combined visual candidate.** The pale blue-green rivets, rust, mossy concrete, tubular grey rails, autumn growth and creek come from the approved photographic collage. The broad branching girders and tall shafts come from the preferred maze study. They now inhabit one newly designed flat side-scrolling scene. This replaces the earlier separation into unrelated location and maze views.
+**Replacement, 23 October.** This location replaces the former full-scene mutation and its drifting center extractions. Five roles stay fixed: sky/trees, bank, water, near rails and plants. Only architecture changes. Broad bridges, ladders, return paths and side branches retain the earlier maze's character. Algorithms and data structures influence the route, rather than erasing the campus setting.
 
-## Place first, then let it misbehave
+## See the journey
 
-| Photographic identity | Clean side elevation | Mutated center |
+| Entry / first climb | Branches / reconnection | Boss clearing / exit |
 | --- | --- | --- |
-| ![Approved cleaned photographic collage](../../campus/images/crossings.png) | ![Clean creek interpretation](../crossings-strip/images/02-center-clean.png) | ![Integrated maze](images/after-center.png) |
+| ![Left](images/after-left.png) | ![Center](images/after-center.png) | ![Right](images/after-right.png) |
 
-The collage is a material/landmark reference, not a camera to copy or a measured map. The viewer compares all three and previews a short row-cut/stretch transition from clean to mutated. It is a presentation prototype, not a physics event or a finished level. It honors reduced-motion preference with an immediate swap.
-
-## Three banners, two repaired joins
-
-| Left | Center | Right |
+| Clean left | Clean center | Clean right |
 | --- | --- | --- |
-| ![Left creek-maze extension](images/after-left.png) | ![Center creek-maze painting](images/after-center.png) | ![Right creek-maze extension](images/after-right.png) |
+| ![Left](images/before-left.png) | ![Center](images/before-center.png) | ![Right](images/before-right.png) |
 
-Three chunks span **6480×720**, using canonical **2160×720** review panels. Native generated images are preserved; explicit nearest-neighbor sampling is recorded in [provenance](media-sources.json). The source paintings vary slightly in size and geometry. Do not call their butt joins seamless.
+The [photo collage](../../campus/images/crossings.png) supplies riveted blue-green steel, rust, mossy piers, tubular grey rails, autumn growth and creek water. The stage is newly arranged in flat side elevation. Shared nature panels mirror on alternating chunks; this preserves identical boundary samples, not a surveyed campus layout.
 
-| Left–center repair context | Center–right repair context |
-| --- | --- |
-| ![Left-center repair candidate](images/mutation--left--center-candidate.png) | ![Center-right repair candidate](images/mutation--center--right-candidate.png) |
+The [route contract](route.json) reserves an entry, climbing routes, returnable dead ends, a reconnection, an open boss clearing and an exit. Viewer annotations show walk, ladder, proposed jump and exploration edges at an **18×32** body scale. Its graph is connected, including boss and exit; jump edges fit the proposed 180-pixel horizontal / 120-pixel rise envelope. This is **authoring intent, not a physics playtest**. Spurs have explicit intermediate walk/climb anchors; all platforms still need clearance/collision review. No boss or game is implemented.
 
-The [stage configuration](stage.json) prepares staggered full-width contexts centered at each join. Only their central **512×720** bands replace the source world: `[1904,2416)` and `[4064,4576)`. The other pixels are protected, including alpha. The [offline verification](verification.json) records **zero changed pixels outside those bands**. This invariant does not certify artistic continuity: inspect both patch edges, waterline, rails and platform endpoints in the viewer. The complete generated repair window is never laid over the world.
+## Seven registered roles · every chunk
 
-The clean-state comparison reuses the earlier location panels and bounded repair candidates from the [seam study](../seam-pipeline/README.md). The new mutation has its own source paintings, repair packet and report.
+| Role | Left | Center | Right | Use |
+| --- | --- | --- | --- | --- |
+| Sky / distant trees | [PNG](images/01-distance-left.png) | [PNG](images/01-distance-center.png) | [PNG](images/01-distance-right.png) | Fixed identity; future slow parallax |
+| Rear masonry cuts | [PNG](images/02-supports-left.png) | [PNG](images/02-supports-center.png) | [PNG](images/02-supports-right.png) | Disjoint regions of the repaired structure |
+| Rocky bank | [PNG](images/03-bank-left.png) | [PNG](images/03-bank-center.png) | [PNG](images/03-bank-right.png) | Fixed shoreline; not collision inferred from pixels |
+| Water / reflection mask | [PNG](images/04-water-left.png) | [PNG](images/04-water-center.png) | [PNG](images/04-water-right.png) | Current-scene reflection clipping |
+| Broad girders / ladders | [PNG](images/05-traversal-left.png) | [PNG](images/05-traversal-center.png) | [PNG](images/05-traversal-right.png) | Visible traversal architecture; explicit future bodies |
+| Decorative near rails | [PNG](images/06-near-rails-left.png) | [PNG](images/06-near-rails-center.png) | [PNG](images/06-near-rails-right.png) | Foreground occlusion; never a collider by default |
+| Near foliage | [PNG](images/07-foliage-left.png) | [PNG](images/07-foliage-center.png) | [PNG](images/07-foliage-right.png) | Separate alpha; boss-floor readability window |
 
-## Seven center roles, visibly inspectable
+Clean-state architecture: [left](images/clean-architecture-left.png), [center](images/clean-architecture-center.png), [right](images/clean-architecture-right.png). Clean traversal role is empty; its future walking surface needs explicit geometry. All other clean-state roles reuse the exact same image files as the maze.
 
-1. **Distant sky and trees:** a filled background behind removed structures.
-   ![Distance plate](images/01-distance.png)
-2. **Rear concrete / shafts:** background support structure.
-   ![Support plate](images/02-supports.png)
-3. **Creek bank:** rocks, moss and ground edge.
-   ![Bank plate](images/03-bank.png)
-4. **Water:** separate surface/reflection boundary.
-   ![Water plate](images/04-water.png)
-5. **Traversal:** broad girders, platforms and ladders.
-   ![Traversal plate](images/05-traversal.png)
-6. **Near rails:** decorative occluders, distinct from traversal.
-   ![Near rail plate](images/06-near-rails.png)
-7. **Foliage:** ivy and near growth for later localized movement.
-   ![Foliage plate](images/07-foliage.png)
+Every plate is **2160×720**, three chunks span **6480×720**, and six roles have real alpha. No center-only approximation or independently regenerated cutout is used. Masonry and traversal are disjoint source-region masks, so they reconstruct the same repaired structure exactly. They are static cuts, not individually reconstructed columns or freely movable ladders. Do not animate their relative positions without filling hidden material and extracting per-object bodies.
 
-Six plates have genuine alpha; the distance plate is opaque. Use the viewer's individual isolates, toggles, checkerboard and master/recomposition wipe. **These are extraction trials, not a passed mask pack:** supports and traversal overlap; near rails do not reproduce the master's exact span; foliage still contains colored fringe and residual surface texture despite a second extraction. Bank and foliage duplicate some growth. No wing decomposition, per-object rigs or collision bodies are claimed. The full painted master is the reliable visual reference while decomposition is reviewed.
+## Exact order
 
-The water master currently contains painted reflections. Runtime reflections should instead sample the current approved scene/actors, mirror them through a chunk-local water mask and update after mutation. The water extraction provides a reference boundary; it is not that shader or a dynamic reflection implementation.
+1. Inspect the collage and preferred earlier maze. Design quiet entry, climbs, branches, recovery, clearing and exit before extracting anything.
+2. Generate three **transparent scene-first architecture plates**, without water/sky/foliage. Preserve the nature plates separately. Prompts request compatible low edge decks and readable empty chambers.
+3. Explicitly normalize native generation sizes with nearest-neighbor sampling. Preserve native sources. Remove the saturated red debug matte using the documented predicate, retaining brown/orange rust.
+4. Prepare two brick-offset join contexts with `stage_art.py`. Generate repairs, then copy only each central 512-pixel band, including alpha. World copy bands are `[1904,2416)` and `[4064,4576)`. Inspect both band edges, not only the join center.
+5. Apply a separately reported post-repair matte cleanup. Split the repaired structure using the authored regions in [assembly.json](assembly.json). Never redraw the seven layers independently.
+6. Assemble all seven roles in the same space. Existing distant trees, bank, water, near rails and clean architecture come from the earlier study; new foliage is independently generated as a compositional strip. Its scale/offset and boss-floor alpha window are explicit.
+7. Export every chunk/role, clean architecture and six masters. Verify hashes, alpha, dimensions and exact master recomposition. Inspect isolation on light/dark, routes at body scale, every seam and both states. Only then extract movable objects, fill occlusions, animate or build colliders.
 
-## Repeat or expand the process
+The viewer keeps the same location URL and replaces its old candidate images. It includes photo comparison, three-banner panning, whole-journey overview, visible seams/repair edges, state wipe, 404 reveal, route overlay, all-layer isolation, chunk gallery and master/recomposition proof. Optional water reflection samples the **currently visible scene** through the water alpha. The base texture still includes older painted color; this is a reflection preview, not final water rendering. Reduced-motion preference skips the animated reveal.
+
+## Sources and reproducibility
+
+Native built-in image generation outputs and two repair candidates are in [sources/](sources/). Exact six prompts: [prompts.json](prompts.json). Source and export hashes/native dimensions/alpha: [media-sources.json](media-sources.json). Mask regions, offsets and draw order: [assembly.json](assembly.json). Prepared seam snapshot: [packet.json](packet.json), [stage.json](stage.json), [repair-report.json](repair-report.json). Combined verification: [verification.json](verification.json).
 
 ```powershell
-python scripts/stage_art.py prepare --config references/production/campus-mutation/stage.json --out tmp/stage-art/campus-mutation-v2 --band 512
-# Put selected full-context candidates in the packet's candidates directory,
-# named mutation--left--center.png and mutation--center--right.png.
-python scripts/stage_art.py apply --packet tmp/stage-art/campus-mutation-v2 --candidates tmp/stage-art/campus-mutation-v2/candidates --out tmp/stage-art/campus-mutation-v2/applied --normalize
+python scripts/creek_layers.py
+python -m unittest discover -s scripts -p 'test_*.py' -v
+python scripts/check_docs.py
 ```
 
-Run from the repository root. The committed packet snapshot and report document v1. Preparation is immutable; use a new output directory. The [exact pipeline](../../../docs/technical/stage-art-pipeline.md) covers generation, masks, API dry run and shared chunk insertion. Each future depth role supplies every ordered chunk before its own join jobs can be prepared. Authoring only center plates does not satisfy that three-chunk layer contract.
+To reproduce the selected derived exports in place: `python scripts/creek_layers.py --build`. This is an explicit rebuild, with no network call. Use a fresh packet directory for another art iteration:
 
-Approve this recognizable composition, its joins and its player scale first; fix extraction registration and alpha next; extend approved depth plates to the wings; then extrapolate individual objects and author a tested collision route. This order avoids manually assembling an unrelated prop kit. Full-sized exports/recompositions are reproducible scratch, outside Git.
+```powershell
+python scripts/stage_art.py prepare --config references/production/campus-mutation/stage.json --out tmp/stage-art/creek-next --band 512
+```
 
-All twelve selected images were made with **built-in image generation**, whose model ID was not exposed. No paid API request was made. [Exact prompts](prompts.json), [input/output hashes, native dimensions and source graph](media-sources.json), [protected-pixel report](verification.json). Raw photos, professor screenshots and audio remain outside Git; the approved campus collages are unchanged.
+Generate each prepared context with its edit mask, save candidates by job ID, then use `stage_art.py apply` as described in the [pipeline](../../../docs/technical/stage-art-pipeline.md). Do not reuse the recorded packet after changing sources/configuration. The model field in the adapter config selects the API route; it is not a claim that the built-in tool disclosed its model.
 
-**Verification:** all ten offline pipeline tests and the repository's document/provenance/link checks pass. Browser review exercised clean-state restore, glitch reveal, left/right panning, center return, repair/band toggles, clean/mutated wipe, foliage isolation, all-layer restore, light checkerboard and master/recomposition wipe. The rendered comparison exposes rather than hides the remaining extraction differences.
+## Extend without losing registration
 
-**Review:** [PR #15](https://github.com/THD-AI/WinCS/pull/15) continues the existing branch above [PR #13](https://github.com/THD-AI/WinCS/pull/13); [issue #14](https://github.com/THD-AI/WinCS/issues/14) remains the single pipeline exception. The project board and general issue automation remain deferred, and the watcher remains paused.
+Left/right or middle: add a stable chunk ID, all seven role plates, clean architecture and route boundary ports. Recompute origins, prepare affected neighboring contexts, repair the composed structure, then derive masks again. Existing approved source art stays fixed. Check traversal ports and reflection coverage at both new seams.
+
+Up/down: design a shared two-dimensional chunk grid, vertical edge ports and vertical overlap windows first. The current compositor implements one horizontal row; vertical expansion is **specified future work**, not an existing flag. Never stretch this strip vertically or promise automatic infinite expansion.
+
+**Remaining gates:** team approval of the art/scale, detailed headroom/collider tracing, physically reachable jumps and ladder transitions, per-object fill/rigs, final reflection treatment and theme/pre-work rules. Graph and pixel checks do not decide those gates. Earlier independent studies stay in the library as history; this replaces only the rejected combined location.

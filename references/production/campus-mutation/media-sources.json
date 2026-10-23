@@ -1,97 +1,275 @@
 {
   "date": "2026-10-23",
-  "method": "Built-in image generation; model identifier unavailable. Native outputs preserved; review maps explicitly to 2160x720 using nearest-neighbor.",
+  "method": "Built-in image generation; exact prompts in prompts.json. Deterministic masks and assembly in scripts/creek_layers.py.",
   "images": [
     {
-      "file": "images/01-distance.png",
-      "sha256": "4fb3ff91af0250f4dae0406e86836ff46959a96c04f243b46f4b6ef0803f76a5",
+      "file": "images/01-distance-center.png",
+      "sha256": "daca8373929b1ff78e666e4ee8baf28c27d9fdb37c1f109676bb6a5329a134ab",
       "dimensions": [
-        2172,
-        724
-      ],
-      "mode": "RGB",
-      "prompt_key": "01-distance",
-      "alpha_extrema": null
-    },
-    {
-      "file": "images/02-supports.png",
-      "sha256": "587879cab7ba21133e32d6d31890e445d9d6290bfe9510f7122ccf3de776bff3",
-      "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGBA",
-      "prompt_key": "02-supports",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "file": "images/01-distance-left.png",
+      "sha256": "9c5e674c08acf69c30f236c603cd703d717a298f52059d5a4b6dbb70435eb441",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "file": "images/01-distance-right.png",
+      "sha256": "9c5e674c08acf69c30f236c603cd703d717a298f52059d5a4b6dbb70435eb441",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        255,
+        255
+      ]
+    },
+    {
+      "file": "images/02-supports-center.png",
+      "sha256": "497699d909fad8d0e8edd97c9d281b7f69a9feba8e4e7322e7d0b56bdb1f51fb",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
       "alpha_extrema": [
         0,
         255
       ]
     },
     {
-      "file": "images/03-bank.png",
-      "sha256": "3dfaa10387a93544cb1dbab667aac5ec65720c5c8f5d706e734360b7472ee96f",
+      "file": "images/02-supports-left.png",
+      "sha256": "5bb25b83a4fe356583a0d5e91e7a7fc7888953f5b802bd32db61c1ac70e4ba60",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGBA",
-      "prompt_key": "03-bank",
       "alpha_extrema": [
         0,
         255
       ]
     },
     {
-      "file": "images/04-water.png",
-      "sha256": "ec64e7e3d2ac134b3b4245d5cfa0e5acaa6fb3e51de7ced398fb01cc7a8cf19a",
+      "file": "images/02-supports-right.png",
+      "sha256": "2a488663aeffa3416f2802ee64292403bd14ae33b983d06da402c1b68faa93a5",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGBA",
-      "prompt_key": "04-water",
       "alpha_extrema": [
         0,
         255
       ]
     },
     {
-      "file": "images/05-traversal.png",
-      "sha256": "cda0559b26b30e6495e0d3d3d4c9a7ef98db2b41931da62ed8845999be1f7415",
+      "file": "images/03-bank-center.png",
+      "sha256": "91615a80ef092f7b6718a17686702aa230a82ec934d445b786ad926d330f5968",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGBA",
-      "prompt_key": "05-traversal",
       "alpha_extrema": [
         0,
         255
       ]
     },
     {
-      "file": "images/06-near-rails.png",
-      "sha256": "2a101622a448921ad3e32d5eac34fb933f0ee81f7e5606013530994c14dcb5f9",
+      "file": "images/03-bank-left.png",
+      "sha256": "43c706c64b4b0acd0e39a1ff68d5fa7860a0321417ee1bcc76983c42143d36bc",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGBA",
-      "prompt_key": "06-near-rails",
       "alpha_extrema": [
         0,
         255
       ]
     },
     {
-      "file": "images/07-foliage.png",
-      "sha256": "cc169954ad2068f48531bcdff990c884bcea61a6a31993a23b54846ffc381e24",
+      "file": "images/03-bank-right.png",
+      "sha256": "43c706c64b4b0acd0e39a1ff68d5fa7860a0321417ee1bcc76983c42143d36bc",
       "dimensions": [
-        2167,
-        725
+        2160,
+        720
       ],
       "mode": "RGBA",
-      "prompt_key": "07-foliage",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/04-water-center.png",
+      "sha256": "dfbc3545c334d42e54ee749ab832192c35a94204ed26d9a381b07734d72edefe",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "images/04-water-left.png",
+      "sha256": "209cc4112cc2c79a894ae66c5b2bb76e048a0609f71288463ebdf8d89f4ca269",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "images/04-water-right.png",
+      "sha256": "209cc4112cc2c79a894ae66c5b2bb76e048a0609f71288463ebdf8d89f4ca269",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        254
+      ]
+    },
+    {
+      "file": "images/05-traversal-center.png",
+      "sha256": "d6d585ec82ed76cc453666b9937fbb730d2c9dbcabb7706f273a9ca6c2d49a79",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/05-traversal-left.png",
+      "sha256": "dc9d89acfbcc2c5c70b7e06a8c906b47dfc6b8abf41c499c29efbf349d9c0393",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/05-traversal-right.png",
+      "sha256": "adbaeab111e6a35f5bfbdcfcba600e4b168a3f00988ded7741e00ed120afbc17",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/06-near-rails-center.png",
+      "sha256": "9f04ebb7822d097efb350f317a7e92dacff9648845785b828b4af8bfcab56b7b",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/06-near-rails-left.png",
+      "sha256": "1b1d8443cf3e81085cd7570e095e6be179e6a6473340fe20d579d6c310207958",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/06-near-rails-right.png",
+      "sha256": "1b1d8443cf3e81085cd7570e095e6be179e6a6473340fe20d579d6c310207958",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/07-foliage-center.png",
+      "sha256": "0f8b4b1304edbcffb43bf825b4eb295d5eeea92943c8917a2cd9f6fa54726875",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/07-foliage-left.png",
+      "sha256": "235dcd2a454d91f9d2068b8f80fca2686073208a329239a0c45267d7aee1110d",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/07-foliage-right.png",
+      "sha256": "d362f85c692b97227e486f745b0852f1df8727e7d8589973ed684663ddbf8282",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
       "alpha_extrema": [
         0,
         255
@@ -99,76 +277,245 @@
     },
     {
       "file": "images/after-center.png",
-      "sha256": "f989335af9231f85290cef73cc34e7adc18122e5663442363c5d838f18552dbc",
+      "sha256": "22e7a17b9826eb69c674a575e13103b1fefff4dd7047937f0d794028328cce1c",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGB",
-      "prompt_key": "after-center",
       "alpha_extrema": null
     },
     {
       "file": "images/after-left.png",
-      "sha256": "f3737755ccb1603a6de31897247a9e818a593667a6bccc9afd22f039f8d670b2",
+      "sha256": "d5424bcd9bea60b6fac3a220170c9117846ba5bf0d8c4b499797fba12595de9a",
       "dimensions": [
-        2164,
-        727
+        2160,
+        720
       ],
       "mode": "RGB",
-      "prompt_key": "after-left",
       "alpha_extrema": null
     },
     {
       "file": "images/after-right.png",
-      "sha256": "40242d25805364b5dbefaa06412a34502457a7dd7695c5b71776ae5185ce7ca3",
+      "sha256": "09c214d6103f9f818bbcd0fc75797280176499bd8428f4ed21e6bb128a250725",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGB",
-      "prompt_key": "after-right",
       "alpha_extrema": null
     },
     {
-      "file": "images/mutation--center--right-candidate.png",
-      "sha256": "b4526f8782b83985d3af3d55fa2b20eb6a745eb801153607113213b5fd7fd296",
+      "file": "images/before-center.png",
+      "sha256": "c6f9d06677cb18de7c1ecb7bc847cd9e08ab41a3a001361554a0b2edf3db618f",
       "dimensions": [
-        2172,
-        724
+        2160,
+        720
       ],
       "mode": "RGB",
-      "prompt_key": "mutation--center--right",
       "alpha_extrema": null
     },
     {
-      "file": "images/mutation--left--center-candidate.png",
-      "sha256": "aa140bbb2ce9afdd2a7458d4a3464212fa7ef7630b3eab59e9bd51fce288fa83",
+      "file": "images/before-left.png",
+      "sha256": "be8a374160663a1d5228ff55db62b440cd3fee44d868923158fec2e4577a70f1",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "images/before-right.png",
+      "sha256": "43bbeb7d7cd375d3fc2555502312a91778ef5a74c1fd14ac628e799fd5ab3064",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGB",
+      "alpha_extrema": null
+    },
+    {
+      "file": "images/clean-architecture-center.png",
+      "sha256": "27db299ab720cb82a53e244f596653252c99be299f8106add56e122ceae8d36d",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/clean-architecture-left.png",
+      "sha256": "4287597c3e2c8f25932598b4c14da23861e6b7f24df5b93c4d94d866d5715fee",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "images/clean-architecture-right.png",
+      "sha256": "4287597c3e2c8f25932598b4c14da23861e6b7f24df5b93c4d94d866d5715fee",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/center-normalized.png",
+      "sha256": "2d9d31a326cfb3aeec774ef723ca967b71c927416271b25717b75060ac15ff3b",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/center.png",
+      "sha256": "5ea6cc9267a38673431b6f92a34f152adf6595b3c81205c98a997e9f7145cd17",
       "dimensions": [
         2172,
         724
       ],
-      "mode": "RGB",
-      "prompt_key": "mutation--left--center",
-      "alpha_extrema": null
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/left-normalized.png",
+      "sha256": "3d2bba0475a97c8db7db861f04d27e63b3999faf1eabd2f13bf1d4616a0ac11c",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/left.png",
+      "sha256": "ecfb982c97c2d696d960e8e77f9138f6799773c166f901b2291e58784f092703",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/plants.png",
+      "sha256": "eaa77ca6b343e3c2211f9c08040ff5fec55ee4064efc421d2e19b284a04c173b",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/right-normalized.png",
+      "sha256": "c8d9e0e51bfbddf1ce65f934aec9bf04d83d43f0480b26a153900d53e0f9048f",
+      "dimensions": [
+        2160,
+        720
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/right.png",
+      "sha256": "3c822b406cd8f71612e7dbaac928222cf0b64dbb897aa8eb5e0ea150f3c66d17",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/structure--center--right-candidate.png",
+      "sha256": "6c1f64a1502711f7e5d04e98bd4d58996d03c985bc8a6dc31345ebe338642166",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "file": "sources/structure--left--center-candidate.png",
+      "sha256": "c2959d99b9a96e8fadd44fe9fd87aace3942afe6dfbb874b7d8769e67b240ca6",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ]
     }
   ],
   "source_inputs": [
     {
+      "project_file": "references/production/crossings-strip/images/depth-01-far.png",
+      "sha256": "7e4c6412262835f4773ee833bd8261e598dc72d989f2ec282f96198d6aa2d50e"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/depth-02-structure.png",
+      "sha256": "7d8f9a496dd0f2b9df181fb230310b5a8ee2711563d9303906903b984f96c26d"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/depth-03-bank.png",
+      "sha256": "8d2198d4c16c8fb34377750dbe5c1aa85239205700c936ffc0db55e3fcd2d250"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/depth-04-water.png",
+      "sha256": "e8066555a380ab5f00f176205504f75a10a56cda00d897ddd9caac20ed531033"
+    },
+    {
+      "project_file": "references/production/crossings-strip/images/depth-06-rails.png",
+      "sha256": "865947d12d0b3889bf4d286bb64fe4efc997a0bf3b9222ded7b1a92a5bbbdf19"
+    },
+    {
       "project_file": "references/campus/images/crossings.png",
       "sha256": "1ebf3b8dd8791a5a2bb9f3d7023b3d8721f513b021334b66cd3813c3e60b1102"
-    },
-    {
-      "project_file": "references/production/crossings-strip/images/01-left-clean.png",
-      "sha256": "a1ec3667b79656d8e0741e443d00506d453c7aa35962d633c94856c8a4ce9374"
-    },
-    {
-      "project_file": "references/production/crossings-strip/images/02-center-clean.png",
-      "sha256": "6d22e84cb0ce284717951dae1e07b775c7474b23879edba6150524d491517d72"
-    },
-    {
-      "project_file": "references/production/crossings-strip/images/03-right-clean.png",
-      "sha256": "78407c6bdd52c810371ad48029035644eb089ac2fbb5b0978e1876fa534a1f81"
     },
     {
       "project_file": "references/production/seam-pipeline/images/maze-left.png",
@@ -183,9 +530,25 @@
       "sha256": "d2dbfa146797fa147f561485f95a8034bcd9930e259cd0c502d40875ff995240"
     }
   ],
+  "layer_order": [
+    "01-distance",
+    "02-supports",
+    "03-bank",
+    "04-water",
+    "05-traversal",
+    "06-near-rails",
+    "07-foliage"
+  ],
+  "shared_roles": [
+    "01-distance",
+    "03-bank",
+    "04-water",
+    "06-near-rails",
+    "07-foliage"
+  ],
   "packet": {
     "version": 1,
-    "config_sha256": "75926cd611f282bd0d29a029a274b75c0eaba4bb65e5a3bb40ab66685b0d9a0e",
+    "config_sha256": "765700b16a4fc7b73bf85ef93c35a71bc335014c4f12884945d520da77aa2195",
     "panel_size": [
       2160,
       720
@@ -216,18 +579,18 @@
     "model": "gpt-image-2.5-sunburst",
     "layers": [
       {
-        "id": "mutation",
-        "role": "integrated creek location transformed into substantial riveted traversal maze",
-        "world": "mutation-before.png",
-        "sha256": "a725ccd2331555859bd0d6dad2591a5974c84b7732952fb4496c0305900e5d20",
+        "id": "structure",
+        "role": "scene-first broad steel and masonry; separate after seam repair",
+        "world": "structure-before.png",
+        "sha256": "47108c4573dd1423a469b16734404013bd6b92ff2cd5b873b2960c638fbadf5a",
         "inputs": [
           {
             "chunk": "left",
-            "file": "references/production/campus-mutation/images/after-left.png",
-            "sha256": "f3737755ccb1603a6de31897247a9e818a593667a6bccc9afd22f039f8d670b2",
+            "file": "references/production/campus-mutation/sources/left-normalized.png",
+            "sha256": "3d2bba0475a97c8db7db861f04d27e63b3999faf1eabd2f13bf1d4616a0ac11c",
             "native_size": [
-              2164,
-              727
+              2160,
+              720
             ],
             "normalized_size": [
               2160,
@@ -236,11 +599,11 @@
           },
           {
             "chunk": "center",
-            "file": "references/production/campus-mutation/images/after-center.png",
-            "sha256": "f989335af9231f85290cef73cc34e7adc18122e5663442363c5d838f18552dbc",
+            "file": "references/production/campus-mutation/sources/center-normalized.png",
+            "sha256": "2d9d31a326cfb3aeec774ef723ca967b71c927416271b25717b75060ac15ff3b",
             "native_size": [
-              2172,
-              724
+              2160,
+              720
             ],
             "normalized_size": [
               2160,
@@ -249,11 +612,11 @@
           },
           {
             "chunk": "right",
-            "file": "references/production/campus-mutation/images/after-right.png",
-            "sha256": "40242d25805364b5dbefaa06412a34502457a7dd7695c5b71776ae5185ce7ca3",
+            "file": "references/production/campus-mutation/sources/right-normalized.png",
+            "sha256": "c8d9e0e51bfbddf1ce65f934aec9bf04d83d43f0480b26a153900d53e0f9048f",
             "native_size": [
-              2172,
-              724
+              2160,
+              720
             ],
             "normalized_size": [
               2160,
@@ -265,8 +628,8 @@
     ],
     "jobs": [
       {
-        "id": "mutation--left--center",
-        "layer": "mutation",
+        "id": "structure--left--center",
+        "layer": "structure",
         "context_origin": [
           1080,
           0
@@ -277,15 +640,15 @@
           1336,
           720
         ],
-        "context_sha256": "8b8b23e30502f4d493bc1df70229cadc12d01864f851ef82a8acae24ac9dc3c8",
+        "context_sha256": "3d305e3a57c6877ba142d9517e166c83ce48b802c7b170702ff2105518f28f57",
         "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
         "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
-        "prompt_sha256": "2fb7321da47ed439b1cdadfe9e90c1a8f061270fab9625f7a2f062e5808c575a",
-        "request_sha256": "a5a47aebbb9e2a2df704a3f709f53d26b393e0f3b8b58a40c02dae9bd5f6b4d1"
+        "prompt_sha256": "6708719bf9b17d0f9eebfbdad4a72241c4d83739913706f15a28292332485775",
+        "request_sha256": "2e7ba325b9fcb357d0ca26a0f6aa76d2bd332e171d95a6ad046fd9f3c588cf38"
       },
       {
-        "id": "mutation--center--right",
-        "layer": "mutation",
+        "id": "structure--center--right",
+        "layer": "structure",
         "context_origin": [
           3240,
           0
@@ -296,51 +659,29 @@
           1336,
           720
         ],
-        "context_sha256": "7d9d56aa487863ff8f83fc501c8201d4d622153ebbaaef0eef1fa65976671450",
+        "context_sha256": "0968aabf6cb5cbe2cd0bd40bd156d3fd26888b77e39d4d55053b25eee1855e5b",
         "edit_mask_sha256": "95826b60f01e78a45f0c3a46a0b442699f726f7a2e91106ffb3903f84e568259",
         "copy_mask_sha256": "51d67caede94e8374e62a1a26a67b86eddcecf469db6bdf2db7a640986c03ebe",
-        "prompt_sha256": "2fb7321da47ed439b1cdadfe9e90c1a8f061270fab9625f7a2f062e5808c575a",
-        "request_sha256": "a5a47aebbb9e2a2df704a3f709f53d26b393e0f3b8b58a40c02dae9bd5f6b4d1"
+        "prompt_sha256": "6708719bf9b17d0f9eebfbdad4a72241c4d83739913706f15a28292332485775",
+        "request_sha256": "2e7ba325b9fcb357d0ca26a0f6aa76d2bd332e171d95a6ad046fd9f3c588cf38"
       }
     ]
   },
-  "layer_order": [
-    "01-distance",
-    "02-supports",
-    "03-bank",
-    "04-water",
-    "05-traversal",
-    "06-near-rails",
-    "07-foliage"
-  ],
-  "acceptance": {
-    "seams": false,
-    "recomposition": false,
-    "collision": false,
-    "wing_depth_plates": false
+  "configuration_hashes": {
+    "assembly.json": "4da4c25f2c58d760a82b67c2f56c7116c296426ac6bda3ae5bb31fba036d1bb0",
+    "route.json": "776f569f43a5c26202caae463677e37e3377e428fee42b192adb02e817a83ac6",
+    "stage.json": "765700b16a4fc7b73bf85ef93c35a71bc335014c4f12884945d520da77aa2195",
+    "prompts.json": "04a5792149fd1db92c27bbe8c2946015555ebcc526c0a560ceec9240d498cf2d"
   },
   "source_graph": {
-    "after-center": [
-      "clean-center",
-      "maze-center",
-      "campus-collage"
-    ],
-    "after-left": [
-      "after-center",
-      "maze-left",
-      "clean-left"
-    ],
-    "after-right": [
-      "after-center",
-      "maze-right",
-      "clean-right"
-    ],
-    "depth-plates": [
-      "after-center"
-    ],
-    "repair-candidates": [
-      "packet layer-local context",
-      "packet edit mask"
-    ]
+    "architecture": "sources/{chunk}.png -> explicit normalization/matte cleanup -> bounded repairs -> disjoint masks -> role/chunk exports",
+    "shared_nature": "earlier fixed source -> explicit offset/mirroring -> same role export in both states",
+    "foliage": "sources/plants.png -> explicit vertical scale/offset and boss alpha window -> shared role7",
+    "masters": "registered exports in assembly draw order; clean swaps role2 and omits role5"
+  },
+  "acceptance": {
+    "team_art_approval": false,
+    "physics_verified": false,
+    "per_object_rigs": false
   }
 }
