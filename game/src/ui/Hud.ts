@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 import { gameEvents } from '../core/events';
 import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
 import { CellState, HudModel } from './hudModel';
+import { pocketMap } from './mapModel';
+import { MENU_KEYS, MENU_PAD, toggleMap } from './PocketComputer';
 
 const CELL = { x: 28, y: 28, w: 18, h: 32, gap: 8, cap: 4 };
 const COLOURS = { full: 0x46d1b4, shine: 0xb8f5e6, cracked: 0xf2a24a, empty: 0x22313a, edge: 0x0d1418, text: '#e8e4dc' };
@@ -21,7 +23,21 @@ export class Hud extends Phaser.Scene {
       fontFamily: 'monospace', fontSize: '16px', color: COLOURS.text,
     }).setOrigin(0.5, 0);
     const stop = this.model.listen(gameEvents, () => this.time.now);
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, stop);
+    const stopMap = pocketMap.listen(gameEvents);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => { stop(); stopMap(); });
+    // The menu key opens the pocket computer's map once Dexter has handed it over (#69, #52).
+    this.input.keyboard?.addCapture('TAB'); // Tab would move the browser's focus off the canvas
+    for (const key of MENU_KEYS) this.input.keyboard?.on(`keydown-${key}`, () => toggleMap(this.scene));
+    this.input.gamepad?.on('down', (_pad: Phaser.Input.Gamepad.Gamepad, button: Phaser.Input.Gamepad.Button) => {
+      if (button.index === MENU_PAD) toggleMap(this.scene);
+    });
+    // Dev builds: F2 hands over the pocket computer and marks the first rooms visited (#69 verification).
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F2', () => {
+      pocketMap.unlock();
+      pocketMap.visit('hidden-garden', 'hg-0-0');
+      pocketMap.visit('rusty-creek', 'rc-0-0');
+      pocketMap.visit('rusty-creek', 'rc-1-0');
+    });
     // Dev builds: F8 runs the crossing anywhere (#51 verification).
     if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F8', () => {
       if (!this.scene.isActive('Crossing')) this.scene.launch('Crossing');
