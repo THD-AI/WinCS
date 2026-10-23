@@ -1,5 +1,6 @@
 import type Phaser from 'phaser';
 import { AnomalyTest } from '../fx/AnomalyTest';
+import { AtmosphereTest } from '../fx/AtmosphereTest';
 import { Crossing } from '../story/Crossing';
 import { Hud } from '../ui/Hud';
 import { Title } from '../ui/Title';
@@ -11,5 +12,5 @@ import { Title } from '../ui/Title';
 export const LANE_A_SCENES: Phaser.Types.Scenes.SceneType[] = [
   Hud, Crossing, Title,
   // Dev-only test scenes stay out of production builds.
-  ...(import.meta.env.DEV ? [AnomalyTest] : []),
+  ...(import.meta.env.DEV ? [AnomalyTest, AtmosphereTest] : []),
 ];
