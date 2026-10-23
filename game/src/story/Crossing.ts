@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
+import { sound } from '../fx/sound/Audio';
 import { crashWindow } from '../ui/crashWindow';
 import { CrossingSequence } from './crossingSequence';
 
@@ -45,12 +46,14 @@ export class Crossing extends Phaser.Scene {
     });
     this.run.start();
     this.events.once('freeze', () => { if (this.scene.isActive(frozen)) this.scene.pause(frozen); });
+    this.events.once('dialog', () => sound.play('crash-ding'));
     this.scene.bringToTop();
   }
 
   update(_time: number, delta: number): void {
     const phase = this.run.update(delta);
     if (phase === 'freeze' || phase === 'dialog') this.events.emit('freeze');
+    if (phase === 'dialog') this.events.emit('dialog');
     this.flash.setVisible(phase === 'hit');
     this.dim.setVisible(phase === 'freeze' || phase === 'dialog');
     this.cracks.setVisible(phase === 'freeze' || phase === 'dialog');
