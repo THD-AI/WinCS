@@ -1,7 +1,7 @@
 # 09 – Art pipeline
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 13** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 14** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->
 
 ![Rusty Creek – seven registered layers composed](../art/stages/rusty-creek/images/after-center.png)
@@ -25,7 +25,7 @@ reference games (references/)─┘                                          ▲
 | 4 | **Lex's route sketch** on top of the concept: chunks, branches, secrets, enemies, boss room | sketch + chunk list | by hand |
 | 5 | **Chunks** – a clean side-view banner per chunk, then neighbours left, right, up, down | `art/stages/<region>/sources/` | generation + `stage_art.py prepare/apply` |
 | 6 | **Layers** – split the composed chunk into the registered layer stack ([04](04-WORLD-AND-LEVELS.md)) | `art/stages/<region>/images/` | `creek_layers.py`-style script per region |
-| 7 | **Annotation** – walkable lines, slides, ledges, climb zones, solids, hazards, interactables, spawns | `<chunk>.collision.json` | by hand (Lex) |
+| 7 | **Annotation** – walkable lines, slides, ledges, climb zones, solids, hazards, interactables, spawns | `<chunk>.<state>.collision.json` | by hand in Tiled (Lex), then `collision_from_tiled.py` |
 | 8 | **Sprites** – boards per character/enemy/item, drawn with the hero sheet and the style master | `art/sprites/` | `make_boards.py` |
 | 9 | **Export** – atlases and plates the game loads | `game/public/assets/` | `export_atlas.py` (with the game scaffold) |
 
@@ -95,5 +95,5 @@ python scripts/navigation.py && python scripts/check_docs.py
 - ❌ photos, audio, raw API output and rejected takes (`tmp/`), contact sheets, HTML viewers
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 13** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 14** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->

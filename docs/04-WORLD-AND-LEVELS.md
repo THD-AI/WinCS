@@ -1,7 +1,7 @@
 # 04 – World and levels
 
 <!-- nav:start -->
-[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 13** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
+[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 14** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
 <!-- nav:end -->
 
 ![Hidden Garden – where it starts](../art/direction/images/hidden-garden-preview.png)
@@ -91,7 +91,7 @@ Every time a chunk's layers are made, it also gets an annotation drawn over the 
 | 🤍 White | dot | Spawn: player, enemy, item, Dexter |
 | 🌬️ Pale blue | box | Glide lift (later): updraft that carries a gliding hero up |
 
-Export: `art/stages/<region>/<chunk>.collision.json` – polylines, points and boxes in stage pixels, one file per chunk and state. The game builds the physics from it. Pixel masks never stand in for collision; somebody draws it (Lex, on top of the composed chunk).
+Export: `art/stages/<region>/<chunk>.<state>.collision.json` – polylines, points and boxes in stage pixels, one file per chunk and state. Lex draws them in **Tiled**, one object layer per row of the legend, on top of the composed chunk; `scripts/collision_from_tiled.py` converts the export. The game builds the physics from it. Pixel masks never stand in for collision. The exact schema is in [13 – Production pipeline](13-PRODUCTION-PIPELINE.md#contract-collisionjson).
 
 ## Rusty Creek – the jam level
 
@@ -112,5 +112,5 @@ Target play time for the slice: 8–12 minutes.
 For each next region: one hand-drawn route sketch on top of its collage. Mark the entry, branches, secrets, enemies and the boss room with arrows, using the colour legend above. Screenshots from reference games are welcome. These sketches are the input for generating that region's stage art.
 
 <!-- nav:start -->
-[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 13** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
+[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 14** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
 <!-- nav:end -->
