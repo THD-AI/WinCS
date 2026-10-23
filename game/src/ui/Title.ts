@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
+import { sound } from '../fx/sound/Audio';
 import { CREDITS, MENU, moveSelection, SUBTITLE, TITLE } from './credits';
 
 const C = { bg: 0x101820, text: '#e8e4dc', dim: '#7d8a90', pick: '#46d1b4' };
@@ -62,6 +63,7 @@ export class Title extends Phaser.Scene {
     if (MENU[this.choice] === 'Credits') return this.showCredits(true);
     if (this.scene.isPaused(STAGE)) this.scene.resume(STAGE);
     this.scene.setVisible(true, HUD);
+    sound.loop('hidden-garden'); // the slice opens in the prologue garden; the first key press unlocked audio
     this.scene.stop();
   }
 
