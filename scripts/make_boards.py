@@ -34,7 +34,7 @@ import tempfile
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageDraw, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "art" / "sprites" / "boards.json"
@@ -83,6 +83,48 @@ def upload_copy(path: Path, folder: Path) -> Path:
     return out
 
 
+def load_ref(ref: str, folder: Path) -> Path:
+    """An input ready to upload; `<ref>@x,y,w,h` sends only that part of the image (docs/09: UI sprites)."""
+    ref, _, box = ref.partition("@")
+    path = resolve(ref)
+    if not box:
+        return upload_copy(path, folder)
+    x, y, w, h = (int(v) for v in box.split(","))
+    out = folder / f"{path.stem}-{x}-{y}-{w}-{h}.png"
+    ImageOps.exif_transpose(Image.open(path)).convert("RGB").crop((x, y, x + w, y + h)).save(out)
+    return out
+
+
+def hole_mask(image: Image.Image) -> Image.Image:
+    """Magenta enclosed by the drawing (a screen hole), as an L image: 255 in the hole, 0 elsewhere.
+
+    Magenta that touches the image border is background, not hole. Of the enclosed regions only the
+    largest is the screen; smaller ones are openings in the drawing (inside a handle or a latch).
+    """
+    rgb = image.convert("RGB")
+    flags = Image.new("L", rgb.size)
+    flags.putdata([255 if is_magenta(*p) else 0 for p in rgb.getdata()])
+    w, h = flags.size
+    px = flags.load()
+    border = [(x, 0) for x in range(w)] + [(x, h - 1) for x in range(w)] + \
+             [(0, y) for y in range(h)] + [(w - 1, y) for y in range(h)]
+    for seed in border:
+        if px[seed] == 255:
+            ImageDraw.floodfill(flags, seed, 128)
+    # Label each enclosed region with its own value (1, 2, …), then keep the biggest.
+    label = 0
+    for y in range(h):
+        for x in range(w):
+            if px[x, y] == 255 and label < 127:
+                label += 1
+                ImageDraw.floodfill(flags, (x, y), label)
+    if not label:
+        return Image.new("L", flags.size)
+    sizes = flags.histogram()[1:label + 1]
+    biggest = sizes.index(max(sizes)) + 1
+    return flags.point(lambda v: 255 if v == biggest else 0)
+
+
 def edit(name: str, fields: dict, images: list[Path], key: str, mask: Path | None = None) -> bytes | None:
     """One images/edits call; returns PNG bytes or None (failure printed)."""
     with tempfile.TemporaryDirectory() as folder:
@@ -109,12 +151,14 @@ def edit(name: str, fields: dict, images: list[Path], key: str, mask: Path | Non
 
 
 def draw(board: dict, config: dict, key: str) -> None:
+    if board.get("edit"):
+        return draw_masked(board, config, key)
     out = RAW / f"{board['id']}.png"
     # The board's own brief goes first: with the style text first the model paints a scene.
     # No title line: the model printed "BOARD: <title>" into an image as a sign.
     prompt = "\n\n".join([board["prompt"], config["style"], config["people"]])
     with tempfile.TemporaryDirectory() as folder:
-        images = [upload_copy(resolve(ref), Path(folder)) for ref in board["inputs"]]
+        images = [load_ref(ref, Path(folder)) for ref in board["inputs"]]
         png = edit(board["id"], {"model": board.get("model", config["model"]), "prompt": prompt,
                                  "size": board.get("size", config["size"])}, images, key)
     if png is None:
@@ -122,6 +166,37 @@ def draw(board: dict, config: dict, key: str) -> None:
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(png)
     print(f"{board['id']}: drew {out.relative_to(ROOT)}", flush=True)
+
+
+def draw_masked(board: dict, config: dict, key: str) -> None:
+    """Paint only inside another board's screen hole (`"edit": "<board id>"`), keeping every other pixel.
+
+    The base is that board's raw; the mask is transparent exactly in its enclosed magenta. The edit
+    treats the mask as guidance, so the result is pasted back into the base through the hole only.
+    """
+    base = Image.open(RAW / f"{board['edit']}.png").convert("RGB")
+    hole = hole_mask(base)
+    if hole.getbbox() is None:
+        sys.exit(f"{board['id']}: {board['edit']} has no enclosed magenta to paint into")
+    prompt = "\n\n".join([board["prompt"], config["style"]])
+    with tempfile.TemporaryDirectory() as folder:
+        base_path = Path(folder) / "base.png"
+        base.save(base_path)
+        mask = base.convert("RGBA")
+        mask.putalpha(hole.point(lambda v: 0 if v else 255))
+        mask_path = Path(folder) / "mask.png"
+        mask.save(mask_path)
+        images = [base_path] + [load_ref(ref, Path(folder)) for ref in board["inputs"]]
+        png = edit(board["id"], {"model": board.get("model", config["model"]), "prompt": prompt,
+                                 "size": f"{base.width}x{base.height}"}, images, key, mask=mask_path)
+    if png is None:
+        return
+    painted = Image.open(io.BytesIO(png)).convert("RGB").resize(base.size)
+    out = base.copy()
+    out.paste(painted, mask=hole)
+    out.save(RAW / f"{board['id']}.png")
+    print(f"{board['id']}: painted {board['edit']}'s hole -> {(RAW / (board['id'] + '.png')).relative_to(ROOT)}",
+          flush=True)
 
 
 NEIGHBOUR = ("This image is one chunk of a side-scrolling stage; the strip along its {edge} edge is existing art "
@@ -179,7 +254,20 @@ def crush(board: dict) -> None:
     image = Image.open(raw).convert("RGB")
     f = board["factor"]
     size = (image.width // f, image.height // f)
-    if board.get("keyed", True):
+    if board.get("edit"):
+        # A masked edit keeps only what it painted: the hole, which lies exactly under its base board.
+        keyed = image.convert("RGBA")
+        keyed.putalpha(hole_mask(Image.open(RAW / f"{board['edit']}.png")))
+        small = keyed.convert("RGBa").resize(size, Image.Resampling.BOX).convert("RGBA")
+    elif board.get("key"):
+        # Glow drawn on its own background colour (the CRT green) is keyed on that colour, not magenta.
+        target = tuple(int(board["key"][i:i + 2], 16) for i in (1, 3, 5))
+        tolerance = board.get("tolerance", 24)
+        keyed = Image.new("RGBA", image.size)
+        keyed.putdata([(0, 0, 0, 0) if max(abs(c - t) for c, t in zip(p, target)) <= tolerance else (*p, 255)
+                       for p in image.getdata()])
+        small = keyed.convert("RGBa").resize(size, Image.Resampling.BOX).convert("RGBA")
+    elif board.get("keyed", True):
         # Key at full size, then downscale premultiplied so no magenta bleeds into edges.
         keyed = Image.new("RGBA", image.size)
         keyed.putdata([(0, 0, 0, 0) if is_magenta(*p) else (*p, 255) for p in image.getdata()])
@@ -202,6 +290,9 @@ def crush(board: dict) -> None:
 
 
 def describe(ref: str) -> str:
+    ref, _, box = ref.partition("@")
+    if box:
+        return f"{describe(ref)}, cropped to `{box}`"
     kind, name = ref.split(":", 1)
     if kind == "repo":
         return f"[{Path(name).name}]({os.path.relpath(ROOT / name, CONFIG.parent).replace(os.sep, '/')})"
@@ -236,7 +327,10 @@ def pages(config: dict) -> None:
         review = board.get("review", "Not reviewed yet.")
         lines = [f"# {board['title']}", "", f"![{board['title']}]({image})", "",
                  f"**Review:** {review}", "", *motion(folder, board), "## Brief", "", board["prompt"], "",
-                 "## Inputs", "", *[f"- {describe(r)}" for r in board["inputs"]], "",
+                 "## Inputs", "",
+                 *([f"- Masked edit of [{board['edit']}]({board['edit']}.md): painted only inside its screen hole "
+                    "(its largest enclosed magenta region); every other pixel is kept"] if board.get("edit") else []),
+                 *[f"- {describe(r)}" for r in board["inputs"]], "",
                  f"Model `{board.get('model', config['model'])}` · pixel factor {board['factor']} · "
                  f"source image `{image.replace('-preview', '')}` · rebuild: "
                  f"`python scripts/make_boards.py draw {board['id']} --redo --config {CONFIG.relative_to(ROOT).as_posix()}`", ""]
@@ -283,8 +377,9 @@ def main() -> None:
     todo = [b for b in boards if not b.get("locked") and (args.redo or not (RAW / f"{b['id']}.png").exists())]
     # Boards that use another board's drawing wait for it: draw in dependency waves.
     while todo:
-        ready = [b for b in todo if all(
-            not r.startswith("out:") or (RAW / f"{r[4:]}.png").exists() for r in b["inputs"])]
+        needs = lambda b: [r[4:].partition("@")[0] for r in b["inputs"] if r.startswith("out:")] + \
+            ([b["edit"]] if b.get("edit") else [])
+        ready = [b for b in todo if all((RAW / f"{n}.png").exists() for n in needs(b))]
         if not ready:
             sys.exit("missing dependencies: " + ", ".join(b["id"] for b in todo))
         with ThreadPoolExecutor(3) as pool:
