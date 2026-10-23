@@ -179,7 +179,7 @@ Lane B codes against these from day one, with placeholders; lane A fills them wi
 | Atlas | `game/public/assets/sprites/<board>.png` + `.json` | Phaser JSON hash; frame names `<animation>-<nn>` from `00`, one cell size per board; pivot at the feet (0.5, 1) | `export_atlas.py` (A) → loader (B) |
 | Animations | `game/public/assets/sprites/<board>.anims.json` | `{"walk": {"frames": 8, "fps": 12, "loop": true}, …}` – names and counts as in docs/07 | `export_atlas.py` (A) → state machine (B) |
 | Stage manifest | `game/public/assets/stages/<region>/stage.json` | chunk ids with grid x/y, per chunk the layer files z0–z7 for each state, scroll factors | stage export (A) → loader (B) |
-| Collision | `art/stages/<region>/<chunk>.<state>.collision.json` | above | Lex via converter → loader (B) |
+| Collision | `art/stages/<region>/<chunk>.<state>.collision.json`, chunk ids `<prefix>-<column>-<row>` | above; checked by `collision_check.py` | A (Tiled + converter, or by hand) → loader (B) |
 | Game events | `game/src/core/events.ts` | typed events: `enemy-defeated`, `player-hit`, `player-died`, `region-turned`, `boss-defeated`, `save` | combat and enemies (B) emit → story and UI (A) listen |
 | Placeholder sizes | – | hero 28×76 body in an 80 px frame; Dexter 20 px; rover ≈ 25 px; crab ≈ 40 px; drone ≈ 45 px; Jenny ≈ 200×70 | docs/04 scale table |
 
