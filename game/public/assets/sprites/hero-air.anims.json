@@ -1,0 +1,22 @@
+{
+ "jump": {
+  "frames": 9,
+  "fps": 12,
+  "loop": false
+ },
+ "fall": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ },
+ "hard-landing": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "ladder": {
+  "frames": 4,
+  "fps": 8,
+  "loop": true
+ }
+}
