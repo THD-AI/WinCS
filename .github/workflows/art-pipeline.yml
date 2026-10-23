@@ -24,4 +24,5 @@ jobs:
       - run: python scripts/creek_layers.py
       - run: python scripts/split_layers.py --check
       - run: python scripts/collision_check.py
+      - run: python scripts/export_stage.py --verify --out tmp/stage-export
       - run: python scripts/check_docs.py
