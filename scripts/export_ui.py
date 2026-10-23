@@ -100,6 +100,9 @@ def cut(board: dict, image: Image.Image, crops: dict) -> dict[str, Image.Image]:
         widest = max(b[2] - b[0] for b in boxes)
         if "factor_of" in row:  # same scale as another piece, so line widths and glow match
             factor = crops[row["factor_of"]][1]
+        elif "short_side" in row:  # thin pieces (corridors): the first piece's short side becomes this many px
+            first = boxes[0]
+            factor = row["short_side"] / min(first[2] - first[0], first[3] - first[1])
         else:
             factor = row["height"] / tallest if "height" in row else row["width"] / widest
         for name, box in zip(names, boxes):
@@ -132,9 +135,9 @@ def pack(pieces: dict[str, Image.Image]) -> tuple[Image.Image, dict]:
     return atlas, {"frames": frames, "meta": meta}
 
 
-def layout(pieces: dict[str, Image.Image]) -> dict:
-    """Where the map goes: the screen's opaque box inside the case (both share one size and origin)."""
-    out = {}
+def layout(pieces: dict[str, Image.Image], placed: dict | None = None) -> dict:
+    """The config's measured placements, plus where the map goes: the screen's opaque box inside the case."""
+    out = {k: v for k, v in (placed or {}).items() if not k.startswith("_")}
     if "crt-screen" in pieces and "pocket-frame" in pieces:
         box = pieces["crt-screen"].getchannel("A").getbbox()
         if box:
@@ -143,17 +146,31 @@ def layout(pieces: dict[str, Image.Image]) -> dict:
     return out
 
 
+def nine_slice(piece: Image.Image, w: int, h: int, inset: int) -> Image.Image:
+    """Resize a framed piece without stretching its border (Phaser's NineSlice does the same in the game)."""
+    out = Image.new("RGBA", (w, h))
+    xs = [(0, inset, 0, inset), (inset, piece.width - inset, inset, w - inset), (piece.width - inset, piece.width, w - inset, w)]
+    ys = [(0, inset, 0, inset), (inset, piece.height - inset, inset, h - inset), (piece.height - inset, piece.height, h - inset, h)]
+    for sx0, sx1, dx0, dx1 in xs:
+        for sy0, sy1, dy0, dy1 in ys:
+            if dx1 > dx0 and dy1 > dy0:
+                part = piece.crop((sx0, sy0, sx1, sy1)).resize((dx1 - dx0, dy1 - dy0), Image.Resampling.NEAREST)
+                out.paste(part, (dx0, dy0))
+    return out
+
+
 def contact(pieces: dict[str, Image.Image], lay: dict) -> Image.Image:
-    """The HUD and the open map over a Rusty Creek frame, at game size, for the review page."""
+    """The HUD and the open map over a Rusty Creek frame, at game size and the measured placements."""
     plate = ROOT / "art" / "stages" / "rusty-creek" / "images" / "after-center.png"
     frame = Image.open(plate).convert("RGBA").crop((0, 0, 1280, 720)) if plate.exists() \
         else Image.new("RGBA", (1280, 720), (23, 36, 45, 255))
     put = lambda name, xy: name in pieces and frame.alpha_composite(pieces[name], xy)
+    cells = lay.get("cells", {"x": 28, "y": 28, "pitch": 34})
     for i, name in enumerate(["cell-full"] * 3 + ["cell-cracked", "cell-empty"]):
-        put(name, (28 + i * ((pieces.get(name).width if name in pieces else 18) + 8), 28))
+        put(name, (cells["x"] + i * cells["pitch"], cells["y"]))
+    orbs = lay.get("orbs", {"x": 28, "y": 80, "pitch": 40})
     for i, name in enumerate(["glitch-charged-0", "glitch-charged-1", "glitch-empty"]):
-        if name in pieces:
-            put(name, (28 + i * (pieces[name].width + 6), 80))
+        put(name, (orbs["x"] + i * orbs["pitch"], orbs["y"]))
     bar = pieces.get("boss-bar-frame")
     if bar:
         bx, by = (1280 - bar.width) // 2, 720 - 44 - bar.height
@@ -167,37 +184,48 @@ def contact(pieces: dict[str, Image.Image], lay: dict) -> Image.Image:
         put("boss-icon", (bx - pieces["boss-icon"].width - 10, by + (bar.height - pieces["boss-icon"].height) // 2))
     if "pocket-frame" in lay:
         w, h = lay["pocket-frame"]["size"]
-        ox, oy = (1280 - w) // 2, (720 - h) // 2
+        at = lay.get("pocket", {"x": (1280 - w) // 2, "y": (720 - h) // 2})
+        ox, oy = at["x"], at["y"]
         put("crt-screen", (ox, oy))
         sx, sy, sw, sh = lay["pocket-frame"]["screen"]
-        room = pieces.get("room-visited")
-        if room:
+        size = lay.get("room")
+        if size and "room-visited" in pieces:
             # The slice's map as the game draws it: the garden above, the creek's three rooms below.
-            gap = 36
-            left = ox + sx + (sw - 3 * room.width - 2 * gap) // 2
-            top = oy + sy + (sh - 2 * room.height - gap) // 2
-            cell = lambda gx, gy: (left + gx * (room.width + gap), top + gy * (room.height + gap))
+            rw, rh, gap, inset = size["w"], size["h"], size["gap"], size["inset"]
+            left = ox + sx + (sw - 3 * rw - 2 * gap) // 2
+            top = oy + sy + (sh - 2 * rh - gap) // 2
+            cell = lambda gx, gy: (left + gx * (rw + gap), top + gy * (rh + gap))
             corridor_v, corridor_h = pieces.get("corridor-v"), pieces.get("corridor-h")
             if corridor_v:
                 x, y = cell(0, 0)
                 frame.alpha_composite(corridor_v.resize((corridor_v.width, gap + 8)),
-                                      (x + room.width // 2 - corridor_v.width // 2, y + room.height - 4))
+                                      (x + rw // 2 - corridor_v.width // 2, y + rh - 4))
             if corridor_h:
                 for gx in (0, 1):
                     x, y = cell(gx, 1)
                     frame.alpha_composite(corridor_h.resize((gap + 8, corridor_h.height)),
-                                          (x + room.width - 4, y + room.height // 2 - corridor_h.height // 2))
+                                          (x + rw - 4, y + rh // 2 - corridor_h.height // 2))
             rooms = [((0, 0), "room-visited", "icon-leaf"), ((0, 1), "room-visited", "icon-mountains"),
                      ((1, 1), "room-current", None), ((2, 1), "room-unexplored", None)]
             for (gx, gy), name, icon in rooms:
                 x, y = cell(gx, gy)
-                put(name, (x, y))
+                frame.alpha_composite(nine_slice(pieces[name], rw, rh, inset), (x, y))
                 mark = icon or ("player-dot-0" if name == "room-current" else None)
                 if mark and mark in pieces:
                     m = pieces[mark]
-                    put(mark, (x + (room.width - m.width) // 2, y + (room.height - m.height) // 2))
+                    put(mark, (x + (rw - m.width) // 2, y + (rh - m.height) // 2))
         put("pocket-frame", (ox, oy))
     return frame
+
+
+def compare(ours: Image.Image) -> Image.Image:
+    """The approved direction at game size above our contact sheet, for checking sizes and ratios."""
+    ref = Image.open(ROOT / "art" / "direction" / "images" / "hud-preview.png").convert("RGB").resize(
+        (1280, 720), Image.Resampling.BOX)
+    out = Image.new("RGB", (1280, 1448), (0, 0, 0))
+    out.paste(ref, (0, 0))
+    out.paste(ours.convert("RGB"), (0, 728))
+    return out
 
 
 def main() -> None:
@@ -222,13 +250,15 @@ def main() -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     atlas.save(args.out / "ui.png", optimize=True)
     (args.out / "ui.json").write_text(json.dumps(data, indent=1), encoding="utf-8")
-    lay = layout(pieces)
+    lay = layout(pieces, config.get("layout"))
     (args.out / "ui-layout.json").write_text(json.dumps(lay, indent=1), encoding="utf-8")
     print(f"{len(pieces)} pieces -> {args.out / 'ui.png'} {atlas.width}x{atlas.height}")
     if args.preview:
         PREVIEWS.mkdir(parents=True, exist_ok=True)
-        contact(pieces, lay).convert("RGB").save(PREVIEWS / "contact.png", optimize=True)
-        print(f"contact sheet -> {(PREVIEWS / 'contact.png').relative_to(ROOT)}")
+        sheet = contact(pieces, lay)
+        sheet.convert("RGB").save(PREVIEWS / "contact.png", optimize=True)
+        compare(sheet).save(PREVIEWS / "compare.png", optimize=True)
+        print(f"contact sheet + comparison with the direction -> {PREVIEWS.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

@@ -53,6 +53,27 @@ class CutTests(unittest.TestCase):
         self.assertEqual(lay['pocket-frame']['screen'], [10, 10, 30, 10])
 
 
+class SizeTests(unittest.TestCase):
+    def test_short_side_sets_corridor_thickness(self):
+        image = board([[(10, 10, 70, 30), (100, 10, 120, 70)]])
+        spec = {'id': 'c', 'ui': {'rows': [{'names': ['h', 'v'], 'short_side': 5}]}}
+        pieces = eu.cut(spec, image, {})
+        self.assertEqual(pieces['h'].size, (15, 5))
+        self.assertEqual(pieces['v'].size, (5, 15))
+
+    def test_nine_slice_keeps_the_border_width(self):
+        tile = Image.new('RGBA', (40, 20), (0, 80, 40, 255))
+        tile.paste((200, 255, 220, 255), (0, 0, 40, 3))  # a 3 px glowing top edge
+        out = eu.nine_slice(tile, 24, 18, 4)
+        self.assertEqual(out.size, (24, 18))
+        self.assertEqual(out.getpixel((12, 2)), (200, 255, 220, 255))
+        self.assertEqual(out.getpixel((12, 3)), (0, 80, 40, 255))
+
+    def test_layout_carries_the_measured_placements(self):
+        lay = eu.layout({}, {'_measured': 'note', 'cells': {'x': 43, 'y': 43, 'pitch': 48}})
+        self.assertEqual(lay, {'cells': {'x': 43, 'y': 43, 'pitch': 48}})
+
+
 class PackTests(unittest.TestCase):
     def test_every_piece_is_in_the_atlas_without_overlap(self):
         pieces = {f'p{i}': Image.new('RGBA', (300 + i * 10, 20 + i), RED) for i in range(12)}

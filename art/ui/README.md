@@ -4,7 +4,9 @@ HUD and pocket computer sprites, drawn from crops of the approved [HUD direction
 
 ![The HUD and the open map composed over Rusty Creek at game size](previews/contact.png)
 
-*Contact sheet at game size (1280×720): `python scripts/export_ui.py --out tmp/ui --preview`.*
+*Contact sheet at game size (1280×720): `python scripts/export_ui.py --out tmp/ui --preview`. Sizes and placements are measured from the direction (`layout` in ui.json) – the comparison below shows the direction on top and ours underneath.*
+
+![The approved direction above, our sprites at the measured sizes below](previews/compare.png)
 
 | | |
 | --- | --- |

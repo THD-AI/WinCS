@@ -1,6 +1,6 @@
 {
   "name": "UI sprites",
-  "readme": "HUD and pocket computer sprites, drawn from crops of the approved [HUD direction](../direction/hud.md) ('magnificent'). Plan, masks and steps: [09 – UI sprites](../../docs/09-ART-PIPELINE.md#ui-sprites--hud-and-pocket-computer). Each board waits for Alexander's Design review before `export_ui.py` puts it into the game.\n\n![The HUD and the open map composed over Rusty Creek at game size](previews/contact.png)\n\n*Contact sheet at game size (1280×720): `python scripts/export_ui.py --out tmp/ui --preview`.*",
+  "readme": "HUD and pocket computer sprites, drawn from crops of the approved [HUD direction](../direction/hud.md) ('magnificent'). Plan, masks and steps: [09 – UI sprites](../../docs/09-ART-PIPELINE.md#ui-sprites--hud-and-pocket-computer). Each board waits for Alexander's Design review before `export_ui.py` puts it into the game.\n\n![The HUD and the open map composed over Rusty Creek at game size](previews/contact.png)\n\n*Contact sheet at game size (1280×720): `python scripts/export_ui.py --out tmp/ui --preview`. Sizes and placements are measured from the direction (`layout` in ui.json) – the comparison below shows the direction on top and ours underneath.*\n\n![The approved direction above, our sprites at the measured sizes below](previews/compare.png)",
   "model": "gpt-image-2.5-sunburst",
   "size": "1536x1024",
   "style": "Detailed modern HI-BIT PIXEL ART exactly like the approved game HUD (the cropped reference): crisp square pixels at a fine 2-pixel grain, rich palette, careful pixel shading on metal and glass (rust, scratches, bevels, rivets), glowing elements with a soft pixel halo, no anti-aliasing blur, no smooth vector gradients, not chunky 8-bit. This is a UI SPRITE SHEET, not a scene: no landscape, no sky, no scenery, no hands, no characters, flat front view, no perspective. Every element evenly spaced with wide clear gaps so each can be cut out; elements of one row share the same size and outline. ABSOLUTELY NO TEXT: no titles, no numbers, no labels, no letters, no captions. Match the pixel grain and palette of the style master (the LAST image) but draw none of its scenery.",
@@ -23,7 +23,7 @@
               "cell-cracked",
               "cell-empty"
             ],
-            "height": 36,
+            "height": 48,
             "cell": true
           },
           {
@@ -33,7 +33,7 @@
               "crack-2",
               "crack-3"
             ],
-            "height": 36,
+            "height": 48,
             "cell": true
           }
         ]
@@ -58,7 +58,7 @@
               "glitch-charged-1",
               "glitch-charged-2"
             ],
-            "height": 28,
+            "height": 35,
             "cell": true
           },
           {
@@ -93,7 +93,7 @@
             "names": [
               "pocket-frame"
             ],
-            "width": 820
+            "width": 560
           }
         ]
       },
@@ -134,7 +134,7 @@
               "room-current",
               "room-unexplored"
             ],
-            "height": 56,
+            "height": 42,
             "cell": true
           },
           {
@@ -143,7 +143,7 @@
               "corridor-v",
               "junction"
             ],
-            "factor_of": "room-visited"
+            "short_side": 10
           },
           {
             "names": [
@@ -157,11 +157,34 @@
               "player-dot-0",
               "player-dot-1"
             ],
-            "factor_of": "room-visited"
+            "height": 19
           }
         ]
       },
       "review": "✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py."
     }
-  ]
+  ],
+  "layout": {
+    "_measured": "From the approved direction (hud-preview.png, 1536x864) scaled to the game's 1280x720.",
+    "cells": {
+      "x": 43,
+      "y": 43,
+      "pitch": 48
+    },
+    "orbs": {
+      "x": 43,
+      "y": 107,
+      "pitch": 52
+    },
+    "pocket": {
+      "x": 371,
+      "y": 83
+    },
+    "room": {
+      "w": 56,
+      "h": 42,
+      "gap": 24,
+      "inset": 10
+    }
+  }
 }
