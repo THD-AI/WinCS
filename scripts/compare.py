@@ -22,7 +22,7 @@ SPRITES = ROOT / "game" / "public" / "assets" / "sprites"
 FOOT = 13  # px per foot at stage scale (docs/04)
 # Documented game heights in px (docs/04 scale table, docs/05): what each sprite should measure.
 DOCUMENTED = {"hero": 76, "dexter": 20, "dexter-acts": 20, "enemy-rover": 25, "enemy-crab": 40, "enemy-drone": 45,
-              "boss-jenny": 70, "boss-jenny-2": 70}
+              "boss-jenny": 95, "boss-jenny-2": 95}
 GRID = (255, 0, 255)
 
 
