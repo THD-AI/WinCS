@@ -38,8 +38,11 @@ export function stepBody(body: Body, geometry: Geometry[], dt: number, ignoreOne
       if (body.x < a[0] || body.x > b[0]) continue;
       const slope = (b[1] - a[1]) / (b[0] - a[0]);
       const surface = a[1] + (body.x - a[0]) * slope;
+      const crossedEnd = oldX < a[0] && body.x >= a[0] || oldX > b[0] && body.x <= b[0];
+      // The authored chunk seams differ by up to 5px. Only bridge that small
+      // endpoint mismatch while already grounded, never snap a falling body up.
       const follows = wasGrounded && Math.abs(surface - oldY)
-        <= Math.abs(body.x - oldX) * Math.max(Math.abs(slope), Math.abs(oldSlope)) + 0.1;
+        <= Math.abs(body.x - oldX) * Math.max(Math.abs(slope), Math.abs(oldSlope)) + (crossedEnd ? 6 : 0.1);
       if (body.vy >= 0 && (follows || oldY <= surface + 0.01 && nextY >= surface)) {
         nextY = surface; body.vy = 0; body.grounded = true; body.slope = slope;
         body.sliding = Math.abs(Math.atan(slope)) > 40 * Math.PI / 180 + 1e-9;

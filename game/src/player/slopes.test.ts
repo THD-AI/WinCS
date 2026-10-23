@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { stepBody, type Body } from './body';
 import { jump, jumpState } from './jump';
 import type { CollisionData, Geometry, Point } from '../stage/collision';
+import { placeCollision } from '../stage/collision';
 const terrain = (walk: Point[][], slide: Point[][] = []): Geometry => ({ walk, slide, oneWay: [], solid: [],
   climb: [], noGo: [], hazard: [], interact: [], spawn: [], ledge: [], glideLift: [] });
 const body = (x: number, y: number, vx = 150.5): Body => ({ x, y, vx, vy: 0, grounded: true });
@@ -48,6 +49,22 @@ describe('continuous slope contacts', () => {
         stepBody(b, [terrain([[a, z]])], 1 / 120);
         expect(b.y).toBeCloseTo(a[1] + (b.x - a[0]) * slope, 7);
         expect(b.grounded).toBe(true);
+      }
+    }
+  });
+  it('crosses the real chunk seams in both states and directions without falling through', () => {
+    const files = Object.values(import.meta.glob<CollisionData>('../../../art/stages/rusty-creek/*.collision.json', { eager: true, import: 'default' }));
+    for (const state of ['clean', 'anomaly']) for (const column of [0, 1]) {
+      const left = files.find(f => f.chunk === `rc-${column}-0` && f.state === state)!;
+      const right = files.find(f => f.chunk === `rc-${column + 1}-0` && f.state === state)!;
+      const geometry = [placeCollision(left, [0, 0]).world, placeCollision(right, [2160, 0]).world];
+      const leftY = left.walk.at(-1)!.at(-1)![1], rightY = right.walk[0][0][1];
+      for (const speed of [-258, -150.5, 150.5, 258]) {
+        const b = body(speed > 0 ? 2155 : 2165, speed > 0 ? leftY : rightY, speed);
+        for (let i = 0; i < 10; i++) {
+          stepBody(b, geometry, 1 / 120);
+          expect(b.grounded).toBe(true); expect(b.y).toBe(b.x < 2160 ? leftY : rightY);
+        }
       }
     }
   });
