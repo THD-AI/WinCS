@@ -1,0 +1,22 @@
+{
+ "hover": {
+  "frames": 4,
+  "fps": 12,
+  "loop": true
+ },
+ "dive": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ },
+ "crash": {
+  "frames": 5,
+  "fps": 12,
+  "loop": false
+ },
+ "screw": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ }
+}

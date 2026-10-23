@@ -1,0 +1,17 @@
+{
+ "walk-run": {
+  "frames": 2,
+  "fps": 12,
+  "loop": false
+ },
+ "run-start": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ },
+ "run": {
+  "frames": 8,
+  "fps": 12,
+  "loop": true
+ }
+}

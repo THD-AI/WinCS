@@ -1,7 +1,7 @@
 # The student · hero design
 
 <!-- nav:start -->
-[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 1** · [Sprite boards →](README.md)
+[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 14** · [The student · walk →](hero-move.md)
 <!-- nav:end -->
 
 ![The student · hero design](images/hero-preview.png)
@@ -18,8 +18,8 @@ Keep the body, height (6 ft adult), proportions, pose, backpack, grey slim jeans
 - `20261022_164630.jpg` (GameJam_References-2, outside Git)
 - `thd-sticker-deggster-2_1280x1280.png` (GameJam_Merch, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero.png` · rebuild: `python scripts/make_boards.py draw --config art/sprites/boards.json --redo hero`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero.png` · rebuild: `python scripts/make_boards.py draw hero --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 1** · [Sprite boards →](README.md)
+[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 14** · [The student · walk →](hero-move.md)
 <!-- nav:end -->
