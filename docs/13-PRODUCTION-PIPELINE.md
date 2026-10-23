@@ -85,7 +85,7 @@ Every sheet, in the order the game needs them:
 | Sheet | Animations (frames) | Issue | Unblocks |
 | --- | --- | --- | --- |
 | `hero-move`, `hero-run`, `hero-idle`, `hero-air` | idle 6 + 3 variants · walk 8 · run start 3 · run 8 · idle→walk 2 · walk→run 2 · jump 9 · fall 3 · hard landing 4 · ladder 4 | [M1-S8 #60](https://github.com/THD-AI/WinCS/issues/60) | movement feel, M1 |
-| `hero-hurt` | hit 8 · knockback 3 · death 12 · interact 3 · pick up 4 · look at device 3 | [M2-S12 #83](https://github.com/THD-AI/WinCS/issues/83) | damage, the THD.exe crossing |
+| `hero-hurt`, `hero-death` | hit 8 · knockback 3 · death 12 · interact 3 · pick up 4 · look at device 3 | [M2-S12 #83](https://github.com/THD-AI/WinCS/issues/83) | damage, the THD.exe crossing |
 | `chair-side`, `chair-overhead`, `chair-block` | sweep A 8 · sweep B 8 · recoil 2 · up 6 · slam 7 · pogo 4 · guard up 4 · hold 3 · impact 4 · break 4 | [M2-S10 #81](https://github.com/THD-AI/WinCS/issues/81) | combat |
 | `enemy-rover`, `enemy-crab`, `enemy-drone`, `fx` | rover 4/6/4/5 · crab 4/8/5/5 · drone 4/3/5/3 · black fluid 6 | [M2-S11 #82](https://github.com/THD-AI/WinCS/issues/82) | enemies |
 | `mensa-food`, `mensa-drinks` | 16 px icons + sparkle; coffee machine idle/flicker/pour | [M2-S13 #84](https://github.com/THD-AI/WinCS/issues/84) | healing, save points |
