@@ -1,0 +1,32 @@
+{
+ "beckon": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ },
+ "bow": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "sweat": {
+  "frames": 2,
+  "fps": 12,
+  "loop": true
+ },
+ "proud": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "creepy": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "absorb": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ }
+}

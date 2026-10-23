@@ -1,0 +1,302 @@
+{
+ "frames": {
+  "beckon-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "beckon-01": {
+   "frame": {
+    "x": 22,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "beckon-02": {
+   "frame": {
+    "x": 44,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "bow-00": {
+   "frame": {
+    "x": 0,
+    "y": 28,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sweat-00": {
+   "frame": {
+    "x": 0,
+    "y": 56,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sweat-01": {
+   "frame": {
+    "x": 22,
+    "y": 56,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "proud-00": {
+   "frame": {
+    "x": 0,
+    "y": 84,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "creepy-00": {
+   "frame": {
+    "x": 0,
+    "y": 112,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "absorb-00": {
+   "frame": {
+    "x": 0,
+    "y": 140,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "absorb-01": {
+   "frame": {
+    "x": 22,
+    "y": 140,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "absorb-02": {
+   "frame": {
+    "x": 44,
+    "y": 140,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "absorb-03": {
+   "frame": {
+    "x": 66,
+    "y": 140,
+    "w": 20,
+    "h": 26
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 20,
+    "h": 26
+   },
+   "sourceSize": {
+    "w": 20,
+    "h": 26
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "dexter-acts.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 86,
+   "h": 166
+  },
+  "scale": "1"
+ }
+}
