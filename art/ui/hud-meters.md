@@ -2,7 +2,7 @@
 
 ![HUD · glitch meter and boss bar](images/hud-meters-preview.png)
 
-**Review:** Not reviewed yet.
+**Review:** ✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py.
 
 ## Brief
 

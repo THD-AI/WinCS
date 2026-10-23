@@ -37,7 +37,8 @@
             "cell": true
           }
         ]
-      }
+      },
+      "review": "✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py."
     },
     {
       "id": "hud-meters",
@@ -74,7 +75,8 @@
             "factor_of": "boss-bar-frame"
           }
         ]
-      }
+      },
+      "review": "✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py."
     },
     {
       "id": "pocket-frame",
@@ -94,7 +96,8 @@
             "width": 820
           }
         ]
-      }
+      },
+      "review": "✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py."
     },
     {
       "id": "crt-screen",
@@ -109,7 +112,8 @@
       "ui": {
         "like": "pocket-frame",
         "name": "crt-screen"
-      }
+      },
+      "review": "✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py."
     },
     {
       "id": "map-tiles",
@@ -156,7 +160,8 @@
             "factor_of": "room-visited"
           }
         ]
-      }
+      },
+      "review": "✅ Approved 24 Oct by Alexander. Every row's count matches its names; exported to game/public/assets/ui/ with export_ui.py."
     }
   ]
 }

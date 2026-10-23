@@ -48,7 +48,7 @@ Frame lists approved as they are (A14).
 | Pocket computer | `pocket-computer` | pickup + 3 screen mockups (map, archive, menu) | ⬜ |
 | Sign pole (post-jam weapon) | `wayfinder` | prop, pull-out 5, thrust 5 | ⬜ |
 | Campus robot (collectible companion, post-jam) | `companion-robot` | idle 4 · drive 6 · hop/scan/sleep | ⬜ |
-| HUD | – | 5 battery cells (full/cracked/empty), glitch meter 3 segments, boss bar. Approved (A14) | ⬜ |
+| HUD | – | 5 battery cells (full/cracked/empty, crack animation), glitch meter orbs, boss bar; pocket computer case, CRT screen and map tiles ([art/ui](../art/ui/README.md)). Approved (A14; sprites 24 Oct) | ✅ |
 | Crash window "THD.exe has stopped responding." | – | grey window, blue title bar, red X, OK; real game text. Approved (A14) | ⬜ |
 | Glitch FX | – | image cut, pixel stretch, 404 void (shader or sprite slices) | ⬜ |
 
