@@ -132,5 +132,36 @@ Every committed image is produced by a script from a config with real references
 git diff --cached --check
 python scripts/check_docs.py
 python -m unittest discover -s scripts -p "test_*.py"     # if scripts changed
-cd game && npm run typecheck && npm run build              # once game/ exists
+cd game && npm run typecheck && npm test && npm run build  # game code
+python scripts/compare.py lineup hero-move:walk-03 …       # on-screen changes: the comparison for the PR
 ```
+
+### Test and review a PR
+
+Every PR that changes what's on screen is checked against the references before it merges ([AGENTS.md – reference fidelity](AGENTS.md#reference-fidelity--every-agent-every-change-you-can-see)). Alexander reviews; nothing merges before his corrections are in.
+
+**1 · Look at the comparison.** The PR body links a `scripts/compare.py` image: the approved reference above and ours below at game size with one ruler grid, or frames lined up against their documented heights (magenta ticks). Sizes, ratios and positions should match; the PR body names anything that doesn't and why.
+
+**2 · Play it.** Either the Vercel preview linked by the Vercel bot in the PR (needs the Vercel login), or locally:
+
+```bash
+npm --prefix game ci
+npm --prefix game run dev          # http://localhost:5173 – stages are generated first
+```
+
+| In the game | What it does |
+| --- | --- |
+| A / D or ← → · Space or K · W / S | walk (hold to run) · jump (hold for higher) · climb ladders; ↓ + Jump drops through decks |
+| J · Tab or Esc | act · pocket computer (once you have it) |
+| `?region=hidden-garden&state=clean` | start in another region or state (`rusty-creek`, `anomaly`) |
+| `?inspect` (dev) | drag to pan the stage freely, no camera follow |
+| F2 (dev) | the hero's debug readout: speed, jump height, slope, body box |
+| F3 (dev) | Jenny's boss bar at 70 % |
+| F4 then Tab (dev) | hand over the pocket computer, then open the map |
+| F6 / F7 (dev) | step through the sound loops / effects; M mutes |
+| F8 (dev) | the THD.exe crossing |
+| F9 / F10 (dev) | anomaly FX / atmosphere test chunks (V toggles, A switches the leaves, Esc closes) |
+
+Dev keys exist only in `npm run dev`, never in the preview or production build. Movement keys and the URL options arrive with lane B's stack (#111 → …).
+
+**3 · Answer on the PR.** Comment per point (what's off, which reference), or set the board's **Design review** to *Changes needed*. The author fixes it on the same branch, re-runs the comparison and asks again. Approval is your comment or Design review = *Approved*; only then does the PR merge.

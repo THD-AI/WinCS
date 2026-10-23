@@ -89,6 +89,33 @@ The team's open question in A14: how do generated frames move without looking li
 
 The region crossing uses only sprites the hero already needs (hit, knockback) plus one UI window the game renders with real text: **"THD.exe has stopped responding."** See the [crash frame](../art/direction/anomaly-language.md).
 
+## Reference fidelity – the loop for everything on screen
+
+The rule for every agent ([AGENTS.md](../AGENTS.md#reference-fidelity--every-agent-every-change-you-can-see)); the HUD below is the worked example.
+
+```mermaid
+flowchart LR
+  P[Plan + diagram<br/>in the doc] --> R["Crop the references<br/>art/…@x,y,w,h"]
+  R --> G["Generate<br/>make_boards.py · sunburst<br/>masks from the board's raw"]
+  G --> K[Crush]
+  K --> M["Measure<br/>compare.py images / lineup<br/>against art/ and docs/04"]
+  M -->|off| F["Fix the numbers<br/>height · scale · layout"]
+  F --> M
+  M -->|matches| V{Alexander's review}
+  V -->|corrections| F
+  V -->|approved| E[Export · game · merge]
+```
+
+**What the first audit found** (24 Oct, `python scripts/compare.py lineup …`, [the lineup](../art/sprites/previews/scale-lineup.png)): the hero's idle and walk, the rover and the jump were right. Three were off and are fixed in the export config, without redrawing:
+
+| Sprite | Measured | Documented | Fix |
+| --- | --- | --- | --- |
+| `hero-run` → `run` | 62–63 px, head and body smaller than walk | the walk's figure, leaning (≈ 70 px) | `"scale": 1.12` on the animation |
+| `enemy-crab` | idle 33 px | waist-high, ≈ 40 px ([05](05-ENEMIES-AND-BOSSES.md)) | board `height` 38 → 46 |
+| `enemy-drone` | 17 px span | 1 m span, ≈ 45 px ([05](05-ENEMIES-AND-BOSSES.md)) | board `height` 18 → 47 |
+
+`"scale"` on one animation corrects a row the model drew at another size than the rest of its sheet; `height` on the board sets the whole sheet. The cast direction image's machine sizes carry review notes, so the docs' numbers win for the machines; the cast image still sets each machine's proportions.
+
 ## UI sprites – HUD and pocket computer
 
 The approved [HUD direction](../art/direction/hud.md) ("magnificent") is the target: battery cells, the glitch meter and the pocket computer's green CRT map. Until these are approved, the game draws placeholders in code (`ui/Hud.ts`, `ui/PocketComputer.ts`). The UI boards go through the same pipeline as sprites, with three differences: **crops of the approved direction image are the references**, one board is a **masked edit**, and the map pieces are keyed on the **screen colour** instead of magenta.
@@ -147,6 +174,8 @@ python scripts/make_boards.py crush [ids] [--config …]            # rebuild co
 python scripts/make_boards.py pages [--config …]                  # Markdown page per image + index
 python scripts/export_atlas.py <ids> [--preview]                  # approved board -> Phaser atlas + anims
 python scripts/export_ui.py [--out tmp/ui] [--preview]            # approved UI boards -> ui atlas + layout
+python scripts/compare.py images REF[@crop] OURS[@crop] --out …  # reference above, ours below, one grid
+python scripts/compare.py lineup atlas:frame … --out …          # frames vs documented heights
 python scripts/creek_layers.py [--build]                          # Rusty Creek layers: verify / rebuild
 python scripts/collision_check.py [--overlay]                     # collision: schema, reach, overlays
 python scripts/stage_art.py prepare --config art/stages/rusty-creek/stage.json --out tmp/stage-art/next --band 512
