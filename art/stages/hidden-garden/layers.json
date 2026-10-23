@@ -1,0 +1,130 @@
+{
+  "note": "Rules run in order; the last rule that claims a pixel wins. Everything above the path stays one rear layer (scroll 1.0): rectangles would tear the big tree from its trunk at another scroll speed, so sky/far/mid parallax waits for hand-drawn masks.",
+  "chunks": {
+    "hg-0-0": {
+      "states": {
+        "clean": "images/hg-0-0.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "rect": [
+            0,
+            478,
+            2160,
+            720
+          ]
+        },
+        {
+          "layer": "05-play",
+          "rect": [
+            140,
+            441,
+            1790,
+            478
+          ]
+        },
+        {
+          "layer": "05-play",
+          "rect": [
+            1026,
+            392,
+            1323,
+            478
+          ]
+        },
+        {
+          "layer": "07-foreground",
+          "colour": [
+            40,
+            14,
+            5
+          ],
+          "tolerance": 32,
+          "rect": [
+            0,
+            560,
+            330,
+            720
+          ]
+        },
+        {
+          "layer": "07-foreground",
+          "colour": [
+            80,
+            38,
+            10
+          ],
+          "tolerance": 28,
+          "rect": [
+            0,
+            560,
+            330,
+            720
+          ]
+        },
+        {
+          "layer": "07-foreground",
+          "colour": [
+            40,
+            14,
+            5
+          ],
+          "tolerance": 32,
+          "rect": [
+            1380,
+            560,
+            2160,
+            720
+          ]
+        },
+        {
+          "layer": "07-foreground",
+          "colour": [
+            80,
+            38,
+            10
+          ],
+          "tolerance": 28,
+          "rect": [
+            1380,
+            560,
+            2160,
+            720
+          ]
+        },
+        {
+          "layer": "07-foreground",
+          "colour": [
+            40,
+            14,
+            5
+          ],
+          "tolerance": 32,
+          "rect": [
+            330,
+            690,
+            1380,
+            720
+          ]
+        },
+        {
+          "layer": "07-foreground",
+          "colour": [
+            80,
+            38,
+            10
+          ],
+          "tolerance": 28,
+          "rect": [
+            330,
+            690,
+            1380,
+            720
+          ]
+        }
+      ]
+    }
+  }
+}
