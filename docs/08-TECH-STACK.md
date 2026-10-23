@@ -61,7 +61,7 @@ WinCS/
 
 ## Deploying to Vercel
 
-1. `game/` gets `vercel.json`: build `npm run build`, output `dist`.
+1. `game/vercel.json`: Vite, `npm ci`, `npm run build`, output `dist`. `prebuild` (and `predev`) run `scripts/export_stage.py` first, which generates `game/public/assets/stages/` from `art/stages/` (never committed), so the build needs Python 3 and the files outside `game/`. Vercel's build image has `python3`, and "Include files outside the root directory" stays on (the default).
 2. Connect THD-AI/WinCS in Vercel (**Root Directory:** `game`). Private org repos need a Vercel team with access to the THD-AI org. If that's not available in time, deploy from a laptop with `vercel --prod` (the CLI uploads the build directly).
 3. Every PR gets a preview URL; `main` is the jam submission URL.
 
@@ -80,8 +80,8 @@ python scripts/check_docs.py                                               # lin
 # meetings
 python scripts/transcribe_recordings.py "<audio file>" --id A14
 
-# game (once game/ exists)
-cd game && npm install && npm run dev
+# game
+cd game && npm ci && npm run dev        # predev exports the stages first
 ```
 
 <!-- nav:start -->
