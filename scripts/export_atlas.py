@@ -11,7 +11,8 @@ frames are column runs separated by empty columns. Specks below 2 % of a row's b
 dropped. Every row must hold exactly the frames its config lists, or the export stops.
 
 Scaling: one factor per board, so the tallest frame of the first animation becomes `height` game
-pixels (hero: 76, in an 80 px frame). Each frame keeps its height above the row's ground line, so
+pixels (hero: 76, in an 80 px frame), or the frame named by `ref` (e.g. "jump-08", standing) when the
+first animation has no standing pose. Each frame keeps its height above the row's ground line, so
 the feet of every frame land on the bottom row of its cell and jumps stay in the air. The pivot is
 (0.5, 1), centred on the feet (the opaque pixels in the lowest tenth of the sprite).
 
@@ -168,7 +169,15 @@ def scale(sprite: Image.Image, factor: float) -> Image.Image:
 def export(board: dict, image: Image.Image) -> tuple[Image.Image, dict, dict]:
     """Return the atlas image, its Phaser JSON hash and the animation table."""
     anims = slice_board(board, image)
-    factor = board["atlas"]["height"] / max(s.height + lift for s, lift in anims[0][1])
+    ref = board["atlas"].get("ref")
+    if ref:
+        frames = {f"{anim['anim']}-{n:02d}": s for anim, sprites in anims for n, s in enumerate(sprites)}
+        if ref not in frames:
+            raise AtlasError(f"{board['id']}: ref frame {ref!r} does not exist")
+        reference = [frames[ref]]
+    else:
+        reference = anims[0][1]
+    factor = board["atlas"]["height"] / max(s.height + lift for s, lift in reference)
     placed = []  # (anim, [(sprite, lift, feet)]) at game scale
     for anim, sprites in anims:
         frames = []

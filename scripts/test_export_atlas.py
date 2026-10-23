@@ -95,6 +95,19 @@ class ExportAtlasTests(unittest.TestCase):
         self.assertAlmostEqual((left + right) / 2, idle['w'] / 2, delta=1)  # pivot centred on the feet
         self.assertEqual(jump['h'] - box(jump)[3], 5)  # still in the air, at game scale
 
+    def test_ref_frame_sets_the_scale(self):
+        # The first animation is a 60 px tall pose; the standing frame (40 px) is the reference.
+        image = board_image([[(60, 0), (40, 0)]])
+        board = config([[{'anim': 'jump', 'frames': 1}, {'anim': 'stand', 'frames': 1}]])
+        board['atlas']['ref'] = 'stand-00'
+        sheet, atlas, _ = ea.export(board, image)
+        r = atlas['frames']['stand-00']['frame']
+        box = sheet.crop((r['x'], r['y'], r['x'] + r['w'], r['y'] + r['h'])).getchannel('A').getbbox()
+        self.assertEqual(box[3] - box[1], 20)
+        board['atlas']['ref'] = 'stand-01'
+        with self.assertRaisesRegex(ea.AtlasError, "ref frame 'stand-01' does not exist"):
+            ea.export(board, image)
+
     def test_alpha_stays_hard(self):
         image = board_image([[(40, 0)] * 2])
         sheet, _, _ = ea.export(config([[{'anim': 'idle', 'frames': 2}]], height=13), image)
