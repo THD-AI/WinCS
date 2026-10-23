@@ -63,3 +63,11 @@ The camera leads movement by up to 120px and eases vertical changes, clamped to
 the complete chunk grid. Rendered camera coordinates stay on whole pixels; layers
 retain the export's scroll factors. Development `?inspect` keeps manual drag panning
 instead of following the hero, for collision review.
+
+Health starts at five cells. Hits grant one second of invulnerability, with a
+white flash and flicker, and roughly 64.5px of knockback. Death plays the supplied
+collapse clip and pixel dust, then restores full health at the last checkpoint.
+Actors register reset callbacks with Player.life; defeated boss ids persist.
+Orange hazards damage and return to safe ground; black no-go resets are free.
+Development F5 tests a normal hit, Shift+F5 a two-cell hit, Ctrl+F5 a hazard reset,
+and Alt+F5 a free no-go reset. These keys are absent from production builds.

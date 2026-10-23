@@ -29,12 +29,17 @@ export class Preload extends Phaser.Scene {
 
 export class Stage extends Phaser.Scene {
   private player?: Player;
+  private defeatedBosses = new Set<string>();
   private follow?: ReturnType<typeof cameraFollow>;
   constructor() { super('Stage'); }
   create(data: { manifest: StageManifest; state: RegionState; collisions: CollisionChunk[] }) {
     drawStage(this, data.manifest, data.state);
     collisionDebug(this, data.collisions);
-    this.player = new Player(this, data.collisions);
+    this.player = new Player(this, data.collisions, data.manifest.region, this.defeatedBosses);
+    this.player.onHealthChanged = health => {
+      const hud = this.scene.get('HUD') as Phaser.Scene & { model?: { setHealth(health: number, at: number): void } };
+      hud.model?.setHealth(health, this.time.now);
+    };
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.scene.launch('UI');
