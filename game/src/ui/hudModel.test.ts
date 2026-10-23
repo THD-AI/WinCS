@@ -13,6 +13,15 @@ describe('battery cells', () => {
     expect(hud.cells(100 + CRACK_MS)).toEqual(['full', 'full', 'full', 'full', 'empty']);
   });
 
+  it('runs the crack from 0 to 1 over CRACK_MS, for the crack animation', () => {
+    const hud = new HudModel();
+    hud.setHealth(4, 100);
+    expect(hud.crackProgress(4, 100)).toBe(0);
+    expect(hud.crackProgress(4, 100 + CRACK_MS / 2)).toBeCloseTo(0.5);
+    expect(hud.crackProgress(4, 100 + CRACK_MS)).toBe(1);
+    expect(hud.crackProgress(0, 100)).toBe(0);
+  });
+
   it("cracks two cells for Jenny's charge and clamps to the battery", () => {
     const hud = new HudModel();
     hud.setHealth(3, 0);
