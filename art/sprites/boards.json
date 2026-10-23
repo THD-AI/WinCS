@@ -22,13 +22,111 @@
     },
     {
       "id": "hero-move",
-      "title": "The student · movement",
+      "title": "The student · walk",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, side view, identical scale in every frame. Row 1: idle breathing loop, 6 frames (poncho rises and settles, tassels sway). Row 2: walk cycle, 8 frames (contact, down, passing, up for each leg; poncho hem swings against the legs). Row 3: run cycle, 8 frames (leaning forward, poncho and tassels streaming back, backpack bouncing)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows. Row 1, exactly 8 figures: IDLE breathing loop, 6 frames (relaxed stance, the poncho rises and settles, tassels sway a little), then IDLE TO WALK, 2 frames (weight shifts forward, the front foot lifts). Row 2, exactly 8 figures: WALK cycle in key poses with clearly different leg positions - contact (legs wide apart, heel down), down, passing (legs together), up, for the right leg, then the same four for the left leg; the poncho hem swings against the legs, the backpack bobs. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 6
+            },
+            {
+              "anim": "idle-walk",
+              "frames": 2,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "walk",
+              "frames": 8
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+    },
+    {
+      "id": "hero-idle",
+      "title": "The student · idle variants",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 4 figures: LOOK AROUND - the hood turns slowly back over the shoulder and returns (the inside of the hood stays pure black shadow, no face ever). Row 2, exactly 4 figures: CHECK THE TABLET - lifts a small glowing handheld device from under the poncho, looks down at its screen, lowers it again. Row 3, exactly 4 figures: CHECK WOUNDS - pats the side of the body under the poncho, looks down at the hand, shakes it off. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "look-around",
+              "frames": 4,
+              "loop": false,
+              "fps": 6
+            }
+          ],
+          [
+            {
+              "anim": "check-tablet",
+              "frames": 4,
+              "loop": false,
+              "fps": 6
+            }
+          ],
+          [
+            {
+              "anim": "check-wounds",
+              "frames": 4,
+              "loop": false,
+              "fps": 6
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+    },
+    {
+      "id": "hero-run",
+      "title": "The student · run",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows. Row 1, exactly 5 figures: WALK TO RUN, 2 frames (lean forward, arms start to pump), then RUN START from standing, 3 frames (crouch, push off, first long stride). Row 2, exactly 8 figures: RUN cycle in key poses - contact, down, passing, up for each leg, with long strides and one foot clearly off the ground; leaning forward, poncho and tassels streaming back, backpack bouncing. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "ref": "walk-run-00",
+        "rows": [
+          [
+            {
+              "anim": "walk-run",
+              "frames": 2,
+              "loop": false
+            },
+            {
+              "anim": "run-start",
+              "frames": 3,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "run",
+              "frames": 8
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "companion-robot",
@@ -46,13 +144,82 @@
     },
     {
       "id": "hero-hurt",
-      "title": "The student · hurt, death, interact",
+      "title": "The student · hurt and interact",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, side view, identical scale in every frame. Row 1: take damage - white hit-flash silhouette, recoil backwards, stagger, recover: 4 frames; then knockback launched backwards through the air, 3 frames. Row 2: death - collapse to knees, fall forward, lying still with the poncho spread out, fade into pixel dust: 6 frames. Row 3: interact - reach out and touch something at chest height, 3 frames; crouch and pick up an item from the ground, 4 frames; hold up a small glowing handheld device and look at its screen, 3 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 8 figures: TAKE A HIT, cartoonish and simple - a pure white flash silhouette of the hero, recoil backwards with arms flung up, stagger, wobble, catch balance, straighten, shake it off, back to standing. Row 2, exactly 6 figures: KNOCKBACK, 3 frames (launched backwards, poncho and tassels whipping forward, tumbling, curled up), then INTERACT, 3 frames (reach out and touch something at chest height, hold, pull the hand back). Row 3, exactly 7 figures: PICK UP, 4 frames (crouch, reach to the ground, grab, stand up holding a small item), then LOOK AT THE DEVICE, 3 frames (raise a small brushed-aluminium handheld computer with a glowing blue screen, look down at it, lower it). The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "hit",
+              "frames": 8,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "knockback",
+              "frames": 3,
+              "loop": false,
+              "float": true
+            },
+            {
+              "anim": "interact",
+              "frames": 3,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "pick-up",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "look-at-device",
+              "frames": 3,
+              "loop": false,
+              "fps": 6
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+    },
+    {
+      "id": "hero-death",
+      "title": "The student · death",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows that form ONE death animation of 12 frames, read left to right, row 1 then row 2. Row 1, exactly 6 figures: hit stagger, knees buckle, collapse onto both knees, slump forward, hands catch the ground, fall flat forward. Row 2, exactly 6 figures: lying still face-down with the poncho spread out, the hood dark and empty, a last twitch, then the whole figure breaks into square pixel dust in three steps until only a few drifting pixels are left. It is final and quiet, never gory: no blood. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "death",
+              "frames": 6,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "death",
+              "frames": 6,
+              "even": true
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "hero-air",
@@ -62,7 +229,41 @@
         "repo:art/sprites/images/hero-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, side view, identical scale in every frame. Row 1: jump - crouch anticipation, take-off, rise, apex (poncho billows up), fall, land squash, recover: 7 frames. Row 2: fall loop, 3 frames (poncho flapping upward), and a hard landing roll, 4 frames. Row 3: climbing a ladder seen from the side, 6-frame loop (hands and feet alternating on rungs; draw only a short ladder segment in grey steel), then pulling up over a ledge, 4 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 9 figures: JUMP - crouch anticipation, take-off, rise, rise higher, apex (the poncho billows up, tassels float), turn over, descend, landing squash, recover to standing. Row 2, exactly 7 figures: FALL loop, 3 frames (poncho flapping upward, arms out for balance), then HARD LANDING, 4 frames (deep impact crouch with one hand on the ground and a puff of dust, push up, straighten, stand). Row 3, exactly 4 figures: CLIMBING A LADDER seen from BEHIND (back to the viewer, the THD crest patch on the poncho's back visible, hood up), hands and feet alternating on invisible rungs in a 4-frame loop; do not draw the ladder itself. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "jump",
+              "frames": 9,
+              "loop": false,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "fall",
+              "frames": 3,
+              "float": true
+            },
+            {
+              "anim": "hard-landing",
+              "frames": 4,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "ladder",
+              "frames": 4,
+              "fps": 8
+            }
+          ]
+        ],
+        "ref": "jump-08"
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "chair-side",
@@ -76,7 +277,38 @@
         "ref2:20261023_130804.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Weapon: the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). Animation for a HORIZONTAL SIDE ATTACK with the chair, hero facing right, 8 frames in one row, then the same 8 frames repeated in row 2 as a clean silhouette-only version in dark grey (for timing review). Frames: 1 ready stance holding the chair by the seat at hip height, legs pointing back; 2 anticipation, body twists back, chair pulled behind; 3 start of swing; 4 fast swing smear (chair blurred into a pixel smear arc, legs forward); 5 contact frame, chair fully extended in front at waist height with a small white impact spark; 6 follow-through past the body; 7 recovery, weight back on the rear foot; 8 back to ready. Copy the grips and the low wide stance from the photos (the images after the first). Row 3: the chair alone at the same pixel scale in 4 orientations (upright side view, upside-down, held horizontally, legs-forward)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 3 rows. Row 1, exactly 8 figures: SWEEP A, a horizontal forehand swing - ready (chair held by the seat at hip height, legs pointing back), wind-up turning the body back, swing start, ONE SMEAR frame (the chair stretched into a blurred pixel arc), contact (chair fully extended in front at waist height with a small white impact spark), follow-through past the body, settle, ready. Row 2, exactly 8 figures: SWEEP B, the return backhand swing the other way, starting where sweep A ended - wind-up, swing start, ONE SMEAR frame, contact with a small spark, follow-through, settle, ready. Row 3, exactly 3 items: RECOIL, 2 frames (the chair bounces back off something hard and the hero leans back, then steadies), then THE CHAIR ALONE lying on its side on the ground (no hero), at the same pixel scale. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "sweep-a",
+              "frames": 8,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "sweep-b",
+              "frames": 8,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "recoil",
+              "frames": 2,
+              "loop": false
+            },
+            {
+              "anim": "chair-pickup",
+              "frames": 1
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "chair-overhead",
@@ -91,7 +323,36 @@
         "ref2:20261023_130948.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Weapon: the bent-plywood chair with thin black steel legs from the photos (the images after the first). Two attack animations, hero facing right. Row 1, UP ATTACK (hits enemies above), 6 frames: crouch with chair low, lift, chair thrust straight overhead seat-up legs to the sky (as in the photos), hold at peak with a small impact spark above, start lowering, back to ready. Row 2, DOWN SLAM (overhead to ground), 7 frames: chair raised high behind the head, peak, fast downward smear arc, chair slammed upright onto the ground in front with a dust burst and small pixel debris, a 1-frame screen-shake pose, hero pulls the chair back up, ready. Row 3, air version of the down slam: hero in the air pointing the chair legs downward (pogo, like a downward strike in Hollow Knight), 4 frames. Copy the weight shift and grips from the photos (the images after the first)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 3 rows. Row 1, exactly 6 figures: UP ATTACK - crouch with the chair low, lift, ONE SMEAR frame upward, the chair thrust straight overhead seat-up with the legs to the sky and a small spark above, start lowering, ready. Row 2, exactly 7 figures: DOWN SLAM - chair raised high behind the head, peak, ONE SMEAR frame of the downward arc, the chair slammed upright onto the ground in front with a small puff of dust (no crack, no shockwave, no debris), a short hold, pull the chair back up, ready. Row 3, exactly 4 figures: AIR POGO - the hero in the air pointing the chair legs straight down below the feet: tuck, thrust down, bounce up off a hit, recover. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "ref": "slam-06",
+        "rows": [
+          [
+            {
+              "anim": "up",
+              "frames": 6,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "slam",
+              "frames": 7,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "pogo",
+              "frames": 4,
+              "loop": false,
+              "float": true
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "chair-block",
@@ -105,7 +366,36 @@
         "ref2:20261023_130959.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Weapon: the bent-plywood chair with thin black steel legs. BLOCK / GUARD animation, hero facing right, holding the chair seat in front of the chest like a shield with the four legs pointing forward at the enemy, exactly as in the photos. Row 1: raise guard, 4 frames (from ready to full guard). Row 2: hold guard loop, 3 frames (tiny breathing shift); then block-impact reaction, 4 frames: a hit spark on the seat, the hero skids back a few pixels, the chair wobbles, recover. Row 3: guard break, 4 frames: the chair is knocked up and away, hero stumbles back with arms out, then catches the chair again. Keep the sturdy wide stance from the photos (the images after the first)."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 2 rows. Row 1, exactly 7 figures: GUARD UP, 4 frames (from ready to holding the chair seat in front of the chest like a shield with the four legs pointing forward at the enemy, as in the photos), then GUARD HOLD, 3 frames (a tiny breathing shift). Row 2, exactly 8 figures: GUARD IMPACT, 4 frames (a small spark on the seat, the hero skids back a little, the chair wobbles, steady again), then GUARD BREAK, 4 frames (the chair is knocked up and away, the hero stumbles back with arms out, then catches the chair again). The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
+      "atlas": {
+        "height": 76,
+        "rows": [
+          [
+            {
+              "anim": "guard-up",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "guard-hold",
+              "frames": 3
+            }
+          ],
+          [
+            {
+              "anim": "guard-impact",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "guard-break",
+              "frames": 4,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "tray-throw",
@@ -131,9 +421,44 @@
         "ref2:20261023_135554.jpg",
         "ref2:20261023_135556.jpg",
         "ref2:20261023_135558.jpg",
+        "repo:art/direction/images/cast-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Enemy sprite sheet: the big black carbon-fibre quadcopter from the photos (four long arms, red-and-black motors, two-bladed props, tall black landing legs, exposed wiring and a small electronics deck in the middle). Make it hostile and slightly uncanny: one red sensor eye on the deck. Side view, about twice as wide as the hero would be tall. Row 1: hover loop, 4 frames (props as blur discs, body bobs 1-2 pixels). Row 2: alert (eye flashes), tilt forward, dive-attack 3 frames with a speed trail, pull up. Row 3: hit flash (white silhouette), knocked sideways and spinning, crashing down, wreck on the ground with one prop still twitching and a little smoke: 5 frames. Row 4: a small projectile it drops (a loose screw / sparking battery), 3 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the big black carbon-fibre autonomous quadcopter from the photos (four long arms, red-and-black motors, two-bladed props, tall black landing legs, exposed wiring and a small electronics deck in the middle), now hostile, with ONE red sensor eye on the deck. Strict side view, FACING LEFT. 3 rows. Row 1, exactly 7 frames: HOVER loop, 4 frames (props as blur discs, the body bobs 1-2 pixels), then ALERT AND DIVE, 3 frames (the eye flashes, it tilts forward, dives with a short speed trail). Row 2, exactly 5 frames: CRASH (white hit-flash silhouette, knocked sideways and spinning, falling, wreck on the ground with one prop twitching, a little smoke and a small pool of glossy black fluid). Row 3, exactly 3 frames: a small DROPPED SCREW tumbling, drawn large enough to read. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 18,
+        "rows": [
+          [
+            {
+              "anim": "hover",
+              "frames": 4,
+              "float": true
+            },
+            {
+              "anim": "dive",
+              "frames": 3,
+              "loop": false,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "crash",
+              "frames": 5,
+              "loop": false,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "screw",
+              "frames": 3,
+              "float": true
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "enemy-rover",
@@ -143,21 +468,108 @@
         "ref2:20261023_125948.jpg",
         "ref2:20261023_125951.jpg",
         "ref2:20261023_125952.jpg",
+        "repo:art/direction/images/cast-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Enemy sprite sheet: the small four-wheeled lab rover from the photos (aluminium chassis, four chunky yellow wheels with black tyres, plywood top deck, black cylindrical lidar on top, two round ultrasonic sensor 'eyes' at the front). Side view facing left, knee-high to the hero. Row 1: idle - lidar spins, 4 frames. Row 2: patrol drive, 6 frames (wheels turn, chassis bounces 1 pixel). Row 3: spot the player - lidar flashes red, rear up a little, then CHARGE ram 4 frames with dust kicked from the wheels. Row 4: hit flash, flipped on its back with wheels spinning, smoking wreck: 5 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the small four-wheeled autonomous lab rover from the photos (aluminium chassis, four chunky yellow wheels with black tyres, plywood top deck, a black cylindrical lidar on top, two round ultrasonic sensor 'eyes' at the front). Nobody drives it: it is autonomous and now hostile. Strict side view, FACING LEFT. 3 rows. Row 1, exactly 4 frames: IDLE (the lidar spins, the body hums). Row 2, exactly 6 frames: DRIVE patrol cycle (wheels turn, chassis bounces 1 pixel). Row 3, exactly 9 frames: SPOT AND CHARGE, 4 frames (the lidar flashes red, it rears up a little, lunges forward with dust from the wheels), then HIT, FLIP AND WRECK, 5 frames (white hit-flash silhouette, flipped onto its back, wheels spinning, stops dead, a little smoke and a small pool of glossy black fluid). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 25,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 4
+            }
+          ],
+          [
+            {
+              "anim": "drive",
+              "frames": 6
+            }
+          ],
+          [
+            {
+              "anim": "charge",
+              "frames": 4,
+              "loop": false
+            },
+            {
+              "anim": "wreck",
+              "frames": 5,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
-      "id": "enemy-walker",
-      "title": "Enemy · walker",
+      "id": "enemy-crab",
+      "title": "Enemy · crab",
       "factor": 2,
       "inputs": [
         "ref2:20261023_125939.jpg",
         "ref2:20261023_125941.jpg",
         "ref2:20261023_125944.jpg",
+        "repo:art/direction/images/cast-preview.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Enemy sprite sheet: the six-legged hexapod robot from the photos (black and grey servo motors, orange-copper wiring nest on top, long curved black legs ending in points). Make it creep like a spider. Side view facing left, about as tall as the hero's waist, wider than tall. Row 1: idle - legs twitch, 4 frames. Row 2: walk cycle, 8 frames (alternating tripod gait, body level). Row 3: attack - rear up on the back legs with front legs raised, then stab the front legs down, recover: 5 frames. Row 4: hit flash, legs buckle, collapse into a tangled heap with sparks: 5 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the autonomous six-legged hexapod robot from the photos (a flat electronics body, six jointed servo legs, wiring and small sensors), waist-high and wide like a crab. Nobody controls it: it is autonomous and now hostile, with one small red sensor light. Strict side view, FACING LEFT. 4 rows. Row 1, exactly 4 frames: IDLE (legs shift, body bobs). Row 2, exactly 8 frames: WALK cycle (legs move in alternating tripods). Row 3, exactly 5 frames: REAR AND STAB (raises the two front legs high, holds, stabs them down forward, pulls back). Row 4, exactly 5 frames: COLLAPSE (white hit-flash silhouette, legs buckle, body drops flat, legs splay out, stops dead with a small pool of glossy black fluid). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 38,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 4
+            }
+          ],
+          [
+            {
+              "anim": "walk",
+              "frames": 8
+            }
+          ],
+          [
+            {
+              "anim": "stab",
+              "frames": 5,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "collapse",
+              "frames": 5,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+    },
+    {
+      "id": "fx",
+      "title": "FX · black fluid",
+      "factor": 2,
+      "inputs": [
+        "repo:art/direction/images/cast-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Effect sprite sheet: the BLACK FLUID that leaks from a defeated machine. Glossy black liquid like crude oil with a faint cold blue sheen on the highlights, never red, never blood, never a goo monster. 1 row, exactly 6 frames, side view at ground level: a first drip falls from a seam, more drips, a small puddle forms on the ground, the puddle spreads wider, a last slow drip, the settled glossy puddle. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 20,
+        "rows": [
+          [
+            {
+              "anim": "black-fluid",
+              "frames": 6,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "boss-jenny",

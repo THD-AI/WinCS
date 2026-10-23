@@ -1,0 +1,22 @@
+{
+ "idle": {
+  "frames": 4,
+  "fps": 12,
+  "loop": true
+ },
+ "walk": {
+  "frames": 8,
+  "fps": 12,
+  "loop": true
+ },
+ "stab": {
+  "frames": 5,
+  "fps": 12,
+  "loop": false
+ },
+ "collapse": {
+  "frames": 5,
+  "fps": 12,
+  "loop": false
+ }
+}
