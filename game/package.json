@@ -5,9 +5,12 @@
   "type": "module",
   "engines": { "node": ">=22.12 <23" },
   "scripts": {
+    "stages": "python3 ../scripts/export_stage.py || python ../scripts/export_stage.py",
+    "predev": "npm run stages",
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "prebuild": "npm run stages",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1"
   },
