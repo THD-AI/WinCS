@@ -26,7 +26,7 @@ JSON-hash atlases with `idle-00` frames and feet pivots `(0.5, 1)`, plus matchin
 `.anims.json` files. Hero: 28×76 body in an 80 px frame; Dexter: 20 px;
 rover: 25 px; crab: 40 px; drone: 45 px; Jenny: 200×70.
 They are development stand-ins for the [production contracts](../docs/13-PRODUCTION-PIPELINE.md),
-and are never copied to `art/`. No gameplay, HUD, or collision is included yet.
+and are never copied to `art/`.
 
 Stage exports from lane A belong at `public/assets/stages/<region>/stage.json`.
 The loader preserves their list order and scroll factors, caches shared plates,
@@ -42,3 +42,9 @@ the same world polylines and boxes that the controller consumes. Collision files
 are fetched next to the exported manifest, validated against the chunk and state,
 then shifted from chunk-local pixels by the manifest's grid coordinates. Original
 metadata is retained; reserved ledges and glide lifts do not become solid surfaces.
+
+Walk with A/D or left/right arrows, or a gamepad stick/D-pad. Holding the same
+direction for 0.4 seconds accelerates from 150.5 to 258 px/s (3.5 to 6 m/s).
+F2 shows speed, hold time, position and the 28×76 player body. The hero currently
+uses the idle atlas pose; animation switching is delivered by #31. Jump, slopes
+and ladders follow in their own issues.

@@ -4,6 +4,7 @@ import { drawStage } from '../stage/render';
 import type { StageManifest, RegionState } from '../stage/manifest';
 import { loadCollisions, type CollisionChunk } from '../stage/collision';
 import { collisionDebug } from '../stage/collision-debug';
+import { Player } from '../player/player';
 
 // Bootstrap-only scenes live in lane B until lane A provides story/UI scenes.
 export class Boot extends Phaser.Scene {
@@ -26,10 +27,12 @@ export class Preload extends Phaser.Scene {
 }
 
 export class Stage extends Phaser.Scene {
+  private player?: Player;
   constructor() { super('Stage'); }
   create(data: { manifest: StageManifest; state: RegionState; collisions: CollisionChunk[] }) {
     drawStage(this, data.manifest, data.state);
     collisionDebug(this, data.collisions);
+    this.player = new Player(this, data.collisions);
     this.scene.launch('UI');
     // Development inspection only; camera follow is implemented separately in #32.
     if (import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')) {
@@ -41,6 +44,7 @@ export class Stage extends Phaser.Scene {
       });
     }
   }
+  update(_time: number, delta: number) { this.player?.update(delta); }
 }
 
 export class UI extends Phaser.Scene {
