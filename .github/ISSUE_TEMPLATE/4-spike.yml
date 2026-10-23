@@ -1,0 +1,31 @@
+name: Spike (question)
+description: A time-boxed question that ends in a decision written down.
+title: "[M?-S?] Spike: "
+labels: [type:spike, needs-triage]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: The one question, and the decision that waits on it.
+    validations:
+      required: true
+  - type: textarea
+    id: method
+    attributes:
+      label: Method
+      description: Who to ask, what to try, what to measure.
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: Where the answer is written – usually a row in docs/11-DECISIONS.md.
+    validations:
+      required: true
+  - type: input
+    id: timebox
+    attributes:
+      label: Time box
+      placeholder: 30 minutes
+    validations:
+      required: true

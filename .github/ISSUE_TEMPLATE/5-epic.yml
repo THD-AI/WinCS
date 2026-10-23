@@ -1,0 +1,39 @@
+name: Epic (maintainers)
+description: A milestone outcome that owns native sub-issues. One per milestone.
+title: "[M?] "
+labels: [type:epic]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Epics are created by maintainers, one per milestone. Children are **native sub-issues**, not checklists.
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What the player can do when this milestone is done, in a short paragraph.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: A two-column table – in this milestone / not in this milestone.
+    validations:
+      required: true
+  - type: textarea
+    id: sequence
+    attributes:
+      label: Sequence
+      description: Order of the sub-issues and which run in parallel. Record blockers with native "blocked by".
+  - type: textarea
+    id: completion
+    attributes:
+      label: Completion criteria
+      description: End-to-end checks; the epic closes after someone plays it, not when the last child closes.
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References

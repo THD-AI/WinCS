@@ -1,0 +1,45 @@
+name: Story
+description: Something a player can do or see afterwards, delivered in one PR.
+title: "[M?-S?] "
+labels: [type:story, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A story is the size of **one PR**. Bigger? It's an epic or it needs splitting. Invisible to the player? It's a task.
+        Title: `[M1-S10] What the player can do` (milestone, next free number). See [CONTRIBUTING](https://github.com/THD-AI/WinCS/blob/main/CONTRIBUTING.md#issues).
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: Who wants what, and why.
+      placeholder: As a player, I want …, so that ….
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Observable behaviour someone else can check without asking you.
+      value: |
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: Design and references
+      description: The doc section, direction image or sprite sheet this follows. Art needs an approved Design review before export.
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: Parent epic and blocking issues – also set them in the Relationships panel (sub-issue, blocked by). Suggested owner.
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: How it's checked – on the Vercel preview, with keyboard and gamepad, with the debug overlay.
+    validations:
+      required: true
