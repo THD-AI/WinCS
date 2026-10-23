@@ -5,7 +5,8 @@
 
     python scripts/compare.py lineup hero-move:walk-00 hero-run:run-03 enemy-drone:hover-00 --out …
         frames from the game's atlases (game/public/assets/sprites) on one baseline, at game scale ×3,
-        with a 1 ft ruler (13 px, docs/04) and the documented height of each thing marked
+        with a 1 ft ruler (13 px, docs/04) and the documented height of each thing marked;
+        --atlas-dir tmp/atlas reads a review export instead of the game's atlases
 
 Paths are relative to the repository. Images and crops are in their own pixels; `--width` sets the common width.
 """
@@ -20,7 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SPRITES = ROOT / "game" / "public" / "assets" / "sprites"
 FOOT = 13  # px per foot at stage scale (docs/04)
 # Documented game heights in px (docs/04 scale table, docs/05): what each sprite should measure.
-DOCUMENTED = {"hero": 76, "dexter": 20, "enemy-rover": 25, "enemy-crab": 40, "enemy-drone": 45, "boss-jenny": 70}
+DOCUMENTED = {"hero": 76, "dexter": 20, "dexter-acts": 20, "enemy-rover": 25, "enemy-crab": 40, "enemy-drone": 45,
+              "boss-jenny": 70, "boss-jenny-2": 70}
 GRID = (255, 0, 255)
 
 
@@ -113,7 +115,11 @@ def main() -> None:
     two = sub.add_parser("lineup", help="atlas frames on one baseline with documented heights")
     two.add_argument("frames", nargs="+", help="atlas:frame, e.g. hero-move:walk-00")
     two.add_argument("--out", type=Path, required=True)
+    two.add_argument("--atlas-dir", type=Path, help="read atlases from here (an export to tmp/ before approval)")
     args = parser.parse_args()
+    if getattr(args, "atlas_dir", None):
+        global SPRITES
+        SPRITES = args.atlas_dir if args.atlas_dir.is_absolute() else ROOT / args.atlas_dir
     if args.mode == "images":
         out = images(args.ref, args.ours, args.width, args.grid)
     else:
