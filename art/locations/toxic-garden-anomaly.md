@@ -6,7 +6,7 @@
 
 ![Toxic Garden · anomaly](images/toxic-garden-anomaly-preview.png)
 
-**Review:** Not reviewed yet.
+**Review:** ✅ Third take: crimson leaves as big as umbrellas form platforms, corten beds tilt, the background bridge has a hole, only amber droplets. (Take 2 dripped red sap that read as blood – rejected for no-gore.) A small stray figure on the left isn't our hero; it goes when the chunk is layered.
 
 ## Brief
 
