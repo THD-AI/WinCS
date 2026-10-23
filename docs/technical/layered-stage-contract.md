@@ -4,6 +4,8 @@
 
 **Proposed, not implemented · 23 October.** One flat side elevation, one shared pixel treatment, multiple generated banners and inherited scene positions. The composition comes before object extraction. Phaser/browser delivery remains a candidate, not a new runtime introduced by this document.
 
+**Executable follow-up:** [stage-art pipeline](stage-art-pipeline.md) now implements offline per-layer join preparation and protected RGBA replacement, with a dry-run API adapter. Its explicitly normalized canonical panels are **2160×720**, world 6480×720. The coordinate example below retains the older 2172×724 review units; use the current configuration's dimensions when running the tool. Game collision/rigging still remain unimplemented.
+
 ## Strip coordinates, not five appended chunks
 
 Use a top-left origin, x right, y down. For the requested W=2172, H=724 review canvas:

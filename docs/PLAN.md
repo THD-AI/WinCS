@@ -12,6 +12,8 @@ Research date: 21 October 2026. This is pre-jam preparation, not permission to b
 
 **Next visual gate:** review flat projection, location identity, player scale, strip continuity and the center layer proof before propagating decomposition to the wings or generating animation. Hidden Garden remains the first gameplay candidate. A reference library does not promise every location in the jam. Issues/board and workflows remain deferred; the PR watcher remains paused.
 
+**Latest follow-up:** [substantial maze + actual seam pipeline](../references/production/seam-pipeline/README.md) restores broad girders/tall shafts. The [executable process](technical/stage-art-pipeline.md) prepares layer-local masked jobs, applies bounded RGBA repairs, supports shared chunk insertion and records protected-pixel proof. Seven source/candidate assets demonstrate four repairs across two separate studies; this is not a final seven-layer composition. Ten offline tests and the GPT Image 2.5 adapter dry run pass. One owner-authorized [pipeline issue #14](https://github.com/THD-AI/WinCS/issues/14) and child PR form an explicit exception to the deferred backlog. The project board/general issue automation stay deferred.
+
 | Order | Work | Exit evidence |
 | --- | --- | --- |
 | 1 | Inspect workspace; create private THD-AI/WinCS; register as dotPrivate submodule | Remote privacy checked; isolated local commits; unrelated changes preserved |

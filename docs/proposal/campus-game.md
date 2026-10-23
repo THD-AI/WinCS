@@ -47,7 +47,9 @@ Do not turn every visual motif into a new algorithm or simulation. The maze can 
 
 ## How Codex and image generation actually produce the art
 
-![Traversal dressing on the clean center scene](../../references/production/crossings-strip/images/07-center-traversal.png)
+![Substantial pathfinding-like maze direction restored](../../references/production/seam-pipeline/images/maze-center.png)
+
+**Latest follow-up:** broad blue-green riveted structures, substantial concrete shafts and a full-height branching maze are the preferred traversal language. Thin bars under one long bridge are superseded. [Actual per-layer seam repairs and expandable chunk pipeline](../technical/stage-art-pipeline.md) now have executable offline tooling and a separate [visual study](../../references/production/seam-pipeline/README.md). The clean location and maze remain separate studies awaiting final composition, not a completed layered level.
 
 **Clean center → same-width left/right extensions → two staggered join windows → dress the strip → five-plus layers → individual grabs/rigs → recompose → motion/corruption.**
 

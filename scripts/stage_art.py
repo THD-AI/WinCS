@@ -24,7 +24,7 @@ def digest(path):
 
 
 def write_json(path, value):
-    Path(path).write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
+    Path(path).write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8', newline='\n')
 
 
 def source(root, value):
@@ -133,7 +133,7 @@ def prepare(config, output, band=384, root=ROOT):
                 f'Output the complete {w}x{h} context canvas, not a tight crop. '
                 + layer.get('repair_direction', '')
             )
-            (folder / 'prompt.txt').write_text(prompt + '\n', encoding='utf-8')
+            (folder / 'prompt.txt').write_text(prompt + '\n', encoding='utf-8', newline='\n')
             request = {'model': packet['model'], 'size': f'{w}x{h}', 'quality': 'high',
                        'output_format': 'png', 'background': 'transparent' if layer.get('transparent') else 'opaque',
                        'n': 1, 'image': 'context.png', 'mask': 'edit-mask.png', 'prompt_file': 'prompt.txt'}

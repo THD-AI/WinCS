@@ -1,5 +1,7 @@
 # Rusty Crossings · flat scene, long strip, separate layers
 
+**Traversal update:** use the [current substantial maze and real layer repairs](../seam-pipeline/README.md). The clean flat location banners here remain source studies; thin orange-bar traversal is superseded. [Exact reusable pipeline](../../../docs/technical/stage-art-pipeline.md).
+
 [📍 Campus boards](../../campus/README.md) · [Original collage](../../campus/crossings.md#location-photo-board) · [🎨 Stage experiments](../README.md) · [Proposal](../../../docs/proposal/campus-game.md)
 
 ![Clean center banner in flat side elevation](images/02-center-clean.png)

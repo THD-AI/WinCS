@@ -26,7 +26,9 @@ The [five-image study](../../references/production/crossings-strip/README.md) ex
 
 ## 3. Dress the accepted strip, in place
 
-![Added bars and ladders on the same center scene](../../references/production/crossings-strip/images/07-center-traversal.png)
+![Preferred substantial riveted maze, broad platforms and tall shafts](../../references/production/seam-pipeline/images/maze-center.png)
+
+**Latest traversal correction:** restore the earlier substantial pathfinding-like maze; the thin orange bars squeezed beneath a straight bridge were not the intended design. The [current layer study](../../references/production/seam-pipeline/README.md) and [executable pipeline](../technical/stage-art-pipeline.md) apply real bounded repairs to each layer's joins. They replace whole-window overlay comparison as the production method. The original complete maze supplies the traversal design language; the clean location strip supplies recognizable creek/material references. Composing those into a final scene remains a review step.
 
 Add the rusted algorithm/pathfinding maze to the accepted location. Extend the route through neighbors and repair its joins too. Keep clean and dressed images so the difference is visible. Trace one viable route and test climb/jump reach; edit the same composition when necessary.
 

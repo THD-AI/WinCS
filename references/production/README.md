@@ -2,6 +2,10 @@
 
 [📍 Campus location boards](../campus/README.md) · [🎮 Game studies](../README.md) · [Current proposal](../../docs/proposal/campus-game.md)
 
+[![Current substantial maze direction](seam-pipeline/images/maze-center.png)](seam-pipeline/README.md)
+
+**[Current: substantial maze, actual layer repairs and reproducible pipeline →](seam-pipeline/README.md)** · [Exact commands / API route](../../docs/technical/stage-art-pipeline.md). This restores the preferred thick-girder/shaft design and repairs real join canvases. The earlier thin traversal pass below remains a comparison.
+
 [![Flat side-elevation creek banner](crossings-strip/images/02-center-clean.png)](crossings-strip/README.md)
 
 **[Start here: Rusty Crossings · three banners, two joins, seven depth trials →](crossings-strip/README.md)**

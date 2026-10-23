@@ -25,7 +25,9 @@ The professor/degree connection is an owner-supplied **fictional villain premise
 
 Source photos C23–C27 show overhead riveted spans, mossy concrete, tubular rails, creek and ivy. Keep those identifying motifs in the newly designed side-on game layout. Do not copy the photographic vanishing point or substitute a generic fantasy maze. The approved board remains unchanged. The added traversal pass is visible below; routes, seams and mask cleanup still need review.
 
-![Maze added onto the same location banner](../production/crossings-strip/images/07-center-traversal.png)
+![Preferred substantial riveted maze](../production/seam-pipeline/images/maze-center.png)
+
+**Latest correction:** this broad platform / tall shaft maze is the traversal reference. The thin orange-bar pass is superseded. [Current layer and seam viewer](../production/seam-pipeline/README.md) · [Exact pipeline](../../docs/technical/stage-art-pipeline.md). The photo-derived clean location and maze are not yet one approved composition.
 
 [Clean banners → staggered joins → traversal → seven depth plates](../production/crossings-strip/README.md) · [Layered workflow](../../docs/design/layered-stage-workflow.md)
 

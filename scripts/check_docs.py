@@ -226,6 +226,50 @@ if strip_study.exists():
         if Path(item['file']).name not in viewer:
             errors.append(f'Flat-strip viewer lacks image: {item["file"]}')
 
+seams = ROOT / 'references/production/seam-pipeline'
+if seams.exists():
+    seam_data = json.loads((seams / 'media-sources.json').read_text(encoding='utf-8'))
+    seam_prompts = json.loads((seams / 'prompts.json').read_text(encoding='utf-8'))['prompts']
+    seam_gallery = (seams / 'README.md').read_text(encoding='utf-8')
+    seam_declared = [item['file'] for item in seam_data['images']]
+    seam_actual = {p.relative_to(seams).as_posix() for p in (seams / 'images').glob('*')}
+    if len(seam_declared) != len(set(seam_declared)) or set(seam_declared) != seam_actual:
+        errors.append('Seam study manifest must cover each selected image exactly once')
+    for item in seam_data['images']:
+        file = seams / item['file']
+        if not file.is_file():
+            errors.append(f'Seam study missing: {item["file"]}')
+            continue
+        raw = file.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != item['sha256']:
+            errors.append(f'Seam study hash differs: {item["file"]}')
+        if not raw.startswith(b'\x89PNG\r\n\x1a\n') or len(raw) < 26:
+            errors.append(f'Seam study invalid PNG: {item["file"]}')
+        elif list(struct.unpack('>II', raw[16:24])) != item['dimensions'] or raw[25] != {'RGB': 2, 'RGBA': 6}.get(item['mode']):
+            errors.append(f'Seam study dimensions/type differ: {item["file"]}')
+        if item['file'] not in seam_gallery or item['prompt_key'] not in seam_prompts:
+            errors.append(f'Seam study lacks gallery/prompt: {item["file"]}')
+    for item in seam_data['source_inputs']:
+        file = ROOT / item['project_file']
+        if not file.is_file() or hashlib.sha256(file.read_bytes()).hexdigest() != item['sha256']:
+            errors.append(f'Seam study source differs: {item["project_file"]}')
+    config_hash = hashlib.sha256((seams / 'stage.json').read_bytes()).hexdigest()
+    if config_hash != seam_data['packet']['config_sha256']:
+        errors.append('Seam study configuration differs from the prepared packet')
+    # The repair report is evidence, not an automatic visual acceptance certificate.
+    report = json.loads((seams / 'verification.json').read_text(encoding='utf-8'))
+    packet_hash = hashlib.sha256((json.dumps(seam_data['packet'], indent=2) + '\n').encode()).hexdigest()
+    if report['packet_sha256'] != packet_hash or any(item['outside_repair_changed_pixels'] != 0 for item in report['layers']):
+        errors.append('Seam study report does not match its packet/protected-pixel invariant')
+    for repair in report['repairs']:
+        candidate = seams / 'images' / (repair['job'] + '-candidate.png')
+        if not candidate.is_file() or hashlib.sha256(candidate.read_bytes()).hexdigest() != repair['candidate_sha256']:
+            errors.append(f'Seam repair report candidate differs: {repair["job"]}')
+    viewer = (seams / 'viewer.html').read_text(encoding='utf-8')
+    for target in re.findall(r'(?:src|href)="([^"]+)"', viewer):
+        if not re.match(r'^[a-zA-Z][a-zA-Z0-9+.-]*:', target) and not (seams / target.split('#')[0]).exists():
+            errors.append(f'Seam viewer missing target: {target}')
+
 for diagram in (ROOT / 'docs/proposal/diagrams').glob('*.svg'):
     try:
         svg = ET.parse(diagram).getroot()
@@ -253,3 +297,5 @@ if production.exists():
     print('Checked three scene-first trial hashes, PNG dimensions/type, prompts and source boards; this does not certify extraction quality or playability.')
 if strip_study.exists():
     print(f'Checked {len(strip_images)} flat-strip images, source graph, native sizes/types, prompts, review origins and viewer paths; seams/recomposition remain unapproved.')
+if seams.exists():
+    print(f'Checked {len(seam_declared)} seam-study images, prompts/sources, configuration and protected-pixel report; visual approval remains separate.')

@@ -12,6 +12,8 @@ This is **WinCS**, our private idea cave for DegDev 3. Vatsal is steering; Alexa
 
 **[📍 Campus boards](references/campus/README.md)** · **[🎮 Game studies](references/README.md)** · **[🎨 Stage experiments](references/production/README.md)** · **[Rusty Crossings: source collage → flat banners → layers](references/production/crossings-strip/README.md)**
 
+**[Current follow-up: substantial maze + actual per-layer seam repairs](references/production/seam-pipeline/README.md)** · **[Exact reusable pipeline / API route](docs/technical/stage-art-pipeline.md)**. The broad riveted-steel pathfinding direction replaces the thin-bar traversal pass. One explicitly requested [pipeline issue](https://github.com/THD-AI/WinCS/issues/14) and a child PR keep this iteration separately reviewable; the project board stays deferred.
+
 The latest art study starts with a **flat side-scroller location**, extends left/right to three banners, tests two staggered join windows, adds traversal and displays seven center depth trials. It is a new layout inspired by the collage, not a perspective repaint. Seams and masks remain under review.
 
 Proposed route: **Hidden Garden → campus ledges → Lost in the Green → rusty crossings → stepping-stone creek → Toxic Garden**. Rusty Crossings is now an algorithm-inspired maze of rusted bars; the creek retains flowing contours. Image cuts, stretched pixels and 404-like errors are the default visual corruption, with secret-villain influences connecting the stages. Playground remains an optional detour. A cute campus robot is an optional collectible. Extra locations and replay bosses are future possibilities, not a promise for the jam.
