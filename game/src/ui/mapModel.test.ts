@@ -50,7 +50,8 @@ describe('the pocket computer map', () => {
     const bus = new GameEventBus();
     const stop = m.listen(bus);
     bus.emit('save', { checkpoint: 'coffee', region: 'rusty-creek', position: { x: 4400, y: 400 } });
-    expect(m.rooms().find((r) => r.id === 'rc-2-0')?.current).toBe(true);
+    expect(m.rooms().find((r) => r.id === 'rc-2-0')).toMatchObject({ current: true, saved: true });
+    expect(m.rooms().find((r) => r.id === 'rc-0-0')?.saved).toBe(false);
     stop();
   });
 

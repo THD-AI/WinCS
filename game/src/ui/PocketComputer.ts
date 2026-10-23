@@ -1,15 +1,20 @@
 import Phaser from 'phaser';
 import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
-import { pocketMap, REGION_ORDER, Room, StageManifest } from './mapModel';
+import { layoutMap, MapLayout } from './mapLayout';
+import { pocketMap, REGION_ORDER, StageManifest } from './mapModel';
+import { UI_ATLAS, UI_LAYOUT } from './uiAtlas';
 
-const C = { case: 0xb9bec4, caseDark: 0x6f767d, screen: 0x041006, room: 0x39ff6a, roomEdge: 0x1c8a3a, scan: 0x000000, text: '#39ff6a' };
+const C = { case: 0xb9bec4, caseDark: 0x6f767d, screen: 0x041006, room: 0x39ff6a, roomEdge: 0x1c8a3a, scan: 0x000000 };
+/** Placeholder sizes, used only without the UI atlas. */
 const SCREEN = { w: 760, h: 440 };
-const CELL = { w: 132, h: 44, gap: 10 };
-const FONT = { fontFamily: 'monospace', fontSize: '16px', color: C.text };
+const CELL = { w: 132, h: 44 };
+const GAP = 36;
 const STAGE = 'Stage';
 /** Menu: Tab or Esc on the keyboard, Start on a pad (docs/02 controls). */
 export const MENU_KEYS = ['TAB', 'ESC'];
 export const MENU_PAD = 9;
+
+interface UiLayout { 'pocket-frame'?: { size: [number, number]; screen: [number, number, number, number] } }
 
 /** The menu key: opens the map once you have the pocket computer, closes it if open. One owner (the HUD) calls this. */
 export function toggleMap(scenes: Phaser.Scenes.ScenePlugin): void {
@@ -18,8 +23,9 @@ export function toggleMap(scenes: Phaser.Scenes.ScenePlugin): void {
 }
 
 /**
- * The pocket computer's map (#69): a green-on-black CRT screen in the aluminium case. Rooms are stage chunks,
- * drawn only once visited; the room you are in blinks. The stage pauses while it is open.
+ * The pocket computer's map (#69): the approved case and CRT screen (#127) with the rooms you've been in –
+ * stage chunks – on it; the room you are in blinks. The stage pauses while it is open. Without the UI atlas the
+ * same layout is drawn in code.
  */
 export class PocketComputer extends Phaser.Scene {
   constructor() { super('PocketComputer'); }
@@ -34,22 +40,11 @@ export class PocketComputer extends Phaser.Scene {
       if (manifest) pocketMap.addRegion(manifest);
     }
     if (this.scene.isActive(STAGE)) this.scene.pause(STAGE);
+    this.add.rectangle(0, 0, VIEW_WIDTH, VIEW_HEIGHT, 0x000000, 0.55).setOrigin(0);
 
-    const x = (VIEW_WIDTH - SCREEN.w) / 2;
-    const y = (VIEW_HEIGHT - SCREEN.h) / 2;
-    const g = this.add.graphics();
-    g.fillStyle(0x000000, 0.55).fillRect(0, 0, VIEW_WIDTH, VIEW_HEIGHT);
-    g.fillStyle(C.caseDark).fillRoundedRect(x - 28, y - 28, SCREEN.w + 56, SCREEN.h + 56, 18);
-    g.fillStyle(C.case).fillRoundedRect(x - 24, y - 24, SCREEN.w + 48, SCREEN.h + 48, 16);
-    g.fillStyle(C.screen).fillRect(x, y, SCREEN.w, SCREEN.h);
-    this.add.text(x + 20, y + 14, 'MAP', FONT);
-
-    this.drawRooms(x + 20, y + 52, pocketMap.rooms());
-
-    // Static scanlines over the whole screen: the CRT look without a shader.
-    const scan = this.add.graphics();
-    scan.fillStyle(C.scan, 0.28);
-    for (let row = y; row < y + SCREEN.h; row += 3) scan.fillRect(x, row, SCREEN.w, 1);
+    const frame = (this.cache.json.get(UI_LAYOUT) as UiLayout | undefined)?.['pocket-frame'];
+    if (this.textures.exists(UI_ATLAS) && frame) this.drawArt(frame);
+    else this.drawPlaceholder();
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       if (this.scene.isPaused(STAGE)) this.scene.resume(STAGE);
@@ -57,28 +52,68 @@ export class PocketComputer extends Phaser.Scene {
     this.scene.bringToTop();
   }
 
-  /** One row per region (only regions with a visited room get a label), chunks placed on their grid. */
-  private drawRooms(left: number, top: number, rooms: Room[]): void {
-    const g = this.add.graphics();
-    let y = top;
-    for (const region of new Set(rooms.map((r) => r.region))) {
-      const inRegion = rooms.filter((r) => r.region === region);
-      const seen = inRegion.filter((r) => r.visited);
-      if (seen.length === 0) continue;
-      this.add.text(left, y, region.split('-').join(' ').toUpperCase(), { ...FONT, fontSize: '13px' });
-      y += 22;
-      const rows = Math.max(...inRegion.map((r) => r.gy)) + 1;
-      for (const room of seen) {
-        const rx = left + room.gx * (CELL.w + CELL.gap);
-        const ry = y + room.gy * (CELL.h + CELL.gap);
-        g.fillStyle(C.roomEdge).fillRect(rx, ry, CELL.w, CELL.h);
-        g.fillStyle(C.room, 0.85).fillRect(rx + 3, ry + 3, CELL.w - 6, CELL.h - 6);
-        if (room.current) {
-          const dot = this.add.rectangle(rx + CELL.w / 2, ry + CELL.h / 2, 10, 10, C.screen);
-          this.tweens.add({ targets: dot, alpha: 0, duration: 380, yoyo: true, repeat: -1 });
-        }
-      }
-      y += rows * (CELL.h + CELL.gap) + 18;
+  private drawArt(frame: NonNullable<UiLayout['pocket-frame']>): void {
+    const [w, h] = frame.size;
+    const ox = Math.round((VIEW_WIDTH - w) / 2);
+    const oy = Math.round((VIEW_HEIGHT - h) / 2);
+    this.add.image(ox, oy, UI_ATLAS, 'crt-screen').setOrigin(0);
+    const [sx, sy, sw, sh] = frame.screen;
+    const room = this.textures.getFrame(UI_ATLAS, 'room-visited');
+    const map = layoutMap(pocketMap.rooms(), { w: room.width, h: room.height }, GAP);
+    const left = ox + sx + Math.round((sw - map.width) / 2);
+    const top = oy + sy + Math.round((sh - map.height) / 2);
+    for (const c of map.corridors) {
+      const piece = c.vertical ? 'corridor-v' : 'corridor-h';
+      const img = this.add.image(left + c.x, top + c.y, UI_ATLAS, piece).setOrigin(c.vertical ? 0.5 : 0, c.vertical ? 0 : 0.5);
+      // Corridors run under the rooms' glowing edges by a few pixels on each end.
+      if (c.vertical) img.setDisplaySize(img.width, c.length + 8).setY(img.y - 4);
+      else img.setDisplaySize(c.length + 8, img.height).setX(img.x - 4);
     }
+    for (const p of map.rooms) {
+      this.add.image(left + p.x, top + p.y, UI_ATLAS, p.frame).setOrigin(0);
+      if (!p.icon) continue;
+      const cx = left + p.x + room.width / 2;
+      const cy = top + p.y + room.height / 2;
+      if (p.icon !== 'player-dot') {
+        this.add.image(cx, cy, UI_ATLAS, p.icon);
+        continue;
+      }
+      const dot = this.add.image(cx, cy, UI_ATLAS, 'player-dot-0');
+      this.time.addEvent({ delay: 380, loop: true,
+        callback: () => dot.setFrame(dot.frame.name === 'player-dot-0' ? 'player-dot-1' : 'player-dot-0') });
+    }
+    this.add.image(ox, oy, UI_ATLAS, 'pocket-frame').setOrigin(0);
+  }
+
+  /** Without the atlas: the same layout as rectangles in a grey case. */
+  private drawPlaceholder(): void {
+    const x = (VIEW_WIDTH - SCREEN.w) / 2;
+    const y = (VIEW_HEIGHT - SCREEN.h) / 2;
+    const g = this.add.graphics();
+    g.fillStyle(C.caseDark).fillRoundedRect(x - 28, y - 28, SCREEN.w + 56, SCREEN.h + 56, 18);
+    g.fillStyle(C.case).fillRoundedRect(x - 24, y - 24, SCREEN.w + 48, SCREEN.h + 48, 16);
+    g.fillStyle(C.screen).fillRect(x, y, SCREEN.w, SCREEN.h);
+    const map: MapLayout = layoutMap(pocketMap.rooms(), CELL, GAP);
+    const left = x + Math.round((SCREEN.w - map.width) / 2);
+    const top = y + Math.round((SCREEN.h - map.height) / 2);
+    g.lineStyle(3, C.roomEdge);
+    for (const c of map.corridors) {
+      g.lineBetween(left + c.x, top + c.y, left + c.x + (c.vertical ? 0 : c.length), top + c.y + (c.vertical ? c.length : 0));
+    }
+    for (const p of map.rooms) {
+      if (p.frame === 'room-unexplored') {
+        g.lineStyle(1, C.roomEdge).strokeRect(left + p.x, top + p.y, CELL.w, CELL.h);
+        continue;
+      }
+      g.fillStyle(C.roomEdge).fillRect(left + p.x, top + p.y, CELL.w, CELL.h);
+      g.fillStyle(C.room, 0.85).fillRect(left + p.x + 3, top + p.y + 3, CELL.w - 6, CELL.h - 6);
+      if (p.icon === 'player-dot') {
+        const dot = this.add.rectangle(left + p.x + CELL.w / 2, top + p.y + CELL.h / 2, 10, 10, C.screen);
+        this.tweens.add({ targets: dot, alpha: 0, duration: 380, yoyo: true, repeat: -1 });
+      }
+    }
+    // Static scanlines over the screen: the CRT look without a shader.
+    g.fillStyle(C.scan, 0.28);
+    for (let row = y; row < y + SCREEN.h; row += 3) g.fillRect(x, row, SCREEN.w, 1);
   }
 }

@@ -7,19 +7,25 @@ export interface StageManifest {
   chunks: { id: string; x: number; y: number }[];
 }
 
-export interface Room { region: string; id: string; gx: number; gy: number; visited: boolean; current: boolean }
+export interface Room {
+  region: string; id: string; gx: number; gy: number;
+  visited: boolean; current: boolean;
+  /** You saved at a coffee machine in this room (the map shows a cup). */
+  saved: boolean;
+}
 
 /** Story order: the map lists regions top to bottom in the order you reach them (docs/04). */
 export const REGION_ORDER = ['hidden-garden', 'rusty-creek'];
 
 /**
  * What the pocket computer knows (#69): which rooms – stage chunks – you have been in and where you are.
- * Rooms fill in as you visit them; nothing is shown before (no minimap, docs/02).
+ * Rooms fill in as you visit them (no minimap, docs/02); a region you haven't entered isn't shown at all.
  */
 export class MapModel {
   unlocked = false;
   private regions = new Map<string, StageManifest>();
   private visited = new Set<string>();
+  private saves = new Set<string>();
   private here?: string;
 
   addRegion(manifest: StageManifest): void {
@@ -58,13 +64,20 @@ export class MapModel {
       .sort((a, b) => order(a.region) - order(b.region))
       .flatMap((s) => s.chunks.map((c) => {
         const key = `${s.region}/${c.id}`;
-        return { region: s.region, id: c.id, gx: c.x, gy: c.y, visited: this.visited.has(key), current: this.here === key };
+        return {
+          region: s.region, id: c.id, gx: c.x, gy: c.y,
+          visited: this.visited.has(key), current: this.here === key, saved: this.saves.has(key),
+        };
       }));
   }
 
   /** Saving at a coffee machine records where you are (the stage will also call visitAt as you walk). */
   listen(bus: GameEventBus): () => void {
-    return bus.on('save', ({ region, position }) => this.visitAt(region, position));
+    return bus.on('save', ({ region, position }) => {
+      this.visitAt(region, position);
+      const id = this.chunkAt(region, position);
+      if (id) this.saves.add(`${region}/${id}`);
+    });
   }
 }
 
