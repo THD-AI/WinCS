@@ -26,6 +26,10 @@ export class Hud extends Phaser.Scene {
     if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F8', () => {
       if (!this.scene.isActive('Crossing')) this.scene.launch('Crossing');
     });
+    // Dev builds: F9 opens the anomaly FX test chunk (#37 verification).
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F9', () => {
+      if (!this.scene.isActive('AnomalyTest')) this.scene.launch('AnomalyTest');
+    });
   }
 
   update(): void {
