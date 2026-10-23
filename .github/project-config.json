@@ -1,0 +1,17 @@
+{
+  "owner": "THD-AI",
+  "repository": "THD-AI/WinCS",
+  "projectNumber": 7,
+  "projectId": "PVT_kwDOCLgQ5c4BobtZ",
+  "statusFieldId": "PVTSSF_lADOCLgQ5c4BobtZzhm72-k",
+  "statusOptions": {
+    "Backlog": "e8f94e11",
+    "Ready": "ed42d55a",
+    "In progress": "1263b78c",
+    "In review": "2043967b",
+    "Blocked": "0af9351e",
+    "Done": "d5536774"
+  },
+  "startDateFieldId": "PVTF_lADOCLgQ5c4BobtZzhm8HdQ",
+  "completedDateFieldId": "PVTF_lADOCLgQ5c4BobtZzhm8HdY"
+}

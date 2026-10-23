@@ -1,0 +1,24 @@
+name: Issue commands
+
+# `/take` assigns the commenter to an open, unblocked, non-epic issue; `/drop` unassigns.
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  command:
+    if: ${{ !github.event.issue.pull_request && (startsWith(github.event.comment.body, '/take') || startsWith(github.event.comment.body, '/drop') || startsWith(github.event.comment.body, '/assign') || startsWith(github.event.comment.body, '/unassign')) }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            await require('./.github/scripts/issue-commands.cjs')({ github, context, core });
