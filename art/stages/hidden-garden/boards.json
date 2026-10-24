@@ -1,6 +1,6 @@
 {
   "name": "Hidden Garden – stage chunks",
-  "readme": "The prologue, drawn from the approved [Hidden Garden concept](../../locations/hidden-garden-clean.md) as a flat side elevation with its figures removed. One chunk, `hg-0-0` (2160×720): the bench where Dexter sits at the start (x ≈ 190–320), the stone path and the timber jetty (path top y = 441), the end of the jetty where Dexter points (x ≈ 1290–1323), and one wrong patch in the pond's reflection below it – a rusty girder with a ladder that isn't there. Clean only.\n\n**Layers** ([layers.json](layers.json), `python scripts/split_layers.py art/stages/hidden-garden`): [03 rear](layers/hg-0-0.03-rear.png) · [04 water](layers/hg-0-0.04-water.png) · [05 play](layers/hg-0-0.05-play.png) · [07 foreground](layers/hg-0-0.07-foreground.png). Everything above the path is one rear layer at scroll 1.0, and the foreground also scrolls at 1.0: rectangles and colours would tear the big tree or the reeds at another speed, so sky/far/mid parallax waits for hand-drawn masks.",
+  "readme": "The prologue, drawn from the approved [Hidden Garden concept](../../locations/hidden-garden-clean.md) as a flat side elevation: **five chunks, 10 800 px**, about 70 s of walking plus Dexter's waits and two detours ([docs/04 – Hidden Garden, the prologue level](../../../docs/04-WORLD-AND-LEVELS.md#hidden-garden--the-prologue-level), #50). `hg-4-0` is the approved pond chunk (the jetty where Dexter points, the wrong reflection). The four before it were grown leftwards from it with [grow_stage.py](../../../scripts/grow_stage.py) – scenery first, one masked repaint per route feature, the seams between new chunks repainted (docs/09): `hg-0-0` the gate (Dexter's bench, a birch log), `hg-1-0` the hill (an oak on the crest, a hollow behind the grass), `hg-2-0` the terraces (a shed with a ladder to its roof), `hg-3-0` the boardwalk (a gap with stepping stones). Clean only.\n\n**Layers** (#142): each chunk's depth key comes from the model, its masks from the key ([depth_layers.py](../../../scripts/depth_layers.py), [layers.json](layers.json)). Sky, far and mid scroll at 0.1, 0.25 and 0.6 (docs/04) from plates filled where nearer layers hide them; the foreground at 1.2. The pond keeps its exact rules for path, water and foreground; the grown chunks take every band from their key. **Collision**: walk lines traced from each key's play band (`depth_layers.py collision`), spawns, Dexter's waypoints and triggers placed by hand; overlays in [collision/](collision/).\n\nThe whole walk: [prologue.png](images/prologue.png) · the parallax at three camera positions: [parallax.png](images/parallax.png) (`python scripts/compare.py parallax art/stages/hidden-garden`).",
   "model": "gpt-image-2.5-sunburst",
   "size": "2160x720",
   "style": "FORMAT: a STAGE CONCEPT for a 2D side-scroller explored in all four directions - one wide 2:1 image in strict side view, drawn like an architect's ELEVATION: every path, wall, bed and building runs PARALLEL to the screen from left to right; depth comes only from layers stacked behind each other, never from things receding toward a vanishing point; no path, corridor or bed leads into the distance. The hero is small, about one ninth of the image height. Build real level structure into the scenery: a main route plus at least one higher branch and one lower branch or underground pocket, smooth hills and slopes (some steep enough to slide down), ledges with grabbable edges, something to climb (ladder, vines, scaffold, stairs), a dead end with a small reward glint. DEPTH in clear layers: hazy far background, mid-ground, the play layer, and a dark, out-of-focus foreground of leaves and grass partly covering the bottom edge and corners as if the camera sits behind foliage; reflections where there is water; a few falling leaves. LOOK: detailed hi-bit pixel art, fine 2-pixel grain, the warm palette and light of the style master. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
@@ -8,6 +8,290 @@
   "boards": [
     {
       "id": "hg-0-0",
+      "title": "Hidden Garden · the gate",
+      "inputs": [
+        "repo:art/locations/images/hidden-garden-clean.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "The way into the garden: at the left edge an old wrought-iron garden gate stands open in a tall trimmed hedge (x=20-220, up to y=200). A gravel path at y=441 runs across the whole chunk. A wooden park bench with iron legs faces the viewer on the path at x=700-860 (seat at y=405, back up to y=370), under an old lantern post at x=900. Low flowering shrubs and the first reeds behind the path. Near the right edge a fallen birch log lies across the path at x=1700-1830, its top at y=411 (30 px high). Late-afternoon autumn light from the left, golden reeds, orange and yellow trees, a hazy blue conifer line far behind, warm stone and weathered timber, as in the pond chunk next to it. The walkable surface is clearly readable: a lit top edge, darker below.",
+      "factor": 1,
+      "review": "To review (24 Oct, #50): grown leftwards from the pond with grow_stage.py; route feature repainted; seams joined.",
+      "route": {
+        "walk": [
+          [
+            [
+              0,
+              441
+            ],
+            [
+              1700,
+              441
+            ],
+            [
+              1700,
+              411
+            ],
+            [
+              1830,
+              411
+            ],
+            [
+              1830,
+              441
+            ],
+            [
+              2160,
+              441
+            ]
+          ]
+        ],
+        "structure": [
+          [
+            20,
+            200,
+            220,
+            441
+          ],
+          [
+            700,
+            370,
+            860,
+            441
+          ]
+        ]
+      },
+      "keyed": false,
+      "colours": 256
+    },
+    {
+      "id": "hg-1-0",
+      "title": "Hidden Garden · the hill",
+      "inputs": [
+        "repo:art/locations/images/hidden-garden-clean.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "A gravel path at y=441 at both edges rolls over a smooth grassy hill: it starts rising at x=320, reaches the round crest at x=1080, y=331, and comes back down to y=441 at x=1840 - gentle slopes, no steps. An old oak with a wide autumn crown stands on the crest (trunk at x=1040-1120). Under the hill's left flank, behind a curtain of tall golden grass, a small dark hollow opens below the path: its floor at y=521 from x=440 to x=700, its roof the hill itself; the grass curtain hangs from the path's edge. Late-afternoon autumn light from the left, golden reeds, orange and yellow trees, a hazy blue conifer line far behind, warm stone and weathered timber, as in the pond chunk next to it. The walkable surface is clearly readable: a lit top edge, darker below.",
+      "factor": 1,
+      "review": "To review (24 Oct, #50): grown leftwards from the pond with grow_stage.py; route feature repainted; seams joined.",
+      "route": {
+        "walk": [
+          [
+            [
+              0,
+              441
+            ],
+            [
+              320,
+              441
+            ],
+            [
+              700,
+              370
+            ],
+            [
+              1080,
+              331
+            ],
+            [
+              1460,
+              370
+            ],
+            [
+              1840,
+              441
+            ],
+            [
+              2160,
+              441
+            ]
+          ],
+          [
+            [
+              440,
+              521
+            ],
+            [
+              700,
+              521
+            ]
+          ]
+        ],
+        "hollow": [
+          [
+            440,
+            450,
+            700,
+            521
+          ]
+        ]
+      },
+      "keyed": false,
+      "colours": 256
+    },
+    {
+      "id": "hg-2-0",
+      "title": "Hidden Garden · the terraces",
+      "inputs": [
+        "repo:art/locations/images/hidden-garden-clean.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "Old stone garden terraces. A gravel path at y=441 from x=0 to x=480. Three stone terrace steps rise to the right, each 40 px high: a step face at x=480 up to y=401, at x=620 up to y=361, at x=760 up to y=321. A flat stone terrace at y=321 runs from x=760 to x=1320, with a small weathered wooden garden shed standing on it from x=930 to x=1140 (walls up from y=321, its flat roof at y=170) and a wooden ladder leaning on the shed's right wall at x=1150-1180 from the terrace up to the roof. On the roof a small glint. Steps go down again on the right, 40 px each: at x=1320 to y=361, at x=1460 to y=401, at x=1600 to y=441, then the gravel path at y=441 to the right edge. Late-afternoon autumn light from the left, golden reeds, orange and yellow trees, a hazy blue conifer line far behind, warm stone and weathered timber, as in the pond chunk next to it. The walkable surface is clearly readable: a lit top edge, darker below.",
+      "factor": 1,
+      "review": "To review (24 Oct, #50): grown leftwards from the pond with grow_stage.py; route feature repainted; seams joined.",
+      "route": {
+        "walk": [
+          [
+            [
+              0,
+              441
+            ],
+            [
+              480,
+              441
+            ],
+            [
+              480,
+              401
+            ],
+            [
+              620,
+              401
+            ],
+            [
+              620,
+              361
+            ],
+            [
+              760,
+              361
+            ],
+            [
+              760,
+              321
+            ],
+            [
+              1320,
+              321
+            ],
+            [
+              1320,
+              361
+            ],
+            [
+              1460,
+              361
+            ],
+            [
+              1460,
+              401
+            ],
+            [
+              1600,
+              401
+            ],
+            [
+              1600,
+              441
+            ],
+            [
+              2160,
+              441
+            ]
+          ]
+        ],
+        "structure": [
+          [
+            930,
+            170,
+            1140,
+            321
+          ]
+        ],
+        "ladder": [
+          [
+            1150,
+            170,
+            1180,
+            321
+          ]
+        ]
+      },
+      "keyed": false,
+      "colours": 256
+    },
+    {
+      "id": "hg-3-0",
+      "title": "Hidden Garden · the boardwalk",
+      "inputs": [
+        "repo:art/locations/images/hidden-garden-clean.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "A timber boardwalk on low wooden posts runs through tall golden reeds. Its walking surface is at y=441 from x=0 to x=880. At x=880-1000 the boardwalk is broken off: a 120 px gap over dark ditch water (the water surface at y=500). From x=1000 the boardwalk continues at y=441 to x=1500, then a low stone path at y=441 continues to the right edge, where it meets the stone path and the low wall of the existing strip. Three flat stepping stones stand in the ditch below the gap, tops at y=480, at x=900, x=940 and x=975, as a lower way across. Late-afternoon autumn light from the left, golden reeds, orange and yellow trees, a hazy blue conifer line far behind, warm stone and weathered timber, as in the pond chunk next to it. The walkable surface is clearly readable: a lit top edge, darker below.",
+      "factor": 1,
+      "review": "To review (24 Oct, #50): grown leftwards from the pond with grow_stage.py; route feature repainted; seams joined.",
+      "route": {
+        "below": [
+          478,
+          "water"
+        ],
+        "walk": [
+          [
+            [
+              0,
+              441
+            ],
+            [
+              880,
+              441
+            ]
+          ],
+          [
+            [
+              1000,
+              441
+            ],
+            [
+              2160,
+              441
+            ]
+          ],
+          [
+            [
+              890,
+              470
+            ],
+            [
+              925,
+              470
+            ]
+          ],
+          [
+            [
+              935,
+              470
+            ],
+            [
+              965,
+              470
+            ]
+          ],
+          [
+            [
+              972,
+              470
+            ],
+            [
+              995,
+              470
+            ]
+          ]
+        ]
+      },
+      "keyed": false,
+      "colours": 256
+    },
+    {
+      "id": "hg-4-0",
       "title": "Hidden Garden · the bench and the pond",
       "factor": 1,
       "keyed": false,

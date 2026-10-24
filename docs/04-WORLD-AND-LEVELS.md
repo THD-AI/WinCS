@@ -112,6 +112,30 @@ The route already exists as a graph ([route.json](../art/stages/rusty-creek/rout
 
 Target play time for the slice: 8–12 minutes.
 
+## Hidden Garden – the prologue level
+
+Docs/03 beat 2 asks for about three minutes of calm garden before the pond: hills, the deck, reeds, a secret behind grass, a log to jump, a slope to climb ([#50](https://github.com/THD-AI/WinCS/issues/50)). At 3.5 m/s (153 px/s) one 2160 px chunk is 14 s of walking, so the prologue is **five chunks** in a row: ≈ 70 s on foot, plus Dexter's waits and two detours. The pond chunk that exists becomes the last one, `hg-4-0`; the four before it grow leftwards from it, each from the edge of the one to its right, so the path meets at the same height (top y = 441).
+
+| Chunk | Beat | Route | Teaches |
+| --- | --- | --- | --- |
+| `hg-0-0` the gate | Hero enters at the garden gate; **Dexter sits on a bench**, hops off when you come close | flat path, a fallen log at the end (≈ 30 px, a tap jump of 52) | walk, the first jump |
+| `hg-1-0` the hill | The path rolls over a grassy hill with an old oak on top | slopes ≤ 25°; below the hill a **hollow behind tall grass** with a muffin (lower branch, dead end) | slopes, secrets |
+| `hg-2-0` the terraces | Old stone garden terraces and a wooden shed | steps ≤ 48 px; a **ladder up the shed** to its roof, a glint up there (higher branch, dead end) | ladders, looking up |
+| `hg-3-0` the boardwalk | A timber boardwalk through the reeds | one gap (≈ 120 px, a running jump), stepping stones in a ditch | jumping gaps |
+| `hg-4-0` the pond | The jetty, the wrong reflection, the shove (today's `hg-0-0`) | – | – |
+
+```mermaid
+flowchart LR
+  P["hg-4-0 the pond<br/>(approved chunk)"] -->|"grow left: its left 384 px<br/>as context"| B["hg-3-0 boardwalk"]
+  B -->|grow left| T["hg-2-0 terraces"]
+  T -->|grow left| H["hg-1-0 hill"]
+  H -->|grow left| G["hg-0-0 gate"]
+  subgraph each["Each new chunk"]
+    direction TB
+    g1["grow_stage.py: canvas 2160 + 384,<br/>the neighbour's edge band at the seam,<br/>route brief with heights in px"] --> g2["review: seam, path height,<br/>route readable"] --> g3["depth_layers.py key → masks → fill<br/>(play band from the key too)"] --> g4["collision: walk lines traced<br/>from the play band, then edited"]
+  end
+```
+
 ## Lex's next maps
 
 For each next region: one hand-drawn route sketch on top of its collage. Mark the entry, branches, secrets, enemies and the boss room with arrows, using the colour legend above. Screenshots from reference games are welcome. These sketches are the input for generating that region's stage art.
