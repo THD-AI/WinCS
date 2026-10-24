@@ -168,16 +168,20 @@ describe('Dexter leading', () => {
     expect(dexter.gap(hero)).toBeGreaterThan(GUIDE.hopGap / 2);
   });
 
-  it('waits and looks back only when the hero is far behind; beckons, then sweats', () => {
+  it('stops and looks back a few steps on when the hero stops, well on screen; beckons, then sweats', () => {
     const dexter = garden();
     dexter.placeAt(1);
     const hero = { x: dexter.x - GUIDE.lead, y: 390 };
-    // The hero just stands: he leads on at an amble until the hero is far behind, then stops.
+    // The hero just stands: he ambles on a few steps, then stops and looks back – he does not wander 8 m off.
     const views: GuideView[] = [];
-    for (let t = 0; t < 20_000 && (views.length < 60 || dexter.state !== 'wait'); t += DT) views.push(dexter.update(DT, hero));
+    let waitedAt = 0;
+    for (let t = 0; t < 20_000 && (views.length < 60 || dexter.state !== 'wait'); t += DT) { views.push(dexter.update(DT, hero)); waitedAt = t; }
+    expect(waitedAt).toBeLessThan(2500);
     for (let t = 0; t < 400; t += DT) views.push(dexter.update(DT, hero));
+    expect(views.slice(-30).some(v => v.anim === 'look')).toBe(true);
     expect(dexter.state).toBe('wait');
-    expect(dexter.gap(hero)).toBeGreaterThan(GUIDE.far);
+    expect(dexter.gap(hero)).toBeGreaterThan(GUIDE.stopAt);
+    expect(dexter.gap(hero)).toBeLessThan(GUIDE.pauseAt);
     expect(views.some(v => v.anim === 'walk')).toBe(true);
     const anims = new Set<string>();
     for (let t = 0; t < 12_000; t += DT) anims.add(dexter.update(DT, hero).anim);
@@ -186,6 +190,23 @@ describe('Dexter leading', () => {
     expect(dexter.state).toBe('wait');
     // Very far: he sweats.
     expect(dexter.update(DT, { x: dexter.x - GUIDE.veryFar - 10, y: 390 }).anim).toBe('sweat');
+  });
+
+  it('leads on when a stopped hero walks up to him, and still waits far ahead for a slow one', () => {
+    const dexter = garden();
+    dexter.placeAt(1);
+    const hero = { x: dexter.x - GUIDE.lead, y: 390 };
+    for (let t = 0; t < 5000 && (t < 1000 || dexter.state !== 'wait'); t += DT) dexter.update(DT, hero);
+    expect(dexter.state).toBe('wait');
+    for (let t = 0; t < 4000 && dexter.state === 'wait'; t += DT) { hero.x += (WALK_SPEED * DT) / 1000; dexter.update(DT, hero); }
+    expect(dexter.state).toBe('lead');
+    expect(dexter.gap(hero)).toBeGreaterThan(GUIDE.hopGap / 2);
+    // A hero who keeps walking, however slowly, is not "stopped": he is led on past six plush-lengths (to a waypoint or 8 m).
+    const slow = garden();
+    slow.placeAt(1);
+    const walker = { x: slow.x - GUIDE.lead, y: 390 };
+    for (let t = 0; t < 30_000 && (t < 1000 || slow.state !== 'wait'); t += DT) { walker.x += (GUIDE.stopped * 1.6 * DT) / 1000; slow.update(DT, walker); }
+    expect(slow.gap(walker)).toBeGreaterThan(GUIDE.pauseAt);
   });
 
   it('passes a waypoint without stopping when the hero is on his heels', () => {
