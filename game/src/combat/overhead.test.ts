@@ -13,12 +13,22 @@ describe('measured overhead chair attacks', () => {
     expect(clips.slam.frames).toBe(7); expect(clips.pogo.frames).toBe(4);
     const attack = new Overhead(), feet = { x: 100, y: 500 };
     attack.begin('up', 1); attack.step(1 / 12); expect(attack.box(feet, 500)).toBeUndefined();
-    attack.step(1 / 12); expect(attack.box(feet, 500)).toEqual({ x: 97, y: 386, w: 27, h: 25 });
+    attack.step(1 / 12); expect(attack.box(feet, 500)).toEqual({ x: 96, y: 319, w: 68, h: 93 });
     attack.step(1 / 12); expect(attack.box(feet, 500)).toBeDefined();
     attack.step(1 / 12); expect(attack.box(feet, 500)).toBeUndefined();
     attack.step(2 / 12); expect(attack.pose).toBeUndefined();
     attack.begin('up', -1); attack.step(2 / 12);
-    expect(attack.box(feet, 500)).toEqual({ x: 76, y: 386, w: 27, h: 25 });
+    expect(attack.box(feet, 500)).toEqual({ x: 36, y: 319, w: 68, h: 93 });
+  });
+  it('reaches the Rusty Creek drone at its hover height from the ground and from the deck under it', () => {
+    const drone = raw.spawn.find(spawn => spawn.kind === 'drone')!;
+    for (const floor of [536, 570]) {
+      const attack = new Overhead(); let hits = 0;
+      const target: Damageable = { id: drone.id, bounds: () => ({ x: drone.x - 22.5, y: drone.y - 45, w: 45, h: 45 }),
+        hit: () => { hits++; return true; } };
+      attack.begin('up', 1); attack.step(2 / 12);
+      attack.contact({ x: drone.x - 20, y: floor }, floor, [target]); expect(hits).toBe(1);
+    }
   });
   it('hits a 40px crab fixture at its authored one-way deck from below only once', () => {
     const crab = raw.spawn.find(spawn => spawn.kind === 'crab')!;

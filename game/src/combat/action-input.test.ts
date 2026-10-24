@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { actionEdges } from './action-input';
+import { actionEdges, attackClick, AttackBuffer, ATTACK_BUFFER } from './action-input';
+import { Overhead } from './overhead';
 import { Guard } from './guard';
 import { Sweeps } from './sweeps';
 describe('Act edge routing with guard', () => {
@@ -23,5 +24,24 @@ describe('Act edge routing with guard', () => {
     expect(actionEdges(true, false, false, false)).toEqual({ pressed: true, released: false });
     expect(actionEdges(true, true, false, false)).toEqual({ pressed: false, released: false });
     expect(actionEdges(false, true, false, false)).toEqual({ pressed: false, released: true });
+  });
+  it('takes a left click on the canvas as Act, never a click on the menu, another button or a touch', () => {
+    const canvas = {}, menu = {};
+    expect(attackClick(0, false, canvas, canvas)).toBe(true);
+    expect(attackClick(0, false, menu, canvas)).toBe(false);
+    expect(attackClick(2, false, canvas, canvas)).toBe(false);
+    expect(attackClick(0, true, canvas, canvas)).toBe(false);
+  });
+  it('keeps a press made while the chair is busy for 0.2 s, then lets it go', () => {
+    const buffer = new AttackBuffer(), up = new Overhead();
+    up.begin('up', 1); up.step(4 / 12);
+    // A tap now cannot start: the up attack still has two poses.
+    if (up.phase !== 'idle') buffer.hold('tap');
+    up.step(2 / 12); buffer.step(2 / 12);
+    expect(up.phase).toBe('idle'); expect(buffer.take()).toBe('tap'); expect(buffer.pending).toBeUndefined();
+    buffer.hold('up'); buffer.step(ATTACK_BUFFER - 0.01); expect(buffer.pending).toBe('up');
+    buffer.step(0.02); expect(buffer.take()).toBeUndefined();
+    buffer.hold('tap'); buffer.hold('down'); expect(buffer.take()).toBe('down');
+    buffer.hold('tap'); buffer.clear(); expect(buffer.pending).toBeUndefined();
   });
 });

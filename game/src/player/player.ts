@@ -22,6 +22,8 @@ import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
 import { CODES, physicalKeys } from './physicalKeys';
+import { Dodge } from './dodge';
+import { Lunge } from '../combat/assist';
 
 /** The splash of a region without a `water` material. */
 const SPLASH: Puff = { sprite: 'splash', shape: 'dust', colors: ['#9cc8f0', '#e8f4ff', '#4f86c6'], count: 8 };
@@ -34,6 +36,12 @@ export class Player {
   onHazards: (boxes: Box[]) => boolean = () => false;
   onGuard: (damage: number, sourceX: number) => boolean = () => false;
   private guardPush = new GuardPush();
+  /** The dodge-dash (dodge.ts); `dodgeWas` is last frame's button, `ghost` the time to the next after-image. */
+  readonly dodge = new Dodge();
+  private dodgeWas = false;
+  /** The chair's target-assist nudge (combat/assist.ts), moved through the normal collision. */
+  private nudge = new Lunge();
+  private ghost = 0;
   private motion = movement();
   private keys;
   private physical: { any(codes: readonly string[]): boolean };
@@ -61,7 +69,7 @@ export class Player {
   private sway = new PonchoSway();
   private wind: Wind | null = null;
   private idleLife = { breath: 0, sway: 0 };
-  get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active; }
+  get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active && !this.dodge.active; }
   get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
     private region: string, bosses = new Set<string>(), spawnOverride?: Position) {
@@ -87,7 +95,7 @@ export class Player {
     const settle = () => this.settle();
     scene.events.on('postupdate', settle);
     scene.events.once('shutdown', () => scene.events.off('postupdate', settle));
-    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,J,X') as Record<string, Phaser.Input.Keyboard.Key>;
+    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,Z,J,X,L,C,SHIFT') as Record<string, Phaser.Input.Keyboard.Key>;
     this.physical = physicalKeys(scene);
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
@@ -110,10 +118,12 @@ export class Player {
     }
   }
   damage(amount: number, sourceX: number, onBlocked?: () => void) {
-    if (this.life.dead > 0 || this.life.invulnerable > 1e-9) return false;
+    if (this.life.dead > 0 || this.life.invulnerable > 1e-9 || this.dodge.invulnerable) return false;
     if (this.onGuard(amount, sourceX)) { onBlocked?.(); return false; }
     if (!this.life.hit(amount, this.body.x >= sourceX ? 1 : -1)) return false;
     this.guardPush.cancel();
+    this.dodge.cancel();
+    this.nudge.cancel();
     this.interaction.cancel();
     this.hurt.start(amount);
     const position = { x: this.body.x, y: this.body.y };
@@ -155,7 +165,12 @@ export class Player {
     return true;
   }
   pogo(top: number) { this.air = pogo(this.body, top); this.sprite.setPosition(Math.round(this.body.x), top); }
+  /** Target assist (combat/assist.ts): turn to strike the other way. */
+  face(direction: -1 | 1) { this.motion.facing = direction; }
+  /** Target assist: a short nudge of `distance` px (signed), stopped by walls and ledges like walking. */
+  lunge(distance: number) { if (this.canAttack) this.nudge.start(distance); }
   pushGuard(direction: number) {
+    this.nudge.cancel();
     this.guardPush.start(direction); this.body.vx = 0;
     this.motion = { ...movement(), facing: this.motion.facing };
   }
@@ -163,7 +178,7 @@ export class Player {
     this.guardPush.cancel();
     position = { ...position, y: surfaceNear(this.chunks.map(c => c.world), position.x, position.y) };
     Object.assign(this.body, position, { vx: 0, vy: 0, grounded: true, sliding: false, slope: 0 });
-    this.motion = movement(); this.air = jumpState(this.body.y); this.traversal = traversal();
+    this.motion = movement(); this.air = jumpState(this.body.y); this.traversal = traversal(); this.dodge.cancel();
   }
   private resetFromDanger(damage = 0) {
     if (damage) this.damage(damage, this.body.x - 10);
@@ -177,9 +192,12 @@ export class Player {
     const key = (codes: readonly string[], ...names: string[]) => names.some(name => this.keys[name].isDown) || this.physical.any(codes);
     const axis = interacting ? 0 : horizontal(key(CODES.left, 'A', 'LEFT'), key(CODES.right, 'D', 'RIGHT'),
       pad?.leftStick.x, pad?.left, pad?.right);
-    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K') || !!pad?.A);
+    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K', 'Z') || !!pad?.A);
     const vertical = interacting || key(CODES.attack, 'J', 'X') || pad?.X ? 0 : horizontal(key(CODES.up, 'W', 'UP'), key(CODES.down, 'S', 'DOWN'),
       pad?.leftStick.y, pad?.up, pad?.down);
+    const dodgeDown = !interacting && (key(CODES.dodge, 'L', 'C', 'SHIFT') || !!pad?.B || !!pad?.R1);
+    let dodgePressed = dodgeDown && !this.dodgeWas;
+    this.dodgeWas = dodgeDown;
     const geometry = this.chunks.map(c => c.world);
     // Substeps keep wall and floor contacts stable during slow rendered frames.
     let remaining = Math.min(milliseconds / 1000, 0.1);
@@ -193,11 +211,26 @@ export class Player {
       if (this.life.dead > 0) { remaining -= dt; continue; }
       const shove = this.guardPush.step(dt);
       const knocked = lifeStep.dx !== 0 || shove !== 0;
+      if (dodgePressed && !knocked && this.canAttack && this.guardPush.remaining === 0) {
+        // The way the stick points, else the way he faces.
+        const direction = axis ? (Math.sign(axis) as -1 | 1) : this.motion.facing;
+        if (this.dodge.start(direction, this.body.grounded)) { this.motion.facing = direction; this.dodgeBurst(); }
+      }
+      dodgePressed = false;
+      if (knocked) this.dodge.cancel();
+      if (knocked || this.dodge.active) this.nudge.cancel();
+      const nudge = this.nudge.step(dt);
+      const dashing = this.dodge.active;
+      const dash = this.dodge.step(dt);
       const pressed = jumpDown && !this.air.wasDown;
-      const dropped = !knocked && vertical > 0 && pressed && dropThrough(this.body, this.traversal, geometry);
-      const climbing = !knocked && climb(this.body, this.traversal, geometry, vertical, axis, pressed, dt);
+      const dropped = !knocked && !dashing && vertical > 0 && pressed && dropThrough(this.body, this.traversal, geometry);
+      const climbing = !knocked && !dashing && climb(this.body, this.traversal, geometry, vertical, axis, pressed, dt);
       const wasGrounded = this.body.grounded;
-      if (knocked) {
+      if (dashing) {
+        // Straight across at the dash speed, holding the height; a Jump pressed now is taken when it ends.
+        this.body.vx = dash / dt; this.body.vy = 0;
+        if (!this.dodge.active) this.body.vx = Math.sign(dash) * Math.min(Math.abs(this.body.vx), RUN_SPEED);
+      } else if (knocked) {
         this.body.vx = (lifeStep.dx || shove) / dt;
         this.traversal = traversal(); this.air.wasDown = jumpDown;
         this.air.buffer = 0; this.air.coyote = 0; this.air.active = false;
@@ -209,8 +242,10 @@ export class Player {
         move(this.motion, axis, dt);
         if (!this.body.sliding) this.body.vx = this.motion.vx;
         jump(this.body, this.air, jumpDown, dt);
+        if (nudge && !this.body.sliding) this.body.vx = nudge / dt;
       }
       if (!climbing) stepBody(this.body, geometry, dt, this.traversal.drop > 0);
+      if (this.body.grounded) this.dodge.land();
       landing(this.body, this.air, wasGrounded, dt, this.landingTimes);
       if (!wasGrounded && this.body.grounded && !climbing && !dropped) this.landed = this.air.hard ? 'hard-land' : 'land';
       if (lifeStep.knockFinished || shove !== 0 && this.guardPush.remaining === 0) this.body.vx = 0;
@@ -248,6 +283,7 @@ export class Player {
     if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');
     this.sprite.setFlipX(this.traversal.ladder && pose === locomotion ? climbFlip(this.body.y) : this.motion.facing < 0).setAlpha(this.hurt.alpha(this.life, this.scene.time.now));
+    if (this.dodge.active) this.dodgePose(milliseconds / 1000);
     this.feel(pose, milliseconds / 1000);
     this.settle();
     if (axis) this.lastSpeed = Math.abs(this.body.vx);
@@ -262,6 +298,27 @@ export class Player {
       `anim ${this.animation.clip} | ${pose.frame} | land ${this.air.hard ? 'hard' : 'normal'}`,
       `ground ${this.surface.name} | sink ${this.groundOffset.offset}px | cover ${this.groundOffset.cover}`,
     ]);
+  }
+  /** The dash's start: a puff off the ground behind him (none in the air). */
+  private dodgeBurst() {
+    this.ghost = 0;
+    if (this.body.grounded) spawnPuff(this.scene, this.body.x, this.body.y, this.surface.material.puff, 'land', -this.dodge.direction);
+  }
+  /**
+   * The dash pose: no new art – a run stride held, leaning into the dash, with fading after-images drawn behind
+   * it every 0.04 s (cool tint, additive) so the burst and its direction read at a glance.
+   */
+  private dodgePose(dt: number) {
+    const frame = 'run-02';
+    if (this.scene.textures.get('hero-run').has(frame)) this.sprite.setTexture('hero-run', frame);
+    this.sprite.setFlipX(this.dodge.direction < 0).setAlpha(1);
+    this.ghost -= dt;
+    if (this.ghost > 0) return;
+    this.ghost = 0.04;
+    const after = this.scene.add.image(Math.round(this.body.x), Math.round(this.body.y), this.sprite.texture.key, this.sprite.frame.name)
+      .setOrigin(0.5, 1).setFlipX(this.sprite.flipX).setDepth(this.sprite.depth - 1).setTint(0x9fd8ff).setAlpha(0.5)
+      .setBlendMode(Phaser.BlendModes.ADD);
+    this.scene.tweens.add({ targets: after, alpha: 0, duration: 180, ease: 'Quad.easeOut', onComplete: () => after.destroy() });
   }
   /** Surface under the feet, the sink it asks for, and the puffs of footfalls and landings. */
   private feel(pose: { board: string; frame: string }, dt: number) {
