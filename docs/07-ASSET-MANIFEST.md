@@ -43,9 +43,10 @@ Frame lists approved as they are (A14).
 
 | Asset | Board | Notes | Status |
 | --- | --- | --- | --- |
-| Food pickups | `mensa-food` | muffin, cake, wafer, Leberkäse roll; 16 px icons + sparkle. Approved (A14) | ⬜ |
-| Drinks + coffee machine (save point) | `mensa-drinks` | coffee machine idle/flicker/pour | ⬜ |
-| Pocket computer | `pocket-computer` | pickup + 3 screen mockups (map, archive, menu) | ⬜ |
+| Food pickups | `mensa-food` | muffin, cake, wafer, Leberkäse roll, 1 frame each, 13–18 px; the sparkle is drawn in code. Approved (A14) | 🟡 drawn, awaiting review ([#52](https://github.com/THD-AI/WinCS/issues/52)) |
+| Coffee machine (save point) | `coffee-machine` | idle 3 (steady, flicker, pond on the screen) · pour 4; 80 px | 🟡 drawn, awaiting review ([#52](https://github.com/THD-AI/WinCS/issues/52)) |
+| Drinks | `mensa-drinks` | iced coffee, strawberry milk, iced tea, mug; 16 px icons | ⬜ |
+| Pocket computer | `pocket-computer` | bob 4 (closed, floating) · open 3; 10 px tall closed. The map screens are the UI atlas (#127) | 🟡 drawn, awaiting review ([#52](https://github.com/THD-AI/WinCS/issues/52)) |
 | Sign pole (post-jam weapon) | `wayfinder` | prop, pull-out 5, thrust 5 | ⬜ |
 | Campus robot (collectible companion, post-jam) | `companion-robot` | idle 4 · drive 6 · hop/scan/sleep | ⬜ |
 | HUD | – | 5 battery cells (full/cracked/empty, crack animation), glitch meter orbs, boss bar; pocket computer case, CRT screen and map tiles ([art/ui](../art/ui/README.md)). Approved (A14; sprites 24 Oct) | ✅ |

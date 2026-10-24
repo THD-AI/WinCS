@@ -1,7 +1,7 @@
 # Boss · Jenny, stunned and debris
 
 <!-- nav:start -->
-[← Boss · Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **16 / 18** · [Dexter · moves →](dexter.md)
+[← Boss · Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **16 / 21** · [Item · pocket computer →](pocket-computer.md)
 <!-- nav:end -->
 
 ![Boss · Jenny, stunned and debris](images/boss-jenny-2-preview.png)
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/boss-jenny-2.png` · rebuild: `python scripts/make_boards.py draw boss-jenny-2 --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Boss · Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **16 / 18** · [Dexter · moves →](dexter.md)
+[← Boss · Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **16 / 21** · [Item · pocket computer →](pocket-computer.md)
 <!-- nav:end -->

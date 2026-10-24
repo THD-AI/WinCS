@@ -672,24 +672,98 @@
       "inputs": [
         "ref2:20261023_125955.jpg",
         "ref2:20261023_130000.jpg",
+        "ref2:20261023_130003.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Key item: the aluminium experiment suitcase from the photos (silver case, black screen in the lid, circuit board, coloured buttons and plug sockets inside), shrunk into a hand-held 'pocket computer' the hero carries. Top row: the item as a pickup sprite - closed case glowing softly, 4-frame floating bob; then opened, screen lighting up, 3 frames. Bottom area: three mock in-game screens as the device would show them, drawn in the same pixel style with a green-on-black CRT look: (1) MAP screen - a rough grid map of connected campus rooms with a blinking player dot and unexplored rooms dark; (2) ARCHIVE screen - a list of collected notes as icons (no readable words); (3) MENU screen - icons for items, map, archive, settings. Screens use icons and blocks only, no readable words."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Key item sprite sheet: the aluminium experiment suitcase from the photos, copied exactly - a silver hard case with rounded corners and a carry handle, a black screen in the lid, a white circuit tray inside with a green circuit board, rows of yellow and green buttons, plug sockets - shrunk into a hand-held 'pocket computer'. Side-on three-quarter view. 2 rows. Row 1, exactly 4 frames: the case CLOSED, lying flat, with a soft green glow at its seam, bobbing up and down a little (frames 1-4 of a gentle float). Row 2, exactly 3 frames: the case OPENING - the lid lifts halfway, the lid fully open with the dark screen, the screen lit up green with a simple block grid on it (no words). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
+      "atlas": {
+        "height": 10,
+        "rows": [
+          [
+            {
+              "anim": "bob",
+              "frames": 4,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "open",
+              "frames": 3,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 24 Oct, awaiting Alexander's review (#52). Closed case 19 × 10 px (≈ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups. Not exported until approved."
     },
     {
       "id": "mensa-food",
       "title": "Mensa · food pickups",
       "factor": 2,
       "inputs": [
+        "repo:art/sprites/images/coffee-machine-preview.png",
         "ref2:20261023_125038.jpg",
-        "ref2:20261023_125042.jpg",
         "ref2:20261023_125049.jpg",
         "ref2:20261023_125100.jpg",
         "ref2:20261023_125259.jpg",
-        "ref2:20261023_125302.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Healing pickup sprites, copying each photographed item EXACTLY as it really looks, NOT an idealized product shot: the muffin squashed inside wrinkled, glare-streaked cling film with a creased sticker; the marbled chocolate-vanilla cake slice in crumpled cling film on a white paper; the chocolate-coated wafer in its yellow-red foil wrapper (no readable brand); the Leberkaese roll in a torn brown paper bag with the meat slice sticking out unevenly. Row 1: each item large, slightly lopsided, with the real imperfections and reflections. Row 2: each item as a small in-game pickup (about 16 pixels) with a 2-frame sparkle. Row 3: a 'being eaten' sequence for the Leberkaese roll - whole, one bite, two bites, crumbs - 4 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Image 1 is an approved sprite sheet from this game: draw this sheet in exactly that pixel-art look and at that sheet layout - small sprites in a row on magenta. Pickup sprite sheet of FOUR DIFFERENT cafeteria foods, one per FOOD photo (images 2 to 5), in that order - never repeat an item: (1) the chocolate MUFFIN from image 2, squashed in wrinkled, glare-streaked cling film; (2) the marbled chocolate-vanilla CAKE SLICE from image 3, a flat rectangular slab in crumpled cling film on a white paper; (3) the chocolate WAFER bar from image 4 in its flat yellow-red foil wrapper (no readable brand); (4) the LEBERKAESE ROLL from image 5, a round crusty kaiser roll with a thick pink meat slice sticking out, half in a torn brown paper bag. Copy each EXACTLY as it really looks, not an idealized product shot. All four at the SAME pixel scale, about the same size as each other, small pickups resting on the ground line. 1 row, exactly 4 frames: muffin, cake slice, wafer, Leberkaese roll (the game adds the pickup sparkle). The four foods must look clearly different from each other in shape and colour. Every frame stands on the SAME invisible ground line at the SAME scale. Frames are evenly spaced from left to right with wide clear magenta gaps between neighbours. Count the frames: the row has EXACTLY 4. No people, no scenery.",
+      "atlas": {
+        "height": 16,
+        "rows": [
+          [
+            {
+              "anim": "muffin",
+              "frames": 1
+            },
+            {
+              "anim": "cake",
+              "frames": 1
+            },
+            {
+              "anim": "wafer",
+              "frames": 1
+            },
+            {
+              "anim": "leberkaese",
+              "frames": 1
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 24 Oct, awaiting Alexander's review (#52). Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 × 14, cake 18 × 14, wafer 17 × 13, Leberkäse roll 18 × 18 px – around the documented 16 px. Not exported until approved."
+    },
+    {
+      "id": "coffee-machine",
+      "title": "Prop · coffee machine (save point)",
+      "factor": 2,
+      "inputs": [
+        "ref2:20261023_125138.jpg",
+        "ref2:20261023_125141.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Prop sprite sheet: the self-service coffee machine from the first two photos, copied exactly - black and brushed-steel body, three steel bean hoppers on top, a big glowing touchscreen with a grid of drink buttons, a bright green light strip down its left side, a steel drip tray and spout - standing on its own black base cabinet so the whole unit is a little TALLER than an adult (about 190 cm) and about half as wide as it is tall. Real wear: fingerprints, a coffee stain on the tray, a scuffed cabinet. Strict front-three-quarter side view, the same in every frame. 2 rows. Row 1, exactly 3 frames: IDLE, the screen glowing steadily, then the screen FLICKERING (a band of static across it), then the screen showing a still dark POND image for one frame (an anomaly hint). Row 2, exactly 4 frames: POUR, a white cafeteria mug under the spout fills with coffee in 4 steps, a little steam on the last. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
+      "atlas": {
+        "height": 80,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 3
+            }
+          ],
+          [
+            {
+              "anim": "pour",
+              "frames": 4,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 24 Oct, awaiting Alexander's review (#52). 42 × 80 px in the game: fills the 40 × 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png. Not exported until approved."
     },
     {
       "id": "mensa-drinks",

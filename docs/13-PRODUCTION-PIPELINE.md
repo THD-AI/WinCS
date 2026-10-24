@@ -90,10 +90,11 @@ Every sheet, in the order the game needs them:
 | `hero-hurt`, `hero-death` | hit 8 · knockback 3 · death 12 · interact 3 · pick up 4 · look at device 3 | [M2-S12 #83](https://github.com/THD-AI/WinCS/issues/83) | damage, the THD.exe crossing |
 | `chair-side`, `chair-overhead`, `chair-block` | sweep A 8 · sweep B 8 · recoil 2 · up 6 · slam 7 · pogo 4 · guard up 4 · hold 3 · impact 4 · break 4 | [M2-S10 #81](https://github.com/THD-AI/WinCS/issues/81) | combat |
 | `enemy-rover`, `enemy-crab`, `enemy-drone`, `fx` | rover 4/6/4/5 · crab 4/8/5/5 · drone 4/3/5/3 · black fluid 6 | [M2-S11 #82](https://github.com/THD-AI/WinCS/issues/82) | enemies |
-| `mensa-food`, `mensa-drinks` | 16 px icons + sparkle; coffee machine idle/flicker/pour | [M2-S13 #84](https://github.com/THD-AI/WinCS/issues/84) | healing, save points |
+| `mensa-food`, `mensa-drinks` | food 4 × 1 frame, 13–18 px (sparkle in code) · drink icons | [M2-S13 #84](https://github.com/THD-AI/WinCS/issues/84) | healing |
+| `coffee-machine` | idle 3 · pour 4, 80 px | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | save points |
 | `dexter`, `dexter-acts` | idle 3 · hop 4 · walk 6 · point 3 · shove 4 · beckon 3 · bow · sweat · proud · creepy shadow · absorb 4 | [M3-S5 #86](https://github.com/THD-AI/WinCS/issues/86) | prologue, Region 1 beats |
 | `boss-jenny`, `boss-jenny-2` | rev 4 · charge 4 · crash 4 · stunned 3 · reboot 2 · debris ×5 | [M4-S6 #87](https://github.com/THD-AI/WinCS/issues/87) | the boss |
-| `pocket-computer` | pickup + 3 screens | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | menu, map |
+| `pocket-computer` | bob 4 · open 3 (screens: UI atlas) | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | menu, map |
 
 Frames are drawn as **key poses**, never interpolated by the model; transitions are short bridge clips that start and end on poses shared with the loops ([09 – Smooth, not rubbery](09-ART-PIPELINE.md#smooth-not-rubbery)).
 
