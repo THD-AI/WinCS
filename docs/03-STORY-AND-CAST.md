@@ -41,16 +41,35 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 
 ## Prologue script (the jam's opening)
 
-| Beat | What the player sees | What the player does |
-| --- | --- | --- |
-| 1 | Hidden Garden, late afternoon. Birdsong. A small black plush sits on a bench. | Walk right (movement tutorial) |
-| 2 | The plush hops off and waddles away, looking back, like the White Rabbit. About 3 minutes of calm garden: hills, the deck, reeds, secrets behind grass. Lex's layout, toned down – less parkour, nothing fantastical yet | Follow; jump a log; climb a slope |
-| 3 | Dexter stops at the pond and points at the ground. One patch of the reflection shows a rusty girder maze that isn't there | Walk up to the edge |
-| 4 | Dexter shoves (or trips) you in → white flash, the normal damage recoil… No cutscene, no dialogue | – |
-| 5 | …but instead of landing, the hero lifts and spins like a starfish; pixels tear | – |
-| 6 | Freeze. An old Windows-style error window: **"THD.exe has stopped responding."** [OK] | Press Act to click OK |
-| 7 | Black. Glitch lines. | – |
-| 8 | The hero lands in clean Rusty Creek, by the metal bridge, and the damage animation finishes. Dexter is gone | Control returns |
+About three minutes of play, without words or text: **cozy → something wrong → the shove → the 404 → the pull**. Every beat starts from the Hidden Garden's collision data (`art/stages/hidden-garden/*.collision.json`). `Flow` starts `story/Prologue.ts` whenever the stage has Dexter's bench. Dexter's lead is the pure model `prologueGuide.ts`, the pond is `prologueFinale.ts`, and the crash is `Crossing` in its `'404'` variant (`crossingSequence.ts` `TIMING_404`); all three are unit-tested.
+
+| Beat | Mood | What the player sees | Trigger (data) | Where in code |
+| --- | --- | --- | --- | --- |
+| 1 Arrival | cozy | Late afternoon at the garden gate. A small black plush sits on a bench, swinging its legs (`dexter-prologue` sit) | stage start, `player` and `dexter-bench` spawns | `Prologue` seats him |
+| 2 The first quest | cozy | Walk up and he hops off, looks back and beckons. That is the quest, and nobody explains it | `dexter-waypoint-1` (`act: wake`), the hero passes its left edge | `DexterGuide` sit → hop-off → wait |
+| 3 Follow Dexter | cozy | He waddles ahead along the walk lines, hops up steps and across the boardwalk gap, stops at each waypoint and waits, looking back, until you are close. If you fall far behind, he stops and beckons | `dexter-waypoint-2…5`, `-pond-1…2` (`act: wait`) | `DexterGuide` lead / wait |
+| 3a Secrets | cozy | A muffin shows itself in the hollow behind the grass when you come near (+1 health). At the top of the terraces Dexter points back up at a glint on the shed roof | `hollow` (`secret`) and its item spawn, `glint-roof`, `dexter-waypoint-4` (`act: point`) | `Prologue.placeSecrets` |
+| 4 The jetty | something wrong | Dexter stops on the jetty and points at the water. You walk past him to the edge. Control is taken, the light drains a little, and the reflection shows the rusty girder maze that isn't there | `dexter-waypoint-pond-3` (`act: pond`), then the hero in `pond-edge` (`anomaly`) | `FinaleSequence` reveal; emits **`anomaly-reveal`** for the water renderer |
+| 5 The shove | the turn | He steps up behind you and shoves (`dexter` shove). You are knocked out over the water, and for one frame he is a black silhouette (`creepy`) | the finale's timing (reveal 2.2 s, step 0.65 s, shove 0.48 s, fall 0.42 s) | `FinaleSequence` step / shove / fall |
+| 6 The 404 | glitch | A white flash. The frame freezes and tears around you (image cuts, a stretched column, the 404 void in the water). Then the window: **THD.exe – "404: Hidden Garden not found."** [OK] | the end of the fall | `Crossing` `'404'`: hit → freeze → dialog |
+| 7 The pull | dread | After OK, the torn garden spins and collapses into the void, streaks rush inwards and the hero is dragged in, shrinking. Then black | Act / Enter / Space / click | `Crossing` pull (1.7 s) → cut |
+| 8 Landing | quiet | Clean Rusty Creek, by the metal bridge. Dexter is gone | the cut | `swapRegion(rusty-creek, clean)` |
+
+```mermaid
+flowchart LR
+  A["1 arrival<br/>Dexter sits on the bench"] -->|"hero passes wake box"| B["2 hop off,<br/>look back, beckon"]
+  B --> C["3 lead<br/>walk · hop · wait at each waypoint"]
+  C -->|"waypoint 4"| C2["point up at<br/>the roof glint"] --> C
+  C -.->|"near the hollow"| M["muffin<br/>(secret)"]
+  C -->|"pond-3"| D["4 jetty<br/>Dexter points at the water"]
+  D -->|"hero in pond-edge"| R["reveal 2.2 s<br/>anomaly-reveal → wrong reflection"]
+  R --> S["5 step + shove<br/>knocked over the water,<br/>one creepy frame"]
+  S --> T["6 404<br/>frame tears, void opens,<br/>THD.exe – 404: Hidden Garden not found."]
+  T -->|OK| P["7 pull<br/>the frame collapses into the void"]
+  P --> L["8 clean Rusty Creek"]
+```
+
+Dexter is the 27 px plush (decision 41), drawn at depth 101 with a 1 px warm rim so the black plush reads against the hedges. In dev builds, `game.scene.getScene('Flow').prologue.skipToPond()` puts Dexter on the jetty and the hero just before it.
 
 ## Region 1 story beats
 

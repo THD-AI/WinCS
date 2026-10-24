@@ -64,7 +64,8 @@ export class Crossing extends Phaser.Scene {
     }, this.variant === '404' ? TIMING_404 : TIMING);
     const is404 = this.variant === '404';
     if (is404) {
-      this.backdrop = this.add.rectangle(0, 0, VIEW_WIDTH, VIEW_HEIGHT, 0x000000).setOrigin(0).setVisible(false);
+      // Oversized, so the camera shake during the pull never shows the stage behind it.
+      this.backdrop = this.add.rectangle(-40, -40, VIEW_WIDTH + 80, VIEW_HEIGHT + 80, 0x000000).setOrigin(0).setVisible(false);
       this.streaks = this.add.graphics().setDepth(5);
     }
     this.flash = this.add.rectangle(0, 0, VIEW_WIDTH, VIEW_HEIGHT, 0xffffff, 0.85).setOrigin(0).setDepth(8);

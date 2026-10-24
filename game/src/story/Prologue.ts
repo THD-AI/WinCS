@@ -26,8 +26,8 @@ const PROP_DEPTH = 99;
 /** The muffin shows itself when the hero is this close (px), and is taken at arm's length. */
 const REVEAL_NEAR = 200;
 const TAKE_NEAR = 26;
-/** Shown only until the water renderer draws the wrong reflection itself (workstream 2). */
-const FALLBACK_REFLECTION = true;
+/** A flickering girder patch for a pond without the painted wrong reflection; hg-4-0 has it in the art. */
+const FALLBACK_REFLECTION = false;
 
 type StageScene = Phaser.Scene & { playerActor?: Player };
 
@@ -164,6 +164,10 @@ export class Prologue {
     const water = { x: Math.round(player.body.x + 50), y: edge.y + edge.h + 18 };
     gameEvents.emit('anomaly-reveal', { id: edge.id ?? 'pond-edge', region: this.region, position: water, duration: FINALE.reveal });
     if (FALLBACK_REFLECTION) this.reflection = this.drawWrongReflection(water);
+    // The garden goes quiet: the light drains a little while you look at the water.
+    const { width, height } = this.stage.scale;
+    const dusk = this.stage.add.rectangle(0, 0, width, height, 0x0a0f1a, 0).setOrigin(0).setScrollFactor(0).setDepth(190);
+    this.stage.tweens.add({ targets: dusk, fillAlpha: 0.32, duration: FINALE.reveal + FINALE.step, ease: 'Sine.easeIn' });
   }
 
   /** The shove connects: the stage hero hides and a stand-in is knocked out over the water. */
