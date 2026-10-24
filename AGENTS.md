@@ -43,7 +43,7 @@ Alexander, 24 Oct: everything is done the way the HUD and the pocket computer we
 ## Git
 
 - Work only from an issue you were given. Branch from `main` as `<type>/<issue>-<slug>` (`feature/`, `fix/`, `docs/`, `art/`, `chore/`, `ci/`). One issue, one branch, one PR. Commit as `arudaev <hlexhelftd@gmail.com>`, conventional subjects (plus `art:` for assets), no attribution trailers.
-- Open a **draft** PR with `Closes #<issue>` (never an epic) and fill in the template. A change bigger than ~400 lines of code is a **stack** of PRs: titles `[n/N] type: subject`, each based on the branch below, the stack listed in every body ([CONTRIBUTING.md](CONTRIBUTING.md#stacked-prs)).
+- Open the PR **ready for review, never as a draft** (Alexander, 24 Oct), with `Closes #<issue>` (never an epic), and fill in the template. A change bigger than ~400 lines of code is a **stack** of PRs: titles `[n/N] type: subject`, each based on the branch below, the stack listed in every body ([CONTRIBUTING.md](CONTRIBUTING.md#stacked-prs)).
 - Don't `/take` issues, set board fields or change Design review – the team does that.
 - Before committing: `git diff --cached --check`, `python scripts/check_docs.py`, and `python -m pytest scripts` if scripts changed (pip install -r requirements-art.txt).
 - Agents don't merge, don't push to `main`, don't force-push, don't enable auto-merge, and never touch `.env` or keys.
