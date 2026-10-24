@@ -3,7 +3,8 @@ import { BODY_HEIGHT } from '../player/body';
 import type { Position } from '../core/events';
 
 // docs/05: measured idle-00 alpha bounds and controller tuning.
-export const ROVER_WIDTH = 31, ROVER_HEIGHT = 25;
+// 3x since 24 Oct (Lex: the small robots were barely visible next to the 114 px hero): 75 px drawn.
+export const ROVER_WIDTH = 93, ROVER_HEIGHT = 75;
 export const TELL_SECONDS = 0.5, PATROL_SPEED = WALK_SPEED / 2, CHARGE_SPEED = RUN_SPEED;
 /** How far ahead a rover's lidar spots the hero (px): its own range, no longer tied to the hero's walk speed. */
 export const SPOT_RANGE = 150;

@@ -80,14 +80,22 @@ def manifest(region: Path) -> tuple[dict, dict[str, Path]]:
                 if layer_id not in config["layers"]:
                     raise ExportError(f"{region.name}: state {state} draws unknown layer {layer_id!r}")
                 layer = config["layers"][layer_id]
+                if layer.get("off"):  # kept in the art (and --verify), left out of the game
+                    continue
                 if layer.get("region"):  # one plate for the region in chunk-wide tiles; chunk j carries tile j
                     tile = region / layer["file"].format(tile=chunk["x"])
                     if chunk["y"] != 0 or not tile.exists():
                         continue
-                    layers.append({"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(tile)})
+                    entry = {"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(tile)}
+                    if layer.get("dy"):
+                        entry["dy"] = layer["dy"]
+                    layers.append(entry)
                     continue
                 plate = source(region, layer["file"], chunk.get("name", chunk_id), aliases)
-                layers.append({"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(plate)})
+                entry = {"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(plate)}
+                if layer.get("dy"):  # a plate painted off its ground, moved down onto it (drawn and verified there)
+                    entry["dy"] = layer["dy"]
+                layers.append(entry)
             collision = region / f"{chunk_id}.{state}.collision.json"
             states[state] = {"layers": layers, "collision": publish(collision) if collision.exists() else None}
         chunks.append({"id": chunk_id, "x": chunk["x"], "y": chunk["y"], "states": states})
@@ -154,7 +162,12 @@ def verify(region: Path, out: Path) -> list[str]:
             for layer_id in config["states"][state]:
                 layer = config["layers"][layer_id]
                 path = rests[layer_id] if layer.get("region") else exported[layer_id]
-                canvas = Image.alpha_composite(canvas, Image.open(path).convert("RGBA"))
+                plate = Image.open(path).convert("RGBA")
+                if layer.get("dy"):
+                    moved = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+                    moved.paste(plate, (0, layer["dy"]))
+                    plate = moved
+                canvas = Image.alpha_composite(canvas, plate)
             art = Image.open(region / pattern.format(name=name)).convert("RGB")
             if ImageChops.difference(canvas.convert("RGB"), art).getbbox():
                 raise ExportError(f"{region.name}/{chunk['id']}.{state}: the exported layers don't rebuild "

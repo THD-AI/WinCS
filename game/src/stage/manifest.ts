@@ -1,5 +1,6 @@
 export type RegionState = 'clean' | 'anomaly';
-export interface StageLayer { id: string; z: number; scroll: number; file: string }
+/** `dy`: the plate is drawn this many px lower than its chunk's top (a plate painted off its ground, export.json). */
+export interface StageLayer { id: string; z: number; scroll: number; file: string; dy?: number }
 export interface ChunkState { layers: StageLayer[]; collision: string | null }
 export interface StageChunk { id: string; x: number; y: number; states: Partial<Record<RegionState, ChunkState>> }
 export interface StageManifest { region: string; chunkSize: [number, number]; chunks: StageChunk[] }
@@ -36,6 +37,7 @@ export function parseManifest(value: unknown): StageManifest {
         assert(object(layer) && typeof layer.id === 'string' && assetFile(layer.file), 'layer id/file');
         assert(Number.isInteger(layer.z) && Number(layer.z) >= 0 && Number(layer.z) <= 7, 'layer z');
         assert(typeof layer.scroll === 'number' && Number.isFinite(layer.scroll) && layer.scroll >= 0, 'scroll');
+        assert(layer.dy === undefined || Number.isInteger(layer.dy), 'layer dy');
       }
     }
   }
@@ -47,6 +49,6 @@ export function stageLayers(manifest: StageManifest, state: RegionState) {
     const content = chunk.states[state];
     if (!content) throw new Error(`Missing ${manifest.region}/${chunk.id}.${state}`);
     return content.layers.map((layer, order) => ({ ...layer, order,
-      x: chunk.x * manifest.chunkSize[0], y: chunk.y * manifest.chunkSize[1] }));
+      x: chunk.x * manifest.chunkSize[0], y: chunk.y * manifest.chunkSize[1] + (layer.dy ?? 0) }));
   });
 }

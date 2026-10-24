@@ -10,7 +10,8 @@ import type { Rect } from '../combat/sweeps';
  * Its box is the drawn quadcopter: hover-00's alpha bounds are 44 x 45 px, feet at the pivot (measured 24 Oct; the
  * old 22 px box covered only the lower half, so chair hits on the body you see went through – playtest M1).
  */
-export const DRONE_WIDTH = 45, DRONE_HEIGHT = 45, DRONE_HEALTH = 8;
+// 1.7x since 24 Oct (drawn 80 px, was 47): readable next to the 114 px hero.
+export const DRONE_WIDTH = 77, DRONE_HEIGHT = 77, DRONE_HEALTH = 8;
 export const DRONE_SPEED = 70, DRONE_TELL = 0.5, DIVE_SPEED = 380, CLIMB_SPEED = 160;
 /** It dives when the hero is this close beneath it (px, horizontally). */
 export const DRONE_SPOT = 50;

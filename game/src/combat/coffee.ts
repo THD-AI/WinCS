@@ -16,6 +16,9 @@ export function coffeeFrame(milliseconds: number, fps: number): number {
   return (frame / period) % 4 === 3 ? 2 : 1;
 }
 
+/** How close (px, centre to centre) the hero must be for the coffee prompt to show. */
+export const COFFEE_PROMPT_RANGE = 140;
+
 /** Up is edge-triggered, including when it was already held on entering range. */
 export class CoffeeUse {
   private held = false;
@@ -34,13 +37,21 @@ export class CoffeePoints {
   readonly actors: Phaser.GameObjects.Sprite[];
   private machines: Box[];
   private fps: number;
+  private glows: Phaser.GameObjects.Ellipse[];
+  private prompt: Phaser.GameObjects.Text;
   constructor(private scene: Phaser.Scene, private player: Player, chunks: CollisionChunk[]) {
     this.machines = chunks.flatMap(chunk => chunk.world.interact).filter(box => box.kind === 'coffee-machine');
     this.keys = scene.input.keyboard!.addKeys('W,UP,J,X') as Record<string, Phaser.Input.Keyboard.Key>;
     this.physical = physicalKeys(scene);
-    // The approved art is drawn at the box's measured size (42 × 80 for a 40 × 80 box), so it is never stretched.
+    // Drawn 1.5x since 24 Oct (120 px next to the 114 px hero; Lex: "way too hidden"), from the approved board.
     this.actors = this.machines.map(box => scene.add.sprite(box.x + box.w / 2, box.y + box.h,
       'coffee-machine', 'idle-00').setOrigin(0.5, 1).setDepth(99));
+    // A warm light that breathes, so the machine reads as a place of rest from across the screen.
+    this.glows = this.machines.map(box => scene.add.ellipse(box.x + box.w / 2, box.y + box.h - 60, 190, 170, 0xffb347, 0.16)
+      .setDepth(98).setBlendMode('ADD'));
+    // Near it: what it is and which key uses it.
+    this.prompt = scene.add.text(0, 0, '↑  coffee – rest and save', { fontFamily: 'monospace', fontSize: '13px',
+      color: '#fff3d6', backgroundColor: '#2a1a0ecc', padding: { x: 6, y: 3 } }).setOrigin(0.5, 1).setDepth(10002).setVisible(false);
     this.fps = (scene.cache.json.get('coffee-machine.anims') as { idle?: { fps: number } } | undefined)?.idle?.fps ?? 12;
   }
   update() {
@@ -51,5 +62,11 @@ export class CoffeePoints {
     if (machine && this.player.beginInteraction()) this.player.saveCheckpoint(machine.id!);
     const frame = `idle-0${coffeeFrame(this.scene.time.now, this.fps)}`;
     for (const actor of this.actors) actor.setFrame(frame);
+    const breath = 0.13 + 0.06 * Math.sin(this.scene.time.now / 600);
+    for (const glow of this.glows) glow.setFillStyle(0xffb347, breath);
+    const body = this.player.body;
+    const near = this.machines.find(box => Math.abs(body.x - (box.x + box.w / 2)) < COFFEE_PROMPT_RANGE && Math.abs(body.y - (box.y + box.h)) < 60);
+    this.prompt.setVisible(!!near && this.player.canAttack);
+    if (near) this.prompt.setPosition(Math.round(near.x + near.w / 2), Math.round(near.y + near.h - 128 + 3 * Math.sin(this.scene.time.now / 300)));
   }
 }
