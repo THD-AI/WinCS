@@ -29,6 +29,29 @@ reference games (references/)─┘                                          ▲
 | 8 | **Sprites** – boards per character/enemy/item, drawn with the hero sheet and the style master | `art/sprites/` | `make_boards.py` |
 | 9 | **Export** – atlases and plates the game loads | `game/public/assets/` | `export_atlas.py` |
 
+## World pipeline
+
+How every zone is made (24 Oct, Alexander): the concepts in `art/locations/` and `art/direction/` set the **look and the vocabulary** (girder heights, the deck over the pond, caves in the hills, cellars, the flooded maze, the 404 tearing the sky), never the layout or the scale. A zone is a **grid of 2160×720 chunks in four directions** (above, level, below – not a row), generated from a seed so every map is different, sized to the hero's real moves, and painted so it looks like the concept.
+
+```mermaid
+flowchart TD
+  Z["zone.json<br/>concept, style, vocabulary per band,<br/>grid, seed"] --> M["0 · map<br/>seeded room graph over the grid:<br/>spanning tree + loops, doors and shafts"]
+  M --> B["1 · blockout<br/>per chunk: walk lines, one-way beams,<br/>ladders, walls, water, rooms<br/>→ reachability with the hero's moves"]
+  B -->|unreachable| M
+  B --> P["2 · paint<br/>the model paints over each chunk's<br/>flat guide, concept as style reference"]
+  P --> J["3 · join<br/>every seam, left/right AND up/down:<br/>repaint a band, min-error cut"]
+  J --> G["4 · artifact gate<br/>seam step, guide colours left, repeats,<br/>grain, palette vs concept, text"]
+  G -->|fail| P
+  G --> D["5 · depth<br/>depth_layers.py per chunk"]
+  D --> A["6 · anomaly as data<br/>404 tears placed in world.json,<br/>drawn as fx over clean chunks"]
+  A --> C["7 · collision<br/>written by the blockout,<br/>collision_check.py"]
+  C --> V["8 · previews<br/>zone map, side by side with the concept"]
+```
+
+- **The guide is the contract.** The blockout draws the same flat guide colours the grow step uses (`grow_stage.GUIDE`); a door or a shaft crosses a chunk edge at the same pixel on both sides, so neighbours line up before a single pixel is painted, and the collision comes from the same data – it never has to be traced back out of a painting.
+- **Playable by construction, then checked.** Doors, beams and ladders are placed with the hero's numbers (`jump.ts`: 96 px jump, design to 80; a 120 px gap at run speed); the reachability check walks the whole zone both ways and rejects the seed when anything can't be reached or left.
+- **Folders:** `art/zones/<zone>/zone.json` (input, by hand) → `world.json`, `blockout/`, `collision/` (generated) → `images/` (painted, joined, gated) → `previews/`. Raw model output stays in `tmp/zones/<zone>/`.
+
 ## Growing a stage in four directions
 
 What Codex's runs proved on Rusty Creek, generalised:

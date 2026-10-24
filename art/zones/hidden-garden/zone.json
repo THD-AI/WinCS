@@ -1,0 +1,32 @@
+{
+  "zone": "hidden-garden",
+  "title": "Hidden Garden – the zone",
+  "note": "The input of the world pipeline (docs/09 'World pipeline'). The concept gives the look and the vocabulary, never the layout or the scale: scripts/world_map.py generates a different playable map for every seed, sized to the hero's real moves, and writes world.json beside this file.",
+  "seed": 404,
+  "grid": [3, 3],
+  "bands": ["above", "level", "below"],
+  "concept": {
+    "anomaly": "art/locations/images/hidden-garden-anomaly.png",
+    "clean": "art/locations/images/hidden-garden-clean.png"
+  },
+  "inputs": [
+    "repo:art/locations/images/hidden-garden-anomaly.png",
+    "repo:art/direction/images/style-master-preview.png"
+  ],
+  "model": "gpt-image-2.5-sunburst",
+  "style": "LOOK: detailed hi-bit pixel art with a fine 2-pixel grain, the warm autumn palette and low golden light of the first image (the Hidden Garden): rusty blue-green girders overgrown with vines and orange leaves, golden reeds, a still pond with reflections, mossy stone and earth, warm lanterns in dark caves, a hazy far pine forest. Strict side view, an architect's elevation: everything runs parallel to the screen, nothing recedes. Depth in clear layers behind the play layer: sky, a hazy far tree line, mid trees. The hero is about 76 px tall in this image, so a doorway is about 110 px tall and a ladder rung step about 12 px. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
+  "people": "No people, no animals, no plush toys and no characters of any kind: this is an empty stage the game puts its characters into.",
+  "vocabulary": {
+    "above": "high in the air above the pond: long rusty blue-green girder beams and bridges with vines and orange leaves hanging from them, ladders between them, the tops of autumn trees, open sky with small clouds above a hazy far forest",
+    "level": "the level of the pond: grassy hills and mossy stone banks with golden reeds, a timber deck on posts across still water with reflections, girder legs rising out of the reeds, lit caves cut into the hills with a lantern",
+    "below": "under the pond, inside the wrong reflection: a drained sunken maze of rusty girders and stone walls, blue-green water light rippling across them, weed and roots hanging from the ceiling, lit cellar rooms with crates, shelves and a hanging lamp"
+  },
+  "anomaly": {
+    "note": "The 404 is data, never painted: chunks are painted clean; the preview and the game draw these tears over them in the anomaly state. Each tear is placed by the generator in the sky of an 'above' chunk.",
+    "kinds": {
+      "cut": "a rectangle of sky turned flat grey with torn, pixel-stepped edges",
+      "stretch": "a strip of the picture smeared into vertical streaks from one row"
+    },
+    "count": 3
+  }
+}
