@@ -75,7 +75,7 @@ The body, when there is one, says *why*. **No AI attribution anywhere**: no co-a
 - **Small.** Aim for under ~400 changed lines of code. Generated art, lockfiles and exports don't count, but go in their own commit.
 - **Linked.** `Closes #n` for the issue this PR completes, `Refs #n` for related work. Never close an epic from a PR.
 - **Verified.** The template asks how: type check, build, and for anything you can see, the Vercel preview and a screenshot.
-- **Draft first.** Open a draft PR as soon as you push; mark it ready when every acceptance box is ticked.
+- **Ready, not draft.** Open the PR ready for review as soon as you push (Alexander, 24 Oct: never as a draft); keep pushing to it until every acceptance box is ticked.
 - **Merge commits**, not squash. Stacks depend on it, and the commits tell the story.
 
 ### Stacked PRs
