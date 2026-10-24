@@ -1,14 +1,14 @@
 /**
  * The chair's swing made visible (playtest 24 Oct: the attack was "barely noticeable as an attack"). A pale arc
  * sweeps in front of the hero through the swing frames, brightest on the contact frame (sweep A 04, B 03), drawn
- * around the shoulder so it covers the measured sweep reach (SWEEP_CONTACT, 8–33 px ahead, 23–58 px up). Pure, so
+ * around the shoulder so it covers the measured sweep reach (SWEEP_CONTACT, 12–50 px ahead, from the floor to 87 px up). Pure, so
  * the timing and the mirroring are unit-tested.
  */
 export const SWING = {
   /** Arc centre above the feet (px), its radius and thickness (px). */
-  shoulder: 42, radius: 30, width: 9,
+  shoulder: 63, radius: 44, width: 12,
   /** Facing right, the arc spans these angles (degrees, 0 = ahead, positive = down). */
-  from: -75, to: 45,
+  from: -75, to: 62,
   /** The frames that draw the arc, and its opacity per frame (contact frame brightest). */
   alpha: { 'sweep-a': [0, 0, 0.35, 0.65, 1, 0.55, 0.2, 0], 'sweep-b': [0, 0.35, 0.7, 1, 0.55, 0.2, 0, 0] } as Record<string, number[]>,
 } as const;

@@ -145,21 +145,21 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 
 ### Chair sweep implementation – measured contact (#39)
 
-The `chair-side` atlas uses 86 × 81 px cells with the feet at (43, 81).
+The `chair-side` atlas uses 128 × 119 px cells with the feet at (64, 119)
+(the hero is drawn 1.5x since 24 Oct; the old cells were 86 × 81).
 The approved contact poses are A04 and B03; B is mirrored into the strike
-direction. A04 reaches 31 px forward and B03 reaches 33 px. Their wooden
-seat pixels start 8 px in front of the pivot; the highest contact wood is
-58 px above the feet. The collision envelope therefore extends **8–33 px
-forward, 23–58 px above the feet**. Its lower edge includes two pixels of
-overlap with a 25 px rover (the 2 px grain in [09](09-ART-PIPELINE.md)),
-so the short sweep can catch the small ground enemy without extending its
-horizontal reach beyond the approved pose. This envelope is gameplay
-collision, not an alpha mask of the coat or legs.
+direction. The chair's wood in A04 reaches 48 px forward and in B03 50 px;
+it starts 12 px in front of the pivot, and the seat back is 87 px above the
+feet. The collision envelope therefore extends **12–50 px forward, from the
+floor to 87 px above the feet**. It goes down to the floor (playtest
+24 Oct): the swung legs pass at 37 px, and a 25 px rover or a crab must not
+slip under them. This envelope is gameplay collision, not an alpha mask of
+the coat or legs.
 
 ```mermaid
 flowchart LR
-  IN["chair-side atlas + animation table<br/>86 × 81 cells, feet 43,81"] --> POSE["8 poses A / B at authored 12 fps<br/>release Act; buffer one tap"]
-  POSE --> MASK["A04 / B03 contact window only<br/>front 8–33; above feet 23–58 px"]
+  IN["chair-side atlas + animation table<br/>128 × 119 cells, feet 64,119"] --> POSE["8 poses A / B at authored 12 fps<br/>release Act; buffer one tap"]
+  POSE --> MASK["A04 / B03 contact window only<br/>front 12–50; floor to 87 px up"]
   MASK --> HIT["Overlap target bounds<br/>one attempt per target per swing"]
   HIT --> FX["Accepted hit: 60 ms stop<br/>spark, sound, target knockback"]
   FX --> OUT["Finish sweep + 2 recoil poses<br/>consume buffered return swing"]
@@ -168,7 +168,7 @@ flowchart LR
 
 The development rover fixture is 25 px tall ([05](05-ENEMIES-AND-BOSSES.md))
 and 31 px wide (the approved `enemy-rover:idle-00` alpha bounds).
-It starts 38.5 px ahead: 33 px reach + half the rover width − its 8 px test
+It starts 55.5 px ahead: 50 px reach + half the rover width − its 8 px test
 knockback − 2 px overlap. Both alternating sweeps can then connect while
 the hero stands still. The 8 px displacement is fixture tuning; real enemy
 knockback belongs to the enemy controller.
@@ -181,15 +181,18 @@ airborne feet. Ordinary Act retains release-to-sweep and later hold-to-guard
 the attack even beside a ladder or machine. Damage, death and climbing
 cancel attacks.
 
-The `chair-overhead` cells are 108 × 126 px, pivot (54, 126). Measured dark
-chair legs in `up-03` occupy x=51–78, y=12–37: the up contact envelope is
-**−3…24 px horizontally, 89…114 px above the feet**. Only up poses 02/03
+The `chair-overhead` cells are 160 × 187 px, pivot (80, 187) (1.5x). The
+chair in `up-02`/`up-03` spans −4…64 px ahead and 118…181 px up; the up
+contact envelope is **−4…64 px horizontally, 88…181 px above the feet** –
+down to 88 px for the arc the chair travels from the shoulder, so the
+Rusty Creek drone (hovering at y 470, 45 px tall: 66–111 px above the 536
+deck, 100–145 px above the 570 ground) is reached from under it. Only up poses 02/03
 are active, within the authored six-pose clip at 12 fps. It can overlap
 an enemy above a one-way deck; a deck does not block a chair strike.
 
 Slam uses wind-up poses 00–02, holds descent pose 03, then plays 04–06
-on an ordinary floor. In slam-03 the low chair legs span x=65–91, or
-**11…37 px ahead of the pivot**. The downward contact probe sweeps between
+on an ordinary floor. In slam-03 the low chair legs run
+**16…56 px ahead of the pivot**. The downward contact probe sweeps between
 the previous and current foot positions, with the documented 2 px grain
 as its margin, to prevent tunnelling. Descent tuning is twice run speed
 (516 px/s). Contact with a living enemy or hazard snaps the feet to its
@@ -203,7 +206,7 @@ as with the ordinary sweep buffer.
 ```mermaid
 flowchart LR
   INPUT["Up + new Act / airborne Down + new Act<br/>keyboard or gamepad"] --> PRIORITY["Consume special input<br/>suppress coffee, climb and release sweep"]
-  ATLAS["chair-overhead atlas + table<br/>108 × 126, pivot 54,126"] --> MASK["Up: measured legs at poses 02/03<br/>Slam: swept probe 11–37 px forward"]
+  ATLAS["chair-overhead atlas + table<br/>108 × 126, pivot 54,126"] --> MASK["Up: measured legs at poses 02/03<br/>Slam: swept probe 16–56 px forward"]
   PRIORITY --> MASK
   MASK --> HIT["One attempt per target<br/>accepted damage: 60 ms stop + spark"]
   MASK --> BOUNCE["Enemy / hazard top contact before damage<br/>snap feet; full-jump impulse"]
@@ -266,7 +269,8 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Life | health | 5 | `combat/life.ts` `MAX_HEALTH` |
 | Life | knockback | 258 px/s for 0.25 s | `life.ts` `KNOCK_SPEED`, `KNOCK_TIME` |
 | Chair | damage per sweep, upswing, slam | 1 | `combat/sweeps.ts`, `combat/overhead.ts` |
-| Chair | sweep reach | 8–33 px ahead, 23–58 px up | `sweeps.ts` `SWEEP_CONTACT` |
+| Chair | sweep reach | 12–50 px ahead, floor to 87 px up | `sweeps.ts` `SWEEP_CONTACT` |
+| Chair | up attack / slam reach | −4…64 px, 88–181 px up / 16–56 px ahead | `overhead.ts` `UP_CONTACT`, `SLAM_CONTACT` |
 | Chair | guard push | 3 frames (0.25 s) | `combat/guard.ts` `GUARD_PUSH_TIME` |
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
 | Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |

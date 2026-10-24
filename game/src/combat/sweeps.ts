@@ -3,8 +3,13 @@ export interface ChairHit { damage: number; direction: -1 | 1; position: { x: nu
 export interface Damageable { id: string; active?(): boolean; bounds(): Rect; hit(hit: ChairHit): boolean }
 export const intersects = (a: Rect, b: Rect) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 
-// docs/02 measured contact: chair-side A04/B03, cell 86×81, foot pivot (43,81).
-export const SWEEP_CONTACT = { inner: 8, reach: 33, top: 58, bottom: 23 } as const;
+/**
+ * docs/02 measured contact on the 1.5x frames (24 Oct): chair-side A04/B03, cell 128×119, foot pivot (64,119). The
+ * chair's wood runs 12–48 px (A04) and 12–50 px (B03, mirrored) ahead of the feet, its seat back 87 px up. The box
+ * goes down to the floor (playtest 24 Oct): a 25 px rover or a crab crawling under the swung chair is still hit –
+ * the legs sweep past at 37 px and nothing small slips beneath them.
+ */
+export const SWEEP_CONTACT = { inner: 12, reach: 50, top: 87, bottom: 0 } as const;
 const HIT_STOP_MS = 60; // docs/02: the chair is light; every accepted hit stops for 60 ms.
 
 export class HitStop {

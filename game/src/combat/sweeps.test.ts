@@ -33,14 +33,20 @@ describe('light chair sweeps', () => {
     const sweep = new Sweeps(); sweep.press(1); sweep.press(-1); sweep.cancel(); sweep.step(2);
     expect(sweep.phase).toBe('idle'); expect(sweep.box({ x: 0, y: 0 })).toBeNull();
   });
-  it('matches the documented 8–33 px reach and 23–58 px vertical envelope on both sides', () => {
+  it('matches the measured 12–50 px reach on the 1.5x frames, from the floor to 87 px up, on both sides', () => {
     const right = new Sweeps(), left = new Sweeps(), position = { x: 100, y: 500 };
     right.press(1); left.press(-1); right.step(4 / 12); left.step(4 / 12);
-    expect(right.box(position)).toEqual({ x: 108, y: 442, w: 25, h: 35 });
-    expect(left.box(position)).toEqual({ x: 67, y: 442, w: 25, h: 35 });
-    const beyond: Damageable = { id: 'beyond', bounds: () => ({ x: 134, y: 475, w: 25, h: 25 }),
+    expect(right.box(position)).toEqual({ x: 112, y: 413, w: 38, h: 87 });
+    expect(left.box(position)).toEqual({ x: 50, y: 413, w: 38, h: 87 });
+    const beyond: Damageable = { id: 'beyond', bounds: () => ({ x: 151, y: 475, w: 25, h: 25 }),
       hit: () => { throw new Error('A short chair cannot hit beyond the approved pose'); } };
     expect(right.hit(position, [beyond])).toHaveLength(0);
+  });
+  it('reaches down to the floor: a 25 px rover and a flat crab right ahead are both hit', () => {
+    const sweep = new Sweeps(), position = { x: 100, y: 500 }; let hits = 0;
+    const low = (id: string, h: number): Damageable => ({ id, bounds: () => ({ x: 140, y: 500 - h, w: 30, h }), hit: () => { hits++; return true; } });
+    sweep.press(1); sweep.step(4 / 12);
+    expect(sweep.hit(position, [low('rover', 25), low('crab', 12)])).toHaveLength(2); expect(hits).toBe(2);
   });
   it('consumes exactly 60ms of hit-stop, including a partial rendered frame', () => {
     const stop = new HitStop(); stop.trigger(); let active = 0;
