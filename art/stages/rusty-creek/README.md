@@ -28,7 +28,7 @@ The same place before the anomaly (clean campus architecture, nature layers iden
 | 06 | Near rails | [png](images/06-near-rails-left.png) | [png](images/06-near-rails-center.png) | = left | Foreground 1.1, never collides |
 | 07 | Near foliage | [png](images/07-foliage-left.png) | [png](images/07-foliage-center.png) | [png](images/07-foliage-right.png) | Foreground 1.15 |
 
-"= left": shared scenery repeats on the right chunk and is stored once (alias in [media-sources.json](media-sources.json)). In the game, layers 01, 06 and 07 come from one region-wide plate each ([layers/](layers/), `python scripts/depth_layers.py region art/stages/rusty-creek`, #150): per chunk they overlapped at 0.2 and left gaps at 1.1 and 1.15. The creek as the game draws it: [parallax.png](images/parallax.png). The clean architecture plates are [left](images/clean-architecture-left.png) and [centre](images/clean-architecture-center.png); right = left.
+"= left": shared scenery repeats on the right chunk and is stored once (alias in [media-sources.json](media-sources.json)). In the game, layers 01, 06 and 07 come from one region-wide plate each ([layers/](layers/), `python scripts/depth_layers.py region art/stages/rusty-creek`, #150): per chunk they overlapped at 0.2 and left gaps at 1.1 and 1.15. The creek as the game draws it: [parallax.png](previews/parallax.png). The clean architecture plates are [left](images/clean-architecture-left.png) and [centre](images/clean-architecture-center.png); right = left.
 
 ## Route
 
