@@ -167,5 +167,19 @@ class DepthLayerTests(unittest.TestCase):
             self.assertIn(dl.BAND_KEY["below"], dl.key_prompt(zone, "z-0-0"))
             self.assertEqual(dl.key_prompt(zone, "z-0-1"), dl.KEY_PROMPT)
 
+    def test_bleed_continues_a_layer_under_its_neighbour_and_keeps_painted_fills(self):
+        import numpy as np
+        rgb = np.zeros((10, 40, 3), np.uint8)
+        rgb[:5] = (200, 100, 50)                                    # the layer: the top half
+        own = np.zeros((10, 40), bool); own[:5] = True
+        front = ~own                                                # a nearer layer below it
+        plate = np.zeros((10, 40, 4), np.uint8)
+        plate[9, 0] = (1, 2, 3, 255)                                # a painted fill already there
+        out, added = dl.bleed_plate(rgb, own, front, plate, reach=3)
+        self.assertEqual(added, 3 * 40)                             # rows 5-7: within 3 px of the layer
+        self.assertEqual(tuple(out[6, 10]), (200, 100, 50, 255))
+        self.assertEqual(out[8, 10, 3], 0)                          # beyond the reach: still empty
+        self.assertEqual(tuple(out[9, 0]), (1, 2, 3, 255))          # the painted fill wins
+
 if __name__ == "__main__":
     unittest.main()

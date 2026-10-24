@@ -83,6 +83,8 @@ export interface Atmosphere {
   /** Applied to a layer without its own entry, scaled by nearness (sway × scroll²). */
   defaults: LayerFx;
   layers: Record<string, Partial<LayerFx>>;
+  /** Over `layers` in a row without sky (a room underground): built walls and floors do not sway like grass. */
+  indoor: Record<string, Partial<LayerFx>>;
   leaves: Leaves;
   water: Water | null;
   /** Extra images in the region folder the atmosphere uses; exported and loaded with the stage. */
@@ -93,6 +95,7 @@ export const DEFAULT_ATMOSPHERE: Atmosphere = {
   wind: { base: 0.45, gust: 0.9, gustSpeed: 240, gustLength: 1400, frequency: 0.55, direction: -1 },
   defaults: { sway: 1.5, reach: 260, anchor: 'base', foliage: 0.3, bob: 0, blur: 0, ripple: 0, shimmer: 0 },
   layers: {},
+  indoor: {},
   leaves: {
     palette: [], fall: 'down',
     front: { every: 420, scale: [1, 2], scroll: 1.15, alpha: 1, tint: 0xffffff },
@@ -212,6 +215,11 @@ export function parseAtmosphere(value: unknown, state?: string): { atmosphere: A
     if (!object(entry)) { read.problems.push(`layers.${id} must be an object`); continue; }
     layers[id] = layerFx(read, entry, `layers.${id}`);
   }
+  const indoor: Record<string, Partial<LayerFx>> = {};
+  for (const [id, entry] of Object.entries(read.section(root, 'indoor', 'indoor') ?? {})) {
+    if (!object(entry)) { read.problems.push(`indoor.${id} must be an object`); continue; }
+    indoor[id] = layerFx(read, entry, `indoor.${id}`);
+  }
 
   const l = read.section(root, 'leaves', 'leaves');
   let leaves: Leaves;
@@ -266,14 +274,14 @@ export function parseAtmosphere(value: unknown, state?: string): { atmosphere: A
       } else read.problems.push('water.wrong.image must be one of assets');
     }
   }
-  return { atmosphere: { wind, defaults, layers, leaves, water, assets }, problems: read.problems };
+  return { atmosphere: { wind, defaults, layers, indoor, leaves, water, assets }, problems: read.problems };
 }
 
 /**
  * What a layer does: its own entry over a default derived from its depth. Nearer layers (higher
  * scroll) sway more (× scroll²); foreground layers get the default bob and blur; the water layer ripples.
  */
-export function layerAtmosphere(atmosphere: Atmosphere, layer: { id: string; z: number; scroll: number }): LayerFx {
+export function layerAtmosphere(atmosphere: Atmosphere, layer: { id: string; z: number; scroll: number }, indoor = false): LayerFx {
   const d = atmosphere.defaults;
   const water = atmosphere.water?.layer === layer.id;
   const derived: LayerFx = {
@@ -286,5 +294,5 @@ export function layerAtmosphere(atmosphere: Atmosphere, layer: { id: string; z: 
     ripple: water ? d.ripple : 0,
     shimmer: water ? d.shimmer : 0,
   };
-  return { ...derived, ...atmosphere.layers[layer.id] };
+  return { ...derived, ...atmosphere.layers[layer.id], ...(indoor ? atmosphere.indoor[layer.id] : undefined) };
 }

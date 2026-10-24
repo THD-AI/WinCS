@@ -94,6 +94,10 @@ What the proof taught (rules now):
 
   `terrain.test.ts` walks the row below end to end.
 - **Two different rooms meet through a passage:** a plain join left the drain → reflection seam abrupt (a sunset window under the pond). A wider window with a brief paints the breach: `--half 320,320`. A window that ends at the seam keeps the old edge, so it fixes nothing.
+- **Every layer is whole, checked on purple.** Layers move against each other: parallax, sway, ripple. A cut-out layer shows its holes as soon as one moves, and in debug mode they show plainly. Seen on purple (24 Oct, Alexander), the underground's back walls were full of holes, and so were the garden's far and mid plates. The fixes:
+  - `depth_layers.py whole` paints a room's back wall, water and floor whole under every nearer layer, as `fills/`;
+  - `complete` does the same for the garden's far and mid, quilted again by `region` (level row only);
+  - a room without sky takes `atmosphere.json` `indoor`: walls and floors stay still, weeds sway, water ripples gently.
 - **Depth underground has no parallax:** the grown row's masks (`depth_layers.py masks … --all`, `masks/`, `previews/depth-below.png`) are water, play and foreground, everything else the back wall; a `below` chunk writes no sky, far or mid (the pond scenes' refine scattered specks of them). The key says what is navy: only the water on top – asked loosely, the model painted the cellar's dark rooms as water. Keep the better key per chunk (`tmp/boards/<zone>/key-try*/`).
 - **A band grows from what reaches it:** "no trees" in the sky brief cut the big tree's crown flat at the seam; the brief says what continues up from below.
 - **No band above the pond:** girders over the garden read out of context (Alexander, 24 Oct); the zone grows down, into built campus space.

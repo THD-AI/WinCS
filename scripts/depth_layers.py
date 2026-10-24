@@ -6,6 +6,9 @@
     python scripts/depth_layers.py collision art/stages/<region> <chunk>  # walk lines + water no-go from the key
     python scripts/depth_layers.py region art/stages/<region>          # quilt the chunks' slow layers into one plate each
     python scripts/depth_layers.py fill  art/stages/<region> <chunk>   # API: paint what nearer layers hide
+    python scripts/depth_layers.py whole art/stages/<region> <chunk>   # API: a room's rear/water/play whole under
+                                                                       # every nearer layer (rooms with no sky)
+    python scripts/depth_layers.py bleed art/stages/<region> <chunk>   # scroll-1 layers' edges 16 px under nearer ones
         [--only far mid] [--reuse]                                     # --reuse: re-cut from tmp/ paintings
 
 1. key: the model repaints the composed chunk with one flat colour per depth band (DEPTH below), same
@@ -303,9 +306,10 @@ LEVEL = ("rear", "water", "play")  # the bands at scroll 1: what the foreground 
 COMPLETE_PROMPT = (
     "This is one chunk of a side-scrolling stage. Paint ONLY the transparent area: {what}, continuing it "
     "naturally from what is visible around the hole, the same light, palette, fine 2-pixel grain and scale. Where "
-    "the transparent area rises above that layer's own top edge, paint the plain late-afternoon sky there. Nothing "
-    "that stands in front of it - no {front}. Strict side view, no characters, no text. The second image is the "
-    "style master: match its pixel-art rendering.")
+    "the transparent area rises above that layer's own top edge, paint the plain late-afternoon sky there. Below "
+    "its top edge it runs down to the bottom edge of the image as that layer alone - dense trunks and foliage - "
+    "never a pond, water, a reflection or sky below the treetops. Nothing that stands in front of it - no {front}. "
+    "Strict side view, no characters, no text. The second image is the style master: match its pixel-art rendering.")
 UNDER_PROMPT = (
     "This is one chunk of a side-scrolling stage. The transparent area is where dark out-of-focus leaves and grass "
     "stood in front of the camera; they are removed. Paint ONLY the transparent area with what lies behind them, "
@@ -379,8 +383,12 @@ def complete(region: Path, chunk: str, art: Image.Image, only: tuple[str, ...] =
             what, nots = WHAT[name]
             # A 2 px margin into the layer's own edge, so no fringe of the nearer layer survives in the painting.
             hole = ndimage.binary_dilation(front, iterations=2)
-            painted = api(f"{chunk}--complete-{name}", art, COMPLETE_PROMPT.format(what=what, front=nots),
-                          l_image(hole), (STYLE,))
+            for _ in range(3):  # the model sometimes hands back the window empty (exact black): paint it again
+                painted = api(f"{chunk}--complete-{name}", art, COMPLETE_PROMPT.format(what=what, front=nots),
+                              l_image(hole), (STYLE,))
+                if painted is None or (np.array(painted)[hole].sum(1) == 0).mean() < 0.05:
+                    break
+                print(f"{chunk}: {name} came back empty, painting again", flush=True)
             if painted is None:
                 return
             painted.save(raw)
@@ -581,6 +589,103 @@ def under(region: Path, chunk: str, reuse: bool = False) -> list[Path]:
         Image.fromarray(plate).save(path, optimize=True)
         written.append(path)
         print(f"{chunk}: {name} under-fill ({int(m.sum())} px) -> {path.relative_to(ROOT)}", flush=True)
+    return written
+
+
+# A room under the ground (no sky, nothing scrolls slower): what each scroll-1 layer continues as behind what stands
+# in front of it, and what must not be painted there.
+WHOLE = {
+    "rear": ("the room's back wall - its masonry, concrete, arches, piers, pipes or rock, whatever the wall around "
+             "the hole is made of, with its lanterns' light", "floors, ledges, girders, ladders, water, weeds or plants"),
+    "water": ("the deep water with its light and its dark, the same water as around the hole",
+              "floors, ledges, girders, ladders, weeds or plants"),
+    "play": ("the floors, walkways, ledges and girders, continued as they run", "weeds, plants or grass"),
+}
+WHOLE_REACH = 96  # water and floor continue this far behind what stands in front of them
+WHOLE_PROMPT = (
+    "This is one chunk of a side-scrolling stage: a room under the ground. Paint ONLY the transparent area: {what}, "
+    "continuing it from what is visible around the hole - the same light, palette, fine 2-pixel grain and scale. "
+    "Nothing that stands in front of it - no {front}. No sky. Strict side view, no characters, no text. The second "
+    "image is the style master: match its pixel-art rendering.")
+
+
+def whole(region: Path, chunk: str, art: Image.Image, reuse: bool = False) -> list[Path]:
+    """A room's scroll-1 layers (rear, water, play) rendered whole under EVERY nearer layer: the back wall behind the
+    floors, the water and the weeds; the water behind the girders and the weeds; the floor behind the weeds. Each is
+    one model painting of the chunk with the nearer pixels transparent, kept only on those pixels and written as the
+    layer's fill (fills/<chunk>.<layer>.png), which split_layers.py puts under the layer where a nearer layer owns the
+    pixel: the chunk rebuilds exactly at rest, and no layer shows a hole when the weeds sway, the water ripples or a
+    layer is shown alone (debug mode). For rooms with no sky; the garden's own chunks use fill/complete/under."""
+    import numpy as np
+    from scipy import ndimage
+    bands = partition(region, chunk)
+    folder = region / "fills"
+    folder.mkdir(exist_ok=True)
+    written = []
+    for name in LEVEL:
+        own, front = bands == name, np.isin(bands, STACK[STACK.index(name) + 1:])
+        path = folder / f"{chunk}.{DEPTH[name][0]}.png"
+        if not own.any() or not front.any():
+            path.unlink(missing_ok=True)
+            continue
+        raw = raw_dir(region) / f"{chunk}--whole-{name}.png"
+        if reuse and raw.exists():
+            painted = Image.open(raw).convert("RGB")
+        else:
+            what, nots = WHOLE[name]
+            # 2 px into the layer's own edge, so no fringe of the nearer layer survives in the painting
+            painted = api(f"{chunk}--whole-{name}", art, WHOLE_PROMPT.format(what=what, front=nots),
+                          l_image(ndimage.binary_dilation(front, iterations=2)), (STYLE,))
+            if painted is None:
+                continue
+            painted.save(raw)
+        # The back wall is behind everything in a room. Water and floor only go on where they plausibly run: within
+        # WHOLE_REACH px of their own pixels (the water behind a girder, the floor behind its weeds) - never water
+        # under a dry cellar's floors.
+        keep = front if name == "rear" else front & (ndimage.distance_transform_edt(~own) <= WHOLE_REACH)
+        plate = np.zeros((*own.shape, 4), np.uint8)
+        plate[keep, :3], plate[keep, 3] = np.array(painted)[keep], 255
+        Image.fromarray(plate).save(path, optimize=True)
+        written.append(path)
+        print(f"{chunk}: {name} whole ({int(keep.sum())} px behind nearer layers) -> {path.relative_to(ROOT)}", flush=True)
+    return written
+
+
+def bleed_plate(rgb, own, front, plate, reach: int = 16):
+    """The fill plate with the layer's nearest own pixel copied onto every `front` pixel within `reach` px of it
+    (an existing, painted fill wins). Returns (plate, pixels added)."""
+    import numpy as np
+    from scipy import ndimage
+    dist, (iy, ix) = ndimage.distance_transform_edt(~own, return_indices=True)
+    add = front & (dist <= reach) & (plate[..., 3] == 0)
+    plate = plate.copy()
+    plate[add, :3], plate[add, 3] = rgb[iy[add], ix[add]], 255
+    return plate, int(add.sum())
+
+
+def bleed(region: Path, chunk: str, reach: int = 16) -> list[Path]:
+    """Every scroll-1 layer (rear, water, play) continues its own edge pixels `reach` px into the pixels a nearer
+    layer owns, merged under its fill (fills/<chunk>.<layer>.png): the ripple samples the water a few px off its
+    own pixels, and a swaying edge uncovers a sliver of what is behind it - which is then the layer's own colour,
+    never the hole. At rest the chunk is unchanged (split_layers.py puts fills only under nearer layers)."""
+    import numpy as np
+    from scipy import ndimage
+    config = json.loads((region / "layers.json").read_text(encoding="utf-8"))["chunks"][chunk]
+    rgb = np.array(Image.open(region / config["states"]["clean"]).convert("RGB"))
+    bands = partition(region, chunk)
+    folder = region / "fills"
+    folder.mkdir(exist_ok=True)
+    written = []
+    for name in LEVEL:
+        own, front = bands == name, np.isin(bands, STACK[STACK.index(name) + 1:])
+        if not own.any() or not front.any():
+            continue
+        path = folder / f"{chunk}.{DEPTH[name][0]}.png"
+        plate = np.array(Image.open(path).convert("RGBA")) if path.exists() else np.zeros((*own.shape, 4), np.uint8)
+        plate, added = bleed_plate(rgb, own, front, plate, reach)
+        Image.fromarray(plate).save(path, optimize=True)
+        written.append(path)
+        print(f"{chunk}: {name} bleeds {added} px under nearer layers -> {path.relative_to(ROOT)}", flush=True)
     return written
 
 
@@ -836,7 +941,8 @@ def region_plate(plates: list[Image.Image], scroll: float, window: int = 192, ca
 def region_layers(region: Path) -> list[Path]:
     """Quilt every layer marked "region" in export.json from its chunks' "rest" plates into one plate each."""
     export = json.loads((region / "export.json").read_text(encoding="utf-8"))
-    chunks = sorted(export["chunks"].items(), key=lambda kv: kv[1]["x"])
+    # The level row only: a row above or below is rooms, with no plates that scroll slower (export_stage skips them)
+    chunks = sorted(((c, ch) for c, ch in export["chunks"].items() if ch.get("y", 0) == 0), key=lambda kv: kv[1]["x"])
     aliases = json.loads((region / export["aliases"]).read_text(encoding="utf-8")).get("aliases", {})         if export.get("aliases") else {}
 
     def rest(layer: dict, chunk_id: str, chunk: dict) -> Path:
@@ -874,7 +980,8 @@ def region_layers(region: Path) -> list[Path]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("step", choices=["key", "masks", "fill", "complete", "near", "under", "clear", "collision", "region"])
+    parser.add_argument("step", choices=["key", "masks", "fill", "complete", "near", "under", "clear", "collision",
+                                         "region", "whole", "bleed"])
     parser.add_argument("region", type=Path)
     parser.add_argument("chunk", nargs="?", help="not for region")
     parser.add_argument("--only", nargs="+", choices=PARALLAX, default=list(PARALLAX), help="fill: these layers")
@@ -913,6 +1020,10 @@ def main() -> None:
         clear(region, args.chunk, args.reuse)
     elif args.step == "under":
         under(region, args.chunk, args.reuse)
+    elif args.step == "whole":
+        whole(region, args.chunk, art, args.reuse)
+    elif args.step == "bleed":
+        bleed(region, args.chunk)
     else:
         fill(region, args.chunk, art, tuple(args.only), args.reuse)
 

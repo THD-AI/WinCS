@@ -83,12 +83,15 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
   const pipeline = layerPipeline(scene.game);
   pipeline?.setWind(atmosphere.wind);
 
+  // Rows with sky (the level row): the pond's surface, the wind and the leaves are there. A row without sky is a
+  // room (the cellar under the garden): its water has no waterline to mirror in, its walls and floors take `indoor`.
+  const skyRows = new Set(manifest.chunks.filter(c => c.states[state]?.layers.some(l => l.id === '00-sky')).map(c => c.y));
   const ranks = layerRanks(manifest.chunks.map(chunk => chunk.states[state]?.layers ?? []));
   const layers: DrawnLayer[] = stageLayers(manifest, state).map(layer => {
     const image = scene.add.image(layer.x, layer.y, textureKey(manifest.region, layer.file))
       // Parallax is sideways only: a region with rows (rooms) must not slide its plates up and down against the ground.
       .setOrigin(0).setScrollFactor(layer.scroll, 1).setDepth(layerDepth(layer.z, ranks.get(layer.id)!));
-    const fx = layerAtmosphere(atmosphere, layer);
+    const fx = layerAtmosphere(atmosphere, layer, !skyRows.has(Math.round(layer.y / manifest.chunkSize[1])));
     const uniforms = newUniforms();
     uniforms.sway.set([fx.sway, fx.reach, fx.foliage, fx.bob]);
     uniforms.water.set([-1, fx.ripple, fx.shimmer, fx.blur]);
@@ -107,9 +110,6 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     if (pipeline) useLayerPipeline(d.image, d.uniforms);
     else if (d.fx.blur > 0) canvasBlur(scene, d.image, d.fx.blur);
   }
-  // Rows with sky (the level row): the pond's surface is there. Water in a row without sky (the flooded cellar
-  // under the garden) ripples, but has no waterline to mirror actors in or float lily pads on, and no leaves fall.
-  const skyRows = new Set(manifest.chunks.filter(c => c.states[state]?.layers.some(l => l.id === '00-sky')).map(c => c.y));
   const palette: number[] = [];
   const waterSheet = atmosphere.water && sheetAnimations(scene, 'fx-water');
   const waterDrawn = layers.find(d => d.layer.id === waterId);
