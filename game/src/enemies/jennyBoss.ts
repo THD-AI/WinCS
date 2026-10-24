@@ -93,7 +93,8 @@ export class JennyBoss {
     addRim(this.sprite, ACTOR_RIM.colour, ACTOR_RIM.strength);
     this.hazard = scene.add.ellipse(spawn.x, spawn.y, 14, 14, 0xffb020, 0).setDepth(DEPTH + 1).setBlendMode(Phaser.BlendModes.ADD);
     this.lamp = scene.add.ellipse(spawn.x, spawn.y, 22, 12, 0xfff4cb, 0).setDepth(DEPTH + 1).setBlendMode(Phaser.BlendModes.ADD);
-    this.path = scene.add.rectangle(spawn.x, spawn.y, 10, 6, 0xff5a3c, 0).setOrigin(0, 1).setDepth(DEPTH - 2);
+    // Over the near strip (z 6, depth 120+), so the path shows on the girder floor instead of behind its front edge.
+    this.path = scene.add.rectangle(spawn.x, spawn.y, 10, 8, 0xff5a3c, 0).setOrigin(0, 1).setDepth(125);
     for (let i = 0; i < 3; i++) this.stars.push(scene.add.star(spawn.x, spawn.y, 5, 3, 7, 0xffe14a).setDepth(DEPTH + 2).setVisible(false));
     this.barriers = [this.wall.box, this.wall.far].map(box => this.drawBarrier(box));
     this.cleanup.push(
@@ -267,7 +268,7 @@ export class JennyBoss {
     if (fight.phase === 'rev') {
       const nose = fight.x + fight.facing * JENNY_BOX.w / 2, end = fight.target + fight.facing * JENNY_BOX.w / 2;
       const left = Math.min(nose, end), width = Math.max(4, Math.abs(end - nose));
-      this.path!.setPosition(left, floor).setSize(width, 6).setFillStyle(0xff5a3c, 0.25 + 0.35 * (Math.floor(now / 120) % 2));
+      this.path!.setPosition(left, floor + 2).setSize(width, 8).setFillStyle(0xff5a3c, 0.35 + 0.4 * (Math.floor(now / 120) % 2));
     } else this.path!.setFillStyle(0xff5a3c, 0);
     const revving = fight.phase === 'rev' || fight.phase === 'charge';
     this.lamp!.setPosition(fight.x + fight.facing * (JENNY_BOX.w / 2 - 6), floor - 22)
