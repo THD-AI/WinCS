@@ -4,20 +4,20 @@
    "frame": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -26,22 +26,22 @@
   },
   "death-01": {
    "frame": {
-    "x": 90,
+    "x": 132,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -50,22 +50,22 @@
   },
   "death-02": {
    "frame": {
-    "x": 180,
+    "x": 264,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -74,22 +74,22 @@
   },
   "death-03": {
    "frame": {
-    "x": 270,
+    "x": 396,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -98,22 +98,22 @@
   },
   "death-04": {
    "frame": {
-    "x": 360,
+    "x": 528,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -122,22 +122,22 @@
   },
   "death-05": {
    "frame": {
-    "x": 450,
+    "x": 660,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -146,22 +146,22 @@
   },
   "death-06": {
    "frame": {
-    "x": 540,
+    "x": 792,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -170,22 +170,22 @@
   },
   "death-07": {
    "frame": {
-    "x": 630,
+    "x": 924,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -194,22 +194,22 @@
   },
   "death-08": {
    "frame": {
-    "x": 720,
+    "x": 1056,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -218,22 +218,22 @@
   },
   "death-09": {
    "frame": {
-    "x": 810,
+    "x": 1188,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -242,22 +242,22 @@
   },
   "death-10": {
    "frame": {
-    "x": 900,
+    "x": 1320,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -266,22 +266,22 @@
   },
   "death-11": {
    "frame": {
-    "x": 990,
+    "x": 1452,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "sourceSize": {
-    "w": 88,
-    "h": 80
+    "w": 130,
+    "h": 118
    },
    "pivot": {
     "x": 0.5,
@@ -294,8 +294,8 @@
   "image": "hero-death.png",
   "format": "RGBA8888",
   "size": {
-   "w": 1078,
-   "h": 80
+   "w": 1582,
+   "h": 118
   },
   "scale": "1"
  }
