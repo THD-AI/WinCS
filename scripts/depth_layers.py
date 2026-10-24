@@ -177,19 +177,24 @@ BAND_KEY = {
     "above": ("THIS CHUNK is high in the sky: the open sky and clouds are cyan; the top surface of every girder beam "
               "you can walk along, with the beam under it, is red; ladders, vines, hanging leaves, girder posts and a "
               "tree crown are yellow. There is no far forest, no mid trees, no water and no foreground here."),
-    "below": ("THIS CHUNK is underground, under the pond: the deep water at the top and its surface hanging as a "
-              "ceiling, and any flooded pool, are navy; every floor, ledge, step and the top of every girder you can "
-              "walk on, as a solid band down from its walking surface, is red; the back walls, arches, piers, "
-              "ladders, pipes, rock and weed behind you are yellow; dark plants right at the bottom edge in front "
-              "are magenta. There is no sky, no far forest and no mid trees here."),
+    "below": ("THIS CHUNK is underground, under the pond: ONLY the deep water at the very top and its surface "
+              "hanging as a ceiling are navy - never a dark room, a doorway, a shadow or the dark behind the arches; "
+              "every floor, ledge, step and the top of every girder you can walk on, as a solid band down from its "
+              "walking surface, is red; everything behind you - the back walls, the dark insides of the rooms and "
+              "arches, doors, crates, piers, ladders, pipes, rock and weed - is yellow; dark plants right at the "
+              "bottom edge in front are magenta. There is no sky, no far forest and no mid trees here: no cyan, "
+              "no blue, no green."),
 }
 
 
-def key_prompt(region: Path, chunk: str) -> str:
+def band_of(region: Path, chunk: str) -> str | None:
+    """A world zone chunk's band (above, level, below); None for a stage chunk."""
     world = region / "world.json"
-    if not world.exists():
-        return KEY_PROMPT
-    band = json.loads(world.read_text(encoding="utf-8"))["chunks"][chunk]["band"]
+    return json.loads(world.read_text(encoding="utf-8"))["chunks"][chunk]["band"] if world.exists() else None
+
+
+def key_prompt(region: Path, chunk: str) -> str:
+    band = band_of(region, chunk)
     return KEY_PROMPT + ("\n\n" + BAND_KEY[band] if band in BAND_KEY else "")
 
 
@@ -897,6 +902,8 @@ def main() -> None:
             sys.exit(f"{raw.relative_to(ROOT)} missing: run the key step first")
         bands = refine(vote(snap(Image.open(raw)), art.size), art)
         which = tuple(n for n in BACK_TO_FRONT if n != "rear") if args.all else PARALLAX  # rear = the default rule
+        if args.all and band_of(region, args.chunk) == "below":  # underground: no sky behind, nothing scrolls slower
+            which = tuple(n for n in which if n not in PARALLAX)
         for path in write_masks(region, args.chunk, bands, art.size, which):
             print(f"{args.chunk}: mask -> {path.relative_to(ROOT)}")
     elif args.step == "collision":
