@@ -49,6 +49,28 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 - **Four directions:** every region is explored left/right *and* up/down: a mountainside route, a lower branch, an underground pocket ([04](04-WORLD-AND-LEVELS.md)).
 - **No wall-jump, no dash in the jam slice.**
 
+### Feel and grounding (prologue slice, workstream 3)
+
+The hero stands *in* the ground, not on it, and every pose comes from the drawn clips at their own timing. All of it is data: `art/stages/<region>/surfaces.json` (exported next to `stage.json`) and the atlases' `anims.json`.
+
+```mermaid
+flowchart LR
+  SF["surfaces.json<br/>chunk-local x / y ranges → material"] --> SM["SurfaceMap.at(x, y)"]
+  SM --> G["Grounding<br/>sink + slope + landing settle,<br/>eased, 0 in the air"]
+  G --> SP["sprite y + sink,<br/>lowest `cover` rows cropped,<br/>tufts in front"]
+  A["atlas pixels"] --> FF["footfalls<br/>planted feet rise: walk 00/04, run 01/05"]
+  FF --> PF["fx-ground puff by surface<br/>(dust / grass / leaf-kick)"]
+  L["landing / hard landing"] --> PF
+  AJ["anims.json fps"] --> T["clip timing, landing lengths,<br/>hit / knockback / death"]
+```
+
+- **Sink by surface (visual only, physics unchanged).** Grass and leaves 3 px with the lowest 2 rows hidden and a few grass tufts drawn over the feet; earth and gravel 2 px; stone and wood 1 px; the creek's steel 1 px. The sink eases (no pop stepping from stone onto grass) and is 0 in the air. On a slope the sprite drops by the lower foot (8 px × slope, at most 4 px) instead of rotating the pixel art. A landing presses 1 px (hard: 2 px) further in and eases out over the landing clip – the drawn landing poses are the squash; nothing is scaled.
+- **Footfalls** are measured from the atlas at load: a frame where the number of planted feet (opaque runs ≥ 6 px wide in the bottom 2 rows) rises. That is walk 00/04 and run 01/05 on the approved cycles. Each footfall kicks the surface's `fx-ground` clip behind the foot; a landing kicks one to each side, a hard landing wider plus debris pixels.
+- **Jump and fall follow the arc, not the clock:** the jump row's crouch shows for one frame on take-off, frames 1–4 map the rise (apex pose at vy 0) and 5–6 the descent; a fall longer than a jump's own drops into the fall loop; a walk-off starts on the descent. The landing is the jump row's own crouch and stand (07/08), the hard landing its clip with the impact held on twos; both lengths come from `anims.json`.
+- **Hurt and death** play the drawn `hit` clip (its first frame is the white flash), `knockback` for hits of 2+ hearts recovering through `hit` 03–07, and `death` – all at their fps. The invulnerability blink starts after the clip; walking away ends the recovery early.
+- **Camera:** look-ahead 120 px at run speed, eased slowly enough that a turn never whips; a vertical dead zone (40 px up, 16 px down) so slopes and steps do not bob the view, and through a jump the framing holds unless the hero climbs 150 px above it or drops below it. The camera snaps to whole pixels as *hero position − rounded offset*, so at a stride-paced walk the hero stays on one screen pixel while the scenery scrolls.
+- **Spawns and resets** stand on the walk line within 8 px, so an authored spawn a pixel inside the ground does not fall through.
+
 ## Health, damage, death
 
 - **Health:** 5 battery cells (HUD top-left, Hollow Knight-sized). Enemy contact or a hit costs 1 cell; Jenny's charge costs 2.

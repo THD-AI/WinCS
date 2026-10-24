@@ -1,15 +1,37 @@
 import type Phaser from 'phaser';
 import { parseManifest, stageLayers, type StageManifest, type RegionState } from './manifest';
 
-export const BOARDS = ['hero-move', 'hero-run', 'hero-idle', 'hero-air', 'hero-hurt', 'hero-death',
-  'chair-side', 'chair-overhead', 'chair-block', 'enemy-rover', 'enemy-crab', 'enemy-drone', 'fx', 'boss-jenny', 'boss-jenny-2', 'coffee-machine',
-  'dexter', 'dexter-acts', 'pocket-computer', 'mensa-food', 'dexter-prologue'] as const;
+import boards from './boards.json';
+
+/** Every atlas the game needs – data in boards.json, one line per board. */
+export const BOARDS: readonly string[] = boards.required;
+/** Atlases the game uses when they exist (not exported yet → simply absent, no placeholder, no error). */
+export const OPTIONAL_BOARDS: readonly string[] = boards.optional;
 /** `stride`: a locomotion cycle's stride in game px (compare.py stride) – it is played by distance, not by time. */
 export interface AnimationClip { frames: number; fps: number; loop: boolean; stride?: number }
 export type AnimationTable = Record<string, AnimationClip>;
 export const stageBase = (region: string) => `/assets/stages/${region}/`;
 export const textureKey = (region: string, file: string) => `${region}:${file}`;
 
+/** The exporter contract (scripts/export_atlas.py): every clip's frames `<clip>-NN` exist in the atlas. */
+export function validateAtlas(board: string, atlas: unknown, table: unknown): AnimationTable {
+  const frames = (atlas as { frames?: Record<string, unknown> } | null)?.frames;
+  const clips = table as AnimationTable | null;
+  if (!frames || !clips || typeof clips !== 'object' || !Object.keys(clips).length) throw new Error(`Invalid atlas ${board}`);
+  for (const [name, clip] of Object.entries(clips)) {
+    if (!Number.isInteger(clip.frames) || clip.frames < 1 || !Number.isFinite(clip.fps)
+      || clip.fps <= 0 || typeof clip.loop !== 'boolean') throw new Error(`Invalid clip ${board}:${name}`);
+    for (let n = 0; n < clip.frames; n++) if (!frames[`${name}-${String(n).padStart(2, '0')}`]) {
+      throw new Error(`Missing frame ${board}:${name}-${n}`);
+    }
+  }
+  return clips;
+}
+
+/**
+ * Ad-hoc loading for tools and tests. The game loads through `boot/loader.ts` (Boot and Preload only), which
+ * shares this file's BOARDS, keys and atlas validation.
+ */
 export class Assets {
   constructor(private scene: Phaser.Scene, private strict = import.meta.env.DEV,
     private request: typeof fetch = (...args) => fetch(...args)) {}
@@ -66,16 +88,7 @@ export class Assets {
 
   private async atlas(board: string, base: string): Promise<AnimationTable> {
     const atlas = await this.json(`${base}.json`);
-    const clips = await this.json(`${base}.anims.json`) as AnimationTable;
-    const frames = (atlas as { frames?: Record<string, unknown> }).frames;
-    if (!frames || !clips || !Object.keys(clips).length) throw new Error(`Invalid atlas ${board}`);
-    for (const [name, clip] of Object.entries(clips)) {
-      if (!Number.isInteger(clip.frames) || clip.frames < 1 || !Number.isFinite(clip.fps)
-        || clip.fps <= 0 || typeof clip.loop !== 'boolean') throw new Error(`Invalid clip ${board}:${name}`);
-      for (let n = 0; n < clip.frames; n++) if (!frames[`${name}-${String(n).padStart(2, '0')}`]) {
-        throw new Error(`Missing frame ${board}:${name}-${n}`);
-      }
-    }
+    const clips = validateAtlas(board, atlas, await this.json(`${base}.anims.json`));
     await this.queue(() => this.scene.load.atlas(board, `${base}.png`, atlas as object));
     this.scene.cache.json.add(`${board}.anims`, clips);
     return clips;
