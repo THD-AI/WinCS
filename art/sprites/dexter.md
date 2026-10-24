@@ -6,7 +6,7 @@
 
 ![Dexter · moves](images/dexter-preview.png)
 
-**Review:** To review (24 Oct, #139): redrawn in the approved plush proportions; 27 px = 0.35 of the hero as in dexter-stages (compare.py).
+**Review:** ✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 

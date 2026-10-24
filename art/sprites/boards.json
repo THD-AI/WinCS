@@ -767,7 +767,7 @@
           ]
         ]
       },
-      "review": "To review (24 Oct, #139): redrawn in the approved plush proportions; 27 px = 0.35 of the hero as in dexter-stages (compare.py)."
+      "review": "✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "dexter-acts",
@@ -816,7 +816,7 @@
           ]
         ]
       },
-      "review": "To review (24 Oct, #139): redrawn in the approved plush proportions; 27 px = 0.35 of the hero as in dexter-stages (compare.py)."
+      "review": "✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "intro-anomaly",
