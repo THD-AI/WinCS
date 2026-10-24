@@ -8,7 +8,8 @@ export type Pt = [number, number];
 export interface Position { x: number; y: number }
 
 export type GuideState = 'sit' | 'hop-off' | 'lead' | 'wait' | 'point' | 'at-pond';
-export type GuideAnim = 'idle' | 'hop' | 'walk' | 'point' | 'beckon';
+/** `sit` on the bench, `look` back once on arriving at a stop, then `wait` (or `beckon` when the hero is far). */
+export type GuideAnim = 'sit' | 'look' | 'wait' | 'hop' | 'walk' | 'point' | 'beckon';
 
 /** A stop along the route, from a `dexter-waypoint` interact box: x is the box centre. */
 export interface Stop { id: string; x: number; act: 'wait' | 'point' | 'pond' }
@@ -42,6 +43,8 @@ export const GUIDE = {
   lookAhead: 20,
   stepRise: 12,
   hopOff: 520,
+  /** The look-back clip: dexter-prologue `look-back`, 3 frames at 12 fps. */
+  lookBack: 250,
 } as const;
 
 /** Ground lookup over the walk lines; where lines overlap, the one nearest the current height wins. */
@@ -212,10 +215,12 @@ export class DexterGuide {
   }
 
   private view(hero: Position): GuideView {
-    let anim: GuideAnim = 'idle';
+    let anim: GuideAnim = 'wait';
     if (this.hop) anim = 'hop';
+    else if (this.state === 'sit') anim = 'sit';
     else if (this.state === 'lead') anim = 'walk';
     else if (this.state === 'point' || this.state === 'at-pond') anim = 'point';
+    else if (this.state === 'wait' && this.elapsed < GUIDE.lookBack) anim = 'look';
     else if (this.state === 'wait' && Math.abs(hero.x - this.x) > GUIDE.beckonAt) anim = 'beckon';
     return { x: this.x, y: this.y, anim, facing: this.facing, state: this.state };
   }

@@ -12,9 +12,14 @@ const ANIMS: AtlasAnim[] = [
   ['dexter', 'idle', 3, -1], ['dexter', 'hop', 4, -1], ['dexter', 'walk', 6, -1], ['dexter', 'point', 3, 0],
   ['dexter', 'shove', 4, 0], ['dexter-acts', 'beckon', 3, -1], ['hero-hurt', 'knockback', 3, 0],
 ];
-const ANIM_KEY: Record<GuideAnim, string> = {
-  idle: 'dexter:idle', hop: 'dexter:hop', walk: 'dexter:walk', point: 'dexter:point', beckon: 'dexter-acts:beckon',
+/** Each pose and its stand-in from the approved boards while `dexter-prologue` awaits review. */
+const ANIM_KEY: Record<GuideAnim, [string, string]> = {
+  sit: ['dexter-prologue:sit', 'dexter:idle'], look: ['dexter-prologue:look-back', 'dexter:idle'],
+  wait: ['dexter-prologue:wait', 'dexter:idle'], hop: ['dexter:hop', 'dexter:hop'], walk: ['dexter:walk', 'dexter:walk'],
+  point: ['dexter:point', 'dexter:point'], beckon: ['dexter-acts:beckon', 'dexter-acts:beckon'],
 };
+/** A 1 px warm rim so the black plush reads against the dark hedge path (#159). */
+const RIM = { color: 0xffc98a, outer: 1.4, distance: 2 };
 /** NPCs draw at 101–105 (docs/15 depth bands); secrets sit with the props at 99. */
 const DEXTER_DEPTH = 101;
 const PROP_DEPTH = 99;
@@ -25,6 +30,18 @@ const TAKE_NEAR = 26;
 const FALLBACK_REFLECTION = true;
 
 type StageScene = Phaser.Scene & { playerActor?: Player };
+
+/** Animations from an atlas's own table (frames, fps, loop), as exported by export_atlas.py. */
+function createTableAnims(scene: Phaser.Scene, atlas: string): void {
+  const table = scene.cache.json.get(`${atlas}.anims`) as Record<string, { frames: number; fps: number; loop: boolean }> | undefined;
+  if (!table || !scene.textures.exists(atlas)) return;
+  for (const [anim, clip] of Object.entries(table)) {
+    const key = `${atlas}:${anim}`;
+    if (scene.anims.exists(key)) continue;
+    const frames = Array.from({ length: clip.frames }, (_, i) => ({ key: atlas, frame: `${anim}-${String(i).padStart(2, '0')}` }));
+    scene.anims.create({ key, frames, frameRate: clip.fps, repeat: clip.loop ? -1 : 0 });
+  }
+}
 
 /** Flow's hand-off for the crash: the 404 crossing with the hero frozen in his knock pose. */
 export type Crash404 = (hero: CrossingHero, onLand: () => void) => void;
@@ -60,7 +77,10 @@ export class Prologue {
     this.pondEdge = boxes.find(b => b.kind === 'anomaly');
     this.finale = new FinaleSequence(() => this.toCrash());
     createAnims(stage, ANIMS);
+    createTableAnims(stage, 'dexter-prologue');
     this.dexter = stage.add.sprite(bench.x, bench.y, 'dexter', 'idle-00').setOrigin(0.5, 1).setDepth(DEXTER_DEPTH);
+    this.dexter.preFX?.setPadding(RIM.distance + 1);
+    this.dexter.preFX?.addGlow(RIM.color, RIM.outer, 0, false, 0.1, RIM.distance);
     this.placeSecrets(boxes, spawns);
     const update = (_time: number, delta: number) => this.update(delta);
     stage.events.on(Phaser.Scenes.Events.UPDATE, update);
@@ -121,7 +141,8 @@ export class Prologue {
 
   private draw(view: ReturnType<DexterGuide['update']>): void {
     this.dexter.setPosition(Math.round(view.x), Math.round(view.y)).setFlipX(view.facing < 0);
-    this.play(ANIM_KEY[view.anim]);
+    const [key, standIn] = ANIM_KEY[view.anim];
+    this.play(this.stage.anims.exists(key) ? key : standIn);
   }
 
   private play(key: string): void {

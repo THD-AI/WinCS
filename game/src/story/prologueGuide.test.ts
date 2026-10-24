@@ -37,13 +37,15 @@ describe('Dexter leading the first quest', () => {
   it('sits on the bench until the hero walks up, then hops off and beckons', () => {
     const dexter = garden();
     let view = dexter.update(16, { x: 120, y: 460 });
-    expect(view).toMatchObject({ state: 'sit', anim: 'idle', facing: -1, x: bench.x, y: bench.y });
+    expect(view).toMatchObject({ state: 'sit', anim: 'sit', facing: -1, x: bench.x, y: bench.y });
     view = dexter.update(16, { x: stopsFrom(boxes).wakeX + 1, y: 470 });
     expect(view.state).toBe('hop-off');
     expect(view.anim).toBe('hop');
     for (let t = 0; t < GUIDE.hopOff; t += 16) view = dexter.update(16, { x: 300, y: 470 });
     view = dexter.update(16, { x: 300, y: 470 });
     expect(view.state).toBe('wait');
+    expect(view.anim).toBe('look');
+    view = dexter.update(GUIDE.lookBack, { x: 300, y: 470 });
     expect(view.anim).toBe('beckon');
     expect(view.facing).toBe(-1);
     expect(view.y).toBeGreaterThan(bench.y);
