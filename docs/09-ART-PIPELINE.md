@@ -53,15 +53,15 @@ flowchart TD
 | 0 | Map | `python scripts/world_map.py art/zones/<zone>` (seeded) or a zone script such as `scripts/zones/hidden_garden_proof.py` (authored frame) | `world.json` |
 | 1 | Blockout | (same) | `blockout/<id>.png`, `collision/` |
 | 2 | Grow | `python scripts/world_paint.py grow art/zones/<zone> <from> <up\|down> <new>` · sideways `grow_stage.py` | `tmp/zones/<zone>/grow/` |
-| 3 | Join, settle | `world_paint.py join … --only left-right --row N` · `world_paint.py settle … --row N` | `tmp/zones/<zone>/join/` |
+| 3 | Join, settle | `world_paint.py join … --only left-right --row N` · `world_paint.py settle … --row N [--up]` · two different rooms: `join … --pair a,b --half 560,48 --brief "the passage"` | `tmp/zones/<zone>/join/` |
 | – | Feature | `world_paint.py feature … <id> --box x0,y0,x1,y1 --brief "…"` (refuses a window the model left empty) | `tmp/zones/<zone>/join/` |
 | 4 | Gate | `world_paint.py accept …` then `python scripts/world_gate.py art/zones/<zone>` (exit 1 on any FAIL) | `images/`, `previews/gate.json` |
 | 5 | Depth | `depth_layers.py key / masks / fill` per chunk (as below) | `layers/`, `masks/`, `fills/` |
 | 6 | Anomaly | tears in `world.json` → `world_preview.draw_tears` (the game ports it) | fx |
-| 7 | Collision | `collision_check.py` | – |
+| 7 | Collision | traced from the chunk's depth key (`depth_layers.py key`): floors along the play band's tops, ladders where its rungs flip, the water on top as no-go – `scripts/zones/<zone>_proof.py` writes `collision/`, then `world_map.check` (every surface reachable and leavable) | `collision/` |
 | 8 | Previews | `python scripts/world_preview.py map art/zones/<zone> --state anomaly --grid` · `… concept …` | `previews/` |
 
-**Proven on the Hidden Garden (24 Oct, `art/zones/hidden-garden/`):** the shipped prologue row (`hg-2-0` … `hg-4-0`, composed from its plates without the near strip and the lens) on top, and grown under it, one row deeper: the garden cellar under the shed (the first archive note), the campus storm drain under the boardwalk (the game's *IT* room: the mascot, the water, the drain) and, under the jetty, the wrong reflection – girders hanging upside down from the water. 3 × 2 chunks, 8 image calls; the gate passes on all six; `previews/vs-concept.png` sits next to the concept.
+**Proven on the Hidden Garden (24 Oct, `art/zones/hidden-garden/`):** the shipped prologue row (`hg-2-0` … `hg-4-0`, composed from its plates without the near strip and the lens) on top, and grown under it, one row deeper: the garden cellar under the shed (the first archive note), the campus storm drain under the boardwalk (the game's *IT* room: the mascot, the water, the drain) and, under the jetty, the wrong reflection – girders hanging upside down from the water. 3 × 2 chunks, 8 image calls; the gate passes on all six; `previews/vs-concept.png` sits next to the concept. The grid is 3 × 3 since: `world.json`, the blockout of the band above and collision for all nine chunks (`previews/map-anomaly-collision.png`); the underground's collision is traced from its painting, and the whole grid is reachable and leavable both ways.
 
 What the proof taught (rules now):
 
@@ -70,7 +70,10 @@ What the proof taught (rules now):
 - **Up/down seams are texture, not colour:** after joining, `settle` fades each lower chunk into the exact bottom row of the one above (48 rows) – the gate's seam check failed at 29 until it did.
 - **Measure a band against its own concept:** an underground chunk is checked against the anomaly concept (the only one with an underground), not the sunny clean one.
 - **Small story details are props, not repaints:** asked for eyes in a drain pipe, the model painted the pipe out. Details that should blink, appear or vanish (the eyes, the balloon, the paper boat) go to the sprite pipeline.
-- **Not done yet:** the band above the pond (girders, the torn sky route), depth layers for the grown chunks, their collision and the clean ⇄ anomaly swap of the lower row.
+- **Collision comes from the painting, not the guide:** the model moves floors and ladders a little (the cellar's water ceiling came out at y 85, the guide said 210), so the grown chunks' floors and ladders are traced from their depth key. A ladder pieced across a seam must keep the same columns, or `world_map` sees two ladders.
+- **Two different rooms meet through a passage:** a plain join left the drain → reflection seam abrupt. A wider window with a brief paints the breach; lean it into the chunk with palette room (`--half 560,48`) – the reflection sits at 0.547 of 0.55 and any repaint near it fails.
+- **A band grows from what reaches it:** "no trees" in the sky brief cut the big tree's crown flat at the seam; the brief says what continues up from below.
+- **Not done yet:** the band above the pond is grown (`tmp/zones/hidden-garden/`) but not accepted: one join painted a landscape patch into the sky, and the gate's palette, grain and repeat checks compare a sky chunk with the whole concept (whose sky is pale, the shipped row's saturated) – which reference a sky band is measured against is Alexander's call. The ladder from the shed roof up has no art in the level row's sky yet. Depth masks for the grown chunks wait for a better key (the cellar's dark rooms came out as water). The clean ⇄ anomaly swap of the lower row.
 
 ## Growing a stage in four directions
 
