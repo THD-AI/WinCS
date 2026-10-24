@@ -89,7 +89,8 @@ describe('Dexter leading the first quest', () => {
       if (hero.x < dexter.x - 90) hero.x += 153 * 0.016;
       const view = dexter.update(16, hero);
       expect(Number.isFinite(view.x) && Number.isFinite(view.y)).toBe(true);
-      if (dexter.state === 'wait' || dexter.state === 'point') seen.add(dexter.stop?.id ?? 'end');
+      const at = dexter.stop && Math.abs(dexter.stop.x - dexter.x) < 1;
+      if (at && (dexter.state === 'wait' || dexter.state === 'point')) seen.add(dexter.stop!.id);
       if (dexter.state === 'point') pointed.add(dexter.stop!.id);
       if (dexter.airborne && !wasAir) hops++;
       wasAir = dexter.airborne;

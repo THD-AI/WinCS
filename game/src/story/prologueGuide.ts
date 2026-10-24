@@ -110,6 +110,8 @@ export class DexterGuide {
         if (hero.x >= this.setup.wakeX) this.hopOff();
         break;
       case 'hop-off':
+        // Off the bench he looks back first; the first stop is still ahead.
+        this.looking = true;
         this.enter('wait', GUIDE.firstWait);
         break;
       case 'wait':
