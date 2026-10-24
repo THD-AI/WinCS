@@ -58,7 +58,7 @@ Frame lists approved as they are (A14).
 | --- | --- | --- |
 | Rusty Creek | 3 chunks × 7 layers, clean + anomaly states, route graph | ✅ art · ⬜ collision · ⬜ foreground-blur + particle layers |
 | Stage concepts (6 regions × clean/anomaly) | 2176×1088 concepts with up/down routes ([art/locations](../art/locations/README.md)) | 🟡 in review |
-| Hidden Garden (prologue) | 1 chunk `hg-0-0` ([art/stages/hidden-garden](../art/stages/hidden-garden/README.md)): bench, path, jetty, the wrong reflection; layers 03/04/05/07. A second chunk waits for seam repair | 🟡 in review · ⬜ collision |
+| Hidden Garden (prologue) | 5 chunks `hg-0-0`…`hg-4-0` ([art/stages/hidden-garden](../art/stages/hidden-garden/README.md)): the gate and Dexter's bench, the hill and its hollow, the terraces and the shed, the boardwalk gap, the pond with the wrong reflection; layers 00–07 with parallax (#142, #50) | 🟡 in review · 🟡 collision traced, waypoints by hand |
 | Jenny's arena | right chunk of Rusty Creek (boss clearing) | ✅ art · ⬜ collision |
 
 ## Audio (synthesized in code)

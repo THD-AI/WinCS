@@ -9,11 +9,43 @@
   [
    [
     0,
-    441
+    466
    ],
    [
-    1323,
-    441
+    240,
+    452
+   ],
+   [
+    440,
+    470
+   ],
+   [
+    652,
+    470
+   ],
+   [
+    700,
+    431
+   ],
+   [
+    960,
+    431
+   ],
+   [
+    1008,
+    470
+   ],
+   [
+    1550,
+    474
+   ],
+   [
+    1736,
+    386
+   ],
+   [
+    2160,
+    384
    ]
   ]
  ],
@@ -26,83 +58,50 @@
    "y": 0,
    "w": 8,
    "h": 720
-  },
-  {
-   "x": 1326,
-   "y": 300,
-   "w": 24,
-   "h": 141
   }
  ],
  "noGo": [
   {
    "x": 0,
-   "y": 478,
+   "y": 482,
    "w": 2160,
-   "h": 242
+   "h": 238
   }
  ],
  "hazard": [],
  "interact": [
   {
-   "id": "pond-edge",
-   "kind": "anomaly",
-   "x": 1250,
-   "y": 365,
-   "w": 70,
-   "h": 76,
-   "note": "Dexter points at the ground here, then shoves the hero into the pond (M3-S3 #50, M3-S4 #51)"
-  },
-  {
-   "id": "to-rusty-creek",
-   "kind": "chunk-exit",
-   "x": 1250,
-   "y": 365,
-   "w": 70,
-   "h": 76,
-   "note": "the crossing: after the shove the hero lands in clean Rusty Creek (rc-0-0)"
-  },
-  {
    "id": "dexter-waypoint-1",
    "kind": "dexter-waypoint",
-   "x": 215,
-   "y": 365,
+   "x": 760,
+   "y": 355,
    "w": 80,
    "h": 76,
-   "note": "the bench: Dexter waits here; walking up makes him hop off"
+   "note": "the bench: walking up makes Dexter hop off and waddle ahead"
   },
   {
    "id": "dexter-waypoint-2",
    "kind": "dexter-waypoint",
-   "x": 680,
-   "y": 365,
+   "x": 1500,
+   "y": 398,
    "w": 80,
    "h": 76,
-   "note": "mid-path: Dexter hops ahead and beckons"
-  },
-  {
-   "id": "dexter-waypoint-3",
-   "kind": "dexter-waypoint",
-   "x": 1150,
-   "y": 365,
-   "w": 80,
-   "h": 76,
-   "note": "the jetty: Dexter stops and points at the water"
+   "note": "at the fallen birch: Dexter hops onto it and looks back"
   }
  ],
  "spawn": [
   {
    "id": "player",
    "kind": "player",
-   "x": 90,
-   "y": 441
+   "x": 120,
+   "y": 460
   },
   {
    "id": "dexter-bench",
    "kind": "dexter",
-   "x": 255,
-   "y": 421,
-   "note": "Dexter sits on the bench at the start"
+   "x": 800,
+   "y": 405,
+   "note": "Dexter sits on the bench at the start (#50)"
   }
  ],
  "ledge": [],

@@ -41,6 +41,52 @@ What Codex's runs proved on Rusty Creek, generalised:
 6. **Transition chunks** join different spaces – surface to underground, outside to the Mensa inside. They are generated with *both* neighbours as context and blend the two layer stacks over their height.
 7. **Clean and anomaly share everything they can.** The anomaly state replaces only the layers that change (on Rusty Creek, only the structure layers). Masters are rebuilt from the plates and verified pixel-exact (`creek_layers.py`).
 
+## Growing a region chunk by chunk – grow, feature, join, trace
+
+`scripts/grow_stage.py` makes a region longer from an approved chunk, one 2160×720 chunk at a time, so a level is one continuous place instead of separate pictures ([#50](https://github.com/THD-AI/WinCS/issues/50), first used on the Hidden Garden prologue).
+
+```mermaid
+flowchart TD
+  A["Approved chunk<br/>(the pond, hg-4-0)"] --> G1["grow, piece 1<br/>2160×720 canvas: 1440 px to paint<br/>over the layout guide + 720 px of the neighbour"]
+  G1 --> G2["grow, piece 2<br/>720 px more + 128 px over piece 1<br/>→ min-error cut joins them"]
+  G2 --> M["match the seam's colours to the neighbour<br/>(ramp over 160 px, shapes untouched)"]
+  M --> N{"next chunk?"}
+  N -->|yes| G1
+  N -->|no| J["join: repaint 320 px across each<br/>new–new seam, min-error cuts on both sides"]
+  J --> F["feature: one masked repaint per route feature<br/>(the gap, the hill, the shed and ladder, the gate, the log)<br/>+ 64 px margins, min-error cuts"]
+  F --> K["depth_layers.py key → masks → fill<br/>(parallax, as below)"]
+  K --> C["depth_layers.py collision<br/>walk lines traced from the key's play band<br/>(RDP, split at steps > 8 px), water = no-go"]
+  C --> CC["collision_check.py: reach, joins, overlay<br/>→ hand-placed spawns, Dexter waypoints, triggers"]
+```
+
+**What made it work** (24 Oct, the boardwalk chunk took five tries):
+
+| Tried | Happened | Rule now |
+| --- | --- | --- |
+| One canvas wider than 3:1 | The API refuses: at most 3:1 | Every call is 2160×720 |
+| A wider canvas padded with sky to 3:1 | The model reframed it and moved the whole picture 60–90 px; the path came out 47 px too high | Never pad; grow in two pieces of 1440 + 720 px |
+| The neighbour's band pasted back over a single painted canvas | A hard seam (colour step 45 against 8 inside the art) | Seam colours matched over a ramp; pieces overlap 128 px and join along a min-error cut |
+| The route as numbers in the brief, or as a separate guide image | Ignored: a stone bridge instead of a gap | The guide is the image being edited, under the mask |
+| The route's features in the same call as the scenery | Smoothed away: the path stays flat and continuous | Grow the scenery first, then one `feature` repaint per feature, with a short concrete brief |
+
+## Parallax layers from a depth key
+
+Painted chunks are one picture. To give them depth without hand masks or redrawing each layer (which drifts), the model repaints the finished chunk as a **depth key**: the same shapes, one flat colour per depth band. The masks come from that key, and a second pass paints what each slow layer has behind the faster ones ([#142](https://github.com/THD-AI/WinCS/issues/142), first used on the Hidden Garden).
+
+```mermaid
+flowchart LR
+  A["Composed chunk<br/>images/&lt;chunk&gt;.png"] --> K["depth_layers.py key<br/>sunburst repaints it:<br/>sky cyan · far blue · mid green<br/>rear yellow · play red<br/>water navy · foreground magenta"]
+  K --> M["depth_layers.py masks<br/>snap to the 7 colours · vote specks away<br/>sky edge decided by the real pixel<br/>→ masks/&lt;chunk&gt;.00-sky / 01-far / 02-mid"]
+  M --> S["split_layers.py<br/>masks first, then the exact rules<br/>for path, water, foreground<br/>every pixel in one layer"]
+  S --> F["depth_layers.py fill<br/>mask = nearer layers below the skyline<br/>the model paints only that layer<br/>→ layers/&lt;chunk&gt;.0x.filled.png"]
+  F --> E["export.json · scroll 0.1 / 0.25 / 0.6 / 1.0 / 1.2"]
+  E --> V["export_stage.py --verify (exact at rest)<br/>compare.py parallax (three camera positions)"]
+```
+
+- **The key only says which band, never which pixel.** It drifts a few pixels at fine edges, so near the sky the real pixel decides: open sky is ≈ (40–60, 120–140, 240) and hazy far treetops ≈ (80, 120, 180), so "sky" means blue above 200. Path, water and foreground keep their exact rectangles and colour rules, which run after the masks and win.
+- **Fills never change the picture at rest.** A fill is kept only under the nearer layers, and the layer's own pixels are copied from the art, so `--verify` still rebuilds the chunk exactly. The camera only ever reveals painted scenery.
+- **Several chunks: one plate per slow layer for the whole region.** Per chunk, plates at scroll *s* < 1 overlap by 2160 × (1 − *s*) and cut each other off with hard vertical edges; at *s* > 1 (the foreground) they spread apart and leave gaps. `depth_layers.py region` quilts each layer marked `"region": true` in `export.json` from the chunks' own plates (`"rest"`): chunk *i* at *i* × 2160 × *s*, each next plate taking over along a min-error path in a 192 px band and only where it has pixels; a foreground gap is filled with the earlier plate's edge mirrored. The first chunk carries the plate, so it lands at x = 0 under any placement rule, and `--verify` still rebuilds every chunk at rest from its own plates. The Hidden Garden's mid plate is 6992 px wide (8192 is the common WebGL limit).
+
 ## Prompting lessons (23 Oct, all runs)
 
 | What we tried | What happened | Rule now |

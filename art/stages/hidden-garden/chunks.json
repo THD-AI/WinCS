@@ -1,6 +1,14 @@
 {
   "region": "hidden-garden",
   "note": "Chunk ids are grid positions (column-row); art names the plate each state is drawn on.",
-  "chunks": {"hg-0-0": "hg-0-0"},
-  "art": {"clean": "images/{chunk}.png"}
+  "chunks": {
+    "hg-0-0": "hg-0-0",
+    "hg-1-0": "hg-1-0",
+    "hg-2-0": "hg-2-0",
+    "hg-3-0": "hg-3-0",
+    "hg-4-0": "hg-4-0"
+  },
+  "art": {
+    "clean": "images/{chunk}.png"
+  }
 }
