@@ -5,8 +5,9 @@
  *   0 – 99      stage layers z 0–5, in manifest list order (the list order is the alpha composition)
  *   90          leaves falling behind the actors
  *   99 – 110    actors: props 99, hero 100, NPCs 101–105, actor FX up to 110
+ *   120 – 149   stage layers z 6 (near): the grass strip in front of the trail, over the actors' feet
  *   150         leaves falling in front of the hero, behind the foreground plants
- *   200 – 299   stage layers z 6–7 (foreground) – they pass over the hero
+ *   200 – 299   stage layers z 7 (foreground) – they pass over the hero
  *   1000+       screen FX and HUD
  */
 export const PROP_DEPTH = 99;
@@ -15,10 +16,14 @@ export const NPC_DEPTH = { min: 101, max: 105 } as const;
 export const ACTOR_FX_DEPTH = 110;
 export const LEAVES_BEHIND_DEPTH = 90;
 export const LEAVES_FRONT_DEPTH = 150;
+/** The near strip (z 6): grass and plants in front of the trail that cover the hero's and NPCs' feet. */
+export const NEAR_DEPTH = 120;
 export const FOREGROUND_DEPTH = 200;
 export const SCREEN_FX_DEPTH = 1000;
-/** Layers with z at or above this are foreground: drawn over the actors and slightly out of focus. */
+/** Layers with z at or above this are drawn over the actors (z 6 the near strip, z 7 the foreground). */
 export const FOREGROUND_Z = 6;
+/** Layers with z at or above this are the out-of-focus foreground, over the falling leaves. */
+export const FAR_FOREGROUND_Z = 7;
 /** Room for list positions inside a band. */
 const BAND = 90;
 
@@ -29,7 +34,7 @@ export const isForeground = (z: number) => z >= FOREGROUND_Z;
  */
 export function layerDepth(z: number, rank: number): number {
   if (!Number.isInteger(rank) || rank < 0 || rank >= BAND) throw new Error(`Layer rank ${rank} outside its depth band`);
-  return (isForeground(z) ? FOREGROUND_DEPTH : 0) + rank;
+  return (z >= FAR_FOREGROUND_Z ? FOREGROUND_DEPTH : isForeground(z) ? NEAR_DEPTH : 0) + rank;
 }
 
 /**

@@ -28,7 +28,8 @@
       "z": 0,
       "scroll": 0.1,
       "region": true,
-      "rest": "tmp/boards/hidden-garden/filled/{name}.00-sky.filled.png"
+      "rest": "tmp/boards/hidden-garden/filled/{name}.00-sky.filled.png",
+      "blend": 480
     },
     "01-far": {
       "file": "layers/hidden-garden.01-far.{tile}.png",
@@ -60,6 +61,11 @@
       "z": 5,
       "scroll": 1.0
     },
+    "06-near": {
+      "file": "layers/{name}.06-near.png",
+      "z": 6,
+      "scroll": 1.0
+    },
     "07-foreground": {
       "file": "layers/hidden-garden.07-foreground.{tile}.png",
       "z": 7,
@@ -76,6 +82,7 @@
       "03-rear",
       "04-water",
       "05-play",
+      "06-near",
       "07-foreground"
     ]
   },

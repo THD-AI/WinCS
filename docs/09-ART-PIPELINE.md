@@ -87,6 +87,24 @@ flowchart LR
 - **Fills never change the picture at rest.** A fill is kept only under the nearer layers, and the layer's own pixels are copied from the art, so `--verify` still rebuilds the chunk exactly. The camera only ever reveals painted scenery.
 - **Several chunks: one plate per slow layer for the whole region.** Per chunk, plates at scroll *s* < 1 overlap by 2160 × (1 − *s*) and cut each other off with hard vertical edges; at *s* > 1 (the foreground) they spread apart and leave gaps. `depth_layers.py region` quilts each layer marked `"region": true` in `export.json` from the chunks' own plates (`"rest"`): chunk *i* at *i* × 2160 × *s*, each next plate taking over along a min-error path in a 192 px band and only where it has pixels; a foreground gap is filled with the earlier plate's edge mirrored. The first chunk carries the plate, so it lands at x = 0 under any placement rule, and `--verify` still rebuilds every chunk at rest from its own plates. The Hidden Garden's mid plate is 6992 px wide, in four 2160 px tiles. Rusty Creek's distance (0.2), rails (1.1) and foliage (1.15) are quilted the same way ([#150](https://github.com/THD-AI/WinCS/issues/150)); shared plates ("= left") resolve through its aliases. `python scripts/compare.py parallax art/stages/<region>` shows any region as the game draws it.
 
+### Every plate complete – the hot dog (docs/15 P2, P3)
+
+Masked and moved, a cut-out shows: holes where a nearer layer stood, a canopy that ends in a straight line, a mid plate that stops in steps. Alexander's playtest (24 Oct) asked for every layer **rendered complete**, stacked like a hot dog from the far background to the blurred leaves at the lens, with grass in front of the trail that covers the feet. The steps after `masks` and `split`:
+
+```mermaid
+flowchart TB
+  C["clear: hanging canopy pieces<br/>(rear touching the top, ending above 320 px)<br/>painted out; sky / far / mid masks updated"] --> N["near: magenta band along the walk line<br/>(collision walk, longest line per column)<br/>model paints grass tufts, the key is dropped<br/>→ masks/&lt;chunk&gt;.06-near.png, art updated"]
+  N --> U["under: rear, water, path painted behind<br/>the foreground (model) and the near strip (old art)<br/>column continuation picks the band<br/>→ fills/&lt;chunk&gt;.&lt;layer&gt;.png"]
+  U --> P["complete: far and mid painted under EVERY<br/>nearer pixel down to the bottom, skyline drawn<br/>by the model, its sky dropped<br/>→ tmp/…/filled/ (region sources)"]
+  P --> S["split_layers.py: a fill goes into its layer<br/>only where a nearer layer owns the pixel<br/>→ still exact at rest"]
+  S --> R["region: far / mid quilted on a min-error seam,<br/>the sky cross-faded (blend 480 px)"]
+```
+
+- **Bands, back to front** (z · scroll): sky 0 · 0.1 → far forest 1 · 0.25 → mid trees 2 · 0.6 → rear (reeds, walls, sheds, big trees) 3 · 1 → water and its reflections 4 · 1 → the trail 5 · 1 → **near strip** 6 · 1 (over the actors, `NEAR_DEPTH` 120 in `depth.ts`) → foreground leaves 7 · 1.2 (blurred, `FOREGROUND_DEPTH` 200). The trail's geometry never moves, so its collision stays valid.
+- **A fill never shows at rest.** It lives under nearer pixels only; `split_layers.py --check` and `export_stage.py --verify` still rebuild every chunk exactly. Fills are committed (`fills/`), their paintings stay in `tmp/boards/<region>/` (`--reuse` cuts again without the API).
+- **The model leaves big holes white sometimes** (four of fifteen complete paintings): white counts as sky and is dropped, so check how deep the painting reaches before trusting it; a far plate only needs to reach below the mid skyline.
+- **Magenta key for new plants.** Asked to paint grass on the art directly, the model repaints the whole band and nothing is separable; on flat magenta it keeps the key, and tinted edge pixels take the colour of the nearest clean plant pixel.
+
 ## Prompting lessons (23 Oct, all runs)
 
 | What we tried | What happened | Rule now |
