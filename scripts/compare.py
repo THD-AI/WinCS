@@ -9,8 +9,9 @@
         --atlas-dir tmp/atlas reads a review export instead of the game's atlases
 
     python scripts/compare.py parallax art/stages/hidden-garden --state clean --at 0 440 880 --out …
-        the region's layers from export.json, drawn as the game draws them at each camera x (a layer at
-        scroll s sits at chunk.x * 2160 * s and moves s px per camera px), one 1280x720 view per row
+        the region's layers from export.json, drawn as the game draws them at each camera x (a layer sits
+        at its chunk's origin and moves s px per camera px; a region plate's tile j rides on chunk j),
+        one 1280x720 view per row
 
 Paths are relative to the repository. Images and crops are in their own pixels; `--width` sets the common width.
 """
@@ -120,11 +121,14 @@ def parallax(region: Path, state: str, cameras: list[int]) -> Image.Image:
         for layer_id in config["states"][state]:
             layer = config["layers"][layer_id]
             for name, chunk in config["chunks"].items():
-                path = region / layer["file"].format(name=chunk.get("name", name))
+                path = region / (layer["file"].format(tile=chunk["x"]) if layer.get("region")
+                                 else layer["file"].format(name=chunk.get("name", name)))
                 if not path.exists():
                     continue
                 s = layer["scroll"]
-                x = round(chunk["x"] * w * s - cam * s)
+                x = round(chunk["x"] * w - cam * s)  # the game: a layer at its chunk's origin, moving at its scroll
+                if x <= -w or x >= VIEW[0]:  # wholly off the view
+                    continue
                 plate = Image.open(path).convert("RGBA")
                 if x < 0:  # alpha_composite needs a non-negative destination: crop the plate instead
                     plate, x = plate.crop((-x, 0, plate.width, plate.height)), 0

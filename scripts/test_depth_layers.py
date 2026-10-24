@@ -56,6 +56,49 @@ class DepthLayerTests(unittest.TestCase):
         self.assertEqual(dl.skyline(own, 8, 5, smooth=0), [5, 5, 1, 1, 3, 3, 5, 5])  # no plate past the ends
         self.assertEqual(dl.skyline(own, 8, 5, smooth=1)[4], 1)
 
+    def test_walk_lines_turn_a_small_step_into_a_ramp_and_split_at_a_cliff(self):
+        # 90 wide, 80 tall: floor y=60 for x<30, a 10 px step up to y=50 until x=60, a 30 px cliff up to y=20.
+        w, h = 90, 80
+        bands = ["sky"] * (w * h)
+        for x in range(w):
+            top = 60 if x < 30 else 50 if x < 60 else 20
+            for y in range(top, h):
+                bands[y * w + x] = "play"
+        lines = dl.walk_lines(bands, w, h, step=12, shortest=10)
+        self.assertEqual(len(lines), 2)
+        first = lines[0]
+        self.assertEqual((first[0], first[-1]), ([0, 60], [60, 50]))
+        self.assertEqual(first, [[0, 60], [23, 60], [36, 50], [60, 50]])  # the step became a ramp, ~38°
+        self.assertEqual(lines[1], [[60, 20], [90, 20]])
+
+    def test_walk_lines_find_a_hollow_under_the_path(self):
+        # The path at y=10 across, and a hollow floor at y=30 under x=20..40 (sky between).
+        w, h = 60, 40
+        bands = ["play"] * (w * h)
+        for x in range(w):
+            for y in range(10):
+                bands[y * w + x] = "sky"
+        for x in range(20, 40):
+            for y in range(20, 30):
+                bands[y * w + x] = "rear"
+        self.assertEqual(dl.walk_lines(bands, w, h, step=5, shortest=10), [[[0, 10], [60, 10]]])  # top only
+        lines = dl.walk_lines(bands, w, h, step=5, shortest=10, every=True)
+        self.assertIn([[0, 10], [60, 10]], lines)
+        self.assertIn([[20, 30], [40, 30]], lines)
+
+    def test_rdp_keeps_corners_only(self):
+        pts = [(x, 10) for x in range(10)] + [(10 + x, 10 - x) for x in range(10)]
+        self.assertEqual(dl.rdp(pts, 1.0), [(0, 10), (10, 10), (19, 1)])
+
+    def test_region_plate_places_each_chunk_at_its_scroll_offset(self):
+        # Two 100x4 plates at scroll 0.5: the strip is 150 wide, the second plate starts at 50.
+        a = Image.new("RGBA", (100, 4), (255, 0, 0, 255))
+        b = Image.new("RGBA", (100, 4), (0, 0, 255, 255))
+        strip = dl.region_plate([a, b], 0.5, window=20)
+        self.assertEqual(strip.size, (150, 4))
+        self.assertEqual(strip.getpixel((10, 1)), (255, 0, 0, 255))   # chunk 0 at rest
+        self.assertEqual(strip.getpixel((140, 1)), (0, 0, 255, 255))  # chunk 1 past the window
+
     def test_masks_are_written_for_the_parallax_bands_only(self):
         with tempfile.TemporaryDirectory() as tmp:
             region = Path(tmp)

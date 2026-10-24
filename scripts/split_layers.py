@@ -35,6 +35,11 @@ ROOT = Path(__file__).resolve().parents[1]
 LAYERS = ("00-sky", "01-far", "02-mid", "03-rear", "04-water", "05-play", "06-near", "07-foreground")
 
 
+def filled(path: Path) -> bool:
+    """depth_layers.py's parallax plates (<chunk>.<layer>.filled.png) live next to the split; never ours to remove."""
+    return path.name.endswith(".filled.png")
+
+
 class SplitError(Exception):
     """The config or the files on disk do not add up; the message says where."""
 
@@ -143,7 +148,7 @@ def run(region: Path, check: bool) -> list[str]:
             raise SplitError(f"{chunk_id}: its states have different sizes {sizes}")
         size = sizes.pop()
         if check:
-            on_disk = sorted(p.name for p in (region / "layers").glob(f"{chunk_id}.*.png"))
+            on_disk = sorted(p.name for p in (region / "layers").glob(f"{chunk_id}.*.png") if not filled(p))
             for state, source in sources.items():
                 if not same(stack(load(region, chunk_id, state, on_disk), size), source):
                     raise SplitError(f"{chunk_id}.{state}: the committed layers no longer rebuild "
@@ -160,7 +165,7 @@ def run(region: Path, check: bool) -> list[str]:
         out = region / "layers"
         out.mkdir(exist_ok=True)
         for old in out.glob(f"{chunk_id}.*.png"):
-            if old.name not in files:
+            if old.name not in files and not filled(old):
                 old.unlink()
         for name, image in files.items():
             image.save(out / name, optimize=True)
