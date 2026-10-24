@@ -29,6 +29,16 @@ export const REV_SECONDS = 1;
  * but a tell, so the second charge is never a surprise.
  */
 export const TURN_REV_SECONDS = 0.5;
+/**
+ * The first rev when the fight starts (playtest 24 Oct: she crashed into you at once): long enough to see the tell,
+ * read her path and get out of it – jump, or stand behind her. She faces the hero, wherever he came in.
+ */
+export const INTRO_REV_SECONDS = 2.2;
+/**
+ * After her charge hits, the hero cannot be hurt again for this long (s): the throw, her crash and the parts it
+ * sheds are one hit, never a chain. With CHARGE_DAMAGE 2 of 5 cells, one Jenny hit costs at most 40 %.
+ */
+export const RAM_GRACE = 2;
 /** The last seconds of a stun: the hazard light blinks faster, so you know to back off before she reboots. */
 export const STUN_WARNING = 0.7;
 /** After her charge hits the hero she brakes this long, at this share of her speed, so the impact reads (P8). */
@@ -82,6 +92,10 @@ export class JennyFight {
     if (this.phase !== 'rev') return 0;
     return Math.round(Math.sin(this.elapsed * 70) * (1 + 2 * Math.min(1, this.elapsed / this.revFor)));
   }
+  /** Where the current rev or charge will stop: her centre at the wall she is facing (the path to show in the tell). */
+  get target(): number { return this.facing < 0 ? this.arena.left + JENNY_BOX.w / 2 : this.arena.right - JENNY_BOX.w / 2; }
+  /** Whether the hero at `x` (feet at `y`) is inside her arena, on or above its floor. */
+  inArena(x: number, y: number): boolean { return x > this.arena.left && x < this.arena.right && y <= this.arena.floor + 4 && y > this.arena.floor - 260; }
   /** Seconds of the current stun left (0 outside it). */
   get stunLeft(): number { return this.phase === 'stunned' ? Math.max(0, STUN[this.stage] - this.elapsed) : 0; }
   /** Her charge hit the hero: she brakes for a moment, so the impact reads instead of driving through. */
@@ -109,8 +123,11 @@ export class JennyFight {
     }
   }
 
-  start(): void {
-    if (this.phase === 'waiting') this.enter('rev', REV_SECONDS);
+  /** Begin the fight: the long intro rev, facing the hero (at `heroX`) whichever side he came in from. */
+  start(heroX?: number): void {
+    if (this.phase !== 'waiting') return;
+    if (heroX !== undefined) this.facing = heroX < this.x ? -1 : 1;
+    this.enter('rev', INTRO_REV_SECONDS);
   }
 
   /** Back to the start of the fight (the hero died). A beaten Jenny stays beaten. */
