@@ -63,6 +63,11 @@ export class SurfaceMap {
     this.size = [w, h];
   }
   private size: [number, number];
+  /** A material by name (the pond's `water` splash), or null when the region has none. */
+  named(name: string): Surface | null {
+    const material = this.data?.materials[name];
+    return material ? { name, material } : null;
+  }
   at(x: number, y: number): Surface {
     if (!this.data) return FALLBACK;
     const chunk = this.chunks.find(c => x >= c.x && x < c.x + this.size[0] && y >= c.y && y < c.y + this.size[1]);

@@ -12,13 +12,13 @@
     392
    ],
    [
-    160,
+    177,
     392
    ]
   ],
   [
    [
-    160,
+    177,
     441
    ],
    [
@@ -35,7 +35,9 @@
    "x": 1326,
    "y": 300,
    "w": 24,
-   "h": 141
+   "h": 141,
+   "kind": "wall",
+   "note": "the pier's end post"
   }
  ],
  "noGo": [
@@ -43,7 +45,9 @@
    "x": 0,
    "y": 478,
    "w": 2160,
-   "h": 242
+   "h": 242,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
   }
  ],
  "hazard": [],
@@ -99,5 +103,34 @@
  ],
  "spawn": [],
  "ledge": [],
- "glideLift": []
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    177
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top: drop to the pond walk"
+  },
+  {
+   "x": [
+    177,
+    1020
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "pond walk"
+  },
+  {
+   "x": [
+    1020,
+    1330
+   ],
+   "kind": "plank",
+   "material": "wood",
+   "note": "pier"
+  }
+ ]
 }

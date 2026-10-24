@@ -12,98 +12,68 @@
     390
    ],
    [
-    294,
-    390
+    838,
+    391
    ]
   ],
   [
    [
-    362,
-    390
-   ],
-   [
-    577,
-    393
-   ],
-   [
-    627,
-    390
-   ],
-   [
-    832,
-    389
-   ]
-  ],
-  [
-   [
-    911,
-    462
-   ],
-   [
-    922,
-    459
-   ],
-   [
-    961,
-    458
-   ],
-   [
-    978,
-    461
-   ]
-  ],
-  [
-   [
-    1039,
-    468
-   ],
-   [
-    1044,
-    464
-   ],
-   [
-    1075,
-    461
-   ]
-  ],
-  [
-   [
-    1079,
-    393
-   ],
-   [
-    1224,
-    392
-   ],
-   [
-    1284,
-    440
-   ],
-   [
-    1332,
+    838,
     437
    ],
    [
-    1385,
-    393
-   ],
-   [
-    1818,
-    391
-   ],
-   [
-    1989,
-    392
+    866,
+    437
    ]
   ],
   [
    [
-    2027,
-    392
+    910,
+    459
+   ],
+   [
+    980,
+    459
+   ]
+  ],
+  [
+   [
+    1040,
+    462
+   ],
+   [
+    1077,
+    462
+   ]
+  ],
+  [
+   [
+    1077,
+    393
+   ],
+   [
+    1253,
+    393
+   ]
+  ],
+  [
+   [
+    1253,
+    438
+   ],
+   [
+    1360,
+    438
+   ]
+  ],
+  [
+   [
+    1360,
+    393
    ],
    [
     2160,
-    391
+    392
    ]
   ]
  ],
@@ -114,9 +84,11 @@
  "noGo": [
   {
    "x": 0,
-   "y": 482,
+   "y": 472,
    "w": 2160,
-   "h": 238
+   "h": 248,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
   }
  ],
  "hazard": [],
@@ -134,5 +106,70 @@
  ],
  "spawn": [],
  "ledge": [],
- "glideLift": []
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    838
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top"
+  },
+  {
+   "x": [
+    838,
+    866
+   ],
+   "kind": "ledge",
+   "material": "stone",
+   "note": "rubble at the broken wall end"
+  },
+  {
+   "x": [
+    910,
+    980
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "stepping stone"
+  },
+  {
+   "x": [
+    1040,
+    1077
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "stepping stone at the wall foot"
+  },
+  {
+   "x": [
+    1077,
+    1253
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top: a 69 px face, jump up from the stone"
+  },
+  {
+   "x": [
+    1253,
+    1360
+   ],
+   "kind": "ledge",
+   "material": "stone",
+   "note": "the broken section: drop in, hop out"
+  },
+  {
+   "x": [
+    1360,
+    2160
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top"
+  }
+ ]
 }

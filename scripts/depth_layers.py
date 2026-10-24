@@ -344,9 +344,11 @@ def collision(region: Path, chunk: str, art: Image.Image) -> Path:
         "solid": [], "noGo": [], "hazard": [], "interact": [], "spawn": [], "ledge": [], "glideLift": []}
     board = next((b for b in json.loads((region / "boards.json").read_text(encoding="utf-8"))["boards"]
                   if b["id"] == chunk), {})
-    data["walk"] = walk_lines(bands, w, h) + board.get("walkExtra", [])
+    if "terrain" not in data:  # a typed chunk was re-authored by hand from the art: its floors stay
+        data["walk"] = walk_lines(bands, w, h) + board.get("walkExtra", [])
     water = [y for y in range(h) for x in range(0, w, 8) if bands[y * w + x] == "water"]
-    data["noGo"] = [{"x": 0, "y": min(water), "w": w, "h": h - min(water)}] if water else []
+    # The pond is never floor (docs/04 terrain): a water no-go, which splashes and respawns at the bank.
+    data["noGo"] = [{"x": 0, "y": min(water), "w": w, "h": h - min(water), "kind": "water"}] if water else []
     path.write_text(json.dumps(data, separators=(", ", ": ")) + "\n", encoding="utf-8")
     return path
 
