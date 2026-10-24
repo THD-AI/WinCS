@@ -24,6 +24,13 @@ export const SPEED = [540, 600, 660];
 export const STALL_SECONDS = 1.2;
 /** Seconds of revving before a charge: the rev clip loops until then (docs/05: 1 s). The tell: she shakes and smokes. */
 export const REV_SECONDS = 1;
+/**
+ * Phase 2's turn at the wall: instead of reversing at once she stops and revs again this long – a shorter tell,
+ * but a tell, so the second charge is never a surprise.
+ */
+export const TURN_REV_SECONDS = 0.5;
+/** The last seconds of a stun: the hazard light blinks faster, so you know to back off before she reboots. */
+export const STUN_WARNING = 0.7;
 /** After her charge hits the hero she brakes this long, at this share of her speed, so the impact reads (P8). */
 export const BUMP_SECONDS = 0.25, BUMP_SPEED = 0.35;
 /** A part bounces (keeping this share of its fall speed), then lies on the floor as a hazard this long, blinking at the end. */
@@ -51,6 +58,8 @@ export class JennyFight {
   bump = 0;
   /** Phase 2's first charge turns at the wall instead of crashing. */
   private turnsLeft = 0;
+  /** How long the current rev lasts: the full tell, or the shorter one after a turn. */
+  private revFor = REV_SECONDS;
   private seed = 1;
 
   constructor(readonly arena: Arena, readonly spawnX: number, private clips: AnimationTable) {
@@ -71,8 +80,10 @@ export class JennyFight {
   /** The rev tell's shake in px (0 outside the rev), growing as the charge comes. */
   get shake(): number {
     if (this.phase !== 'rev') return 0;
-    return Math.round(Math.sin(this.elapsed * 70) * (1 + 2 * Math.min(1, this.elapsed / REV_SECONDS)));
+    return Math.round(Math.sin(this.elapsed * 70) * (1 + 2 * Math.min(1, this.elapsed / this.revFor)));
   }
+  /** Seconds of the current stun left (0 outside it). */
+  get stunLeft(): number { return this.phase === 'stunned' ? Math.max(0, STUN[this.stage] - this.elapsed) : 0; }
   /** Her charge hit the hero: she brakes for a moment, so the impact reads instead of driving through. */
   bumped(): void { if (this.phase === 'charge') this.bump = BUMP_SECONDS; }
 
@@ -99,14 +110,14 @@ export class JennyFight {
   }
 
   start(): void {
-    if (this.phase === 'waiting') this.enter('rev');
+    if (this.phase === 'waiting') this.enter('rev', REV_SECONDS);
   }
 
   /** Back to the start of the fight (the hero died). A beaten Jenny stays beaten. */
   reset(): void {
     if (this.phase === 'stall' || this.phase === 'gone') return;
     this.phase = 'waiting'; this.health = JENNY_HEALTH; this.facing = -1; this.x = this.spawnX;
-    this.elapsed = 0; this.parts = []; this.turnsLeft = 0; this.bump = 0;
+    this.elapsed = 0; this.parts = []; this.turnsLeft = 0; this.bump = 0; this.revFor = REV_SECONDS;
   }
 
   /** A chair hit travelling in `direction`. True if it did damage; false if the armoured nose took it. */
@@ -119,9 +130,21 @@ export class JennyFight {
     return true;
   }
 
-  /** Damage her body does to the hero on contact in this phase. */
+  /**
+   * Damage her body does on contact in this phase: only the charge hurts. Revving she stands still (the tell), and
+   * stunned, crashed or rebooting she is the thing you hit – standing next to her is never punished.
+   */
   get contactDamage(): number {
-    return this.phase === 'charge' ? CHARGE_DAMAGE : this.phase === 'rev' ? 1 : 0;
+    return this.phase === 'charge' ? CHARGE_DAMAGE : 0;
+  }
+
+  /**
+   * The damage of touching her with the hero's centre at `heroX`: her charge hurts with her front half, nose first.
+   * A hero behind her centre – left at the tail as she pulls away, or dropping onto her back after a jump – is
+   * not run over by a car driving away from him.
+   */
+  contactAt(heroX: number): number {
+    return (heroX - this.x) * this.facing >= 0 ? this.contactDamage : 0;
   }
 
   /** Advance; returns true exactly once, when the stall ends and she is beaten. */
@@ -132,14 +155,15 @@ export class JennyFight {
       const dt = Math.min(remaining, 1 / 120); remaining -= dt; this.elapsed += dt;
       this.stepParts(dt);
       switch (this.phase) {
-        case 'rev': if (this.elapsed >= REV_SECONDS) this.enter('charge'); break;
+        case 'rev': if (this.elapsed >= this.revFor) this.enter('charge'); break;
         case 'charge': {
           this.x += this.facing * SPEED[this.stage] * (this.bump > 0 ? BUMP_SPEED : 1) * dt;
           this.bump = Math.max(0, this.bump - dt);
           const wall = this.facing < 0 ? this.arena.left + JENNY_BOX.w / 2 : this.arena.right - JENNY_BOX.w / 2;
           if ((this.x - wall) * this.facing >= 0) {
             this.x = wall;
-            if (this.turnsLeft > 0) { this.turnsLeft--; this.facing = -this.facing as -1 | 1; this.elapsed = 0; }
+            // Phase 2 turns here: she stops, faces back and revs a shorter tell before the second charge.
+            if (this.turnsLeft > 0) { this.turnsLeft--; this.facing = -this.facing as -1 | 1; this.bump = 0; this.enter('rev', TURN_REV_SECONDS); }
             else { this.enter('crash'); this.shed(); }
           }
           break;
@@ -150,7 +174,7 @@ export class JennyFight {
           if (this.elapsed >= this.clip('reboot')) {
             this.facing = -this.facing as -1 | 1;
             this.turnsLeft = this.stage === 1 ? 1 : 0;
-            this.enter('rev');
+            this.enter('rev', REV_SECONDS);
           }
           break;
         case 'stall': if (this.elapsed >= STALL_SECONDS) { this.enter('gone'); beaten = true; } break;
@@ -159,7 +183,7 @@ export class JennyFight {
     return beaten;
   }
 
-  private enter(phase: JennyPhase): void { this.phase = phase; this.elapsed = 0; }
+  private enter(phase: JennyPhase, revFor = REV_SECONDS): void { this.phase = phase; this.elapsed = 0; this.revFor = revFor; }
 
   /** Parts fly back out of the crash in arcs: spring, bolt, wing shard … (debris-1…5); phase 2 adds a rolling wheel. */
   private shed(): void {

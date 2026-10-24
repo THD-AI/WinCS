@@ -3,7 +3,7 @@ vi.mock('phaser', () => ({ default: {} }));
 vi.mock('../fx/sound/Audio', () => ({ sound: { play: () => undefined } }));
 vi.mock('../stage/atmosphere/pipeline', () => ({ ACTOR_RIM: { colour: 0, strength: 0 }, addRim: () => false }));
 import { Life } from '../combat/life';
-import { arenaFrom, blinking, BUMP_SECONDS, JENNY_BOX, JennyFight, jumpable, PART_SECONDS, SPEED } from './jenny';
+import { arenaFrom, blinking, BUMP_SECONDS, CHARGE_DAMAGE, JENNY_BOX, JennyFight, jumpable, PART_SECONDS, SPEED, STUN_WARNING } from './jenny';
 import { ramKnock, THROW_UP } from './jennyBoss';
 
 const CLIPS = {
@@ -58,6 +58,32 @@ describe('Jenny reads (P8)', () => {
     expect(fight.tailX).toBe(5760 + JENNY_BOX.w / 2); // nose left, tail right
     until(fight, 'stunned');
     expect(fight.open).toBe('all');
+  });
+
+  it('hurts only with her charge, nose first: never while revving, stunned or pulling away from a hero at her tail', () => {
+    const fight = new JennyFight(arena, 5760, CLIPS);
+    fight.start();
+    expect(fight.contactAt(5700)).toBe(0); // revving at the nose: the tell, not a hit
+    until(fight, 'charge');
+    expect(fight.facing).toBe(-1);
+    expect(fight.contactAt(fight.x - 60)).toBe(CHARGE_DAMAGE); // in front of her nose
+    expect(fight.contactAt(fight.x + 60)).toBe(0); // at her tail as she drives away
+    until(fight, 'stunned');
+    expect(fight.contactAt(fight.x - 60)).toBe(0);
+    until(fight, 'reboot');
+    expect(fight.contactAt(fight.x)).toBe(0);
+  });
+
+  it('warns before a stun ends', () => {
+    const fight = new JennyFight(arena, 5760, CLIPS);
+    fight.start();
+    until(fight, 'stunned');
+    expect(fight.stunLeft).toBeGreaterThan(STUN_WARNING);
+    for (let i = 0; i < 2000 && fight.stunLeft >= STUN_WARNING; i++) fight.step(1 / 60);
+    expect(fight.phase).toBe('stunned');
+    expect(fight.stunLeft).toBeGreaterThan(0);
+    until(fight, 'reboot');
+    expect(fight.stunLeft).toBe(0);
   });
 
   it('sheds parts that bounce, then lie as hazards for a while and blink before they go', () => {
