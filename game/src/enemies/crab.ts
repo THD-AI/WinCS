@@ -9,7 +9,8 @@ import type { Rect } from '../combat/sweeps';
  * 0.6 s (the tell) and stabs forward. Four chair hits. Modelled on rover.ts; frames from enemy-crab.anims.json
  * (idle 4, walk 8, stab 5, collapse 5, all 12 fps).
  */
-export const CRAB_WIDTH = 44, CRAB_HEIGHT = 36, CRAB_HEALTH = 4;
+/** Its box is the walking body (walk-00…07 alpha bounds are ~60 x 36 px; the idle legs spread wider). */
+export const CRAB_WIDTH = 60, CRAB_HEIGHT = 36, CRAB_HEALTH = 4;
 export const CRAB_TELL = 0.6, CRAB_SPEED = WALK_SPEED / 3, CRAB_SPOT = 110;
 /** The stab reaches this far past its front (px) during the stab clip's middle frames. */
 export const STAB_REACH = 30;

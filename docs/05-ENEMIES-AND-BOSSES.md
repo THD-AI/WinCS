@@ -18,7 +18,7 @@ Every enemy is a real **autonomous** machine from THD – things that already dr
 | *In the game (P7):* | `enemies/rover.ts`, `crab.ts`, `drone.ts`, drawn by `rovers.ts` from the collision spawns | | | Rovers on the decks you walk (rc-0-0: rover-1, -4, -5; rc-1-0: rover-2, -3, -6; rc-2-0: rover-7); crab-1 on the high route, drone-1 over the low route | Crab and drone flash red and play their servo / hum during the tell | |
 | *Later:* Mutant plant | Toxic Garden | – | – | Stationary, spits sap | Mouth swells | Down-slam its head |
 
-All of them: contact damage 1 cell (never while knocked back by a hit or going down), white hit flash, 3–4 frame knockback, a small screen shake per landed hit and a scrap burst when they go down, and they stop dead and leak black fluid when defeated. Rovers and crabs idle 0.3 s at a patrol end before they turn. The rover's tell plays its motor revving up under the red lidar. A crab that spots you creeps in and rears up only once its stab would reach (62 px), instead of stabbing the air from its spot range.
+All of them: contact damage 1 cell (never while knocked back by a hit or going down), white hit flash, 3–4 frame knockback, a small screen shake per landed hit and a scrap burst when they go down, and they stop dead and leak black fluid when defeated. Rovers and crabs idle 0.3 s at a patrol end before they turn. The rover's tell plays its motor revving up under the red lidar. A crab that spots you creeps in and rears up only once its stab would reach (70 px), instead of stabbing the air from its spot range.
 
 ### Rover controller plan (#45)
 
