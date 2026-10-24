@@ -1,8 +1,8 @@
 id,workstream,item,acceptance,status,pr
-1.1,1 boot,Single loader,"Preload loads every atlas, stage, collision, atmosphere and surfaces once; no scene loads by itself; never stalls",todo,
-1.2,1 boot,Loading screen,"Art-directed, real progress bar, error state with retry",todo,
-1.3,1 boot,Menu,"DEGGSTER.EXE in the game's style over the garden art; Start / Credits; keyboard + pad",todo,
-1.4,1 boot,Fade into the garden,"Menu → garden without a black flash; music/ambience start",todo,
+1.1,1 boot,Single loader,"Preload loads every atlas, stage, collision, atmosphere and surfaces once; no scene loads by itself; never stalls",done,#167
+1.2,1 boot,Loading screen,"Art-directed, real progress bar, error state with retry",done,#167
+1.3,1 boot,Menu,"DEGGSTER.EXE in the game's style over the garden art; Start / Credits; keyboard + pad",done,#167
+1.4,1 boot,Fade into the garden,"Menu → garden without a black flash; music/ambience start",done,#167
 2.1,2 atmosphere,All layers drawn,"sky, far, mid region plates, rear, water, play, foreground in order and scroll",todo,
 2.2,2 atmosphere,Foreground blur + occlusion,"z 6–7 slightly blurred, drawn over the hero",todo,
 2.3,2 atmosphere,Wind sway,"grass, leaves, trees sway by depth with gusts; data in atmosphere.json",todo,
