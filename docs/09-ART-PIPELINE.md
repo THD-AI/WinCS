@@ -245,6 +245,36 @@ flowchart LR
 
 **Masks in one line each:** the mask is a PNG the size of the first input; transparent = may change, opaque = keep. It always comes from a board's own raw (never hand-painted), and protected pixels are re-pasted after the call.
 
+## Atmosphere – a stage that moves (atmosphere.json)
+
+The plates stay exactly as painted; `game/src/stage/render.ts` (`drawStage`) brings them to life from `art/stages/<region>/atmosphere.json`, which `export_stage.py` publishes next to `stage.json` (with every file in its `assets`). Nothing is placed by hand: each layer's anchors and waterline are read from its own alpha at load, the leaf colours from its own pixels.
+
+```mermaid
+flowchart LR
+  A["atmosphere.json<br/>wind · layers · leaves · water"] --> P["drawStage<br/>z 0–5 under the actors, z 6–7 over them<br/>(stage/depth.ts)"]
+  L["layer PNGs (alpha)"] --> X["analysis.ts<br/>anchor per column · waterline<br/>water points · autumn palette"]
+  X --> S["one WebGL pipeline<br/>sway (top moves, base still, stone stays)<br/>bob · DOF blur · ripple · shimmer · rim"]
+  P --> S
+  P --> F["leaves (fx-leaves) in front / behind<br/>pads · rings · sparkles (fx-water)<br/>hero reflection · anomaly-reveal"]
+```
+
+| Key | Meaning |
+| --- | --- |
+| `wind` | `base` steady sway share (0–1), `gust` extra lean (0–2), `gustSpeed` px/s, `gustLength` px between fronts, `frequency` Hz, `direction` −1 left / 1 right |
+| `defaults` | a layer without its own entry: `sway` × scroll² (nearer moves more), `reach`, `anchor`, `foliage`; foreground (z ≥ 6) also gets `bob`, `blur` |
+| `layers.<id>` | `sway` px at full weight · `reach` px from the anchor to full weight · `anchor` `"base"` (lowest opaque row per column: trees, foreground plants) or `"top"` (surface top: grass on the path) · `foliage` saturation under which pixels never move (stone, wood) · `bob` px vertical · `blur` px depth of field · `ripple` px · `shimmer` 0–1 (water) |
+| `leaves` | `palette` (`[]` = sampled from the art) · `fall` `"down"` / `"up"` · `front` / `behind`: `every` ms, `scale` [min, max], `scroll` parallax, `alpha`, `tint`; `null` turns one off. Uses the `fx-leaves` sheet, pixel leaves drawn in code without it |
+| `water` | `layer` id (waterline from its alpha) · `reflect` {`alpha`, `tint`} for actors (`null`: none) · `pads` per 1000 px · `padTint` · `padScale` · `ripples` / `sparkles` mean ms (0: none) · `wrong` {`image`, `alpha`}: the picture `anomaly-reveal` flickers in the pond |
+| `assets` | extra images in the region folder (published by the export, loaded with the stage) |
+| `states.<state>` | section-wise overrides for a state (the anomaly's leaves rise) |
+
+A bad field is reported in the console and replaced by its default; `{}` (no file) gives the defaults. The Hidden Garden's [atmosphere.json](../art/stages/hidden-garden/atmosphere.json); `wrong-reflection.png` there is a flipped, feathered crop of Rusty Creek's `after-center.png`.
+
+| | |
+| --- | --- |
+| ![Pond, layers ranked region-wide, ripples, pads, leaves](images/atmosphere/pond-after.png) | ![Terraces with the blurred foreground over the path](images/atmosphere/terraces-foreground.png) |
+| ![The water ripples and shimmers (3×)](images/atmosphere/pond-ripple-zoom.png) | ![anomaly-reveal: the maze in the pond](images/atmosphere/anomaly-reveal.png) |
+
 ## Commands
 
 ```bash
