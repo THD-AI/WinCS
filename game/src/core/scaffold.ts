@@ -8,6 +8,7 @@ import { Player } from '../player/player';
 import { cameraFollow } from '../stage/camera';
 import { ChairCombat } from '../combat/chair';
 import { CoffeePoints } from '../combat/coffee';
+import { ChairPickup } from '../combat/chairPickup';
 import { Rovers } from '../enemies/rovers';
 import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
@@ -64,6 +65,7 @@ export class Stage extends Phaser.Scene {
     };
     this.combat = new ChairCombat(this, this.player, data.manifest.region);
     this.coffee = new CoffeePoints(this, this.player, data.collisions);
+    new ChairPickup(this, this.player, this.combat, data.collisions);
     this.rovers = new Rovers(this, this.player, this.combat, data.collisions);
     this.triggers = new Triggers(data.collisions, data.manifest.region);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
