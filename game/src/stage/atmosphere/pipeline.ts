@@ -19,11 +19,13 @@ export interface LayerUniforms {
   /** world x of the layer's left edge (gust phase), anchor mode (0 base, 1 top) */
   place: Float32Array;
   profile: Float32Array;
+  /** rim colour rgb 0–1, strength 0–1: a 1 px inner outline that lifts a sprite off a dark background */
+  rim: Float32Array;
 }
 
 export const newUniforms = (): LayerUniforms => ({
   sway: new Float32Array(4), water: new Float32Array([-1, 0, 0, 0]), place: new Float32Array(2),
-  profile: new Float32Array(PROFILE_SIZE),
+  profile: new Float32Array(PROFILE_SIZE), rim: new Float32Array(4),
 });
 
 const FRAG = /* glsl */ `
@@ -44,6 +46,7 @@ uniform vec4 uWater;
 uniform vec4 uWind;
 uniform vec4 uWind2;
 uniform float uProfile[PROFILE];
+uniform vec4 uRim;
 
 varying vec2 outTexCoord;
 varying float outTintEffect;
@@ -121,6 +124,13 @@ void main () {
     }
   }
 
+  if (uRim.w > 0.0 && c.a > 0.5) {
+    float edge = step(texel(px + vec2(1.0, 0.0)).a, 0.5) + step(texel(px - vec2(1.0, 0.0)).a, 0.5)
+      + step(texel(px + vec2(0.0, 1.0)).a, 0.5) + step(texel(px - vec2(0.0, 1.0)).a, 0.5);
+    if (px.x < 1.0 || px.y < 1.0 || px.x > uSize.x - 1.0 || px.y > uSize.y - 1.0) edge += 1.0;
+    c.rgb = mix(c.rgb, uRim.rgb * c.a, uRim.w * min(edge, 1.0));
+  }
+
   vec4 tint = vec4(outTint.bgr * outTint.a, outTint.a);
   gl_FragColor = c * tint;
 }
@@ -157,6 +167,7 @@ export class LayerPipeline extends Phaser.Renderer.WebGL.Pipelines.SinglePipelin
     this.set4f('uWind', this.wind[0], this.wind[1], this.wind[2], this.wind[3]);
     this.set4f('uWind2', this.wind2[0], this.wind2[1], u.place[0], u.place[1]);
     this.set1fv('uProfile', u.profile);
+    this.set4f('uRim', u.rim[0], u.rim[1], u.rim[2], u.rim[3]);
   }
 }
 
@@ -172,4 +183,17 @@ export function layerPipeline(game: Phaser.Game): LayerPipeline | null {
 export function useLayerPipeline(object: Phaser.GameObjects.Image | Phaser.GameObjects.Sprite, uniforms: LayerUniforms) {
   UNIFORMS.set(object, uniforms);
   object.setPipeline(PIPELINE);
+}
+
+/**
+ * A 1 px warm rim inside a sprite's silhouette, so a dark actor (Dexter's black plush) reads against a
+ * dark hedge. Works on any Image or Sprite, every frame of its atlas; a no-op on Canvas. Returns whether
+ * it applied. `strength` 0 removes it.
+ */
+export function addRim(sprite: Phaser.GameObjects.Image | Phaser.GameObjects.Sprite, colour = 0xffc878, strength = 0.65): boolean {
+  if (!layerPipeline(sprite.scene.game)) return false;
+  const uniforms = UNIFORMS.get(sprite) ?? newUniforms();
+  uniforms.rim.set([((colour >> 16) & 255) / 255, ((colour >> 8) & 255) / 255, (colour & 255) / 255, strength]);
+  useLayerPipeline(sprite, uniforms);
+  return true;
 }

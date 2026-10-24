@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import type { LeafLayer, Leaves, Wind } from './config';
 import { gustAt } from './wind';
+import { sheetAnimations } from './sprites';
 
 /**
  * Falling leaves in front of and behind the actors. They are screen-space emitters nudged against the
@@ -50,12 +51,16 @@ export interface LeafEmitters {
 
 export function addLeaves(scene: Phaser.Scene, leaves: Leaves, wind: Wind, palette: number[], depths: { front: number; behind: number }): LeafEmitters {
   let texture: string, frames: string[];
-  if (scene.textures.exists(LEAF_SHEET)) {
+  // The sheet's leaves tumble by their own frames; procedural ones flip by scaleX and are drawn smaller.
+  const animations = sheetAnimations(scene, LEAF_SHEET);
+  const anims = animations ? Object.values(animations) : null;
+  if (anims?.length) {
     texture = LEAF_SHEET;
     frames = scene.textures.get(LEAF_SHEET).getFrameNames();
   } else {
     [texture, ...frames] = proceduralSheet(scene, leaves.palette.length ? leaves.palette : palette);
   }
+  const size = anims?.length ? 1 : 1.5;
   const { width, height } = scene.scale;
   const rising = leaves.fall === 'up';
   const upwind = wind.direction < 0 ? width + 260 : -260;
@@ -63,7 +68,7 @@ export function addLeaves(scene: Phaser.Scene, leaves: Leaves, wind: Wind, palet
   const make = (layer: LeafLayer | null, depth: number) => {
     if (!layer) return null;
     const emitter = scene.add.particles(0, 0, texture, {
-      frame: frames,
+      ...(anims?.length ? { anim: anims } : { frame: frames }),
       x: { min: Math.min(-40, upwind), max: Math.max(width + 40, upwind) },
       y: rising ? height + 12 : -12,
       lifespan: { min: 9000, max: 16000 },
@@ -71,10 +76,10 @@ export function addLeaves(scene: Phaser.Scene, leaves: Leaves, wind: Wind, palet
       speedY: rising ? { min: -42, max: -22 } : { min: 22, max: 46 },
       maxVelocityX: 150,
       maxVelocityY: 70,
-      scaleY: { min: layer.scale[0], max: layer.scale[1] },
-      // Flutter: the leaf flips (scaleX through 0) and rocks side to side, each on its own phase.
-      scaleX: { onEmit: () => layer.scale[0] + Math.random() * (layer.scale[1] - layer.scale[0]),
-        onUpdate: (p: Phaser.GameObjects.Particles.Particle) => p.scaleY * Math.cos(p.lifeCurrent * 0.004 + p.life) },
+      scaleY: { min: layer.scale[0] * size, max: layer.scale[1] * size },
+      // Flutter: the leaf flips (scaleX through 0 – the sheet's frames already do) and rocks side to side.
+      scaleX: { onEmit: () => size * (layer.scale[0] + Math.random() * (layer.scale[1] - layer.scale[0])),
+        onUpdate: (p: Phaser.GameObjects.Particles.Particle) => anims?.length ? p.scaleY : p.scaleY * Math.cos(p.lifeCurrent * 0.004 + p.life) },
       accelerationX: { onEmit: () => 0, onUpdate: (p: Phaser.GameObjects.Particles.Particle) => 38 * Math.sin(p.lifeCurrent * 0.0025 + p.life) },
       rotate: { onEmit: () => Math.random() * 360, onUpdate: (p: Phaser.GameObjects.Particles.Particle, _k: string, _t: number, v: number) => v + 0.6 * Math.sin(p.lifeCurrent * 0.003 + p.life) },
       alpha: layer.alpha,

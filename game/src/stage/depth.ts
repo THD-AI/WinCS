@@ -25,12 +25,43 @@ const BAND = 90;
 export const isForeground = (z: number) => z >= FOREGROUND_Z;
 
 /**
- * A layer's depth: z picks the band (behind or in front of the actors), the position in the chunk's
- * layer list orders it inside the band, so the authored composition order is kept.
+ * A layer's depth: z picks the band (behind or in front of the actors), `rank` orders it inside the band.
  */
-export function layerDepth(z: number, order: number): number {
-  if (!Number.isInteger(order) || order < 0 || order >= BAND) throw new Error(`Layer order ${order} outside its depth band`);
-  return (isForeground(z) ? FOREGROUND_DEPTH : 0) + order;
+export function layerDepth(z: number, rank: number): number {
+  if (!Number.isInteger(rank) || rank < 0 || rank >= BAND) throw new Error(`Layer rank ${rank} outside its depth band`);
+  return (isForeground(z) ? FOREGROUND_DEPTH : 0) + rank;
+}
+
+/**
+ * One region-wide rank per layer id, so every chunk stacks the same way even when a chunk lists fewer
+ * layers (a chunk without sky starts its list at the rear – its list position alone would put the rear
+ * under the next chunk's far plate). The chunks' lists are merged: inside a band, an id listed before
+ * another in any chunk ranks below it (the authored alpha composition); ties go to lower z, then to the
+ * first appearance. Contradicting lists fall back to that tie order.
+ */
+export function layerRanks(lists: readonly (readonly { id: string; z: number }[])[]): Map<string, number> {
+  const z = new Map<string, number>(), seen: string[] = [];
+  const after = new Map<string, Set<string>>();
+  for (const list of lists) {
+    for (const layer of list) if (!z.has(layer.id)) { z.set(layer.id, layer.z); seen.push(layer.id); after.set(layer.id, new Set()); }
+    for (let i = 0; i < list.length; i++) for (let j = i + 1; j < list.length; j++) {
+      if (isForeground(list[i].z) === isForeground(list[j].z)) after.get(list[j].id)!.add(list[i].id);
+    }
+  }
+  const tie = (a: string, b: string) => (z.get(a)! - z.get(b)!) || (seen.indexOf(a) - seen.indexOf(b));
+  const ranks = new Map<string, number>();
+  for (const front of [false, true]) {
+    const left = seen.filter(id => isForeground(z.get(id)!) === front);
+    let rank = 0;
+    while (left.length) {
+      left.sort(tie);
+      let next = left.findIndex(id => [...after.get(id)!].every(before => ranks.has(before) || !left.includes(before)));
+      if (next < 0) next = 0; // a cycle: the lists disagree, z decides
+      ranks.set(left[next], rank++);
+      left.splice(next, 1);
+    }
+  }
+  return ranks;
 }
 
 /** Just above a layer and below the next one in the list – where a reflection on that layer goes. */

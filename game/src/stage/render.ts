@@ -2,12 +2,14 @@ import Phaser from 'phaser';
 import { stageLayers, type StageManifest, type RegionState, type StageLayer } from './manifest';
 import { textureKey } from './assets';
 import { gridBounds } from './camera';
-import { above, isForeground, layerDepth, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from './depth';
+import { above, isForeground, layerDepth, layerRanks, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from './depth';
 import { layerAtmosphere, parseAtmosphere, type Atmosphere, type LayerFx } from './atmosphere/config';
-import { anchorProfile, autumnPalette, onScreen, waterline, type Pixels } from './atmosphere/analysis';
+import { anchorProfile, autumnPalette, onScreen, waterline, waterlineAt, waterPoints, type Pixels, type WaterSpan } from './atmosphere/analysis';
+import { WaterLife } from './atmosphere/water';
+import { sheetAnimations } from './atmosphere/sprites';
 import { layerPipeline, newUniforms, useLayerPipeline, type LayerUniforms } from './atmosphere/pipeline';
 import { addLeaves, type LeafEmitters } from './atmosphere/leaves';
-import { Reflection, waterlineAt, type WaterSpan } from './atmosphere/reflection';
+import { Reflection } from './atmosphere/reflection';
 
 /** One drawn layer and what the atmosphere does with it. */
 export interface DrawnLayer {
@@ -77,9 +79,10 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
   const pipeline = layerPipeline(scene.game);
   pipeline?.setWind(atmosphere.wind);
 
+  const ranks = layerRanks(manifest.chunks.map(chunk => chunk.states[state]?.layers ?? []));
   const layers: DrawnLayer[] = stageLayers(manifest, state).map(layer => {
     const image = scene.add.image(layer.x, layer.y, textureKey(manifest.region, layer.file))
-      .setOrigin(0).setScrollFactor(layer.scroll).setDepth(layerDepth(layer.z, layer.order));
+      .setOrigin(0).setScrollFactor(layer.scroll).setDepth(layerDepth(layer.z, ranks.get(layer.id)!));
     const fx = layerAtmosphere(atmosphere, layer);
     const uniforms = newUniforms();
     uniforms.sway.set([fx.sway, fx.reach, fx.foliage, fx.bob]);
@@ -100,6 +103,9 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     else if (d.fx.blur > 0) canvasBlur(scene, d.image, d.fx.blur);
   }
   const palette: number[] = [];
+  const waterSheet = atmosphere.water && sheetAnimations(scene, 'fx-water');
+  const waterDrawn = layers.find(d => d.layer.id === waterId);
+  const life = waterSheet && waterDrawn ? new WaterLife(scene, waterSheet, atmosphere.water!, waterDrawn.image.depth) : null;
   const analyse = (d: DrawnLayer) => {
     d.analysed = true;
     const pixels = readPixels(scene, d.image.texture.key);
@@ -111,6 +117,10 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
       if (line >= 0) {
         spans.push({ x0: d.image.x, x1: d.image.x + d.image.width, y: d.image.y + line, image: d.image });
         spans.sort((a, b) => a.x0 - b.x0);
+        if (life) {
+          const points = waterPoints(pixels, line);
+          life.addSurface(d.image.x, d.image.y, d.image.width, line, points.all, points.bright);
+        }
       }
     }
     if (!palette.length && !isForeground(d.layer.z) && d.fx.sway > 0 && d.layer.scroll === 1) palette.push(...autumnPalette(pixels));
@@ -131,7 +141,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     ? addLeaves(scene, atmosphere.leaves, atmosphere.wind, palette, { front: LEAVES_FRONT_DEPTH, behind: LEAVES_BEHIND_DEPTH })
     : null;
   const reflections: Reflection[] = [];
-  const water = layers.find(d => d.layer.id === waterId);
+  const water = waterDrawn;
 
   const frame = (time: number) => {
     // Layers off screen are not drawn (each would still cost a draw call).
@@ -142,6 +152,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     }
     if (pending >= 0) analyse(layers[pending]);
     leaves?.update(time / 1000);
+    life?.update(time, camera);
     for (let i = 0; i < reflections.length; i++) reflections[i].update();
   };
   scene.events.on(Phaser.Scenes.Events.POST_UPDATE, frame);
@@ -158,6 +169,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     destroy() {
       scene.events.off(Phaser.Scenes.Events.POST_UPDATE, frame);
       leaves?.destroy();
+      life?.destroy();
       reflections.forEach(r => r.destroy());
       layers.forEach(d => d.image.destroy());
     },

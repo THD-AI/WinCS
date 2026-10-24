@@ -1,3 +1,4 @@
+import type Phaser from 'phaser';
 /**
  * What the atmosphere reads from the art itself, once per layer at load – pure, so it is tested without
  * Phaser: where each column of a layer is anchored (its ground), the waterline, the autumn palette.
@@ -95,3 +96,34 @@ export function onScreen(x: number, width: number, scroll: number, cameraX: numb
   const left = x - cameraX * scroll;
   return left < viewWidth + margin && left + width > -margin;
 }
+
+/**
+ * Points on the water (full-size px, flat [x, y, x, y, …]) on a `step` grid below the waterline:
+ * every opaque one, and the bright ones (luma ≥ 0.7, where sky and sun are reflected) for sparkles.
+ */
+export function waterPoints(p: Pixels, line: number, step = 8): { all: number[]; bright: number[] } {
+  const all: number[] = [], bright: number[] = [];
+  if (line < 0) return { all, bright };
+  const s = Math.max(1, Math.round(step / p.scale));
+  for (let y = Math.ceil(line / p.scale); y < p.height; y += s) {
+    for (let x = 0; x < p.width; x += s) {
+      const i = (y * p.width + x) * 4;
+      if (p.data[i + 3] < 250) continue;
+      all.push(x * p.scale, y * p.scale);
+      if ((0.299 * p.data[i] + 0.587 * p.data[i + 1] + 0.114 * p.data[i + 2]) / 255 >= 0.7) bright.push(x * p.scale, y * p.scale);
+    }
+  }
+  return { all, bright };
+}
+
+/** A water surface on the stage: its world x range, the world row of its waterline and its image. */
+export interface WaterSpan { x0: number; x1: number; y: number; image: Phaser.GameObjects.Image }
+
+/** The world waterline under x, or null where there is no water. */
+export function waterlineAt(spans: readonly WaterSpan[], x: number): number | null {
+  for (const span of spans) if (x >= span.x0 && x < span.x1) return span.y;
+  return null;
+}
+
+/** Where a sprite's mirror image goes: its feet at `feet` mirror to 2·waterline − feet. */
+export const mirrorY = (waterline: number, feet: number) => 2 * waterline - feet;

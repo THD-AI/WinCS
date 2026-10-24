@@ -1,17 +1,6 @@
 import Phaser from 'phaser';
 import { newUniforms, useLayerPipeline, type LayerPipeline } from './pipeline';
-
-/** A water surface on the stage: its world x range, the world row of its waterline and its image. */
-export interface WaterSpan { x0: number; x1: number; y: number; image: Phaser.GameObjects.Image }
-
-/** The world waterline under x, or null where there is no water. */
-export function waterlineAt(spans: readonly WaterSpan[], x: number): number | null {
-  for (const span of spans) if (x >= span.x0 && x < span.x1) return span.y;
-  return null;
-}
-
-/** Where a sprite's mirror image goes: its feet at `feet` mirror to 2·waterline − feet. */
-export const mirrorY = (waterline: number, feet: number) => 2 * waterline - feet;
+import { mirrorY, waterlineAt, type WaterSpan } from './analysis';
 
 /**
  * An actor's mirror image in the water: a flipped, tinted, rippled copy that follows the sprite's

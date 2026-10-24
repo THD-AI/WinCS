@@ -65,6 +65,14 @@ export interface Water {
   layer: string;
   /** The hero's mirror image in the water, or null for none. */
   reflect: { alpha: number; tint: number } | null;
+  /** Bobbing lily pads (fx-water lily-bob) per 1000 px of water, on the near half of the band. */
+  pads: number;
+  /** Pad tint and scale, to match the pads painted in the art. */
+  padTint: number;
+  padScale: number;
+  /** Mean ms between ripple rings / sparkles on screen (0: none). */
+  ripples: number;
+  sparkles: number;
 }
 
 export interface Atmosphere {
@@ -82,10 +90,10 @@ export const DEFAULT_ATMOSPHERE: Atmosphere = {
   layers: {},
   leaves: {
     palette: [], fall: 'down',
-    front: { every: 420, scale: [2, 3], scroll: 1.15, alpha: 1, tint: 0xffffff },
-    behind: { every: 300, scale: [1, 2], scroll: 0.85, alpha: 0.9, tint: 0xd8d0c8 },
+    front: { every: 420, scale: [1, 2], scroll: 1.15, alpha: 1, tint: 0xffffff },
+    behind: { every: 300, scale: [1, 1.25], scroll: 0.85, alpha: 0.9, tint: 0xd8d0c8 },
   },
-  water: { layer: '04-water', reflect: { alpha: 0.38, tint: 0x8aa6c8 } },
+  water: { layer: '04-water', reflect: { alpha: 0.5, tint: 0x7890b0 }, pads: 3, padTint: 0xc8a070, padScale: 1.15, ripples: 900, sparkles: 220 },
 };
 
 type Obj = Record<string, unknown>;
@@ -231,6 +239,11 @@ export function parseAtmosphere(value: unknown, state?: string): { atmosphere: A
         alpha: read.number(r ?? {}, 'alpha', d.water!.reflect!.alpha, 0, 1, 'water.reflect'),
         tint: read.colour(r ?? {}, 'tint', d.water!.reflect!.tint, 'water.reflect'),
       },
+      pads: read.number(wa, 'pads', d.water!.pads, 0, 40, 'water'),
+      padTint: read.colour(wa, 'padTint', d.water!.padTint, 'water'),
+      padScale: read.number(wa, 'padScale', d.water!.padScale, 0.25, 4, 'water'),
+      ripples: read.number(wa, 'ripples', d.water!.ripples, 0, 60_000, 'water'),
+      sparkles: read.number(wa, 'sparkles', d.water!.sparkles, 0, 60_000, 'water'),
     };
   }
   return { atmosphere: { wind, defaults, layers, leaves, water }, problems: read.problems };
