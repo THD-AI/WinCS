@@ -1,0 +1,310 @@
+{
+  "hgz-0-0": {
+    "guide": {
+      "value": 49.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 14.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.267,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 1.074,
+      "limit": 2.5,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.275,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam hgz-1-0": {
+      "value": 9.56,
+      "limit": 20.17,
+      "pass": true
+    },
+    "seam hgz-0-1": {
+      "value": 0.0,
+      "limit": 13.802,
+      "pass": true
+    }
+  },
+  "hgz-1-0": {
+    "guide": {
+      "value": 57.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 10.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.169,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 1.07,
+      "limit": 2.5,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.215,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 3.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam hgz-0-0": {
+      "value": 9.56,
+      "limit": 20.17,
+      "pass": true
+    },
+    "seam hgz-2-0": {
+      "value": 18.885,
+      "limit": 22.834,
+      "pass": true
+    },
+    "seam hgz-1-1": {
+      "value": 0.0,
+      "limit": 12.873,
+      "pass": true
+    }
+  },
+  "hgz-2-0": {
+    "guide": {
+      "value": 20.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 170.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.367,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 1.134,
+      "limit": 2.5,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.199,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam hgz-1-0": {
+      "value": 18.885,
+      "limit": 22.834,
+      "pass": true
+    },
+    "seam hgz-2-1": {
+      "value": 0.0,
+      "limit": 14.726,
+      "pass": true
+    }
+  },
+  "hgz-0-1": {
+    "guide": {
+      "value": 9.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 1590.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.948,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.129,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 1.162,
+      "limit": 2.5,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.444,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam hgz-1-1": {
+      "value": 8.538,
+      "limit": 20.866,
+      "pass": true
+    },
+    "seam hgz-0-0": {
+      "value": 0.0,
+      "limit": 13.802,
+      "pass": true
+    }
+  },
+  "hgz-1-1": {
+    "guide": {
+      "value": 23.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 191.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.86,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.156,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 1.02,
+      "limit": 2.5,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.37,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam hgz-0-1": {
+      "value": 8.538,
+      "limit": 20.866,
+      "pass": true
+    },
+    "seam hgz-2-1": {
+      "value": 13.622,
+      "limit": 27.364,
+      "pass": true
+    },
+    "seam hgz-1-0": {
+      "value": 0.0,
+      "limit": 12.873,
+      "pass": true
+    }
+  },
+  "hgz-2-1": {
+    "guide": {
+      "value": 13.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 911.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.622,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.228,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.66,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.547,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam hgz-1-1": {
+      "value": 13.622,
+      "limit": 27.364,
+      "pass": true
+    },
+    "seam hgz-2-0": {
+      "value": 0.0,
+      "limit": 14.726,
+      "pass": true
+    }
+  },
+  "pass": true
+}

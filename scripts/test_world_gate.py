@@ -154,3 +154,12 @@ def test_zone_gate_reads_world_blockouts_and_skips_unpainted(tmp_path):
     assert set(report) == {"z-0-0", "z-0-1", "pass"}
     assert "route" in report["z-0-0"] and "route" not in report["z-0-1"]
     assert report["z-0-0"]["seam z-0-1"]["pass"]
+
+
+def test_hole_fails_on_an_empty_repaint_window_only():
+    """A repaint window the model returned empty arrives as exact black: a hole. Deep shadows are not."""
+    img = np.full((300, 400, 3), 90.0) + np.random.default_rng(1).normal(0, 12, (300, 400, 3))
+    img[10:40, 10:40] = 0                       # 900 px of shadow: fine
+    assert wg.check_hole(img)["pass"]
+    img[100:250, 100:300] = 0                   # 30 000 px: an empty window
+    assert not wg.check_hole(img)["pass"]
