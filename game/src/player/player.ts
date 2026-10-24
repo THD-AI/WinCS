@@ -3,7 +3,7 @@ import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement, RUN_SPEED, WALK_SPEED } from './movement';
 import { jump, jumpState, JUMP_SPEED, landing, LANDING_TIMES, pogo, type LandingTimes } from './jump';
-import { climb, dropThrough, traversal } from './traversal';
+import { climb, dropThrough, surfaceNear, traversal } from './traversal';
 import { catalogue, clipLength, LocomotionAnimation, type Catalogue, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
@@ -52,7 +52,10 @@ export class Player {
   get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
     private region = 'rusty-creek', bosses = new Set<string>(), spawnOverride?: Position) {
-    this.spawn = spawnOverride ?? chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
+    const spawn = spawnOverride ?? chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
+    // An authored spawn a pixel or two off its walk line would start inside the ground and fall through it:
+    // stand it on the surface it was meant for.
+    this.spawn = { ...spawn, y: surfaceNear(chunks.map(c => c.world), spawn.x, spawn.y) };
     this.body = { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true };
     this.life = new Life(this.body, bosses);
     this.air = jumpState(this.body.y);
@@ -139,6 +142,7 @@ export class Player {
   }
   private resetPosition(position: { x: number; y: number }) {
     this.guardPush.cancel();
+    position = { ...position, y: surfaceNear(this.chunks.map(c => c.world), position.x, position.y) };
     Object.assign(this.body, position, { vx: 0, vy: 0, grounded: true, sliding: false, slope: 0 });
     this.motion = movement(); this.air = jumpState(this.body.y); this.traversal = traversal();
   }
