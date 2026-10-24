@@ -23,7 +23,7 @@ describe('stepped locomotion animation', () => {
   });
   it('uses the actual movement animation tables', () => {
     expect(clips.walk.frames).toBe(8); expect(clips.run.frames).toBe(8);
-    expect(clips.land.start).toBe(8);
+    expect(clips.land.start).toBe(7); expect(clips.land.frames).toBe(2); // the jump row's own crouch and stand
   });
   it('plays idle-to-walk and only changes a walk cycle at a contact pose', () => {
     const machine = new LocomotionAnimation(clips);
@@ -42,7 +42,8 @@ describe('stepped locomotion animation', () => {
     expect(machine.update('jump', 1 / 12).frame).toBe('jump-01');
     expect(machine.update('jump', 1 / 120).frame).toBe('jump-01');
     expect(machine.update('fall', 0).frame).toBe('fall-00');
-    expect(machine.update('land', 0)).toEqual({ board: 'hero-air', frame: 'jump-08' });
+    expect(machine.update('land', 0)).toEqual({ board: 'hero-air', frame: 'jump-07' });
+    expect(machine.update('land', 1 / 12)).toEqual({ board: 'hero-air', frame: 'jump-08' });
   });
   it('starts a random idle variant after five seconds and interrupts it for movement', () => {
     const machine = new LocomotionAnimation(clips, () => 0.5);

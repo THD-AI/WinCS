@@ -29,10 +29,7 @@ export class Hud extends Phaser.Scene {
 
   constructor() { super({ key: 'HUD', active: true }); }
 
-  preload(): void {
-    this.load.atlas(UI_ATLAS, 'assets/ui/ui.png', 'assets/ui/ui.json');
-    this.load.json(UI_LAYOUT, 'assets/ui/ui-layout.json');
-  }
+  // The UI atlas is loaded by Boot (boot/manifest.ts), not here: two loaders asking for one texture key race.
 
   create(): void {
     this.graphics = this.add.graphics();
@@ -83,6 +80,7 @@ export class Hud extends Phaser.Scene {
     const now = this.time.now;
     const boss = this.model.boss;
     this.bossName.setText(boss ? boss.name.toUpperCase() : '');
+    if (!this.art && this.textures.exists(UI_ATLAS)) this.art = this.buildArt(); // Boot's UI atlas arrives after HUD starts
     if (this.art) return this.updateArt(this.art, now);
     this.model.cells(now).forEach((state, i) => this.drawCell(g, CELL.x + i * (CELL.w + CELL.gap), CELL.y, state));
     if (boss) this.drawBossBar(g, this.model.bossFraction());

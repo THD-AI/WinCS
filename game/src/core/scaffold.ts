@@ -1,8 +1,6 @@
 import Phaser from 'phaser';
-import { Assets, BOARDS } from '../stage/assets';
+import type { StageData } from '../boot/contract';
 import { drawStage } from '../stage/render';
-import type { StageManifest, RegionState } from '../stage/manifest';
-import { loadCollisions, type CollisionChunk } from '../stage/collision';
 import { collisionDebug } from '../stage/collision-debug';
 import { Player } from '../player/player';
 import { cameraFollow } from '../stage/camera';
@@ -12,31 +10,8 @@ import { ChairPickup } from '../combat/chairPickup';
 import { Rovers } from '../enemies/rovers';
 import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
-import { START, type RegionTarget } from '../stage/swap';
-import type { Position } from './events';
 
-// Bootstrap-only scenes live in lane B until lane A provides story/UI scenes.
-export class Boot extends Phaser.Scene {
-  constructor() { super('Boot'); }
-  create() { this.scene.start('Preload'); }
-}
-
-export class Preload extends Phaser.Scene {
-  constructor() { super('Preload'); }
-  /** `data` comes from swapRegion; the URL (`?region=…&state=…`) only picks the first region. */
-  async create(data: Partial<RegionTarget> = {}) {
-    const query = new URLSearchParams(location.search);
-    const region = data.region ?? query.get('region') ?? START.region;
-    const asked = data.state ?? query.get('state');
-    const state: RegionState = asked === 'clean' || asked === 'anomaly' ? asked : region === START.region ? START.state : 'anomaly';
-    const assets = new Assets(this);
-    const manifest = await assets.stage(region, state);
-    const collisions = manifest.chunks[0].id === 'fallback' ? [] : await loadCollisions(manifest, state);
-    for (const board of BOARDS) await assets.board(board);
-    this.scene.start('Stage', { manifest, state, collisions, spawn: data.spawn });
-  }
-}
-
+// Boot and Preload live in game/src/boot/ (the one loader); Stage receives boot/contract.ts StageData.
 export class Stage extends Phaser.Scene {
   private player?: Player;
   private defeatedBosses = new Set<string>();
@@ -48,8 +23,8 @@ export class Stage extends Phaser.Scene {
   get playerActor() { return this.player; }
   get chair() { return this.combat; }
   constructor() { super('Stage'); }
-  create(data: { manifest: StageManifest; state: RegionState; collisions: CollisionChunk[]; spawn?: Position; atmosphere?: unknown }) {
-    const stage = drawStage(this, data.manifest, data.state, data.atmosphere ?? {});
+  create(data: StageData) {
+    const stage = drawStage(this, data.manifest, data.state, data.atmosphere);
     collisionDebug(this, data.collisions);
     const machine = import.meta.env.DEV && new URLSearchParams(location.search).has('coffee-test')
       ? data.collisions.flatMap(chunk => chunk.world.interact).find(box => box.kind === 'coffee-machine') : undefined;
@@ -58,6 +33,7 @@ export class Stage extends Phaser.Scene {
     this.player = new Player(this, data.collisions, data.manifest.region, this.defeatedBosses,
       machine ? { x: machine.x + machine.w / 2, y: machine.y + machine.h }
         : rover ? { x: rover.x - BODY_WIDTH * 3, y: rover.y } : data.spawn);
+    this.player.ground(data.manifest, data.state, data.surfaces);
     stage.reflect(this.player.sprite);
     this.player.onHealthChanged = health => {
       const hud = this.scene.get('HUD') as Phaser.Scene & { model?: { setHealth(health: number, at: number): void } };

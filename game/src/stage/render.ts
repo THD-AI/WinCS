@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { stageLayers, type StageManifest, type RegionState, type StageLayer } from './manifest';
-import { stageBase, textureKey } from './assets';
+import { textureKey } from './assets';
 import { gridBounds } from './camera';
 import { above, isForeground, layerDepth, layerRanks, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from './depth';
 import { layerAtmosphere, parseAtmosphere, type Atmosphere, type LayerFx } from './atmosphere/config';
@@ -148,15 +148,11 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
   let mask: ReturnType<typeof waterMask> | undefined;
   const sharedMask = () => (mask ??= waterMask(scene, spans)).mask;
 
-  // anomaly-reveal (prologue): the wrong picture flickers in the water. Its image comes with the region's
-  // atmosphere assets; until the loader (workstream 1) brings them, the stage fetches it here.
+  // anomaly-reveal (prologue): the wrong picture flickers in the water. Its image is one of the region's
+  // atmosphere `assets`, which the loader brings with the stage (scenes never load by themselves).
   let wrong: WrongReflection | undefined;
   const wrongConfig = atmosphere.water?.wrong;
   const wrongKey = wrongConfig ? textureKey(manifest.region, wrongConfig.image) : '';
-  if (wrongConfig && pipeline && !scene.textures.exists(wrongKey)) {
-    scene.load.image(wrongKey, stageBase(manifest.region) + wrongConfig.image);
-    scene.load.start();
-  }
   const reveal = (position: { x: number; y: number }, duration: number) => {
     const line = waterlineAt(spans, position.x);
     if (!wrongConfig || !pipeline || !water || line === null || !scene.textures.exists(wrongKey)) return false;
@@ -167,7 +163,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
   const onReveal = (event: GameEvents['anomaly-reveal']) => { if (event.region === manifest.region) reveal(event.position, event.duration); };
   const offReveal = gameEvents.on('anomaly-reveal', onReveal);
   // Story code can tell the water reacts to anomaly-reveal (and drop its own fallback).
-  scene.data.set('water-reveal', Boolean(wrongConfig && pipeline));
+  scene.data.set('water-reveal', Boolean(wrongConfig && pipeline && water && scene.textures.exists(wrongKey)));
 
   const frame = (time: number) => {
     // Layers off screen are not drawn (each would still cost a draw call).
