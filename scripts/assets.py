@@ -5,7 +5,8 @@
       + art/sprites/images/      drawn boards (make_boards.py draw + crush)
       + game/public/assets/      exported atlases, UI, stages (export_atlas.py, export_stage.py)
       -> status: the real state of each asset, derived from the files, and where the sheet disagrees
-      -> check:  an exported atlas against the frame counts the inventory documents
+      -> check:  an exported atlas against the frame counts the inventory documents, and its clips' legibility at 1x
+               on the stage where they appear (readability.py; LOW only if even the game's actor rim can't save it)
       -> next:   what is still missing or unreviewed, with the command that moves it on
 
 The sheet is the plan; the files are the truth. A row whose status no longer matches the files is reported,
@@ -78,8 +79,9 @@ def derive(row: dict[str, str], board_map: dict[str, dict]) -> tuple[str, list[s
     return state, problems
 
 
-def check(aid: str, row: dict[str, str]) -> list[str]:
-    """An exported atlas's clips against the frame counts in the inventory row (names it documents only)."""
+def check(aid: str, row: dict[str, str], legible: bool = False) -> list[str]:
+    """An exported atlas's clips against the frame counts in the inventory row (names it documents only); with
+    `legible`, also every clip's 1x readability on its stage (readability.py), failing what stays low with the rim."""
     anims_path = SPRITES / f"{aid}.anims.json"
     if not anims_path.exists():
         return [f"{aid}: not exported"]
@@ -91,6 +93,11 @@ def check(aid: str, row: dict[str, str]) -> list[str]:
             problems.append(f"{aid}: inventory lists '{name}' but the atlas has no such clip")
         elif clip.get("frames") != frames:
             problems.append(f"{aid}:{name}: {clip.get('frames')} frames exported, inventory says {frames}")
+    if legible:
+        import readability
+        specs = [spec for spec in readability.every_clip(SPRITES) if spec.startswith(f"{aid}:")]
+        _, report = readability.sheet(specs, [SPRITES], zoom=1)
+        problems += [f"{aid}: unreadable at 1x – {line}" for line in report if "STILL LOW" in line or "MISSING" in line]
     return problems
 
 
@@ -152,7 +159,7 @@ def main() -> None:
         row = next((r for r in rows if r["id"] == args.id), None)
         if row is None:
             sys.exit(f"{args.id} is not in art/inventory.csv")
-        problems = check(args.id, row)
+        problems = check(args.id, row, legible=True)
         print("\n".join(problems) if problems else f"{args.id}: every documented clip matches")
         sys.exit(1 if problems else 0)
     for line in upcoming(rows, board_map):
