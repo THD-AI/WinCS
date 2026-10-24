@@ -140,6 +140,20 @@ class DepthLayerTests(unittest.TestCase):
             self.assertEqual(top[120], 20)  # the 350 px line beats the roof and the shorter one
             self.assertEqual(top[450], -1)
 
+    def test_match_hue_turns_red_plants_toward_orange_foliage(self):
+        import colorsys
+        import numpy as np
+        p = np.zeros((2, 4, 3), int)
+        p[0] = [200, 40, 60]   # pinkish red plants
+        p[1] = [210, 130, 40]  # orange foliage beside them
+        plant = np.zeros((2, 4), bool); plant[0] = True
+        out = dl.match_hue(p, plant, p[~plant])
+        hue = colorsys.rgb_to_hsv(*(c / 255 for c in out[0]))[0] * 360
+        self.assertTrue(hue < 40 or hue > 350, hue)  # toward the orange foliage, never left pink
+        pink = np.array([[[200, 60, 160]], [[200, 60, 160]]]); only = np.array([[True], [False]])
+        out = dl.match_hue(pink, only, pink[~only])
+        self.assertGreater(colorsys.rgb_to_hsv(*(c / 255 for c in out[0]))[0] * 360, 340)  # pink pulled toward red
+
 
 if __name__ == "__main__":
     unittest.main()

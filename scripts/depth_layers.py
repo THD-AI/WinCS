@@ -419,6 +419,36 @@ def near_band(bands, above: int = 30, below: int = 14, top=None):
     return (top[None, :] >= 0) & (rows >= top[None, :] - above) & (rows < top[None, :] + below)
 
 
+def match_hue(p, plant, reference, limit: float = 40.0):
+    """The `plant` pixels of `p` (H x W x 3, ints) with their hues rotated so their saturated mean hue meets that of
+    `reference` (N x 3: the chunk's own art under the strip, before it was painted), by at most `limit` degrees;
+    value and saturation stay. Pinks, which the garden doesn't have, are pulled toward red."""
+    import colorsys
+    import numpy as np
+
+    def mean_hue(pixels):
+        hsv = [colorsys.rgb_to_hsv(*(c / 255 for c in px)) for px in pixels[::5]]
+        angles = [h * 2 * np.pi for h, sat, _ in hsv if sat > 0.25]
+        if not angles:
+            return None
+        return np.degrees(np.arctan2(np.mean(np.sin(angles)), np.mean(np.cos(angles))))
+
+    target, current = mean_hue(reference), mean_hue(p[plant])
+    if target is None or current is None:
+        return p[plant]
+    shift = ((target - current + 180) % 360 - 180)
+    shift = max(-limit, min(limit, shift)) / 360
+    out = []
+    for r, g, b in p[plant]:
+        h, sat, v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+        h = (h + shift) % 1.0
+        # The garden has no pink: a pink-magenta plant (300-360 degrees) is pulled 70 % of the way to red.
+        if h > 300 / 360:
+            h = (h + (1.0 - h) * 0.7) % 1.0
+        out.append([round(c * 255) for c in colorsys.hsv_to_rgb(h, sat, v)])
+    return np.array(out, dtype=p.dtype).reshape(-1, 3)
+
+
 def near(region: Path, chunk: str, reuse: bool = False) -> Path | None:
     """The grass strip in front of the trail (06-near, drawn over the hero's feet). The model paints plants into a
     flat magenta band along the trail's front edge; what is not magenta and rises over the trail becomes the
@@ -460,6 +490,8 @@ def near(region: Path, chunk: str, reuse: bool = False) -> Path | None:
     if tinted.any() and clean.any():
         _, (iy, ix) = ndimage.distance_transform_edt(~clean, return_indices=True)
         p[tinted] = p[iy[tinted], ix[tinted]]
+    # The model paints the strip redder than the garden; turn its hues to the foliage around the trail.
+    p[plant] = match_hue(p, plant, rgb[band].astype(int))
     # Only plants that rise over the trail's top count; the rest would just repaint the path's front face.
     rows = np.arange(plant.shape[0])[:, None]
     labels, n = ndimage.label(plant)
