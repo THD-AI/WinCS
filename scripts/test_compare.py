@@ -38,12 +38,12 @@ class CompareTests(unittest.TestCase):
         self.assertIn('enemy-drone:hover-00: 20x18 px, documented 45 px (-56 %)', report)
 
     def test_lineup_scales_a_frame_and_its_documented_height(self):
-        sheet = Image.new('RGBA', (20, 24))
-        sheet.paste((40, 90, 160, 255), (2, 4, 12, 24))  # dexter: 10x20
+        sheet = Image.new('RGBA', (20, 31))
+        sheet.paste((40, 90, 160, 255), (2, 4, 12, 31))  # dexter: 10x27, the documented plush
         sheet.save(self.base / 'dexter.png')
-        (self.base / 'dexter.json').write_text(json.dumps({'frames': {'idle-00': {'frame': {'x': 0, 'y': 0, 'w': 20, 'h': 24}}}}), encoding='utf-8')
-        _, report = cp.lineup(['dexter:idle-00*2.15'])
-        self.assertIn('dexter:idle-00*2.15: 22x43 px, documented 43 px (+0 %)', report)
+        (self.base / 'dexter.json').write_text(json.dumps({'frames': {'idle-00': {'frame': {'x': 0, 'y': 0, 'w': 20, 'h': 31}}}}), encoding='utf-8')
+        _, report = cp.lineup(['dexter:idle-00*1.6'])
+        self.assertIn('dexter:idle-00*1.6: 16x43 px, documented 43 px (+0 %)', report)
 
     def test_unknown_frame_stops(self):
         Image.new('RGBA', (10, 10)).save(self.base / 'fx.png')
