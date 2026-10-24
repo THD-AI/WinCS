@@ -83,6 +83,9 @@ export class Flow extends Phaser.Scene {
     this.busy = true;
     const stage = this.scene.get(STAGE);
     if (!stage?.textures.exists('boss-jenny')) return this.cross({ region: 'rusty-creek', state: 'anomaly' });
+    // The hero freezes where Jenny appears (a player holding right would otherwise outrun her); the swap gives
+    // the input back.
+    this.lockInput(stage, true);
     const jenny = stage.add.sprite(hero.x + RAM_LEAD, hero.y, 'boss-jenny', 'charge-00').setOrigin(0.5, 1).setDepth(150);
     sound.play('chair-whoosh');
     stage.tweens.add({
@@ -91,8 +94,16 @@ export class Flow extends Phaser.Scene {
       onUpdate: tween => jenny.setFrame(`charge-0${Math.floor(tween.elapsed / (1000 / 12)) % 4}`),
       onComplete: () => {
         sound.play('chair-hit');
+        this.lockInput(stage, false);
         this.cross({ region: 'rusty-creek', state: 'anomaly' });
       },
     });
+  }
+
+  private lockInput(stage: Phaser.Scene, locked: boolean): void {
+    const keyboard = stage.input.keyboard;
+    if (locked) keyboard?.resetKeys();
+    if (keyboard) keyboard.enabled = !locked;
+    if (stage.input.gamepad) stage.input.gamepad.enabled = !locked;
   }
 }

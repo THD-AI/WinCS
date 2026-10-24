@@ -37,7 +37,7 @@ export class Stage extends Phaser.Scene {
     this.player = new Player(this, data.collisions, data.manifest.region, this.defeatedBosses,
       machine ? { x: machine.x + machine.w / 2, y: machine.y + machine.h }
         : rover ? { x: rover.x - BODY_WIDTH * 3, y: rover.y }
-        : gate ? { x: gate.x - BODY_WIDTH * 2, y: gate.y + gate.h } : data.spawn);
+        : gate ? onFloor(data.collisions, gate.x - BODY_WIDTH * 2, gate.y + gate.h) : data.spawn);
     this.player.ground(data.manifest, data.state, data.surfaces);
     stage.reflect(this.player.sprite);
     this.player.onHealthChanged = health => {
@@ -78,4 +78,18 @@ export class Stage extends Phaser.Scene {
 
 export class UI extends Phaser.Scene {
   constructor() { super('UI'); }
+}
+
+/** A dev test spawn on the walk line under `x` nearest to `y` (the floor before a box can differ from its bottom). */
+function onFloor(chunks: StageData['collisions'], x: number, y: number) {
+  let best = y, gap = Infinity;
+  for (const line of chunks.flatMap(chunk => chunk.world.walk)) {
+    for (let i = 1; i < line.length; i++) {
+      const [a, b] = [line[i - 1], line[i]];
+      if (x < a[0] || x > b[0]) continue;
+      const at = a[1] + (b[1] - a[1]) * (x - a[0]) / Math.max(1, b[0] - a[0]);
+      if (Math.abs(at - y) < gap) { gap = Math.abs(at - y); best = at; }
+    }
+  }
+  return { x, y: best };
 }
