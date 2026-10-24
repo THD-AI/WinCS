@@ -48,6 +48,7 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 38 | Parked for later: Dexter possessing you (secret ending), the underground server-farm lab, the "they use you" theme, a VW boss | 🅿️ later | Team review (A14) · 23 Oct |
 | 39 | Board, labels, issue forms and PR automation follow THD Room Finder: one epic per milestone, `[M1-S3]` stories as sub-issues, one PR per story, native *blocked by*, Status/Priority/Size/Design review fields, stacked PRs with merge commits | ✅ | Alexander · 23 Oct |
 | 40 | Two agent lanes: Alexander + Claude (OpenAI API) make every image and the integration; Vatsal + Codex write the game systems against fixed hand-over formats, with placeholders. Only lane A generates art. Lex draws collision in Tiled ([13](13-PRODUCTION-PIPELINE.md)) | ✅ | Alexander · 23 Oct |
+| 41 | Sizes and proportions follow the approved art in `art/`: where an approved direction image disagrees with a size computed from feet, it is measured there and the art wins (Dexter's plush 27 px, not 20) | ✅ | Alexander · 24 Oct |
 
 <!-- nav:start -->
 [← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
