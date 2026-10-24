@@ -10,7 +10,7 @@ chair-overhead,sprite,hero (3) – Region 1,76,up 6 · slam 7 · pogo 4,hero she
 chair-block,sprite,hero (3) – Region 1,76,guard-up 4 · guard-hold 3 · guard-impact 4 · guard-break 4,hero sheet + chair photos,approved,
 dexter,sprite,prologue (4),27 (191/547 of the hero in dexter-stages),idle 3 · hop 4 · walk 6 · point 3 · shove 4,dexter-stages crops + merch photos,approved,hop = hop off the bench
 dexter-acts,sprite,prologue (4),27,beckon 3 · bow 1 · sweat 2 · proud 1 · creepy 1 · absorb 4,dexter-stages crops + merch photos,approved,
-dexter-prologue,sprite,prologue (4),27,look-back 3 · wait 3 · sit 2,approved dexter sheet first + dexter-stages crops + merch,drawn,"new 24 Oct: sit on the bench, look back, wait. Review export in tmp/atlas only – adds to an approved character, Alexander decides"
+dexter-prologue,sprite,prologue (4),27,look-back 3 · wait 3 · sit 2,approved dexter sheet first + dexter-stages crops + merch,exported,"new 24 Oct: sit on the bench, look back, wait. Approved by Alexander 24 Oct"
 fx-leaves,fx,atmosphere (2),8 (6–8 per leaf),birch 5 · maple 5 · oak 5,fx sheet (anchor) + hg-4-0 floating leaves + campus collage crops + style master,exported,new 24 Oct; awaiting review
 fx-ground,fx,hero grounding (3),12 dust (others relative),dust 4 · grass 4 · leaf-kick 4 · splash 4,fx sheet (anchor) + hg-0-0 path + collage grass + hg-4-0 shore,exported,new 24 Oct; awaiting review
 fx-water,fx,atmosphere (2),8 lily pad (ripple and sparkle relative),lily-bob 4 · ripple 4 · sparkle 4,fx sheet (anchor) + hg-4-0 / hg-0-0 pond crops,exported,new 24 Oct; awaiting review
