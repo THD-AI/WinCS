@@ -6,6 +6,7 @@ import { Player } from '../player/player';
 import { cameraFollow } from '../stage/camera';
 import { ChairCombat } from '../combat/chair';
 import { CoffeePoints } from '../combat/coffee';
+import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import { ChairPickup } from '../combat/chairPickup';
 import { Rovers } from '../enemies/rovers';
 import { JennyBoss } from '../enemies/jennyBoss';
@@ -46,6 +47,7 @@ export class Stage extends Phaser.Scene {
     };
     this.combat = new ChairCombat(this, this.player, data.manifest.region);
     this.coffee = new CoffeePoints(this, this.player, data.collisions);
+    for (const machine of this.coffee.actors) addRim(machine, ACTOR_RIM.colour, ACTOR_RIM.strength);
     new ChairPickup(this, this.player, this.combat, data.collisions);
     this.rovers = new Rovers(this, this.player, this.combat, data.collisions);
     this.jenny = new JennyBoss(this, this.player, this.combat, data.collisions);

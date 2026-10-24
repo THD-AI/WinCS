@@ -54,6 +54,8 @@ export class HeroSlices {
     const make = () => scene.add.sprite(base.x, base.y, base.texture.key, base.frame.name).setOrigin(0.5, 1).setVisible(false);
     this.chest = make(); this.poncho = make();
   }
+  /** The slice sprites, so the player can give them the same pipeline as the sprite they copy. */
+  get parts(): Phaser.GameObjects.Sprite[] { return [this.chest, this.poncho]; }
   destroy() { this.chest.destroy(); this.poncho.destroy(); }
   /** `breath` 0/1 px up, `sway` −1/0/1 px in world x; both 0 (or a frame that is not a hero idle) draws the sprite whole. */
   apply(breath: number, sway: number, cover: number) {

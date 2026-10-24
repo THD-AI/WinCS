@@ -6,6 +6,7 @@ import { intersects } from '../combat/sweeps';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import type { Player } from '../player/player';
 import type { AnimationTable } from '../stage/assets';
+import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import type { Box, CollisionChunk } from '../stage/collision';
 import { arenaFrom, blinking, JENNY_BOX, JENNY_HEALTH, JennyFight, PART_DAMAGE, type Part } from './jenny';
 
@@ -61,6 +62,7 @@ export class JennyBoss {
     // The open back's glow sits under the car; the hazard light and the headlight over it.
     this.glow = scene.add.ellipse(spawn.x, spawn.y, 48, 40, 0xff9a3c, 0).setDepth(DEPTH - 1).setBlendMode(Phaser.BlendModes.ADD);
     this.sprite = scene.add.sprite(spawn.x, spawn.y, 'boss-jenny', 'rev-00').setOrigin(0.5, 1).setDepth(DEPTH);
+    addRim(this.sprite, ACTOR_RIM.colour, ACTOR_RIM.strength);
     this.hazard = scene.add.ellipse(spawn.x, spawn.y, 14, 14, 0xffb020, 0).setDepth(DEPTH + 1).setBlendMode(Phaser.BlendModes.ADD);
     this.lamp = scene.add.ellipse(spawn.x, spawn.y, 22, 12, 0xfff4cb, 0).setDepth(DEPTH + 1).setBlendMode(Phaser.BlendModes.ADD);
     this.cleanup.push(
