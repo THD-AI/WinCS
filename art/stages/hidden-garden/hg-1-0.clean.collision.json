@@ -179,7 +179,8 @@
    "y": 139,
    "w": 80,
    "h": 76,
-   "note": "the oak on the crest: Dexter waits and looks back"
+   "note": "the oak on the crest: Dexter waits and looks back",
+   "act": "wait"
   },
   {
    "id": "hollow",

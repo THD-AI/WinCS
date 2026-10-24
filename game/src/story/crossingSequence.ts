@@ -3,24 +3,35 @@
  * freezes and cracks, Windows says "THD.exe has stopped responding." – OK – cut – the hero lands somewhere
  * else and the damage animation finishes there. One sequence, reused by the pond (M3) and Jenny's ram (M4).
  */
-export type CrossingPhase = 'idle' | 'hit' | 'freeze' | 'dialog' | 'cut' | 'land' | 'done';
+export type CrossingPhase = 'idle' | 'hit' | 'freeze' | 'dialog' | 'pull' | 'cut' | 'land' | 'done';
 
-export const TIMING = { hit: 280, freeze: 220, dialogGuard: 300, cut: 200 } as const;
+export interface CrossingTiming { hit: number; freeze: number; dialogGuard: number; pull: number; cut: number }
+
+/** The classic crossing: no pull, OK cuts straight to black. */
+export const TIMING: CrossingTiming = { hit: 280, freeze: 220, dialogGuard: 300, pull: 0, cut: 200 };
+
+/**
+ * The prologue's 404 (docs/03 "the 404" → "the pull"): a short flash, the frame tears for longer, and after
+ * OK the hero is pulled into the 404 void before the cut.
+ */
+export const TIMING_404: CrossingTiming = { hit: 160, freeze: 1100, dialogGuard: 450, pull: 1700, cut: 450 };
 
 export class CrossingSequence {
   phase: CrossingPhase = 'idle';
   private elapsed = 0;
 
-  constructor(private readonly onLand: () => void = () => {}) {}
+  constructor(private readonly onLand: () => void = () => {}, readonly timing: CrossingTiming = TIMING) {}
 
   start(): void { this.enter('hit'); }
 
   /** Advance by dt milliseconds; returns the phase after the step. */
   update(dt: number): CrossingPhase {
     this.elapsed += dt;
-    if (this.phase === 'hit' && this.elapsed >= TIMING.hit) this.enter('freeze');
-    else if (this.phase === 'freeze' && this.elapsed >= TIMING.freeze) this.enter('dialog');
-    else if (this.phase === 'cut' && this.elapsed >= TIMING.cut) {
+    const timing = this.timing;
+    if (this.phase === 'hit' && this.elapsed >= timing.hit) this.enter('freeze');
+    else if (this.phase === 'freeze' && this.elapsed >= timing.freeze) this.enter('dialog');
+    else if (this.phase === 'pull' && this.elapsed >= timing.pull) this.enter('cut');
+    else if (this.phase === 'cut' && this.elapsed >= timing.cut) {
       this.enter('land');
       this.onLand();
       this.enter('done');
@@ -30,10 +41,18 @@ export class CrossingSequence {
 
   /** The player pressed OK. Ignored until the dialog has been up long enough to be read. */
   confirm(): boolean {
-    if (this.phase !== 'dialog' || this.elapsed < TIMING.dialogGuard) return false;
-    this.enter('cut');
+    if (this.phase !== 'dialog' || this.elapsed < this.timing.dialogGuard) return false;
+    this.enter(this.timing.pull > 0 ? 'pull' : 'cut');
     return true;
   }
+
+  /** 0 → 1 through the pull (1 outside it). */
+  pullProgress(): number {
+    return this.phase === 'pull' && this.timing.pull > 0 ? Math.min(1, this.elapsed / this.timing.pull) : 1;
+  }
+
+  /** Milliseconds spent in the current phase. */
+  get time(): number { return this.elapsed; }
 
   private enter(phase: CrossingPhase): void {
     this.phase = phase;
