@@ -2,7 +2,8 @@ import type { StageManifest, RegionState } from '../stage/manifest';
 import { stageBase } from '../stage/assets';
 
 /** What a footfall or landing kicks up: procedural pixels in the region's palette until sprites exist. */
-export interface Puff { shape: 'dust' | 'blade' | 'leaf'; colors: string[]; count: number }
+/** `sprite`: an fx-ground clip (dust, grass, leaf-kick, splash) played once at the foot; `shape`/`colors`/`count`: the procedural pixels. */
+export interface Puff { sprite?: string; shape: 'dust' | 'blade' | 'leaf'; colors: string[]; count: number }
 /** `sink`: px the feet sink in (visual only). `cover`: lowest sprite rows the ground hides. `blades`: tuft colours drawn over the feet. */
 export interface Material { sink: number; cover?: number; blades?: string[]; puff?: Puff }
 export interface SurfaceRange { x: [number, number]; y?: [number, number]; states?: string[]; material: string; note?: string }
@@ -35,6 +36,7 @@ export function parseSurfaces(value: unknown): SurfaceData {
     assert(m.blades === undefined || Array.isArray(m.blades) && m.blades.every(c => COLOR.test(c)), `${name}.blades`);
     if (m.puff) {
       assert(SHAPES.includes(m.puff.shape), `${name}.puff.shape`);
+      assert(m.puff.sprite === undefined || /^[a-z][a-z-]*$/.test(m.puff.sprite), `${name}.puff.sprite`);
       assert(Array.isArray(m.puff.colors) && m.puff.colors.length > 0 && m.puff.colors.every(c => COLOR.test(c)), `${name}.puff.colors`);
       assert(Number.isInteger(m.puff.count) && m.puff.count >= 0, `${name}.puff.count`);
     }

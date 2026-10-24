@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { FALLBACK, parseSurfaces, SurfaceMap } from './surfaces';
 import { blades, coverRows, Grounding, sinkTarget } from './grounding';
 import { contactFrames, plantedFeet } from './footfall';
-import { puffParticles } from './dust';
+import { puffParticles, puffSprites } from './dust';
 import { arcFrame, catalogue, clipLength, LocomotionAnimation } from './animation';
 import { HurtAnimation } from './hurt';
 import { JUMP_SPEED } from './jump';
@@ -94,6 +94,12 @@ describe('footfalls', () => {
     const land = puffParticles(puff, 'land', 1, () => 0.5), hard = puffParticles(puff, 'hard-land', 1, () => 0.5);
     expect(land.some(p => p.dx > 0) && land.some(p => p.dx < 0)).toBe(true);
     expect(hard.length).toBeGreaterThan(land.length);
+  });
+  it('places the drawn fx-ground puffs: one behind a step, mirrored pairs for landings', () => {
+    expect(puffSprites('step', 1)).toEqual([{ dx: -6, flip: true }]);
+    expect(puffSprites('step', -1)).toEqual([{ dx: 6, flip: false }]);
+    expect(puffSprites('hard-land', 1).map(s => s.dx)).toEqual([-14, 14]);
+    for (const m of Object.values(garden.materials)) expect(['dust', 'grass', 'leaf-kick']).toContain(m.puff?.sprite);
   });
 });
 

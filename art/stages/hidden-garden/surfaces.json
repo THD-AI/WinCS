@@ -1,14 +1,14 @@
 {
  "region": "hidden-garden",
- "note": "What the hero stands on. Ranges are chunk-local px (x from the left edge of the chunk, optional y band for stacked floors), read off layers/hg-*.05-play.png against the walk lines; the first match wins, else `default`. sink: px the feet sink in (visual only, physics unchanged); cover: lowest sprite rows hidden by the ground; blades: tufts drawn in front of the feet; puff: what a footfall or landing kicks up, in the garden palette.",
+ "note": "What the hero stands on. Ranges are chunk-local px (x from the left edge of the chunk, optional y band for stacked floors), read off layers/hg-*.05-play.png against the walk lines; the first match wins, else `default`. sink: px the feet sink in (visual only, physics unchanged); cover: lowest sprite rows hidden by the ground; blades: tufts drawn in front of the feet; puff: what a footfall or landing kicks up – `sprite` names an fx-ground clip, the procedural pixels in the garden palette are the fallback and the extra debris of a hard landing.",
  "default": "grass",
  "materials": {
-  "grass": {"sink": 3, "cover": 2, "blades": ["#c98a2a", "#e0a63c", "#8f5a1c"], "puff": {"shape": "blade", "colors": ["#d79a34", "#f0bf55", "#9c6420"], "count": 5}},
-  "leaves": {"sink": 3, "cover": 2, "blades": ["#d0702a", "#e89a3a", "#9a3f1c"], "puff": {"shape": "leaf", "colors": ["#e07a2c", "#f2a640", "#b4471f"], "count": 5}},
-  "earth": {"sink": 2, "cover": 1, "puff": {"shape": "dust", "colors": ["#b89a6e", "#d8c09a", "#8c7350"], "count": 5}},
-  "gravel": {"sink": 2, "cover": 1, "puff": {"shape": "dust", "colors": ["#b8a58a", "#d9cbb0", "#8a7a66"], "count": 4}},
-  "stone": {"sink": 1, "cover": 0, "puff": {"shape": "dust", "colors": ["#c9bfa8", "#e6dcc4", "#9b927f"], "count": 3}},
-  "wood": {"sink": 1, "cover": 0, "puff": {"shape": "dust", "colors": ["#c8b08a", "#e9dbbf", "#9a8060"], "count": 3}}
+  "grass": {"sink": 3, "cover": 2, "blades": ["#c98a2a", "#e0a63c", "#8f5a1c"], "puff": {"sprite": "grass", "shape": "blade", "colors": ["#d79a34", "#f0bf55", "#9c6420"], "count": 5}},
+  "leaves": {"sink": 3, "cover": 2, "blades": ["#d0702a", "#e89a3a", "#9a3f1c"], "puff": {"sprite": "leaf-kick", "shape": "leaf", "colors": ["#e07a2c", "#f2a640", "#b4471f"], "count": 5}},
+  "earth": {"sink": 2, "cover": 1, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b89a6e", "#d8c09a", "#8c7350"], "count": 5}},
+  "gravel": {"sink": 2, "cover": 1, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b8a58a", "#d9cbb0", "#8a7a66"], "count": 4}},
+  "stone": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#c9bfa8", "#e6dcc4", "#9b927f"], "count": 3}},
+  "wood": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#c8b08a", "#e9dbbf", "#9a8060"], "count": 3}}
  },
  "chunks": {
   "hg-0-0": [

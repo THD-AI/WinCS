@@ -3,8 +3,8 @@
  "note": "Same schema as hidden-garden/surfaces.json. The creek is girders and rails (steel) over concrete bank blocks near the water; read off images/after-*.png and before-*.png against the walk lines.",
  "default": "steel",
  "materials": {
-  "steel": {"sink": 1, "cover": 0, "puff": {"shape": "dust", "colors": ["#a86a3c", "#c98e5a", "#6f7d82"], "count": 3}},
-  "stone": {"sink": 1, "cover": 0, "puff": {"shape": "dust", "colors": ["#b9b3a3", "#d9d3c2", "#8a857a"], "count": 3}}
+  "steel": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#a86a3c", "#c98e5a", "#6f7d82"], "count": 3}},
+  "stone": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b9b3a3", "#d9d3c2", "#8a857a"], "count": 3}}
  },
  "chunks": {
   "rc-0-0": [{"x": [0, 2160], "y": [490, 720], "states": ["anomaly"], "material": "stone", "note": "bank blocks"}],
