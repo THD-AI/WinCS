@@ -11,6 +11,12 @@ export interface GameEvents {
   'save': { checkpoint: string; region: string; position: Position };
   /** The hero's body entered an interact box (collision `interact`); fires once per entry. */
   'trigger-entered': { id: string; kind: string; region: string; position: Position };
+  /**
+   * The prologue's pond shows what isn't there (docs/03, beat 'something wrong'): fired once when the hero
+   * reaches the jetty edge, before Dexter's shove. `position` is the water point under the edge (stage px);
+   * the water renderer reacts by showing the wrong reflection there for `duration` ms (then the frame tears).
+   */
+  'anomaly-reveal': { id: string; region: string; position: Position; duration: number };
 }
 
 type Listener<T> = (payload: T) => void;
