@@ -6,7 +6,13 @@
     python scripts/compare.py lineup hero-move:walk-00 hero-run:run-03 enemy-drone:hover-00 --out …
         frames from the game's atlases (game/public/assets/sprites) on one baseline, at game scale ×3,
         with a 1 ft ruler (13 px, docs/04) and the documented height of each thing marked;
-        --atlas-dir tmp/atlas reads a review export instead of the game's atlases
+        --atlas-dir tmp/atlas reads a review export instead of the game's atlases;
+        atlas:frame*2.15 draws a frame the game scales in code (and scales its documented height too)
+
+    python scripts/compare.py parallax art/stages/hidden-garden --state clean --at 0 440 880 --out …
+        the region's layers from export.json, drawn as the game draws them at each camera x (a layer sits
+        at its chunk's origin and moves s px per camera px; a region plate's tile j rides on chunk j),
+        one 1280x720 view per row
 
 Paths are relative to the repository. Images and crops are in their own pixels; `--width` sets the common width.
 """
@@ -74,11 +80,24 @@ def documented(atlas: str) -> int | None:
     return DOCUMENTED.get(atlas)
 
 
+def wanted(spec: str) -> int | None:
+    """The documented height for a lineup spec, times its `*scale` if it has one."""
+    name, _, scale = spec.partition("*")
+    want = documented(name.split(":")[0])
+    return round(want * float(scale)) if want and scale else want
+
+
 def lineup(specs: list[str], zoom: int = 3) -> tuple[Image.Image, list[str]]:
     """Frames on one baseline at game scale ×zoom, a foot ruler on the left, documented heights as ticks."""
-    pieces = [(spec, frame(*spec.split(":", 1))) for spec in specs]
+    pieces = []
+    for spec in specs:
+        name, _, scale = spec.partition("*")
+        p = frame(*name.split(":", 1))
+        if scale:
+            p = p.resize((round(p.width * float(scale)), round(p.height * float(scale))), Image.Resampling.NEAREST)
+        pieces.append((spec, p))
     gap = 24
-    tallest = max(max(p.height for _, p in pieces), *(documented(s.split(":")[0]) or 0 for s, _ in pieces))
+    tallest = max(max(p.height for _, p in pieces), *(wanted(s) or 0 for s, _ in pieces))
     width = 40 + sum(p.width + gap for _, p in pieces)
     out = Image.new("RGB", (width * zoom, (tallest + 20) * zoom), (232, 228, 220))
     draw = ImageDraw.Draw(out)
@@ -91,7 +110,7 @@ def lineup(specs: list[str], zoom: int = 3) -> tuple[Image.Image, list[str]]:
     for spec, p in pieces:
         out.paste(p.resize((p.width * zoom, p.height * zoom), Image.Resampling.NEAREST), (x * zoom, base - p.height * zoom),
                   p.resize((p.width * zoom, p.height * zoom), Image.Resampling.NEAREST))
-        want = documented(spec.split(":")[0])
+        want = wanted(spec)
         if want:
             y = base - want * zoom
             draw.line([(x * zoom, y), ((x + p.width) * zoom, y)], fill=GRID, width=zoom)
@@ -101,6 +120,39 @@ def lineup(specs: list[str], zoom: int = 3) -> tuple[Image.Image, list[str]]:
             report.append(f"{spec}: {p.width}x{p.height} px")
         x += p.width + gap
     return out, report
+
+
+VIEW = (1280, 720)
+
+
+def parallax(region: Path, state: str, cameras: list[int]) -> Image.Image:
+    """The stage at each camera x, every layer offset by its scroll factor; one view per row."""
+    config = json.loads((region / "export.json").read_text(encoding="utf-8"))
+    w, h = 2160, 720
+    rows = []
+    for cam in cameras:
+        view = Image.new("RGBA", VIEW, (0, 0, 0, 255))
+        for layer_id in config["states"][state]:
+            layer = config["layers"][layer_id]
+            for name, chunk in config["chunks"].items():
+                path = region / (layer["file"].format(tile=chunk["x"]) if layer.get("region")
+                                 else layer["file"].format(name=chunk.get("name", name)))
+                if not path.exists():
+                    continue
+                s = layer["scroll"]
+                x = round(chunk["x"] * w - cam * s)  # the game: a layer at its chunk's origin, moving at its scroll
+                if x <= -w or x >= VIEW[0]:  # wholly off the view
+                    continue
+                plate = Image.open(path).convert("RGBA")
+                if x < 0:  # alpha_composite needs a non-negative destination: crop the plate instead
+                    plate, x = plate.crop((-x, 0, plate.width, plate.height)), 0
+                if x < VIEW[0] and plate.width:
+                    view.alpha_composite(plate, (x, chunk["y"] * h))
+        rows.append(view)
+    out = Image.new("RGB", (VIEW[0], (VIEW[1] + 8) * len(rows) - 8), GRID)
+    for i, view in enumerate(rows):
+        out.paste(view.convert("RGB"), (0, i * (VIEW[1] + 8)))
+    return out
 
 
 def main() -> None:
@@ -116,12 +168,20 @@ def main() -> None:
     two.add_argument("frames", nargs="+", help="atlas:frame, e.g. hero-move:walk-00")
     two.add_argument("--out", type=Path, required=True)
     two.add_argument("--atlas-dir", type=Path, help="read atlases from here (an export to tmp/ before approval)")
+    three = sub.add_parser("parallax", help="a stage region at several camera positions")
+    three.add_argument("region", type=Path)
+    three.add_argument("--state", default="clean")
+    three.add_argument("--at", type=int, nargs="+", default=[0, 440, 880], help="camera x positions")
+    three.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     if getattr(args, "atlas_dir", None):
         global SPRITES
         SPRITES = args.atlas_dir if args.atlas_dir.is_absolute() else ROOT / args.atlas_dir
     if args.mode == "images":
         out = images(args.ref, args.ours, args.width, args.grid)
+    elif args.mode == "parallax":
+        out = parallax(args.region if args.region.is_absolute() else ROOT / args.region, args.state, args.at)
+        out = out.quantize(256, dither=Image.Dither.NONE)  # a review image, not art: keep it small in Git
     else:
         out, report = lineup(args.frames)
         print("\n".join(report))

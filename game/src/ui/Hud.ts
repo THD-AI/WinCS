@@ -63,8 +63,8 @@ export class Hud extends Phaser.Scene {
       this.model.setBossHealth(7);
     });
     // Dev builds: F8 runs the crossing anywhere (#51 verification).
-    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F8', () => {
-      if (!this.scene.isActive('Crossing')) this.scene.launch('Crossing');
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F8', (event: KeyboardEvent) => {
+      if (!event.shiftKey && !this.scene.isActive('Crossing')) this.scene.launch('Crossing');
     });
     // Dev builds: F9 opens the anomaly FX test chunk (#37 verification).
     if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F9', () => {

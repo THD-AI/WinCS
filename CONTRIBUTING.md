@@ -160,6 +160,7 @@ npm --prefix game run dev          # http://localhost:5173 – stages are genera
 | F4 then Tab (dev) | hand over the pocket computer, then open the map |
 | F6 / F7 (dev) | step through the sound loops / effects; M mutes |
 | F8 (dev) | the THD.exe crossing |
+| Shift + F8 (dev) | the end of the slice: Dexter absorbs, the glitch, "To be continued.", the credits |
 | F9 / F10 (dev) | anomaly FX / atmosphere test chunks (V toggles, A switches the leaves, Esc closes) |
 
 Dev keys exist only in `npm run dev`, never in the preview or production build. Movement keys and the URL options arrive with lane B's stack (#111 → …).

@@ -1,12 +1,85 @@
 {
-  "note": "Layers from split_layers.py (layers.json). Everything scrolls at 1.0 until sky/far/mid get hand-drawn masks.",
-  "chunks": {"hg-0-0": {"x": 0, "y": 0}},
-  "layers": {
-    "03-rear": {"file": "layers/{name}.03-rear.png", "z": 3, "scroll": 1.0},
-    "04-water": {"file": "layers/{name}.04-water.png", "z": 4, "scroll": 1.0},
-    "05-play": {"file": "layers/{name}.05-play.png", "z": 5, "scroll": 1.0},
-    "07-foreground": {"file": "layers/{name}.07-foreground.png", "z": 7, "scroll": 1.0}
+  "note": "Layers from split_layers.py (layers.json) and depth_layers.py (#142). Sky, far and mid scroll slower than the path, so each is ONE region-wide plate quilted from the chunks' filled plates (depth_layers.py region): per chunk they would overlap by 2160 x (1 - scroll) and cut each other off. They come in chunk-wide tiles, tile j carried by chunk j (any loader that places a layer at its chunk's origin then shows the right part); --verify rebuilds every chunk at rest from its own plates ('rest', repo-relative; the filled ones are intermediates in tmp/). The mid layer carries the earlier chunk's trees into columns where the next has none ('carry'); the far line may end on open sky.",
+  "chunks": {
+    "hg-0-0": {
+      "x": 0,
+      "y": 0
+    },
+    "hg-1-0": {
+      "x": 1,
+      "y": 0
+    },
+    "hg-2-0": {
+      "x": 2,
+      "y": 0
+    },
+    "hg-3-0": {
+      "x": 3,
+      "y": 0
+    },
+    "hg-4-0": {
+      "x": 4,
+      "y": 0
+    }
   },
-  "states": {"clean": ["03-rear", "04-water", "05-play", "07-foreground"]},
-  "composed": {"clean": "images/{name}.png"}
+  "layers": {
+    "00-sky": {
+      "file": "layers/hidden-garden.00-sky.{tile}.png",
+      "z": 0,
+      "scroll": 0.1,
+      "region": true,
+      "rest": "tmp/boards/hidden-garden/filled/{name}.00-sky.filled.png"
+    },
+    "01-far": {
+      "file": "layers/hidden-garden.01-far.{tile}.png",
+      "z": 1,
+      "scroll": 0.25,
+      "region": true,
+      "rest": "tmp/boards/hidden-garden/filled/{name}.01-far.filled.png"
+    },
+    "02-mid": {
+      "file": "layers/hidden-garden.02-mid.{tile}.png",
+      "z": 2,
+      "scroll": 0.6,
+      "region": true,
+      "rest": "tmp/boards/hidden-garden/filled/{name}.02-mid.filled.png",
+      "carry": true
+    },
+    "03-rear": {
+      "file": "layers/{name}.03-rear.png",
+      "z": 3,
+      "scroll": 1.0
+    },
+    "04-water": {
+      "file": "layers/{name}.04-water.png",
+      "z": 4,
+      "scroll": 1.0
+    },
+    "05-play": {
+      "file": "layers/{name}.05-play.png",
+      "z": 5,
+      "scroll": 1.0
+    },
+    "07-foreground": {
+      "file": "layers/hidden-garden.07-foreground.{tile}.png",
+      "z": 7,
+      "scroll": 1.2,
+      "region": true,
+      "rest": "art/stages/hidden-garden/layers/{name}.07-foreground.png"
+    }
+  },
+  "states": {
+    "clean": [
+      "00-sky",
+      "01-far",
+      "02-mid",
+      "03-rear",
+      "04-water",
+      "05-play",
+      "07-foreground"
+    ]
+  },
+  "composed": {
+    "clean": "images/{name}.png"
+  }
 }

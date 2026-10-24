@@ -1,24 +1,92 @@
 {
-  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order.",
+  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps.",
   "chunks": {
-    "rc-0-0": {"x": 0, "y": 0, "name": "left"},
-    "rc-1-0": {"x": 1, "y": 0, "name": "center"},
-    "rc-2-0": {"x": 2, "y": 0, "name": "right"}
+    "rc-0-0": {
+      "x": 0,
+      "y": 0,
+      "name": "left"
+    },
+    "rc-1-0": {
+      "x": 1,
+      "y": 0,
+      "name": "center"
+    },
+    "rc-2-0": {
+      "x": 2,
+      "y": 0,
+      "name": "right"
+    }
   },
   "layers": {
-    "01-distance": {"file": "images/01-distance-{name}.png", "z": 1, "scroll": 0.2},
-    "03-bank": {"file": "images/03-bank-{name}.png", "z": 2, "scroll": 1.0},
-    "02-supports": {"file": "images/02-supports-{name}.png", "z": 3, "scroll": 1.0},
-    "clean-architecture": {"file": "images/clean-architecture-{name}.png", "z": 3, "scroll": 1.0},
-    "05-traversal": {"file": "images/05-traversal-{name}.png", "z": 5, "scroll": 1.0},
-    "06-near-rails": {"file": "images/06-near-rails-{name}.png", "z": 6, "scroll": 1.1},
-    "07-foliage": {"file": "images/07-foliage-{name}.png", "z": 7, "scroll": 1.15},
-    "04-water": {"file": "images/04-water-{name}.png", "z": 4, "scroll": 1.0}
+    "01-distance": {
+      "file": "layers/rusty-creek.01-distance.{tile}.png",
+      "z": 1,
+      "scroll": 0.2,
+      "region": true,
+      "rest": "art/stages/rusty-creek/images/01-distance-{name}.png"
+    },
+    "03-bank": {
+      "file": "images/03-bank-{name}.png",
+      "z": 2,
+      "scroll": 1.0
+    },
+    "02-supports": {
+      "file": "images/02-supports-{name}.png",
+      "z": 3,
+      "scroll": 1.0
+    },
+    "clean-architecture": {
+      "file": "images/clean-architecture-{name}.png",
+      "z": 3,
+      "scroll": 1.0
+    },
+    "05-traversal": {
+      "file": "images/05-traversal-{name}.png",
+      "z": 5,
+      "scroll": 1.0
+    },
+    "06-near-rails": {
+      "file": "layers/rusty-creek.06-near-rails.{tile}.png",
+      "z": 6,
+      "scroll": 1.1,
+      "region": true,
+      "rest": "art/stages/rusty-creek/images/06-near-rails-{name}.png"
+    },
+    "07-foliage": {
+      "file": "layers/rusty-creek.07-foliage.{tile}.png",
+      "z": 7,
+      "scroll": 1.15,
+      "region": true,
+      "rest": "art/stages/rusty-creek/images/07-foliage-{name}.png"
+    },
+    "04-water": {
+      "file": "images/04-water-{name}.png",
+      "z": 4,
+      "scroll": 1.0
+    }
   },
   "states": {
-    "anomaly": ["01-distance", "03-bank", "02-supports", "05-traversal", "06-near-rails", "07-foliage", "04-water"],
-    "clean": ["01-distance", "03-bank", "clean-architecture", "06-near-rails", "07-foliage", "04-water"]
+    "anomaly": [
+      "01-distance",
+      "03-bank",
+      "02-supports",
+      "05-traversal",
+      "06-near-rails",
+      "07-foliage",
+      "04-water"
+    ],
+    "clean": [
+      "01-distance",
+      "03-bank",
+      "clean-architecture",
+      "06-near-rails",
+      "07-foliage",
+      "04-water"
+    ]
   },
-  "composed": {"anomaly": "images/after-{name}.png", "clean": "images/before-{name}.png"},
+  "composed": {
+    "anomaly": "images/after-{name}.png",
+    "clean": "images/before-{name}.png"
+  },
   "aliases": "media-sources.json"
 }

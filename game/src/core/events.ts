@@ -9,6 +9,8 @@ export interface GameEvents {
   'region-turned': { region: string; state: RegionState };
   'boss-defeated': { id: string; position: Position };
   'save': { checkpoint: string; region: string; position: Position };
+  /** The hero's body entered an interact box (collision `interact`); fires once per entry. */
+  'trigger-entered': { id: string; kind: string; region: string; position: Position };
 }
 
 type Listener<T> = (payload: T) => void;

@@ -2,7 +2,7 @@ import type Phaser from 'phaser';
 import { parseManifest, stageLayers, type StageManifest, type RegionState } from './manifest';
 
 export const BOARDS = ['hero-move', 'hero-run', 'hero-idle', 'hero-air', 'hero-hurt', 'hero-death',
-  'chair-side', 'chair-overhead', 'chair-block', 'enemy-rover', 'enemy-crab', 'enemy-drone', 'fx'] as const;
+  'chair-side', 'chair-overhead', 'chair-block', 'enemy-rover', 'enemy-crab', 'enemy-drone', 'fx', 'boss-jenny', 'boss-jenny-2'] as const;
 export interface AnimationClip { frames: number; fps: number; loop: boolean }
 export type AnimationTable = Record<string, AnimationClip>;
 export const stageBase = (region: string) => `/assets/stages/${region}/`;
