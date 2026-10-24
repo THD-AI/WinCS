@@ -1,7 +1,7 @@
 # 07 – Asset manifest
 
 <!-- nav:start -->
-[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 15** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
+[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 16** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
 <!-- nav:end -->
 
 Every asset the jam slice needs, with frame counts. **Status:** ✅ approved · 🟡 drawn, in review · ⬜ to do. "Board" is the sprite board in `art/sprites/boards.json`; game-ready atlases are exported from boards into `game/public/assets/`.
@@ -69,5 +69,5 @@ Footsteps (girder, grass), chair whoosh + hit, rover motor, crab servos, drone h
 Every sound is **synthesized at runtime with Web Audio** – no audio files, so nothing to license and nothing that breaks decision 14 (no audio in Git). Recipes are plain data in `game/src/fx/sound/recipes.ts` (effects) and `loops.ts` (Hidden Garden, Rusty Creek, Jenny); the `Audio` scene plays them. Game code calls `sound.play('chair-whoosh')` / `sound.loop('boss-jenny')`; hits, defeats, the boss and region turns are wired to the game events, and the anomaly state plays the region loop slightly flat. M mutes.
 
 <!-- nav:start -->
-[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 15** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
+[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 16** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
 <!-- nav:end -->

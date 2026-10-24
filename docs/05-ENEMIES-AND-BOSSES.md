@@ -1,7 +1,7 @@
 # 05 – Enemies and bosses
 
 <!-- nav:start -->
-[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 15** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
+[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 16** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
 <!-- nav:end -->
 
 ![Boss – Jenny, the self-driving race car](../art/direction/images/boss-jenny-preview.png)
@@ -85,5 +85,5 @@ Lex's read (A14), which the fight follows: Jenny is a **shielded** enemy. Her no
 | Secret | **Professors** (replay) | Giant, Moon Lord-scale joke bosses after one completion |
 
 <!-- nav:start -->
-[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 15** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
+[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 16** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
 <!-- nav:end -->
