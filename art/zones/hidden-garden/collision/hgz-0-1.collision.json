@@ -1,0 +1,133 @@
+{
+ "chunk": "hgz-0-1",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    387
+   ],
+   [
+    552,
+    388
+   ]
+  ],
+  [
+   [
+    552,
+    364
+   ],
+   [
+    655,
+    364
+   ]
+  ],
+  [
+   [
+    655,
+    336
+   ],
+   [
+    757,
+    336
+   ]
+  ],
+  [
+   [
+    757,
+    306
+   ],
+   [
+    1452,
+    306
+   ]
+  ],
+  [
+   [
+    1452,
+    336
+   ],
+   [
+    1553,
+    336
+   ]
+  ],
+  [
+   [
+    1553,
+    365
+   ],
+   [
+    1647,
+    365
+   ]
+  ],
+  [
+   [
+    1647,
+    389
+   ],
+   [
+    2160,
+    390
+   ]
+  ],
+  [
+   [
+    918,
+    146
+   ],
+   [
+    1268,
+    146
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "id": "shed-ladder",
+   "kind": "ladder",
+   "x": 1240,
+   "y": 140,
+   "w": 47,
+   "h": 166
+  },
+  {
+   "x": 1250,
+   "y": 0,
+   "w": 28,
+   "h": 150,
+   "kind": "ladder"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 482,
+   "w": 2160,
+   "h": 238,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "dexter-waypoint-4",
+   "kind": "dexter-waypoint",
+   "x": 1500,
+   "y": 228,
+   "w": 80,
+   "h": 76,
+   "note": "the top of the terrace: Dexter points back up at the glint on the shed roof, then waits",
+   "act": "point"
+  }
+ ]
+}
