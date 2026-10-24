@@ -73,11 +73,11 @@
   {
    "id": "dexter-waypoint-1",
    "kind": "dexter-waypoint",
-   "x": 620,
+   "x": 420,
    "y": 355,
-   "w": 220,
+   "w": 420,
    "h": 76,
-   "note": "walking up to the bench (x >= 620) makes Dexter hop off and beckon; the first quest starts",
+   "note": "walking up the path towards the bench (x >= 420, ~9 m short of it) wakes Dexter: he looks round, bows, hops off and leads; the first quest starts",
    "act": "wake"
   },
   {
