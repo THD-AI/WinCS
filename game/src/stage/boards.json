@@ -1,0 +1,14 @@
+{
+  "readme": "Every sprite atlas the game loads (game/public/assets/sprites/<id>.png|json|anims.json), read by boot/manifest.ts. Add a board with one line here. 'required' boards fall back to a placeholder when missing; 'optional' boards are simply absent until they are exported.",
+  "required": [
+    "hero-move", "hero-run", "hero-idle", "hero-air", "hero-hurt", "hero-death",
+    "chair-side", "chair-overhead", "chair-block",
+    "enemy-rover", "enemy-crab", "enemy-drone",
+    "fx", "fx-leaves", "fx-ground", "fx-water",
+    "boss-jenny", "boss-jenny-2", "coffee-machine",
+    "dexter", "dexter-acts", "pocket-computer", "mensa-food"
+  ],
+  "optional": [
+    "dexter-prologue"
+  ]
+}

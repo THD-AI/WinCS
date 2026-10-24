@@ -1,4 +1,4 @@
-import { BOARDS, stageBase, textureKey } from '../stage/assets';
+import { BOARDS, OPTIONAL_BOARDS, stageBase, textureKey } from '../stage/assets';
 import { assetFile, stageLayers, type RegionState, type StageManifest } from '../stage/manifest';
 import { REGION_ORDER } from '../ui/mapModel';
 
@@ -49,8 +49,8 @@ export function jsonWave(region: string, opts: { boards: readonly string[]; mapR
     { key: dataKey(region, 'surfaces'), url: base + REGION_DATA.surfaces, kind: 'json', optional: true },
     ...opts.mapRegions.filter(r => r !== region).map(r => ({ key: mapStageKey(r), url: `${stageBase(r)}stage.json`, kind: 'json' as const, optional: true })),
     ...opts.boards.flatMap(board => [
-      { key: `atlas:${board}`, url: `/assets/sprites/${board}.json`, kind: 'json' as const },
-      { key: `${board}.anims`, url: `/assets/sprites/${board}.anims.json`, kind: 'json' as const },
+      { key: `atlas:${board}`, url: `/assets/sprites/${board}.json`, kind: 'json' as const, optional: isOptional(board) },
+      { key: `${board}.anims`, url: `/assets/sprites/${board}.anims.json`, kind: 'json' as const, optional: isOptional(board) },
     ]),
   ];
 }
@@ -68,12 +68,13 @@ export function imageWave(manifest: StageManifest, state: RegionState, opts: {
     .filter(file => !opts.has(textureKey(region, file)))
     .map(file => ({ key: textureKey(region, file), url: base + file, kind: 'image' as const }));
   const boards = opts.boards.filter(board => !opts.has(board))
-    .map(board => ({ key: board, url: `/assets/sprites/${board}.png`, kind: 'atlas' as const, atlasJson: `atlas:${board}` }));
+    .map(board => ({ key: board, url: `/assets/sprites/${board}.png`, kind: 'atlas' as const, atlasJson: `atlas:${board}`, optional: isOptional(board) }));
   const menu = opts.menuKey && !opts.has(MENU_KEY)
     ? [{ key: MENU_KEY, url: `/assets/ui/${MENU_KEY}.png`, kind: 'image' as const, optional: true }] : [];
   return [...collisions, ...plates, ...boards, ...menu];
 }
 
 /** The boards still missing from the texture cache (a region swap reloads none of them). */
-export const missingBoards = (has: (key: string) => boolean) => BOARDS.filter(board => !has(board));
+export const missingBoards = (has: (key: string) => boolean) => [...BOARDS, ...OPTIONAL_BOARDS].filter(board => !has(board));
+const isOptional = (board: string) => OPTIONAL_BOARDS.includes(board);
 export const MAP_REGIONS: readonly string[] = REGION_ORDER;

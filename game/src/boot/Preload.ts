@@ -1,34 +1,17 @@
 import Phaser from 'phaser';
-import type { RegionState, StageManifest } from '../stage/manifest';
-import { START } from '../stage/swap';
+import type { StageManifest } from '../stage/manifest';
 import { hideOverlays } from './Boot';
 import type { PreloadData, StageData } from './contract';
 import { AssetLoader } from './loader';
 import { LoadingView, PALETTE } from './LoadingView';
 import { registerPixelFont } from './pixelFont';
-import { LoadTracker, type FileState } from './progress';
+import { LoadTracker } from './progress';
+import { logLine, resolveTarget } from './target';
 
 /** Production continues past failed required files on its own after this many seconds (a retry first). */
 const AUTO_CONTINUE = 6;
 const FADE = 260;
 
-/** Resolve the region to load: swapRegion's data first, then `?region=…&state=…`, then the slice start. */
-export function resolveTarget(data: PreloadData, search: string): { region: string; state: RegionState; first: boolean } {
-  const query = new URLSearchParams(search);
-  const first = !data.region;
-  const region = data.region ?? query.get('region') ?? START.region;
-  const asked = data.state ?? query.get('state');
-  const state: RegionState = asked === 'clean' || asked === 'anomaly' ? asked : region === START.region ? START.state : 'anomaly';
-  return { region, state, first };
-}
-
-/** The boot-log line for a file that finished or failed. */
-export function logLine(file: FileState): string | undefined {
-  const path = file.entry.url.split('/').pop() ?? file.entry.url;
-  if (file.status === 'done') return `LOAD ${path} OK`;
-  if (file.status === 'failed') return file.entry.optional ? `SKIP ${path} (NONE)` : `FAIL ${path} (${file.reason})`;
-  return undefined;
-}
 
 /**
  * Loads everything a region needs through the one loader (boot/loader.ts), behind the loading screen, then

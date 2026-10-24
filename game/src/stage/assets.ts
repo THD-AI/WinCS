@@ -1,9 +1,12 @@
 import type Phaser from 'phaser';
 import { parseManifest, stageLayers, type StageManifest, type RegionState } from './manifest';
 
-export const BOARDS = ['hero-move', 'hero-run', 'hero-idle', 'hero-air', 'hero-hurt', 'hero-death',
-  'chair-side', 'chair-overhead', 'chair-block', 'enemy-rover', 'enemy-crab', 'enemy-drone', 'fx', 'boss-jenny', 'boss-jenny-2', 'coffee-machine',
-  'dexter', 'dexter-acts', 'pocket-computer', 'mensa-food'] as const;
+import boards from './boards.json';
+
+/** Every atlas the game needs – data in boards.json, one line per board. */
+export const BOARDS: readonly string[] = boards.required;
+/** Atlases the game uses when they exist (not exported yet → simply absent, no placeholder, no error). */
+export const OPTIONAL_BOARDS: readonly string[] = boards.optional;
 /** `stride`: a locomotion cycle's stride in game px (compare.py stride) – it is played by distance, not by time. */
 export interface AnimationClip { frames: number; fps: number; loop: boolean; stride?: number }
 export type AnimationTable = Record<string, AnimationClip>;
