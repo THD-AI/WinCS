@@ -35,6 +35,8 @@ ROOT = Path(__file__).resolve().parents[1]
 STAGES = ROOT / "art" / "stages"
 OUT = ROOT / "game" / "public" / "assets" / "stages"
 SIZE = [2160, 720]
+# Region data the game loads next to stage.json when a region has it (docs/15 contracts), copied as is.
+DATA_FILES = ("atmosphere.json", "surfaces.json")
 
 
 class ExportError(Exception):
@@ -103,8 +105,20 @@ def export(region: Path, out: Path) -> dict:
     target.mkdir(parents=True)
     for name, path in files.items():
         shutil.copyfile(path, target / name)
-    if (region / "surfaces.json").exists():  # the hero's ground materials (docs/15, workstream 3)
-        shutil.copyfile(region / "surfaces.json", target / "surfaces.json")
+    for name in DATA_FILES:  # optional region data the game loads next to stage.json
+        if (region / name).exists():
+            try:
+                data = json.loads((region / name).read_text(encoding="utf-8"))
+            except json.JSONDecodeError as error:
+                raise ExportError(f"{region.name}: {name} is not valid JSON ({error})") from error
+            shutil.copyfile(region / name, target / name)
+            # "assets": extra images in the region folder the file refers to (atmosphere.json)
+            for asset in data.get("assets", []) if isinstance(data, dict) else []:
+                path = region / asset
+                if Path(asset).is_absolute() or ".." in Path(asset).parts or not path.is_file():
+                    raise ExportError(f"{region.name}: {name} lists asset {asset!r}, which is not a file in the region")
+                (target / asset).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(path, target / asset)
     (target / "stage.json").write_text(json.dumps(stage, indent=1) + "\n", encoding="utf-8", newline="\n")
     return stage
 

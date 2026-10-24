@@ -61,6 +61,23 @@ class ExportStageTests(unittest.TestCase):
         self.assertEqual(names, ['front-left.png', 'front-right.png', 'sky-left.png', 'stage.json',
                                  't-0-0.clean.collision.json'])
 
+    def test_region_data_files_are_published_and_checked(self):
+        (self.region / 'atmosphere.json').write_text('{"wind": {"base": 0.5}}', encoding='utf-8')
+        es.export(self.region, self.out)
+        published = json.loads((self.out / 'test-region' / 'atmosphere.json').read_text(encoding='utf-8'))
+        self.assertEqual(published, {'wind': {'base': 0.5}})
+        self.assertFalse((self.out / 'test-region' / 'surfaces.json').exists())
+        Image.new('RGBA', (4, 4)).save(self.region / 'wrong.png')
+        (self.region / 'atmosphere.json').write_text('{"assets": ["wrong.png"]}', encoding='utf-8')
+        es.export(self.region, self.out)
+        self.assertTrue((self.out / 'test-region' / 'wrong.png').exists())
+        (self.region / 'atmosphere.json').write_text('{"assets": ["../escape.png"]}', encoding='utf-8')
+        with self.assertRaisesRegex(es.ExportError, 'not a file in the region'):
+            es.export(self.region, self.out)
+        (self.region / 'atmosphere.json').write_text('{"wind": ', encoding='utf-8')
+        with self.assertRaisesRegex(es.ExportError, 'atmosphere.json is not valid JSON'):
+            es.export(self.region, self.out)
+
     def test_verify_rebuilds_and_catches_a_wrong_order(self):
         es.export(self.region, self.out)
         self.assertEqual(es.verify(self.region, self.out), ['t-0-0.clean', 't-1-0.clean'])

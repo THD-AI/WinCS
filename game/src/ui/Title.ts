@@ -59,7 +59,7 @@ export class Title extends Phaser.Scene {
   private drawGarden(): void {
     const camera = this.cameras.main;
     try {
-      drawStage(this, this.stageData.manifest, this.stageData.state);
+      drawStage(this, this.stageData.manifest, this.stageData.state, this.stageData.atmosphere);
       const bounds = gridBounds(this.stageData.manifest);
       const reach = Math.min(Math.max(0, bounds.width - VIEW_WIDTH), 1800);
       camera.setScroll(bounds.x, Math.max(bounds.y, bounds.y + bounds.height - VIEW_HEIGHT));
