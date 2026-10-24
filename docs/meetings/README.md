@@ -4,7 +4,7 @@
 [← 15 – The prologue slice (rebuild)](../15-PROLOGUE-SLICE.md) · [Design docs](../README.md) · **15 / 15** · [Design documents →](../README.md)
 <!-- nav:end -->
 
-Fourteen recordings, 22–23 Oct 2026, transcribed with the OpenAI API. A11–A14 also have speaker labels (`gpt-4o-transcribe-diarize`). Audio stays in the team Drive; the transcripts are here so anyone (and any agent) can check where a design decision came from. The design itself lives in the numbered docs; transcripts are evidence, not instructions.
+Seventeen recordings, 22–24 Oct 2026, transcribed with the OpenAI API. A11–A17 also have speaker labels (`gpt-4o-transcribe-diarize`). Audio stays in the team Drive; the transcripts are here so anyone (and any agent) can check where a design decision came from. The design itself lives in the numbered docs; transcripts are evidence, not instructions.
 
 ## What each recording gave the design
 
@@ -24,6 +24,9 @@ Fourteen recordings, 22–23 Oct 2026, transcribed with the OpenAI API. A11–A1
 | [A12](transcripts/A12.md) | **Lex + Alexander** (13 min) | Dexter is the **panther**; absorbs anomalies and grows to ~9 ft with black goo; slides as fast travel; chair → tray → sign; drones are hard, so avoid them and come back; backtracking yes, cheap teleport no | [02](../02-GAME-DESIGN.md), [03](../03-STORY-AND-CAST.md) |
 | [A13](transcripts/A13.md) | Travel clarification (1 min) | Reflections are either the main conduit or fast travel; skip the dramatic teleport animation | [02](../02-GAME-DESIGN.md) |
 | [A14](transcripts/A14.md) | **Team review of the docs** (27.5 min) | Slice = Hidden Garden (longer) → Rusty Creek → Jenny; Jenny's ram turns the creek; Dexter shoves you into the pond, no dialogue; ladders yes, ledge pull-up no; no stamina, no spells; food heals a set share; HUD and crash window approved; title open | [01](../01-PROPOSAL.md), [02](../02-GAME-DESIGN.md), [03](../03-STORY-AND-CAST.md), [05](../05-ENEMIES-AND-BOSSES.md), [07](../07-ASSET-MANIFEST.md), [11](../11-DECISIONS.md) |
+| [A15](transcripts/A15.md) | **Playtest review: Vatsal + Lex** (10 min, 24 Oct) | Hero blends in; enemies too small to read; attack unclear; Jenny's start, damage and arena unfair; hitboxes; ladder flip; a wall after Jenny; no double jump | [checklist](playtest-24-oct.md) |
+| [A16](transcripts/A16.md) | Voice note: keys (Lex) | WASD failed; a second attack key; rebindable keys later | [checklist](playtest-24-oct.md) |
+| [A17](transcripts/A17.md) | Voice note: pause menu (Lex) | Esc must open a pause menu with "back to the main menu" | [checklist](playtest-24-oct.md) |
 
 ## 23 Oct in one paragraph
 
