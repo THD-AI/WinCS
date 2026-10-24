@@ -2,11 +2,12 @@ import Phaser from 'phaser';
 import { gameEvents, type Position } from '../core/events';
 import { sound } from '../fx/sound/Audio';
 import type { Player } from '../player/player';
+import { addRim } from '../stage/atmosphere/pipeline';
 import type { Box, CollisionChunk, Marker } from '../stage/collision';
 import { createAnims, type AtlasAnim } from './atlases';
 import type { CrossingHero } from './Crossing';
 import { FINALE, FinaleSequence, knockArc, type FinalePhase } from './prologueFinale';
-import { DexterGuide, stopsFrom, type GuideAnim, type Pt } from './prologueGuide';
+import { DexterGuide, stopsFrom, type GuideAnim, type GuideView, type Pt } from './prologueGuide';
 
 const ANIMS: AtlasAnim[] = [
   ['dexter', 'idle', 3, -1], ['dexter', 'hop', 4, -1], ['dexter', 'walk', 6, -1], ['dexter', 'point', 3, 0],
@@ -17,9 +18,12 @@ const ANIM_KEY: Record<GuideAnim, [string, string]> = {
   sit: ['dexter-prologue:sit', 'dexter:idle'], look: ['dexter-prologue:look-back', 'dexter:idle'],
   wait: ['dexter-prologue:wait', 'dexter:idle'], hop: ['dexter:hop', 'dexter:hop'], walk: ['dexter:walk', 'dexter:walk'],
   point: ['dexter:point', 'dexter:point'], beckon: ['dexter-acts:beckon', 'dexter-acts:beckon'],
+  bow: ['dexter-acts:bow', 'dexter:idle'], sweat: ['dexter-acts:sweat', 'dexter-prologue:wait'], run: ['dexter:walk', 'dexter:walk'],
 };
-/** A 1 px warm rim so the black plush reads against the dark hedge path (#159). */
-const RIM = { color: 0xffc98a, outer: 1.4, distance: 2 };
+/** A 1 px warm rim so the black plush reads against the dark hedge path (#159); the glow is the Canvas-free fallback. */
+const RIM = { color: 0xffc98a, strength: 0.7, outer: 1.4, distance: 2 };
+/** A landing squashes him this much at most (scale x up, y down) – a plush, not a rubber ball. */
+const SQUASH = { x: 0.14, y: 0.18 };
 /** NPCs draw at 101–105 (docs/15 depth bands); secrets sit with the props at 99. */
 const DEXTER_DEPTH = 101;
 const PROP_DEPTH = 99;
@@ -78,9 +82,12 @@ export class Prologue {
     this.finale = new FinaleSequence(() => this.toCrash());
     createAnims(stage, ANIMS);
     createTableAnims(stage, 'dexter-prologue');
+    createTableAnims(stage, 'dexter-acts');
     this.dexter = stage.add.sprite(bench.x, bench.y, 'dexter', 'idle-00').setOrigin(0.5, 1).setDepth(DEXTER_DEPTH);
-    this.dexter.preFX?.setPadding(RIM.distance + 1);
-    this.dexter.preFX?.addGlow(RIM.color, RIM.outer, 0, false, 0.1, RIM.distance);
+    if (!addRim(this.dexter, RIM.color, RIM.strength)) {
+      this.dexter.preFX?.setPadding(RIM.distance + 1);
+      this.dexter.preFX?.addGlow(RIM.color, RIM.outer, 0, false, 0.1, RIM.distance);
+    }
     this.placeSecrets(boxes, spawns);
     const update = (_time: number, delta: number) => this.update(delta);
     stage.events.on(Phaser.Scenes.Events.UPDATE, update);
@@ -113,6 +120,8 @@ export class Prologue {
       if (edge && this.guide.state === 'at-pond' && hero.x >= edge.x && hero.grounded && player.life.dead === 0) this.beginFinale(player);
       return;
     }
+    this.dexter.setScale(1);
+    this.dexter.anims.timeScale = 1;
     const phase = this.finale.update(delta);
     const t = this.finale.progress();
     const entered = phase !== this.lastPhase;
@@ -139,10 +148,13 @@ export class Prologue {
     }
   }
 
-  private draw(view: ReturnType<DexterGuide['update']>): void {
+  private draw(view: GuideView): void {
     this.dexter.setPosition(Math.round(view.x), Math.round(view.y)).setFlipX(view.facing < 0);
     const [key, standIn] = ANIM_KEY[view.anim];
     this.play(this.stage.anims.exists(key) ? key : standIn);
+    // The walk plays faster as he speeds up (a scamper when the hero runs); a fresh landing squashes him.
+    this.dexter.anims.timeScale = view.anim === 'walk' || view.anim === 'run' ? view.rate : 1;
+    this.dexter.setScale(1 + SQUASH.x * view.squash, 1 - SQUASH.y * view.squash);
   }
 
   private play(key: string): void {
