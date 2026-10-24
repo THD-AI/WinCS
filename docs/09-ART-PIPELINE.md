@@ -65,6 +65,38 @@ What Codex's runs proved on Rusty Creek, generalised:
 
 Every animation board gets an `atlas` entry when it is drawn, because the review preview is cut with it. Export into the game only once its Design review is **Approved**. `rows` lists the board's rows of sprites from top to bottom: the animations in each row, left to right, with their frame counts from [07](07-ASSET-MANIFEST.md), or `"skip"` for a row that isn't exported (close-ups, scale lineups). `height` is the game height in pixels of the tallest frame of the first animation; the hero's is 76, in an 80 px frame. When the first animation has no standing pose (a jump), `"ref": "jump-08"` names the frame that is 76 px instead. An animation may continue at the start of the next row (death 6 + 6: list it again with the rest of its frames). `"even": true` keeps a row's specks and cuts it along seams without the weight check, for frames that break into dust. `"float": true` on an animation drawn in the air (jump, fall) puts each frame's lowest pixel on the baseline, because the game already lifts the body. `fps` defaults to 12 and `loop` to true. A sheet holds at most about 30 frames in four rows; the model miscounts bigger sheets, so split them (`hero-move`, `hero-run`, `hero-idle`). Open every brief with the magenta background and the no-text rule: put later in the brief, the model sometimes draws on paper with captions.
 
+### How a sprite board is made
+
+```mermaid
+flowchart TD
+  subgraph refs["References, in this order"]
+    A["The approved direction image of this character,<br/>cropped to it: repo:art/direction/images/…@x,y,w,h"]
+    S["A crop with the hero beside it,<br/>for the size ratio"]
+    P["Photos of the real thing<br/>(WINCS_PHOTOS, outside Git)"]
+    M["style-master-preview.png – always last"]
+  end
+  refs --> B["Brief (boards.json): magenta key + no text first,<br/>then the look copied from the crop (proportions in words),<br/>then rows × frames"]
+  B --> D["make_boards.py draw · gpt-image-2.5-sunburst<br/>→ tmp/boards/raw/&lt;id&gt;.png"]
+  D --> C["make_boards.py crush · key magenta,<br/>premultiplied ÷2, 96 colours"]
+  C --> X["export_atlas.py --out tmp/atlas · height from docs/04"]
+  X --> L["compare.py lineup + the crop at game scale"]
+  L -->|"size or proportions off"| B
+  L -->|matches| R{"Alexander's review<br/>(board page + GIFs)"}
+  R -->|corrections| B
+  R -->|approved| E["export_atlas.py → game/public/assets/sprites/"]
+```
+
+**Proportions come from the crop, sizes from the measurement.** A character with its own approved direction image is drawn from a crop of it, with a second crop that shows it beside the hero, and the brief says its proportions in words (Dexter: "a big round head about 45 % of his height, stubby limbs, shorts"). The export height is measured in that image against the hero (547 px there = 76 px in the game) and written into docs/04 with the measurement. Without the crop the model drew Dexter as a slim cat on two legs, and the 1.5 ft maths put him at 20 px: both were wrong ([#139](https://github.com/THD-AI/WinCS/issues/139)).
+
+| Board | First reference (crop) | Size from | Game height |
+| --- | --- | --- | --- |
+| `hero-*` | the hero sheet | docs/04 | 76 px |
+| `chair-*` | the hero sheet + chair photos | the hero's frame | 76 px |
+| `dexter`, `dexter-acts` | [Dexter stages](../art/direction/dexter-stages.md), the plush, and the plush beside the hero | measured there: 191 / 547 of the hero | 27 px |
+| `enemy-rover`, `-crab`, `-drone` | photos + [cast](../art/direction/cast.md) | docs/05 (the cast's machine sizes carry review notes) | 25 / 46 / 47 px |
+| `fx` | [cast](../art/direction/cast.md) | – | 20 px |
+| `boss-jenny`, `-2` | [Jenny](../art/direction/boss-jenny.md), cropped to the car | the approved direction (Alexander, 24 Oct) | ≈ 270 px long |
+
 ```json
 "atlas": {"height": 76, "rows": [
   [{"anim": "idle", "frames": 6}],
@@ -113,6 +145,7 @@ flowchart LR
 | `hero-run` → `run` | 62–63 px, head and body smaller than walk | the walk's figure, leaning (≈ 70 px) | `"scale": 1.12` on the animation |
 | `enemy-crab` | idle 33 px | waist-high, ≈ 40 px ([05](05-ENEMIES-AND-BOSSES.md)) | board `height` 38 → 46 |
 | `enemy-drone` | 17 px span | 1 m span, ≈ 45 px ([05](05-ENEMIES-AND-BOSSES.md)) | board `height` 18 → 47 |
+| `dexter`, `dexter-acts` (second audit, [#139](https://github.com/THD-AI/WinCS/issues/139)) | 20 px, slim, small head | 27 px, chunky toy with a big head, measured in the approved Dexter stages | redrawn from crops of that image; `height` 20 → 27 |
 
 `"scale"` on one animation corrects a row the model drew at another size than the rest of its sheet; `height` on the board sets the whole sheet. The cast direction image's machine sizes carry review notes, so the docs' numbers win for the machines; the cast image still sets each machine's proportions.
 
