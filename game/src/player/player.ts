@@ -21,6 +21,7 @@ import { parseAtmosphere, type Wind } from '../stage/atmosphere/config';
 import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
+import { CODES, physicalKeys } from './physicalKeys';
 
 /** The splash of a region without a `water` material. */
 const SPLASH: Puff = { sprite: 'splash', shape: 'dust', colors: ['#9cc8f0', '#e8f4ff', '#4f86c6'], count: 8 };
@@ -35,6 +36,7 @@ export class Player {
   private guardPush = new GuardPush();
   private motion = movement();
   private keys;
+  private physical: { any(codes: readonly string[]): boolean };
   private debug: Phaser.GameObjects.Graphics;
   private label: Phaser.GameObjects.Text;
   private showDebug = false;
@@ -85,7 +87,8 @@ export class Player {
     const settle = () => this.settle();
     scene.events.on('postupdate', settle);
     scene.events.once('shutdown', () => scene.events.off('postupdate', settle));
-    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,J') as Record<string, Phaser.Input.Keyboard.Key>;
+    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,J,X') as Record<string, Phaser.Input.Keyboard.Key>;
+    this.physical = physicalKeys(scene);
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setScrollFactor(0).setDepth(10002).setVisible(false);
@@ -170,10 +173,12 @@ export class Player {
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
     const interacting = this.interaction.active;
     const interactionPose = this.interaction.step(milliseconds / 1000);
-    const axis = interacting ? 0 : horizontal(this.keys.A.isDown || this.keys.LEFT.isDown, this.keys.D.isDown || this.keys.RIGHT.isDown,
+    // Phaser's keys (keyCode) or the physical key (code): WASD works on any layout and with an input method active.
+    const key = (codes: readonly string[], ...names: string[]) => names.some(name => this.keys[name].isDown) || this.physical.any(codes);
+    const axis = interacting ? 0 : horizontal(key(CODES.left, 'A', 'LEFT'), key(CODES.right, 'D', 'RIGHT'),
       pad?.leftStick.x, pad?.left, pad?.right);
-    const jumpDown = !interacting && (this.keys.SPACE.isDown || this.keys.K.isDown || !!pad?.A);
-    const vertical = interacting || this.keys.J.isDown || pad?.X ? 0 : horizontal(this.keys.W.isDown || this.keys.UP.isDown, this.keys.S.isDown || this.keys.DOWN.isDown,
+    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K') || !!pad?.A);
+    const vertical = interacting || key(CODES.attack, 'J', 'X') || pad?.X ? 0 : horizontal(key(CODES.up, 'W', 'UP'), key(CODES.down, 'S', 'DOWN'),
       pad?.leftStick.y, pad?.up, pad?.down);
     const geometry = this.chunks.map(c => c.world);
     // Substeps keep wall and floor contacts stable during slow rendered frames.

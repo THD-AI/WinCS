@@ -7,6 +7,7 @@ import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges } from './action-input';
+import { CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
 const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
@@ -20,6 +21,9 @@ export class ChairCombat {
   readonly guard = new Guard();
   private targets = new Map<string, Damageable>();
   private key: Phaser.Input.Keyboard.Key;
+  /** The second attack bind (playtest 24 Oct): X, for players on the arrow keys. */
+  private altKey: Phaser.Input.Keyboard.Key;
+  private physical: { any(codes: readonly string[]): boolean };
   private wasDown = false;
   private special = false;
   private plainTap = false;
@@ -33,6 +37,8 @@ export class ChairCombat {
     // Armed once the hero picked the chair up (chairPickup.ts), in every region after that.
     this.enabled = carriesChair(scene);
     this.key = scene.input.keyboard!.addKey('J');
+    this.altKey = scene.input.keyboard!.addKey('X');
+    this.physical = physicalKeys(scene);
     this.directions = scene.input.keyboard!.addKeys('W,S,UP,DOWN') as Record<string, Phaser.Input.Keyboard.Key>;
     this.previousY = player.body.y;
     const oldHazards = player.onHazards;
@@ -98,11 +104,13 @@ export class ChairCombat {
     this.guard.step(milliseconds / 1000);
     if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const down = this.key.isDown || !!pad?.X;
-    const keyReleased = Phaser.Input.Keyboard.JustUp(this.key);
-    const { pressed, released } = actionEdges(down, this.wasDown, Phaser.Input.Keyboard.JustDown(this.key), keyReleased);
-    const up = this.directions.W.isDown || this.directions.UP.isDown || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
-    const below = this.directions.S.isDown || this.directions.DOWN.isDown || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
+    const down = this.key.isDown || this.altKey.isDown || this.physical.any(CODES.attack) || !!pad?.X;
+    // Both edge checks run every frame so neither key keeps a stale Just-flag.
+    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean);
+    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean);
+    const { pressed, released } = actionEdges(down, this.wasDown, justDown, justUp);
+    const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
+    const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
       this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
       if (this.overhead.begin(up ? 'up' : 'slam', this.player.facing)) sound.play('chair-whoosh');
