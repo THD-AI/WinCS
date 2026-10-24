@@ -131,6 +131,45 @@ knockback − 2 px overlap. Both alternating sweeps can then connect while
 the hero stands still. The 8 px displacement is fixture tuning; real enemy
 knockback belongs to the enemy controller.
 
+### Up attack, slam and pogo implementation (#40)
+
+Directional Act starts on the press: Up takes priority; Down requires
+airborne feet. Ordinary Act retains release-to-sweep and later hold-to-guard
+(#41). Act suppresses climbing and coffee interaction, so Up + Act selects
+the attack even beside a ladder or machine. Damage, death and climbing
+cancel attacks.
+
+The `chair-overhead` cells are 108 × 126 px, pivot (54, 126). Measured dark
+chair legs in `up-03` occupy x=51–78, y=12–37: the up contact envelope is
+**−3…24 px horizontally, 89…114 px above the feet**. Only up poses 02/03
+are active, within the authored six-pose clip at 12 fps. It can overlap
+an enemy above a one-way deck; a deck does not block a chair strike.
+
+Slam uses wind-up poses 00–02, holds descent pose 03, then plays 04–06
+on an ordinary floor. In slam-03 the low chair legs span x=65–91, or
+**11…37 px ahead of the pivot**. The downward contact probe sweeps between
+the previous and current foot positions, with the documented 2 px grain
+as its margin, to prevent tunnelling. Descent tuning is twice run speed
+(516 px/s). Contact with a living enemy or hazard snaps the feet to its
+top and bounces with the existing 485 px/s full-jump impulse (about 96 px).
+The four authored pogo poses play during the bounce. Damage rejection
+does not suppress a physical bounce; a defeated wreck is excluded.
+One directional press during descent or those four poses is buffered until
+pogo recovery ends. Landing on a plain floor, damage or death clears it,
+as with the ordinary sweep buffer.
+
+```mermaid
+flowchart LR
+  INPUT["Up + new Act / airborne Down + new Act<br/>keyboard or gamepad"] --> PRIORITY["Consume special input<br/>suppress coffee, climb and release sweep"]
+  ATLAS["chair-overhead atlas + table<br/>108 × 126, pivot 54,126"] --> MASK["Up: measured legs at poses 02/03<br/>Slam: swept probe 11–37 px forward"]
+  PRIORITY --> MASK
+  MASK --> HIT["One attempt per target<br/>accepted damage: 60 ms stop + spark"]
+  MASK --> BOUNCE["Enemy / hazard top contact before damage<br/>snap feet; full-jump impulse"]
+  BOUNCE --> POSE["4 pogo poses; air control<br/>one buffered directional press starts next slam"]
+  MASK --> FLOOR["Plain floor: remaining slam poses<br/>no crack or shockwave"]
+  HIT --> CHECK["Measured comparison + tests<br/>3 rover pogos; crab-through-deck fixture"]
+```
+
 ## The glitch meter (after Region 1)
 
 Each defeated anomaly charges a 3-segment **glitch meter**. This was Lex's idea, merged with Alexander's Dexter version. **It is not a magic system** (A14): spells would make the game too easy.

@@ -1,6 +1,6 @@
 export interface Rect { x: number; y: number; w: number; h: number }
-export interface ChairHit { damage: number; direction: -1 | 1; position: { x: number; y: number }; kind: 'sweep' }
-export interface Damageable { id: string; bounds(): Rect; hit(hit: ChairHit): boolean }
+export interface ChairHit { damage: number; direction: -1 | 1; position: { x: number; y: number }; kind: 'sweep' | 'up' | 'slam' }
+export interface Damageable { id: string; active?(): boolean; bounds(): Rect; hit(hit: ChairHit): boolean }
 export const intersects = (a: Rect, b: Rect) => a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 
 // docs/02 measured contact: chair-side A04/B03, cell 86×81, foot pivot (43,81).
@@ -59,7 +59,7 @@ export class Sweeps {
     if (!box) return hits;
     for (const target of targets) {
       const bounds = target.bounds();
-      if (this.struck.has(target.id) || !intersects(box, bounds)) continue;
+      if (target.active?.() === false || this.struck.has(target.id) || !intersects(box, bounds)) continue;
       this.struck.add(target.id);
       if (target.hit({ damage: 1, direction: this.direction, position: { ...position }, kind: 'sweep' })) hits.push(bounds);
     }

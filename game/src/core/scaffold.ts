@@ -77,8 +77,8 @@ export class Stage extends Phaser.Scene {
     if (active <= 0) return;
     this.coffee?.update();
     this.player?.update(active);
-    this.rovers?.update(active);
     this.combat?.update(active);
+    this.rovers?.update(active);
     if (this.player) this.follow?.(this.player.body, active);
   }
 }

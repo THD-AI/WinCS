@@ -7,10 +7,15 @@ export const HOLD_HEIGHT = 96;
 export const JUMP_SPEED = 485; // Semi-implicit 120Hz integration reaches about 96px.
 export interface Jump {
   coyote: number; buffer: number; wasDown: boolean; active: boolean;
-  origin: number; peak: number; height: number; landing: number; hard: boolean;
+  origin: number; peak: number; height: number; landing: number; hard: boolean; forced: boolean;
 }
 export const jumpState = (y: number): Jump => ({ coyote: 0, buffer: 0, wasDown: false, active: false,
-  origin: y, peak: y, height: 0, landing: 0, hard: false });
+  origin: y, peak: y, height: 0, landing: 0, hard: false, forced: false });
+
+export function pogo(body: Body, top: number): Jump {
+  body.y = top; body.vy = -JUMP_SPEED; body.grounded = false;
+  return { ...jumpState(top), active: true, forced: true };
+}
 
 export function jump(body: Body, state: Jump, down: boolean, dt: number) {
   state.coyote = body.grounded ? COYOTE : Math.max(0, state.coyote - dt);
@@ -18,10 +23,10 @@ export function jump(body: Body, state: Jump, down: boolean, dt: number) {
   state.wasDown = down;
   if (state.buffer > 1e-9 && state.coyote > 1e-9) {
     body.vy = -JUMP_SPEED; body.grounded = false;
-    state.coyote = 0; state.buffer = 0; state.active = true;
+    state.coyote = 0; state.buffer = 0; state.active = true; state.forced = false;
     state.origin = body.y; state.peak = body.y; state.height = 0; state.landing = 0;
   }
-  if (!down && state.active && body.vy < 0) {
+  if (!down && state.active && !state.forced && body.vy < 0) {
     // Early releases share a 52px minimum rise; later releases stop at their current height.
     const remainingRise = Math.max(0, TAP_HEIGHT - (state.origin - body.y));
     body.vy = Math.max(body.vy, -Math.sqrt(2 * GRAVITY * remainingRise));
@@ -35,6 +40,6 @@ export function landing(body: Body, state: Jump, wasGrounded: boolean, dt: numbe
   if (!wasGrounded && body.grounded) {
     state.hard = body.y - state.peak >= 152; // Two body heights; tune with the route playtest.
     state.landing = state.hard ? 4 / 12 : 2 / 12;
-    state.active = false; state.peak = body.y;
+    state.active = false; state.forced = false; state.peak = body.y;
   }
 }

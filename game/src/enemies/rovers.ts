@@ -23,7 +23,8 @@ export class Rovers {
       const sprite = scene.add.sprite(model.x, model.y, 'enemy-rover', 'idle-00').setOrigin(0.5, 1).setDepth(101);
       const label = scene.add.text(model.x, model.y - ROVER_HEIGHT - BODY_WIDTH / 2, '',
         { fontFamily: 'monospace', fontSize: '14px', backgroundColor: '#17242d' }).setDepth(102).setVisible(false);
-      cleanup.push(chair.register({ id: spawn.id!, bounds: () => model.bounds, hit: hit => model.hit(hit.damage, hit.direction) }));
+      cleanup.push(chair.register({ id: spawn.id!, active: () => model.health > 0,
+        bounds: () => model.bounds, hit: hit => model.hit(hit.damage, hit.direction) }));
       cleanup.push(player.life.register(spawn.id!, () => model.reset()));
       return { id: spawn.id!, model, sprite, label };
     });

@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
-import type { CollisionChunk } from '../stage/collision';
+import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement } from './movement';
-import { jump, jumpState, landing } from './jump';
+import { jump, jumpState, landing, pogo } from './jump';
 import { climb, dropThrough, traversal } from './traversal';
 import { catalogue, LocomotionAnimation, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
@@ -16,6 +16,7 @@ export class Player {
   readonly sprite: Phaser.GameObjects.Sprite;
   readonly life: Life;
   onHealthChanged: (health: number) => void = () => {};
+  onHazards: (boxes: Box[]) => boolean = () => false;
   private motion = movement();
   private keys;
   private debug: Phaser.GameObjects.Graphics;
@@ -38,7 +39,7 @@ export class Player {
     this.animation = new LocomotionAnimation(catalogue(Object.fromEntries(
       ['hero-move', 'hero-run', 'hero-idle', 'hero-air'].map(board => [board, scene.cache.json.get(`${board}.anims`)]))));
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
-    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K') as Record<string, Phaser.Input.Keyboard.Key>;
+    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,J') as Record<string, Phaser.Input.Keyboard.Key>;
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setScrollFactor(0).setDepth(10002).setVisible(false);
@@ -85,6 +86,7 @@ export class Player {
     this.motion = { ...movement(), facing: this.motion.facing }; this.body.vx = 0; this.body.vy = 0;
     return true;
   }
+  pogo(top: number) { this.air = pogo(this.body, top); this.sprite.setPosition(Math.round(this.body.x), top); }
   private resetPosition(position: { x: number; y: number }) {
     Object.assign(this.body, position, { vx: 0, vy: 0, grounded: true, sliding: false, slope: 0 });
     this.motion = movement(); this.air = jumpState(this.body.y); this.traversal = traversal();
@@ -100,7 +102,7 @@ export class Player {
     const axis = interacting ? 0 : horizontal(this.keys.A.isDown || this.keys.LEFT.isDown, this.keys.D.isDown || this.keys.RIGHT.isDown,
       pad?.leftStick.x, pad?.left, pad?.right);
     const jumpDown = !interacting && (this.keys.SPACE.isDown || this.keys.K.isDown || !!pad?.A);
-    const vertical = interacting ? 0 : horizontal(this.keys.W.isDown || this.keys.UP.isDown, this.keys.S.isDown || this.keys.DOWN.isDown,
+    const vertical = interacting || this.keys.J.isDown || pad?.X ? 0 : horizontal(this.keys.W.isDown || this.keys.UP.isDown, this.keys.S.isDown || this.keys.DOWN.isDown,
       pad?.leftStick.y, pad?.up, pad?.down);
     const geometry = this.chunks.map(c => c.world);
     // Substeps keep wall and floor contacts stable during slow rendered frames.
@@ -138,9 +140,11 @@ export class Player {
       remaining -= dt;
     }
     if (this.life.dead === 0) {
-      const hazard = geometry.flatMap(g => g.hazard).find(box => overlaps(this.body, box));
+      const hazards = geometry.flatMap(g => g.hazard);
+      const bounced = this.onHazards(hazards);
+      const hazard = hazards.find(box => overlaps(this.body, box));
       const noGo = this.body.y > 900 || geometry.some(g => g.noGo.some(box => overlaps(this.body, box)));
-      if (hazard) this.resetFromDanger(Number(hazard.damage) || 1);
+      if (hazard && !bounced) this.resetFromDanger(Number(hazard.damage) || 1);
       else if (noGo) this.resetFromDanger();
       else if (this.body.grounded && this.life.knock === 0) this.life.rememberSafe(this.body);
     }

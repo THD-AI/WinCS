@@ -23,14 +23,14 @@ export class CoffeePoints {
   private machines: Box[];
   constructor(private scene: Phaser.Scene, private player: Player, chunks: CollisionChunk[]) {
     this.machines = chunks.flatMap(chunk => chunk.world.interact).filter(box => box.kind === 'coffee-machine');
-    this.keys = scene.input.keyboard!.addKeys('W,UP') as Record<string, Phaser.Input.Keyboard.Key>;
+    this.keys = scene.input.keyboard!.addKeys('W,UP,J') as Record<string, Phaser.Input.Keyboard.Key>;
     this.actors = this.machines.map(box => scene.add.sprite(box.x + box.w / 2, box.y + box.h,
       'coffee-placeholder', 'idle-00').setOrigin(0.5, 1).setDisplaySize(box.w, box.h).setDepth(99));
   }
   update() {
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
     const up = this.keys.W.isDown || this.keys.UP.isDown || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
-    const machine = this.use.step(up, this.player.body, this.player.canAttack, this.machines);
+    const machine = this.use.step(up, this.player.body, this.player.canAttack && !this.keys.J.isDown && !pad?.X, this.machines);
     if (machine && this.player.beginInteraction()) this.player.saveCheckpoint(machine.id!);
     for (const actor of this.actors) actor.setAlpha(coffeeAlpha(this.scene.time.now));
   }
