@@ -59,7 +59,7 @@ export class JennyBoss {
     this.wall = { box: { id: 'boss-wall', kind: 'boss-wall', x: this.gate.x, y: this.gate.y - 200, w: this.gate.w, h: this.gate.h + 200 },
       list: gateChunk.world.solid };
     // The open back's glow sits under the car; the hazard light and the headlight over it.
-    this.glow = scene.add.ellipse(spawn.x, spawn.y, 70, 60, 0xff9a3c, 0).setDepth(DEPTH - 1).setBlendMode(Phaser.BlendModes.ADD);
+    this.glow = scene.add.ellipse(spawn.x, spawn.y, 48, 40, 0xff9a3c, 0).setDepth(DEPTH - 1).setBlendMode(Phaser.BlendModes.ADD);
     this.sprite = scene.add.sprite(spawn.x, spawn.y, 'boss-jenny', 'rev-00').setOrigin(0.5, 1).setDepth(DEPTH);
     this.hazard = scene.add.ellipse(spawn.x, spawn.y, 14, 14, 0xffb020, 0).setDepth(DEPTH + 1).setBlendMode(Phaser.BlendModes.ADD);
     this.lamp = scene.add.ellipse(spawn.x, spawn.y, 22, 12, 0xfff4cb, 0).setDepth(DEPTH + 1).setBlendMode(Phaser.BlendModes.ADD);
@@ -156,7 +156,7 @@ export class JennyBoss {
     const pulse = 0.5 + 0.5 * Math.sin(now / 120);
     const open = fight.open;
     // The open back: faint while she drives (hit her from behind), bright and pulsing while she is stunned.
-    this.glow!.setPosition(fight.tailX, floor - JENNY_BOX.h / 2)
+    this.glow!.setPosition(fight.tailX + fight.facing * 22, floor - JENNY_BOX.h / 2)
       .setFillStyle(0xff9a3c, open === 'all' ? 0.35 + 0.35 * pulse : open === 'back' ? 0.12 : 0).setScale(open === 'all' ? 1 + 0.2 * pulse : 1);
     this.hazard!.setPosition(fight.tailX + fight.facing * 18, floor - JENNY_BOX.h - 10)
       .setFillStyle(0xffb020, fight.phase === 'stunned' && Math.floor(now / 200) % 2 === 0 ? 0.95 : 0);
