@@ -47,6 +47,7 @@ Alexander, 24 Oct: everything is done the way the HUD and the pocket computer we
 - Don't `/take` issues, set board fields or change Design review – the team does that.
 - Before committing: `git diff --cached --check`, `python scripts/check_docs.py`, and `python -m pytest scripts` if scripts changed (pip install -r requirements-art.txt).
 - Agents don't merge, don't push to `main`, don't force-push, don't enable auto-merge, and never touch `.env` or keys.
+  **Nothing merges into `main` unless Alexander explicitly says so, for that merge** – not "merge if it's ready", not a goal file or a plan. While he is away, agents keep working without waiting for merges: stacked PRs ready for review, played and tested on previews and in CI, kept green and mergeable.
 - This repo is a submodule of `dotPrivate`: commit here first; the parent gitlink is updated separately. Don't touch other gitlinks.
 
 ## When the game exists
