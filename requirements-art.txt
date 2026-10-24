@@ -1,3 +1,4 @@
 # Local deterministic art preparation, compositing and tests. API dependencies
 # belong to the installed imagegen CLI environment; no API key is needed here.
 Pillow>=11.0,<13
+numpy>=2.0,<3
