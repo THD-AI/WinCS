@@ -12,7 +12,8 @@ describe("Jenny's ram on the creek path (P5)", () => {
     expect(plan.chargeAt).toBeGreaterThan(plan.revAt);
     expect(plan.impactAt).toBeGreaterThan(plan.chargeAt);
     expect(plan.crossAt).toBeLessThan(6);
-    const early = ramFrame(0.1, plan, hero, viewRight);
+    expect(ramFrame(0.1, plan, hero, viewRight)).toMatchObject({ phase: 'hush', lights: 0 }); // the silence first
+    const early = ramFrame(RAM.hush + 0.1, plan, hero, viewRight);
     expect(early.phase).toBe('lights');
     expect(early.jennyX - JENNY_BOX.w / 2).toBeGreaterThan(viewRight); // not on screen yet
     expect(ramFrame(plan.revAt * 0.99, plan, hero, viewRight).lights).toBeGreaterThan(early.lights);

@@ -1,11 +1,12 @@
 /**
- * The end of the slice (docs/03 "The ending sequence", #58): Jenny leaks, Dexter hops in and absorbs the
- * fluid, grows, hops off ahead; the frame glitches, the "to be continued" window waits for OK, the credits
+ * The end of the slice (docs/03 "The ending sequence", #58, #160): Jenny leaks, Dexter hops in and absorbs the
+ * fluid, grows, hops ahead, stops and looks back at the hero once – the garden's first look, now from a grown
+ * Dexter – and hops off; the frame glitches, the "to be continued" window waits for OK, the credits
  * roll and the game returns to the title. Pure timing, so it is tested without Phaser.
  */
-export type EndingPhase = 'idle' | 'leak' | 'appear' | 'absorb' | 'grow' | 'leave' | 'glitch' | 'dialog' | 'credits' | 'done';
+export type EndingPhase = 'idle' | 'leak' | 'appear' | 'absorb' | 'grow' | 'leave' | 'look' | 'exit' | 'glitch' | 'dialog' | 'credits' | 'done';
 
-const TIMED = ['leak', 'appear', 'absorb', 'grow', 'leave', 'glitch'] as const;
+const TIMED = ['leak', 'appear', 'absorb', 'grow', 'leave', 'look', 'exit', 'glitch'] as const;
 
 /** Milliseconds per phase; the frame counts of the fx and dexter atlases at 12 fps set the first three. */
 export const TIMING = {
@@ -13,7 +14,9 @@ export const TIMING = {
   appear: 700,    // dexter hop, 4 frames, plus the landing
   absorb: 1200,   // dexter-acts absorb, 4 frames, while the pool drains
   grow: 900,
-  leave: 1100,
+  leave: 800,     // hops ahead and stops, still in view
+  look: 1400,     // dexter-prologue look-back: the one held moment
+  exit: 500,      // hops off the right edge
   glitch: 900,
   dialogGuard: 300,
   creditsGuard: 1500,
@@ -66,5 +69,5 @@ export class EndingSequence {
 export function dexterScale(phase: EndingPhase, progress: number): number {
   const grown = DEXTER_AFTER_JENNY_PX / DEXTER_PX.plush;
   if (phase === 'grow') return 1 + (grown - 1) * (1 - (1 - progress) ** 3);
-  return phase === 'leave' || phase === 'glitch' ? grown : 1;
+  return phase === 'leave' || phase === 'look' || phase === 'exit' || phase === 'glitch' ? grown : 1;
 }

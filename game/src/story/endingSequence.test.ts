@@ -2,12 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { DEXTER_AFTER_JENNY_PX, dexterScale, EndingSequence, TIMING } from './endingSequence';
 
 describe('the ending', () => {
-  it('runs leak, appear, absorb, grow, leave and glitch, then waits on the window', () => {
+  it('runs leak, appear, absorb, grow, leave, look, exit and glitch, then waits on the window', () => {
     const run = new EndingSequence();
     run.start();
     const seen = [run.phase];
-    for (const phase of ['leak', 'appear', 'absorb', 'grow', 'leave', 'glitch'] as const) seen.push(run.update(TIMING[phase]));
-    expect(seen).toEqual(['leak', 'appear', 'absorb', 'grow', 'leave', 'glitch', 'dialog']);
+    for (const phase of ['leak', 'appear', 'absorb', 'grow', 'leave', 'look', 'exit', 'glitch'] as const) seen.push(run.update(TIMING[phase]));
+    expect(seen).toEqual(['leak', 'appear', 'absorb', 'grow', 'leave', 'look', 'exit', 'glitch', 'dialog']);
     expect(run.update(60_000)).toBe('dialog');
   });
 
@@ -15,7 +15,7 @@ describe('the ending', () => {
     let done = 0;
     const run = new EndingSequence(() => done++);
     run.start();
-    for (const phase of ['leak', 'appear', 'absorb', 'grow', 'leave', 'glitch'] as const) run.update(TIMING[phase]);
+    for (const phase of ['leak', 'appear', 'absorb', 'grow', 'leave', 'look', 'exit', 'glitch'] as const) run.update(TIMING[phase]);
     expect(run.confirm()).toBe(false);
     run.update(TIMING.dialogGuard);
     expect(run.confirm()).toBe(true);
@@ -41,5 +41,6 @@ describe('the ending', () => {
     expect(dexterScale('grow', 0) * 27).toBe(27);
     expect(dexterScale('grow', 1) * 27).toBeCloseTo(46);
     expect(dexterScale('leave', 0) * 27).toBeCloseTo(46);
+    expect(dexterScale('look', 0.5) * 27).toBeCloseTo(46); // he stays grown while he looks back
   });
 });

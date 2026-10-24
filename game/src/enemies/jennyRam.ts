@@ -6,6 +6,8 @@ import { JENNY_BOX } from './jenny';
  * hero and throws him the way she drives, and the frame breaks into the crash crossing. All before ~6 s.
  */
 export const RAM = {
+  /** The silence before her (#160): the music stops, the hero stands, nothing moves yet. */
+  hush: 1.2,
   /** Lights and engine only: she is still beyond the right edge. */
   lights: 0.6,
   /** She rolls into view and revs at the edge. */
@@ -38,7 +40,7 @@ export function ramPlan(heroX: number, viewRight: number, heroHalfWidth = 14): R
   const startX = viewRight + RAM.offscreen;
   const revX = Math.max(heroX + JENNY_BOX.w, viewRight - RAM.revInset);
   const impactX = heroX + heroHalfWidth + JENNY_BOX.w / 2;
-  const revAt = RAM.lights;
+  const revAt = RAM.hush + RAM.lights;
   const chargeAt = revAt + RAM.rev;
   const impactAt = chargeAt + Math.max(0, revX - impactX) / RAM.speed;
   return { startX, revX, impactX, revAt, chargeAt, impactAt, crossAt: impactAt + RAM.throw };
@@ -46,7 +48,7 @@ export function ramPlan(heroX: number, viewRight: number, heroHalfWidth = 14): R
 
 /** Everything the ram shows `t` seconds after the trigger: pure, so the choreography is tested and replayable. */
 export interface RamFrame {
-  phase: 'lights' | 'rev' | 'charge' | 'thrown' | 'cross';
+  phase: 'hush' | 'lights' | 'rev' | 'charge' | 'thrown' | 'cross';
   /** Her centre x and frame name (boss-jenny atlas, 12 fps clips). */
   jennyX: number; jennyFrame: string;
   /** Headlight alpha 0…1 and the x of the lamps (the right edge before she is seen, her nose after). */
@@ -61,8 +63,12 @@ export function ramFrame(t: number, plan: RamPlan, hero: { x: number; y: number 
     return `${name}-0${loop ? n % 4 : Math.min(3, n)}`;
   };
   const nose = (x: number) => Math.min(viewRight - 8, x - JENNY_BOX.w / 2);
+  if (t < RAM.hush) {
+    return { phase: 'hush', jennyX: plan.startX, jennyFrame: clip('rev', 0), lights: 0, lightsX: viewRight - 8 };
+  }
   if (t < plan.revAt) {
-    return { phase: 'lights', jennyX: plan.startX, jennyFrame: clip('rev', 0), lights: (t / plan.revAt) ** 2, lightsX: viewRight - 8 };
+    const k = (t - RAM.hush) / RAM.lights;
+    return { phase: 'lights', jennyX: plan.startX, jennyFrame: clip('rev', 0), lights: k * k, lightsX: viewRight - 8 };
   }
   if (t < plan.chargeAt) {
     const k = Math.min(1, (t - plan.revAt) / (RAM.rev * 0.6));

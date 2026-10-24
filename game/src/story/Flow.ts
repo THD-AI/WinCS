@@ -1,13 +1,14 @@
 import Phaser from 'phaser';
 import { gameEvents, type Position } from '../core/events';
 import { JENNY_BOX } from '../enemies/jenny';
-import { ramFrame, ramPlan, type RamFrame } from '../enemies/jennyRam';
+import { RAM, ramFrame, ramPlan, type RamFrame } from '../enemies/jennyRam';
 import { sound } from '../fx/sound/Audio';
 import type { CollisionChunk } from '../stage/collision';
 import type { StageManifest } from '../stage/manifest';
 import { swapRegion, type RegionTarget } from '../stage/swap';
 import type { CrossingData, CrossingHero } from './Crossing';
 import { Prologue } from './Prologue';
+import { Watcher } from './watcher';
 
 const STAGE = 'Stage';
 /** After the ram: the rust maze, back at its start (the anomaly's player spawn). */
@@ -55,6 +56,9 @@ export class Flow extends Phaser.Scene {
     this.prologue = undefined;
     const data = stage.sys.settings.data as StageData | undefined;
     const chunks = data?.collisions ?? [];
+    // Clean Rusty Creek: Dexter watches from far down the path, where Jenny will come from (#160).
+    const ram = Watcher.spot(chunks);
+    if (ram) new Watcher(stage, ram);
     if (!Prologue.fits(chunks)) return;
     const prologue = new Prologue(stage, chunks, data?.manifest?.region ?? 'hidden-garden', (hero, onLand) => this.crash404(hero, onLand));
     this.prologue = prologue;
@@ -98,8 +102,9 @@ export class Flow extends Phaser.Scene {
     const jenny = stage.add.sprite(plan.startX, hero.y, 'boss-jenny', 'rev-00').setOrigin(0.5, 1).setDepth(150);
     let thrown: Phaser.GameObjects.Sprite | undefined;
     let t = 0, last: RamFrame['phase'] | undefined, puff = 0;
-    sound.play('jenny-engine');
-    camera.shake(plan.chargeAt * 1000, 0.0015);
+    // The hush (#160): the music stops and nothing moves; the engine breaks the silence. The crash's region turn
+    // starts the maze's music (Audio).
+    sound.loop(null);
     // Driven by the stage clock (not tweens), so it pauses with the stage and steps in tests.
     const step = (_time: number, delta: number) => {
       t += delta / 1000;
@@ -109,6 +114,7 @@ export class Flow extends Phaser.Scene {
       jenny.setPosition(Math.round(f.jennyX), hero.y + (f.phase === 'rev' ? Math.floor(t * 24) % 2 : 0)).setFrame(f.jennyFrame);
       lights.setPosition(Math.round(f.lightsX), hero.y).setAlpha(f.lights);
       if (f.phase === 'rev' && (puff -= delta) <= 0) { puff = 80; exhaust(stage, jenny); }
+      if (entered && f.phase === 'lights') { sound.play('jenny-engine'); camera.shake((plan.chargeAt - RAM.hush) * 1000, 0.0015); }
       if (entered && f.phase === 'rev') sound.play('jenny-engine');
       if (entered && f.phase === 'charge') sound.play('chair-whoosh');
       if (entered && f.phase === 'thrown') {
