@@ -79,29 +79,13 @@
  ],
  "slide": [],
  "oneWay": [],
- "climb": [
-  {
-   "x": 1540,
-   "y": 380,
-   "w": 40,
-   "h": 340,
-   "kind": "ladder"
-  }
- ],
+ "climb": [],
  "solid": [],
  "noGo": [
   {
    "x": 0,
    "y": 472,
-   "w": 1530,
-   "h": 248,
-   "kind": "water",
-   "note": "the pond: never floor; falling in splashes and respawns at the bank"
-  },
-  {
-   "x": 1590,
-   "y": 472,
-   "w": 570,
+   "w": 2160,
    "h": 248,
    "kind": "water",
    "note": "the pond: never floor; falling in splashes and respawns at the bank"

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEAD_ZONE, follow, gridBounds } from './camera';
+import { DEAD_ZONE, follow, gridBounds, roomBounds } from './camera';
 import type { StageManifest } from './manifest';
 const bounds = { x: 0, y: 0, width: 6480, height: 1440 };
 describe('camera follow', () => {
@@ -53,5 +53,13 @@ describe('camera follow', () => {
     expect(state.y).toBeCloseTo(rest, 6);
     for (let i = 0; i < 300; i++) follow(state, { x: 2000, y: 600, vx: 0, grounded: true }, bounds, 1 / 60);
     expect(state.y).toBeGreaterThan(rest + 100);
+  });
+  it('frames only the row the hero is in: the level row, or the underground under part of it', () => {
+    const manifest = { chunkSize: [2160, 720], chunks: [0, 1, 2, 3, 4].map(x => ({ x, y: 0 }))
+      .concat([2, 3, 4].map(x => ({ x, y: 1 }))) } as StageManifest;
+    expect(roomBounds(manifest, 400)).toEqual({ x: 0, y: 0, width: 10800, height: 720 });
+    expect(roomBounds(manifest, 1300)).toEqual({ x: 4320, y: 720, width: 6480, height: 720 });
+    const single = { chunkSize: [2160, 720], chunks: [{ x: 0, y: 0 }, { x: 1, y: 0 }] } as StageManifest;
+    expect(roomBounds(single, 9999)).toEqual(gridBounds(single));       // one row: the whole grid, as before
   });
 });

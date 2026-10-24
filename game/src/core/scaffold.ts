@@ -12,6 +12,7 @@ import { Rovers } from '../enemies/rovers';
 import { JennyBoss } from '../enemies/jennyBoss';
 import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
+import { Rooms } from '../stage/rooms';
 import { DebugOverlay, type EnemyLike, type JennyLike, type DexterLike } from '../stage/debugOverlay';
 import { fallCapture } from '../stage/fallCapture';
 import { GameMenu } from '../ui/menu';
@@ -25,6 +26,7 @@ export class Stage extends Phaser.Scene {
   private coffee?: CoffeePoints;
   private rovers?: Rovers;
   private triggers?: Triggers;
+  private rooms?: Rooms;
   private jenny?: JennyBoss;
   private overlay?: DebugOverlay;
   private menu?: GameMenu;
@@ -57,6 +59,7 @@ export class Stage extends Phaser.Scene {
     this.rovers = new Rovers(this, this.player, this.combat, data.collisions);
     this.jenny = new JennyBoss(this, this.player, this.combat, data.collisions);
     this.triggers = new Triggers(data.collisions, data.manifest.region);
+    this.rooms = new Rooms(this, this.player, data.collisions, data.manifest.region);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.overlay = new DebugOverlay(this, stage, legend, data.collisions, {
@@ -102,6 +105,7 @@ export class Stage extends Phaser.Scene {
     const active = Math.min(100, this.combat?.pause.consume(delta) ?? delta);
     if (active <= 0) return;
     this.coffee?.update();
+    this.rooms?.update();
     this.player?.update(active);
     this.combat?.update(active);
     this.rovers?.update(active);

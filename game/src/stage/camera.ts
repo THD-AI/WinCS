@@ -44,12 +44,32 @@ export function follow(state: Follow, target: Target, bounds: Bounds, dt: number
     clamp(Math.round(hero) - Math.round(hero - camera), Math.ceil(min), Math.floor(max));
   return { x: snap(target.x, state.x, bounds.x, maxX), y: snap(target.y, state.y, bounds.y, maxY) };
 }
+/**
+ * The room the hero is in: the grid row under `y`, only that row's chunks. A region's rows are rooms (the level
+ * row, the underground under it) joined by doors, never by open sky: the camera never shows the row next door,
+ * and the parallax plates (which scroll only sideways) never slide against the ground. One row = the whole grid.
+ */
+export function roomBounds(manifest: StageManifest, y: number): Bounds {
+  const [w, h] = manifest.chunkSize;
+  const rows = [...new Set(manifest.chunks.map(c => c.y))];
+  const row = rows.reduce((best, r) => Math.abs((r + 0.5) * h - y) < Math.abs((best + 0.5) * h - y) ? r : best, rows[0]);
+  const xs = manifest.chunks.filter(c => c.y === row).map(c => c.x * w);
+  return { x: Math.min(...xs), y: row * h, width: Math.max(...xs) - Math.min(...xs) + w, height: h };
+}
 export function cameraFollow(scene: Phaser.Scene, manifest: StageManifest) {
-  const camera = scene.cameras.main, bounds = gridBounds(manifest);
+  const camera = scene.cameras.main;
   camera.roundPixels = true;
   const state: Follow = { x: camera.scrollX, y: camera.scrollY, lead: 0 };
+  let room: Bounds | undefined;
   return (target: Target, milliseconds: number) => {
-    const position = follow(state, target, bounds, Math.min(milliseconds / 1000, 0.1), camera.width, camera.height);
+    const here = roomBounds(manifest, target.y);
+    if (!room || here.y !== room.y) {  // entering a room (the start, a door): frame it at once, no easing across
+      room = here;
+      state.lead = 0; state.focus = target.y;
+      state.x = Math.max(room.x, Math.min(room.x + room.width - camera.width, target.x - camera.width / 2));
+      state.y = Math.max(room.y, Math.min(room.y + room.height - camera.height, target.y - camera.height * FRAME_Y));
+    }
+    const position = follow(state, target, room, Math.min(milliseconds / 1000, 0.1), camera.width, camera.height);
     camera.setScroll(position.x, position.y);
   };
 }
