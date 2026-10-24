@@ -31,7 +31,7 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 
 | Stage | Height | Look | When |
 | --- | --- | --- | --- |
-| Plush | 1.5 ft | The Campus Store plush: black velvet fur, ice-blue eyes, orange nose, grey THD T-shirt | Prologue → Region 1 |
+| Plush | 1.5 ft (drawn 27 px, [04](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows)) | The Campus Store plush: black velvet fur, ice-blue eyes, orange nose, grey THD T-shirt | Prologue → Region 1 |
 | Big plush | 3–4 ft | The same plush, too big; stitching strained, posture slightly too upright | Regions 2–3 |
 | **Mascot (final form)** | **8.5 ft** | THD's real Deggster **mascot costume** – big fluffy head, grey crest T-shirt, furry gloves and feet – but far too tall. Friendly at first glance, like Duck Season's mascot. On a second look: thick black fluid seeps out exactly where the costume pieces join – the gap between the head and the neck sleeve, the glove cuffs, the ankles – the head sits a little too far forward, the eyes are too glossy. Nobody is inside, or something is | Region 4 → final boss |
 
