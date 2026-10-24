@@ -1,0 +1,12 @@
+{
+ "ladder-top": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "ladder-bottom": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ }
+}
