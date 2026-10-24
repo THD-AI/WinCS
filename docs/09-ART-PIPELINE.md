@@ -275,6 +275,23 @@ A bad field is reported in the console and replaced by its default; `{}` (no fil
 | ![Pond, layers ranked region-wide, ripples, pads, leaves](images/atmosphere/pond-after.png) | ![Terraces with the blurred foreground over the path](images/atmosphere/terraces-foreground.png) |
 | ![The water ripples and shimmers (3×)](images/atmosphere/pond-ripple-zoom.png) | ![anomaly-reveal: the maze in the pond](images/atmosphere/anomaly-reveal.png) |
 
+## One asset system (assets.py, #158)
+
+`art/inventory.csv` is the plan: every asset the slice needs, with its measured size, animations, sources and status. `scripts/assets.py` checks it against the repo, so the sheet can't drift from the files:
+
+```mermaid
+flowchart LR
+  I["art/inventory.csv<br/>the plan"] --> D{"derive from files"}
+  B["boards.json<br/>review ✅?"] --> D
+  G["art/sprites/images<br/>drawn?"] --> D
+  E["game/public/assets<br/>exported?"] --> D
+  D --> S["status<br/>missing · planned · drawn ·<br/>exported · approved · n/a<br/>+ where the sheet disagrees"]
+  D --> C["check<br/>exported clips vs the<br/>inventory's frame counts"]
+  D --> N["next<br/>what to do, with the command"]
+```
+
+`python scripts/assets.py status [--strict]` · `check <id>` · `next`. A new asset starts as a row in the sheet; `next` then names the step that moves it on (draw → export for review → Alexander's ✅).
+
 ## Commands
 
 ```bash
