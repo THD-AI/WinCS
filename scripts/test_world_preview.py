@@ -2,7 +2,6 @@
 import json
 
 import numpy as np
-import pytest
 from PIL import Image
 
 import world_preview as wp
@@ -122,4 +121,5 @@ def test_concept_side_by_side_has_both_at_one_height(tmp_path):
 
 
 if __name__ == "__main__":
+    import pytest  # CI discovers with unittest, which has no pytest: imported only to run this file by hand
     pytest.main([__file__, "-q"])
