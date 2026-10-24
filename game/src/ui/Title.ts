@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
 import { sound } from '../fx/sound/Audio';
-import { CREDITS, MENU, moveSelection, SUBTITLE, TITLE } from './credits';
+import { MENU, moveSelection, SUBTITLE, TITLE } from './credits';
+import { creditsText } from './creditsView';
 
 const C = { bg: 0x101820, text: '#e8e4dc', dim: '#7d8a90', pick: '#46d1b4' };
 const FONT = 'monospace';
@@ -28,7 +29,7 @@ export class Title extends Phaser.Scene {
       .on('pointerover', () => this.select(i))
       .on('pointerdown', () => { this.select(i); this.confirm(); }));
     this.titleLayer = this.add.container(0, 0, [title, subtitle, ...this.menu]);
-    this.creditsLayer = this.add.container(0, 0, this.creditsText()).setVisible(false);
+    this.creditsLayer = this.add.container(0, 0, creditsText(this, 'Act / Esc – back')).setVisible(false);
     const keys = this.input.keyboard;
     keys?.addCapture('UP,DOWN,SPACE');  // these would scroll the page under the canvas
     keys?.on('keydown-UP', () => this.select(moveSelection(this.choice, -1)));
@@ -71,21 +72,5 @@ export class Title extends Phaser.Scene {
     this.showingCredits = on;
     this.titleLayer.setVisible(!on);
     this.creditsLayer.setVisible(on);
-  }
-
-  private creditsText(): Phaser.GameObjects.Text[] {
-    const out: Phaser.GameObjects.Text[] = [];
-    let y = 110;
-    for (const section of CREDITS) {
-      out.push(this.add.text(VIEW_WIDTH / 2, y, section.heading, { fontFamily: FONT, fontSize: '24px', color: C.pick }).setOrigin(0.5));
-      y += 36;
-      for (const line of section.lines) {
-        out.push(this.add.text(VIEW_WIDTH / 2, y, line, { fontFamily: FONT, fontSize: '18px', color: C.text }).setOrigin(0.5));
-        y += 26;
-      }
-      y += 22;
-    }
-    out.push(this.add.text(VIEW_WIDTH / 2, VIEW_HEIGHT - 50, 'Act / Esc – back', { fontFamily: FONT, fontSize: '16px', color: C.dim }).setOrigin(0.5));
-    return out;
   }
 }
