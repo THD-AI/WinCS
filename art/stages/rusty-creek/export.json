@@ -1,5 +1,5 @@
 {
-  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps.",
+  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps. Clean draws the water UNDER the bank (24 Oct, Alexander): the bank's coping is the walkway the hero stands on; the anomaly keeps the water last.",
   "chunks": {
     "rc-0-0": {
       "x": 0,
@@ -77,11 +77,11 @@
     ],
     "clean": [
       "01-distance",
+      "04-water",
       "03-bank",
       "clean-architecture",
       "06-near-rails",
-      "07-foliage",
-      "04-water"
+      "07-foliage"
     ]
   },
   "composed": {
