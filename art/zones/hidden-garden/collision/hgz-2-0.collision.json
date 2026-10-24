@@ -5,41 +5,82 @@
   2160,
   720
  ],
- "walk": [],
- "slide": [],
- "oneWay": [
+ "walk": [
   [
    [
     0,
-    520
+    392
    ],
    [
-    1500,
-    520
+    177,
+    392
    ]
   ],
   [
    [
-    600,
-    330
+    177,
+    441
    ],
    [
-    1800,
-    330
+    1323,
+    441
    ]
   ]
  ],
- "climb": [
+ "slide": [],
+ "oneWay": [],
+ "climb": [],
+ "solid": [
   {
-   "x": 1000,
-   "y": 330,
-   "w": 28,
-   "h": 190,
-   "kind": "ladder"
+   "x": 1326,
+   "y": 300,
+   "w": 24,
+   "h": 141,
+   "kind": "wall",
+   "note": "the pier's end post"
   }
  ],
- "solid": [],
- "noGo": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 478,
+   "w": 2160,
+   "h": 242,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
  "hazard": [],
- "interact": []
+ "interact": [
+  {
+   "id": "dexter-waypoint-pond-1",
+   "kind": "dexter-waypoint",
+   "x": 215,
+   "y": 365,
+   "w": 80,
+   "h": 76,
+   "note": "the old bench by the pond: Dexter waits here and looks back",
+   "act": "wait"
+  },
+  {
+   "id": "dexter-waypoint-pond-2",
+   "kind": "dexter-waypoint",
+   "x": 680,
+   "y": 365,
+   "w": 80,
+   "h": 76,
+   "note": "mid-path: Dexter hops ahead and beckons",
+   "act": "wait"
+  },
+  {
+   "id": "dexter-waypoint-pond-3",
+   "kind": "dexter-waypoint",
+   "x": 1150,
+   "y": 365,
+   "w": 80,
+   "h": 76,
+   "note": "the jetty: Dexter stops and points at the water; the hero passes him to the edge",
+   "act": "pond"
+  }
+ ]
 }

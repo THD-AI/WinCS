@@ -155,7 +155,7 @@ def grow_vertical(neighbour: Image.Image, guide: Image.Image, up: bool, painter)
                     o[x, y] = s[x, y]
         tall.paste(out, (0, top))
         done += piece
-    new = match_rows(tall.crop((0, 0, W, H)), tall.crop((0, H, W, 2 * H)))
+    new = match_rows(tall.crop((0, 0, W, H)), tall.crop((0, H, W, 2 * H)), median=31)  # no streaks from a leaf
     return flip(new)
 
 
@@ -168,6 +168,13 @@ def match_rows(new: Image.Image, below: Image.Image, ramp: int = 160, blur: int 
     a, b = np.asarray(new, dtype=np.float32), np.asarray(below, dtype=np.float32)
     step = b[0] - a[-1]                                     # per column, per channel
     if median:
+        # A cloud or a leaf on one side only is a shape, not a colour drift: its columns step far more than the
+        # rest. Unless most columns do, they take the drift interpolated from the columns around them.
+        size = np.abs(step).sum(1)
+        odd = size > max(3 * np.median(size), 24)
+        if 0 < odd.sum() < 0.5 * len(odd):
+            xs = np.arange(len(odd))
+            step = np.stack([np.interp(xs, xs[~odd], step[~odd, c]) for c in range(3)], 1)
         h = median // 2
         padded = np.pad(step, ((h, h), (0, 0)), mode="edge")
         step = np.median(np.lib.stride_tricks.sliding_window_view(padded, median, axis=0), axis=-1)

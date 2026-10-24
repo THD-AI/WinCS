@@ -1,6 +1,7 @@
-"""The Hidden Garden proof zone (docs/09 "World pipeline"): the girder route above the pond, the shipped prologue
-row, the drained wrong reflection under it – a 3 x 3 grid. Writes world.json, the level row's images, the guides of
-the grown rows and every chunk's collision, and checks that the whole grid can be walked both ways.
+"""The Hidden Garden proof zone (docs/09 "World pipeline"): the shipped prologue row on top, the drained wrong
+reflection grown under it – a 3 x 2 grid. Writes world.json, the top row's images, the lower row's guides and every
+chunk's collision, and checks that the whole grid can be walked both ways. No band above the pond: girders over the
+garden read out of context (Alexander, 24 Oct).
 
     python scripts/zones/hidden_garden_proof.py
 
@@ -110,44 +111,7 @@ def guide(col: int) -> Image.Image:
     return img
 
 
-# The band above the pond (the anomaly's girders, the torn sky route): beams high over the garden that cross the
-# chunk seams at the same height, a higher tier by ladders. The way up is the shed's own ladder grown into a rusty
-# girder tower (TOWER, painted into the zone's copy of the level chunk) that reaches the first beam.
-TOWER = (1240, 1287)   # the shed ladder's climb box x range (hg-2-0), continued up into the band above
 SHAFT = (1540, 1580)   # the storm-drain shaft from the boardwalk (hg-3-0) down the drain hall's painted ladder
-BEAMS = [  # (col, x0, x1, y) in chunk px of row 0
-    (0, 980, 2160, 560), (1, 0, 900, 560), (1, 1000, 2160, 520), (2, 0, 1500, 520),
-    (0, 1500, 2160, 300), (1, 0, 620, 300), (2, 600, 1800, 330),
-]
-LADDERS_UP = [(0, 1250, 1278, 560, 720), (0, 1700, 1728, 300, 560), (2, 1000, 1028, 330, 520)]  # col, x0, x1, top, bottom
-
-ABOVE_BRIEF = ("High above the pond in the Hidden Garden's anomaly: mostly OPEN BLUE SKY with small clouds - the same "
-               "sky as the image below, continuing upward and getting a little deeper blue towards the top. Across "
-               "it, ONLY the few long rusty blue-green girder beams and the ladders the guide draws, thin and far "
-               "apart, vines and orange leaves hanging from them - no lattice, no towers, no extra beams, no rooms. "
-               "No horizon, no distant forest, no mountains, no ground: the horizon is far below, in the image under "
-               "this one. Only what reaches up out of that image - a tree's crown, a ladder - continues up here until "
-               "it ends naturally. The girders grew out of the reflection: still beautiful, now wrong.")
-
-
-def guide_above(col: int) -> Image.Image:
-    """Row 0: open sky, girder beams and the ladders between them."""
-    img = Image.new("RGB", (W, H), GUIDE["sky"])
-    d = ImageDraw.Draw(img)
-    for c, x0, x1, y in BEAMS:
-        if c == col:
-            d.rectangle((x0, y, x1, y + 24), fill=GUIDE["structure"])
-    for c, x0, x1, top, bottom in LADDERS_UP:
-        if c == col:
-            d.rectangle((x0 - 24, top, x0 - 6, bottom), fill=GUIDE["structure"])
-            d.rectangle((x1 + 6, top, x1 + 24, bottom), fill=GUIDE["structure"])
-            d.rectangle((x0, top, x1, bottom), fill=GUIDE["ladder"])
-    for c, x0, x1, y in BEAMS:
-        if c == col:
-            d.line([(x0, y), (x1, y)], fill=GUIDE["walk"], width=6)
-    return img
-
-
 def box(x0: int, y0: int, x1: int, y1: int, **extra) -> dict:
     return {"x": x0, "y": y0, "w": x1 - x0, "h": y1 - y0, **extra}
 
@@ -171,15 +135,9 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
     data = {"chunk": cid, "state": "anomaly", "size": [W, H], "walk": [], "slide": [], "oneWay": [], "climb": [],
             "solid": [], "noGo": [], "hazard": [], "interact": []}
     if row == 0:
-        data["oneWay"] = [[[x0, y], [x1, y]] for c, x0, x1, y in BEAMS if c == col]
-        data["climb"] = [box(x0, top, x1, bottom, kind="ladder") for c, x0, x1, top, bottom in LADDERS_UP if c == col]
-        return data
-    if row == 1:
         shipped = json.loads((STAGE / f"{source}.clean.collision.json").read_text(encoding="utf-8"))
         data.update({k: shipped[k] for k in ("walk", "slide", "oneWay", "climb", "solid", "noGo", "hazard")})
         data["interact"] = [i for i in shipped.get("interact", []) if i.get("kind") not in ("chunk-exit", "anomaly")]
-        if col == 0:   # the girder tower over the shed ladder, up into the band above
-            data["climb"] = data["climb"] + [box(TOWER[0] + 10, 0, TOWER[1] - 9, 150, kind="ladder")]
         if col == 1:   # the storm-drain shaft from the boardwalk, down through the pond
             data["noGo"] = carve(data["noGo"], SHAFT[0] - 10, SHAFT[1] + 10)
             data["climb"] = data["climb"] + [box(SHAFT[0], 380, SHAFT[1], H, kind="ladder")]
@@ -288,7 +246,7 @@ def reach(collisions: dict[str, dict], grid: dict[str, tuple[int, int]]) -> list
         for line in data["walk"]:  # curves: one flat run per segment, as world_map reads walk lines
             if len(line) > 2:
                 lines += [[a, b] for a, b in zip(line, line[1:])]
-        chunks[cid] = {"id": cid, "col": col, "row": row, "band": "level" if row == 1 else "other",
+        chunks[cid] = {"id": cid, "col": col, "row": row, "band": "level" if row == 0 else "other",
                        "walk": lines, "oneWay": data["oneWay"], "deck": [],
                        "climb": [[b["x"], b["y"], b["x"] + b["w"], b["y"] + b["h"]] for b in data["climb"]],
                        "solid": [[b["x"], b["y"], b["x"] + b["w"], b["y"] + b["h"]] for b in data["solid"]]}
@@ -300,39 +258,30 @@ def main() -> None:
     (ZONE / "blockout").mkdir(exist_ok=True)
     (ZONE / "collision").mkdir(exist_ok=True)
     chunks = {}
-    for col in range(3):
-        cid = f"hgz-{col}-0"
-        guide_above(col).save(ZONE / "blockout" / f"{cid}.png")
-        chunks[cid] = {"id": cid, "col": col, "row": 0, "band": "above", "role": "the girder route above the pond",
-                       "brief": ABOVE_BRIEF, "beat": "route",
-                       "story": "The reflection's girders climbed out of the pond: a route over the garden, the 404 "
-                                "tearing the sky beside it."}
     for col, src in enumerate(TOP):
-        cid = f"hgz-{col}-1"
-        if not (ZONE / "images" / f"{cid}.png").exists():  # the zone's copy may carry the tower or the shaft
+        cid = f"hgz-{col}-0"
+        if not (ZONE / "images" / f"{cid}.png").exists():  # the zone's copy may carry a painted feature
             compose(src).save(ZONE / "images" / f"{cid}.png")
-        chunks[cid] = {"id": cid, "col": col, "row": 1, "band": "level", "role": "the prologue (shipped)",
+        chunks[cid] = {"id": cid, "col": col, "row": 0, "band": "level", "role": "the prologue (shipped)",
                        "brief": f"the shipped prologue chunk {src}", "source": src}
     for col in range(3):
-        cid = f"hgz-{col}-2"
+        cid = f"hgz-{col}-1"
         guide(col).save(ZONE / "blockout" / f"{cid}.png")
-        chunks[cid] = {"id": cid, "col": col, "row": 2, "band": "below", "role": STORY[col]["room"],
+        chunks[cid] = {"id": cid, "col": col, "row": 1, "band": "below", "role": STORY[col]["room"],
                        "brief": BRIEFS[col], "beat": STORY[col]["beat"], "story": STORY[col]["story"]}
     grid = {cid: (c["col"], c["row"]) for cid, c in chunks.items()}
     collisions = {cid: collision(cid, c["col"], c["row"], c.get("source")) for cid, c in chunks.items()}
     for cid, data in collisions.items():
         (ZONE / "collision" / f"{cid}.collision.json").write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8")
-    world = {"zone": "hidden-garden", "seed": 0, "chunk": [W, H], "grid": [3, 3], "prefix": "hgz", "chunks": chunks,
-             "links": [{"a": "hgz-0-0", "b": "hgz-0-1", "by": "shaft", "at": sum(TOWER) // 2},
-                       {"a": "hgz-0-0", "b": "hgz-1-0", "by": "door"}, {"a": "hgz-1-0", "b": "hgz-2-0", "by": "door"},
-                       {"a": "hgz-1-1", "b": "hgz-1-2", "by": "shaft", "at": sum(SHAFT) // 2},
-                       {"a": "hgz-0-2", "b": "hgz-1-2", "by": "door"}, {"a": "hgz-1-2", "b": "hgz-2-2", "by": "door"}],
+    world = {"zone": "hidden-garden", "seed": 0, "chunk": [W, H], "grid": [3, 2], "prefix": "hgz", "chunks": chunks,
+             "links": [{"a": "hgz-0-1", "b": "hgz-1-1", "by": "door"}, {"a": "hgz-1-1", "b": "hgz-2-1", "by": "door"},
+                       {"a": "hgz-1-0", "b": "hgz-1-1", "by": "shaft", "at": sum(SHAFT) // 2}],
              "anomaly": {"tears": [
-                 {"kind": "cut", "chunk": "hgz-1-0", "box": [700, 60, 1260, 200], "seed": 404},
-                 {"kind": "stretch", "chunk": "hgz-2-0", "box": [1700, 40, 1960, 300], "from": 300, "seed": 7}]}}
+                 {"kind": "cut", "chunk": "hgz-1-0", "box": [700, 40, 1260, 180], "seed": 404},
+                 {"kind": "stretch", "chunk": "hgz-2-0", "box": [1300, 60, 1560, 420], "from": 420, "seed": 7}]}}
     (ZONE / "world.json").write_text(json.dumps(world, indent=1) + "\n", encoding="utf-8")
     problems = reach(collisions, grid)
-    print(f"hidden-garden: {len(chunks)} chunks (3 x 3), collision written; reachability: "
+    print(f"hidden-garden: {len(chunks)} chunks (3 x 2), collision written; reachability: "
           + ("every surface reachable and leavable" if not problems else f"{len(problems)} problems, e.g. {problems[:4]}"))
 
 
