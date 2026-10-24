@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { BREATH_ROW, HEM_ROW, PonchoSway, sliceRows, SWAY_HOLD, windPush } from './idle-life';
+import { BREATH_ROW, FRAME_HEIGHT, HEM_ROW, PonchoSway, sliceRows, SWAY_HOLD, windPush } from './idle-life';
 import { DEFAULT_ATMOSPHERE } from '../stage/atmosphere/config';
 
 const wind = DEFAULT_ATMOSPHERE.wind;
 
 describe('idle life', () => {
   it('slices the frame into chest, poncho and legs, the chest one row taller on the in-breath, the cover off the legs', () => {
-    expect(sliceRows(0, 0)).toEqual({ chest: [0, BREATH_ROW], poncho: [BREATH_ROW, HEM_ROW - BREATH_ROW], legs: [HEM_ROW, 80 - HEM_ROW] });
+    expect(sliceRows(0, 0)).toEqual({ chest: [0, BREATH_ROW], poncho: [BREATH_ROW, HEM_ROW - BREATH_ROW], legs: [HEM_ROW, FRAME_HEIGHT - HEM_ROW] });
     expect(sliceRows(1, 2).chest).toEqual([0, BREATH_ROW + 1]); // drawn 1 px up: the split row shows twice
-    expect(sliceRows(1, 2).legs).toEqual([HEM_ROW, 80 - HEM_ROW - 2]);
+    expect(sliceRows(1, 2).legs).toEqual([HEM_ROW, FRAME_HEIGHT - HEM_ROW - 2]);
   });
   it('sways the poncho 1 px downwind only while a gust passes, held, and never while moving', () => {
     const sway = new PonchoSway();

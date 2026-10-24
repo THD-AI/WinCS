@@ -23,18 +23,39 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 
 | Input | Keyboard | Gamepad | Action |
 | --- | --- | --- | --- |
-| ← → | A / D, arrows | Stick, D-pad | Walk; run after 0.4 s held |
+| ← → | A / D, arrows (read by key position, any layout) | Stick, D-pad | Walk; run after 0.4 s held |
 | ↑ | W, ↑ | Up | Interact (sign, coffee machine, Dexter, pickup); climb ladder |
 | ↓ | S, ↓ | Down | Drop through one-way platform; climb down |
-| **Jump** | Space / K | A / Cross | Jump. Hold for higher (variable height) |
-| **Act** | J | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
+| **Jump** | K, Z, Space | A / Cross | Jump. Hold for higher (variable height) |
+| **Act** | J, X, left click (on the game) | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
+| **Dodge** | L, C, Shift | B / Circle, RB | Dodge-dash: a quick burst you can't be hit in (see Movement) |
 | ↑ + Act | | | Up attack |
+| ↓ + Act on the ground | | | Low sweep along the floor (rovers, crabs) |
 | ↓ + Act in air | | | Down slam / pogo (bounce off an enemy or hazard) |
-| Menu | Esc / Tab | Start | Pocket computer: map, archive, items (after you get it) |
+| Menu | Esc | Start | The game menu: controls, settings, debug mode, coming soon (pauses the game) |
+| Pocket computer | Tab | Back / Select | Map, archive, items (after you get it) |
+
+Two laptop layouts work side by side (playtest 24 Oct): **WASD + J attack / K jump / L dodge**, or **arrows + Z jump / X attack / C dodge**; Space and Shift jump and dodge on either. Letters are read by key position, so every layout and input method works. The dodge is a third button – the "two buttons" rule bends for it.
 
 The weapon is switched in the pocket computer menu (or ←/→ while the menu is open). The menu key is a system button, like Start, and does not count against "two buttons".
 
 **Open (Lex, A14):** put Jump on ↑ (as in many arcade platformers) and free the second button for a skill – later glide and double jump on the same input. Then interact would move to ↓ or happen on contact. The team decides this once the controller is playable; the table above stays the default until then.
+
+## Menu and debug mode
+
+A ☰ button in the top-right corner, Esc or the pad's Start open the **game menu** and pause the stage (`game/src/ui/menu.ts`, plain DOM over the canvas so it stays crisp and works with mouse, touch and keyboard). Four tabs:
+
+- **Controls** – the table above, for keyboard and gamepad.
+- **Settings** – sound on/off and volume, zoom (the game's own view or 133 / 200 / 286 % wider), full screen.
+- **Debug** – debug mode and its switches (`game/src/core/debug.ts`); the corner line names every switch that is on, so a playtest screenshot records what was showing:
+  - **Layers**: every stage layer by id and z, switched off in all chunks at once; with the **purple backdrop** any hole or seam in a plate behind it shows at once (the hot-dog rule, docs/09).
+  - **Collision**: walk lines, one-way beams, ladders, walls, water, hazards, triggers (the F2 legend).
+  - **Actors**: the hero's body, speed and ground; every rover, crab and drone with its hitbox, facing arrow, sight box (red when it sees the hero), patrol path and turn points, phase and health; Jenny's arena, box, facing and phase; Dexter's position, state and next stop.
+  - **FPS and position**: frame rate, the hero's position and chunk.
+  - **Falls**: falling out of the level (below every floor, not into water) is always recorded – the frame, the position, the last safe spot and the last two seconds of the path. With `npm run dev` it lands in `tmp/falls/` (gitignored, via `game/vite.config.ts`); in a build the Debug tab saves the last one.
+- **Coming soon** – what is next (the stacked zones, the glide, the next regions).
+
+Falling into water is not a fall: the hero splashes and is put back on the bank they last stood on.
 
 ## Movement
 
@@ -47,7 +68,8 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 - **Climbing:** ladders, vines, scaffold and stairs. Press ↑ in a climb zone. Climbing is slow, and you can't attack while climbing.
 - **Glide (later, Lex's proposal):** hold Jump in the air and the poncho opens like a sail for a slow, steerable fall. You glide for as long as you're in the air – **there is no stamina bar** (decided in A14). It's the Region 2 upgrade that opens Lost in the Green's upper routes. It's in the design and the collision data from day one, but not in the jam slice.
 - **Four directions:** every region is explored left/right *and* up/down: a mountainside route, a lower branch, an underground pocket ([04](04-WORLD-AND-LEVELS.md)).
-- **No wall-jump, no dash in the jam slice.**
+- **Dodge-dash (playtest 24 Oct):** one move, a quick horizontal burst – 120 px in 0.2 s (600 px/s) – the way you press or face. Untouchable for its first 0.16 s, so it passes through rovers, crabs and Jenny's charge. On the ground any time, in the air once per jump (it holds the height; landing gives it back); 0.45 s cooldown after each. Not on a ladder or during an interaction, and it cancels a chair attack or guard. A Jump pressed during it is taken when it ends. No new art: a run stride held, with cool after-images and a ground puff (`player/dodge.ts`, `player.ts`).
+- **No wall-jump in the jam slice.**
 
 ### Feel and grounding (prologue slice, workstream 3)
 
@@ -122,26 +144,28 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 | **Sign pole** (yellow town-sign on a steel pole) | Campus (region 3) | Heavy forward thrust, long reach; breaks guards | Slow, strong |
 
 - Every hit gets hit-stop, a pixel impact burst, a short knockback and a sound.
+- Every swing is visible (playtest 24 Oct): a pale arc sweeps in front of the hero around the shoulder, brightest on the contact frame (`combat/swingFx.ts`); the up attack and slam flash their strike box; a landed hit adds a white impact ring and a ring of sparks.
 - Enemies show a 0.4–0.6 s **tell** (flash, rear-up, lidar turns red) before attacking.
+- **Attack buffer:** a press the chair can't take yet – during the up attack, the low sweep, a slam's landing or a dodge-dash – is kept for 0.2 s and starts the moment the chair is free (`combat/action-input.ts` `ATTACK_BUFFER`). The side swing already queues one tap.
 - **Guard:** blocks frontal damage and pushes you back a little. A heavy hit (Jenny) breaks the guard.
 
 ### Chair sweep implementation – measured contact (#39)
 
-The `chair-side` atlas uses 86 × 81 px cells with the feet at (43, 81).
+The `chair-side` atlas uses 128 × 119 px cells with the feet at (64, 119)
+(the hero is drawn 1.5x since 24 Oct; the old cells were 86 × 81).
 The approved contact poses are A04 and B03; B is mirrored into the strike
-direction. A04 reaches 31 px forward and B03 reaches 33 px. Their wooden
-seat pixels start 8 px in front of the pivot; the highest contact wood is
-58 px above the feet. The collision envelope therefore extends **8–33 px
-forward, 23–58 px above the feet**. Its lower edge includes two pixels of
-overlap with a 25 px rover (the 2 px grain in [09](09-ART-PIPELINE.md)),
-so the short sweep can catch the small ground enemy without extending its
-horizontal reach beyond the approved pose. This envelope is gameplay
-collision, not an alpha mask of the coat or legs.
+direction. The chair's wood in A04 reaches 48 px forward and in B03 50 px;
+it starts 12 px in front of the pivot, and the seat back is 87 px above the
+feet. The collision envelope therefore extends **12–65 px forward (30 % past the drawn wood, Alexander 24 Oct: "longer range"), from the
+floor to 87 px above the feet**. It goes down to the floor (playtest
+24 Oct): the swung legs pass at 37 px, and a 25 px rover or a crab must not
+slip under them. This envelope is gameplay collision, not an alpha mask of
+the coat or legs.
 
 ```mermaid
 flowchart LR
-  IN["chair-side atlas + animation table<br/>86 × 81 cells, feet 43,81"] --> POSE["8 poses A / B at authored 12 fps<br/>release Act; buffer one tap"]
-  POSE --> MASK["A04 / B03 contact window only<br/>front 8–33; above feet 23–58 px"]
+  IN["chair-side atlas + animation table<br/>128 × 119 cells, feet 64,119"] --> POSE["8 poses A / B at authored 12 fps<br/>release Act; buffer one tap"]
+  POSE --> MASK["A04 / B03 contact window only<br/>front 12–65; floor to 87 px up"]
   MASK --> HIT["Overlap target bounds<br/>one attempt per target per swing"]
   HIT --> FX["Accepted hit: 60 ms stop<br/>spark, sound, target knockback"]
   FX --> OUT["Finish sweep + 2 recoil poses<br/>consume buffered return swing"]
@@ -150,7 +174,7 @@ flowchart LR
 
 The development rover fixture is 25 px tall ([05](05-ENEMIES-AND-BOSSES.md))
 and 31 px wide (the approved `enemy-rover:idle-00` alpha bounds).
-It starts 38.5 px ahead: 33 px reach + half the rover width − its 8 px test
+It starts 55.5 px ahead: 50 px reach + half the rover width − its 8 px test
 knockback − 2 px overlap. Both alternating sweeps can then connect while
 the hero stands still. The 8 px displacement is fixture tuning; real enemy
 knockback belongs to the enemy controller.
@@ -163,15 +187,18 @@ airborne feet. Ordinary Act retains release-to-sweep and later hold-to-guard
 the attack even beside a ladder or machine. Damage, death and climbing
 cancel attacks.
 
-The `chair-overhead` cells are 108 × 126 px, pivot (54, 126). Measured dark
-chair legs in `up-03` occupy x=51–78, y=12–37: the up contact envelope is
-**−3…24 px horizontally, 89…114 px above the feet**. Only up poses 02/03
+The `chair-overhead` cells are 160 × 187 px, pivot (80, 187) (1.5x). The
+chair in `up-02`/`up-03` spans −4…64 px ahead and 118…181 px up; the up
+contact envelope is **−4…64 px horizontally, 88…181 px above the feet** –
+down to 88 px for the arc the chair travels from the shoulder, so the
+Rusty Creek drone (hovering at y 470, 45 px tall: 66–111 px above the 536
+deck, 100–145 px above the 570 ground) is reached from under it. Only up poses 02/03
 are active, within the authored six-pose clip at 12 fps. It can overlap
 an enemy above a one-way deck; a deck does not block a chair strike.
 
 Slam uses wind-up poses 00–02, holds descent pose 03, then plays 04–06
-on an ordinary floor. In slam-03 the low chair legs span x=65–91, or
-**11…37 px ahead of the pivot**. The downward contact probe sweeps between
+on an ordinary floor. In slam-03 the low chair legs run
+**16…56 px ahead of the pivot**. The downward contact probe sweeps between
 the previous and current foot positions, with the documented 2 px grain
 as its margin, to prevent tunnelling. Descent tuning is twice run speed
 (516 px/s). Contact with a living enemy or hazard snaps the feet to its
@@ -185,7 +212,7 @@ as with the ordinary sweep buffer.
 ```mermaid
 flowchart LR
   INPUT["Up + new Act / airborne Down + new Act<br/>keyboard or gamepad"] --> PRIORITY["Consume special input<br/>suppress coffee, climb and release sweep"]
-  ATLAS["chair-overhead atlas + table<br/>108 × 126, pivot 54,126"] --> MASK["Up: measured legs at poses 02/03<br/>Slam: swept probe 11–37 px forward"]
+  ATLAS["chair-overhead atlas + table<br/>108 × 126, pivot 54,126"] --> MASK["Up: measured legs at poses 02/03<br/>Slam: swept probe 16–56 px forward"]
   PRIORITY --> MASK
   MASK --> HIT["One attempt per target<br/>accepted damage: 60 ms stop + spark"]
   MASK --> BOUNCE["Enemy / hazard top contact before damage<br/>snap feet; full-jump impulse"]
@@ -193,6 +220,30 @@ flowchart LR
   MASK --> FLOOR["Plain floor: remaining slam poses<br/>no crack or shockwave"]
   HIT --> CHECK["Measured comparison + tests<br/>3 rover pogos; crab-through-deck fixture"]
 ```
+
+### Low sweep (playtest 24 Oct)
+
+↓ + Act on the ground drives the chair down along the floor, for rovers
+and crabs that crawl under a chest-high swing (`combat/lowSweep.ts`). It
+reuses the slam's floor poses from `chair-overhead` – 02 (coming down),
+03 twice (planted, with its dust), 04 twice – at 12 fps, no new art. The
+chair is on the floor in poses 1–2; there the box runs **12–75 px ahead,
+0–51 px up** (slam-03 measured on the 1.5x frames: seat and legs to 56 px,
+the dust to ~60), a little further than the side swing. A pale streak
+along the floor shows it. In the air, ↓ + Act stays the slam.
+
+### Target assist (24 Oct)
+
+An assist, not a lock-on (`combat/assist.ts`). When a side swing, low
+sweep or up attack starts, the nearest live enemy (rover, crab, drone,
+Jenny while the fight is on) within one body height (76 px) of the body
+is picked if it is up to 1.4× the attack's reach ahead or within 40 px
+behind. An enemy behind turns the hero round; one just out of reach gets
+a nudge of at most 24 px over 0.1 s toward it (aiming 8 px inside the
+reach), moved through the normal wall and ledge collision. A plain tap
+under a drone hovering above the side swing, in the up attack's cone,
+strikes up instead. Nothing steers during a guard or a block, and the
+air slam has no assist.
 
 ### Chair guard implementation (#41)
 
@@ -240,6 +291,7 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Body | step-up / foothold | 16 px / 8 px | `body.ts` `STEP_UP`, `FOOTHOLD` |
 | Move | walk / run | 2.2 m/s (95 px/s) / 4.6 m/s (198 px/s) | `player/movement.ts` `WALK_SPEED`, `RUN_SPEED` |
 | Move | hold to run after | 0.4 s | `movement.ts` `RUN_DELAY` |
+| Move | dodge-dash | 120 px in 0.2 s, untouchable 0.16 s, cooldown 0.45 s, one air dash per jump | `player/dodge.ts` `DODGE_DISTANCE`, `DODGE_TIME`, `DODGE_INVULNERABLE`, `DODGE_COOLDOWN` |
 | Move | ladder climb | 70 px/s | `player/traversal.ts` `CLIMB_SPEED` |
 | Jump | gravity / cut gravity | 1200 / 3600 px/s² | `player/jump.ts` `GRAVITY`, `CUT_GRAVITY` |
 | Jump | tap / hold height | 52 / 96 px | `jump.ts` `TAP_HEIGHT`, `HOLD_HEIGHT` (`JUMP_SPEED` 485) |
@@ -248,15 +300,21 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Life | health | 5 | `combat/life.ts` `MAX_HEALTH` |
 | Life | knockback | 258 px/s for 0.25 s | `life.ts` `KNOCK_SPEED`, `KNOCK_TIME` |
 | Chair | damage per sweep, upswing, slam | 1 | `combat/sweeps.ts`, `combat/overhead.ts` |
-| Chair | sweep reach | 8–33 px ahead, 23–58 px up | `sweeps.ts` `SWEEP_CONTACT` |
+| Chair | sweep reach | 12–65 px ahead, floor to 87 px up | `sweeps.ts` `SWEEP_CONTACT` |
+| Chair | up attack / slam reach | −4…64 px, 88–181 px up / 16–56 px ahead | `overhead.ts` `UP_CONTACT`, `SLAM_CONTACT` |
+| Chair | low sweep reach | 12–75 px ahead, 0–51 px up, poses 1–2 of 5 | `combat/lowSweep.ts` `LOW_CONTACT` |
+| Chair | target assist | 1.3× reach ahead, 40 px behind, ±76 px; nudge ≤ 24 px in 0.1 s | `combat/assist.ts` `ASSIST` |
 | Chair | guard push | 3 frames (0.25 s) | `combat/guard.ts` `GUARD_PUSH_TIME` |
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
 | Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |
 | Rover | patrol / charge | half walk / run speed, after a 0.5 s tell, within 150 px | `rover.ts` `PATROL_SPEED`, `CHARGE_SPEED`, `TELL_SECONDS`, `SPOT_RANGE` |
-| Crab | health / tell / spot | 4 / 0.6 s / 110 px, stab reach 30 px | `enemies/crab.ts` |
-| Drone | health / tell / dive | 8 / 0.5 s / 380 px/s | `enemies/drone.ts` |
+| Rover, crab | pause at a patrol end | 0.3 s idle, then turn | `rover.ts` `TURN_SECONDS` |
+| Small enemies | hit shake / defeat shake | 70 ms 0.003 / 140 ms 0.006 | `enemies/rovers.ts` `MOB_SHAKE` |
+| Crab | health / tell / spot / box | 4 / 0.6 s / 110 px, stab reach 30 px; creeps in and rears up within 70 px / 60 × 36 px | `enemies/crab.ts` (`CRAB_STRIKE`) |
+| Drone | health / tell / dive / box | 8 / 0.5 s / 380 px/s / 45 × 45 px (the drawn body) | `enemies/drone.ts` |
 | Jenny | health / damage | 30 / charge 2, parts 1 | `enemies/jenny.ts` `JENNY_HEALTH`, `CHARGE_DAMAGE`, `PART_DAMAGE` |
-| Jenny | rev / stall | 1 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `STALL_SECONDS` |
+| Jenny | rev / turn rev / stall | 1 s / 0.5 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `TURN_REV_SECONDS`, `STALL_SECONDS` |
+| Jenny | stun warning | last 0.7 s blink fast | `jenny.ts` `STUN_WARNING` |
 | Jenny's ram | silence, lights, rev | 1.2 + 0.6 + 0.6 s, charge 900 px/s | `enemies/jennyRam.ts` `RAM` |
 
 ## The glitch meter (after Region 1)

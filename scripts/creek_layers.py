@@ -101,13 +101,17 @@ def plate_path(name, data=None):
 
 
 def compose(plates, architecture=None):
-    # Bank is behind the architecture; near rails and leaves can occlude it.
+    # The game's draw order and offsets (export.json states, as export_stage.py --verify draws them): the masters
+    # are what the game shows. Anomaly without architecture, clean with it.
+    config = read(BASE / 'export.json')
     out = blank()
-    for role in ('01-distance', '03-bank', '02-supports', '05-traversal',
-                 '06-near-rails', '07-foliage', '04-water'):
-        layer = architecture if role == '02-supports' and architecture is not None else plates[role]
-        if architecture is not None and role == '05-traversal':
-            continue
+    for role in config['states']['clean' if architecture is not None else 'anomaly']:
+        layer = architecture if role == 'clean-architecture' else plates[role]
+        dy = config['layers'][role].get('dy', 0)
+        if dy:  # a plate painted off its ground, moved down onto it
+            moved = blank()
+            moved.paste(layer, (0, dy))
+            layer = moved
         out = Image.alpha_composite(out, layer)
     return out
 

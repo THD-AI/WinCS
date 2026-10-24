@@ -11,8 +11,9 @@ const CELL = { w: 132, h: 44 };
 const GAP = 36;
 const STAGE = 'Stage';
 /** Menu: Tab or Esc on the keyboard, Start on a pad (docs/02 controls). */
-export const MENU_KEYS = ['TAB', 'ESC'];
-export const MENU_PAD = 9;
+/** Tab and the pad's Back/Select open the pocket computer; Esc and Start open the game menu (ui/menu.ts). */
+export const MENU_KEYS = ['TAB'];
+export const MENU_PAD = 8;
 
 /** The menu key: opens the map once you have the pocket computer, closes it if open. One owner (the HUD) calls this. */
 export function toggleMap(scenes: Phaser.Scenes.ScenePlugin): void {

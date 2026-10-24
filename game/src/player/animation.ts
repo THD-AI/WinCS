@@ -6,6 +6,8 @@ const VARIANTS = ['look-around', 'check-tablet', 'check-wounds'];
 const LOOPS = ['idle', 'walk', 'run', 'fall', 'ladder'];
 /** Clips the feet are on the ground in: the cycles and the bridges between them. */
 const GROUND = ['idle', 'walk', 'run', 'idle-walk', 'walk-run', 'run-start'];
+/** Getting on and off a ladder (hero-ladder board): reversed it leads into the climb, forward into the stand. */
+const LADDER_ENDS = ['ladder-top', 'ladder-bottom'];
 /**
  * Seconds of air a walk-off keeps its stride for: the creek's deck plates and bank blocks meet with 2–5 px gaps
  * and 10–50 px steps, and each one used to flash the fall pose, a landing crouch and a run-start from a stand
@@ -101,7 +103,18 @@ export class LocomotionAnimation {
     this.frame = this.reverse ? this.metadata().frames - 1 : 0;
     this.elapsed = 0; this.finished = false;
   }
+  /**
+   * Start getting on (reverse) or off a ladder: traversal.ts reports the end he reached (takeLadderEnd). Ignored
+   * when the hero-ladder board is not loaded.
+   */
+  ladderEnd(step: Step | null) {
+    if (!step || !this.clips[step.clip]) return;
+    this.queue = []; this.set(step);
+  }
   private request(desired: MotionPose) {
+    // A ladder end plays out while the body does what it shows (still on the ladder, or standing at its end);
+    // anything else (a jump, a fall, a walk) cuts it.
+    if (LADDER_ENDS.includes(this.clip) && !this.finished && (this.reverse ? desired === 'ladder' : GROUND.includes(desired))) return;
     if (!['idle', 'walk', 'run'].includes(desired)) {
       if (this.clip !== desired) { this.queue = []; this.set({ clip: desired }); }
       return;

@@ -1,8 +1,9 @@
 /**
- * Speeds at 43 px/m (the 76 px hero is 1.83 m), from the approved cycles (#156): the walk's 43 px stride and the
- * run's 82 px stride are played by distance, so at 2.2 m/s the walk cycles at ~18 fps and the run at ~19 fps,
- * near the art's 12 fps key poses doubled, with the feet planted. The old 3.5 / 6 m/s were 2.3–2.5× faster than
- * the feet could carry the body (the moonwalk). A running jump still clears ~157 px (collision_check: 140).
+ * Speeds at 43 px/m (the world's scale: a 1.83 m person is 76 px of collision body), from the approved cycles (#156).
+ * The walk and run play by distance. Since the hero is drawn 1.5x (114 px, 24 Oct) their strides are 65 and 123 px,
+ * so at 2.2 m/s the walk cycles at ~12 fps and the run at ~13 fps – the art's own 12 fps key poses, feet planted.
+ * The old 3.5 / 6 m/s were 2.3–2.5x faster than the feet could carry the body (the moonwalk). A running jump still
+ * clears ~157 px (collision_check: 140).
  */
 export const WALK_SPEED = 2.2 * 43;
 export const RUN_SPEED = 4.6 * 43;

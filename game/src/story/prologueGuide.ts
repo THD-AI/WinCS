@@ -46,6 +46,14 @@ export const GUIDE = {
   far: 8 * PX_PER_M,
   /** …and leads on once the hero is back within 6 m. */
   resume: 6 * PX_PER_M,
+  /**
+   * A hero who has STOPPED (not just slowed) this far behind: he does not wander off but stops and looks back after
+   * a few steps – six plush-lengths, well inside the screen – and leads on when the hero comes within the lead.
+   */
+  stopAt: 6 * PLUSH,
+  stopResume: 4 * PLUSH,
+  /** The hero counts as stopped below this smoothed speed (px/s). */
+  stopped: WALK_SPEED * 0.25,
   /** At a `wait` waypoint he pauses only if the hero is more than 5 m behind… */
   pauseAt: 5 * PX_PER_M,
   /** …and goes on when the hero is within six plush-lengths. */
@@ -245,6 +253,7 @@ export class DexterGuide {
     this.facing = 1;
     const gap = this.gap(hero);
     if (gap > GUIDE.far) return this.waitFor(GUIDE.resume);
+    if (gap > GUIDE.stopAt && this.heroV < GUIDE.stopped) return this.waitFor(GUIDE.stopResume);
     if (gap < GUIDE.hopGap && this.clock >= this.hopReadyAt && this.heroV > GUIDE.walk * 0.5 && this.hopAhead()) return;
     // Hold the lead distance at the hero's own pace; inside it, pull ahead (up to a sprint), beyond it, ease off.
     const target = gap < GUIDE.lead
@@ -358,7 +367,8 @@ export class DexterGuide {
       const beckoning = since >= 0 && since % GUIDE.beckonEvery < GUIDE.beckonFor;
       if (since < 0) anim = 'look';
       else if (gap > GUIDE.veryFar) anim = 'sweat';
-      else if (beckoning && gap > 2 * GUIDE.lead) anim = this.elapsed > GUIDE.sweatAfter && cycle % 2 === 1 ? 'sweat' : 'beckon';
+      // He beckons while the hero is further than the distance he waits for ("come on"), sweating once it drags on.
+      else if (beckoning && gap > this.resumeAt) anim = this.elapsed > GUIDE.sweatAfter && cycle % 2 === 1 ? 'sweat' : 'beckon';
     }
     const squash = Math.max(0, 1 - (this.clock - this.landedAt) / GUIDE.squash);
     return { x: this.x, y: this.y, anim, facing: this.facing, state: this.state, rate, squash };

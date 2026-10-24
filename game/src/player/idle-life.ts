@@ -8,10 +8,10 @@ import { gustAt } from '../stage/atmosphere/wind';
  * the classic pixel-art breath); BREATH_ROW–HEM_ROW, the poncho's lower half and fringe, takes 1 px downwind while
  * a gust passes; the legs below never move. Whole pixels only: nothing is scaled, rotated or blended.
  */
-export const BREATH_ROW = 30;
-export const HEM_ROW = 50;
-/** The idle frames are 80 px tall; any other frame (a chair pose) is drawn whole. */
-export const FRAME_HEIGHT = 80;
+export const BREATH_ROW = 43;
+export const HEM_ROW = 73;
+/** The idle frames are 118 px tall (the 114 px hero, 24 Oct: 1.5x so the hero reads against the world, A15); any other frame is drawn whole. */
+export const FRAME_HEIGHT = 118;
 /** Wind push (the atmosphere's base sway + gust lean) at which the poncho takes its pixel, and below which it lets go. */
 export const SWAY_ON = 0.6;
 export const SWAY_OFF = 0.35;

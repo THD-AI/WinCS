@@ -3,8 +3,9 @@ vi.mock('phaser', () => ({ default: {} }));
 vi.mock('../fx/sound/Audio', () => ({ sound: { play: () => undefined } }));
 vi.mock('../stage/atmosphere/pipeline', () => ({ ACTOR_RIM: { colour: 0, strength: 0 }, addRim: () => false }));
 import { Life } from '../combat/life';
-import { arenaFrom, blinking, BUMP_SECONDS, JENNY_BOX, JennyFight, jumpable, PART_SECONDS, SPEED } from './jenny';
-import { ramKnock, THROW_UP } from './jennyBoss';
+import { arenaFrom, blinking, BUMP_SECONDS, CHARGE_DAMAGE, INTRO_REV_SECONDS, JENNY_BOX, JennyFight, jumpable, PART_SECONDS, RAM_GRACE, SPEED, STUN_WARNING } from './jenny';
+import { MAX_HEALTH } from '../combat/life';
+import { partBox, PART_SCALE, ramKnock, THROW_UP } from './jennyBoss';
 
 const CLIPS = {
   rev: { frames: 4, fps: 12, loop: true }, charge: { frames: 4, fps: 12, loop: false },
@@ -58,6 +59,71 @@ describe('Jenny reads (P8)', () => {
     expect(fight.tailX).toBe(5760 + JENNY_BOX.w / 2); // nose left, tail right
     until(fight, 'stunned');
     expect(fight.open).toBe('all');
+  });
+
+  it('hurts only with her charge, nose first: never while revving, stunned or pulling away from a hero at her tail', () => {
+    const fight = new JennyFight(arena, 5760, CLIPS);
+    fight.start();
+    expect(fight.contactAt(5700)).toBe(0); // revving at the nose: the tell, not a hit
+    until(fight, 'charge');
+    expect(fight.facing).toBe(-1);
+    expect(fight.contactAt(fight.x - 60)).toBe(CHARGE_DAMAGE); // in front of her nose
+    expect(fight.contactAt(fight.x + 60)).toBe(0); // at her tail as she drives away
+    until(fight, 'stunned');
+    expect(fight.contactAt(fight.x - 60)).toBe(0);
+    until(fight, 'reboot');
+    expect(fight.contactAt(fight.x)).toBe(0);
+  });
+
+  it('starts from either side with a long, readable rev that faces the hero (playtest 24 Oct)', () => {
+    for (const heroX of [arena.left + 40, arena.right - 40]) {
+      const fight = new JennyFight(arena, 5760, CLIPS);
+      expect(fight.inArena(heroX, arena.floor)).toBe(true);
+      fight.start(heroX);
+      expect(fight.facing).toBe(heroX < 5760 ? -1 : 1);
+      let revved = 0;
+      while (fight.phase === 'rev') { fight.step(1 / 60); revved += 1 / 60; }
+      expect(revved).toBeGreaterThan(2);
+      // Her path ends at the wall she faces: what the rev's floor strip shows.
+      expect(fight.target).toBe(fight.facing < 0 ? arena.left + JENNY_BOX.w / 2 : arena.right - JENNY_BOX.w / 2);
+    }
+    const fight = new JennyFight(arena, 5760, CLIPS);
+    expect(fight.inArena(arena.left - 20, arena.floor)).toBe(false); // still outside the gate
+    expect(fight.inArena(5700, arena.floor - 400)).toBe(false); // on the girders far above
+  });
+
+  it('one charge costs at most 40 % of the health, never a chain with her crash and parts', () => {
+    expect(CHARGE_DAMAGE / MAX_HEALTH).toBeLessThanOrEqual(0.5);
+    const life = new Life({ x: 5600, y: 565 });
+    life.hit(CHARGE_DAMAGE, 1);
+    life.invulnerable = Math.max(life.invulnerable, RAM_GRACE); // what JennyBoss does after her ram
+    const fight = new JennyFight(arena, 5760, CLIPS);
+    fight.start();
+    until(fight, 'crash');
+    expect(fight.elapsed + fight.clip('crash')).toBeLessThan(RAM_GRACE);
+    // Parts thrown from the crash land within the grace if they land near him.
+    for (let t = 0; t < 1.2; t += 1 / 60) life.tick(1 / 60);
+    expect(life.hit(1, 1)).toBe(false);
+  });
+
+  it('draws her parts big enough to see, with a hurt box inside the drawing', () => {
+    const drawn = { w: 100 * PART_SCALE, h: 90 * PART_SCALE }; // debris art is ~100 x 90 px in its cell
+    const box = partBox({ x: 0, y: 0 });
+    expect(drawn.w).toBeGreaterThanOrEqual(40);
+    expect(box.w).toBeLessThanOrEqual(drawn.w);
+    expect(box.h).toBeLessThanOrEqual(drawn.h);
+  });
+
+  it('warns before a stun ends', () => {
+    const fight = new JennyFight(arena, 5760, CLIPS);
+    fight.start();
+    until(fight, 'stunned');
+    expect(fight.stunLeft).toBeGreaterThan(STUN_WARNING);
+    for (let i = 0; i < 2000 && fight.stunLeft >= STUN_WARNING; i++) fight.step(1 / 60);
+    expect(fight.phase).toBe('stunned');
+    expect(fight.stunLeft).toBeGreaterThan(0);
+    until(fight, 'reboot');
+    expect(fight.stunLeft).toBe(0);
   });
 
   it('sheds parts that bounce, then lie as hazards for a while and blink before they go', () => {

@@ -11,6 +11,7 @@ import { layerPipeline, newUniforms, useLayerPipeline, type LayerUniforms } from
 import { addLeaves, type LeafEmitters } from './atmosphere/leaves';
 import { Reflection, WrongReflection, waterMask } from './atmosphere/reflection';
 import { gameEvents, type GameEvents } from '../core/events';
+import { debugStore } from '../core/debug';
 
 /** One drawn layer and what the atmosphere does with it. */
 export interface DrawnLayer {
@@ -169,7 +170,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     // Layers off screen are not drawn (each would still cost a draw call).
     let pending = -1;
     for (let i = 0; i < layers.length; i++) {
-      layers[i].image.visible = visible(layers[i]);
+      layers[i].image.visible = visible(layers[i]) && debugStore.layerVisible(layers[i].layer.id);
       if (pending < 0 && !layers[i].analysed) pending = i;
     }
     if (pending >= 0) analyse(layers[pending]);

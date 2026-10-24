@@ -36,13 +36,18 @@ describe('vertical traversal', () => {
   it('climbs slowly, holds position on release, and exits at the deck height', () => {
     const b = body(500), state = traversal();
     expect(climb(b, state, [world], -1, 0, false, dt)).toBe(true);
+    // Getting on plays ladder-bottom reversed first, the body waiting at the foot.
+    for (let i = 1; i < Math.round(LADDER_BOTTOM_TIME / dt); i++) climb(b, state, [world], -1, 0, false, dt);
+    expect(b.y).toBe(500);
+    climb(b, state, [world], -1, 0, false, dt);
     expect(b.y).toBeCloseTo(500 - 70 * dt); expect(state.ladder).not.toBeNull();
     const held = b.y;
     for (let i = 0; i < 30; i++) climb(b, state, [world], 0, 0, false, dt);
     expect(b.y).toBe(held);
     for (let i = 0; i < 300; i++) climb(b, state, [world], -1, 0, false, dt);
     expect(b.y).toBe(350); expect(b.grounded).toBe(true); expect(state.ladder).toBeNull();
-    for (let i = 0; i < 300; i++) climb(b, state, [world], 1, 0, false, dt);
+    // 147 px down at 70 px/s, after getting off at the top and on again (two ladder-top clips).
+    for (let i = 0; i < 400; i++) climb(b, state, [world], 1, 0, false, dt);
     expect(b.y).toBe(500); expect(state.ladder).toBeNull();
   });
   it('releases a ladder on horizontal input or jump and ignores reserved ledges', () => {
@@ -66,5 +71,76 @@ describe('vertical traversal', () => {
       for (let i = 0; i < 1500; i++) climb(b, state, [geometry], 1, 0, false, dt);
       expect(b.y).toBeGreaterThanOrEqual(box.y + box.h - 8); expect(b.y).toBeLessThanOrEqual(box.y + box.h + 8);
     }
+  });
+});
+
+import { climbFlip as flip, RUNG_STEP as STEP } from './traversal';
+describe('alternating climb (playtest 24 Oct, M2)', () => {
+  it('mirrors the climb sprite every rung step, and holds still when he stops', () => {
+    expect(STEP).toBe(35);
+    expect(flip(0)).toBe(false);
+    expect(flip(STEP)).toBe(true);
+    expect(flip(2 * STEP)).toBe(false);
+    expect(flip(STEP + 10)).toBe(flip(STEP + 20));
+    expect(flip(-1)).toBe(true);
+  });
+});
+
+import { LADDER_BOTTOM_TIME, LADDER_TOP_TIME, takeLadderEnd } from './traversal';
+import ladderClips from '../../public/assets/sprites/hero-ladder.anims.json';
+describe('getting on and off a ladder (Alexander, 24 Oct)', () => {
+  const steps = (seconds: number) => Math.round(seconds / dt);
+  it('holds as long as the hero-ladder clips play', () => {
+    expect(LADDER_TOP_TIME).toBeCloseTo(ladderClips['ladder-top'].frames / ladderClips['ladder-top'].fps);
+    expect(LADDER_BOTTOM_TIME).toBeCloseTo(ladderClips['ladder-bottom'].frames / ladderClips['ladder-bottom'].fps);
+  });
+  it('climbs over the top onto the deck, standing still there for the clip, and Up does not grab again', () => {
+    const b = body(360), state = traversal();
+    let i = 0;
+    for (; i < 100 && !state.end; i++) climb(b, state, [world], -1, 0, false, dt);
+    expect(b.y).toBe(350); expect(state.ladder).toBeNull(); expect(b.grounded).toBe(true);
+    expect(takeLadderEnd(state)).toEqual({ clip: 'ladder-top', reverse: false });
+    expect(takeLadderEnd(state)).toBeNull();
+    let held = 0;
+    for (let n = 0; n < 120; n++) {
+      if (climb(b, state, [world], -1, 0, false, dt)) held++;
+      expect(state.ladder).toBeNull(); expect(state.end).toBeNull(); expect(b.y).toBe(350);
+    }
+    expect(held).toBe(steps(LADDER_TOP_TIME));
+  });
+  it('steps off the bottom onto the ground and Down does not grab again', () => {
+    const b = body(490), state = traversal();
+    for (let i = 0; i < 100 && !state.end; i++) climb(b, state, [world], 1, 0, false, dt);
+    expect(b.y).toBe(500); expect(takeLadderEnd(state)).toEqual({ clip: 'ladder-bottom', reverse: false });
+    let held = 0;
+    for (let n = 0; n < 120; n++) if (climb(b, state, [world], 1, 0, false, dt)) held++;
+    expect(held).toBe(steps(LADDER_BOTTOM_TIME)); expect(state.ladder).toBeNull(); expect(state.end).toBeNull();
+  });
+  it('gets on from the deck with ladder-top reversed and from the ground with ladder-bottom reversed', () => {
+    for (const [y, vertical, clip, time] of [[350, 1, 'ladder-top', LADDER_TOP_TIME], [500, -1, 'ladder-bottom', LADDER_BOTTOM_TIME]] as const) {
+      const b = body(y), state = traversal();
+      expect(climb(b, state, [world], vertical, 0, false, dt)).toBe(true);
+      expect(takeLadderEnd(state)).toEqual({ clip, reverse: true }); expect(state.ladder).not.toBeNull();
+      // The body waits at the end while the clip plays (and while no direction is held), then climbs.
+      for (let n = 0; n < 30; n++) climb(b, state, [world], 0, 0, false, dt);
+      for (let n = 1; n < steps(time); n++) climb(b, state, [world], vertical, 0, false, dt);
+      expect(b.y).toBe(y);
+      climb(b, state, [world], vertical, 0, false, dt); climb(b, state, [world], vertical, 0, false, dt);
+      expect(b.y).not.toBe(y);
+    }
+  });
+  it('a jump ends the hold at either end at once', () => {
+    const b = body(355), state = traversal();
+    for (let i = 0; i < 100 && !state.end; i++) climb(b, state, [world], -1, 0, false, dt);
+    expect(climb(b, state, [world], 0, 0, true, dt)).toBe(false); expect(state.hold).toBe(0);
+    const on = body(350), entering = traversal();
+    climb(on, entering, [world], 1, 0, false, dt);
+    expect(climb(on, entering, [world], 0, 0, true, dt)).toBe(false);
+    expect(entering.ladder).toBeNull(); expect(entering.hold).toBe(0);
+  });
+  it('grabbing mid-ladder plays no end clip', () => {
+    const b = body(420), state = traversal();
+    climb(b, state, [world], -1, 0, false, dt);
+    expect(state.ladder).not.toBeNull(); expect(state.end).toBeNull(); expect(b.y).toBeLessThan(420);
   });
 });

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { Guard, GuardPush } from './guard';
 import { Life } from './life';
-import { Rover } from '../enemies/rover';
+import { Rover, ROVER_WIDTH } from '../enemies/rover';
 import { stepBody, type Body } from '../player/body';
 import type { Geometry } from '../stage/collision';
 import clips from '../../public/assets/sprites/chair-block.anims.json';
@@ -28,7 +28,7 @@ describe('chair guard', () => {
     if (hit.blocked) rover.deflect(1); else life.hit(1);
     expect(life.health).toBe(5); expect(rover.health).toBe(3); expect(rover.phase).toBe('hit');
     expect(guard.pose).toBe('guard-impact-00'); expect(guard.receive(1, 120, 100).fresh).toBe(false);
-    rover.step(3 / 12); expect(rover.x).toBeCloseTo(135.5);
+    rover.step(3 / 12); expect(rover.x).toBeCloseTo(120 + ROVER_WIDTH / 2); // knocked back half its width
     guard.step(4 / 12); expect(guard.phase).toBe('hold'); expect(guard.blocks).toBe(1);
   });
   it('blocks only in the facing direction and takes normal rear damage', () => {

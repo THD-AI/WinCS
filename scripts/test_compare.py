@@ -25,25 +25,25 @@ class CompareTests(unittest.TestCase):
         self.assertEqual(out.size, (400, 200 + 200 + 8))  # both 2:1 at 400 wide, 8 px gap
 
     def test_lineup_reports_against_documented_heights(self):
-        sheet = Image.new('RGBA', (60, 80))
-        sheet.paste((40, 90, 160, 255), (2, 4, 22, 80))    # hero idle: 20x76
+        sheet = Image.new('RGBA', (60, 118))
+        sheet.paste((40, 90, 160, 255), (2, 4, 22, 118))    # hero idle: 20x114
         sheet.paste((40, 90, 160, 255), (30, 60, 50, 78))  # drone: 20x18 – a span of 20, not 45
-        frames = {'idle-00': {'frame': {'x': 0, 'y': 0, 'w': 26, 'h': 80}},
+        frames = {'idle-00': {'frame': {'x': 0, 'y': 0, 'w': 26, 'h': 118}},
                   'hover-00': {'frame': {'x': 28, 'y': 58, 'w': 30, 'h': 22}}}
         for atlas, name in (('hero-move', 'idle-00'), ('enemy-drone', 'hover-00')):
             sheet.save(self.base / f'{atlas}.png')
             (self.base / f'{atlas}.json').write_text(json.dumps({'frames': {name: frames[name]}}), encoding='utf-8')
         _, report = cp.lineup(['hero-move:idle-00', 'enemy-drone:hover-00'])
-        self.assertIn('hero-move:idle-00: 20x76 px, documented 76 px (+0 %)', report)
+        self.assertIn('hero-move:idle-00: 20x114 px, documented 114 px (+0 %)', report)
         self.assertIn('enemy-drone:hover-00: 20x18 px, documented 45 px (-56 %)', report)
 
     def test_lineup_scales_a_frame_and_its_documented_height(self):
-        sheet = Image.new('RGBA', (20, 31))
-        sheet.paste((40, 90, 160, 255), (2, 4, 12, 31))  # dexter: 10x27, the documented plush
+        sheet = Image.new('RGBA', (20, 44))
+        sheet.paste((40, 90, 160, 255), (2, 4, 12, 44))  # dexter: 10x40, the documented plush
         sheet.save(self.base / 'dexter.png')
-        (self.base / 'dexter.json').write_text(json.dumps({'frames': {'idle-00': {'frame': {'x': 0, 'y': 0, 'w': 20, 'h': 31}}}}), encoding='utf-8')
+        (self.base / 'dexter.json').write_text(json.dumps({'frames': {'idle-00': {'frame': {'x': 0, 'y': 0, 'w': 20, 'h': 44}}}}), encoding='utf-8')
         _, report = cp.lineup(['dexter:idle-00*1.6'])
-        self.assertIn('dexter:idle-00*1.6: 16x43 px, documented 43 px (+0 %)', report)
+        self.assertIn('dexter:idle-00*1.6: 16x64 px, documented 64 px (+0 %)', report)
 
     def test_stride_is_twice_the_widest_spread_between_planted_feet(self):
         # Two frames, 40x20 each: double support with feet 21 px apart, then one foot passing.

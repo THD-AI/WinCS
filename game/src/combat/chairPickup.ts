@@ -20,7 +20,7 @@ const GLYPH_LIFT = 100;
 const REACH = 24;
 /** The carried chair on the hero's back: the centre of the drawn chair in its 86 x 81 frame, and where it hangs
  *  behind the hero's feet anchor (px), turned so the seat sits behind the backpack and the legs rise over the shoulder. */
-const BACK = { originX: 54 / 86, originY: 66 / 81, x: -10, y: -52, angle: -105, scale: 0.65 };
+const BACK = { originX: 54 / 86, originY: 66 / 81, x: -15, y: -78, angle: -105, scale: 0.65 };
 
 export function carriesChair(scene: Phaser.Scene): boolean {
   if (import.meta.env.DEV && TESTS.some(test => new URLSearchParams(location.search).has(test))) return true;

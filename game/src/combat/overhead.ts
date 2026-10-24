@@ -2,9 +2,14 @@ import { intersects, type Damageable, type Rect } from './sweeps';
 import type { Position } from '../core/events';
 import { RUN_SPEED } from '../player/movement';
 
-// docs/02: measured chair-overhead legs; cell 108×126, foot pivot (54,126).
-export const UP_CONTACT = { left: -3, right: 24, top: 114, bottom: 89 } as const;
-export const SLAM_CONTACT = { left: 11, right: 37, grain: 2 } as const;
+/**
+ * docs/02: measured on the 1.5x chair-overhead frames (24 Oct), cell 160×187, foot pivot (80,187). In up-02/03 the
+ * chair spans −4…64 px ahead and 118…181 px up; the box reaches down to 88 px – the arc the chair travels from the
+ * shoulder – so a drone hovering at head height is hit: the Rusty Creek drone (y 470, 45 px tall) sits 66–111 px above
+ * the 536 deck and 100–145 px above the 570 ground. Slam-03's legs run 16…56 px ahead.
+ */
+export const UP_CONTACT = { left: -4, right: 64, top: 181, bottom: 88 } as const;
+export const SLAM_CONTACT = { left: 16, right: 56, grain: 2 } as const;
 export const SLAM_SPEED = RUN_SPEED * 2; // Initial tuning in docs/02, 516 px/s.
 type Phase = 'idle' | 'up' | 'windup' | 'descend' | 'land' | 'pogo';
 export class Overhead {

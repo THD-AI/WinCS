@@ -30,7 +30,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows. Row 1, exactly 8 figures: IDLE breathing loop, 6 frames (relaxed stance, the poncho rises and settles, tassels sway a little), then IDLE TO WALK, 2 frames (weight shifts forward, the front foot lifts). Row 2, exactly 8 figures: WALK cycle in key poses with clearly different leg positions - contact (legs wide apart, heel down), down, passing (legs together), up, for the right leg, then the same four for the left leg; the poncho hem swings against the legs, the backpack bobs. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -47,7 +47,7 @@
             {
               "anim": "walk",
               "frames": 8,
-              "stride": 43
+              "stride": 65
             }
           ]
         ]
@@ -64,7 +64,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 4 figures: LOOK AROUND - the hood turns slowly back over the shoulder and returns (the inside of the hood stays pure black shadow, no face ever). Row 2, exactly 4 figures: CHECK THE TABLET - lifts a small glowing handheld device from under the poncho, looks down at its screen, lowers it again. Row 3, exactly 4 figures: CHECK WOUNDS - pats the side of the body under the poncho, looks down at the hand, shakes it off. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -104,7 +104,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows. Row 1, exactly 5 figures: WALK TO RUN, 2 frames (lean forward, arms start to pump), then RUN START from standing, 3 frames (crouch, push off, first long stride). Row 2, exactly 8 figures: RUN cycle in key poses - contact, down, passing, up for each leg, with long strides and one foot clearly off the ground; leaning forward, poncho and tassels streaming back, backpack bouncing. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "ref": "walk-run-00",
         "rows": [
           [
@@ -124,7 +124,7 @@
               "anim": "run",
               "frames": 8,
               "scale": 1.12,
-              "stride": 82
+              "stride": 123
             }
           ]
         ]
@@ -155,7 +155,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 8 figures: TAKE A HIT, cartoonish and simple - a pure white flash silhouette of the hero, recoil backwards with arms flung up, stagger, wobble, catch balance, straighten, shake it off, back to standing. Row 2, exactly 6 figures: KNOCKBACK, 3 frames (launched backwards, poncho and tassels whipping forward, tumbling, curled up), then INTERACT, 3 frames (reach out and touch something at chest height, hold, pull the hand back). Row 3, exactly 7 figures: PICK UP, 4 frames (crouch, reach to the ground, grab, stand up holding a small item), then LOOK AT THE DEVICE, 3 frames (raise a small brushed-aluminium handheld computer with a glowing blue screen, look down at it, lower it). The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -204,7 +204,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 2 rows that form ONE death animation of 12 frames, read left to right, row 1 then row 2. Row 1, exactly 6 figures: hit stagger, knees buckle, collapse onto both knees, slump forward, hands catch the ground, fall flat forward. Row 2, exactly 6 figures: lying still face-down with the poncho spread out, the hood dark and empty, a last twitch, then the whole figure breaks into square pixel dust in three steps until only a few drifting pixels are left. It is final and quiet, never gory: no blood. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -234,7 +234,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. 3 rows. Row 1, exactly 9 figures: JUMP - crouch anticipation, take-off, rise, rise higher, apex (the poncho billows up, tassels float), turn over, descend, landing squash, recover to standing. Row 2, exactly 7 figures: FALL loop, 3 frames (poncho flapping upward, arms out for balance), then HARD LANDING, 4 frames (deep impact crouch with one hand on the ground and a puff of dust, push up, straighten, stand). Row 3, exactly 4 figures: CLIMBING A LADDER seen from BEHIND (back to the viewer, the THD crest patch on the poncho's back visible, hood up), hands and feet alternating on invisible rungs in a 4-frame loop; do not draw the ladder itself. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -269,6 +269,36 @@
       "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
+      "id": "hero-ladder",
+      "title": "The student · ladder top and bottom",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/hero-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), EVERY figure seen from BEHIND exactly like the fifth figure of the first image (back to the viewer, the THD crest patch on the poncho's back visible, hood up, no face, no backpack showing), identical scale in every frame. Only the hero: no objects, no furniture, no scenery, no poles or bars anywhere. 2 rows, 7 figures in total. Row 1, exactly 4 figures, GETTING UP FROM THE FLOOR: (1) kneeling on one knee, leaning forward, both palms flat on the floor in front of him at shoulder width; (2) the other foot planted, that knee raised high, both hands pushing on that knee; (3) half risen, back still bent; (4) standing upright, arms at his sides. Row 2, exactly 3 figures, LOWERING THE ARMS: (1) standing on one leg, both arms stretched straight up above the hood with the fists closed, the other knee lifted to hip height; (2) both feet on the floor, elbows bent, hands at shoulder height; (3) standing upright, arms at his sides. Every figure stands on the SAME invisible ground line, even the kneeling pose: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and the two rows are separated by an empty magenta band. Draw distinct key poses, never blurred in-betweens. Count the figures: row 1 has EXACTLY 4, row 2 EXACTLY 3.",
+      "atlas": {
+        "height": 114,
+        "rows": [
+          [
+            {
+              "anim": "ladder-top",
+              "frames": 4,
+              "loop": false
+            }
+          ],
+          [
+            {
+              "anim": "ladder-bottom",
+              "frames": 3,
+              "loop": false,
+              "scale": 0.89
+            }
+          ]
+        ]
+      }
+    },
+    {
       "id": "chair-side",
       "title": "Chair · side sweep",
       "factor": 2,
@@ -282,7 +312,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 3 rows. Row 1, exactly 8 figures: SWEEP A, a horizontal forehand swing - ready (chair held by the seat at hip height, legs pointing back), wind-up turning the body back, swing start, ONE SMEAR frame (the chair stretched into a blurred pixel arc), contact (chair fully extended in front at waist height with a small white impact spark), follow-through past the body, settle, ready. Row 2, exactly 8 figures: SWEEP B, the return backhand swing the other way, starting where sweep A ended - wind-up, swing start, ONE SMEAR frame, contact with a small spark, follow-through, settle, ready. Row 3, exactly 3 items: RECOIL, 2 frames (the chair bounces back off something hard and the hero leans back, then steadies), then THE CHAIR ALONE lying on its side on the ground (no hero), at the same pixel scale. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -328,7 +358,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 3 rows. Row 1, exactly 6 figures: UP ATTACK - crouch with the chair low, lift, ONE SMEAR frame upward, the chair thrust straight overhead seat-up with the legs to the sky and a small spark above, start lowering, ready. Row 2, exactly 7 figures: DOWN SLAM - chair raised high behind the head, peak, ONE SMEAR frame of the downward arc, the chair slammed upright onto the ground in front with a small puff of dust (no crack, no shockwave, no debris), a short hold, pull the chair back up, ready. Row 3, exactly 4 figures: AIR POGO - the hero in the air pointing the chair legs straight down below the feet: tuck, thrust down, bounce up off a hit, recover. The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "ref": "slam-06",
         "rows": [
           [
@@ -371,7 +401,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Hero from the first image (keep the THD poncho, the shadow-filled hood and all proportions exactly), facing right, strict side view, identical scale in every frame. The weapon is the honey-coloured bent-plywood stacking chair with four thin black steel legs from the photos (the images after the first). It is LIGHT: the hero swings it quickly with both hands at the edge of the seat, snappy and short-range, never heavy or slow. Copy the grips and the wide low stance from the photos. 2 rows. Row 1, exactly 7 figures: GUARD UP, 4 frames (from ready to holding the chair seat in front of the chest like a shield with the four legs pointing forward at the enemy, as in the photos), then GUARD HOLD, 3 frames (a tiny breathing shift). Row 2, exactly 8 figures: GUARD IMPACT, 4 frames (a small spark on the seat, the hero skids back a little, the chair wobbles, steady again), then GUARD BREAK, 4 frames (the chair is knocked up and away, the hero stumbles back with arms out, then catches the chair again). The THD crest patch is on the poncho's BACK only and is never visible from the side. Every figure stands on the SAME invisible ground line, even airborne poses: the game moves the body, so never draw a figure higher up. Each row's figures are evenly spaced from left to right with wide clear magenta gaps between neighbours: no tassel, foot, hand or poncho edge touches the next figure, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens; neighbouring frames change by small continuous steps so they loop smoothly. Count the figures: each row has EXACTLY the number stated.",
       "atlas": {
-        "height": 76,
+        "height": 114,
         "rows": [
           [
             {
@@ -429,7 +459,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the big black carbon-fibre autonomous quadcopter from the photos (four long arms, red-and-black motors, two-bladed props, tall black landing legs, exposed wiring and a small electronics deck in the middle), now hostile, with ONE red sensor eye on the deck. Strict side view, FACING LEFT. 3 rows. Row 1, exactly 7 frames: HOVER loop, 4 frames (props as blur discs, the body bobs 1-2 pixels), then ALERT AND DIVE, 3 frames (the eye flashes, it tilts forward, dives with a short speed trail). Row 2, exactly 5 frames: CRASH (white hit-flash silhouette, knocked sideways and spinning, falling, wreck on the ground with one prop twitching, a little smoke and a small pool of glossy black fluid). Row 3, exactly 3 frames: a small DROPPED SCREW tumbling, drawn large enough to read. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
       "atlas": {
-        "height": 47,
+        "height": 80,
         "rows": [
           [
             {
@@ -476,7 +506,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the small four-wheeled autonomous lab rover from the photos (aluminium chassis, four chunky yellow wheels with black tyres, plywood top deck, a black cylindrical lidar on top, two round ultrasonic sensor 'eyes' at the front). Nobody drives it: it is autonomous and now hostile. Strict side view, FACING LEFT. 3 rows. Row 1, exactly 4 frames: IDLE (the lidar spins, the body hums). Row 2, exactly 6 frames: DRIVE patrol cycle (wheels turn, chassis bounces 1 pixel). Row 3, exactly 9 frames: SPOT AND CHARGE, 4 frames (the lidar flashes red, it rears up a little, lunges forward with dust from the wheels), then HIT, FLIP AND WRECK, 5 frames (white hit-flash silhouette, flipped onto its back, wheels spinning, stops dead, a little smoke and a small pool of glossy black fluid). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
       "atlas": {
-        "height": 25,
+        "height": 75,
         "rows": [
           [
             {
@@ -519,7 +549,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: Enemy sprite sheet of the autonomous six-legged hexapod robot from the photos (a flat electronics body, six jointed servo legs, wiring and small sensors), waist-high and wide like a crab. Nobody controls it: it is autonomous and now hostile, with one small red sensor light. Strict side view, FACING LEFT. 4 rows. Row 1, exactly 4 frames: IDLE (legs shift, body bobs). Row 2, exactly 8 frames: WALK cycle (legs move in alternating tripods). Row 3, exactly 5 frames: REAR AND STAB (raises the two front legs high, holds, stabs them down forward, pulls back). Row 4, exactly 5 frames: COLLAPSE (white hit-flash silhouette, legs buckle, body drops flat, legs splay out, stops dead with a small pool of glossy black fluid). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
       "atlas": {
-        "height": 46,
+        "height": 80,
         "rows": [
           [
             {
@@ -748,7 +778,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Prop sprite sheet: the self-service coffee machine from the first two photos, copied exactly - black and brushed-steel body, three steel bean hoppers on top, a big glowing touchscreen with a grid of drink buttons, a bright green light strip down its left side, a steel drip tray and spout - standing on its own black base cabinet so the whole unit is a little TALLER than an adult (about 190 cm) and about half as wide as it is tall. Real wear: fingerprints, a coffee stain on the tray, a scuffed cabinet. Strict front-three-quarter side view, the same in every frame. 2 rows. Row 1, exactly 3 frames: IDLE, the screen glowing steadily, then the screen FLICKERING (a band of static across it), then the screen showing a still dark POND image for one frame (an anomaly hint). Row 2, exactly 4 frames: POUR, a white cafeteria mug under the spout fills with coffee in 4 steps, a little steam on the last. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
       "atlas": {
-        "height": 80,
+        "height": 120,
         "rows": [
           [
             {
@@ -810,7 +840,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: DEXTER, the university's black panther mascot as the small PLUSH toy from the first two images - copy that plush exactly: CHUNKY toy proportions, a BIG round head about 45 % of his whole height, wide rounded ears, big ice-blue eyes, an orange nose, small white fangs, long white whiskers, a short soft body in a light-grey THD crest T-shirt and light-grey shorts, short stubby black arms and legs, big black paw feet with white claw dots, a short curled tail. Black velvet fur with soft dark-grey highlights so the shapes read at small size. A cute, slightly too-alive plush that moves by itself. The second image shows his size: he reaches just above the hero's knee - never slim, never a cat on two legs, never a human body. Strict side view, facing RIGHT, the head turned a little toward the viewer so both eyes show, the same size in every frame. He never talks: everything is body language. 3 rows. Row 1, exactly 7 frames: IDLE, 3 frames (a small breathing bob, the tail flicks), then HOP, 4 frames (crouch, spring up, in the air, land). Row 2, exactly 6 frames: WALK cycle on two legs, a waddling plush walk. Row 3, exactly 7 frames: POINT AT THE GROUND, 3 frames (looks down, raises one paw, points down firmly), then SHOVE, 4 frames (leans back, both paws push forward hard, holds, steps back). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
       "atlas": {
-        "height": 27,
+        "height": 40,
         "rows": [
           [
             {
@@ -859,7 +889,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: DEXTER, the university's black panther mascot as the small PLUSH toy from the first two images - copy that plush exactly: CHUNKY toy proportions, a BIG round head about 45 % of his whole height, wide rounded ears, big ice-blue eyes, an orange nose, small white fangs, long white whiskers, a short soft body in a light-grey THD crest T-shirt and light-grey shorts, short stubby black arms and legs, big black paw feet with white claw dots, a short curled tail. Black velvet fur with soft dark-grey highlights so the shapes read at small size. A cute, slightly too-alive plush that moves by itself. The second image shows his size: he reaches just above the hero's knee - never slim, never a cat on two legs, never a human body. Strict side view, facing RIGHT, the head turned a little toward the viewer so both eyes show, the same size in every frame. He never talks: everything is body language. 2 rows. Row 1, exactly 6 frames: BECKON, 3 frames (waves one paw toward himself: come here), then BOW, 1 frame (a deep polite bow), then SWEAT, 2 frames (nervous, one big sweat drop on the forehead, ears flat, a small shiver). Row 2, exactly 6 frames: PROUD, 1 frame (chest out, paws on hips), then CREEPY SHADOW, 1 frame (standing still, the face in black shadow with only the ice-blue eyes glowing, slightly too tall), then ABSORB, 4 frames (leans over a small pool of glossy black fluid on the ground, the fluid rises into his paws and body in black strands, it is gone, he stands up a little taller and pleased). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
       "atlas": {
-        "height": 27,
+        "height": 40,
         "rows": [
           [
             {
@@ -1046,7 +1076,7 @@
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: DEXTER, the university's black panther mascot as the small PLUSH toy from the first two images (an approved sprite sheet of him from this game, then his approved design) - copy that plush exactly: CHUNKY toy proportions, a BIG round head about 45 % of his whole height, wide rounded ears, big ice-blue eyes, an orange nose, small white fangs, long white whiskers, a short soft body in a light-grey THD crest T-shirt and light-grey shorts, short stubby black arms and legs, big black paw feet with white claw dots, a short curled tail. Black velvet fur with soft dark-grey highlights so the shapes read at small size. A cute, slightly too-alive plush that moves by itself - never slim, never a cat on two legs, never a human body. Strict side view, facing RIGHT, the head turned a little toward the viewer so both eyes show, the same size in every frame as on the approved sheet. He never talks: everything is body language. These are the poses his approved sheet (image 1) is missing for the first quest. 2 rows. Row 1, exactly 6 frames: LOOK BACK, 3 frames (standing, facing right, he turns his big head back over his shoulder toward the viewer and the left, then holds the look), then WAIT, 3 frames (standing, facing right, he taps one foot and his tail swishes, impatient but friendly). Row 2, exactly 2 frames: SIT, Dexter sitting on an invisible bench edge with his stubby legs dangling down in front, paws in his lap, facing right - frame 1 still, frame 2 his head tilted and the tail curled the other way. Draw the seat as nothing: he sits in the air at the height of a bench seat, his legs hanging. Every standing frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no bench, no scenery.",
       "atlas": {
-        "height": 27,
+        "height": 40,
         "rows": [
           [
             {
