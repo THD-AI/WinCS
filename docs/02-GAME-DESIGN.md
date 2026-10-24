@@ -257,7 +257,7 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Drone | health / tell / dive | 8 / 0.5 s / 380 px/s | `enemies/drone.ts` |
 | Jenny | health / damage | 30 / charge 2, parts 1 | `enemies/jenny.ts` `JENNY_HEALTH`, `CHARGE_DAMAGE`, `PART_DAMAGE` |
 | Jenny | rev / stall | 1 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `STALL_SECONDS` |
-| Jenny's ram | lights, rev | 0.6 + 0.6 s, charge 900 px/s | `enemies/jennyRam.ts` `RAM` |
+| Jenny's ram | silence, lights, rev | 1.2 + 0.6 + 0.6 s, charge 900 px/s | `enemies/jennyRam.ts` `RAM` |
 
 ## The glitch meter (after Region 1)
 
