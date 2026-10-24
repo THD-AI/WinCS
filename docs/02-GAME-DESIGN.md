@@ -270,7 +270,9 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
 | Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |
 | Rover | patrol / charge | half walk / run speed, after a 0.5 s tell, within 150 px | `rover.ts` `PATROL_SPEED`, `CHARGE_SPEED`, `TELL_SECONDS`, `SPOT_RANGE` |
-| Crab | health / tell / spot | 4 / 0.6 s / 110 px, stab reach 30 px | `enemies/crab.ts` |
+| Rover, crab | pause at a patrol end | 0.3 s idle, then turn | `rover.ts` `TURN_SECONDS` |
+| Small enemies | hit shake / defeat shake | 70 ms 0.003 / 140 ms 0.006 | `enemies/rovers.ts` `MOB_SHAKE` |
+| Crab | health / tell / spot | 4 / 0.6 s / 110 px, stab reach 30 px; creeps in and rears up within 62 px | `enemies/crab.ts` (`CRAB_STRIKE`) |
 | Drone | health / tell / dive | 8 / 0.5 s / 380 px/s | `enemies/drone.ts` |
 | Jenny | health / damage | 30 / charge 2, parts 1 | `enemies/jenny.ts` `JENNY_HEALTH`, `CHARGE_DAMAGE`, `PART_DAMAGE` |
 | Jenny | rev / turn rev / stall | 1 s / 0.5 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `TURN_REV_SECONDS`, `STALL_SECONDS` |

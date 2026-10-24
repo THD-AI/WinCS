@@ -9,6 +9,7 @@ import type { ChairCombat } from '../combat/chair';
 import { intersects, type Rect } from '../combat/sweeps';
 import { gameEvents } from '../core/events';
 import { sound } from '../fx/sound/Audio';
+import type { ChairHit } from '../combat/sweeps';
 import { Rover, ROVER_HEIGHT } from './rover';
 import { Crab } from './crab';
 import { Drone } from './drone';
@@ -24,6 +25,19 @@ interface Row { id: string; kind: 'rover' | 'crab' | 'drone'; model: Model; spri
   attack?: () => Rect | undefined; harmful: () => boolean; onBlocked?: () => void }
 
 /** The atlas, the flip rule and the label height per kind. Rover and crab art face left; the drone faces right. */
+/** Camera shake per event (ms, intensity): a chair hit landing on a small enemy, and its defeat. */
+export const MOB_SHAKE = { hit: [70, 0.003], defeat: [140, 0.006] } as const;
+/** The phases a defeated enemy plays before it is gone. */
+const DEFEAT = new Set(['wreck', 'collapse', 'crash']);
+/**
+ * Whether a living small enemy's body hurts on contact. Never while it is knocked back by a chair hit or going
+ * down – the hero who just landed a hit is not punished for standing where he swung. The drone only on its dive.
+ */
+export function harmfulPhase(kind: 'rover' | 'crab' | 'drone', phase: string): boolean {
+  if (phase === 'hit' || DEFEAT.has(phase) || phase === 'dead') return false;
+  return kind === 'drone' ? phase === 'dive' : true;
+}
+
 const KINDS = {
   rover: { atlas: 'enemy-rover', flip: (d: number) => d > 0, max: 3, sound: 'rover-motor' },
   crab: { atlas: 'enemy-crab', flip: (d: number) => d > 0, max: 4, sound: 'crab-servo' },
@@ -59,13 +73,13 @@ export class Rovers {
       let row: Omit<Row, 'sprite' | 'label' | 'id' | 'kind'>;
       if (kind === 'rover') {
         const model = new Rover(at, patrol);
-        row = { model, harmful: () => true, onBlocked: () => model.deflect(model.x >= this.player.body.x ? 1 : -1) };
+        row = { model, harmful: () => harmfulPhase('rover', model.phase), onBlocked: () => model.deflect(model.x >= this.player.body.x ? 1 : -1) };
       } else if (kind === 'crab') {
         const model = new Crab(at, patrol);
-        row = { model, harmful: () => model.phase !== 'collapse', attack: () => model.attack };
+        row = { model, harmful: () => harmfulPhase('crab', model.phase), attack: () => model.attack };
       } else {
         const model = new Drone(at, patrol);
-        row = { model, harmful: () => model.dangerous };
+        row = { model, harmful: () => harmfulPhase('drone', model.phase) };
       }
       const model = row.model;
       const sprite = scene.add.sprite(model.x, model.y, KINDS[kind].atlas, model.pose).setOrigin(0.5, 1).setDepth(101);
@@ -73,7 +87,7 @@ export class Rovers {
       const label = scene.add.text(model.x, model.y - ROVER_HEIGHT - BODY_WIDTH / 2, '',
         { fontFamily: 'monospace', fontSize: '14px', backgroundColor: '#17242d' }).setDepth(102).setVisible(false);
       cleanup.push(chair.register({ id: spawn.id!, active: () => model.health > 0,
-        bounds: () => model.bounds, hit: hit => model.hit(hit.damage, hit.direction) }));
+        bounds: () => model.bounds, hit: hit => this.struck(model, hit) }));
       cleanup.push(player.life.register(spawn.id!, () => model.reset()));
       return { ...row, id: spawn.id!, kind, sprite, label };
     };
@@ -82,6 +96,29 @@ export class Rovers {
     scene.input.keyboard?.on('keydown-F2', toggle);
     scene.events.once('shutdown', () => { scene.input.keyboard?.off('keydown-F2', toggle); cleanup.forEach(off => off()); });
   }
+  /** A chair hit on a small enemy: the model takes it; a landed one shakes the screen a touch (hit-stop is the chair's). */
+  private struck(model: Model, hit: ChairHit): boolean {
+    const landed = model.hit(hit.damage, hit.direction);
+    if (landed) {
+      const shake = model.health > 0 ? MOB_SHAKE.hit : MOB_SHAKE.defeat;
+      this.scene.cameras.main.shake(shake[0], shake[1]);
+      if (model.health === 0) this.burst(model.bounds);
+    }
+    return landed;
+  }
+
+  /** It goes down: dark scrap and a few sparks burst from its body. */
+  private burst(box: Rect): void {
+    const x = box.x + box.w / 2, y = box.y + box.h / 2, floor = box.y + box.h;
+    for (let i = 0; i < 8; i++) {
+      const bit = this.scene.add.rectangle(x, y, 3, 2 + (i % 2), i % 3 ? 0x23282c : 0xfff4cb).setDepth(110);
+      const side = i % 2 ? 1 : -1;
+      this.scene.tweens.add({ targets: bit, x: x + side * (8 + ((i * 29) % 26)), duration: 380, ease: 'Quad.easeOut' });
+      this.scene.tweens.add({ targets: bit, y: floor - 1, duration: 380, ease: 'Back.easeIn',
+        onComplete: () => this.scene.tweens.add({ targets: bit, alpha: 0, delay: 200, duration: 200, onComplete: () => bit.destroy() }) });
+    }
+  }
+
   update(milliseconds: number) {
     this.debug.clear();
     const body = this.player.body;
@@ -91,8 +128,9 @@ export class Rovers {
       const before = model.phase;
       const defeated = model.step(milliseconds / 1000, this.player.life.dead === 0 ? body : undefined);
       if (defeated) gameEvents.emit('enemy-defeated', { id, kind, position: { x: model.x, y: model.y } });
-      // The tells get a sound: the crab's servos as its legs rise, the drone's hum as it tilts.
-      if (before !== model.phase && model.phase === 'tell' && kind !== 'rover') sound.play(KINDS[kind].sound);
+      // The tells get a sound: the rover's motor revs up under its red lidar, the crab's servos as its legs rise,
+      // the drone's hum as it tilts.
+      if (before !== model.phase && model.phase === 'tell') sound.play(KINDS[kind].sound);
       if (this.scene.textures.get(KINDS[kind].atlas).has(model.pose)) sprite.setFrame(model.pose);
       sprite.setPosition(Math.round(model.x), Math.round(model.y)).setFlipX(KINDS[kind].flip(model.direction))
         .setVisible(model.phase !== 'dead' || kind !== 'drone');
