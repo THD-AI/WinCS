@@ -18,6 +18,9 @@ export const SHOW_SECONDS = 0.6;
 const GLYPH_LIFT = 100;
 /** How far from the box the hero may still be when a jump into it lands (px). */
 const REACH = 24;
+/** The carried chair on the hero's back: the centre of the drawn chair in its 86 x 81 frame, and where it hangs
+ *  behind the hero's feet anchor (px), turned so the seat sits behind the backpack and the legs rise over the shoulder. */
+const BACK = { originX: 54 / 86, originY: 66 / 81, x: -10, y: -52, angle: -105, scale: 0.65 };
 
 export function carriesChair(scene: Phaser.Scene): boolean {
   if (import.meta.env.DEV && TESTS.some(test => new URLSearchParams(location.search).has(test))) return true;
@@ -54,9 +57,11 @@ export class ChairPickup {
   private moment?: PickupMoment;
   private glyph?: Phaser.GameObjects.Container;
   private pending?: Box;
+  /** The chair the hero carries between swings; the hero has no carrying frames, so it rides on his back. */
+  private back?: Phaser.GameObjects.Image;
 
   constructor(private scene: Phaser.Scene, private player: Player, private chair: ChairCombat, chunks: CollisionChunk[]) {
-    const update = (_time: number, delta: number) => this.update(delta);
+    const update = (_time: number, delta: number) => { this.update(delta); this.carry(); };
     scene.events.on('postupdate', update);
     scene.events.once('shutdown', () => scene.events.off('postupdate', update));
     if (carriesChair(scene)) {
@@ -92,6 +97,21 @@ export class ChairPickup {
     this.glints = [];
     this.scene.registry.set(CARRYING_CHAIR, true);
     sound.play('chair-hit');
+  }
+
+  /** Keeps the carried chair on the hero's back, behind him, hidden while a chair pose (swing, guard, slam) or the
+   *  pick-up holds it in his hands. */
+  private carry(): void {
+    if (!carriesChair(this.scene)) return;
+    const hero = this.player.sprite;
+    this.back ??= this.scene.add.image(hero.x, hero.y, 'chair-side', 'chair-pickup-00')
+      .setOrigin(BACK.originX, BACK.originY).setScale(BACK.scale);
+    const facing = this.player.facing < 0 ? -1 : 1;
+    const inHands = hero.texture.key.startsWith('chair-') || hero.texture.key === 'hero-hurt' && hero.frame.name.startsWith('pick-up')
+      || this.moment?.phase === 'picking' || this.moment?.phase === 'showing';
+    this.back.setVisible(hero.visible && !inHands).setAlpha(hero.alpha).setDepth(hero.depth - 0.5)
+      .setPosition(Math.round(hero.x + BACK.x * facing), Math.round(hero.y + BACK.y))
+      .setFlipX(facing < 0).setAngle(BACK.angle * facing);
   }
 
   private hint(): void {
