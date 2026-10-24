@@ -103,6 +103,16 @@ class SplitLayersTests(unittest.TestCase):
             ours = ours.getchannel('A').point(lambda a: 255 if a else 0) if ours else Image.new('L', source.size, 0)
             self.assertIsNone(ImageChops.difference(ours, on_top).getbbox(), role)
             covered = ImageChops.lighter(covered, drawn)
+    def test_a_fill_goes_only_under_nearer_layers(self):
+        source = scene()
+        owner = sl.assign(self.config['chunks']['t-0-0'], 'clean', source, self.region)
+        fill = Image.new('RGBA', source.size, (1, 2, 3, 255))
+        layers = sl.split(source, owner, {'01-far': fill})
+        far = layers['01-far']
+        self.assertEqual(far.getpixel((50, 36)), (1, 2, 3, 255))   # under the platform (nearer): filled
+        self.assertEqual(far.getpixel((5, 5))[3], 0)               # over the sky (farther): never
+        self.assertTrue(sl.same(sl.stack(layers, source.size), source))
+
 
 if __name__ == '__main__':
     unittest.main()

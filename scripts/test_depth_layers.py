@@ -109,5 +109,37 @@ class DepthLayerTests(unittest.TestCase):
             self.assertEqual(alpha, [0, 255, 0, 0, 0, 0])
 
 
+    def test_blended_plate_fades_between_neighbours(self):
+        # Two 100x2 opaque plates at scroll 0.5 overlap by 50 px; a 20 px fade sits in the overlap's middle.
+        a = Image.new("RGBA", (100, 2), (200, 0, 0, 255))
+        b = Image.new("RGBA", (100, 2), (0, 0, 200, 255))
+        strip = dl.blended_plate([a, b], 0.5, 20)
+        self.assertEqual(strip.size, (150, 2))
+        self.assertEqual(strip.getpixel((60, 0)), (200, 0, 0, 255))   # before the fade
+        self.assertEqual(strip.getpixel((75, 0)), (100, 0, 100, 255))  # half way
+        self.assertEqual(strip.getpixel((90, 0)), (0, 0, 200, 255))   # after it
+
+    def test_a_hole_continues_the_band_above_it(self):
+        import numpy as np
+        # One column: rear, water, then a foreground hole; the hole under the water is water.
+        bands = np.array([["mid"], ["rear"], ["water"], ["foreground"], ["foreground"]])
+        hole = bands == "foreground"
+        self.assertEqual(list(dl.continuation(bands, hole)[:, 0]), ["", "", "", "water", "water"])
+        # A hole with nothing above it at scroll 1 takes the band below.
+        bands = np.array([["sky"], ["near"], ["play"]])
+        self.assertEqual(dl.continuation(bands, bands == "near")[1, 0], "play")
+
+    def test_walk_top_prefers_the_longest_line(self):
+        import json as js
+        with tempfile.TemporaryDirectory() as tmp:
+            region = Path(tmp)
+            walk = [[[0, 50], [300, 50]], [[100, 10], [150, 10]], [[100, 20], [450, 20]]]
+            (region / "c.clean.collision.json").write_text(js.dumps({"walk": walk}))
+            top = dl.walk_top(region, "c", 500)
+            self.assertEqual(top[10], 50)
+            self.assertEqual(top[120], 20)  # the 350 px line beats the roof and the shorter one
+            self.assertEqual(top[450], -1)
+
+
 if __name__ == "__main__":
     unittest.main()

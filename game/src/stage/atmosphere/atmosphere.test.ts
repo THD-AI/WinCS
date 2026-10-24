@@ -4,7 +4,7 @@ import { DEFAULT_ATMOSPHERE, layerAtmosphere, parseAtmosphere } from './config';
 import { gustAt, maxSway, swayAt, swayWeight } from './wind';
 import { anchorProfile, autumnPalette, mirrorY, revealAlpha, REVEAL_SETTLE, onScreen, PROFILE_SIZE, waterline, waterlineAt, waterPoints, type Pixels, type WaterSpan } from './analysis';
 import { seeded } from './sprites';
-import { FOREGROUND_DEPTH, HERO_DEPTH, layerDepth, layerRanks, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from '../depth';
+import { ACTOR_FX_DEPTH, FOREGROUND_DEPTH, HERO_DEPTH, layerDepth, layerRanks, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from '../depth';
 
 function pixels(width: number, height: number, paint: (x: number, y: number) => [number, number, number, number] | null, scale = 1): Pixels {
   const data = new Uint8ClampedArray(width * height * 4);
@@ -61,7 +61,9 @@ describe('atmosphere.json', () => {
 describe('depth bands', () => {
   it('keeps layers z 0–5 under the actors and z 6–7 over them', () => {
     expect(layerDepth(5, 89)).toBeLessThan(HERO_DEPTH - 1);
-    expect(layerDepth(6, 0)).toBeGreaterThanOrEqual(FOREGROUND_DEPTH);
+    expect(layerDepth(6, 0)).toBeGreaterThan(ACTOR_FX_DEPTH);
+    expect(layerDepth(6, 29)).toBeLessThan(LEAVES_FRONT_DEPTH);
+    expect(layerDepth(7, 0)).toBeGreaterThanOrEqual(FOREGROUND_DEPTH);
     expect(LEAVES_BEHIND_DEPTH).toBeLessThan(HERO_DEPTH);
     expect(LEAVES_FRONT_DEPTH).toBeGreaterThan(HERO_DEPTH);
     expect(LEAVES_FRONT_DEPTH).toBeLessThan(FOREGROUND_DEPTH);
