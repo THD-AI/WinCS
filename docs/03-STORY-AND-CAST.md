@@ -18,6 +18,40 @@ The idea is fiction: no real experiment, person or department is depicted. The u
 
 **A secret horror game.** It looks and plays like a cozy, funny campus adventure, and the horror hides in plain sight: a reflection that shows the wrong thing, every chair facing the coffee machine, a mascot that waves a little too long. The player should be able to finish the first minutes thinking it's a cute game. Familiar → uncanny → psychological horror, built on the mimic and doppelganger idea from the meeting and on Duck Season's friendly mascot. No gore, no blood, no apocalypse, no jump-scare spam. Jokes are things you *do* (hit a robot with a chair, get thrown by a crash dialog), not text.
 
+## The slice's arc ([#160](https://github.com/THD-AI/WinCS/issues/160))
+
+The jam slice is one build-up, not a list of beats: **cozy → something wrong → the crash → the maze → Dexter's kindness → the boss → the reveal**. Every beat is played, never told, and each one has a scene and a trigger in the data. The budget is the 8–12 minute slice.
+
+| # | Beat | Mood | What lands | Scene · trigger | Budget |
+| --- | --- | --- | --- | --- | --- |
+| 1 | The garden | cozy | Dexter on his bench, the first quest is to follow him; secrets reward looking around | `Prologue` · the bench in the region data | 2–3 min |
+| 2 | The pond | something wrong | the reflection shows the rust maze; he shoves you, and for one frame he is a silhouette | `FinaleSequence` · `pond-edge` | 20 s |
+| 3 | The 404 | glitch | "404: Hidden Garden not found." – the garden tears and pulls you in | `Crossing` `'404'` · the fall | 10 s |
+| 4 | Alone in the creek | quiet, watched | Dexter is gone – but far down the path a small black plush stands and **watches**. He never comes closer; when you near him he hops away | `Watcher` · the `jenny-ram` box (he stands 240 px past it) | 40 s |
+| 5 | The silence | dread | **1.2 s of nothing**: the music stops, the hero stands. Then headlights | `Flow.ram` `hush` · `jenny-ram` | 1 s |
+| 6 | The crash | violence | Jenny rams you; "THD.exe has stopped responding"; the creek turns into the rust maze | `Flow.ram` → `Crossing` | 3 s |
+| 7 | The maze | play | the chair, the controls glyph, rovers, crab, drone – the real tutorial | rust maze · `pickup`, encounters | 3–4 min |
+| 8 | Dexter's kindness | warmth, off | he is already at the coffee machine: bows, sweats, hands you the pocket computer. He takes the black pools the machines left – nobody remarks on it | `CoffeeVisit` · the first save | 30 s |
+| 9 | The boss | climax | Jenny for real: rev, charge, crash, three phases | `JennyBoss` · the boss gate | 1.5–2 min |
+| 10 | The reveal | the turn | he absorbs her, grows to 46 px, hops ahead – then **stops and looks back at you**, the garden's first look over a bigger shoulder, held. Then he goes, and the frame tears: "To be continued." | `Ending` · `boss-defeated` | 15 s + credits |
+
+```mermaid
+flowchart LR
+  G["1 garden<br/>cozy · follow Dexter"] --> P["2 pond<br/>wrong reflection · shove"]
+  P --> F["3 404<br/>the garden tears"]
+  F --> W["4 creek, alone<br/>Dexter watches from too far"]
+  W -->|"hero within 8 m"| H["5 silence 1.2 s<br/>music stops"]
+  H --> C["6 Jenny's ram<br/>crash dialog"]
+  C --> M["7 rust maze<br/>chair · encounters"]
+  M --> K["8 coffee machine<br/>Dexter's kindness,<br/>he drinks the pools"]
+  K --> M2["maze, second half"]
+  M2 --> B["9 Jenny<br/>boss-defeated"]
+  B --> R["10 absorb · grow ·<br/>he looks back · tear"]
+  R --> E["To be continued."]
+```
+
+**Foreshadowing, never explained:** the wrong reflection (beat 2), Dexter watching from too far away (4), every pool he takes at the coffee machine (8), his look back (10) – the same look as in the garden, from a Dexter who is now more than half your height. His growth is shown and never commented on.
+
 ## The hero
 
 - A first-year THD student, **6 ft**, in a **grey / THD-blue / teal poncho** with colourful accent stripes, cream tassels and a woven THD crest on the back. Black backpack, grey jeans, white sneakers.
@@ -76,8 +110,8 @@ Dexter is the 27 px plush (decision 41), drawn at depth 101 with a 1 px warm rim
 
 ## Region 1 story beats
 
-1. You land in **clean** Rusty Creek on the **creek path** – the cement walk along the water, under the rusted rail bridge. The bridge stays above you as the railway; you never walk on it. Quiet, no enemies, nothing wrong yet.
-2. Further along the path, **Jenny**, the driverless race car, comes down it towards you. One event, under 3 s before the crash window: first only her **headlights and engine** from beyond the right edge (the tell), then she rolls into view revving and smoking, charges, and hits you – you are thrown the way she drives, in the hurt clip, while she skids on. The frame breaks into the **crash** crossing ("THD.exe has stopped responding", cracks – not the 404's tear), and you land at the start of the rust maze ([02](02-GAME-DESIGN.md)). Only Dexter pushes you from behind; Jenny only ever comes from the front.
+1. You land in **clean** Rusty Creek on the **creek path** – the cement walk along the water, under the rusted rail bridge. The bridge stays above you as the railway; you never walk on it. Quiet, no enemies. Dexter is gone – except that far down the path, past where Jenny will come from, a small black plush stands facing you and watches (`story/watcher.ts`, model `dexterWatch.ts`). Within 8 m he turns and hops off.
+2. Further along the path, **Jenny**, the driverless race car, comes down it towards you. One event, about 3.4 s before the crash window: first **silence** – the music stops and nothing moves for 1.2 s (`RAM.hush`) – then only her **headlights and engine** from beyond the right edge (the tell), then she rolls into view revving and smoking, charges, and hits you – you are thrown the way she drives, in the hurt clip, while she skids on. The frame breaks into the **crash** crossing ("THD.exe has stopped responding", cracks – not the 404's tear), and you land at the start of the rust maze ([02](02-GAME-DESIGN.md)). Only Dexter pushes you from behind; Jenny only ever comes from the front.
 3. The maze is the real tutorial: jumping, climbing, ladders. A plywood chair lies by the path with a **glint** over it – **pick it up**: the hero bends down for it (the four-frame `pick-up` clip), holds it up, and a wordless key/button glyph (J on a key cap, X on a pad button, a swing arc over both) floats over him until his first swing. Then the encounters: rovers on the decks you walk, a crab on the high route that raises its front legs before it stabs, and a drone over the low route that tilts and dives when you pass under it.
 4. Midway, at the first coffee machine: **Dexter is already sitting there.** He bows and sweats – sorry – and hands you the **pocket computer** and a muffin. No words.
 5. The boss clearing: **Jenny** again, now for real (see [enemies](05-ENEMIES-AND-BOSSES.md)).
@@ -93,8 +127,10 @@ flowchart LR
   L --> A["appear<br/>Dexter hops in<br/>beside the pool, 27 px"]
   A --> B["absorb<br/>dexter-acts absorb ×4,<br/>pool shrinks, fluid-absorb sound"]
   B --> G["grow<br/>27 → 46 px,<br/>one creepy frame"]
-  G --> H["leave<br/>hops off ahead,<br/>off screen"]
-  H --> X["glitch<br/>the frame tears"]
+  G --> H["leave<br/>hops 260 px ahead,<br/>stops in view"]
+  H --> LK["look<br/>look-back, held 1.4 s"]
+  LK --> EX["exit<br/>hops off screen"]
+  EX --> X["glitch<br/>the frame tears"]
   X --> D["dialog<br/>THD.exe – To be continued.<br/>[OK]"]
   D --> C["credits<br/>(credits.ts)"]
   C --> T["title"]

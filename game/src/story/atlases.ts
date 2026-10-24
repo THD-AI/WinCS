@@ -6,12 +6,14 @@ import type Phaser from 'phaser';
 /** An animation from an exported atlas (scripts/export_atlas.py names frames `<anim>-NN`). */
 export type AtlasAnim = [atlas: string, anim: string, frames: number, repeat: number];
 
-/** Create the animations whose atlas has arrived (key `<atlas>:<anim>`); call it again later for the rest. */
+/** Create the animations whose atlas has arrived (key `<atlas>:<anim>`); call it again later for the rest. The
+ *  speed is the clip's own `fps` from `<atlas>.anims.json` (Dexter's wait is drawn at 6, his sit at 2), 12 without it. */
 export function createAnims(scene: Phaser.Scene, anims: readonly AtlasAnim[]): void {
   for (const [atlas, anim, frames, repeat] of anims) {
     const key = `${atlas}:${anim}`;
     if (scene.anims.exists(key) || !scene.textures.exists(atlas)) continue;
     const names = Array.from({ length: frames }, (_, i) => ({ key: atlas, frame: `${anim}-${String(i).padStart(2, '0')}` }));
-    scene.anims.create({ key, frames: names, frameRate: 12, repeat });
+    const fps = (scene.cache.json.get(`${atlas}.anims`) as Record<string, { fps?: number }> | undefined)?.[anim]?.fps;
+    scene.anims.create({ key, frames: names, frameRate: fps ?? 12, repeat });
   }
 }

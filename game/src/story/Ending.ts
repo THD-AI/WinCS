@@ -19,6 +19,8 @@ const OK_PADS = [0, 2];
 /** Where Dexter lands, left of the pool, and how far he hops in from (game px). */
 const DEXTER_OFFSET = -26;
 const HOP_IN = 140;
+/** Where he stops to look back: this far ahead of the pool, kept inside the view (game px). */
+const LOOK_AHEAD = 260;
 /** Without a stage position (the dev key): the middle of the view, on a ground line. */
 const FALLBACK: Position = { x: VIEW_WIDTH / 2, y: 600 };
 
@@ -69,7 +71,9 @@ export class Ending extends Phaser.Scene {
     if (phase === 'appear' && d) d.x = this.at.x + DEXTER_OFFSET - HOP_IN * (1 - t);
     if (phase === 'absorb' && this.pool) this.pool.setScale(1 - t, 1 - t * 0.5).setAlpha(1 - t * 0.6);
     if (d) d.setScale(dexterScale(phase, t));
-    if (phase === 'leave' && d) d.x = this.at.x + DEXTER_OFFSET + (VIEW_WIDTH - this.at.x + 80) * t;
+    const from = this.at.x + DEXTER_OFFSET, stop = Math.min(VIEW_WIDTH - 90, from + LOOK_AHEAD);
+    if (phase === 'leave' && d) d.x = from + (stop - from) * (1 - (1 - t) * (1 - t));
+    if (phase === 'exit' && d) d.x = stop + (VIEW_WIDTH + 80 - stop) * t;
     // The tears flicker while the frame breaks, then hold still under the window.
     for (const item of this.glitch) (item as Phaser.GameObjects.Image).setVisible(phase !== 'glitch' || Math.random() < 0.7);
   }
@@ -87,8 +91,11 @@ export class Ending extends Phaser.Scene {
     } else if (phase === 'grow') {
       this.pool?.destroy();
       this.dexter?.stop().setTexture('dexter-acts', 'creepy-00');
-    } else if (phase === 'leave') {
-      this.dexter?.play('dexter:hop');
+    } else if (phase === 'leave' || phase === 'exit') {
+      this.dexter?.setFlipX(false).play('dexter:hop');
+    } else if (phase === 'look') {
+      // The garden's first look (beat 2), now over a grown shoulder, held. Nothing else moves.
+      this.dexter?.stop().setTexture('dexter-prologue', 'look-back-02');
     } else if (phase === 'glitch') {
       this.dexter?.destroy();
       this.tearFrame();
