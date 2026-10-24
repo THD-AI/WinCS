@@ -17,7 +17,7 @@ id,workstream,item,acceptance,status,pr
 4.3,4 prologue,Secrets,"muffin behind the grass, the glint on the shed roof",todo,
 4.4,4 prologue,The pond,"Dexter points, the reflection is wrong, the shove",todo,
 4.5,4 prologue,404 and the pull,"frame tears, 404 void, THD.exe 404 window, pulled into the anomaly, land in clean Rusty Creek",todo,
-5.1,5 art,Asset inventory,"art/inventory.csv: every prologue asset with size, frames, source, status",todo,
-5.2,5 art,Falling leaf + ripple + dust sprites,"drawn from the garden refs, exported",todo,
-5.3,5 art,Menu and loading art,"key art from the style master and the garden",todo,
-5.4,5 art,Readability,"every prologue sprite readable at 1× on the garden background (#159)",todo,
+5.1,5 art,Asset inventory,"art/inventory.csv: every prologue asset with size, frames, source, status",review,#165
+5.2,5 art,Falling leaf + ripple + dust sprites,"drawn from the garden refs, exported",review,#165
+5.3,5 art,Menu and loading art,"key art from the style master and the garden",review,#165
+5.4,5 art,Readability,"every prologue sprite readable at 1× on the garden background (#159)",review,#165

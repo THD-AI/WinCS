@@ -1,0 +1,22 @@
+{
+ "dust": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "grass": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "leaf-kick": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ },
+ "splash": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ }
+}
