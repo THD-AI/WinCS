@@ -1,3 +1,4 @@
+import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import type Phaser from 'phaser';
 import type { CollisionChunk } from '../stage/collision';
 
@@ -68,6 +69,7 @@ export class Rovers {
       }
       const model = row.model;
       const sprite = scene.add.sprite(model.x, model.y, KINDS[kind].atlas, model.pose).setOrigin(0.5, 1).setDepth(101);
+      addRim(sprite, ACTOR_RIM.colour, ACTOR_RIM.strength);
       const label = scene.add.text(model.x, model.y - ROVER_HEIGHT - BODY_WIDTH / 2, '',
         { fontFamily: 'monospace', fontSize: '14px', backgroundColor: '#17242d' }).setDepth(102).setVisible(false);
       cleanup.push(chair.register({ id: spawn.id!, active: () => model.health > 0,

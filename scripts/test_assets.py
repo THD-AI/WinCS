@@ -57,6 +57,18 @@ class AssetSystemTests(unittest.TestCase):
         self.assertEqual(issues, ["walker: the sheet says 'exported', the files say 'approved'"])
         self.assertEqual(a.upcoming(rows, self.boards), ["plan [planned] -> python scripts/make_boards.py draw plan"])
 
+    def test_check_fails_a_clip_that_stays_unreadable_with_the_rim(self):
+        import readability
+        self.export("walker", {"walk": {"frames": 8}})
+        saved = readability.every_clip, readability.sheet
+        self.addCleanup(lambda: (setattr(readability, "every_clip", saved[0]), setattr(readability, "sheet", saved[1])))
+        readability.every_clip = lambda folder: ["walker:walk-04@deck", "other:idle-00@path"]
+        readability.sheet = lambda specs, dirs, zoom=3: (None, [f"{specs[0]}: 9x9 px, fill 1, outline 1  LOW -> with the rim: fill 2, outline 3  STILL LOW"])
+        self.assertEqual(a.check("walker", {"frames/anims": "walk 8"}), [])  # legibility only when asked
+        problems = a.check("walker", {"frames/anims": "walk 8"}, legible=True)
+        self.assertEqual(len(problems), 1)
+        self.assertIn("unreadable at 1x", problems[0])
+
     def test_data_rows_look_for_region_json(self):
         row = {"id": "data", "kind": "data", "status": "missing"}
         self.assertEqual(a.derive(row, self.boards)[0], "missing")

@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 vi.mock('phaser', () => ({ default: {} }));
 vi.mock('../fx/sound/Audio', () => ({ sound: { play: () => undefined } }));
+vi.mock('../stage/atmosphere/pipeline', () => ({ ACTOR_RIM: { colour: 0, strength: 0 }, addRim: () => false }));
 import { Life } from '../combat/life';
 import { arenaFrom, blinking, BUMP_SECONDS, JENNY_BOX, JennyFight, jumpable, PART_SECONDS, SPEED } from './jenny';
 import { ramKnock, THROW_UP } from './jennyBoss';

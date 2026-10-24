@@ -18,6 +18,7 @@ import type { Position } from '../core/events';
 import { Interaction } from './interaction';
 import { HeroSlices, PonchoSway } from './idle-life';
 import { parseAtmosphere, type Wind } from '../stage/atmosphere/config';
+import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
 
@@ -78,6 +79,7 @@ export class Player {
     this.hurt = new HurtAnimation(scene.cache.json.get('hero-hurt.anims') ?? {}, scene.cache.json.get('hero-death.anims') ?? {});
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
     this.slices = new HeroSlices(scene, this.sprite);
+    for (const sprite of [this.sprite, ...this.slices.parts]) addRim(sprite, ACTOR_RIM.colour, ACTOR_RIM.strength);
     this.blades = scene.add.graphics().setDepth(101);
     // After every scene update (the chair may swap the hero's frame): place the feet in the ground.
     const settle = () => this.settle();

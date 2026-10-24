@@ -28,7 +28,8 @@ export class CoffeeUse {
 export class CoffeePoints {
   private use = new CoffeeUse();
   private keys;
-  private actors: Phaser.GameObjects.Sprite[];
+  /** The machines' sprites (the scene gives them the actors' rim). */
+  readonly actors: Phaser.GameObjects.Sprite[];
   private machines: Box[];
   private fps: number;
   constructor(private scene: Phaser.Scene, private player: Player, chunks: CollisionChunk[]) {

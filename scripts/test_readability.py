@@ -33,14 +33,16 @@ class ReadabilityTests(unittest.TestCase):
         same = Image.new('RGB', (4, 4), (20, 20, 20))
         self.assertEqual(rd.contrast(sprite, same), (0.0, 0.0))
 
-    def test_rim_outlines_the_silhouette_only(self):
-        piece = Image.new('RGBA', (3, 3))
-        piece.putpixel((1, 1), (0, 0, 0, 255))
-        out = rd.rim(piece, (255, 255, 255, 255))
-        self.assertEqual(out.size, (5, 5))
-        self.assertEqual(out.getpixel((2, 2)), (0, 0, 0, 255))
-        self.assertEqual(out.getpixel((2, 1)), (255, 255, 255, 255))
-        self.assertEqual(out.getpixel((1, 1))[3], 0)  # diagonal stays clear
+    def test_rim_lifts_the_edge_inside_the_silhouette_like_the_shader(self):
+        piece = Image.new('RGBA', (5, 5))
+        for x in range(1, 4):
+            for y in range(1, 4):
+                piece.putpixel((x, y), (0, 0, 0, 255))
+        out = rd.rim(piece, (200, 100, 0, 255), 0.5)
+        self.assertEqual(out.size, (5, 5))  # the silhouette is unchanged
+        self.assertEqual(out.getpixel((2, 2)), (0, 0, 0, 255))  # the inside stays
+        self.assertEqual(out.getpixel((1, 2)), (100, 50, 0, 255))  # the edge goes half way to the rim colour
+        self.assertEqual(out.getpixel((0, 0))[3], 0)  # outside stays clear
 
     def test_sheet_reports_sizes_flags_low_and_missing(self):
         self.atlas('dark', (10, 10, 10, 255))

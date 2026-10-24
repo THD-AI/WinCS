@@ -190,6 +190,10 @@ export function useLayerPipeline(object: Phaser.GameObjects.Image | Phaser.GameO
  * dark hedge. Works on any Image or Sprite, every frame of its atlas; a no-op on Canvas. Returns whether
  * it applied. `strength` 0 removes it.
  */
+/** The actors' rim (#159): the readability audit found the grey hero and the dark machines melting into the
+ *  rust maze and the garden path at 1x; a softer rim than Dexter's keeps the art's own outline in charge. */
+export const ACTOR_RIM = { colour: 0xffc878, strength: 0.45 } as const;
+
 export function addRim(sprite: Phaser.GameObjects.Image | Phaser.GameObjects.Sprite, colour = 0xffc878, strength = 0.65): boolean {
   if (!layerPipeline(sprite.scene.game)) return false;
   const uniforms = UNIFORMS.get(sprite) ?? newUniforms();

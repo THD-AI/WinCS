@@ -304,11 +304,13 @@ flowchart LR
   G["art/sprites/images<br/>drawn?"] --> D
   E["game/public/assets<br/>exported?"] --> D
   D --> S["status<br/>missing · planned · drawn ·<br/>exported · approved · n/a<br/>+ where the sheet disagrees"]
-  D --> C["check<br/>exported clips vs the<br/>inventory's frame counts"]
+  D --> C["check<br/>exported clips vs the<br/>inventory's frame counts<br/>+ 1x legibility on its stage"]
   D --> N["next<br/>what to do, with the command"]
 ```
 
 `python scripts/assets.py status [--strict]` · `check <id>` · `next`. A new asset starts as a row in the sheet; `next` then names the step that moves it on (draw → export for review → Alexander's ✅).
+
+`check <id>` also scores every clip of the atlas at 1x on the stage where it appears (`scripts/readability.py`, #159): the contrast of its fill and its outline against the background right behind it. A clip under 24 on both is LOW and is scored again with the game's actor rim (`ACTOR_RIM` in `pipeline.ts`); only a clip that stays low even then fails the check and needs a redraw. `python scripts/readability.py --all --out art/sprites/previews/readability-audit.png` draws the whole audit.
 
 ## Commands
 
