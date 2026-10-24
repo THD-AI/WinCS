@@ -11,6 +11,8 @@ export const CODES = {
   jump: ['Space', 'KeyK'],
   /** The chair: J, and X for players on the arrow keys (playtest 24 Oct). */
   attack: ['KeyJ', 'KeyX'],
+  /** The dodge-dash (dodge.ts): L next to J/K, C next to X, and either Shift. */
+  dodge: ['KeyL', 'KeyC', 'ShiftLeft', 'ShiftRight'],
 } as const;
 
 /** Pure key state, so it is tested without a browser. */

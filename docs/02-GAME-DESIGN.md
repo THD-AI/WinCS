@@ -65,7 +65,8 @@ Falling into water is not a fall: the hero splashes and is put back on the bank 
 - **Climbing:** ladders, vines, scaffold and stairs. Press ↑ in a climb zone. Climbing is slow, and you can't attack while climbing.
 - **Glide (later, Lex's proposal):** hold Jump in the air and the poncho opens like a sail for a slow, steerable fall. You glide for as long as you're in the air – **there is no stamina bar** (decided in A14). It's the Region 2 upgrade that opens Lost in the Green's upper routes. It's in the design and the collision data from day one, but not in the jam slice.
 - **Four directions:** every region is explored left/right *and* up/down: a mountainside route, a lower branch, an underground pocket ([04](04-WORLD-AND-LEVELS.md)).
-- **No wall-jump, no dash in the jam slice.**
+- **Dodge-dash (playtest 24 Oct):** one move, a quick horizontal burst – 120 px in 0.2 s (600 px/s) – the way you press or face. Untouchable for its first 0.16 s, so it passes through rovers, crabs and Jenny's charge. On the ground any time, in the air once per jump (it holds the height; landing gives it back); 0.45 s cooldown after each. Not on a ladder or during an interaction, and it cancels a chair attack or guard. A Jump pressed during it is taken when it ends. No new art: a run stride held, with cool after-images and a ground puff (`player/dodge.ts`, `player.ts`).
+- **No wall-jump in the jam slice.**
 
 ### Feel and grounding (prologue slice, workstream 3)
 
@@ -273,6 +274,7 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Body | step-up / foothold | 16 px / 8 px | `body.ts` `STEP_UP`, `FOOTHOLD` |
 | Move | walk / run | 2.2 m/s (95 px/s) / 4.6 m/s (198 px/s) | `player/movement.ts` `WALK_SPEED`, `RUN_SPEED` |
 | Move | hold to run after | 0.4 s | `movement.ts` `RUN_DELAY` |
+| Move | dodge-dash | 120 px in 0.2 s, untouchable 0.16 s, cooldown 0.45 s, one air dash per jump | `player/dodge.ts` `DODGE_DISTANCE`, `DODGE_TIME`, `DODGE_INVULNERABLE`, `DODGE_COOLDOWN` |
 | Move | ladder climb | 70 px/s | `player/traversal.ts` `CLIMB_SPEED` |
 | Jump | gravity / cut gravity | 1200 / 3600 px/s² | `player/jump.ts` `GRAVITY`, `CUT_GRAVITY` |
 | Jump | tap / hold height | 52 / 96 px | `jump.ts` `TAP_HEIGHT`, `HOLD_HEIGHT` (`JUMP_SPEED` 485) |
