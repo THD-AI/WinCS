@@ -1,4 +1,6 @@
 import { debugStore, ZOOMS } from '../core/debug';
+import { LEVELS, nextSpot, type Spot } from '../stage/teleports';
+import type { RegionTarget } from '../stage/swap';
 import { download, falls } from '../stage/fallCapture';
 
 /**
@@ -14,6 +16,14 @@ export interface MenuHost {
   /** The stage's layer ids, back to front. */
   layers(): { id: string; z: number }[];
   sound: { muted: boolean; volume: number; setMute(muted: boolean): void; setVolume(volume: number): void };
+  /** Debug teleport: the region's places (stage/teleports.ts), the hero, and how to get there. */
+  travel?: {
+    spots(): Spot[];
+    hero(): { x: number; y: number } | undefined;
+    go(spot: Spot): void;
+    level(): { region: string; state: string };
+    goLevel(target: RegionTarget): void;
+  };
 }
 
 export const CONTROLS: [string, string, string][] = [
@@ -165,6 +175,29 @@ export class GameMenu {
       fallInfo.append(save);
     }
     out.push(field('Falls', fallInfo));
+    const travel = this.host.travel;
+    if (travel) {
+      // Teleport closes the menu and moves the hero at once (playtests: straight to a checkpoint or the next level).
+      const go = (spot: Spot | undefined) => { if (!spot) return; this.toggle(false); travel.go(spot); };
+      const hero = travel.hero();
+      const all = travel.spots();
+      const step = (label: string, dir: 1 | -1) => {
+        const b = chip(label, () => go(hero && nextSpot(all, hero, dir)));
+        b.disabled = !hero || !nextSpot(all, hero, dir);
+        return b;
+      };
+      out.push(field('Teleport', row(step('◀ Previous place', -1), step('Next checkpoint ▶', 1),
+        ...all.map(spot => chip(spot.label, () => go(spot))))));
+      const now = travel.level();
+      const teleport = out[out.length - 1];
+      out.push(field('Level', row(...LEVELS.map(level => {
+        const b = chip(level.label, () => { this.toggle(false); travel.goLevel({ region: level.region, state: level.state }); });
+        b.setAttribute('aria-pressed', String(level.region === now.region && level.state === now.state));
+        return b;
+      }))));
+      // Like every other switch here, only while debug mode is on.
+      if (!s.on) for (const f of [teleport, out[out.length - 1]]) for (const b of Array.from(f.querySelectorAll('button'))) b.disabled = true;
+    }
     if (!s.on) for (const input of out.slice(1).flatMap(f => Array.from(f.querySelectorAll('input')))) input.disabled = true;
     return out;
   }
@@ -205,4 +238,10 @@ function field(label: string, control: HTMLElement): HTMLElement {
   const f = el('div', 'wm-field');
   f.append(el('div', 'wm-label', label), control);
   return f;
+}
+
+function chip(label: string, click: () => void): HTMLButtonElement {
+  const b = el('button', 'wm-chip', label) as HTMLButtonElement;
+  b.onclick = click;
+  return b;
 }

@@ -16,6 +16,8 @@ import { Rooms } from '../stage/rooms';
 import { DebugOverlay, type EnemyLike, type JennyLike, type DexterLike } from '../stage/debugOverlay';
 import { fallCapture } from '../stage/fallCapture';
 import { GameMenu } from '../ui/menu';
+import { spots } from '../stage/teleports';
+import { swapRegion } from '../stage/swap';
 
 // Boot and Preload live in game/src/boot/ (the one loader); Stage receives boot/contract.ts StageData.
 export class Stage extends Phaser.Scene {
@@ -73,6 +75,13 @@ export class Stage extends Phaser.Scene {
     this.menu = new GameMenu(document.body, {
       pause: paused => { if (paused) this.scene.pause(); else this.scene.resume(); },
       layers: () => this.overlay?.layers() ?? [],
+      travel: {
+        spots: () => spots(data.collisions),
+        hero: () => this.player?.body,
+        go: spot => this.player?.travel(spot),
+        level: () => ({ region: data.manifest.region, state: data.state }),
+        goLevel: target => swapRegion(this, target),
+      },
       sound: {
         get muted() { return game.sound.mute; }, get volume() { return game.sound.volume; },
         setMute: muted => { game.sound.mute = muted; }, setVolume: volume => { game.sound.volume = volume; },
