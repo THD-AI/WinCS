@@ -10,3 +10,5 @@ Every region in two states: **clean** – the real campus place, cozy and calm �
 | [![Mensa · clean](images/mensa-clean-preview.png)](mensa-clean.md)<br>**[Mensa · clean](mensa-clean.md)** | [![Mensa · anomaly](images/mensa-anomaly-preview.png)](mensa-anomaly.md)<br>**[Mensa · anomaly](mensa-anomaly.md)** |
 | [![Toxic Garden · clean](images/toxic-garden-clean-preview.png)](toxic-garden-clean.md)<br>**[Toxic Garden · clean](toxic-garden-clean.md)** | [![Toxic Garden · anomaly](images/toxic-garden-anomaly-preview.png)](toxic-garden-anomaly.md)<br>**[Toxic Garden · anomaly](toxic-garden-anomaly.md)** |
 | [![Playground · clean](images/playground-clean-preview.png)](playground-clean.md)<br>**[Playground · clean](playground-clean.md)** | [![Playground · anomaly](images/playground-anomaly-preview.png)](playground-anomaly.md)<br>**[Playground · anomaly](playground-anomaly.md)** |
+
+**New direction – stacked zones:** [Rusty Creek · stacked zone](rusty-creek-stacked.md) – the creek as one cross-section (bridges, path, creek, built underground), clean and anomaly, grown left, right and two levels down, with a proposed chunk grid.
