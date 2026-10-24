@@ -26,13 +26,16 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 | ← → | A / D, arrows (read by key position, any layout) | Stick, D-pad | Walk; run after 0.4 s held |
 | ↑ | W, ↑ | Up | Interact (sign, coffee machine, Dexter, pickup); climb ladder |
 | ↓ | S, ↓ | Down | Drop through one-way platform; climb down |
-| **Jump** | Space / K | A / Cross | Jump. Hold for higher (variable height) |
-| **Act** | J, X | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
+| **Jump** | K, Z, Space | A / Cross | Jump. Hold for higher (variable height) |
+| **Act** | J, X, left click (on the game) | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
+| **Dodge** | L, C, Shift | B / Circle, RB | Dodge-dash: a quick burst you can't be hit in (see Movement) |
 | ↑ + Act | | | Up attack |
 | ↓ + Act on the ground | | | Low sweep along the floor (rovers, crabs) |
 | ↓ + Act in air | | | Down slam / pogo (bounce off an enemy or hazard) |
 | Menu | Esc | Start | The game menu: controls, settings, debug mode, coming soon (pauses the game) |
 | Pocket computer | Tab | Back / Select | Map, archive, items (after you get it) |
+
+Two laptop layouts work side by side (playtest 24 Oct): **WASD + J attack / K jump / L dodge**, or **arrows + Z jump / X attack / C dodge**; Space and Shift jump and dodge on either. Letters are read by key position, so every layout and input method works. The dodge is a third button – the "two buttons" rule bends for it.
 
 The weapon is switched in the pocket computer menu (or ←/→ while the menu is open). The menu key is a system button, like Start, and does not count against "two buttons".
 

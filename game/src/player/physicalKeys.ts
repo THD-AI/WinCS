@@ -8,7 +8,11 @@ import type Phaser from 'phaser';
  */
 export const CODES = {
   left: ['KeyA', 'ArrowLeft'], right: ['KeyD', 'ArrowRight'], up: ['KeyW', 'ArrowUp'], down: ['KeyS', 'ArrowDown'],
-  jump: ['Space', 'KeyK'],
+  /**
+   * The two laptop layouts (playtest 24 Oct): WASD with J attack / K jump / L dodge, or the arrows with
+   * Z jump / X attack / C dodge – plus Space to jump and Shift to dodge on either.
+   */
+  jump: ['Space', 'KeyK', 'KeyZ'],
   /** The chair: J, and X for players on the arrow keys (playtest 24 Oct). */
   attack: ['KeyJ', 'KeyX'],
   /** The dodge-dash (dodge.ts): L next to J/K, C next to X, and either Shift. */

@@ -6,7 +6,7 @@ import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sw
 import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
-import { actionEdges } from './action-input';
+import { actionEdges, attackClick } from './action-input';
 import { lowStreak, swingArc } from './swingFx';
 import { LOW_CONTACT, LowSweep } from './lowSweep';
 import { CODES, physicalKeys } from '../player/physicalKeys';
@@ -29,6 +29,8 @@ export class ChairCombat {
   private altKey: Phaser.Input.Keyboard.Key;
   private physical: { any(codes: readonly string[]): boolean };
   private wasDown = false;
+  /** The left mouse button on the canvas (attackClick): held, and its edges since the last frame. */
+  private mouse = { down: false, pressed: false, released: false };
   private special = false;
   private plainTap = false;
   private directions;
@@ -55,6 +57,18 @@ export class ChairCombat {
       player.pogo(top); this.pause.trigger(); this.spark(boxes.find(box => box.y === top)!); return true;
     };
     scene.events.once('shutdown', () => { player.onHazards = oldHazards; });
+    const press = (pointer: Phaser.Input.Pointer) => {
+      if (!attackClick(pointer.button, pointer.wasTouch, pointer.event?.target, scene.game.canvas)) return;
+      this.mouse.down = true; this.mouse.pressed = true;
+    };
+    const lift = (pointer: Phaser.Input.Pointer) => {
+      if (pointer.button !== 0 || !this.mouse.down) return;
+      this.mouse.down = false; this.mouse.released = true;
+    };
+    scene.input.on('pointerdown', press); scene.input.on('pointerup', lift); scene.input.on('pointerupoutside', lift);
+    scene.events.once('shutdown', () => {
+      scene.input.off('pointerdown', press); scene.input.off('pointerup', lift); scene.input.off('pointerupoutside', lift);
+    });
     const oldGuard = player.onGuard;
     player.onGuard = (damage, sourceX) => {
       if (!this.enabled || !player.canAttack) return false;
@@ -116,10 +130,11 @@ export class ChairCombat {
     this.guard.step(milliseconds / 1000);
     if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const down = this.key.isDown || this.altKey.isDown || this.physical.any(CODES.attack) || !!pad?.X;
+    const down = this.key.isDown || this.altKey.isDown || this.physical.any(CODES.attack) || !!pad?.X || this.mouse.down;
     // Both edge checks run every frame so neither key keeps a stale Just-flag.
-    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean);
-    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean);
+    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean) || this.mouse.released;
+    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean) || this.mouse.pressed;
+    this.mouse.pressed = false; this.mouse.released = false;
     const { pressed, released } = actionEdges(down, this.wasDown, justDown, justUp);
     const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
     const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;

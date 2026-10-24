@@ -92,7 +92,7 @@ export class Player {
     const settle = () => this.settle();
     scene.events.on('postupdate', settle);
     scene.events.once('shutdown', () => scene.events.off('postupdate', settle));
-    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,J,X,L,C,SHIFT') as Record<string, Phaser.Input.Keyboard.Key>;
+    this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,Z,J,X,L,C,SHIFT') as Record<string, Phaser.Input.Keyboard.Key>;
     this.physical = physicalKeys(scene);
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
@@ -183,7 +183,7 @@ export class Player {
     const key = (codes: readonly string[], ...names: string[]) => names.some(name => this.keys[name].isDown) || this.physical.any(codes);
     const axis = interacting ? 0 : horizontal(key(CODES.left, 'A', 'LEFT'), key(CODES.right, 'D', 'RIGHT'),
       pad?.leftStick.x, pad?.left, pad?.right);
-    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K') || !!pad?.A);
+    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K', 'Z') || !!pad?.A);
     const vertical = interacting || key(CODES.attack, 'J', 'X') || pad?.X ? 0 : horizontal(key(CODES.up, 'W', 'UP'), key(CODES.down, 'S', 'DOWN'),
       pad?.leftStick.y, pad?.up, pad?.down);
     const dodgeDown = !interacting && (key(CODES.dodge, 'L', 'C', 'SHIFT') || !!pad?.B || !!pad?.R1);

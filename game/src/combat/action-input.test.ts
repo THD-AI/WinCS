@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { actionEdges } from './action-input';
+import { actionEdges, attackClick } from './action-input';
 import { Guard } from './guard';
 import { Sweeps } from './sweeps';
 describe('Act edge routing with guard', () => {
@@ -23,5 +23,12 @@ describe('Act edge routing with guard', () => {
     expect(actionEdges(true, false, false, false)).toEqual({ pressed: true, released: false });
     expect(actionEdges(true, true, false, false)).toEqual({ pressed: false, released: false });
     expect(actionEdges(false, true, false, false)).toEqual({ pressed: false, released: true });
+  });
+  it('takes a left click on the canvas as Act, never a click on the menu, another button or a touch', () => {
+    const canvas = {}, menu = {};
+    expect(attackClick(0, false, canvas, canvas)).toBe(true);
+    expect(attackClick(0, false, menu, canvas)).toBe(false);
+    expect(attackClick(2, false, canvas, canvas)).toBe(false);
+    expect(attackClick(0, true, canvas, canvas)).toBe(false);
   });
 });

@@ -20,10 +20,12 @@ export const CONTROLS: [string, string, string][] = [
   ['Walk (run after 0.4 s)', 'A / D, ← →', 'Stick, D-pad'],
   ['Interact, climb up', 'W, ↑', 'Up'],
   ['Drop through, climb down', 'S, ↓', 'Down'],
-  ['Jump (hold for higher)', 'Space, K', 'A / Cross'],
-  ['Attack (tap) / guard (hold)', 'J or X', 'X / Square'],
-  ['Up attack', '↑ + J / X', 'Up + X'],
-  ['Down slam in the air', '↓ + J / X', 'Down + X'],
+  ['Jump (hold for higher)', 'K, Z or Space', 'A / Cross'],
+  ['Attack (tap) / guard (hold)', 'J, X or left click', 'X / Square'],
+  ['Dodge-dash', 'L, C or Shift', 'B / Circle, RB'],
+  ['Up attack', '↑ + attack', 'Up + X'],
+  ['Low sweep (on the ground)', '↓ + attack', 'Down + X'],
+  ['Down slam (in the air)', '↓ + attack', 'Down + X'],
   ['Pocket computer (map)', 'Tab', 'Back / Select'],
   ['This menu', 'Esc', 'Start'],
 ];
@@ -113,7 +115,7 @@ export class GameMenu {
       row.append(el('td', '', action), el('td', 'wm-key', keys), el('td', 'wm-key', pad));
       table.append(row);
     }
-    return [table, el('p', 'wm-note', 'Four directions and two buttons. Touch controls are coming.')];
+    return [table, el('p', 'wm-note', 'Two laptop layouts: WASD with J attack, K jump, L dodge – or the arrows with Z jump, X attack, C dodge. Touch controls are coming.')];
   }
 
   private settings(): HTMLElement[] {
