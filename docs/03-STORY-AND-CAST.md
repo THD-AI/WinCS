@@ -73,9 +73,9 @@ Dexter is the 27 px plush (decision 41), drawn at depth 101 with a 1 px warm rim
 
 ## Region 1 story beats
 
-1. You land in **clean** Rusty Creek: the real creek, rails and the metal bridge. Quiet, no enemies, nothing wrong yet.
-2. On the bridge, **Jenny**, the driverless race car, comes out of nowhere and rams you. You fly back with the same cartoon knockback, and the anomaly activates: the region **turns** into the rust maze and you are back at its start ([02](02-GAME-DESIGN.md)).
-3. The maze is the real tutorial: jumping, climbing, ladders. A plywood chair lies by the path – **pick it up**. First fight: one autonomous rover.
+1. You land in **clean** Rusty Creek on the **creek path** – the cement walk along the water, under the rusted rail bridge. The bridge stays above you as the railway; you never walk on it. Quiet, no enemies, nothing wrong yet.
+2. Further along the path, **Jenny**, the driverless race car, comes down it towards you. One event, under 3 s before the crash window: first only her **headlights and engine** from beyond the right edge (the tell), then she rolls into view revving and smoking, charges, and hits you – you are thrown the way she drives, in the hurt clip, while she skids on. The frame breaks into the **crash** crossing ("THD.exe has stopped responding", cracks – not the 404's tear), and you land at the start of the rust maze ([02](02-GAME-DESIGN.md)). Only Dexter pushes you from behind; Jenny only ever comes from the front.
+3. The maze is the real tutorial: jumping, climbing, ladders. A plywood chair lies by the path with a **glint** over it – **pick it up**: the hero bends down for it (the four-frame `pick-up` clip), holds it up, and a wordless key/button glyph (J on a key cap, X on a pad button, a swing arc over both) floats over him until his first swing. Then the encounters: rovers on the decks you walk, a crab on the high route that raises its front legs before it stabs, and a drone over the low route that tilts and dives when you pass under it.
 4. Midway, at the first coffee machine: **Dexter is already sitting there.** He bows and sweats – sorry – and hands you the **pocket computer** and a muffin. No words.
 5. The boss clearing: **Jenny** again, now for real (see [enemies](05-ENEMIES-AND-BOSSES.md)).
 6. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller, and he hops off ahead of you. The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
