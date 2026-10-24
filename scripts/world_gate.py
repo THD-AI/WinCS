@@ -6,7 +6,8 @@ guide colours left in, smoothed-away routes, copy-pasted tiles, blur or noise, p
         --concept art/locations/images/hidden-garden-clean.png        # chunks side by side in one row
 
 Zone mode reads world.json (grid positions), blockout/<id>.png (the flat guide) and images/<id>.png (the
-painting; a chunk without one is skipped), and the concept from zone.json ("clean", else "anomaly"). Row mode
+painting; a chunk without one is skipped), and the concept from zone.json ("clean", else "anomaly"; a chunk in
+the "below" band is measured against the anomaly concept, the only one with an underground). Row mode
 puts the named chunks of one folder next to each other, left to right, with no blockouts. Every check prints
 one line per chunk (a seam one line per neighbour): PASS/FAIL, the number and its limit. The result goes to
 previews/gate.json in the zone ({chunk: {check: {"value", "limit", "pass"}}, "pass": bool}; row mode:
@@ -15,6 +16,7 @@ tmp/gate/<folder>.json) and the script exits 1 when anything fails.
 The checks are pure functions on numpy arrays (H x W x 3 floats, 0..255):
 - seam:    the colour step across a seam against each side's own step one pixel inside.
 - guide:   flat GUIDE colours left in (connected regions > GUIDE_AREA px) or red walk-line strokes.
+- hole:    a large region of exact black – a repaint window the model returned empty.
 - route:   along the blockout's walk lines the painting must show a surface (a strong vertical luminance edge).
 - repeat:  the same non-flat 48x48 block at many places, or one horizontal period explaining the picture.
 - grain:   high-frequency energy (mean |Laplacian|) against the concept's at the same height: blur or noise.
@@ -42,6 +44,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SEAM_RATIO, SEAM_PLUS = 2.5, 10.0  # a seam may step 2.5x the art's own step, and always 10 more (flat art)
 GUIDE_DIST = 6         # a pixel this close (RGB distance) to a GUIDE colour is guide colour; at 10 the flat
                        # haze grey (143,132,136) of hg-4-0's far forest (970 px, 8.7 off the structure grey) fails
+HOLE_AREA = 10000      # a window the model left transparent arrives as exact black (a repaint: ~78 000 px);
+                       # the art's own deepest shadows stay under 2 000 px of exact black
 GUIDE_AREA = 600       # painted grain never stays this flat over 600 px; a forgotten guide patch does
 WALK_DIST = 40         # a walk-line stroke left in: pixels this close to the walk red ...
 WALK_RUN = 80          # ... in this many consecutive columns (autumn leaves are red, but never in a 80 px line)
@@ -154,6 +158,12 @@ def check_guide(img: np.ndarray) -> dict:
     run = longest_run(cols)
     value = max(biggest, GUIDE_AREA + 1 if run >= WALK_RUN else 0)
     return result(value, GUIDE_AREA, value <= GUIDE_AREA)
+
+
+def check_hole(img: np.ndarray) -> dict:
+    """Largest connected region of exact black (px): a window the model returned empty; fail above HOLE_AREA."""
+    biggest = max((c[0] for c in components(img.sum(axis=2) == 0)), default=0)
+    return result(biggest, HOLE_AREA, biggest <= HOLE_AREA)
 
 
 def longest_run(flags: np.ndarray) -> int:
@@ -339,7 +349,7 @@ def check_text(img: np.ndarray) -> dict:
 
 def check_chunk(img: np.ndarray, concept: np.ndarray | None, blockout: np.ndarray | None) -> dict:
     """Every per-chunk check (seams are checked by the caller, which knows the neighbours)."""
-    out = {"guide": check_guide(img)}
+    out = {"guide": check_guide(img), "hole": check_hole(img)}
     if blockout is not None:
         out["route"] = check_route(img, blockout)
     out["repeat"], out["period"] = check_repeat(img)
@@ -358,7 +368,7 @@ def here(path: str | Path) -> Path:
     return p if p.is_absolute() or p.exists() else ROOT / p
 
 
-def gate(grid: dict[str, tuple[int, int]], images: Path, concept: np.ndarray | None,
+def gate(grid: dict[str, tuple[int, int]], images: Path, concept: np.ndarray | dict[str, np.ndarray] | None,
          blockouts: Path | None, only: list[str] | None = None) -> dict:
     """Run every check on the chunks of a grid ({id: (col, row)}) that have a painting; gate.json's content."""
     have = {cid: images / f"{cid}.png" for cid in grid if (images / f"{cid}.png").exists()}
@@ -369,7 +379,8 @@ def gate(grid: dict[str, tuple[int, int]], images: Path, concept: np.ndarray | N
     img = lambda cid: cache.setdefault(cid, load(have[cid]))  # noqa: E731
     for cid in todo:
         bo = blockouts / f"{cid}.png" if blockouts else None
-        report[cid] = check_chunk(img(cid), concept, load(bo) if bo and bo.exists() else None)
+        own = concept.get(cid) if isinstance(concept, dict) else concept  # a chunk's own concept (by band)
+        report[cid] = check_chunk(img(cid), own, load(bo) if bo and bo.exists() else None)
         c, r = grid[cid]
         for dc, dr in ((-1, 0), (1, 0), (0, -1), (0, 1)):
             other = at.get((c + dc, r + dr))
@@ -422,6 +433,13 @@ def main(argv: list[str] | None = None) -> int:
     else:
         ap.error("give a zone folder or --row DIR ID ...")
     concept = load(here(concept_path)) if concept_path else None
+    if args.zone and not args.concept and (zone / "zone.json").exists():
+        # The clean concept has no underground: a chunk below the level row is measured against the anomaly
+        # concept, which shows the flooded maze under the pond (grain and palette).
+        spec = json.loads((zone / "zone.json").read_text(encoding="utf-8")).get("concept", {})
+        if spec.get("anomaly"):
+            under = load(here(spec["anomaly"]))
+            concept = {cid: under if c.get("band") == "below" else concept for cid, c in world["chunks"].items()}
     report = gate(grid, images, concept, blockouts, args.chunks)
     show(report)
     out.parent.mkdir(parents=True, exist_ok=True)

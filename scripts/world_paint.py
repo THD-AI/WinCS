@@ -2,7 +2,9 @@
 
     python scripts/world_paint.py paint art/zones/<zone> [ids …] [--redo]
     python scripts/world_paint.py grow  art/zones/<zone> <source> <up|down> <new>
-    python scripts/world_paint.py join  art/zones/<zone> [--only left-right|up-down]
+    python scripts/world_paint.py join  art/zones/<zone> [--only left-right|up-down] [--row N]
+    python scripts/world_paint.py feature art/zones/<zone> <id> --box x0,y0,x1,y1 --brief "…"   # a story detail
+    python scripts/world_paint.py settle art/zones/<zone> --row N        # up/down seams: colour only
     python scripts/world_paint.py accept art/zones/<zone> [ids …]
 
 paint – the model edits each chunk's flat guide (blockout/<id>.png) under a fully open mask, so the walk lines,
@@ -261,16 +263,21 @@ def join_one(zone: dict, a: Image.Image, b: Image.Image, kind: str, name: str) -
     return a, b
 
 
-def join(zone_dir: Path, only: str | None) -> None:
+def latest(zone_dir: Path, raw: Path, cid: str) -> Path:
+    """The newest version of a chunk: joined, grown, painted, or the approved image."""
+    return next(p for p in (raw / "join" / f"{cid}.png", raw / "grow" / f"{cid}.png", raw / "paint" / f"{cid}.png",
+                            zone_dir / "images" / f"{cid}.png") if p.exists())
+
+
+def join(zone_dir: Path, only: str | None, row: int | None = None) -> None:
     zone, world, raw = load(zone_dir)
     (raw / "join").mkdir(parents=True, exist_ok=True)
     for kind, pairs in seams(world).items():
         if only and kind != only:
             continue
-        art = {}
-        for c in world["chunks"]:
-            src = raw / "join" / f"{c}.png"
-            art[c] = Image.open(src if src.exists() else raw / "paint" / f"{c}.png").convert("RGB")
+        if row is not None:
+            pairs = [p for p in pairs if world["chunks"][p[0]]["row"] == row and world["chunks"][p[1]]["row"] == row]
+        art = {c: Image.open(latest(zone_dir, raw, c)).convert("RGB") for c in world["chunks"]}
         # a chunk takes part in two seams of one kind (its two sides); their windows never overlap, so each
         # seam is painted on the same input art and its half pasted back into the chunk afterwards
         with ThreadPoolExecutor(max_workers=6) as pool:
@@ -288,34 +295,87 @@ def join(zone_dir: Path, only: str | None) -> None:
                 out[a].paste(ja.crop((0, H // 2, W, H)), (0, H // 2))
                 out[b].paste(jb.crop((0, 0, W, H // 2)), (0, 0))
             print(f"{a}|{b}: joined ({kind})", flush=True)
-        for c, img in out.items():
-            img.save(raw / "join" / f"{c}.png")
+        touched = {c for pair, result in done if result for c in pair}
+        for c in touched:
+            out[c].save(raw / "join" / f"{c}.png")
+
+
+FEATURE = ("This image is one chunk of a side-scrolling stage. Change ONLY the transparent window: {brief} Everything "
+           "outside the window stays exactly as it is and the window joins it seamlessly – the same light, palette, "
+           "fine 2-pixel grain and scale. Strict side view, no people, no text.")
+
+
+def feature(zone_dir: Path, cid: str, box: tuple[int, int, int, int], brief: str) -> None:
+    """Repaint one window of a chunk with a story detail, the model seeing the art under the window (not a guide),
+    joined back on min-error cuts across its left and right margins (48 px)."""
+    zone, world, raw = load(zone_dir)
+    art = Image.open(latest(zone_dir, raw, cid)).convert("RGB")
+    prompt = "\n\n".join([FEATURE.format(brief=brief), zone["style"], zone["people"]])
+    x0, y0, x1, y1 = box
+    painted = call(f"{cid} feature", prompt, art, window_mask((W, H), box), zone["inputs"], zone)
+    if painted is None:
+        sys.exit(1)
+    painted.save(raw / f"{cid}--feature-raw.png")
+    window = painted.crop(box).convert("L")
+    if sum(1 for v in window.getdata() if v == 0) > 0.5 * window.width * window.height:
+        sys.exit(f"{cid}: the model left the window empty (black) – try again; nothing changed")
+    band = cut_back(art.crop((0, y0, W, y1)), painted.crop((0, y0, W, y1)), x0, x1, True)
+    out = art.copy()
+    out.paste(band, (0, y0))
+    (raw / "join").mkdir(parents=True, exist_ok=True)
+    out.save(raw / "join" / f"{cid}.png")
+    print(f"{cid}: feature painted in {box}")
+
+
+def settle(zone_dir: Path, row: int, ramp: int = 48) -> None:
+    """Fade each chunk of `row` into the exact bottom edge of the chunk above it (match_rows per pixel, over `ramp`
+    rows): what is left of an up/down seam after growing and joining is colour, never shape."""
+    zone, world, raw = load(zone_dir)
+    flip = Image.Transpose.FLIP_TOP_BOTTOM
+    at = {(c["col"], c["row"]): cid for cid, c in world["chunks"].items()}
+    (raw / "join").mkdir(parents=True, exist_ok=True)
+    for (col, r), cid in at.items():
+        if r != row or (col, r - 1) not in at:
+            continue
+        lower = Image.open(latest(zone_dir, raw, cid)).convert("RGB")
+        upper = Image.open(latest(zone_dir, raw, at[(col, r - 1)])).convert("RGB")
+        settled = match_rows(lower.transpose(flip), upper.transpose(flip), ramp=ramp, blur=0).transpose(flip)
+        settled.save(raw / "join" / f"{cid}.png")
+        print(f"{cid}: settled into {at[(col, r - 1)]}")
 
 
 def accept(zone_dir: Path, ids: list[str]) -> None:
     zone, world, raw = load(zone_dir)
     (zone_dir / "images").mkdir(exist_ok=True)
     for c in ids or world["chunks"]:
-        src = raw / "join" / f"{c}.png"
-        shutil.copy(src if src.exists() else raw / "paint" / f"{c}.png", zone_dir / "images" / f"{c}.png")
+        src = latest(zone_dir, raw, c)
+        if src != zone_dir / "images" / f"{c}.png":
+            shutil.copy(src, zone_dir / "images" / f"{c}.png")
         print(f"{c}: accepted -> images/")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("step", choices=["paint", "grow", "join", "accept"])
+    parser.add_argument("step", choices=["paint", "grow", "join", "settle", "feature", "accept"])
     parser.add_argument("zone", type=Path)
     parser.add_argument("ids", nargs="*")
     parser.add_argument("--redo", action="store_true")
     parser.add_argument("--only", choices=["left-right", "up-down"])
+    parser.add_argument("--row", type=int, help="join only the seams inside this grid row")
+    parser.add_argument("--box", help="feature: x0,y0,x1,y1 in chunk px")
+    parser.add_argument("--brief", help="feature: what to paint in the window")
     args = parser.parse_args()
     zone = args.zone if args.zone.is_absolute() else ROOT / args.zone
     if args.step == "paint":
         paint(zone, args.ids, args.redo)
     elif args.step == "grow":  # ids: <source> <up|down> <new>
         grow(zone, *args.ids)
+    elif args.step == "feature":
+        feature(zone, args.ids[0], tuple(int(v) for v in args.box.split(",")), args.brief)
+    elif args.step == "settle":
+        settle(zone, args.row if args.row is not None else 1)
     elif args.step == "join":
-        join(zone, args.only)
+        join(zone, args.only, args.row)
     else:
         accept(zone, args.ids)
 

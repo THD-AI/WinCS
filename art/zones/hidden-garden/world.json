@@ -1,0 +1,117 @@
+{
+ "zone": "hidden-garden",
+ "seed": 0,
+ "chunk": [
+  2160,
+  720
+ ],
+ "grid": [
+  3,
+  2
+ ],
+ "prefix": "hgz",
+ "chunks": {
+  "hgz-0-0": {
+   "id": "hgz-0-0",
+   "col": 0,
+   "row": 0,
+   "band": "level",
+   "role": "the prologue (shipped)",
+   "brief": "the shipped prologue chunk hg-2-0",
+   "source": "hg-2-0"
+  },
+  "hgz-1-0": {
+   "id": "hgz-1-0",
+   "col": 1,
+   "row": 0,
+   "band": "level",
+   "role": "the prologue (shipped)",
+   "brief": "the shipped prologue chunk hg-3-0",
+   "source": "hg-3-0"
+  },
+  "hgz-2-0": {
+   "id": "hgz-2-0",
+   "col": 2,
+   "row": 0,
+   "band": "level",
+   "role": "the prologue (shipped)",
+   "brief": "the shipped prologue chunk hg-4-0",
+   "source": "hg-4-0"
+  },
+  "hgz-0-1": {
+   "id": "hgz-0-1",
+   "col": 0,
+   "row": 1,
+   "band": "below",
+   "role": "the garden cellar",
+   "brief": "Under the pond, below the shed's stone terraces: deep green-blue pond water at the top, then its surface seen from below hanging like a ceiling, and under it a drained brick cellar of the old garden \u2013 arches, a heavy wooden door with a warm lantern, crates, roots hanging through the vault. Built space, never a natural cave.",
+   "beat": "secret",
+   "story": "Under the shed: the first archive note in a crate \u2013 an experiment log that mentions a 'mascot-shaped containment vessel'. Warm light: a place to breathe (secret horror: calm first)."
+  },
+  "hgz-1-1": {
+   "id": "hgz-1-1",
+   "col": 1,
+   "row": 1,
+   "band": "below",
+   "role": "the storm-drain hall",
+   "brief": "Under the pond, below the boardwalk and the reeds: deep water at the top, its surface hanging as a ceiling, and under it a drained hall of the German campus storm drain: a round concrete outlet in the wall with a small paper boat washed against its grate, a single balloon resting against the water ceiling, a rusty ladder up a shaft, silt and puddles on the floor, roots and weed hanging from the water ceiling. Quiet and pretty first, wrong on a second look. Built space, never a natural cave.",
+   "beat": "fight",
+   "story": "The campus storm drain under the boardwalk \u2013 the game's IT room (secret horror: a friendly mascot luring you toward water and a drain): a paper boat from the pond washed against the outlet, one balloon resting against the water ceiling, two glossy plush eyes in the dark of the pipe that are gone on a second look. A possessed campus rover patrols the silt; black fluid drips from the outlet and runs toward the jetty \u2013 what Dexter will absorb."
+  },
+  "hgz-2-1": {
+   "id": "hgz-2-1",
+   "col": 2,
+   "row": 1,
+   "band": "below",
+   "role": "the wrong reflection",
+   "brief": "Under the jetty, the heart of the wrong reflection: deep water at the top, its surface hanging as a ceiling, and rusty blue-green girders with ladders hanging UPSIDE DOWN from it, mirroring girders that are not there above; cold rippling blue-green light on the silt floor. Wrong, quiet, beautiful. Built space, never a natural cave.",
+   "beat": "reveal",
+   "story": "Under the jetty, where Dexter shoves you: the pond's wrong reflection made real \u2013 girders that are not above hang upside down from the water, the overlap of another campus showing through. The way on to Rusty Creek's rust maze."
+  }
+ },
+ "links": [
+  {
+   "a": "hgz-0-1",
+   "b": "hgz-1-1",
+   "by": "door"
+  },
+  {
+   "a": "hgz-1-1",
+   "b": "hgz-2-1",
+   "by": "door"
+  },
+  {
+   "a": "hgz-1-0",
+   "b": "hgz-1-1",
+   "by": "shaft",
+   "at": 1515
+  }
+ ],
+ "anomaly": {
+  "tears": [
+   {
+    "kind": "cut",
+    "chunk": "hgz-1-0",
+    "box": [
+     700,
+     40,
+     1260,
+     180
+    ],
+    "seed": 404
+   },
+   {
+    "kind": "stretch",
+    "chunk": "hgz-2-0",
+    "box": [
+     1300,
+     60,
+     1560,
+     420
+    ],
+    "from": 420,
+    "seed": 7
+   }
+  ]
+ }
+}

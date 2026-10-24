@@ -31,26 +31,46 @@ reference games (references/)─┘                                          ▲
 
 ## World pipeline
 
-How every zone is made (24 Oct, Alexander): the concepts in `art/locations/` and `art/direction/` set the **look and the vocabulary** (girder heights, the deck over the pond, caves in the hills, cellars, the flooded maze, the 404 tearing the sky), never the layout or the scale. A zone is a **grid of 2160×720 chunks in four directions** (above, level, below – not a row), generated from a seed so every map is different, sized to the hero's real moves, and painted so it looks like the concept.
+The single way every zone is made (24 Oct). The concepts in `art/locations/` and `art/direction/` set the **look and the vocabulary**, never the layout or the scale; the lore sets what each room is (docs/03: TH Deggendorf's campus, the quantum experiment's overlap, possessed campus robots, Dexter – and no caves: underground is built campus space). Scale, room kinds and storytelling rules: [16 – Zone design](16-ZONE-DESIGN.md). A zone is a **grid of 2160×720 chunks in four directions** that **grows out of approved art** – never painted from nothing, never from a whole stage or concept passed as a "style" input (the model copies its layout).
 
 ```mermaid
 flowchart TD
-  Z["zone.json<br/>concept, style, vocabulary per band,<br/>grid, seed"] --> M["0 · map<br/>seeded room graph over the grid:<br/>spanning tree + loops, doors and shafts"]
-  M --> B["1 · blockout<br/>per chunk: walk lines, one-way beams,<br/>ladders, walls, water, rooms<br/>→ reachability with the hero's moves"]
-  B -->|unreachable| M
-  B --> P["2 · paint<br/>the model paints over each chunk's<br/>flat guide, concept as style reference"]
-  P --> J["3 · join<br/>every seam, left/right AND up/down:<br/>repaint a band, min-error cut"]
-  J --> G["4 · artifact gate<br/>seam step, guide colours left, repeats,<br/>grain, palette vs concept, text"]
-  G -->|fail| P
-  G --> D["5 · depth<br/>depth_layers.py per chunk"]
-  D --> A["6 · anomaly as data<br/>404 tears placed in world.json,<br/>drawn as fx over clean chunks"]
-  A --> C["7 · collision<br/>written by the blockout,<br/>collision_check.py"]
-  C --> V["8 · previews<br/>zone map, side by side with the concept"]
+  Z["zone.json · concept, look, vocabulary"] --> M["0 · map – world.json<br/>grid, bands, rooms, story beat per room, links, 404 tears"]
+  M --> B["1 · blockout – blockout/&lt;id&gt;.png<br/>soft guides: walk curves, rooms, water, girders, ladders"]
+  B --> G["2 · grow – from the approved neighbour<br/>left/right (grow_stage.py) · up/down (world_paint.py grow)"]
+  G --> J["3 · join – left/right windows, min-error cuts<br/>settle – up/down seams faded to the exact edge"]
+  J --> F["feature – one story detail per window,<br/>the model sees the art under it"]
+  F --> A["4 · artifact gate – world_gate.py<br/>seam, guide left, hole, route, repeat, grain, palette, text"]
+  A -->|fail| G
+  A --> D["5 · depth – depth_layers.py key / masks / fills"]
+  D --> X["6 · anomaly as data – 404 tears from world.json,<br/>drawn as fx (world_preview.py draw_tears)"]
+  X --> C["7 · collision – from the blockout, collision_check.py"]
+  C --> V["8 · previews – world_preview.py map / concept"]
 ```
 
-- **The guide is the contract.** The blockout draws the same flat guide colours the grow step uses (`grow_stage.GUIDE`); a door or a shaft crosses a chunk edge at the same pixel on both sides, so neighbours line up before a single pixel is painted, and the collision comes from the same data – it never has to be traced back out of a painting.
-- **Playable by construction, then checked.** Doors, beams and ladders are placed with the hero's numbers (`jump.ts`: 96 px jump, design to 80; a 120 px gap at run speed); the reachability check walks the whole zone both ways and rejects the seed when anything can't be reached or left.
-- **Folders:** `art/zones/<zone>/zone.json` (input, by hand) → `world.json`, `blockout/`, `collision/` (generated) → `images/` (painted, joined, gated) → `previews/`. Raw model output stays in `tmp/zones/<zone>/`.
+| # | Stage | Command | Writes |
+| --- | --- | --- | --- |
+| 0 | Map | `python scripts/world_map.py art/zones/<zone>` (seeded) or a zone script such as `scripts/zones/hidden_garden_proof.py` (authored frame) | `world.json` |
+| 1 | Blockout | (same) | `blockout/<id>.png`, `collision/` |
+| 2 | Grow | `python scripts/world_paint.py grow art/zones/<zone> <from> <up\|down> <new>` · sideways `grow_stage.py` | `tmp/zones/<zone>/grow/` |
+| 3 | Join, settle | `world_paint.py join … --only left-right --row N` · `world_paint.py settle … --row N` | `tmp/zones/<zone>/join/` |
+| – | Feature | `world_paint.py feature … <id> --box x0,y0,x1,y1 --brief "…"` (refuses a window the model left empty) | `tmp/zones/<zone>/join/` |
+| 4 | Gate | `world_paint.py accept …` then `python scripts/world_gate.py art/zones/<zone>` (exit 1 on any FAIL) | `images/`, `previews/gate.json` |
+| 5 | Depth | `depth_layers.py key / masks / fill` per chunk (as below) | `layers/`, `masks/`, `fills/` |
+| 6 | Anomaly | tears in `world.json` → `world_preview.draw_tears` (the game ports it) | fx |
+| 7 | Collision | `collision_check.py` | – |
+| 8 | Previews | `python scripts/world_preview.py map art/zones/<zone> --state anomaly --grid` · `… concept …` | `previews/` |
+
+**Proven on the Hidden Garden (24 Oct, `art/zones/hidden-garden/`):** the shipped prologue row (`hg-2-0` … `hg-4-0`, composed from its plates without the near strip and the lens) on top, and grown under it, one row deeper: the garden cellar under the shed (the first archive note), the campus storm drain under the boardwalk (the game's *IT* room: the mascot, the water, the drain) and, under the jetty, the wrong reflection – girders hanging upside down from the water. 3 × 2 chunks, 8 image calls; the gate passes on all six; `previews/vs-concept.png` sits next to the concept.
+
+What the proof taught (rules now):
+
+- **Grow from the art, not the concept.** The first take painted a chunk from its guide with the concept as a reference and got the concept back; a guide alone gets generic fantasy. Grown from an approved neighbour's edge, the model continues the place and follows the guide's rooms.
+- **A neighbour's edge never includes the lens.** The near strip and the blurred foreground are layers; growing from a picture that has them continues the blur.
+- **Up/down seams are texture, not colour:** after joining, `settle` fades each lower chunk into the exact bottom row of the one above (48 rows) – the gate's seam check failed at 29 until it did.
+- **Measure a band against its own concept:** an underground chunk is checked against the anomaly concept (the only one with an underground), not the sunny clean one.
+- **Small story details are props, not repaints:** asked for eyes in a drain pipe, the model painted the pipe out. Details that should blink, appear or vanish (the eyes, the balloon, the paper boat) go to the sprite pipeline.
+- **Not done yet:** the band above the pond (girders, the torn sky route), depth layers for the grown chunks, their collision and the clean ⇄ anomaly swap of the lower row.
 
 ## Growing a stage in four directions
 
