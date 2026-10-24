@@ -26,6 +26,10 @@ export class Rover {
     this.health = Math.max(0, this.health - damage); this.hitDirection = direction;
     this.enter(this.health ? 'hit' : 'wreck'); return true;
   }
+  deflect(direction: number) {
+    if (this.health <= 0 || this.phase === 'hit') return;
+    this.hitDirection = direction; this.enter('hit');
+  }
   /** Returns true exactly when the last wreck frame ends. Stage hit-stop pauses this clock. */
   step(seconds: number, hero?: Position) {
     let defeated = false, remaining = seconds;

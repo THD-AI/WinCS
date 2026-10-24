@@ -42,7 +42,7 @@ export class Rovers {
       if (model.phase === 'hit') sprite.setTintFill(0xffffff); else sprite.clearTint();
       const box = model.bounds, body = this.player.body;
       if (model.health > 0 && intersects(box, { x: body.x - BODY_WIDTH / 2, y: body.y - BODY_HEIGHT, w: BODY_WIDTH, h: BODY_HEIGHT })) {
-        this.player.damage(1, model.x);
+        this.player.damage(1, model.x, () => model.deflect(model.x >= body.x ? 1 : -1));
       }
       label.setPosition(model.x, model.y - ROVER_HEIGHT - BODY_WIDTH / 2).setText(`${id} ${model.health}/3 ${model.phase}`);
       if (this.visible && model.health > 0) this.debug.lineStyle(1, 0xff7835).strokeRect(box.x, box.y, box.w, box.h);

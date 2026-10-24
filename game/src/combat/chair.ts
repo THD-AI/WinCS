@@ -3,6 +3,8 @@ import type { Player } from '../player/player';
 import { sound } from '../fx/sound/Audio';
 import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sweeps';
 import { Overhead, SLAM_SPEED } from './overhead';
+import { Guard } from './guard';
+import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
 const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
@@ -13,10 +15,12 @@ export class ChairCombat {
   readonly sweeps = new Sweeps();
   readonly pause = new HitStop();
   readonly overhead = new Overhead();
+  readonly guard = new Guard();
   private targets = new Map<string, Damageable>();
   private key: Phaser.Input.Keyboard.Key;
   private wasDown = false;
   private special = false;
+  private plainTap = false;
   private directions;
   private previousY: number;
   private debug: Phaser.GameObjects.Graphics;
@@ -36,6 +40,18 @@ export class ChairCombat {
       player.pogo(top); this.pause.trigger(); this.spark(boxes.find(box => box.y === top)!); return true;
     };
     scene.events.once('shutdown', () => { player.onHazards = oldHazards; });
+    const oldGuard = player.onGuard;
+    player.onGuard = (damage, sourceX) => {
+      if (!this.enabled || !player.canAttack) return false;
+      const block = this.guard.receive(damage, sourceX, player.body.x);
+      if (block.blocked && block.fresh) {
+        player.pushGuard(-this.guard.direction); this.pause.trigger();
+        this.spark({ x: player.body.x + this.guard.direction * BODY_WIDTH / 2,
+          y: player.body.y - BODY_HEIGHT / 2, w: GRAIN, h: GRAIN });
+      }
+      return block.blocked;
+    };
+    scene.events.once('shutdown', () => { player.onGuard = oldGuard; });
     this.debug = scene.add.graphics().setDepth(10003);
     this.label = scene.add.text(20, 260, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setDepth(10004).setScrollFactor(0).setVisible(false);
@@ -76,6 +92,8 @@ export class ChairCombat {
     });
   }
   update(milliseconds: number) {
+    this.guard.step(milliseconds / 1000);
+    if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
     const down = this.key.isDown || !!pad?.X;
     const pressed = Phaser.Input.Keyboard.JustDown(this.key) || down && !this.wasDown;
@@ -83,17 +101,28 @@ export class ChairCombat {
     const up = this.directions.W.isDown || this.directions.UP.isDown || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
     const below = this.directions.S.isDown || this.directions.DOWN.isDown || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
-      this.special = true; this.sweeps.cancel();
+      this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
       if (this.overhead.begin(up ? 'up' : 'slam', this.player.facing)) sound.play('chair-whoosh');
+    } else if (this.enabled && this.player.canAttack && pressed) {
+      this.plainTap = true;
+      if (this.sweeps.phase === 'idle' && this.overhead.phase === 'idle') this.guard.press(this.player.facing);
     }
-    if (this.enabled && this.player.canAttack && !this.special && this.overhead.phase === 'idle' && !down && (this.wasDown || keyReleased)) {
+    if (down && this.plainTap && this.guard.phase === 'idle' && this.sweeps.phase === 'idle'
+      && this.overhead.phase === 'idle' && this.enabled && this.player.canAttack) this.guard.press(this.player.facing);
+    const released = !down && (this.wasDown || keyReleased);
+    let tap = false;
+    if (released) { tap = this.guard.phase === 'idle' ? this.plainTap : this.guard.release(); this.plainTap = false; }
+    if (this.enabled && this.player.canAttack && !this.special && tap && this.overhead.phase === 'idle' && released) {
       const first = this.sweeps.phase === 'idle';
       this.sweeps.press(this.player.facing);
       if (first) sound.play('chair-whoosh');
     }
     if (!down && (this.wasDown || keyReleased)) this.special = false;
     this.wasDown = down;
-    if (!this.enabled || !this.player.canAttack) { this.sweeps.cancel(); this.overhead.cancel(); }
+    if (!this.enabled || !this.player.canAttack) {
+      this.sweeps.cancel(); this.overhead.cancel(); this.plainTap = false;
+      if (!this.enabled || this.guard.phase !== 'break' || this.player.life.dead > 0) this.guard.cancel();
+    }
     let remaining = milliseconds / 1000;
     while (remaining > 1e-9) {
       const dt = Math.min(remaining, 1 / 120), previous = this.sweeps.phase;
@@ -114,10 +143,12 @@ export class ChairCombat {
         .setFlipX((this.sweeps.direction < 0) !== (this.sweeps.phase === 'sweep-b'));
     }
     if (this.overhead.pose) this.player.sprite.setTexture('chair-overhead', this.overhead.pose).setFlipX(this.overhead.direction < 0);
+    if (this.guard.pose) this.player.sprite.setTexture('chair-block', this.guard.pose).setFlipX(this.guard.direction < 0);
     this.debug.clear();
     const box = this.sweeps.box(this.player.body) ?? this.overhead.box(this.player.body, this.previousY);
     if (this.visible && box) this.debug.lineStyle(2, 0xff7835).strokeRect(box.x, box.y, box.w, box.h);
-    this.label.setText('chair ' + (this.overhead.pose ?? this.sweeps.phase + ' ' + this.sweeps.frame) + ' | hit-stop ' + this.pause.remaining.toFixed(0) + 'ms');
+    this.label.setText('chair ' + (this.guard.pose ?? this.overhead.pose ?? this.sweeps.phase + ' ' + this.sweeps.frame)
+      + ' | hit-stop ' + this.pause.remaining.toFixed(0) + 'ms | blocks ' + this.guard.blocks);
     this.previousY = this.player.body.y;
   }
 }

@@ -10,6 +10,7 @@ import { Life } from '../combat/life';
 import { deathDust, lifePose, paintLife } from '../combat/life-visuals';
 import type { Position } from '../core/events';
 import { Interaction } from './interaction';
+import { GuardPush } from '../combat/guard';
 
 export class Player {
   readonly body: Body;
@@ -17,6 +18,8 @@ export class Player {
   readonly life: Life;
   onHealthChanged: (health: number) => void = () => {};
   onHazards: (boxes: Box[]) => boolean = () => false;
+  onGuard: (damage: number, sourceX: number) => boolean = () => false;
+  private guardPush = new GuardPush();
   private motion = movement();
   private keys;
   private debug: Phaser.GameObjects.Graphics;
@@ -60,8 +63,11 @@ export class Player {
       scene.events.once('shutdown', () => scene.input.keyboard?.off('keydown-F5', hit));
     }
   }
-  damage(amount: number, sourceX: number) {
+  damage(amount: number, sourceX: number, onBlocked?: () => void) {
+    if (this.life.dead > 0 || this.life.invulnerable > 1e-9) return false;
+    if (this.onGuard(amount, sourceX)) { onBlocked?.(); return false; }
     if (!this.life.hit(amount, this.body.x >= sourceX ? 1 : -1)) return false;
+    this.guardPush.cancel();
     this.interaction.cancel();
     const position = { x: this.body.x, y: this.body.y };
     gameEvents.emit('player-hit', { health: this.life.health, damage: amount, position });
@@ -87,7 +93,12 @@ export class Player {
     return true;
   }
   pogo(top: number) { this.air = pogo(this.body, top); this.sprite.setPosition(Math.round(this.body.x), top); }
+  pushGuard(direction: number) {
+    this.guardPush.start(direction); this.body.vx = 0;
+    this.motion = { ...movement(), facing: this.motion.facing };
+  }
   private resetPosition(position: { x: number; y: number }) {
+    this.guardPush.cancel();
     Object.assign(this.body, position, { vx: 0, vy: 0, grounded: true, sliding: false, slope: 0 });
     this.motion = movement(); this.air = jumpState(this.body.y); this.traversal = traversal();
   }
@@ -115,13 +126,14 @@ export class Player {
         this.onHealthChanged(this.life.health);
       }
       if (this.life.dead > 0) { remaining -= dt; continue; }
-      const knocked = lifeStep.dx !== 0;
+      const shove = this.guardPush.step(dt);
+      const knocked = lifeStep.dx !== 0 || shove !== 0;
       const pressed = jumpDown && !this.air.wasDown;
       const dropped = !knocked && vertical > 0 && pressed && dropThrough(this.body, this.traversal, geometry);
       const climbing = !knocked && climb(this.body, this.traversal, geometry, vertical, axis, pressed, dt);
       const wasGrounded = this.body.grounded;
       if (knocked) {
-        this.body.vx = lifeStep.dx / dt;
+        this.body.vx = (lifeStep.dx || shove) / dt;
         this.traversal = traversal(); this.air.wasDown = jumpDown;
         this.air.buffer = 0; this.air.coyote = 0; this.air.active = false;
         this.motion = { ...movement(), facing: this.motion.facing };
@@ -135,7 +147,7 @@ export class Player {
       }
       if (!climbing) stepBody(this.body, geometry, dt, this.traversal.drop > 0);
       landing(this.body, this.air, wasGrounded, dt);
-      if (lifeStep.knockFinished) this.body.vx = 0;
+      if (lifeStep.knockFinished || shove !== 0 && this.guardPush.remaining === 0) this.body.vx = 0;
       this.motion.vx = this.body.vx;
       remaining -= dt;
     }

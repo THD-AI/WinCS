@@ -170,6 +170,39 @@ flowchart LR
   HIT --> CHECK["Measured comparison + tests<br/>3 rover pogos; crab-through-deck fixture"]
 ```
 
+### Chair guard implementation (#41)
+
+Plain Act begins the four-pose `chair-block:guard-up` clip immediately.
+The legs first point forward in pose 02 (2/12 s); that is when guarding
+becomes active. Releasing before it is active remains a light sweep;
+releasing an engaged guard never adds an accidental sweep. Hold loops the
+three approved guard poses, and a block plays the four impact poses.
+Up/airborne Down + Act retain priority over guard.
+A hold begun during another chair attack raises the guard when that
+attack finishes; it does not cancel the attack's remaining poses.
+
+Frontal one-cell hits are blocked. The small push is half the documented
+28 px body width (14 px), spread over three 12 fps frames with the normal
+kinematic wall/floor checks. A blocked rover recoils without losing HP or
+continuing through the hero into an unguarded back hit. Rear hits use normal
+damage. A frontal two-cell Jenny charge breaks the guard, plays its four
+break poses and applies normal heavy damage/knockback. Death takes priority
+over the break animation. These are the initial push/recovery tuning;
+standing guard poses preserve their measured 76 px native body height.
+
+```mermaid
+flowchart LR
+  INPUT["Plain Act press<br/>directional attacks keep priority"] --> RAISE["4 guard-up poses at 12 fps<br/>block starts at forward-leg pose 02"]
+  RAISE --> TAP["Release before activation<br/>existing tap sweep"]
+  RAISE --> HOLD["Held: 3 guard-hold poses<br/>front follows hero facing"]
+  HOLD --> FRONT["Front, 1 cell<br/>4 impact poses + 14 px push"]
+  FRONT --> ROVER["Rover recoils without HP loss<br/>contact ends at shield"]
+  FRONT --> HOLD
+  HOLD --> HEAVY["Front, 2 cells: guard-break<br/>4 poses + heavy life damage"]
+  HOLD --> BACK["Behind: normal life damage<br/>cancel guard"]
+  INPUT --> CHECK["Reference baseline + pure tests<br/>browser front block, rear hit, heavy break"]
+```
+
 ## The glitch meter (after Region 1)
 
 Each defeated anomaly charges a 3-segment **glitch meter**. This was Lex's idea, merged with Alexander's Dexter version. **It is not a magic system** (A14): spells would make the game too easy.
