@@ -1,7 +1,7 @@
 # 11 – Decisions
 
 <!-- nav:start -->
-[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
+[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 15** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
 <!-- nav:end -->
 
 One line per decision: what was decided, who decided it, and when. An **open** item needs the team. Older decision history (D001–D036) is in Git history; this log restarts from the consolidated design on 23 Oct.
@@ -51,5 +51,5 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 41 | Sizes and proportions follow the approved art in `art/`: where an approved direction image disagrees with a size computed from feet, it is measured there and the art wins (Dexter's plush 27 px, not 20) | ✅ | Alexander · 24 Oct |
 
 <!-- nav:start -->
-[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
+[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 15** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
 <!-- nav:end -->

@@ -1,7 +1,7 @@
 # 10 – Jam plan
 
 <!-- nav:start -->
-[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 14** · [11 – Decisions →](11-DECISIONS.md)
+[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 15** · [11 – Decisions →](11-DECISIONS.md)
 <!-- nav:end -->
 
 **DEGDEV 3**, Deggendorf: Fri 23 Oct 14:00 → Sat 24 Oct 13:30. Jury voting starts at **11:30 Saturday**, and that is our hard stop. Event facts: [research/degdev-3.md](research/degdev-3.md).
@@ -68,5 +68,5 @@ Every cell below is a set of issues on the board, assigned to its owner. Vatsal'
 AI-generated art and code policy (does it need declaring?) · exact submission format and deadline · is a hosted HTML5 link fine · does the jury need the source.
 
 <!-- nav:start -->
-[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 14** · [11 – Decisions →](11-DECISIONS.md)
+[← 09 – Art pipeline](09-ART-PIPELINE.md) · [Design docs](README.md) · **10 / 15** · [11 – Decisions →](11-DECISIONS.md)
 <!-- nav:end -->

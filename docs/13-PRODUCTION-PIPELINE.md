@@ -1,7 +1,7 @@
 # 13 – Production pipeline
 
 <!-- nav:start -->
-[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 14** · [Meetings and voice notes →](meetings/README.md)
+[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 15** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
 <!-- nav:end -->
 
 How every image, layer, sprite, animation, stage and collision box gets from a photo to the game, and how two AI agents build it in parallel without stepping on each other. The *what* is in [07 – Asset manifest](07-ASSET-MANIFEST.md) and the *how to prompt* in [09 – Art pipeline](09-ART-PIPELINE.md); this page is the order of work, the hand-over formats and the lanes. Every box in the diagrams names the issue that delivers it.
@@ -254,5 +254,5 @@ Assignments live on the board ([Open work](https://github.com/orgs/THD-AI/projec
 | Lex | [M1-S7 #55](https://github.com/THD-AI/WinCS/issues/55) Rusty Creek collision in Tiled | M3-S2 Hidden Garden collision → M4-S3 encounters |
 
 <!-- nav:start -->
-[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 14** · [Meetings and voice notes →](meetings/README.md)
+[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 15** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
 <!-- nav:end -->
