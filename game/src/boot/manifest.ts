@@ -55,9 +55,12 @@ export function jsonWave(region: string, opts: { boards: readonly string[]; mapR
   ];
 }
 
-/** Wave 2 for a region: collision files, every stage plate not yet in the texture cache, and the boards' sheets. */
+/**
+ * Wave 2 for a region: collision files, every stage plate not yet in the texture cache, the region's extra images
+ * (`atmosphere.json` `assets`, e.g. the pond's wrong reflection – optional), and the boards' sheets.
+ */
 export function imageWave(manifest: StageManifest, state: RegionState, opts: {
-  boards: readonly string[]; has: (key: string) => boolean; menuKey?: boolean;
+  boards: readonly string[]; has: (key: string) => boolean; menuKey?: boolean; assets?: readonly string[];
 }): Entry[] {
   const region = manifest.region, base = stageBase(region);
   const collisions = manifest.chunks.flatMap(chunk => {
@@ -67,11 +70,13 @@ export function imageWave(manifest: StageManifest, state: RegionState, opts: {
   const plates = [...new Set(stageLayers(manifest, state).map(layer => layer.file))]
     .filter(file => !opts.has(textureKey(region, file)))
     .map(file => ({ key: textureKey(region, file), url: base + file, kind: 'image' as const }));
+  const extras = [...new Set(opts.assets ?? [])].filter(file => assetFile(file) && !opts.has(textureKey(region, file)))
+    .map(file => ({ key: textureKey(region, file), url: base + file, kind: 'image' as const, optional: true }));
   const boards = opts.boards.filter(board => !opts.has(board))
     .map(board => ({ key: board, url: `/assets/sprites/${board}.png`, kind: 'atlas' as const, atlasJson: `atlas:${board}`, optional: isOptional(board) }));
   const menu = opts.menuKey && !opts.has(MENU_KEY)
     ? [{ key: MENU_KEY, url: `/assets/ui/${MENU_KEY}.png`, kind: 'image' as const, optional: true }] : [];
-  return [...collisions, ...plates, ...boards, ...menu];
+  return [...collisions, ...plates, ...extras, ...boards, ...menu];
 }
 
 /** The boards still missing from the texture cache (a region swap reloads none of them). */

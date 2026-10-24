@@ -129,7 +129,9 @@ export class AssetLoader {
     this.tracker.plan([stage, ...json]);
     await this.run([stage]);
     const manifest = this.manifest(region, state);
-    const images = manifest ? imageWave(manifest, state, { boards, has: this.has, menuKey: first }) : [];
+    const listed = (this.regionJson(region, 'atmosphere') as { assets?: unknown }).assets;
+    const assets = Array.isArray(listed) ? listed.filter((file): file is string => typeof file === 'string') : [];
+    const images = manifest ? imageWave(manifest, state, { boards, has: this.has, menuKey: first, assets }) : [];
     this.tracker.plan(images);
     await this.run(json);
     const invalid = new Set(boards.filter(board => !this.checkAtlas(board)));

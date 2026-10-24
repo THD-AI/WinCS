@@ -74,6 +74,10 @@ describe('manifest', () => {
     const keys = imageWave(manifest, 'clean', { boards: ['hero-move'], has: k => k === 'hidden-garden:0-play.png', menuKey: true }).map(e => e.key);
     expect(keys).toEqual(['collision:hidden-garden:c-0.clean.collision.json', 'collision:hidden-garden:c-1.clean.collision.json',
       'hidden-garden:sky.png', 'hidden-garden:1-play.png', 'hero-move', MENU_KEY]);
+    const extra = imageWave(manifest, 'clean', { boards: [], has: () => false, assets: ['wrong-reflection.png', '../x.png'] });
+    expect(extra.filter(e => e.key === 'hidden-garden:wrong-reflection.png')).toEqual([
+      { key: 'hidden-garden:wrong-reflection.png', url: '/assets/stages/hidden-garden/wrong-reflection.png', kind: 'image', optional: true }]);
+    expect(extra.some(e => e.url.includes('..'))).toBe(false);
   });
 });
 
