@@ -81,7 +81,7 @@ export class Flow extends Phaser.Scene {
   /**
    * Jenny's ram on the creek path (P5) as one event: headlights and engine from beyond the right edge (the tell),
    * she rolls into view revving, charges, hits the hero and throws him the way she drives; the frame breaks into
-   * the crash crossing ("THD.exe has stopped responding" – not the 404's tear) and the hero lands at the maze start.
+   * the crash crossing ("THD.exe has stopped responding" â€“ not the 404's tear) and the hero lands at the maze start.
    */
   private ram(hero: Position): void {
     this.busy = true;
