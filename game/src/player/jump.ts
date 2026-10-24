@@ -33,13 +33,17 @@ export function jump(body: Body, state: Jump, down: boolean, dt: number) {
   }
 }
 
-export function landing(body: Body, state: Jump, wasGrounded: boolean, dt: number) {
+/** How long each landing holds the pose, in s: the land and hard-landing clips' lengths (clipLength, anims.json). */
+export interface LandingTimes { soft: number; hard: number }
+export const LANDING_TIMES: LandingTimes = { soft: 2 / 12, hard: 4 / 12 }; // fallback before the atlases load
+
+export function landing(body: Body, state: Jump, wasGrounded: boolean, dt: number, times: LandingTimes = LANDING_TIMES) {
   state.landing = Math.max(0, state.landing - dt);
   state.peak = Math.min(state.peak, body.y);
   if (state.active) state.height = Math.max(state.height, state.origin - body.y);
   if (!wasGrounded && body.grounded) {
     state.hard = body.y - state.peak >= 152; // Two body heights; tune with the route playtest.
-    state.landing = state.hard ? 4 / 12 : 2 / 12;
+    state.landing = state.hard ? times.hard : times.soft;
     state.active = false; state.forced = false; state.peak = body.y;
   }
 }

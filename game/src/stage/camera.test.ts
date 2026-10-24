@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { follow, gridBounds } from './camera';
+import { DEAD_ZONE, follow, gridBounds } from './camera';
 import type { StageManifest } from './manifest';
 const bounds = { x: 0, y: 0, width: 6480, height: 1440 };
 describe('camera follow', () => {
@@ -33,5 +33,25 @@ describe('camera follow', () => {
       return state;
     };
     expect(run(30).x).toBeCloseTo(run(120).x, 7); expect(run(30).y).toBeCloseTo(run(120).y, 7);
+  });
+  it('keeps the hero on one screen pixel at a stride-paced walk while the camera eases', () => {
+    const state = { x: 0, y: 0, lead: 0 };
+    const screen: number[] = [];
+    for (let i = 0, x = 900; i < 600; i++, x += 94.6 / 60) {
+      const cam = follow(state, { x, y: 470, vx: 94.6, grounded: true }, bounds, 1 / 60);
+      if (i > 400) screen.push(Math.round(x) - cam.x);
+    }
+    expect(Math.max(...screen) - Math.min(...screen)).toBe(0);
+  });
+  it('ignores slopes inside the dead zone and holds the framing through a jump', () => {
+    const state = { x: 0, y: 0, lead: 0 };
+    for (let i = 0; i < 300; i++) follow(state, { x: 2000, y: 470, vx: 0, grounded: true }, bounds, 1 / 60);
+    const rest = state.y;
+    for (let i = 0; i < 300; i++) follow(state, { x: 2000, y: 470 - DEAD_ZONE.up + 1, vx: 0, grounded: true }, bounds, 1 / 60);
+    expect(state.y).toBeCloseTo(rest, 6);
+    for (let i = 0; i < 30; i++) follow(state, { x: 2000, y: 470 - 96 * Math.sin(i / 30 * Math.PI), vx: 0, grounded: false }, bounds, 1 / 60);
+    expect(state.y).toBeCloseTo(rest, 6);
+    for (let i = 0; i < 300; i++) follow(state, { x: 2000, y: 600, vx: 0, grounded: true }, bounds, 1 / 60);
+    expect(state.y).toBeGreaterThan(rest + 100);
   });
 });
