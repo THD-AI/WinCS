@@ -1,21 +1,10 @@
 import type Phaser from 'phaser';
 
+// Every atlas is loaded once, by Preload (stage/assets.ts BOARDS): story scenes start active at boot and only
+// create their animations when they first need them, so two loaders never ask for the same texture key.
+
 /** An animation from an exported atlas (scripts/export_atlas.py names frames `<anim>-NN`). */
 export type AtlasAnim = [atlas: string, anim: string, frames: number, repeat: number];
-
-const requested = new Set<string>();
-
-/**
- * Queue sprite atlases once per game. Story scenes all start active and preload at the same time, so two of
- * them asking for the same key would collide in the texture manager; the first asks, the others wait for it.
- */
-export function loadAtlases(scene: Phaser.Scene, keys: readonly string[]): void {
-  for (const key of keys) {
-    if (scene.textures.exists(key) || requested.has(key)) continue;
-    requested.add(key);
-    scene.load.atlas(key, `assets/sprites/${key}.png`, `assets/sprites/${key}.json`);
-  }
-}
 
 /** Create the animations whose atlas has arrived (key `<atlas>:<anim>`); call it again later for the rest. */
 export function createAnims(scene: Phaser.Scene, anims: readonly AtlasAnim[]): void {

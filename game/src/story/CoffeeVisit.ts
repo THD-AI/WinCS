@@ -3,11 +3,9 @@ import { gameEvents, type Position } from '../core/events';
 import { VIEW_WIDTH } from '../core/viewport';
 import { sound } from '../fx/sound/Audio';
 import { pocketMap } from '../ui/mapModel';
-import { createAnims, loadAtlases, type AtlasAnim } from './atlases';
+import { createAnims, type AtlasAnim } from './atlases';
 import { dexterFor, VisitSequence as Visit, type VisitPhase } from './coffeeSequence';
 
-/** Atlases this scene draws (scripts/export_atlas.py); missing ones fall back to placeholders. */
-const ATLASES = ['dexter', 'dexter-acts', 'fx', 'pocket-computer', 'mensa-food'] as const;
 const ANIMS: AtlasAnim[] = [
   ['dexter', 'idle', 3, -1], ['dexter-acts', 'sweat', 2, -1], ['dexter-acts', 'absorb', 4, 0],
   ['fx', 'black-fluid', 6, 0], ['pocket-computer', 'bob', 4, -1],
@@ -25,7 +23,8 @@ interface Marker { id?: string; kind?: string; x: number; y: number }
 /** The part of Codex's stage data (`Stage.create(data)`) this scene reads: world-space boxes and spawns. */
 interface StageData { collisions?: { world: { interact: Box[]; spawn: Marker[] } }[] }
 
-interface Station { visit: Visit; dexter: Phaser.GameObjects.Sprite; at: Marker }
+/** `shown` is the phase last drawn: a save starts the visit between frames, outside `update`. */
+interface Station { visit: Visit; dexter: Phaser.GameObjects.Sprite; at: Marker; shown: VisitPhase }
 
 /**
  * Dexter at the coffee machine (#52, docs/03 "Region 1 story beats"). When the stage starts, Dexter already
@@ -41,10 +40,6 @@ export class CoffeeVisit extends Phaser.Scene {
   private host?: Phaser.Scene;
 
   constructor() { super({ key: 'CoffeeVisit', active: true }); }
-
-  preload(): void {
-    loadAtlases(this, ATLASES);
-  }
 
   create(): void {
     const stage = this.scene.get(STAGE);
@@ -68,9 +63,8 @@ export class CoffeeVisit extends Phaser.Scene {
 
   update(_time: number, delta: number): void {
     for (const [, station] of this.stations) {
-      const before = station.visit.phase;
       const phase = station.visit.update(delta);
-      if (phase !== before) this.enter(station, phase);
+      if (phase !== station.shown) { station.shown = phase; this.enter(station, phase); }
       if (phase === 'bow') station.dexter.setAngle(Math.sin(station.visit.progress() * Math.PI) * 4);
     }
   }
@@ -95,7 +89,7 @@ export class CoffeeVisit extends Phaser.Scene {
     const dexter = this.sprite(host, at.x, at.y, 'dexter', 'idle-00', 0x101010, 10, 27);
     if (this.anims.exists('dexter:idle')) dexter.play('dexter:idle');
     const id = machine.id ?? `coffee-${this.stations.size}`;
-    const station: Station = { at, dexter, visit: undefined! };
+    const station: Station = { at, dexter, visit: undefined!, shown: 'waiting' };
     station.visit = new Visit({
       onGift: () => this.give(station),
       onAbsorb: pool => this.absorb(station, pool),

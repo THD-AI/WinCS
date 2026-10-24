@@ -5,13 +5,11 @@ import { addImageCut, addPixelStretch, add404Void } from '../fx/anomaly';
 import { sound } from '../fx/sound/Audio';
 import { crashWindow } from '../ui/crashWindow';
 import { creditsText } from '../ui/creditsView';
-import { createAnims, loadAtlases, type AtlasAnim } from './atlases';
+import { createAnims, type AtlasAnim } from './atlases';
 import { dexterScale, EndingSequence, type EndingPhase } from './endingSequence';
 
 export const END_TEXT = 'To be continued.';
 
-/** The approved atlases this scene draws (scripts/export_atlas.py); frame names are `<anim>-NN`. */
-const ATLASES = ['dexter', 'dexter-acts', 'fx'] as const;
 const ANIMS: AtlasAnim[] = [
   ['fx', 'black-fluid', 6, 0], ['dexter', 'hop', 4, -1], ['dexter-acts', 'absorb', 4, 0],
 ];
@@ -38,10 +36,6 @@ export class Ending extends Phaser.Scene {
   private glitch: Phaser.GameObjects.GameObject[] = [];
 
   constructor() { super({ key: 'Ending', active: true }); }
-
-  preload(): void {
-    loadAtlases(this, ATLASES);
-  }
 
   create(): void {
     const stop = gameEvents.on('boss-defeated', ({ position }) => this.begin(position));
