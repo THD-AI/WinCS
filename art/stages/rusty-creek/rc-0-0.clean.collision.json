@@ -42,8 +42,9 @@
   {
    "id": "player",
    "kind": "player",
-   "x": 160,
-   "y": 132
+   "x": 240,
+   "y": 566,
+   "note": "The 404 lands the hero on the creek path under the rail bridge (P5)"
   }
  ],
  "ledge": [],
