@@ -180,6 +180,9 @@ three approved guard poses, and a block plays the four impact poses.
 Up/airborne Down + Act retain priority over guard.
 A hold begun during another chair attack raises the guard when that
 attack finishes; it does not cancel the attack's remaining poses.
+A complete tap between rendered frames is reconstructed from its release
+flag: Phaser clears the press flag on key-up. An ordinary held release
+does not create a fresh press or restart guard.
 
 Frontal one-cell hits are blocked. The small push is half the documented
 28 px body width (14 px), spread over three 12 fps frames with the normal

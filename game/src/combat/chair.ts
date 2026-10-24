@@ -5,6 +5,7 @@ import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sw
 import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
+import { actionEdges } from './action-input';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
 const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
@@ -96,8 +97,8 @@ export class ChairCombat {
     if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
     const down = this.key.isDown || !!pad?.X;
-    const pressed = Phaser.Input.Keyboard.JustDown(this.key) || down && !this.wasDown;
     const keyReleased = Phaser.Input.Keyboard.JustUp(this.key);
+    const { pressed, released } = actionEdges(down, this.wasDown, Phaser.Input.Keyboard.JustDown(this.key), keyReleased);
     const up = this.directions.W.isDown || this.directions.UP.isDown || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
     const below = this.directions.S.isDown || this.directions.DOWN.isDown || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
@@ -109,7 +110,6 @@ export class ChairCombat {
     }
     if (down && this.plainTap && this.guard.phase === 'idle' && this.sweeps.phase === 'idle'
       && this.overhead.phase === 'idle' && this.enabled && this.player.canAttack) this.guard.press(this.player.facing);
-    const released = !down && (this.wasDown || keyReleased);
     let tap = false;
     if (released) { tap = this.guard.phase === 'idle' ? this.plainTap : this.guard.release(); this.plainTap = false; }
     if (this.enabled && this.player.canAttack && !this.special && tap && this.overhead.phase === 'idle' && released) {
@@ -117,7 +117,7 @@ export class ChairCombat {
       this.sweeps.press(this.player.facing);
       if (first) sound.play('chair-whoosh');
     }
-    if (!down && (this.wasDown || keyReleased)) this.special = false;
+    if (released) this.special = false;
     this.wasDown = down;
     if (!this.enabled || !this.player.canAttack) {
       this.sweeps.cancel(); this.overhead.cancel(); this.plainTap = false;
