@@ -27,7 +27,7 @@ Merge bottom up with merge commits; retarget the next PR to main before merging 
 
 ## Verification
 
-- [ ] `python scripts/check_docs.py` (and `python -m unittest discover -s scripts -p "test_*.py"` if scripts changed)
+- [ ] `python scripts/check_docs.py` (and `python -m pytest scripts` if scripts changed)
 - [ ] `cd game && npm run typecheck && npm run build` (game changes)
 - [ ] Played on the Vercel preview (link): keyboard and gamepad
 - [ ] Art: Design review on the board says Approved before export

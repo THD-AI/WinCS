@@ -131,7 +131,7 @@ Every committed image is produced by a script from a config with real references
 ```bash
 git diff --cached --check
 python scripts/check_docs.py
-python -m unittest discover -s scripts -p "test_*.py"     # if scripts changed
+python -m pytest scripts                                 # if scripts changed
 cd game && npm run typecheck && npm test && npm run build  # game code
 python scripts/compare.py lineup hero-move:walk-03 …       # on-screen changes: the comparison for the PR
 ```
