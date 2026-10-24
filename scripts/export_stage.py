@@ -35,6 +35,8 @@ ROOT = Path(__file__).resolve().parents[1]
 STAGES = ROOT / "art" / "stages"
 OUT = ROOT / "game" / "public" / "assets" / "stages"
 SIZE = [2160, 720]
+# Region data the game loads next to stage.json when a region has it (docs/15 contracts), copied as is.
+DATA_FILES = ("atmosphere.json", "surfaces.json")
 
 
 class ExportError(Exception):
@@ -103,6 +105,13 @@ def export(region: Path, out: Path) -> dict:
     target.mkdir(parents=True)
     for name, path in files.items():
         shutil.copyfile(path, target / name)
+    for name in DATA_FILES:  # optional region data the game loads next to stage.json
+        if (region / name).exists():
+            try:
+                json.loads((region / name).read_text(encoding="utf-8"))
+            except json.JSONDecodeError as error:
+                raise ExportError(f"{region.name}: {name} is not valid JSON ({error})") from error
+            shutil.copyfile(region / name, target / name)
     (target / "stage.json").write_text(json.dumps(stage, indent=1) + "\n", encoding="utf-8", newline="\n")
     return stage
 
