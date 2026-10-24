@@ -1,0 +1,41 @@
+id,kind,used by,game size px (measured),frames/anims,source refs,status,notes
+hero-move,sprite,"hero (3), prologue (4)",76 body in 80 cell (docs/04),idle 6 · idle-walk 2 · walk 8,hero sheet + pose photos + style master,approved,game/public/assets/sprites/hero-move.*
+hero-run,sprite,hero (3),76 (run scale 1.12 → ≈70 leaning),walk-run 2 · run-start 3 · run 8,hero sheet + pose photos,approved,stride pacing #164
+hero-idle,sprite,hero (3),76,look-around 4 · check-tablet 4 · check-wounds 4,hero sheet + pose photos,approved,
+hero-air,sprite,hero (3),76 (ref jump-08),jump 9 · fall 3 · hard-landing 4 · ladder 4,hero sheet + pose photos,approved,
+hero-hurt,sprite,"hero (3), crossing (4)",76,hit 8 · knockback 3 · interact 3 · pick-up 4 · look-at-device 3,hero sheet + pose photos,approved,the shove and the pull reuse hit + knockback
+hero-death,sprite,hero (3),76,death 12,hero sheet,approved,
+chair-side,sprite,hero (3) – Region 1,76,sweep-a 8 · sweep-b 8 · recoil 2 · chair-pickup 1,hero sheet + chair photos,approved,not used in the prologue
+chair-overhead,sprite,hero (3) – Region 1,76,up 6 · slam 7 · pogo 4,hero sheet + chair photos,approved,
+chair-block,sprite,hero (3) – Region 1,76,guard-up 4 · guard-hold 3 · guard-impact 4 · guard-break 4,hero sheet + chair photos,approved,
+dexter,sprite,prologue (4),27 (191/547 of the hero in dexter-stages),idle 3 · hop 4 · walk 6 · point 3 · shove 4,dexter-stages crops + merch photos,approved,hop = hop off the bench
+dexter-acts,sprite,prologue (4),27,beckon 3 · bow 1 · sweat 2 · proud 1 · creepy 1 · absorb 4,dexter-stages crops + merch photos,approved,
+dexter-prologue,sprite,prologue (4),27,look-back 3 · wait 3 · sit 2,approved dexter sheet first + dexter-stages crops + merch,drawn,"new 24 Oct: sit on the bench, look back, wait. Review export in tmp/atlas only – adds to an approved character, Alexander decides"
+fx-leaves,fx,atmosphere (2),8 (6–8 per leaf),birch 5 · maple 5 · oak 5,fx sheet (anchor) + hg-4-0 floating leaves + campus collage crops + style master,exported,new 24 Oct; awaiting review
+fx-ground,fx,hero grounding (3),12 dust (others relative),dust 4 · grass 4 · leaf-kick 4 · splash 4,fx sheet (anchor) + hg-0-0 path + collage grass + hg-4-0 shore,exported,new 24 Oct; awaiting review
+fx-water,fx,atmosphere (2),8 lily pad (ripple and sparkle relative),lily-bob 4 · ripple 4 · sparkle 4,fx sheet (anchor) + hg-4-0 / hg-0-0 pond crops,exported,new 24 Oct; awaiting review
+fx,fx,enemies – Region 1; Dexter absorb,20,black-fluid 6,cast + style master,approved,
+pocket-computer,sprite,prologue pickup? / HUD,10 closed,bob 4 · open 3,hud direction,approved,
+mensa-food,prop,prologue secret (4.3: muffin behind the grass),13–18,muffin 1 · cake 1 · wafer 1 · leberkaese 1,coffee-machine sheet + food photos,approved,sparkle drawn in code
+coffee-machine,prop,save point – Region 1,80,idle 3 · pour 4,coffee machine photos,approved,
+enemy-rover,sprite,Region 1,25,idle 4 · drive 6 · charge 4 · wreck 5,photos + cast,approved,
+enemy-crab,sprite,Region 1,46,idle 4 · walk 8 · stab 5 · collapse 5,photos + cast,approved,
+enemy-drone,sprite,Region 1,47 span,hover 4 · dive 3 · crash 5 · screw 3,photos + cast,approved,
+boss-jenny,sprite,Region 1 boss,≈270 long (134 board height),rev 4 · charge 4 · crash 4,boss-jenny direction crop,approved,
+boss-jenny-2,sprite,Region 1 boss,159,stunned 3 · reboot 2 · debris-1..5 2 each,boss-jenny direction crop,approved,
+ui atlas,ui,HUD + pocket computer,"cells 36, glitch 28, boss bar 560, frame ≈800",31 pieces (cells · cracks · orbs · boss bar · frame · CRT · map tiles · icons),hud direction crops,approved,game/public/assets/ui/ui.png + ui.json + ui-layout.json
+menu-key,ui,"loading + menu (1)",1280×720,1 still,style master + hg-4-0 + hg-0-0 + hidden-garden direction,exported,game/public/assets/ui/menu-key.png; no text – the game draws DEGGSTER.EXE
+loading motif,ui,loading (1),–,–,–,missing,optional: loading can reuse fx-leaves (a falling maple) over menu-key
+crash window THD.exe,ui,crossing (4),–,–,anomaly-language direction,missing,"drawn in code with real text (docs/07, A14)"
+404 void / glitch FX,fx,crossing (4),screen,–,anomaly-language direction,missing,"shader or code slices (docs/07); no sprite planned"
+hidden-garden 00-sky,stage layer,renderer (2),2160×720 tiles ×2,scroll 0.1,hg chunks via depth_layers.py region,drawn,"in review (docs/07); art/stages/hidden-garden/layers"
+hidden-garden 01-far,stage layer,renderer (2),2160×720 tiles ×2,scroll 0.25,hg chunks,drawn,in review
+hidden-garden 02-mid,stage layer,renderer (2),6992 wide in 4 tiles,scroll 0.6,hg chunks,drawn,in review
+hidden-garden 03-rear,stage layer,renderer (2),2160×720 ×5 chunks,scroll 1.0,hg chunks,drawn,in review
+hidden-garden 04-water,stage layer,renderer (2) – reflection + ripples,2160×720 ×5,scroll 1.0,hg chunks,drawn,water band for atmosphere.json
+hidden-garden 05-play,stage layer,"renderer (2), hero (3)",2160×720 ×5,scroll 1.0,hg chunks,drawn,collision traced from the key's play band
+hidden-garden 06,stage layer,renderer (2),–,–,–,missing,no z 6 layer in export.json (only 07); blur/occlusion uses 07
+hidden-garden 07-foreground,stage layer,renderer (2) – blur over hero,tiles ×5,scroll 1.2,hg chunks,drawn,
+hidden-garden bench,stage prop,prologue (4) – Dexter sits,painted in hg-0-0 05-play,–,hg-0-0,drawn,part of the plate (seat ≈ x 700–880 in hg-0-0); Dexter's sit frames are placed on it
+rusty-creek layers,stage layer,Region 1,3 chunks × 7 layers,clean + anomaly,rusty-creek sources,approved,art ✅; collision ⬜ (docs/07)
+surfaces / atmosphere data,data,"(2), (3)",–,–,–,missing,"owned by workstreams 2 and 3 (art/stages/<region>/atmosphere.json, surfaces.json)"
