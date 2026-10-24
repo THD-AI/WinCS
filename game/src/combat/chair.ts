@@ -7,7 +7,8 @@ import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges } from './action-input';
-import { swingArc } from './swingFx';
+import { lowStreak, swingArc } from './swingFx';
+import { LOW_CONTACT, LowSweep } from './lowSweep';
 import { CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
@@ -20,6 +21,8 @@ export class ChairCombat {
   readonly pause = new HitStop();
   readonly overhead = new Overhead();
   readonly guard = new Guard();
+  /** ↓ + Act on the ground: the chair along the floor (lowSweep.ts). */
+  readonly low = new LowSweep();
   private targets = new Map<string, Damageable>();
   private key: Phaser.Input.Keyboard.Key;
   /** The second attack bind (playtest 24 Oct): X, for players on the arrow keys. */
@@ -121,17 +124,20 @@ export class ChairCombat {
     const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
     const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
-      this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
+      this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel(); this.low.cancel();
       if (this.overhead.begin(up ? 'up' : 'slam', this.player.facing)) sound.play('chair-whoosh');
+    } else if (this.enabled && this.player.canAttack && pressed && below && this.overhead.phase === 'idle') {
+      this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
+      if (this.low.begin(this.player.facing)) sound.play('chair-whoosh');
     } else if (this.enabled && this.player.canAttack && pressed) {
       this.plainTap = true;
-      if (this.sweeps.phase === 'idle' && this.overhead.phase === 'idle') this.guard.press(this.player.facing);
+      if (this.sweeps.phase === 'idle' && this.overhead.phase === 'idle' && !this.low.active) this.guard.press(this.player.facing);
     }
     if (down && this.plainTap && this.guard.phase === 'idle' && this.sweeps.phase === 'idle'
-      && this.overhead.phase === 'idle' && this.enabled && this.player.canAttack) this.guard.press(this.player.facing);
+      && this.overhead.phase === 'idle' && !this.low.active && this.enabled && this.player.canAttack) this.guard.press(this.player.facing);
     let tap = false;
     if (released) { tap = this.guard.phase === 'idle' ? this.plainTap : this.guard.release(); this.plainTap = false; }
-    if (this.enabled && this.player.canAttack && !this.special && tap && this.overhead.phase === 'idle' && released) {
+    if (this.enabled && this.player.canAttack && !this.special && tap && this.overhead.phase === 'idle' && !this.low.active && released) {
       const first = this.sweeps.phase === 'idle';
       this.sweeps.press(this.player.facing);
       if (first) sound.play('chair-whoosh');
@@ -139,7 +145,7 @@ export class ChairCombat {
     if (released) this.special = false;
     this.wasDown = down;
     if (!this.enabled || !this.player.canAttack) {
-      this.sweeps.cancel(); this.overhead.cancel(); this.plainTap = false;
+      this.sweeps.cancel(); this.overhead.cancel(); this.low.cancel(); this.plainTap = false;
       if (!this.enabled || this.guard.phase !== 'break' || this.player.life.dead > 0) this.guard.cancel();
     }
     let remaining = milliseconds / 1000;
@@ -147,11 +153,12 @@ export class ChairCombat {
       const dt = Math.min(remaining, 1 / 120), previous = this.sweeps.phase;
       this.sweeps.step(dt);
       this.overhead.step(dt);
+      this.low.step(dt);
       if (previous !== this.sweeps.phase && (this.sweeps.phase === 'sweep-a' || this.sweeps.phase === 'sweep-b')) sound.play('chair-whoosh');
       const contact = this.overhead.contact(this.player.body, this.previousY, this.targets.values());
       if (contact.bounce !== undefined) this.player.pogo(contact.bounce);
       this.overhead.land(this.player.body.grounded);
-      const hits = [...this.sweeps.hit(this.player.body, this.targets.values()), ...contact.hits];
+      const hits = [...this.sweeps.hit(this.player.body, this.targets.values()), ...this.low.hit(this.player.body, this.targets.values()), ...contact.hits];
       if (hits.length) { hits.forEach(box => this.spark(box)); this.pause.trigger(); break; }
       remaining -= dt;
     }
@@ -162,6 +169,7 @@ export class ChairCombat {
         .setFlipX((this.sweeps.direction < 0) !== (this.sweeps.phase === 'sweep-b'));
     }
     if (this.overhead.pose) this.player.sprite.setTexture('chair-overhead', this.overhead.pose).setFlipX(this.overhead.direction < 0);
+    if (this.low.pose) this.player.sprite.setTexture('chair-overhead', this.low.pose).setFlipX(this.low.direction < 0);
     if (this.guard.pose) this.player.sprite.setTexture('chair-block', this.guard.pose).setFlipX(this.guard.direction < 0);
     this.trail.clear();
     const arc = swingArc(this.sweeps.phase, this.sweeps.frame, this.sweeps.direction, this.player.body);
@@ -169,12 +177,17 @@ export class ChairCombat {
       this.trail.lineStyle(arc.width, 0xfff4cb, 0.55 * arc.alpha).beginPath().arc(arc.x, arc.y, arc.radius, arc.start, arc.end).strokePath();
       this.trail.lineStyle(3, 0xffffff, arc.alpha).beginPath().arc(arc.x, arc.y, arc.radius + arc.width / 2, arc.start, arc.end).strokePath();
     }
+    const streak = this.low.active ? lowStreak(this.low.frame, this.low.direction, this.player.body, LOW_CONTACT) : undefined;
+    if (streak) {
+      this.trail.fillStyle(0xfff4cb, 0.5 * streak.alpha).fillRoundedRect(streak.x, streak.y, streak.w, streak.h, 6);
+      this.trail.lineStyle(3, 0xffffff, streak.alpha).lineBetween(streak.x, streak.y + streak.h - 2, streak.x + streak.w, streak.y + streak.h - 2);
+    }
     const strike = this.overhead.box(this.player.body, this.previousY);
     if (strike) this.trail.fillStyle(0xfff4cb, 0.35).fillRoundedRect(strike.x, strike.y, strike.w, strike.h, 6);
     this.debug.clear();
-    const box = this.sweeps.box(this.player.body) ?? this.overhead.box(this.player.body, this.previousY);
+    const box = this.sweeps.box(this.player.body) ?? this.low.box(this.player.body) ?? this.overhead.box(this.player.body, this.previousY);
     if (this.visible && box) this.debug.lineStyle(2, 0xff7835).strokeRect(box.x, box.y, box.w, box.h);
-    this.label.setText('chair ' + (this.guard.pose ?? this.overhead.pose ?? this.sweeps.phase + ' ' + this.sweeps.frame)
+    this.label.setText('chair ' + (this.guard.pose ?? this.overhead.pose ?? (this.low.pose && 'low ' + this.low.pose) ?? this.sweeps.phase + ' ' + this.sweeps.frame)
       + ' | hit-stop ' + this.pause.remaining.toFixed(0) + 'ms | blocks ' + this.guard.blocks);
     this.previousY = this.player.body.y;
   }

@@ -29,6 +29,7 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 | **Jump** | Space / K | A / Cross | Jump. Hold for higher (variable height) |
 | **Act** | J, X | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
 | ↑ + Act | | | Up attack |
+| ↓ + Act on the ground | | | Low sweep along the floor (rovers, crabs) |
 | ↓ + Act in air | | | Down slam / pogo (bounce off an enemy or hazard) |
 | Menu | Esc | Start | The game menu: controls, settings, debug mode, coming soon (pauses the game) |
 | Pocket computer | Tab | Back / Select | Map, archive, items (after you get it) |
@@ -215,6 +216,17 @@ flowchart LR
   HIT --> CHECK["Measured comparison + tests<br/>3 rover pogos; crab-through-deck fixture"]
 ```
 
+### Low sweep (playtest 24 Oct)
+
+↓ + Act on the ground drives the chair down along the floor, for rovers
+and crabs that crawl under a chest-high swing (`combat/lowSweep.ts`). It
+reuses the slam's floor poses from `chair-overhead` – 02 (coming down),
+03 twice (planted, with its dust), 04 twice – at 12 fps, no new art. The
+chair is on the floor in poses 1–2; there the box runs **12–60 px ahead,
+0–51 px up** (slam-03 measured on the 1.5x frames: seat and legs to 56 px,
+the dust to ~60), a little further than the side swing. A pale streak
+along the floor shows it. In the air, ↓ + Act stays the slam.
+
 ### Chair guard implementation (#41)
 
 Plain Act begins the four-pose `chair-block:guard-up` clip immediately.
@@ -271,6 +283,7 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Chair | damage per sweep, upswing, slam | 1 | `combat/sweeps.ts`, `combat/overhead.ts` |
 | Chair | sweep reach | 12–50 px ahead, floor to 87 px up | `sweeps.ts` `SWEEP_CONTACT` |
 | Chair | up attack / slam reach | −4…64 px, 88–181 px up / 16–56 px ahead | `overhead.ts` `UP_CONTACT`, `SLAM_CONTACT` |
+| Chair | low sweep reach | 12–60 px ahead, 0–51 px up, poses 1–2 of 5 | `combat/lowSweep.ts` `LOW_CONTACT` |
 | Chair | guard push | 3 frames (0.25 s) | `combat/guard.ts` `GUARD_PUSH_TIME` |
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
 | Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |

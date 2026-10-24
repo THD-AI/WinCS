@@ -24,3 +24,14 @@ export function swingArc(phase: string, frame: number, direction: -1 | 1, feet: 
   const [a, b] = direction > 0 ? [SWING.from, SWING.to] : [180 - SWING.to, 180 - SWING.from];
   return { x: feet.x, y: feet.y - SWING.shoulder, radius: SWING.radius, width: SWING.width, start: rad(a), end: rad(b), alpha };
 }
+
+/** The low sweep's streak: a pale band along the floor over the low box (LOW_CONTACT), brightest as the chair lands. */
+export const LOW_STREAK = { height: 14, alpha: [0.45, 1, 0.6, 0.25, 0] } as const;
+export interface Streak { x: number; y: number; w: number; h: number; alpha: number }
+export function lowStreak(frame: number, direction: -1 | 1, feet: { x: number; y: number },
+  contact: { inner: number; reach: number }): Streak | undefined {
+  const alpha = LOW_STREAK.alpha[frame] ?? 0;
+  if (alpha <= 0) return undefined;
+  const w = contact.reach - contact.inner;
+  return { x: feet.x + (direction > 0 ? contact.inner : -contact.reach), y: feet.y - LOW_STREAK.height, w, h: LOW_STREAK.height, alpha };
+}
