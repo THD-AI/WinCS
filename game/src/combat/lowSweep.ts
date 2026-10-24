@@ -7,7 +7,7 @@ import { intersects, type Damageable, type Rect } from './sweeps';
  * Measured on the 1.5x slam-03 (cell 160×187, feet 80,187): seat and legs run 12…56 px ahead, the dust to ~60 px,
  * the seat 51 px up – a floor-level box that reaches a little further than the side swing (50 px).
  */
-export const LOW_CONTACT = { inner: 12, reach: 60, top: 51, bottom: 0 } as const;
+export const LOW_CONTACT = { inner: 12, reach: 75, top: 51, bottom: 0 } as const; // 30 % past the drawn chair, as the side swing
 export const LOW_POSES = ['slam-02', 'slam-03', 'slam-03', 'slam-04', 'slam-04'] as const;
 /** The poses with the chair on the floor. */
 export const LOW_HIT_FRAMES: readonly number[] = [1, 2];

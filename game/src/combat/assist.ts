@@ -9,8 +9,8 @@ import { UP_CONTACT } from './overhead';
  * is tested; chair.ts applies it and player.ts moves the nudge with the normal wall and floor collision.
  */
 export const ASSIST = {
-  /** Ahead: up to 1.3x the attack's reach from the feet (65 px for the side swing). */
-  ahead: 1.3,
+  /** Ahead: up to 1.4x the attack's reach from the feet (91 px for the side swing). */
+  ahead: 1.4,
   /** Behind: an enemy this close behind (px from the feet) turns the hero round. */
   behind: 40,
   /** Vertically within one body height of the body (76 px). */

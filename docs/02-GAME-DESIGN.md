@@ -156,7 +156,7 @@ The `chair-side` atlas uses 128 × 119 px cells with the feet at (64, 119)
 The approved contact poses are A04 and B03; B is mirrored into the strike
 direction. The chair's wood in A04 reaches 48 px forward and in B03 50 px;
 it starts 12 px in front of the pivot, and the seat back is 87 px above the
-feet. The collision envelope therefore extends **12–50 px forward, from the
+feet. The collision envelope therefore extends **12–65 px forward (30 % past the drawn wood, Alexander 24 Oct: "longer range"), from the
 floor to 87 px above the feet**. It goes down to the floor (playtest
 24 Oct): the swung legs pass at 37 px, and a 25 px rover or a crab must not
 slip under them. This envelope is gameplay collision, not an alpha mask of
@@ -165,7 +165,7 @@ the coat or legs.
 ```mermaid
 flowchart LR
   IN["chair-side atlas + animation table<br/>128 × 119 cells, feet 64,119"] --> POSE["8 poses A / B at authored 12 fps<br/>release Act; buffer one tap"]
-  POSE --> MASK["A04 / B03 contact window only<br/>front 12–50; floor to 87 px up"]
+  POSE --> MASK["A04 / B03 contact window only<br/>front 12–65; floor to 87 px up"]
   MASK --> HIT["Overlap target bounds<br/>one attempt per target per swing"]
   HIT --> FX["Accepted hit: 60 ms stop<br/>spark, sound, target knockback"]
   FX --> OUT["Finish sweep + 2 recoil poses<br/>consume buffered return swing"]
@@ -227,7 +227,7 @@ flowchart LR
 and crabs that crawl under a chest-high swing (`combat/lowSweep.ts`). It
 reuses the slam's floor poses from `chair-overhead` – 02 (coming down),
 03 twice (planted, with its dust), 04 twice – at 12 fps, no new art. The
-chair is on the floor in poses 1–2; there the box runs **12–60 px ahead,
+chair is on the floor in poses 1–2; there the box runs **12–75 px ahead,
 0–51 px up** (slam-03 measured on the 1.5x frames: seat and legs to 56 px,
 the dust to ~60), a little further than the side swing. A pale streak
 along the floor shows it. In the air, ↓ + Act stays the slam.
@@ -237,7 +237,7 @@ along the floor shows it. In the air, ↓ + Act stays the slam.
 An assist, not a lock-on (`combat/assist.ts`). When a side swing, low
 sweep or up attack starts, the nearest live enemy (rover, crab, drone,
 Jenny while the fight is on) within one body height (76 px) of the body
-is picked if it is up to 1.3× the attack's reach ahead or within 40 px
+is picked if it is up to 1.4× the attack's reach ahead or within 40 px
 behind. An enemy behind turns the hero round; one just out of reach gets
 a nudge of at most 24 px over 0.1 s toward it (aiming 8 px inside the
 reach), moved through the normal wall and ledge collision. A plain tap
@@ -300,9 +300,9 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Life | health | 5 | `combat/life.ts` `MAX_HEALTH` |
 | Life | knockback | 258 px/s for 0.25 s | `life.ts` `KNOCK_SPEED`, `KNOCK_TIME` |
 | Chair | damage per sweep, upswing, slam | 1 | `combat/sweeps.ts`, `combat/overhead.ts` |
-| Chair | sweep reach | 12–50 px ahead, floor to 87 px up | `sweeps.ts` `SWEEP_CONTACT` |
+| Chair | sweep reach | 12–65 px ahead, floor to 87 px up | `sweeps.ts` `SWEEP_CONTACT` |
 | Chair | up attack / slam reach | −4…64 px, 88–181 px up / 16–56 px ahead | `overhead.ts` `UP_CONTACT`, `SLAM_CONTACT` |
-| Chair | low sweep reach | 12–60 px ahead, 0–51 px up, poses 1–2 of 5 | `combat/lowSweep.ts` `LOW_CONTACT` |
+| Chair | low sweep reach | 12–75 px ahead, 0–51 px up, poses 1–2 of 5 | `combat/lowSweep.ts` `LOW_CONTACT` |
 | Chair | target assist | 1.3× reach ahead, 40 px behind, ±76 px; nudge ≤ 24 px in 0.1 s | `combat/assist.ts` `ASSIST` |
 | Chair | guard push | 3 frames (0.25 s) | `combat/guard.ts` `GUARD_PUSH_TIME` |
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |

@@ -9,11 +9,11 @@ const rover = (x: number) => ({ x, y: 475, w: 31, h: 25 });
 describe('chair target assist (subtle: turn, nudge, up under a drone)', () => {
   it('leaves an enemy already in reach alone, and nudges toward one just out of reach (at most 24 px)', () => {
     expect(pickAssist(feet, 1, [rover(130)], 'sweep')).toMatchObject({ direction: 1, turn: false, lunge: 0, up: false });
-    const near = pickAssist(feet, 1, [rover(155)], 'sweep')!;
-    expect(near.lunge).toBeCloseTo(55 - (SWEEP_CONTACT.reach - ASSIST.margin));
-    const edge = pickAssist(feet, 1, [rover(100 + 1.3 * SWEEP_CONTACT.reach)], 'sweep')!;
-    expect(edge.lunge).toBeCloseTo(1.3 * SWEEP_CONTACT.reach - (SWEEP_CONTACT.reach - ASSIST.margin)); expect(edge.lunge).toBeLessThanOrEqual(ASSIST.lunge);
-    expect(pickAssist(feet, 1, [rover(100 + 1.3 * SWEEP_CONTACT.reach + 1)], 'sweep')).toBeUndefined();
+    const near = pickAssist(feet, 1, [rover(175)], 'sweep')!;
+    expect(near.lunge).toBeCloseTo(75 - (SWEEP_CONTACT.reach - ASSIST.margin));
+    const edge = pickAssist(feet, 1, [rover(100 + ASSIST.ahead * SWEEP_CONTACT.reach)], 'sweep')!;
+    expect(edge.lunge).toBeCloseTo(Math.min(ASSIST.lunge, ASSIST.ahead * SWEEP_CONTACT.reach - (SWEEP_CONTACT.reach - ASSIST.margin))); expect(edge.lunge).toBeLessThanOrEqual(ASSIST.lunge);
+    expect(pickAssist(feet, 1, [rover(100 + ASSIST.ahead * SWEEP_CONTACT.reach + 1)], 'sweep')).toBeUndefined();
   });
 
   it('turns to an enemy just behind (within 40 px), not one further back', () => {
@@ -42,8 +42,8 @@ describe('chair target assist (subtle: turn, nudge, up under a drone)', () => {
   });
 
   it('measures the low sweep against its own longer reach', () => {
-    expect(pickAssist(feet, 1, [rover(150)], 'low', LOW_CONTACT.reach)!.lunge).toBe(0);
-    expect(pickAssist(feet, 1, [rover(150)], 'sweep')!.lunge).toBeGreaterThan(0);
+    expect(pickAssist(feet, 1, [rover(165)], 'low', LOW_CONTACT.reach)!.lunge).toBe(0);
+    expect(pickAssist(feet, 1, [rover(165)], 'sweep')!.lunge).toBeGreaterThan(0);
   });
 
   it('spreads the nudge evenly over 0.1 s', () => {

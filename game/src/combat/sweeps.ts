@@ -9,7 +9,8 @@ export const intersects = (a: Rect, b: Rect) => a.x < b.x + b.w && a.x + a.w > b
  * goes down to the floor (playtest 24 Oct): a 25 px rover or a crab crawling under the swung chair is still hit –
  * the legs sweep past at 37 px and nothing small slips beneath them.
  */
-export const SWEEP_CONTACT = { inner: 12, reach: 50, top: 87, bottom: 0 } as const;
+// Reach 65 (24 Oct, Alexander: "longer range"): about 30 % past the drawn wood – generous, as action games are.
+export const SWEEP_CONTACT = { inner: 12, reach: 65, top: 87, bottom: 0 } as const;
 const HIT_STOP_MS = 60; // docs/02: the chair is light; every accepted hit stops for 60 ms.
 
 export class HitStop {

@@ -17,7 +17,7 @@ describe('the low sweep (↓ + Act on the ground)', () => {
     expect(low.begin(1)).toBe(true); expect(low.begin(-1)).toBe(false);
     expect(low.box(feet)).toBeNull(); expect(low.pose).toBe('slam-02');
     low.step(1 / 12);
-    expect(low.box(feet)).toEqual({ x: 112, y: 449, w: 48, h: 51 });
+    expect(low.box(feet)).toEqual({ x: 112, y: 449, w: 63, h: 51 });
     expect(low.hit(feet, [target('rover', 140, 25, log), target('crab', 150, 12, log)])).toHaveLength(2);
     low.step(1 / 12); expect(low.hit(feet, [target('rover', 140, 25, log)])).toHaveLength(0);
     low.step(1 / 12); expect(low.box(feet)).toBeNull();
@@ -28,7 +28,7 @@ describe('the low sweep (↓ + Act on the ground)', () => {
   it('mirrors to the left, reaches past the side swing, and leaves a drone overhead alone', () => {
     const low = new LowSweep(), log: string[] = [];
     low.begin(-1); low.step(1 / 12);
-    expect(low.box(feet)).toEqual({ x: 40, y: 449, w: 48, h: 51 });
+    expect(low.box(feet)).toEqual({ x: 25, y: 449, w: 63, h: 51 });
     expect(LOW_CONTACT.reach).toBeGreaterThan(SWEEP_CONTACT.reach);
     const drone: Damageable = { id: 'drone', bounds: () => ({ x: 50, y: 380, w: 45, h: 45 }), hit: () => { log.push('drone'); return true; } };
     expect(low.hit(feet, [drone])).toHaveLength(0);
