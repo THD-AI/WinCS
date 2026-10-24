@@ -8,10 +8,10 @@ id,workstream,item,acceptance,status,pr
 2.3,2 atmosphere,Wind sway,"grass, leaves, trees sway by depth with gusts; data in atmosphere.json",todo,
 2.4,2 atmosphere,Falling leaves,"front and back particles in the autumn palette",todo,
 2.5,2 atmosphere,Water reflection,"pond reflects scene and hero, ripples, shimmer, lily pads bob",todo,
-3.1,3 hero,Feet in the ground,"sink 2–4 px by surface from surfaces.json",todo,
-3.2,3 hero,Step and land FX,"dust / leaves kicked up per surface",todo,
-3.3,3 hero,Smooth transitions,"no pops between idle, walk, run, jump, land; stride pacing (#164)",todo,
-3.4,3 hero,Camera,"steady follow, look-ahead, no jitter on slopes",todo,
+3.1,3 hero,Feet in the ground,"sink 2–4 px by surface from surfaces.json",review,#166
+3.2,3 hero,Step and land FX,"dust / leaves kicked up per surface",review,#166
+3.3,3 hero,Smooth transitions,"no pops between idle, walk, run, jump, land; stride pacing (#164)",review,#166
+3.4,3 hero,Camera,"steady follow, look-ahead, no jitter on slopes",review,#166
 4.1,4 prologue,First quest,"Dexter on the bench; walking up starts the quest; wordless",todo,
 4.2,4 prologue,Dexter's walk,"waypoints 1–5 with walk/hop/point; waits and looks back",todo,
 4.3,4 prologue,Secrets,"muffin behind the grass, the glint on the shed roof",todo,
