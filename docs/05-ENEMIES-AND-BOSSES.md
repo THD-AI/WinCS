@@ -69,6 +69,7 @@ Lex's read (A14), which the fight follows: Jenny is a **shielded** enemy. Her no
 - **Charge** does 2 cells. **Parts** do 1. Guarding a charge breaks the guard.
 - The arena is the Rusty Creek boss clearing: one flat girder floor, two walls, the creek below. Falling in is a hazard (−1 cell).
 - **Death:** she stalls, smokes and leaks black fluid. Dexter appears and absorbs it.
+- **In the game** (`enemies/jenny.ts`, `enemies/jennyBoss.ts`, #57): the arena comes from collision, not code: the `boss-gate` box's right edge is the left wall, which closes behind you once you're through, and the floor line under her `jenny` spawn ends at the right wall. Her hit box is the car body without the rear wing, 250 × 70 px inside the ~290 × 134 px sprite, so the hero's 96 px jump clears a charge. A revving Jenny also hurts on contact (1 cell). Clip lengths come from `boss-jenny*.anims.json`. Beating her emits `boss-defeated`, and the `Ending` scene takes over. Dying resets the fight. Dev: `?boss-test` spawns you at the gate.
 - What we took from Terraria's Wall of Flesh: one huge shape crossing the whole screen, very readable, and you know exactly what to do after seeing it once.
 
 ## Later bosses

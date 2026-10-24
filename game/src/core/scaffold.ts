@@ -9,6 +9,7 @@ import { cameraFollow } from '../stage/camera';
 import { ChairCombat } from '../combat/chair';
 import { CoffeePoints } from '../combat/coffee';
 import { Rovers } from '../enemies/rovers';
+import { JennyBoss } from '../enemies/jennyBoss';
 import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
 import { START, type RegionTarget } from '../stage/swap';
@@ -45,6 +46,7 @@ export class Stage extends Phaser.Scene {
   private coffee?: CoffeePoints;
   private rovers?: Rovers;
   private triggers?: Triggers;
+  private jenny?: JennyBoss;
   get playerActor() { return this.player; }
   get chair() { return this.combat; }
   constructor() { super('Stage'); }
@@ -55,9 +57,12 @@ export class Stage extends Phaser.Scene {
       ? data.collisions.flatMap(chunk => chunk.world.interact).find(box => box.kind === 'coffee-machine') : undefined;
     const rover = import.meta.env.DEV && new URLSearchParams(location.search).has('rover-test')
       ? data.collisions.flatMap(chunk => chunk.world.spawn).find(spawn => spawn.kind === 'rover') : undefined;
+    const gate = import.meta.env.DEV && new URLSearchParams(location.search).has('boss-test')
+      ? data.collisions.flatMap(chunk => chunk.world.interact).find(box => box.kind === 'boss-gate') : undefined;
     this.player = new Player(this, data.collisions, data.manifest.region, this.defeatedBosses,
       machine ? { x: machine.x + machine.w / 2, y: machine.y + machine.h }
-        : rover ? { x: rover.x - BODY_WIDTH * 3, y: rover.y } : data.spawn);
+        : rover ? { x: rover.x - BODY_WIDTH * 3, y: rover.y }
+        : gate ? { x: gate.x - BODY_WIDTH * 2, y: gate.y + gate.h } : data.spawn);
     this.player.onHealthChanged = health => {
       const hud = this.scene.get('HUD') as Phaser.Scene & { model?: { setHealth(health: number, at: number): void } };
       hud.model?.setHealth(health, this.time.now);
@@ -65,6 +70,7 @@ export class Stage extends Phaser.Scene {
     this.combat = new ChairCombat(this, this.player, data.manifest.region);
     this.coffee = new CoffeePoints(this, this.player, data.collisions);
     this.rovers = new Rovers(this, this.player, this.combat, data.collisions);
+    this.jenny = new JennyBoss(this, this.player, this.combat, data.collisions);
     this.triggers = new Triggers(data.collisions, data.manifest.region);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
@@ -86,6 +92,7 @@ export class Stage extends Phaser.Scene {
     this.player?.update(active);
     this.combat?.update(active);
     this.rovers?.update(active);
+    this.jenny?.update(active);
     if (this.player && this.player.life.dead === 0) this.triggers?.emit(this.player.body);
     if (this.player) this.follow?.(this.player.body, active);
   }

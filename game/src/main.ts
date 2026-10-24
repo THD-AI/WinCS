@@ -21,6 +21,8 @@ function resize() {
   game.scale.setZoom(displayScale(window.innerWidth, window.innerHeight));
 }
 game.events.once(Phaser.Core.Events.READY, resize);
+// Dev builds: the console can reach the game (`game.scene.getScene('Stage')`) for checks and debugging.
+if (import.meta.env.DEV) (window as unknown as { game: Phaser.Game }).game = game;
 window.addEventListener('resize', resize);
 if (import.meta.hot) import.meta.hot.dispose(() => {
   window.removeEventListener('resize', resize);
