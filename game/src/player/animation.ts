@@ -26,6 +26,7 @@ export class LocomotionAnimation {
   private idleTime = 0;
   private finished = false;
   private queue: Step[] = [];
+  private speed = 0;
   constructor(private clips: Catalogue, private random = Math.random) {}
   private metadata() { return this.clips[this.clip] ?? this.clips.idle; }
   private set(step: Step) {
@@ -55,9 +56,12 @@ export class LocomotionAnimation {
     const plan = plans[`${this.clip}:${desired}`];
     if (plan) { this.queue = [...plan]; this.set(this.queue.shift()!); }
   }
+  /** Seconds this frame shows. A cycle with a measured stride advances by distance: one frame per stride/frames px. */
   private duration() {
+    const clip = this.metadata();
+    if (clip.stride && this.speed > 1) return clip.stride / clip.frames / this.speed;
     const hold = this.clip === 'jump' && this.frame === 0 || this.clip === 'hard-landing' && this.frame === 0;
-    return (hold ? 2 : 1) / Math.min(12, this.metadata().fps);
+    return (hold ? 2 : 1) / Math.min(12, clip.fps);
   }
   private advance() {
     const next = this.frame + (this.reverse ? -1 : 1);
@@ -66,7 +70,9 @@ export class LocomotionAnimation {
     else if (LOOPS.includes(this.clip) && this.metadata().loop) this.frame = 0;
     else this.finished = true;
   }
-  update(desired: MotionPose, dt: number) {
+  /** `speed`: the body's horizontal speed in px/s, which paces the strided cycles. */
+  update(desired: MotionPose, dt: number, speed = 0) {
+    this.speed = speed;
     this.idleTime = desired === 'idle' ? this.idleTime + dt : 0;
     this.request(desired);
     if (this.clip === 'idle' && desired === 'idle' && this.idleTime >= 5) {

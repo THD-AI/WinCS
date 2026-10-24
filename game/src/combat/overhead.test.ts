@@ -48,7 +48,7 @@ describe('measured overhead chair attacks', () => {
   it('sweeps thin hazards without tunnelling and never bounces while rising or on wrecks', () => {
     const attack = new Overhead(), hazard = { x: 120, y: 500, w: 20, h: 2 };
     attack.begin('slam', 1); attack.step(3 / 12);
-    expect(SLAM_SPEED).toBe(516);
+    expect(SLAM_SPEED).toBeCloseTo(2 * 4.6 * 43); // docs/02: twice run speed
     expect(attack.hazard({ x: 100, y: 440 }, 450, [hazard])).toBeUndefined();
     expect(attack.hazard({ x: 100, y: 520 }, 450, [hazard])).toBe(500);
     expect(attack.hazard({ x: 100, y: 520 }, 450, [hazard])).toBeUndefined();

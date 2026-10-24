@@ -45,6 +45,22 @@ class CompareTests(unittest.TestCase):
         _, report = cp.lineup(['dexter:idle-00*1.6'])
         self.assertIn('dexter:idle-00*1.6: 16x43 px, documented 43 px (+0 %)', report)
 
+    def test_stride_is_twice_the_widest_spread_between_planted_feet(self):
+        # Two frames, 40x20 each: double support with feet 21 px apart, then one foot passing.
+        sheet = Image.new('RGBA', (80, 20))
+        sheet.paste((40, 90, 160, 255), (2, 17, 10, 20))   # back foot, centre 5.5
+        sheet.paste((40, 90, 160, 255), (23, 17, 31, 20))  # front foot, centre 26.5
+        sheet.paste((40, 90, 160, 255), (52, 17, 60, 20))  # one foot
+        sheet.paste((40, 90, 160, 255), (50, 0, 62, 17))   # the body above it
+        sheet.save(self.base / 'hero-move.png')
+        frames = {'walk-00': {'frame': {'x': 0, 'y': 0, 'w': 40, 'h': 20}},
+                  'walk-01': {'frame': {'x': 40, 'y': 0, 'w': 40, 'h': 20}}}
+        (self.base / 'hero-move.json').write_text(json.dumps({'frames': frames}), encoding='utf-8')
+        (self.base / 'hero-move.anims.json').write_text(json.dumps({'walk': {'frames': 2, 'fps': 12, 'loop': True}}), encoding='utf-8')
+        step, length, report = cp.stride('hero-move', 'walk')
+        self.assertEqual((step, length), (21.0, 42.0))
+        self.assertIn('-> 252 px/s at 12 fps', report[-1])  # 42 px per 2-frame cycle at 12 fps
+
     def test_unknown_frame_stops(self):
         Image.new('RGBA', (10, 10)).save(self.base / 'fx.png')
         (self.base / 'fx.json').write_text(json.dumps({'frames': {}}), encoding='utf-8')

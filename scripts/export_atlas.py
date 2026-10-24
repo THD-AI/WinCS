@@ -290,6 +290,9 @@ def export(board: dict, image: Image.Image) -> tuple[Image.Image, dict, dict]:
                 "pivot": {"x": 0.5, "y": 1},
             }
         table[anim["anim"]] = {"frames": len(frames), "fps": anim.get("fps", FPS), "loop": anim.get("loop", True)}
+        # A locomotion cycle's stride in game px (compare.py stride): the game plays it by distance, not by time.
+        if "stride" in anim:
+            table[anim["anim"]]["stride"] = anim["stride"]
     atlas = {"frames": hashed, "meta": {
         "app": "scripts/export_atlas.py", "image": f"{board['id']}.png", "format": "RGBA8888",
         "size": {"w": sheet.width, "h": sheet.height}, "scale": "1"}}
