@@ -652,15 +652,31 @@ def whole(region: Path, chunk: str, art: Image.Image, reuse: bool = False) -> li
 
 
 def bleed_plate(rgb, own, front, plate, reach: int = 16):
-    """The fill plate with the layer's nearest own pixel copied onto every `front` pixel within `reach` px of it
-    (an existing, painted fill wins). Returns (plate, pixels added)."""
+    """The fill plate with the layer grown `reach` px into the `front` pixels, one pixel ring per step, each new pixel
+    taking a neighbour's colour (an existing, painted fill wins). Plain numpy: CI has no scipy. Returns (plate,
+    pixels added)."""
     import numpy as np
-    from scipy import ndimage
-    dist, (iy, ix) = ndimage.distance_transform_edt(~own, return_indices=True)
-    add = front & (dist <= reach) & (plate[..., 3] == 0)
+    colour, have = rgb.copy(), own.copy()
+    open_ = front & (plate[..., 3] == 0)
+    added = np.zeros_like(own)
+    for _ in range(reach):
+        grew = np.zeros_like(have)
+        for axis, step in ((0, 1), (0, -1), (1, 1), (1, -1)):
+            src_have, src_col = np.roll(have, step, axis), np.roll(colour, step, axis)
+            if axis == 0:   # no wrap-around from the opposite edge
+                (src_have[:1] if step > 0 else src_have[-1:])[...] = False
+            else:
+                (src_have[:, :1] if step > 0 else src_have[:, -1:])[...] = False
+            take = open_ & ~have & ~grew & src_have
+            colour[take] = src_col[take]
+            grew |= take
+        if not grew.any():
+            break
+        have |= grew
+        added |= grew
     plate = plate.copy()
-    plate[add, :3], plate[add, 3] = rgb[iy[add], ix[add]], 255
-    return plate, int(add.sum())
+    plate[added, :3], plate[added, 3] = colour[added], 255
+    return plate, int(added.sum())
 
 
 def bleed(region: Path, chunk: str, reach: int = 16) -> list[Path]:
