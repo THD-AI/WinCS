@@ -62,9 +62,15 @@ export class GameMenu {
     this.panel.setAttribute('aria-label', 'Menu');
     const head = el('div', 'wm-head');
     head.append(el('span', 'wm-title', 'DEGGSTER.EXE – paused'));
+    const actions = el('div', 'wm-row');
+    // Back to the title screen (Lex, A17): a fresh start, so the story's state (Dexter, the crossing, the ending)
+    // resets exactly as on first load.
+    const title = el('button', 'wm-close', 'Back to title') as HTMLButtonElement;
+    title.onclick = () => { if (window.confirm('Back to the title screen? Progress in this run is lost.')) location.reload(); };
     const close = el('button', 'wm-close', 'Resume ✕') as HTMLButtonElement;
     close.onclick = () => this.toggle(false);
-    head.append(close);
+    actions.append(title, close);
+    head.append(actions);
     const tabs = el('div', 'wm-tabs');
     tabs.setAttribute('role', 'tablist');
     for (const [id, label] of TABS) {
