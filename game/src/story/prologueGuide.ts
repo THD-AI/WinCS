@@ -316,7 +316,8 @@ export class DexterGuide {
       if (stop.act === 'pond') { this.x = stop.x; this.y = this.route.groundAt(this.x, this.y) ?? this.y; this.v = 0; return this.enter('at-pond'); }
       this.next++;
       if (stop.act === 'point' && gap > GUIDE.hopGap) { this.v = 0; return this.enter('point'); }
-      if (stop.act === 'wait' && gap > GUIDE.pauseAt) return this.waitFor(GUIDE.pauseResume);
+      // He pauses only for a hero lagging behind, not one already coming on.
+      if (stop.act === 'wait' && gap > GUIDE.pauseAt && this.heroV < GUIDE.walk * 0.5) return this.waitFor(GUIDE.pauseResume);
     }
   }
 
