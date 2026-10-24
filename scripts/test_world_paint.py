@@ -126,3 +126,12 @@ def test_a_median_step_matches_the_drift_but_does_not_smear_a_speck():
     out = np.asarray(wp.match_rows(new, Image.fromarray(below), ramp=48, blur=0, median=31)).astype(int)
     assert (out[-1, :400] == 120).all()                                    # the drift is matched
     assert (out[-40:, 500:504] < 125).all()                                # the leaf is not dragged up
+
+
+def test_a_wide_cloud_on_one_side_is_not_dragged_into_a_dark_column():
+    new = np.full((wp.H, wp.W, 3), (90, 150, 230), np.uint8)
+    new[-30:, 1000:1080] = (250, 250, 250)                                 # a cloud on the new chunk's bottom edge
+    below = np.full((wp.H, wp.W, 3), (96, 154, 232), np.uint8)             # clear sky, a little lighter
+    out = np.asarray(wp.match_rows(Image.fromarray(new), Image.fromarray(below), ramp=48, blur=0, median=31)).astype(int)
+    assert np.abs(out[-1, :900] - (96, 154, 232)).max() <= 1               # the drift is matched
+    assert (out[-60:-30, 1000:1080] >= (90, 150, 230)).all()                # no dark column above the cloud

@@ -5,43 +5,119 @@
   2160,
   720
  ],
- "walk": [],
- "slide": [],
- "oneWay": [
+ "walk": [
   [
    [
     0,
-    560
+    390
    ],
    [
-    900,
-    560
+    838,
+    391
    ]
   ],
   [
    [
-    1000,
-    520
+    838,
+    437
+   ],
+   [
+    866,
+    437
+   ]
+  ],
+  [
+   [
+    902,
+    459
+   ],
+   [
+    980,
+    459
+   ]
+  ],
+  [
+   [
+    1040,
+    462
+   ],
+   [
+    1077,
+    462
+   ]
+  ],
+  [
+   [
+    1077,
+    393
+   ],
+   [
+    1253,
+    393
+   ]
+  ],
+  [
+   [
+    1253,
+    438
+   ],
+   [
+    1360,
+    438
+   ]
+  ],
+  [
+   [
+    1360,
+    393
    ],
    [
     2160,
-    520
-   ]
-  ],
-  [
-   [
-    0,
-    300
-   ],
-   [
-    620,
-    300
+    392
    ]
   ]
  ],
- "climb": [],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 1540,
+   "y": 380,
+   "w": 40,
+   "h": 340,
+   "kind": "ladder"
+  }
+ ],
  "solid": [],
- "noGo": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 472,
+   "w": 1530,
+   "h": 248,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  },
+  {
+   "x": 1590,
+   "y": 472,
+   "w": 570,
+   "h": 248,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
  "hazard": [],
- "interact": []
+ "interact": [
+  {
+   "id": "dexter-waypoint-5",
+   "kind": "dexter-waypoint",
+   "x": 1100,
+   "y": 320,
+   "w": 80,
+   "h": 76,
+   "note": "past the gap: Dexter waits on the far side, hopping on the spot",
+   "act": "wait"
+  }
+ ]
 }

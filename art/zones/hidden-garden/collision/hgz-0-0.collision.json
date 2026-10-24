@@ -5,48 +5,122 @@
   2160,
   720
  ],
- "walk": [],
- "slide": [],
- "oneWay": [
+ "walk": [
   [
    [
-    980,
-    560
+    0,
+    387
    ],
    [
-    2160,
-    560
+    552,
+    388
    ]
   ],
   [
    [
-    1500,
-    300
+    552,
+    364
+   ],
+   [
+    655,
+    364
+   ]
+  ],
+  [
+   [
+    655,
+    336
+   ],
+   [
+    757,
+    336
+   ]
+  ],
+  [
+   [
+    757,
+    306
+   ],
+   [
+    1452,
+    306
+   ]
+  ],
+  [
+   [
+    1452,
+    336
+   ],
+   [
+    1553,
+    336
+   ]
+  ],
+  [
+   [
+    1553,
+    365
+   ],
+   [
+    1647,
+    365
+   ]
+  ],
+  [
+   [
+    1647,
+    389
    ],
    [
     2160,
-    300
+    390
+   ]
+  ],
+  [
+   [
+    918,
+    146
+   ],
+   [
+    1268,
+    146
    ]
   ]
  ],
+ "slide": [],
+ "oneWay": [],
  "climb": [
   {
-   "x": 1250,
-   "y": 560,
-   "w": 28,
-   "h": 160,
-   "kind": "ladder"
-  },
-  {
-   "x": 1700,
-   "y": 300,
-   "w": 28,
-   "h": 260,
-   "kind": "ladder"
+   "id": "shed-ladder",
+   "kind": "ladder",
+   "x": 1240,
+   "y": 140,
+   "w": 47,
+   "h": 166
   }
  ],
  "solid": [],
- "noGo": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 482,
+   "w": 2160,
+   "h": 238,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
  "hazard": [],
- "interact": []
+ "interact": [
+  {
+   "id": "dexter-waypoint-4",
+   "kind": "dexter-waypoint",
+   "x": 1500,
+   "y": 228,
+   "w": 80,
+   "h": 76,
+   "note": "the top of the terrace: Dexter points back up at the glint on the shed roof, then waits",
+   "act": "point"
+  }
+ ]
 }
