@@ -108,6 +108,29 @@ flowchart LR
 - Sizes from the art (decision 41), mechanics from the art (decision 43). Data in files, not constants in code.
 - Windows: never `X.ts` next to `x.ts`; never a `node_modules` junction – run `npm ci` in your worktree.
 
+## Wave 2 – Alexander's playtest (Sat 24 Oct ~06:45)
+
+What the first build got wrong, in his words' order, and the workstream that owns each fix:
+
+| # | Found in play | Fix | Workstream |
+| --- | --- | --- | --- |
+| P1 | We walk on water, on planks and stairs as if they were hills (and slide), fall through where a log or a wall should stop us, "climb" a log instead of jumping it; the path's edges are guessed | A **terrain system**: every walkable surface authored from the art as a *trail band* with typed segments (ground, step, ledge, wall, plank, stair, log, water = never walkable); step-ups under ~16 px, ledges you must jump, walls that stop you; chunk ends that continue | 6 terrain |
+| P2 | It feels like walking *on top of* the world; no grass at the feet | The **hot-dog layering**: far background → far greenery → near greenery → the trail (where you walk) → a grass/plants strip *in front of the trail* that covers the feet → water, rocks → blurred close leaves. The trail carries surface effects (slippery, particles per material) | 7 layers + 6 terrain |
+| P3 | The cut-outs show: leaves, water edges and trees line up wrongly as the layers move | Every layer **rendered complete**: the parts hidden behind nearer layers are painted in (gpt-image-2.5 inpainting per plate), edges cleaned, more bands where the depth needs them | 7 layers |
+| P4 | You outrun Dexter; you spawn left of the entrance while he waits at it | Dexter **leads at the hero's pace** – never overtaken, hops ahead when you close in; the hero starts at the entrance | 8 Dexter |
+| P5 | After the 404 you land on the railway bridge; the cement road under it is gone; two pushes in a row (from behind, then Jenny from the front) confuse | Land on the **creek path**, the cement road under the rail bridge (the clean art has it); Jenny's ram reads as one clear event on that path; the region swap explains itself | 9 Region 1 |
+| P6 | The hero's movement is fidgety in Rusty Creek; jump-spam feels slow and buggy; idles are stiff | **Hero motion polish**: find the creek jitter (sink/slope/stride on steel), fix jump buffering under spam, more idle life (breathing, poncho sway) | 10 hero motion |
+| P7 | The chair pops in, no idea how to attack; one rover and then nothing | A **pickup moment** (the hero picks it up, a wordless key/button glyph shows the attack); more encounters along the route | 9 Region 1 |
+| P8 | Jenny drives through you – no knockback, nothing happens; parts just fall; unclear how to hurt her | **Jenny reads**: real knockback, a clear tell, a glowing open back while stunned, hit flashes and screen shake, parts that bounce and threaten | 9 Region 1 |
+
+| # | Workstream | Owns |
+| --- | --- | --- |
+| 6 | Terrain and walkability | `game/src/player/body.ts`, `traversal.ts`, `game/src/stage/collision*.ts`, the walk/solid/oneWay/noGo geometry of `art/stages/*/*.collision.json` (not interact/spawn), `surfaces.json`, `scripts/collision_*.py` |
+| 7 | Layers rendered complete | `art/stages/hidden-garden/` layers, masks, `export.json`, `layers.json`, `atmosphere.json`, `scripts/depth_layers.py`, `grow_stage.py` |
+| 8 | Dexter and the prologue's staging | `game/src/story/Prologue*.ts`, `prologueGuide.ts`, `prologueFinale.ts`, hidden-garden `interact`/`spawn` entries |
+| 9 | Region 1: landing, ram, chair, encounters, Jenny | `game/src/story/Flow.ts`, `game/src/enemies/`, `game/src/combat/chairPickup.ts`, rusty-creek `interact`/`spawn` entries, HUD glyphs |
+| 10 | Hero motion | `game/src/player/animation.ts`, `grounding.ts`, `jump.ts`, `footfall.ts`, `hurt.ts`, hero idle art if needed |
+
 <!-- nav:start -->
 [← 13 – Production pipeline](13-PRODUCTION-PIPELINE.md) · [Design docs](README.md) · **14 / 15** · [Meetings and voice notes →](meetings/README.md)
 <!-- nav:end -->

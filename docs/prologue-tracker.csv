@@ -21,3 +21,11 @@ id,workstream,item,acceptance,status,pr
 5.2,5 art,Falling leaf + ripple + dust sprites,"drawn from the garden refs, exported",review,#165
 5.3,5 art,Menu and loading art,"key art from the style master and the garden",review,#165
 5.4,5 art,Readability,"every prologue sprite readable at 1× on the garden background (#159)",review,#165
+P1,6 terrain,Walkable surfaces from the art,"no walking on water; planks and stairs as steps, not slopes; logs and walls stop you or must be jumped; no falling at chunk ends",todo,
+P2,6+7,Feet in the trail,"a grass/plant strip in front of the trail covers the feet; surface effects per material",todo,
+P3,7 layers,Layers rendered complete,"no visible cut-outs while layers scroll; occluded parts painted in; clean edges",todo,
+P4,8 dexter,Dexter leads at your pace,"never overtaken; hero spawns at the entrance",todo,
+P5,9 region 1,Land on the creek path,"after the 404 on the cement road under the rail bridge; one clear ram",todo,
+P6,10 motion,Hero motion polish,"no jitter in Rusty Creek; jump spam crisp; more idle life",todo,
+P7,9 region 1,Chair moment and encounters,"a pickup moment with a wordless attack glyph; more enemies on the route",todo,
+P8,9 region 1,Jenny reads,"knockback, tell, open back, hit feedback, threatening parts",todo,
