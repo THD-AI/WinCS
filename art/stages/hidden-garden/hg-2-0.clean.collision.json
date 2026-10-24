@@ -121,6 +121,17 @@
    "h": 76,
    "note": "the top of the terrace: Dexter points back up at the glint on the shed roof, then waits",
    "act": "point"
+  },
+  {
+   "x": 1095,
+   "y": 230,
+   "w": 80,
+   "h": 76,
+   "kind": "door",
+   "id": "shed-door",
+   "to": "cellar-stairs",
+   "label": "into the shed",
+   "note": "The shed door you should not open: stairs down to the cellar."
   }
  ],
  "spawn": [

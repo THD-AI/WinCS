@@ -1,2 +1,3 @@
-# Rebuilt by scripts/zones/hidden_garden_proof.py from the shipped prologue plates (unless a feature was painted in)
-hgz-?-0.png
+# Working copies. The level row is rebuilt from the shipped prologue plates; the row below is exported to
+# art/stages/hidden-garden (hg-2-1, hg-3-1, hg-4-1), which holds the one committed copy.
+*.png

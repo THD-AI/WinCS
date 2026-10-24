@@ -73,18 +73,18 @@
   {
    "a": "hgz-0-1",
    "b": "hgz-1-1",
-   "by": "door"
+   "by": "walk"
   },
   {
    "a": "hgz-1-1",
    "b": "hgz-2-1",
-   "by": "door"
+   "by": "walk"
   },
   {
-   "a": "hgz-1-0",
-   "b": "hgz-1-1",
-   "by": "shaft",
-   "at": 1560
+   "a": "hgz-0-0",
+   "b": "hgz-0-1",
+   "by": "door",
+   "at": 1135
   }
  ],
  "anomaly": {

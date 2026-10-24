@@ -7,7 +7,7 @@ guide colours left in, smoothed-away routes, copy-pasted tiles, blur or noise, p
 
 Zone mode reads world.json (grid positions), blockout/<id>.png (the flat guide) and images/<id>.png (the
 painting; a chunk without one is skipped), and the concept from zone.json ("clean", else "anomaly"; a chunk in
-the "below" band is measured against the anomaly concept, the only one with an underground). Row mode
+the "below" band is measured against the lower half of the anomaly concept, the only one with an underground). Row mode
 puts the named chunks of one folder next to each other, left to right, with no blockouts. Every check prints
 one line per chunk (a seam one line per neighbour): PASS/FAIL, the number and its limit. The result goes to
 previews/gate.json in the zone ({chunk: {check: {"value", "limit", "pass"}}, "pass": bool}; row mode:
@@ -347,15 +347,19 @@ def check_text(img: np.ndarray) -> dict:
     return result(run, TEXT_RUN - 1, run < TEXT_RUN)
 
 
-def check_chunk(img: np.ndarray, concept: np.ndarray | None, blockout: np.ndarray | None) -> dict:
-    """Every per-chunk check (seams are checked by the caller, which knows the neighbours)."""
+def check_chunk(img: np.ndarray, concept: np.ndarray | tuple[np.ndarray, np.ndarray] | None,
+                blockout: np.ndarray | None) -> dict:
+    """Every per-chunk check (seams are checked by the caller, which knows the neighbours). `concept` may be a pair:
+    the whole picture for grain (it is scaled to the chunk's height, so a crop would be enlarged and blurred) and
+    the part the chunk belongs to for palette."""
     out = {"guide": check_guide(img), "hole": check_hole(img)}
     if blockout is not None:
         out["route"] = check_route(img, blockout)
     out["repeat"], out["period"] = check_repeat(img)
     if concept is not None:
-        out["grain"] = check_grain(img, concept)
-        out["palette"] = check_palette(img, concept)
+        whole, part = concept if isinstance(concept, tuple) else (concept, concept)
+        out["grain"] = check_grain(img, whole)
+        out["palette"] = check_palette(img, part)
     out["text"] = check_text(img)
     return out
 
@@ -368,7 +372,7 @@ def here(path: str | Path) -> Path:
     return p if p.is_absolute() or p.exists() else ROOT / p
 
 
-def gate(grid: dict[str, tuple[int, int]], images: Path, concept: np.ndarray | dict[str, np.ndarray] | None,
+def gate(grid: dict[str, tuple[int, int]], images: Path, concept: np.ndarray | dict | None,
          blockouts: Path | None, only: list[str] | None = None) -> dict:
     """Run every check on the chunks of a grid ({id: (col, row)}) that have a painting; gate.json's content."""
     have = {cid: images / f"{cid}.png" for cid in grid if (images / f"{cid}.png").exists()}
@@ -435,10 +439,12 @@ def main(argv: list[str] | None = None) -> int:
     concept = load(here(concept_path)) if concept_path else None
     if args.zone and not args.concept and (zone / "zone.json").exists():
         # The clean concept has no underground: a chunk below the level row is measured against the anomaly
-        # concept, which shows the flooded maze under the pond (grain and palette).
+        # concept's underground – its lower half, the flooded maze under the pond (grain and palette) – not its
+        # sunlit sky (a band against its own concept; Alexander, 24 Oct, as for the band above).
         spec = json.loads((zone / "zone.json").read_text(encoding="utf-8")).get("concept", {})
         if spec.get("anomaly"):
-            under = load(here(spec["anomaly"]))
+            whole = load(here(spec["anomaly"]))
+            under = (whole, whole[whole.shape[0] // 2:])  # grain against the whole, palette against the maze
             concept = {cid: under if c.get("band") == "below" else concept for cid, c in world["chunks"].items()}
     report = gate(grid, images, concept, blockouts, args.chunks)
     show(report)

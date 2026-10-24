@@ -44,8 +44,9 @@ flowchart TD
   A -->|fail| G
   A --> D["5 · depth – depth_layers.py key / masks / fills"]
   D --> X["6 · anomaly as data – 404 tears from world.json,<br/>drawn as fx (world_preview.py draw_tears)"]
-  X --> C["7 · collision – from the blockout, collision_check.py"]
+  X --> C["7 · collision – traced from the depth key,<br/>world_map.check: reachable and leavable"]
   C --> V["8 · previews – world_preview.py map / concept"]
+  V --> S["9 · into the game – the zone's new rows become<br/>chunks of the region's stage (export, split, checks)"]
 ```
 
 | # | Stage | Command | Writes |
@@ -60,21 +61,43 @@ flowchart TD
 | 6 | Anomaly | tears in `world.json` → `world_preview.draw_tears` (the game ports it) | fx |
 | 7 | Collision | traced from the chunk's depth key (`depth_layers.py key`): floors along the play band's tops, ladders where its rungs flip, the water on top as no-go – `scripts/zones/<zone>_proof.py` writes `collision/`, then `world_map.check` (every surface reachable and leavable) | `collision/` |
 | 8 | Previews | `python scripts/world_preview.py map art/zones/<zone> --state anomaly --grid` · `… concept …` | `previews/` |
+| 9 | Into the game | `scripts/zones/<zone>_proof.py --stage`, then `split_layers.py art/stages/<region>`, `collision_check.py art/stages/<region> --surfaces`, `export_stage.py --verify` | `art/stages/<region>/` (the one committed copy) |
 
-**Proven on the Hidden Garden (24 Oct, `art/zones/hidden-garden/`):** the shipped prologue row (`hg-2-0` … `hg-4-0`, composed from its plates without the near strip and the lens) on top, and grown under it, one row deeper: the garden cellar under the shed (the first archive note), the campus storm drain under the boardwalk (the game's *IT* room: the mascot, the water, the drain) and, under the jetty, the wrong reflection – girders hanging upside down from the water. 3 × 2 chunks, 8 image calls; the gate passes on all six; `previews/vs-concept.png` sits next to the concept. The grid is 3 × 3 since: `world.json`, the blockout of the band above and collision for all nine chunks (`previews/map-anomaly-collision.png`); the underground's collision is traced from its painting, and the whole grid is reachable and leavable both ways.
+**Proven on the Hidden Garden (24 Oct, `art/zones/hidden-garden/`), and playable:** the shipped prologue row (`hg-2-0` … `hg-4-0`) on top, and grown under it: the garden cellar under the shed, the campus storm drain under the boardwalk (the game's *IT* room) and, under the jetty, the wrong reflection – girders hanging upside down from the water. 3 × 2 chunks; the gate passes on all six; `previews/vs-concept.png` sits next to the concept. The row below is in the game as `hg-2-1`, `hg-3-1`, `hg-4-1`:
+
+- **The way in is the shed door** you should not open (↑ at the door; the pond stays the prologue's finale). The cellar's stairs door is straight under it and leads back.
+- **Rooms, not open sky:** a region's rows are rooms (`camera.ts roomBounds`). The camera frames only the hero's row and snaps when a door changes it. Parallax scrolls sideways only. Leaves, lily pads and reflections stay where there is sky.
+- **What you find** (docs/03: notes hint, never explain):
+  - Feldversuch Q-7's log sheets: the containment vessel ordered "mascot-shaped, Campus Store, 1.5 ft", and "do not feed the vessel";
+  - a pencil note on the cellar's upper storey, reached by the ladder;
+  - the Stadtentwässerung report at the outlet (the paper boat, the red balloon under the pond);
+  - a string tied to the rail on the drain's high ledge;
+  - the drain's possessed campus rover;
+  - an upper route over the drain's ledge into the reflection's girders.
 
 What the proof taught (rules now):
 
 - **Grow from the art, not the concept.** The first take painted a chunk from its guide with the concept as a reference and got the concept back; a guide alone gets generic fantasy. Grown from an approved neighbour's edge, the model continues the place and follows the guide's rooms.
 - **A neighbour's edge never includes the lens.** The near strip and the blurred foreground are layers; growing from a picture that has them continues the blur.
 - **Up/down seams are texture, not colour:** after joining, `settle` fades each lower chunk into the exact bottom row of the one above (48 rows) – the gate's seam check failed at 29 until it did.
-- **Measure a band against its own concept:** an underground chunk is checked against the anomaly concept (the only one with an underground), not the sunny clean one.
+- **Measure a band against its own concept:** an underground chunk's palette is checked against the anomaly concept's lower half – its flooded maze – not its sunny sky. Grain still compares with the whole picture: a crop scaled to the chunk is enlarged and blurred.
 - **Small story details are props, not repaints:** asked for eyes in a drain pipe, the model painted the pipe out. Details that should blink, appear or vanish (the eyes, the balloon, the paper boat) go to the sprite pipeline.
-- **Collision comes from the painting, not the guide:** the model moves floors and ladders a little (the cellar's water ceiling came out at y 85, the guide said 210), so the grown chunks' floors and ladders are traced from their depth key. A ladder pieced across a seam must keep the same columns, or `world_map` sees two ladders.
-- **Two different rooms meet through a passage:** a plain join left the drain → reflection seam abrupt. A wider window with a brief paints the breach; lean it into the chunk with palette room (`--half 560,48`) – the reflection sits at 0.547 of 0.55 and any repaint near it fails.
+- **Collision comes from the painting, not the guide:** the model moves floors and ladders a little (the cellar's water ceiling came out at y 85, the guide said 210). So the grown chunks' floors and ladders are traced from their depth key, then made walkable as the body meets them:
+  - a floor needs 90 px of headroom;
+  - a ladder is 16+ px wide, and its top keeps the body under the water ceiling;
+  - pieces closer than the body is wide (28 px) are one floor;
+  - a floor runs on to a chunk edge less than 64 px away;
+  - a pool under the feet (64+ px) sinks the floor to its bed, a stream (narrower) is walked through;
+  - a 88–120 px face nobody can jump or pass under (a crate stack) is back wall;
+  - a beam high in the hall is one flat tread;
+  - and only floors the grid's graph reaches survive.
+
+  `terrain.test.ts` walks the row below end to end.
+- **Two different rooms meet through a passage:** a plain join left the drain → reflection seam abrupt (a sunset window under the pond). A wider window with a brief paints the breach: `--half 320,320`. A window that ends at the seam keeps the old edge, so it fixes nothing.
 - **Depth underground has no parallax:** the grown row's masks (`depth_layers.py masks … --all`, `masks/`, `previews/depth-below.png`) are water, play and foreground, everything else the back wall; a `below` chunk writes no sky, far or mid (the pond scenes' refine scattered specks of them). The key says what is navy: only the water on top – asked loosely, the model painted the cellar's dark rooms as water. Keep the better key per chunk (`tmp/boards/<zone>/key-try*/`).
 - **A band grows from what reaches it:** "no trees" in the sky brief cut the big tree's crown flat at the seam; the brief says what continues up from below.
-- **Not done yet:** the band above the pond is grown (`tmp/zones/hidden-garden/`) but not accepted: one join painted a landscape patch into the sky, and the gate's palette, grain and repeat checks compare a sky chunk with the whole concept (whose sky is pale, the shipped row's saturated) – which reference a sky band is measured against is Alexander's call. The ladder from the shed roof up has no art in the level row's sky yet. The clean ⇄ anomaly swap of the lower row.
+- **No band above the pond:** girders over the garden read out of context (Alexander, 24 Oct); the zone grows down, into built campus space.
+- **Not done yet:** the clean ⇄ anomaly swap of the lower row; the IT props (the eyes in the pipe, the balloon, the paper boat) as sprites; Dexter does not come down (he waits at the pond).
 
 ## Growing a stage in four directions
 

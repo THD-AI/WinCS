@@ -1,5 +1,5 @@
 {
-  "hgz-0-1": {
+  "hgz-0-0": {
     "guide": {
       "value": 49.0,
       "limit": 600.0,
@@ -35,18 +35,18 @@
       "limit": 5.0,
       "pass": true
     },
-    "seam hgz-1-1": {
+    "seam hgz-1-0": {
       "value": 9.56,
       "limit": 20.17,
       "pass": true
     },
-    "seam hgz-0-2": {
+    "seam hgz-0-1": {
       "value": 0.0,
       "limit": 13.802,
       "pass": true
     }
   },
-  "hgz-1-1": {
+  "hgz-1-0": {
     "guide": {
       "value": 57.0,
       "limit": 600.0,
@@ -82,23 +82,23 @@
       "limit": 5.0,
       "pass": true
     },
-    "seam hgz-0-1": {
+    "seam hgz-0-0": {
       "value": 9.56,
       "limit": 20.17,
       "pass": true
     },
-    "seam hgz-2-1": {
+    "seam hgz-2-0": {
       "value": 18.885,
       "limit": 22.834,
       "pass": true
     },
-    "seam hgz-1-2": {
-      "value": 0.0,
-      "limit": 12.873,
+    "seam hgz-1-1": {
+      "value": 1.766,
+      "limit": 12.896,
       "pass": true
     }
   },
-  "hgz-2-1": {
+  "hgz-2-0": {
     "guide": {
       "value": 20.0,
       "limit": 600.0,
@@ -134,18 +134,18 @@
       "limit": 5.0,
       "pass": true
     },
-    "seam hgz-1-1": {
+    "seam hgz-1-0": {
       "value": 18.885,
       "limit": 22.834,
       "pass": true
     },
-    "seam hgz-2-2": {
-      "value": 0.0,
-      "limit": 14.726,
+    "seam hgz-2-1": {
+      "value": 2.168,
+      "limit": 14.66,
       "pass": true
     }
   },
-  "hgz-0-2": {
+  "hgz-0-1": {
     "guide": {
       "value": 9.0,
       "limit": 600.0,
@@ -177,7 +177,7 @@
       "pass": true
     },
     "palette": {
-      "value": 0.444,
+      "value": 0.245,
       "limit": 0.55,
       "pass": true
     },
@@ -186,30 +186,30 @@
       "limit": 5.0,
       "pass": true
     },
-    "seam hgz-1-2": {
+    "seam hgz-1-1": {
       "value": 8.538,
       "limit": 20.866,
       "pass": true
     },
-    "seam hgz-0-1": {
+    "seam hgz-0-0": {
       "value": 0.0,
       "limit": 13.802,
       "pass": true
     }
   },
-  "hgz-1-2": {
+  "hgz-1-1": {
     "guide": {
       "value": 23.0,
       "limit": 600.0,
       "pass": true
     },
     "hole": {
-      "value": 191.0,
+      "value": 229.0,
       "limit": 10000.0,
       "pass": true
     },
     "route": {
-      "value": 0.86,
+      "value": 0.851,
       "limit": 0.6,
       "pass": true
     },
@@ -219,17 +219,17 @@
       "pass": true
     },
     "period": {
-      "value": 0.156,
+      "value": 0.146,
       "limit": 0.6,
       "pass": true
     },
     "grain": {
-      "value": 1.02,
+      "value": 1.045,
       "limit": 2.5,
       "pass": true
     },
     "palette": {
-      "value": 0.37,
+      "value": 0.201,
       "limit": 0.55,
       "pass": true
     },
@@ -238,23 +238,23 @@
       "limit": 5.0,
       "pass": true
     },
-    "seam hgz-0-2": {
+    "seam hgz-0-1": {
       "value": 8.538,
       "limit": 20.866,
       "pass": true
     },
-    "seam hgz-2-2": {
-      "value": 13.622,
-      "limit": 27.364,
+    "seam hgz-2-1": {
+      "value": 16.876,
+      "limit": 38.112,
       "pass": true
     },
-    "seam hgz-1-1": {
-      "value": 0.0,
-      "limit": 12.873,
+    "seam hgz-1-0": {
+      "value": 1.766,
+      "limit": 12.896,
       "pass": true
     }
   },
-  "hgz-2-2": {
+  "hgz-2-1": {
     "guide": {
       "value": 13.0,
       "limit": 600.0,
@@ -266,7 +266,7 @@
       "pass": true
     },
     "route": {
-      "value": 0.622,
+      "value": 0.651,
       "limit": 0.6,
       "pass": true
     },
@@ -276,17 +276,17 @@
       "pass": true
     },
     "period": {
-      "value": 0.228,
+      "value": 0.186,
       "limit": 0.6,
       "pass": true
     },
     "grain": {
-      "value": 0.66,
+      "value": 0.681,
       "limit": 0.6,
       "pass": true
     },
     "palette": {
-      "value": 0.547,
+      "value": 0.516,
       "limit": 0.55,
       "pass": true
     },
@@ -295,14 +295,14 @@
       "limit": 5.0,
       "pass": true
     },
-    "seam hgz-1-2": {
-      "value": 13.622,
-      "limit": 27.364,
+    "seam hgz-1-1": {
+      "value": 16.876,
+      "limit": 38.112,
       "pass": true
     },
-    "seam hgz-2-1": {
-      "value": 0.0,
-      "limit": 14.726,
+    "seam hgz-2-0": {
+      "value": 2.168,
+      "limit": 14.66,
       "pass": true
     }
   },

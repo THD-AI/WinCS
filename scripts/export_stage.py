@@ -154,13 +154,18 @@ def verify(region: Path, out: Path) -> list[str]:
             if not pattern:
                 continue
             exported = {layer["id"]: out / region.name / layer["file"] for layer in content["layers"]}
-            rests = {lid: rest(L["rest"], name) for lid, L in config["layers"].items() if L.get("region")}
+            # A chunk below or above the level row has no region-wide plates (manifest() skips them): its own
+            # layers alone rebuild it.
+            rests = {lid: rest(L["rest"], name) for lid, L in config["layers"].items() if L.get("region")} \
+                if chunk["y"] == 0 else {}
             if any(not path.exists() for path in rests.values()):
                 report.append(f"{chunk['id']}.{state} (not checked: its region plates' sources are not in tmp/)")
                 continue
             canvas = Image.new("RGBA", tuple(stage["chunkSize"]), (0, 0, 0, 0))
             for layer_id in config["states"][state]:
                 layer = config["layers"][layer_id]
+                if layer.get("region") and chunk["y"] != 0 or layer_id not in exported and not layer.get("region"):
+                    continue  # not drawn for this chunk (a row away from the level, or a layer it has no pixels in)
                 path = rests[layer_id] if layer.get("region") else exported[layer_id]
                 plate = Image.open(path).convert("RGBA")
                 if layer.get("dy"):

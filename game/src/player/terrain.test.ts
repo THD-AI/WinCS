@@ -81,15 +81,19 @@ describe('terrain: steps, ledges, walls, treads', () => {
 });
 
 const files = import.meta.glob<CollisionData>('../../../art/stages/hidden-garden/*.collision.json', { eager: true, import: 'default' });
-const garden = Object.values(files).sort((a, b) => a.chunk.localeCompare(b.chunk))
-  .map((data, i) => placeCollision(parseCollision(data, data.chunk, 'clean'), [i * 2160, 0]));
+// Placed by grid id (hg-<col>-<row>); the walks below are the level row's – the cellar row under it has its own test.
+const grid = (chunk: string) => chunk.split('-').slice(1).map(Number) as [number, number];
+const placed = Object.values(files).map(data => placeCollision(parseCollision(data, data.chunk, 'clean'),
+  [grid(data.chunk)[0] * 2160, grid(data.chunk)[1] * 720]));
+const garden = placed.filter(c => c.origin[1] === 0).sort((a, b) => a.origin[0] - b.origin[0]);
+const below = placed.filter(c => c.origin[1] === 720).sort((a, b) => a.origin[0] - b.origin[0]);
 const geometry = garden.map(c => c.world);
 const floorBelow = (x: number, y: number) => geometry.flatMap(g => [...g.walk, ...g.oneWay])
   .map(line => heightAt(line, x)?.y).filter((h): h is number => h !== undefined && h >= y - STEP_UP && h <= y + 130);
 
 describe('the Hidden Garden terrain', () => {
   it('types every floor of every chunk', () => {
-    for (const { local } of garden) for (const line of [...local.walk, ...local.oneWay]) for (let i = 1; i < line.length; i++) {
+    for (const { local } of placed) for (const line of [...local.walk, ...local.oneWay]) for (let i = 1; i < line.length; i++) {
       const [a, b] = [line[i - 1], line[i]];
       expect(terrainAt(local, (a[0] + b[0]) / 2, (a[1] + b[1]) / 2), `${local.chunk} ${a}->${b}`).toBeDefined();
     }
@@ -126,6 +130,27 @@ describe('the Hidden Garden terrain', () => {
     }
     expect(b.x).toBeGreaterThanOrEqual(4 * 2160 + 1300);
     expect(jumps).toBeGreaterThanOrEqual(8);
+  });
+  it('walks the cellar row from the cellar to the far end of the wrong reflection, never in the water', () => {
+    expect(below.map(c => c.local.chunk)).toEqual(['hg-2-1', 'hg-3-1', 'hg-4-1']);
+    const rooms = below.map(c => c.world);
+    const start = below[0].origin[0], end = below[2].origin[0] + 2100;
+    const floor = (x: number) => Math.max(...rooms.flatMap(g => g.walk).map(l => heightAt(l, x)?.y ?? -1));
+    const b = body(start + 20, floor(start + 20));
+    const air = jumpState(b.y);
+    let hold = 0, lastX = b.x;
+    const water = rooms.flatMap(g => g.noGo);
+    for (let i = 0; i < 120 * 120 && b.x < end; i++) {
+      if (b.grounded && hold === 0 && Math.abs(b.x - lastX) < 0.01 && i > 0) hold = 0.35;
+      lastX = b.x;
+      jump(b, air, hold > 0, 1 / 120);
+      hold = Math.max(0, hold - 1 / 120);
+      b.vx = WALK_SPEED;
+      stepBody(b, rooms, 1 / 120);
+      expect(water.some(box => overlaps(b, box)), `in the water at x=${b.x.toFixed(0)}`).toBe(false);
+      expect(b.y, `fell through at x=${b.x.toFixed(0)}`).toBeLessThan(1440);
+    }
+    expect(b.x).toBeGreaterThanOrEqual(end);
   });
   it('the birch is a log to jump, not a hill: the slab walker stops at it', () => {
     const b = run(body(1600, 446), geometry, 120);

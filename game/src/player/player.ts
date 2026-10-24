@@ -3,7 +3,7 @@ import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement, RUN_SPEED, WALK_SPEED } from './movement';
 import { jump, jumpState, JUMP_SPEED, landing, LANDING_TIMES, pogo, type LandingTimes } from './jump';
-import { climb, climbFlip, dropThrough, surfaceNear, takeLadderEnd, traversal } from './traversal';
+import { climb, climbFlip, dropThrough, fallLine, surfaceNear, takeLadderEnd, traversal } from './traversal';
 import { catalogue, clipLength, LocomotionAnimation, type Catalogue, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
@@ -71,6 +71,7 @@ export class Player {
   private idleLife = { breath: 0, sway: 0 };
   get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active && !this.dodge.active; }
   get facing() { return this.motion.facing; }
+  private readonly fallLine: number;
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
     private region: string, bosses = new Set<string>(), spawnOverride?: Position) {
     const spawn = spawnOverride ?? chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
@@ -78,6 +79,9 @@ export class Player {
     // stand it on the surface it was meant for.
     this.spawn = { ...spawn, y: surfaceNear(chunks.map(c => c.world), spawn.x, spawn.y) };
     this.body = { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true };
+    // Below the lowest row's bottom (180 px of margin) the hero has fallen out of the world – with rows (rooms)
+    // under the level row, that is no longer y 900.
+    this.fallLine = fallLine(chunks);
     this.life = new Life(this.body, bosses);
     this.air = jumpState(this.body.y);
     this.clips = catalogue(Object.fromEntries(
@@ -174,6 +178,11 @@ export class Player {
     this.guardPush.start(direction); this.body.vx = 0;
     this.motion = { ...movement(), facing: this.motion.facing };
   }
+  /** Through a door: stand on the floor at `position`, every movement state cleared, the sprite there at once. */
+  travel(position: { x: number; y: number }) {
+    this.resetPosition(position);
+    this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y));
+  }
   private resetPosition(position: { x: number; y: number }) {
     this.guardPush.cancel();
     position = { ...position, y: surfaceNear(this.chunks.map(c => c.world), position.x, position.y) };
@@ -258,10 +267,10 @@ export class Player {
       const hazard = hazards.find(box => overlaps(this.body, box));
       // Water is never floor: falling in splashes and puts the hero back on the bank he last stood on.
       const water = geometry.flatMap(g => g.noGo).find(box => box.kind === 'water' && overlaps(this.body, box));
-      const noGo = this.body.y > 900 || geometry.some(g => g.noGo.some(box => overlaps(this.body, box)));
+      const noGo = this.body.y > this.fallLine || geometry.some(g => g.noGo.some(box => overlaps(this.body, box)));
       if (hazard && !bounced) this.resetFromDanger(Number(hazard.damage) || 1);
       else if (noGo) {
-        if (!water && this.body.y > 900) gameEvents.emit('fell-out', { region: this.region,
+        if (!water && this.body.y > this.fallLine) gameEvents.emit('fell-out', { region: this.region,
           position: { x: this.body.x, y: this.body.y }, lastSafe: { x: Math.round(this.life.safe.x), y: Math.round(this.life.safe.y) } });
         if (water) spawnPuff(this.scene, this.body.x, water.y, this.surfaces?.named('water')?.material.puff ?? SPLASH, 'hard-land', 1);
         this.resetFromDanger();

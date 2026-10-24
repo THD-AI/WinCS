@@ -114,3 +114,8 @@ export function climb(body: Body, state: Traversal, geometry: Geometry[], vertic
   }
   return true;
 }
+
+/** The y below which the hero has fallen out of the region: the lowest chunk's bottom and 180 px (was y 900 for one row). */
+export function fallLine(chunks: { origin: readonly [number, number] | number[] }[]): number {
+  return Math.max(0, ...chunks.map(c => c.origin[1])) + 720 + 180;
+}

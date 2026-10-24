@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { stepBody, type Body } from './body';
-import { climb, dropThrough, traversal } from './traversal';
+import { climb, dropThrough, fallLine, traversal } from './traversal';
 import type { CollisionData, Geometry } from '../stage/collision';
 const dt = 1 / 120;
 const world: Geometry = { walk: [[[0, 500], [1000, 500]]], slide: [], oneWay: [[[100, 350], [300, 350]]],
@@ -142,5 +142,12 @@ describe('getting on and off a ladder (Alexander, 24 Oct)', () => {
     const b = body(420), state = traversal();
     climb(b, state, [world], -1, 0, false, dt);
     expect(state.ladder).not.toBeNull(); expect(state.end).toBeNull(); expect(b.y).toBeLessThan(420);
+  });
+});
+
+describe('falling out of the region', () => {
+  it('is below the lowest row: y 900 for one row, 1620 with a row of rooms under it', () => {
+    expect(fallLine([{ origin: [0, 0] }, { origin: [2160, 0] }])).toBe(900);
+    expect(fallLine([{ origin: [0, 0] }, { origin: [4320, 720] }])).toBe(1620);
   });
 });
