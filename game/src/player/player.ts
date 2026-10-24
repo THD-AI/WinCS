@@ -61,7 +61,7 @@ export class Player {
   get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active; }
   get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
-    private region = 'rusty-creek', bosses = new Set<string>(), spawnOverride?: Position) {
+    private region: string, bosses = new Set<string>(), spawnOverride?: Position) {
     const spawn = spawnOverride ?? chunks.flatMap(c => c.world.spawn).find(p => p.kind === 'player') ?? { x: 120, y: 461 };
     // An authored spawn a pixel or two off its walk line would start inside the ground and fall through it:
     // stand it on the surface it was meant for.

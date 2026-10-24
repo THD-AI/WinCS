@@ -230,6 +230,35 @@ flowchart LR
   INPUT --> CHECK["Reference baseline + pure tests<br/>browser front block, rear hit, heavy break"]
 ```
 
+## Tuning – every value in one table ([#156](https://github.com/THD-AI/WinCS/issues/156))
+
+The numbers the game plays with, and where each one lives. Speeds come from the measured stride of the approved cycles (43 px = 1 m); clip timing comes from each atlas's `anims.json`. Change a value in its file, then here.
+
+| Group | Value | Number | Where |
+| --- | --- | --- | --- |
+| Body | hero box | 28 × 76 px | `player/body.ts` `BODY_WIDTH`, `BODY_HEIGHT` |
+| Body | step-up / foothold | 16 px / 8 px | `body.ts` `STEP_UP`, `FOOTHOLD` |
+| Move | walk / run | 2.2 m/s (95 px/s) / 4.6 m/s (198 px/s) | `player/movement.ts` `WALK_SPEED`, `RUN_SPEED` |
+| Move | hold to run after | 0.4 s | `movement.ts` `RUN_DELAY` |
+| Move | ladder climb | 70 px/s | `player/traversal.ts` `CLIMB_SPEED` |
+| Jump | gravity / cut gravity | 1200 / 3600 px/s² | `player/jump.ts` `GRAVITY`, `CUT_GRAVITY` |
+| Jump | tap / hold height | 52 / 96 px | `jump.ts` `TAP_HEIGHT`, `HOLD_HEIGHT` (`JUMP_SPEED` 485) |
+| Jump | coyote / buffer | 0.10 / 0.12 s | `jump.ts` `COYOTE`, `BUFFER` |
+| Feet | sink rate / landing settle | 30 px/s / 1–2 px | `player/grounding.ts`; per material in `surfaces.json` |
+| Life | health | 5 | `combat/life.ts` `MAX_HEALTH` |
+| Life | knockback | 258 px/s for 0.25 s | `life.ts` `KNOCK_SPEED`, `KNOCK_TIME` |
+| Chair | damage per sweep, upswing, slam | 1 | `combat/sweeps.ts`, `combat/overhead.ts` |
+| Chair | sweep reach | 8–33 px ahead, 23–58 px up | `sweeps.ts` `SWEEP_CONTACT` |
+| Chair | guard push | 3 frames (0.25 s) | `combat/guard.ts` `GUARD_PUSH_TIME` |
+| Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
+| Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |
+| Rover | patrol / charge | half walk / run speed, after a 0.5 s tell, within 150 px | `rover.ts` `PATROL_SPEED`, `CHARGE_SPEED`, `TELL_SECONDS`, `SPOT_RANGE` |
+| Crab | health / tell / spot | 4 / 0.6 s / 110 px, stab reach 30 px | `enemies/crab.ts` |
+| Drone | health / tell / dive | 8 / 0.5 s / 380 px/s | `enemies/drone.ts` |
+| Jenny | health / damage | 30 / charge 2, parts 1 | `enemies/jenny.ts` `JENNY_HEALTH`, `CHARGE_DAMAGE`, `PART_DAMAGE` |
+| Jenny | rev / stall | 1 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `STALL_SECONDS` |
+| Jenny's ram | lights, rev | 0.6 + 0.6 s, charge 900 px/s | `enemies/jennyRam.ts` `RAM` |
+
 ## The glitch meter (after Region 1)
 
 Each defeated anomaly charges a 3-segment **glitch meter**. This was Lex's idea, merged with Alexander's Dexter version. **It is not a magic system** (A14): spells would make the game too easy.
