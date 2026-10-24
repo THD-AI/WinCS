@@ -221,6 +221,8 @@ export class Player {
       const noGo = this.body.y > 900 || geometry.some(g => g.noGo.some(box => overlaps(this.body, box)));
       if (hazard && !bounced) this.resetFromDanger(Number(hazard.damage) || 1);
       else if (noGo) {
+        if (!water && this.body.y > 900) gameEvents.emit('fell-out', { region: this.region,
+          position: { x: this.body.x, y: this.body.y }, lastSafe: { x: Math.round(this.life.safe.x), y: Math.round(this.life.safe.y) } });
         if (water) spawnPuff(this.scene, this.body.x, water.y, this.surfaces?.named('water')?.material.puff ?? SPLASH, 'hard-land', 1);
         this.resetFromDanger();
       }

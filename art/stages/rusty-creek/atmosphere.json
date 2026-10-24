@@ -1,0 +1,15 @@
+{
+  "note": "Rusty Creek atmosphere (docs/09, Atmosphere): read by game/src/stage/render.ts. Built things stand still – the girder maze, its supports, the rails and the clean bridge never sway (without this file every layer took the default foliage sway and the maze wobbled like leaves). Only the bank's grass and the foreground foliage move.",
+  "wind": { "base": 0.45, "gust": 0.9, "gustSpeed": 240, "gustLength": 1400, "frequency": 0.55, "direction": -1 },
+  "defaults": { "sway": 0, "reach": 260, "anchor": "base", "foliage": 0, "bob": 0, "blur": 0 },
+  "layers": {
+    "01-distance": { "sway": 0 },
+    "03-bank": { "sway": 1, "reach": 40, "anchor": "top", "foliage": 0.3 },
+    "02-supports": { "sway": 0 },
+    "clean-architecture": { "sway": 0 },
+    "04-water": { "ripple": 1.5, "shimmer": 0.5 },
+    "05-traversal": { "sway": 0 },
+    "06-near-rails": { "sway": 0 },
+    "07-foliage": { "sway": 3.5, "reach": 150, "foliage": 0.15, "bob": 1, "blur": 1.25 }
+  }
+}

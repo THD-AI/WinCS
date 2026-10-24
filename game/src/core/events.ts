@@ -17,6 +17,8 @@ export interface GameEvents {
    * the water renderer reacts by showing the wrong reflection there for `duration` ms (then the frame tears).
    */
   'anomaly-reveal': { id: string; region: string; position: Position; duration: number };
+  /** The hero fell out of the level (below every floor, not into water): debug mode keeps a screenshot (stage/fallCapture.ts). */
+  'fell-out': { region: string; position: Position; lastSafe: Position };
 }
 
 type Listener<T> = (payload: T) => void;

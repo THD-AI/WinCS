@@ -30,11 +30,28 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 | **Act** | J | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
 | ↑ + Act | | | Up attack |
 | ↓ + Act in air | | | Down slam / pogo (bounce off an enemy or hazard) |
-| Menu | Esc / Tab | Start | Pocket computer: map, archive, items (after you get it) |
+| Menu | Esc | Start | The game menu: controls, settings, debug mode, coming soon (pauses the game) |
+| Pocket computer | Tab | Back / Select | Map, archive, items (after you get it) |
 
 The weapon is switched in the pocket computer menu (or ←/→ while the menu is open). The menu key is a system button, like Start, and does not count against "two buttons".
 
 **Open (Lex, A14):** put Jump on ↑ (as in many arcade platformers) and free the second button for a skill – later glide and double jump on the same input. Then interact would move to ↓ or happen on contact. The team decides this once the controller is playable; the table above stays the default until then.
+
+## Menu and debug mode
+
+A ☰ button in the top-right corner, Esc or the pad's Start open the **game menu** and pause the stage (`game/src/ui/menu.ts`, plain DOM over the canvas so it stays crisp and works with mouse, touch and keyboard). Four tabs:
+
+- **Controls** – the table above, for keyboard and gamepad.
+- **Settings** – sound on/off and volume, zoom (the game's own view or 133 / 200 / 286 % wider), full screen.
+- **Debug** – debug mode and its switches (`game/src/core/debug.ts`); the corner line names every switch that is on, so a playtest screenshot records what was showing:
+  - **Layers**: every stage layer by id and z, switched off in all chunks at once; with the **purple backdrop** any hole or seam in a plate behind it shows at once (the hot-dog rule, docs/09).
+  - **Collision**: walk lines, one-way beams, ladders, walls, water, hazards, triggers (the F2 legend).
+  - **Actors**: the hero's body, speed and ground; every rover, crab and drone with its hitbox, facing arrow, sight box (red when it sees the hero), patrol path and turn points, phase and health; Jenny's arena, box, facing and phase; Dexter's position, state and next stop.
+  - **FPS and position**: frame rate, the hero's position and chunk.
+  - **Falls**: falling out of the level (below every floor, not into water) is always recorded – the frame, the position, the last safe spot and the last two seconds of the path. With `npm run dev` it lands in `tmp/falls/` (gitignored, via `game/vite.config.ts`); in a build the Debug tab saves the last one.
+- **Coming soon** – what is next (the stacked zones, the glide, the next regions).
+
+Falling into water is not a fall: the hero splashes and is put back on the bank they last stood on.
 
 ## Movement
 

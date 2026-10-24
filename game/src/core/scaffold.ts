@@ -12,6 +12,9 @@ import { Rovers } from '../enemies/rovers';
 import { JennyBoss } from '../enemies/jennyBoss';
 import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
+import { DebugOverlay, type EnemyLike, type JennyLike, type DexterLike } from '../stage/debugOverlay';
+import { fallCapture } from '../stage/fallCapture';
+import { GameMenu } from '../ui/menu';
 
 // Boot and Preload live in game/src/boot/ (the one loader); Stage receives boot/contract.ts StageData.
 export class Stage extends Phaser.Scene {
@@ -23,12 +26,14 @@ export class Stage extends Phaser.Scene {
   private rovers?: Rovers;
   private triggers?: Triggers;
   private jenny?: JennyBoss;
+  private overlay?: DebugOverlay;
+  private menu?: GameMenu;
   get playerActor() { return this.player; }
   get chair() { return this.combat; }
   constructor() { super('Stage'); }
   create(data: StageData) {
     const stage = drawStage(this, data.manifest, data.state, data.atmosphere);
-    collisionDebug(this, data.collisions);
+    const legend = collisionDebug(this, data.collisions);
     const machine = import.meta.env.DEV && new URLSearchParams(location.search).has('coffee-test')
       ? data.collisions.flatMap(chunk => chunk.world.interact).find(box => box.kind === 'coffee-machine') : undefined;
     const rover = import.meta.env.DEV && new URLSearchParams(location.search).has('rover-test')
@@ -54,6 +59,34 @@ export class Stage extends Phaser.Scene {
     this.triggers = new Triggers(data.collisions, data.manifest.region);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
+    this.overlay = new DebugOverlay(this, stage, legend, data.collisions, {
+      hero: () => this.player?.body,
+      // The overlay only reads plain fields of the models (debugOverlay.ts), whatever drives them.
+      enemies: () => ((this.rovers as unknown as { rows?: { id: string; kind: string; model: EnemyLike }[] })?.rows ?? []),
+      jenny: () => (this.jenny as unknown as { fight?: JennyLike })?.fight,
+      dexter: () => (this.scene.get('Flow') as unknown as { prologue?: { guide?: DexterLike } })?.prologue?.guide,
+    });
+    fallCapture(this, () => this.player?.body);
+    this.menu = new GameMenu(document.body, {
+      pause: paused => { if (paused) this.scene.pause(); else this.scene.resume(); },
+      layers: () => this.overlay?.layers() ?? [],
+      sound: {
+        get muted() { return game.sound.mute; }, get volume() { return game.sound.volume; },
+        setMute: muted => { game.sound.mute = muted; }, setVolume: volume => { game.sound.volume = volume; },
+      },
+    });
+    const game = this.game;
+    const menuKey = () => this.menu?.toggle();
+    this.input.keyboard?.on('keydown-ESC', menuKey);
+    // Esc keeps working while the stage is paused under the menu: the window hears it, not the paused scene.
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape' && this.menu?.isOpen) this.menu.toggle(false); };
+    window.addEventListener('keydown', escape);
+    const startPad = (_pad: Phaser.Input.Gamepad.Gamepad, button: Phaser.Input.Gamepad.Button) => { if (button.index === 9) this.menu?.toggle(); };
+    this.input.gamepad?.on('down', startPad);
+    this.events.once('shutdown', () => {
+      this.input.keyboard?.off('keydown-ESC', menuKey); window.removeEventListener('keydown', escape);
+      this.input.gamepad?.off('down', startPad); this.menu?.destroy(); this.menu = undefined;
+    });
     this.scene.launch('UI');
     // Inspection mode keeps manual panning for annotation review.
     if (import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')) {
@@ -75,6 +108,7 @@ export class Stage extends Phaser.Scene {
     this.jenny?.update(active);
     if (this.player && this.player.life.dead === 0) this.triggers?.emit(this.player.body);
     if (this.player) this.follow?.(this.player.body, active);
+    this.overlay?.update();
   }
 }
 
