@@ -1,7 +1,7 @@
 # 15 – The prologue slice (rebuild)
 
 <!-- nav:start -->
-[← 13 – Production pipeline](13-PRODUCTION-PIPELINE.md) · [Design docs](README.md) · **14 / 15** · [Meetings and voice notes →](meetings/README.md)
+[← 13 – Production pipeline](13-PRODUCTION-PIPELINE.md) · [Design docs](README.md) · **14 / 16** · [16 – Zone design: scale, rooms and story in the space →](16-ZONE-DESIGN.md)
 <!-- nav:end -->
 
 Alexander, Sat 24 Oct ~04:30: the game must run, look and feel like `art/`, from the menu through the Hidden Garden prologue into the anomaly – as one system that works the same locally and in production, not a set of hardcoded scenes. This page is the plan and the contract every workstream builds against. Integration branch: **`slice/prologue`** (main + #154 + #164). Every workstream branches from it and opens a draft PR **into it**; Claude reviews, plays and merges there; `slice/prologue` reaches main on Alexander's word. Progress lives in [prologue-tracker.csv](prologue-tracker.csv).
@@ -132,5 +132,5 @@ What the first build got wrong, in his words' order, and the workstream that own
 | 10 | Hero motion | `game/src/player/animation.ts`, `grounding.ts`, `jump.ts`, `footfall.ts`, `hurt.ts`, hero idle art if needed |
 
 <!-- nav:start -->
-[← 13 – Production pipeline](13-PRODUCTION-PIPELINE.md) · [Design docs](README.md) · **14 / 15** · [Meetings and voice notes →](meetings/README.md)
+[← 13 – Production pipeline](13-PRODUCTION-PIPELINE.md) · [Design docs](README.md) · **14 / 16** · [16 – Zone design: scale, rooms and story in the space →](16-ZONE-DESIGN.md)
 <!-- nav:end -->
