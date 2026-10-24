@@ -23,6 +23,7 @@ import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
 import { CODES, physicalKeys } from './physicalKeys';
 import { Dodge } from './dodge';
+import { Lunge } from '../combat/assist';
 
 /** The splash of a region without a `water` material. */
 const SPLASH: Puff = { sprite: 'splash', shape: 'dust', colors: ['#9cc8f0', '#e8f4ff', '#4f86c6'], count: 8 };
@@ -38,6 +39,8 @@ export class Player {
   /** The dodge-dash (dodge.ts); `dodgeWas` is last frame's button, `ghost` the time to the next after-image. */
   readonly dodge = new Dodge();
   private dodgeWas = false;
+  /** The chair's target-assist nudge (combat/assist.ts), moved through the normal collision. */
+  private nudge = new Lunge();
   private ghost = 0;
   private motion = movement();
   private keys;
@@ -120,6 +123,7 @@ export class Player {
     if (!this.life.hit(amount, this.body.x >= sourceX ? 1 : -1)) return false;
     this.guardPush.cancel();
     this.dodge.cancel();
+    this.nudge.cancel();
     this.interaction.cancel();
     this.hurt.start(amount);
     const position = { x: this.body.x, y: this.body.y };
@@ -161,7 +165,12 @@ export class Player {
     return true;
   }
   pogo(top: number) { this.air = pogo(this.body, top); this.sprite.setPosition(Math.round(this.body.x), top); }
+  /** Target assist (combat/assist.ts): turn to strike the other way. */
+  face(direction: -1 | 1) { this.motion.facing = direction; }
+  /** Target assist: a short nudge of `distance` px (signed), stopped by walls and ledges like walking. */
+  lunge(distance: number) { if (this.canAttack) this.nudge.start(distance); }
   pushGuard(direction: number) {
+    this.nudge.cancel();
     this.guardPush.start(direction); this.body.vx = 0;
     this.motion = { ...movement(), facing: this.motion.facing };
   }
@@ -209,6 +218,8 @@ export class Player {
       }
       dodgePressed = false;
       if (knocked) this.dodge.cancel();
+      if (knocked || this.dodge.active) this.nudge.cancel();
+      const nudge = this.nudge.step(dt);
       const dashing = this.dodge.active;
       const dash = this.dodge.step(dt);
       const pressed = jumpDown && !this.air.wasDown;
@@ -231,6 +242,7 @@ export class Player {
         move(this.motion, axis, dt);
         if (!this.body.sliding) this.body.vx = this.motion.vx;
         jump(this.body, this.air, jumpDown, dt);
+        if (nudge && !this.body.sliding) this.body.vx = nudge / dt;
       }
       if (!climbing) stepBody(this.body, geometry, dt, this.traversal.drop > 0);
       if (this.body.grounded) this.dodge.land();

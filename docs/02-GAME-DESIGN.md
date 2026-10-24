@@ -231,6 +231,19 @@ chair is on the floor in poses 1–2; there the box runs **12–60 px ahead,
 the dust to ~60), a little further than the side swing. A pale streak
 along the floor shows it. In the air, ↓ + Act stays the slam.
 
+### Target assist (24 Oct)
+
+An assist, not a lock-on (`combat/assist.ts`). When a side swing, low
+sweep or up attack starts, the nearest live enemy (rover, crab, drone,
+Jenny while the fight is on) within one body height (76 px) of the body
+is picked if it is up to 1.3× the attack's reach ahead or within 40 px
+behind. An enemy behind turns the hero round; one just out of reach gets
+a nudge of at most 24 px over 0.1 s toward it (aiming 8 px inside the
+reach), moved through the normal wall and ledge collision. A plain tap
+under a drone hovering above the side swing, in the up attack's cone,
+strikes up instead. Nothing steers during a guard or a block, and the
+air slam has no assist.
+
 ### Chair guard implementation (#41)
 
 Plain Act begins the four-pose `chair-block:guard-up` clip immediately.
@@ -289,6 +302,7 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Chair | sweep reach | 12–50 px ahead, floor to 87 px up | `sweeps.ts` `SWEEP_CONTACT` |
 | Chair | up attack / slam reach | −4…64 px, 88–181 px up / 16–56 px ahead | `overhead.ts` `UP_CONTACT`, `SLAM_CONTACT` |
 | Chair | low sweep reach | 12–60 px ahead, 0–51 px up, poses 1–2 of 5 | `combat/lowSweep.ts` `LOW_CONTACT` |
+| Chair | target assist | 1.3× reach ahead, 40 px behind, ±76 px; nudge ≤ 24 px in 0.1 s | `combat/assist.ts` `ASSIST` |
 | Chair | guard push | 3 frames (0.25 s) | `combat/guard.ts` `GUARD_PUSH_TIME` |
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
 | Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |

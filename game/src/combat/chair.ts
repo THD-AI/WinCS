@@ -9,6 +9,8 @@ import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges, attackClick } from './action-input';
 import { lowStreak, swingArc } from './swingFx';
 import { LOW_CONTACT, LowSweep } from './lowSweep';
+import { pickAssist } from './assist';
+import { UP_CONTACT } from './overhead';
 import { CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
@@ -90,6 +92,18 @@ export class ChairCombat {
     scene.events.once('shutdown', () => scene.input.keyboard?.off('keydown-F2', toggle));
     if (import.meta.env.DEV && new URLSearchParams(location.search).has('combat-test')) this.dummy();
   }
+  /**
+   * Target assist (assist.ts) as an attack starts: turn to an enemy just behind, nudge toward one just out of reach.
+   * Never during a guard – a guarded hold never starts an attack.
+   */
+  private assist(kind: 'sweep' | 'low' | 'up', reach: number) {
+    const boxes = [...this.targets.values()].filter(target => target.active?.() !== false).map(target => target.bounds());
+    const pick = pickAssist(this.player.body, this.player.facing, boxes, kind, reach);
+    if (!pick) return undefined;
+    if (pick.turn) this.player.face(pick.direction);
+    if (pick.lunge > 0) this.player.lunge(pick.direction * pick.lunge);
+    return pick;
+  }
   register(target: Damageable) {
     this.targets.set(target.id, target);
     return () => { if (this.targets.get(target.id) === target) this.targets.delete(target.id); };
@@ -140,9 +154,11 @@ export class ChairCombat {
     const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
       this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel(); this.low.cancel();
+      if (up && this.overhead.phase === 'idle') this.assist('up', UP_CONTACT.right);
       if (this.overhead.begin(up ? 'up' : 'slam', this.player.facing)) sound.play('chair-whoosh');
     } else if (this.enabled && this.player.canAttack && pressed && below && this.overhead.phase === 'idle') {
       this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
+      if (!this.low.active) this.assist('low', LOW_CONTACT.reach);
       if (this.low.begin(this.player.facing)) sound.play('chair-whoosh');
     } else if (this.enabled && this.player.canAttack && pressed) {
       this.plainTap = true;
@@ -154,8 +170,13 @@ export class ChairCombat {
     if (released) { tap = this.guard.phase === 'idle' ? this.plainTap : this.guard.release(); this.plainTap = false; }
     if (this.enabled && this.player.canAttack && !this.special && tap && this.overhead.phase === 'idle' && !this.low.active && released) {
       const first = this.sweeps.phase === 'idle';
-      this.sweeps.press(this.player.facing);
-      if (first) sound.play('chair-whoosh');
+      // A tap under a hovering drone strikes up instead (assist.ts).
+      if (first && this.assist('sweep', SWEEP_CONTACT.reach)?.up) {
+        if (this.overhead.begin('up', this.player.facing)) sound.play('chair-whoosh');
+      } else {
+        this.sweeps.press(this.player.facing);
+        if (first) sound.play('chair-whoosh');
+      }
     }
     if (released) this.special = false;
     this.wasDown = down;
