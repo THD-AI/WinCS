@@ -1,5 +1,5 @@
 {
-  "note": "Rules run in order; the last rule that claims a pixel wins. Sky, far and mid come from masks of the model's depth key (scripts/depth_layers.py, #142); the exact rectangles and colours for water, path and foreground follow and win. The grown chunks hg-0-0 to hg-3-0 take every band from their key's masks (masks --all); the pond keeps its exact rules for path, water and foreground.",
+  "note": "Rules run in order; the last rule that claims a pixel wins. Sky, far and mid come from masks of the model's depth key (scripts/depth_layers.py, #142); the exact rectangles and colours for water, path and foreground follow and win. The grown chunks hg-0-0 to hg-3-0 take every band from their key's masks (masks --all); the pond keeps its exact rules for path, water and foreground. 06-near is the grass strip painted in front of the trail (depth_layers.py near); fills/<chunk>.<layer>.png is what a scroll-1 layer shows behind the near strip and the foreground (depth_layers.py under; split_layers.py puts it under the nearer layers).",
   "chunks": {
     "hg-0-0": {
       "states": {
@@ -26,6 +26,10 @@
         {
           "layer": "05-play",
           "alpha": "masks/hg-0-0.05-play.png"
+        },
+        {
+          "layer": "06-near",
+          "alpha": "masks/hg-0-0.06-near.png"
         },
         {
           "layer": "07-foreground",
@@ -60,6 +64,10 @@
           "alpha": "masks/hg-1-0.05-play.png"
         },
         {
+          "layer": "06-near",
+          "alpha": "masks/hg-1-0.06-near.png"
+        },
+        {
           "layer": "07-foreground",
           "alpha": "masks/hg-1-0.07-foreground.png"
         }
@@ -92,6 +100,10 @@
           "alpha": "masks/hg-2-0.05-play.png"
         },
         {
+          "layer": "06-near",
+          "alpha": "masks/hg-2-0.06-near.png"
+        },
+        {
           "layer": "07-foreground",
           "alpha": "masks/hg-2-0.07-foreground.png"
         }
@@ -122,6 +134,10 @@
         {
           "layer": "05-play",
           "alpha": "masks/hg-3-0.05-play.png"
+        },
+        {
+          "layer": "06-near",
+          "alpha": "masks/hg-3-0.06-near.png"
         },
         {
           "layer": "07-foreground",
@@ -173,6 +189,10 @@
             1323,
             478
           ]
+        },
+        {
+          "layer": "06-near",
+          "alpha": "masks/hg-4-0.06-near.png"
         },
         {
           "layer": "07-foreground",
