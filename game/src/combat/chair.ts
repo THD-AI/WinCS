@@ -7,6 +7,8 @@ import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges } from './action-input';
+import { swingArc } from './swingFx';
+import { CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
 const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
@@ -20,12 +22,17 @@ export class ChairCombat {
   readonly guard = new Guard();
   private targets = new Map<string, Damageable>();
   private key: Phaser.Input.Keyboard.Key;
+  /** The second attack bind (playtest 24 Oct): X, for players on the arrow keys. */
+  private altKey: Phaser.Input.Keyboard.Key;
+  private physical: { any(codes: readonly string[]): boolean };
   private wasDown = false;
   private special = false;
   private plainTap = false;
   private directions;
   private previousY: number;
   private debug: Phaser.GameObjects.Graphics;
+  /** The visible swing: an arc in front of the hero, and the flash of the overhead strike (swingFx.ts). */
+  private trail: Phaser.GameObjects.Graphics;
   private label: Phaser.GameObjects.Text;
   private visible = false;
   enabled: boolean;
@@ -33,6 +40,8 @@ export class ChairCombat {
     // Armed once the hero picked the chair up (chairPickup.ts), in every region after that.
     this.enabled = carriesChair(scene);
     this.key = scene.input.keyboard!.addKey('J');
+    this.altKey = scene.input.keyboard!.addKey('X');
+    this.physical = physicalKeys(scene);
     this.directions = scene.input.keyboard!.addKeys('W,S,UP,DOWN') as Record<string, Phaser.Input.Keyboard.Key>;
     this.previousY = player.body.y;
     const oldHazards = player.onHazards;
@@ -56,6 +65,7 @@ export class ChairCombat {
     };
     scene.events.once('shutdown', () => { player.onGuard = oldGuard; });
     this.debug = scene.add.graphics().setDepth(10003);
+    this.trail = scene.add.graphics().setDepth(105).setBlendMode(Phaser.BlendModes.ADD);
     this.label = scene.add.text(20, 260, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setDepth(10004).setScrollFactor(0).setVisible(false);
     const toggle = () => { this.visible = !this.visible; this.label.setVisible(this.visible); };
@@ -67,12 +77,17 @@ export class ChairCombat {
     this.targets.set(target.id, target);
     return () => { if (this.targets.get(target.id) === target) this.targets.delete(target.id); };
   }
+  /** A landed hit: a white impact ring and a burst of sparks at the target, with the hit sound. */
   private spark(box: Rect) {
     sound.play('chair-hit');
-    for (let i = 0; i < 6; i++) {
-      const pixel = this.scene.add.rectangle(box.x + box.w / 2, box.y + box.h / 2, 3, 2, 0xfff4cb).setDepth(120);
-      this.scene.tweens.add({ targets: pixel, x: pixel.x - 12 + i * 5, y: pixel.y - 14 + i % 3 * 8,
-        alpha: 0, duration: 140, onComplete: () => pixel.destroy() });
+    const x = box.x + box.w / 2, y = box.y + box.h / 2;
+    const ring = this.scene.add.circle(x, y, 10, 0xffffff, 0.85).setDepth(120).setBlendMode(Phaser.BlendModes.ADD);
+    this.scene.tweens.add({ targets: ring, scale: 2.4, alpha: 0, duration: 160, ease: 'Quad.easeOut', onComplete: () => ring.destroy() });
+    for (let i = 0; i < 10; i++) {
+      const angle = (i / 10) * Math.PI * 2;
+      const pixel = this.scene.add.rectangle(x, y, 4, 3, i % 3 ? 0xfff4cb : 0xffc35a).setDepth(120);
+      this.scene.tweens.add({ targets: pixel, x: x + Math.cos(angle) * (18 + (i % 3) * 6), y: y + Math.sin(angle) * (14 + (i % 2) * 6),
+        alpha: 0, duration: 200, onComplete: () => pixel.destroy() });
     }
   }
   private dummy() {
@@ -98,11 +113,13 @@ export class ChairCombat {
     this.guard.step(milliseconds / 1000);
     if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const down = this.key.isDown || !!pad?.X;
-    const keyReleased = Phaser.Input.Keyboard.JustUp(this.key);
-    const { pressed, released } = actionEdges(down, this.wasDown, Phaser.Input.Keyboard.JustDown(this.key), keyReleased);
-    const up = this.directions.W.isDown || this.directions.UP.isDown || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
-    const below = this.directions.S.isDown || this.directions.DOWN.isDown || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
+    const down = this.key.isDown || this.altKey.isDown || this.physical.any(CODES.attack) || !!pad?.X;
+    // Both edge checks run every frame so neither key keeps a stale Just-flag.
+    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean);
+    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean);
+    const { pressed, released } = actionEdges(down, this.wasDown, justDown, justUp);
+    const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
+    const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
       this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
       if (this.overhead.begin(up ? 'up' : 'slam', this.player.facing)) sound.play('chair-whoosh');
@@ -146,6 +163,14 @@ export class ChairCombat {
     }
     if (this.overhead.pose) this.player.sprite.setTexture('chair-overhead', this.overhead.pose).setFlipX(this.overhead.direction < 0);
     if (this.guard.pose) this.player.sprite.setTexture('chair-block', this.guard.pose).setFlipX(this.guard.direction < 0);
+    this.trail.clear();
+    const arc = swingArc(this.sweeps.phase, this.sweeps.frame, this.sweeps.direction, this.player.body);
+    if (arc) {
+      this.trail.lineStyle(arc.width, 0xfff4cb, 0.55 * arc.alpha).beginPath().arc(arc.x, arc.y, arc.radius, arc.start, arc.end).strokePath();
+      this.trail.lineStyle(3, 0xffffff, arc.alpha).beginPath().arc(arc.x, arc.y, arc.radius + arc.width / 2, arc.start, arc.end).strokePath();
+    }
+    const strike = this.overhead.box(this.player.body, this.previousY);
+    if (strike) this.trail.fillStyle(0xfff4cb, 0.35).fillRoundedRect(strike.x, strike.y, strike.w, strike.h, 6);
     this.debug.clear();
     const box = this.sweeps.box(this.player.body) ?? this.overhead.box(this.player.body, this.previousY);
     if (this.visible && box) this.debug.lineStyle(2, 0xff7835).strokeRect(box.x, box.y, box.w, box.h);

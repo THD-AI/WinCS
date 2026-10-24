@@ -6,7 +6,11 @@ import type { Rect } from '../combat/sweeps';
  * flashing (the tell) and dives at you, then climbs back. Eight chair hits – in Region 1 you mostly avoid it.
  * Frames from enemy-drone.anims.json (hover 4, dive 3, crash 5, 12 fps).
  */
-export const DRONE_WIDTH = 45, DRONE_HEIGHT = 22, DRONE_HEALTH = 8;
+/**
+ * Its box is the drawn quadcopter: hover-00's alpha bounds are 44 x 45 px, feet at the pivot (measured 24 Oct; the
+ * old 22 px box covered only the lower half, so chair hits on the body you see went through – playtest M1).
+ */
+export const DRONE_WIDTH = 45, DRONE_HEIGHT = 45, DRONE_HEALTH = 8;
 export const DRONE_SPEED = 70, DRONE_TELL = 0.5, DIVE_SPEED = 380, CLIMB_SPEED = 160;
 /** It dives when the hero is this close beneath it (px, horizontally). */
 export const DRONE_SPOT = 50;

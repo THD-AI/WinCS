@@ -1,6 +1,15 @@
 import type { Box, Geometry } from '../stage/collision';
 import type { Body } from './body';
 export const CLIMB_SPEED = 70;
+/**
+ * One rung step of the climb (px): the distance one pass of the 4-frame, 8 fps ladder clip covers at CLIMB_SPEED.
+ * The climb sprite mirrors every step, so the arms alternate up the ladder without new art (playtest 24 Oct, M2).
+ */
+export const RUNG_STEP = (CLIMB_SPEED * 4) / 8;
+/** Whether the climb sprite is mirrored with the feet at height `y`: it flips each rung step, and holds when he stops. */
+export function climbFlip(y: number): boolean {
+  return ((Math.floor(y / RUNG_STEP) % 2) + 2) % 2 === 1;
+}
 export interface Traversal { ladder: Box | null; drop: number; detach: number }
 export const traversal = (): Traversal => ({ ladder: null, drop: 0, detach: 0 });
 

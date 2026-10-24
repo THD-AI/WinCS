@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { arenaFrom, JENNY_BOX, JENNY_HEALTH, JennyFight, REV_SECONDS } from './jenny';
+import { arenaFrom, JENNY_BOX, JENNY_HEALTH, JennyFight, REV_SECONDS, TURN_REV_SECONDS } from './jenny';
 
 // boss-jenny*.anims.json as exported (approved 24 Oct).
 const CLIPS = {
@@ -62,7 +62,16 @@ describe('Jenny', () => {
     while ((fight.phase as string) !== 'charge') fight.step(1 / 60);
     const start = fight.facing;
     while (fight.facing === start) fight.step(1 / 60); // turned at the wall instead of crashing
+    // The turn is told: she stops and revs again (shorter) before the second charge, never reversing at full speed.
+    expect(fight.phase).toBe('rev');
+    const x = fight.x;
+    let revved = 0;
+    while ((fight.phase as string) === 'rev') { fight.step(1 / 60); revved += 1 / 60; }
     expect(fight.phase).toBe('charge');
+    expect(revved).toBeCloseTo(TURN_REV_SECONDS, 1);
+    expect(fight.x).toBeCloseTo(x, 0);
+    while ((fight.phase as string) === 'charge') fight.step(1 / 60);
+    expect(fight.phase).toBe('crash'); // the second charge crashes
   });
 
   it('stalls at 0, fires once, and stays beaten through a reset', () => {

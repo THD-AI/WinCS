@@ -68,3 +68,15 @@ describe('vertical traversal', () => {
     }
   });
 });
+
+import { climbFlip as flip, RUNG_STEP as STEP } from './traversal';
+describe('alternating climb (playtest 24 Oct, M2)', () => {
+  it('mirrors the climb sprite every rung step, and holds still when he stops', () => {
+    expect(STEP).toBe(35);
+    expect(flip(0)).toBe(false);
+    expect(flip(STEP)).toBe(true);
+    expect(flip(2 * STEP)).toBe(false);
+    expect(flip(STEP + 10)).toBe(flip(STEP + 20));
+    expect(flip(-1)).toBe(true);
+  });
+});

@@ -23,11 +23,11 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 
 | Input | Keyboard | Gamepad | Action |
 | --- | --- | --- | --- |
-| ← → | A / D, arrows | Stick, D-pad | Walk; run after 0.4 s held |
+| ← → | A / D, arrows (read by key position, any layout) | Stick, D-pad | Walk; run after 0.4 s held |
 | ↑ | W, ↑ | Up | Interact (sign, coffee machine, Dexter, pickup); climb ladder |
 | ↓ | S, ↓ | Down | Drop through one-way platform; climb down |
 | **Jump** | Space / K | A / Cross | Jump. Hold for higher (variable height) |
-| **Act** | J | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
+| **Act** | J, X | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
 | ↑ + Act | | | Up attack |
 | ↓ + Act in air | | | Down slam / pogo (bounce off an enemy or hazard) |
 | Menu | Esc | Start | The game menu: controls, settings, debug mode, coming soon (pauses the game) |
@@ -139,6 +139,7 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 | **Sign pole** (yellow town-sign on a steel pole) | Campus (region 3) | Heavy forward thrust, long reach; breaks guards | Slow, strong |
 
 - Every hit gets hit-stop, a pixel impact burst, a short knockback and a sound.
+- Every swing is visible (playtest 24 Oct): a pale arc sweeps in front of the hero around the shoulder, brightest on the contact frame (`combat/swingFx.ts`); the up attack and slam flash their strike box; a landed hit adds a white impact ring and a ring of sparks.
 - Enemies show a 0.4–0.6 s **tell** (flash, rear-up, lidar turns red) before attacking.
 - **Guard:** blocks frontal damage and pushes you back a little. A heavy hit (Jenny) breaks the guard.
 
@@ -270,10 +271,13 @@ The numbers the game plays with, and where each one lives. Speeds come from the 
 | Chair | pick-up hold | 0.6 s | `combat/chairPickup.ts` `SHOW_SECONDS` |
 | Rover | health / box | 3 / 31 × 25 px | `enemies/rover.ts` |
 | Rover | patrol / charge | half walk / run speed, after a 0.5 s tell, within 150 px | `rover.ts` `PATROL_SPEED`, `CHARGE_SPEED`, `TELL_SECONDS`, `SPOT_RANGE` |
-| Crab | health / tell / spot | 4 / 0.6 s / 110 px, stab reach 30 px | `enemies/crab.ts` |
-| Drone | health / tell / dive | 8 / 0.5 s / 380 px/s | `enemies/drone.ts` |
+| Rover, crab | pause at a patrol end | 0.3 s idle, then turn | `rover.ts` `TURN_SECONDS` |
+| Small enemies | hit shake / defeat shake | 70 ms 0.003 / 140 ms 0.006 | `enemies/rovers.ts` `MOB_SHAKE` |
+| Crab | health / tell / spot / box | 4 / 0.6 s / 110 px, stab reach 30 px; creeps in and rears up within 70 px / 60 × 36 px | `enemies/crab.ts` (`CRAB_STRIKE`) |
+| Drone | health / tell / dive / box | 8 / 0.5 s / 380 px/s / 45 × 45 px (the drawn body) | `enemies/drone.ts` |
 | Jenny | health / damage | 30 / charge 2, parts 1 | `enemies/jenny.ts` `JENNY_HEALTH`, `CHARGE_DAMAGE`, `PART_DAMAGE` |
-| Jenny | rev / stall | 1 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `STALL_SECONDS` |
+| Jenny | rev / turn rev / stall | 1 s / 0.5 s / 1.2 s | `jenny.ts` `REV_SECONDS`, `TURN_REV_SECONDS`, `STALL_SECONDS` |
+| Jenny | stun warning | last 0.7 s blink fast | `jenny.ts` `STUN_WARNING` |
 | Jenny's ram | lights, rev | 0.6 + 0.6 s, charge 900 px/s | `enemies/jennyRam.ts` `RAM` |
 
 ## The glitch meter (after Region 1)

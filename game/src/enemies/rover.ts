@@ -7,6 +7,8 @@ export const ROVER_WIDTH = 31, ROVER_HEIGHT = 25;
 export const TELL_SECONDS = 0.5, PATROL_SPEED = WALK_SPEED / 2, CHARGE_SPEED = RUN_SPEED;
 /** How far ahead a rover's lidar spots the hero (px): its own range, no longer tied to the hero's walk speed. */
 export const SPOT_RANGE = 150;
+/** At a patrol end a rover (and a crab) stops this long, idling, before it turns back: no instant flip-flop. */
+export const TURN_SECONDS = 0.3;
 export type RoverPhase = 'patrol' | 'tell' | 'charge' | 'recover' | 'hit' | 'wreck' | 'dead';
 export class Rover {
   x: number;
@@ -16,10 +18,12 @@ export class Rover {
   direction: -1 | 1 = 1;
   elapsed = 0;
   private hitDirection = 1;
+  /** Seconds left idling at a patrol end before it turns. */
+  turning = 0;
   constructor(readonly spawn: Position, readonly patrol: [number, number]) {
     this.x = spawn.x; this.y = spawn.y;
   }
-  private enter(phase: RoverPhase) { this.phase = phase; this.elapsed = 0; }
+  private enter(phase: RoverPhase) { this.phase = phase; this.elapsed = 0; this.turning = 0; }
   reset() { this.x = this.spawn.x; this.health = 3; this.direction = 1; this.enter('patrol'); }
   get bounds() { return { x: this.x - ROVER_WIDTH / 2, y: this.y - ROVER_HEIGHT, w: ROVER_WIDTH, h: ROVER_HEIGHT }; }
   hit(damage: number, direction: number) {
@@ -41,9 +45,14 @@ export class Rover {
         case 'patrol':
           if (hero && (hero.x - this.x) * this.direction > 0 && Math.abs(hero.x - this.x) <= SPOT_RANGE
             && Math.abs(hero.y - this.y) <= BODY_HEIGHT) { this.enter('tell'); break; }
+          if (this.turning > 0) {
+            this.turning -= dt;
+            if (this.turning <= 1e-9) { this.turning = 0; this.direction = this.x <= this.patrol[0] ? 1 : -1; }
+            break;
+          }
           this.x += this.direction * PATROL_SPEED * dt;
           if (this.x <= this.patrol[0] || this.x >= this.patrol[1]) {
-            this.x = Math.max(this.patrol[0], Math.min(this.patrol[1], this.x)); this.direction = this.x <= this.patrol[0] ? 1 : -1;
+            this.x = Math.max(this.patrol[0], Math.min(this.patrol[1], this.x)); this.turning = TURN_SECONDS;
           }
           break;
         case 'tell': if (this.elapsed + 1e-9 >= TELL_SECONDS) this.enter('charge'); break;
@@ -70,6 +79,6 @@ export class Rover {
     if (this.phase === 'hit') return 'idle-00'; // The renderer flashes the living body white.
     if (this.phase === 'tell') return `charge-0${this.elapsed + 1e-9 < TELL_SECONDS / 2 ? 0 : 1}`;
     if (this.phase === 'charge') return `charge-0${2 + frame % 2}`;
-    return this.phase === 'patrol' ? `drive-${String(frame % 6).padStart(2, '0')}` : `idle-${String(frame % 4).padStart(2, '0')}`;
+    return this.phase === 'patrol' && !this.turning ? `drive-${String(frame % 6).padStart(2, '0')}` : `idle-${String(frame % 4).padStart(2, '0')}`;
   }
 }
