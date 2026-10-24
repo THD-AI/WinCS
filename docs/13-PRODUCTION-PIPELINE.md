@@ -8,6 +8,8 @@ How every image, layer, sprite, animation, stage and collision box gets from a p
 
 ## The two lanes
 
+> **Since 24 Oct, one owner** ([decision 42](11-DECISIONS.md)). Codex has stopped (no credits left); Alexander + Claude own both columns below, which stay as the map of modules and folders. Codex's stack #111 → #149 is the base for the systems and is reworked on top where it misses the art ([#156](https://github.com/THD-AI/WinCS/issues/156)); the merge plan is [#161](https://github.com/THD-AI/WinCS/issues/161). The rules in §6 about not touching the other lane's stacks no longer apply.
+
 | | Lane A – art and integration | Lane B – game code |
 | --- | --- | --- |
 | Person | Alexander ([arudaev](https://github.com/arudaev)) | Vatsal ([Vatsal2005](https://github.com/Vatsal2005)) |
@@ -243,13 +245,21 @@ gitGraph
 
 ## Who does what next
 
-Assignments live on the board ([Open work](https://github.com/orgs/THD-AI/projects/7/views/1), filter by assignee). The first PRs for each lane:
+From 24 Oct everything is Alexander + Claude ([decision 42](11-DECISIONS.md)). The order to the jury (Sat 11:30), each an issue on the board:
 
-| Lane | First | Then |
-| --- | --- | --- |
-| B · Vatsal + Codex | [M0-S1 #22](https://github.com/THD-AI/WinCS/issues/22) scaffold with `core/events.ts` and placeholders · [M1-S10 #92](https://github.com/THD-AI/WinCS/issues/92) Tiled converter | M1-S6 loader → M1-S1 walk/run → M1-S2 jump → slopes, ladders → M2 combat and enemies |
-| A · Alexander + Claude | [M0-S4 #61](https://github.com/THD-AI/WinCS/issues/61) export_atlas · [M1-S8 #60](https://github.com/THD-AI/WinCS/issues/60) hero movement sheets | M0-S6 layer split → hurt, chair, enemy, Dexter, Jenny sheets → Hidden Garden chunks → story, HUD |
-| Lex | [M1-S7 #55](https://github.com/THD-AI/WinCS/issues/55) Rusty Creek collision in Tiled | M3-S2 Hidden Garden collision → M4-S3 encounters |
+```mermaid
+flowchart LR
+  M["#161 merge plan<br/>Codex stack → main"] --> F["#156 movement + combat feel<br/>timing from anims.json,<br/>speeds from the art"]
+  M --> R["#35 / #155 route<br/>garden → creek → maze"]
+  R --> J["#57 Jenny's fight<br/>→ boss-defeated → ending"]
+  A["#158 asset system<br/>inventory → generate → check"] --> L["#159 readable at 1x"]
+  A --> C["#157 Region 1 rebuilt<br/>from the direction"]
+  S["#160 story arc"] --> J
+  F --> P["#73 playtest"]
+  J --> P
+  C --> P
+  P --> D["#74 freeze + deploy → #75 demo"]
+```
 
 <!-- nav:start -->
 [← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 14** · [Meetings and voice notes →](meetings/README.md)
