@@ -24,9 +24,10 @@ describe('surfaces', () => {
   it('looks up the authored material by world x, chunk-local ranges and y bands', () => {
     expect(map.at(200, 460).name).toBe('stone'); // gate pavers
     expect(map.at(1200, 470).name).toBe('grass');
-    expect(map.at(1600, 440).name).toBe('wood'); // birch log
+    expect(map.at(1700, 388).name).toBe('wood'); // on the birch log (y band)
+    expect(map.at(1700, 446).name).toBe('stone'); // the slab beside it
     expect(map.at(2160 + 550, 449).name).toBe('earth'); // under the bridge (y band)
-    expect(map.at(2160 + 550, 290).name).toBe('stone'); // the bridge above it
+    expect(map.at(2160 + 550, 300).name).toBe('gravel'); // the path above it
     expect(map.at(4320 + 1000, 146).name).toBe('wood'); // terrace roof
     expect(map.at(4320 + 1000, 304).name).toBe('stone');
     expect(map.at(8640 + 1200, 441).name).toBe('wood'); // pier
@@ -99,7 +100,7 @@ describe('footfalls', () => {
     expect(puffSprites('step', 1)).toEqual([{ dx: -6, flip: true }]);
     expect(puffSprites('step', -1)).toEqual([{ dx: 6, flip: false }]);
     expect(puffSprites('hard-land', 1).map(s => s.dx)).toEqual([-14, 14]);
-    for (const m of Object.values(garden.materials)) expect(['dust', 'grass', 'leaf-kick']).toContain(m.puff?.sprite);
+    for (const m of Object.values(garden.materials)) expect(['dust', 'grass', 'leaf-kick', 'splash']).toContain(m.puff?.sprite);
   });
 });
 
