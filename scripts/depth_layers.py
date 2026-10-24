@@ -406,11 +406,17 @@ def region_layers(region: Path) -> list[Path]:
     """Quilt every layer marked "region" in export.json from its chunks' "rest" plates into one plate each."""
     export = json.loads((region / "export.json").read_text(encoding="utf-8"))
     chunks = sorted(export["chunks"].items(), key=lambda kv: kv[1]["x"])
+    aliases = json.loads((region / export["aliases"]).read_text(encoding="utf-8")).get("aliases", {})         if export.get("aliases") else {}
+
+    def rest(layer: dict, chunk_id: str, chunk: dict) -> Path:
+        """A chunk's own plate for a region layer; a shared plate (an alias, "= left") resolves to its file."""
+        path = ROOT / layer["rest"].format(name=chunk.get("name", chunk_id))
+        return path if path.exists() or path.name not in aliases else path.parent / aliases[path.name]
     written = []
     for layer_id, layer in export["layers"].items():
         if not layer.get("region"):
             continue
-        plates = [Image.open(ROOT / layer["rest"].format(name=c)).convert("RGBA") for c, _ in chunks]
+        plates = [Image.open(rest(layer, c, chunk)).convert("RGBA") for c, chunk in chunks]
         plate = region_plate(plates, layer["scroll"], carry=layer.get("carry", False))
         # A preview-free game plate: 256 colours keep it small; --verify checks the chunks' own plates ("rest").
         alpha = plate.getchannel("A")
@@ -420,6 +426,7 @@ def region_layers(region: Path) -> list[Path]:
         # factor then shows exactly the plate's column the camera is over, with any loader that places
         # layers at their chunk's origin - and no file is wider than a chunk.
         w, n = plates[0].width, len(plates)
+        (region / "layers").mkdir(exist_ok=True)
         for old in (region / "layers").glob(f"{region.name}.{layer_id}.*.png"):
             old.unlink()
         for j in range(min(n, -(-plate.width // w))):

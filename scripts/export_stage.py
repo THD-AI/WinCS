@@ -116,6 +116,12 @@ def verify(region: Path, out: Path) -> list[str]:
 
     config = json.loads((region / "export.json").read_text(encoding="utf-8"))
     stage = json.loads((out / region.name / "stage.json").read_text(encoding="utf-8"))
+    aliases = json.loads((region / config["aliases"]).read_text(encoding="utf-8")).get("aliases", {})         if config.get("aliases") else {}
+
+    def rest(pattern: str, name: str) -> Path:
+        path = ROOT / pattern.format(name=name)
+        return path if path.exists() or path.name not in aliases else path.parent / aliases[path.name]
+
     report = []
     for chunk in stage["chunks"]:
         name = config["chunks"][chunk["id"]].get("name", chunk["id"])
@@ -124,7 +130,7 @@ def verify(region: Path, out: Path) -> list[str]:
             if not pattern:
                 continue
             exported = {layer["id"]: out / region.name / layer["file"] for layer in content["layers"]}
-            rests = {lid: ROOT / L["rest"].format(name=name) for lid, L in config["layers"].items() if L.get("region")}
+            rests = {lid: rest(L["rest"], name) for lid, L in config["layers"].items() if L.get("region")}
             if any(not path.exists() for path in rests.values()):
                 report.append(f"{chunk['id']}.{state} (not checked: its region plates' sources are not in tmp/)")
                 continue
