@@ -1,15 +1,20 @@
+import { RUN_SPEED, WALK_SPEED } from '../player/movement';
+
 /**
- * Dexter leading the first quest (docs/03 "Prologue", #50): he sits on the bench, hops off when the hero walks
- * up, and waddles ahead along the walk lines, stopping at each waypoint to look back until the hero is close.
- * He hops where the route climbs or breaks, points up at the shed roof, and ends at the jetty pointing at the
- * water. Pure – positions in stage px, time in ms – so it is tested without Phaser.
+ * Dexter leading the first quest (docs/03 "Prologue", #50 #160): he sits on the bench, looks up and bows when
+ * the hero walks in through the gate, hops off, and then LEADS – he keeps a few plush-lengths ahead of the hero
+ * at the hero's own pace, hops ahead when the hero closes in and scampers when the hero runs at him, so he is
+ * never overtaken. Only when the hero falls far behind (or dawdles at a waypoint) does he stop, look back,
+ * beckon, and – left long enough – sweat. He points up at the shed roof on the way and ends at the jetty.
+ * Pure – positions in stage px, time in ms – so it is tested without Phaser. The route is read from the walk
+ * lines at runtime (they may be re-authored); every distance below is in plush-lengths or metres.
  */
 export type Pt = [number, number];
 export interface Position { x: number; y: number }
 
-export type GuideState = 'sit' | 'hop-off' | 'lead' | 'wait' | 'point' | 'at-pond';
-/** `sit` on the bench, `look` back once on arriving at a stop, then `wait` (or `beckon` when the hero is far). */
-export type GuideAnim = 'sit' | 'look' | 'wait' | 'hop' | 'walk' | 'point' | 'beckon';
+export type GuideState = 'sit' | 'wake' | 'hop-off' | 'lead' | 'wait' | 'point' | 'at-pond';
+/** `look` back on stopping, then `wait` with `beckon`/`sweat` fidgets; `run` is the walk clip played fast. */
+export type GuideAnim = 'sit' | 'look' | 'bow' | 'wait' | 'hop' | 'walk' | 'run' | 'point' | 'beckon' | 'sweat';
 
 /** A stop along the route, from a `dexter-waypoint` interact box: x is the box centre. */
 export interface Stop { id: string; x: number; act: 'wait' | 'point' | 'pond' }
@@ -24,27 +29,65 @@ export interface GuideSetup {
   lines: Pt[][];
 }
 
+/** The stage's scale (docs/09: the 76 px hero is 1.83 m) and Dexter's height in it (docs/03: a 27 px plush). */
+export const PX_PER_M = 43;
+export const PLUSH = 27;
+/** His hop clip: dexter `hop`, 4 frames at 12 fps. */
+const HOP_CLIP = (4 / 12) * 1000;
+
 export const GUIDE = {
-  /** Waddle speed (px/s): a little slower than the hero's 153 px/s walk, so he stays just ahead. */
-  speed: 115,
-  /** When the hero overtakes him he scurries to get ahead again. */
-  scurry: 230,
-  /** He moves on once the hero is this close (px)… */
-  near: 170,
-  /** …and stops to look back when the hero falls this far behind while he leads. */
-  far: 420,
-  /** Beyond this distance he beckons instead of just looking. */
-  beckonAt: 230,
-  /** Minimum look-back at a stop (ms) – the first one, off the bench, lasts longer. */
-  minWait: 650,
-  firstWait: 1100,
+  /** He keeps this far ahead of the hero (px): four plush-lengths, ~2.5 m. */
+  lead: 4 * PLUSH,
+  /** The hero closing within this (three plush-lengths) makes him hop ahead. */
+  hopGap: 3 * PLUSH,
+  /** Inside two plush-lengths he drops everything and scampers at full speed. */
+  scamper: 2 * PLUSH,
+  /** He stops to look back when the hero is this far behind (8 m)… */
+  far: 8 * PX_PER_M,
+  /** …and leads on once the hero is back within 6 m. */
+  resume: 6 * PX_PER_M,
+  /** At a `wait` waypoint he pauses only if the hero is more than 5 m behind… */
+  pauseAt: 5 * PX_PER_M,
+  /** …and goes on when the hero is within six plush-lengths. */
+  pauseResume: 6 * PLUSH,
+  /** Beyond 14 m he sweats. */
+  veryFar: 14 * PX_PER_M,
+  /** The hero's speeds (player/movement.ts): he matches them. */
+  walk: WALK_SPEED,
+  run: RUN_SPEED,
+  /** A slow amble (1 m/s) when the hero dawdles inside the lead distance band. */
+  amble: 1 * PX_PER_M,
+  /** His plush sprint: a third faster than the hero's run, so a running hero can never close on him. */
+  sprint: RUN_SPEED * 1.35,
+  /** Speed per px of gap error (1/s): pulling ahead when too close, easing off when too far. */
+  gainIn: 4,
+  gainOut: 1,
+  /** Acceleration (px/s²) easing into a walk; when the hero is on his heels he takes off at once. */
+  accel: 700,
+  burst: 3000,
+  /** A hop ahead: his hop clip's length, at sprint speed; then a short cooldown before the next. */
+  hopTime: HOP_CLIP,
+  hopCooldown: 180,
+  hopLift: 0.6 * PLUSH,
+  /** Off the bench: two plush-lengths forward, a little slower than a hop. */
+  hopOffDistance: 2 * PLUSH,
+  hopOff: HOP_CLIP * 1.4,
+  /** The wake beat: he looks round (look-back clip, 3 frames at 12 fps), then bows. */
+  wakeLook: 250,
+  bow: 650,
+  /** The look-back on stopping (ms), and the shortest stop. */
+  lookBack: 250,
+  minWait: 400,
+  /** While waiting he beckons for `beckonFor` ms every `beckonEvery` ms; after `sweatAfter` ms he sweats too. */
+  beckonEvery: 2400,
+  beckonFor: 750,
+  sweatAfter: 4500,
   pointFor: 1700,
-  /** Look-ahead for steps and gaps (px), the rise that makes him hop instead of walk. */
+  /** Look-ahead for steps and gaps (px), and the rise or drop that makes him hop instead of walk. */
   lookAhead: 20,
   stepRise: 12,
-  hopOff: 520,
-  /** The look-back clip: dexter-prologue `look-back`, 3 frames at 12 fps. */
-  lookBack: 250,
+  /** The squash after a landing (ms). */
+  squash: 140,
 } as const;
 
 /** Ground lookup over the walk lines; where lines overlap, the one nearest the current height wins. */
@@ -74,7 +117,13 @@ export class Route {
 
 interface Hop { from: Position; to: Position; t: number; duration: number; height: number }
 
-export interface GuideView { x: number; y: number; anim: GuideAnim; facing: 1 | -1; state: GuideState }
+export interface GuideView {
+  x: number; y: number; anim: GuideAnim; facing: 1 | -1; state: GuideState;
+  /** Animation speed (1 = the clip's own fps): the walk plays faster as he speeds up. */
+  rate: number;
+  /** 0..1 squash of a fresh landing. */
+  squash: number;
+}
 
 export class DexterGuide {
   state: GuideState = 'sit';
@@ -83,12 +132,17 @@ export class DexterGuide {
   facing: 1 | -1 = 1;
   /** Index of the stop he is heading to or waiting at. */
   next = 0;
+  /** His ground speed (px/s) while leading. */
+  v = 0;
+  /** The hero's smoothed forward speed (px/s). */
+  heroV = 0;
   private hop?: Hop;
   private elapsed = 0;
-  private waitFor = 0;
-  private looking = false;
-  /** The direction he last walked to a stop (0 = not moving yet); passing the stop mid-hop counts as arriving. */
-  private heading = 0;
+  private clock = 0;
+  private landedAt = -Infinity;
+  private hopReadyAt = 0;
+  private resumeAt: number = GUIDE.resume;
+  private lastHeroX?: number;
   readonly route: Route;
 
   constructor(private readonly setup: GuideSetup) {
@@ -99,30 +153,40 @@ export class DexterGuide {
 
   get stop(): Stop | undefined { return this.setup.stops[this.next]; }
   get airborne(): boolean { return !!this.hop; }
+  /** How far ahead of the hero he is (px); negative would mean overtaken. */
+  gap(hero: Position): number { return this.x - hero.x; }
 
   /** Advance by dt ms with the hero's feet at `hero`. */
   update(dt: number, hero: Position): GuideView {
     this.elapsed += dt;
+    this.clock += dt;
+    this.trackHero(dt, hero);
     if (this.hop && this.stepHop(dt)) return this.view(hero);
+    const gap = this.gap(hero);
     switch (this.state) {
       case 'sit':
         this.facing = hero.x < this.x ? -1 : 1;
-        if (hero.x >= this.setup.wakeX) this.hopOff();
+        if (hero.x >= this.setup.wakeX) this.enter('wake');
+        break;
+      case 'wake':
+        this.facing = hero.x < this.x ? -1 : 1;
+        // He looks round, bows – unless the hero is already at the bench, then he is off at once.
+        if (this.elapsed >= GUIDE.wakeLook + GUIDE.bow || gap < GUIDE.hopGap) this.hopOff();
         break;
       case 'hop-off':
-        // Off the bench he looks back first; the first stop is still ahead.
-        this.looking = true;
-        this.enter('wait', GUIDE.firstWait);
+        // Landed: wait for the hero, beckoning, then lead.
+        this.waitFor(GUIDE.pauseResume);
         break;
       case 'wait':
         this.facing = hero.x < this.x ? -1 : 1;
-        if (this.elapsed >= this.waitFor && this.closeEnough(hero)) {
-          if (this.looking) this.looking = false; else this.next++;
-          this.enter(this.stop ? 'lead' : 'at-pond');
-        }
+        // The hero comes on: he springs off ahead with a hop (at once if the hero is already on him).
+        if (gap < GUIDE.hopGap) this.leadOn(true);
+        else if (this.elapsed >= GUIDE.minWait && gap < this.resumeAt) this.leadOn(this.heroV > GUIDE.walk * 0.5);
         break;
       case 'point':
-        if (this.elapsed >= GUIDE.pointFor) this.enter('wait', GUIDE.minWait);
+        this.facing = 1;
+        if (gap < GUIDE.hopGap) this.leadOn(true);
+        else if (this.elapsed >= GUIDE.pointFor) this.waitFor(GUIDE.pauseResume);
         break;
       case 'lead':
         this.lead(dt, hero);
@@ -136,65 +200,124 @@ export class DexterGuide {
 
   /** Put him straight at a stop (dev shortcut, and the finale's start position). */
   placeAt(index: number): void {
-    const stop = this.setup.stops[Math.min(index, this.setup.stops.length - 1)];
     this.next = Math.min(index, this.setup.stops.length - 1);
+    const stop = this.setup.stops[this.next];
     this.x = stop.x;
     this.y = this.route.groundAt(stop.x, this.y) ?? this.y;
     this.hop = undefined;
-    this.arrive(stop);
+    this.v = 0;
+    if (stop.act === 'pond') return this.enter('at-pond');
+    this.next++;
+    this.waitFor(GUIDE.pauseResume);
   }
 
-  private closeEnough(hero: Position): boolean {
-    return Math.abs(hero.x - this.x) <= GUIDE.near || hero.x > this.x;
+  private trackHero(dt: number, hero: Position): void {
+    if (this.lastHeroX !== undefined && dt > 0) {
+      const v = Math.max(0, ((hero.x - this.lastHeroX) * 1000) / dt);
+      this.heroV += (Math.min(v, GUIDE.sprint) - this.heroV) * Math.min(1, dt / 60);
+    }
+    this.lastHeroX = hero.x;
   }
 
   private hopOff(): void {
-    const toX = this.x + 34;
-    const toY = this.route.groundAt(toX, this.y + 20) ?? this.y;
+    const toX = this.x + GUIDE.hopOffDistance;
+    const toY = this.route.groundAt(toX, this.y + PLUSH) ?? this.y;
     this.facing = 1;
     this.enter('hop-off');
-    this.hop = { from: { x: this.x, y: this.y }, to: { x: toX, y: toY }, t: 0, duration: GUIDE.hopOff, height: 22 };
+    this.hop = { from: { x: this.x, y: this.y }, to: { x: toX, y: toY }, t: 0, duration: GUIDE.hopOff, height: GUIDE.hopLift + 6 };
+  }
+
+  private waitFor(resumeAt: number): void {
+    this.v = 0;
+    this.resumeAt = resumeAt;
+    this.enter('wait');
+  }
+
+  private leadOn(hopNow: boolean): void {
+    this.enter('lead');
+    this.facing = 1;
+    if (hopNow) this.hopAhead();
   }
 
   private lead(dt: number, hero: Position): void {
     const stop = this.stop;
     if (!stop) return this.enter('at-pond');
-    if (this.heading && this.heading * (stop.x - this.x) <= 0) return this.arrive(stop);
-    const dir = stop.x >= this.x ? 1 : -1;
-    this.facing = dir;
-    this.heading = dir;
-    if (hero.x < this.x - GUIDE.far) {
-      // Too far behind: stop and look back where he is, then carry on to the same stop.
-      this.looking = true;
-      this.heading = 0;
-      return this.enter('wait', GUIDE.minWait);
+    this.facing = 1;
+    const gap = this.gap(hero);
+    if (gap > GUIDE.far) return this.waitFor(GUIDE.resume);
+    if (gap < GUIDE.hopGap && this.clock >= this.hopReadyAt && this.heroV > GUIDE.walk * 0.5 && this.hopAhead()) return;
+    // Hold the lead distance at the hero's own pace; inside it, pull ahead (up to a sprint), beyond it, ease off.
+    const target = gap < GUIDE.lead
+      ? Math.min(GUIDE.sprint, Math.max(this.heroV, GUIDE.walk) + GUIDE.gainIn * (GUIDE.lead - gap))
+      : Math.min(GUIDE.run, Math.max(GUIDE.amble, this.heroV - GUIDE.gainOut * (gap - GUIDE.lead)));
+    if (gap < GUIDE.scamper) this.v = GUIDE.sprint;
+    else {
+      const rate = target > this.v && gap < GUIDE.lead ? GUIDE.burst : GUIDE.accel;
+      this.v = approach(this.v, target, (rate * dt) / 1000);
     }
-    const speed = hero.x > this.x - 10 ? GUIDE.scurry : GUIDE.speed;
-    const step = Math.min(Math.abs(stop.x - this.x), (speed * dt) / 1000);
-    const aheadX = this.x + dir * GUIDE.lookAhead;
-    const ahead = this.route.groundAt(aheadX, this.y);
-    if (ahead === undefined || this.y - ahead > GUIDE.stepRise) {
-      // A gap or a step up: hop to the next ground.
-      const landX = ahead === undefined ? this.route.landing(this.x, dir) : this.x + dir * (GUIDE.lookAhead + 10);
-      if (landX !== undefined) {
-        const landY = this.route.groundAt(landX + dir * 6, ahead ?? this.y) ?? this.y;
-        const to = { x: landX + dir * 6, y: landY };
-        const dist = Math.hypot(to.x - this.x, to.y - this.y);
-        this.hop = { from: { x: this.x, y: this.y }, to, t: 0, duration: 320 + dist * 1.6, height: 18 + Math.max(0, this.y - to.y) };
-        return;
-      }
-    }
-    this.x += dir * step;
+    const step = Math.min((this.v * dt) / 1000, this.end() - this.x);
+    if (this.terrainHop()) return;
+    this.x += step;
     this.y = this.route.groundAt(this.x, this.y) ?? this.y;
-    if (Math.abs(stop.x - this.x) < 0.5) this.arrive(stop);
+    this.passStops(hero);
   }
 
-  private arrive(stop: Stop): void {
-    this.looking = false;
-    this.heading = 0;
-    if (stop.act === 'pond') { this.facing = 1; return this.enter('at-pond'); }
-    if (stop.act === 'point') return this.enter('point');
-    this.enter('wait', GUIDE.minWait);
+  /** A gap or a step up or down just ahead: hop to the next ground, never slower than the hero. */
+  private terrainHop(): boolean {
+    const aheadX = this.x + GUIDE.lookAhead;
+    const ahead = this.route.groundAt(aheadX, this.y);
+    if (ahead !== undefined && Math.abs(this.y - ahead) <= GUIDE.stepRise) return false;
+    const duration = GUIDE.hopTime * 0.75;
+    const reach = (this.hopSpeed() * duration) / 1000;
+    let toX = this.x + Math.max(GUIDE.lookAhead + 16, reach);
+    let toY = this.route.groundAt(toX, ahead ?? this.y);
+    if (toY === undefined) {
+      const land = this.route.landing(this.x + GUIDE.lookAhead, 1);
+      if (land === undefined) return false;
+      toX = Math.max(land + 6, toX);
+      toY = this.route.groundAt(toX, ahead ?? this.y) ?? this.route.groundAt(land + 6, this.y) ?? this.y;
+    }
+    toX = Math.min(toX, this.end());
+    this.jump({ x: toX, y: toY }, Math.max(duration, ((toX - this.x) / this.hopSpeed()) * 1000), GUIDE.hopLift + Math.max(0, this.y - toY));
+    return true;
+  }
+
+  /** Hops cover ground at least at his sprint, and faster than the hero is going. */
+  private hopSpeed(): number { return Math.max(GUIDE.sprint, this.heroV * 1.3, this.v); }
+  private end(): number { return this.setup.stops[this.setup.stops.length - 1].x; }
+
+  /** The hero closed in: a hop ahead along the route at sprint speed (one hop clip long). */
+  private hopAhead(): boolean {
+    const distance = Math.min(this.end() - this.x, (this.hopSpeed() * GUIDE.hopTime) / 1000);
+    if (distance < PLUSH) return false;
+    let toX = this.x + distance;
+    let toY = this.route.groundAt(toX, this.y);
+    if (toY === undefined) {
+      const land = this.route.landing(toX - 4, 1);
+      if (land === undefined) return false;
+      toX = land + 6;
+      toY = this.route.groundAt(toX, this.y) ?? this.y;
+    }
+    this.v = Math.max(this.v, this.heroV, GUIDE.walk);
+    this.jump({ x: toX, y: toY }, GUIDE.hopTime, GUIDE.hopLift + Math.max(0, this.y - toY));
+    return true;
+  }
+
+  private jump(to: Position, duration: number, height: number): void {
+    this.hop = { from: { x: this.x, y: this.y }, to, t: 0, duration, height };
+    this.hopReadyAt = this.clock + duration + GUIDE.hopCooldown;
+  }
+
+  /** Any stop he has now reached: a pause if the hero lags, the point at the shed roof, the pond at the end. */
+  private passStops(hero: Position): void {
+    const gap = this.gap(hero);
+    while (this.stop && this.x >= this.stop.x - 0.5) {
+      const stop = this.stop;
+      if (stop.act === 'pond') { this.x = stop.x; this.y = this.route.groundAt(this.x, this.y) ?? this.y; this.v = 0; return this.enter('at-pond'); }
+      this.next++;
+      if (stop.act === 'point' && gap > GUIDE.hopGap) { this.v = 0; return this.enter('point'); }
+      if (stop.act === 'wait' && gap > GUIDE.pauseAt) return this.waitFor(GUIDE.pauseResume);
+    }
   }
 
   /** Returns true while still in the air. */
@@ -207,26 +330,42 @@ export class DexterGuide {
     if (t < 1) return true;
     this.hop = undefined;
     this.y = hop.to.y;
+    this.landedAt = this.clock;
     return false;
   }
 
-  private enter(state: GuideState, waitFor = 0): void {
+  private enter(state: GuideState): void {
     this.state = state;
     this.elapsed = 0;
-    this.waitFor = waitFor;
   }
 
   private view(hero: Position): GuideView {
+    const gap = this.gap(hero);
     let anim: GuideAnim = 'wait';
+    let rate = 1;
     if (this.hop) anim = 'hop';
     else if (this.state === 'sit') anim = 'sit';
-    else if (this.state === 'lead') anim = 'walk';
-    else if (this.state === 'point' || this.state === 'at-pond') anim = 'point';
-    else if (this.state === 'wait' && this.elapsed < GUIDE.lookBack) anim = 'look';
-    else if (this.state === 'wait' && Math.abs(hero.x - this.x) > GUIDE.beckonAt) anim = 'beckon';
-    return { x: this.x, y: this.y, anim, facing: this.facing, state: this.state };
+    else if (this.state === 'wake') anim = this.elapsed < GUIDE.wakeLook ? 'look' : 'bow';
+    else if (this.state === 'lead') {
+      anim = this.v > GUIDE.walk * 1.15 ? 'run' : this.v > 4 ? 'walk' : 'wait';
+      // The walk clip (6 frames at 12 fps) suits ~1.5 m/s; it speeds up with him, and bounds faster when running.
+      rate = Math.max(0.6, Math.min(2.4, this.v / GUIDE.walk));
+    } else if (this.state === 'point' || this.state === 'at-pond') anim = 'point';
+    else if (this.state === 'wait') {
+      const since = this.elapsed - GUIDE.lookBack;
+      const cycle = Math.floor(Math.max(0, since) / GUIDE.beckonEvery);
+      const beckoning = since >= 0 && since % GUIDE.beckonEvery < GUIDE.beckonFor;
+      if (since < 0) anim = 'look';
+      else if (gap > GUIDE.veryFar) anim = 'sweat';
+      else if (beckoning && gap > 2 * GUIDE.lead) anim = this.elapsed > GUIDE.sweatAfter && cycle % 2 === 1 ? 'sweat' : 'beckon';
+    }
+    const squash = Math.max(0, 1 - (this.clock - this.landedAt) / GUIDE.squash);
+    return { x: this.x, y: this.y, anim, facing: this.facing, state: this.state, rate, squash };
   }
 }
+
+const approach = (value: number, target: number, amount: number) =>
+  value < target ? Math.min(target, value + amount) : Math.max(target, value - amount);
 
 /** The stops from the collision's `dexter-waypoint` boxes, in route order; `act` comes from the data. */
 export function stopsFrom(boxes: { id?: string; kind?: string; act?: unknown; x: number; w: number }[]): { wakeX: number; stops: Stop[] } {
