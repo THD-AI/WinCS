@@ -4,7 +4,9 @@
     python scripts/world_paint.py grow  art/zones/<zone> <source> <up|down> <new>
     python scripts/world_paint.py join  art/zones/<zone> [--only left-right|up-down] [--row N]
     python scripts/world_paint.py feature art/zones/<zone> <id> --box x0,y0,x1,y1 --brief "…"   # a story detail
-    python scripts/world_paint.py settle art/zones/<zone> --row N        # up/down seams: colour only
+    python scripts/world_paint.py settle art/zones/<zone> --row N [--up] # up/down seams: colour only
+    python scripts/world_paint.py join  art/zones/<zone> --only left-right --pair a,b --half 480,160 --brief "…"
+                                                                         # two different rooms: paint the passage
     python scripts/world_paint.py accept art/zones/<zone> [ids …]
 
 paint – the model edits each chunk's flat guide (blockout/<id>.png) under a fully open mask, so the walk lines,
@@ -60,6 +62,9 @@ JOIN = ("This image shows two neighbouring chunks of a side-scrolling stage meet
         "girders, the ground, the water and the light run through without a break, a cut, a line or a colour step, "
         "in the same palette, fine 2-pixel grain and scale. Keep every walkable edge, ladder and girder exactly "
         "where it is. Strict side view, no characters, no text.")
+TRANSITION = ("THE PASSAGE: the left side and the right side are different rooms. Across the whole window, paint "
+              "the place where one turns into the other, gradually, as a built thing you could walk through: "
+              "{brief}")
 
 
 def load(zone_dir: Path) -> tuple[dict, dict, Path]:
@@ -154,12 +159,18 @@ def grow_vertical(neighbour: Image.Image, guide: Image.Image, up: bool, painter)
     return flip(new)
 
 
-def match_rows(new: Image.Image, below: Image.Image, ramp: int = 160, blur: int = 9) -> Image.Image:
+def match_rows(new: Image.Image, below: Image.Image, ramp: int = 160, blur: int = 9, median: int = 0) -> Image.Image:
     """Shift the new chunk's colours near its bottom row so it meets the top row of the art below it, fading out
-    over `ramp` rows (grow_stage.match_seam, turned on its side). Shapes are untouched."""
+    over `ramp` rows (grow_stage.match_seam, turned on its side). Shapes are untouched. `median` takes each
+    column's step as the median over that many columns around it: the colour drift is matched, but a leaf or a
+    cloud edge that only one side has is not smeared up the ramp as a streak."""
     import numpy as np
     a, b = np.asarray(new, dtype=np.float32), np.asarray(below, dtype=np.float32)
     step = b[0] - a[-1]                                     # per column, per channel
+    if median:
+        h = median // 2
+        padded = np.pad(step, ((h, h), (0, 0)), mode="edge")
+        step = np.median(np.lib.stride_tricks.sliding_window_view(padded, median, axis=0), axis=-1)
     k = np.ones(2 * blur + 1, dtype=np.float32) / (2 * blur + 1)
     step = np.stack([np.convolve(np.pad(step[:, c], blur, mode="edge"), k, mode="valid") for c in range(3)], 1)
     weight = np.clip(1 - np.arange(ramp, dtype=np.float32)[::-1] / ramp, 0, 1)  # 1 at the seam, 0 `ramp` rows up
@@ -181,7 +192,13 @@ def grow(zone_dir: Path, source: str, direction: str, new: str) -> None:
 
     def painter(canvas: Image.Image, mask: Image.Image) -> Image.Image:
         n = next(calls)
-        canvas.save(raw / "grow" / f"{new}--canvas-{n}.png")
+        done, seen = raw / "grow" / f"{new}--piece-{n}.png", raw / "grow" / f"{new}--canvas-{n}.png"
+        asked = raw / "grow" / f"{new}--prompt-{n}.txt"
+        if done.exists() and seen.exists() and asked.exists() and asked.read_text(encoding="utf-8") == prompt \
+                and Image.open(seen).convert("RGB").tobytes() == canvas.convert("RGB").tobytes():
+            return Image.open(done)  # a run cut short (a timeout) resumes: the same canvas and prompt were painted
+        canvas.save(seen)
+        asked.write_text(prompt, encoding="utf-8")
         out = call(f"{new} piece {n}", prompt, canvas, mask, zone["inputs"], zone)
         if out is None:
             sys.exit(1)
@@ -235,19 +252,25 @@ def cut_back(old: Image.Image, new: Image.Image, start: int, end: int, vertical_
     return out
 
 
-def join_one(zone: dict, a: Image.Image, b: Image.Image, kind: str, name: str) -> tuple[Image.Image, Image.Image] | None:
-    """Repaint the window across one seam; returns the two chunks with it joined in."""
+def join_one(zone: dict, a: Image.Image, b: Image.Image, kind: str, name: str, half: int | tuple[int, int] = HALF,
+             brief: str | None = None, here: str | None = None) -> tuple[Image.Image, Image.Image] | None:
+    """Repaint the window across one seam; returns the two chunks with it joined in. Where two rooms of a
+    different nature meet, a wider window (`half`, or (left, right) to lean the passage into the chunk that has
+    room for it) and a `brief` paint the passage from one into the other. `here`
+    is the world brief of the place, so a window in open sky is painted as sky, not as a picture of its own."""
     if kind == "left-right":
         canvas = Image.new("RGB", (W, H))
         canvas.paste(a.crop((W // 2, 0, W, H)), (0, 0))
         canvas.paste(b.crop((0, 0, W // 2, H)), (W // 2, 0))
-        box, where = (W // 2 - HALF, 0, W // 2 + HALF, H), "in the middle, left and right"
+        left, right = half if isinstance(half, tuple) else (half, half)
+        box, where = (W // 2 - left, 0, W // 2 + right, H), "in the middle, left and right"
     else:
         canvas = Image.new("RGB", (W, H))
         canvas.paste(a.crop((0, H // 2, W, H)), (0, 0))
         canvas.paste(b.crop((0, 0, W, H // 2)), (0, H // 2))
         box, where = (0, H // 2 - BAND, W, H // 2 + BAND), "along a horizontal line across the middle, above and below"
-    prompt = "\n\n".join([JOIN.format(where=where), zone["style"], zone["people"]])
+    parts = [JOIN.format(where=where)] + ([TRANSITION.format(brief=brief)] if brief else []) +         ([f"WHAT IS HERE: {here}"] if here else [])
+    prompt = "\n\n".join(parts + [zone["style"], zone["people"]])
     painted = call(name, prompt, canvas, window_mask((W, H), box), zone["inputs"][:1], zone)
     if painted is None:
         return None
@@ -269,7 +292,14 @@ def latest(zone_dir: Path, raw: Path, cid: str) -> Path:
                             zone_dir / "images" / f"{cid}.png") if p.exists())
 
 
-def join(zone_dir: Path, only: str | None, row: int | None = None) -> None:
+def place(world: dict, a: str, b: str) -> str | None:
+    """The world brief shared by two neighbours of one band (None across bands: the seam is where they differ)."""
+    ca, cb = world["chunks"][a], world["chunks"][b]
+    return ca.get("brief") if ca["band"] == cb["band"] and ca.get("brief") == cb.get("brief") else None
+
+
+def join(zone_dir: Path, only: str | None, row: int | None = None, pair: tuple[str, str] | None = None,
+         half: int | tuple[int, int] = HALF, brief: str | None = None) -> None:
     zone, world, raw = load(zone_dir)
     (raw / "join").mkdir(parents=True, exist_ok=True)
     for kind, pairs in seams(world).items():
@@ -277,11 +307,14 @@ def join(zone_dir: Path, only: str | None, row: int | None = None) -> None:
             continue
         if row is not None:
             pairs = [p for p in pairs if world["chunks"][p[0]]["row"] == row and world["chunks"][p[1]]["row"] == row]
+        if pair:
+            pairs = [p for p in pairs if p == pair]
         art = {c: Image.open(latest(zone_dir, raw, c)).convert("RGB") for c in world["chunks"]}
         # a chunk takes part in two seams of one kind (its two sides); their windows never overlap, so each
         # seam is painted on the same input art and its half pasted back into the chunk afterwards
         with ThreadPoolExecutor(max_workers=6) as pool:
-            done = list(pool.map(lambda p: (p, join_one(zone, art[p[0]], art[p[1]], kind, f"{p[0]}|{p[1]} join")), pairs))
+            done = list(pool.map(lambda p: (p, join_one(zone, art[p[0]], art[p[1]], kind, f"{p[0]}|{p[1]} join",
+                                                        half, brief, place(world, *p))), pairs))
         out = {c: img.copy() for c, img in art.items()}
         for (a, b), result in done:
             if result is None:
@@ -327,21 +360,24 @@ def feature(zone_dir: Path, cid: str, box: tuple[int, int, int, int], brief: str
     print(f"{cid}: feature painted in {box}")
 
 
-def settle(zone_dir: Path, row: int, ramp: int = 48) -> None:
+def settle(zone_dir: Path, row: int, ramp: int = 48, up: bool = False) -> None:
     """Fade each chunk of `row` into the exact bottom edge of the chunk above it (match_rows per pixel, over `ramp`
-    rows): what is left of an up/down seam after growing and joining is colour, never shape."""
+    rows): what is left of an up/down seam after growing and joining is colour, never shape. `up` fades the row's
+    bottom edge into the top edge of the chunk below instead – for a band grown above a row that must not change."""
     zone, world, raw = load(zone_dir)
     flip = Image.Transpose.FLIP_TOP_BOTTOM
     at = {(c["col"], c["row"]): cid for cid, c in world["chunks"].items()}
     (raw / "join").mkdir(parents=True, exist_ok=True)
+    step = 1 if up else -1
     for (col, r), cid in at.items():
-        if r != row or (col, r - 1) not in at:
+        if r != row or (col, r + step) not in at:
             continue
-        lower = Image.open(latest(zone_dir, raw, cid)).convert("RGB")
-        upper = Image.open(latest(zone_dir, raw, at[(col, r - 1)])).convert("RGB")
-        settled = match_rows(lower.transpose(flip), upper.transpose(flip), ramp=ramp, blur=0).transpose(flip)
+        moved = Image.open(latest(zone_dir, raw, cid)).convert("RGB")
+        fixed = Image.open(latest(zone_dir, raw, at[(col, r + step)])).convert("RGB")
+        settled = match_rows(moved, fixed, ramp=ramp, blur=0, median=31) if up else \
+            match_rows(moved.transpose(flip), fixed.transpose(flip), ramp=ramp, blur=0).transpose(flip)
         settled.save(raw / "join" / f"{cid}.png")
-        print(f"{cid}: settled into {at[(col, r - 1)]}")
+        print(f"{cid}: settled into {at[(col, r + step)]}")
 
 
 def accept(zone_dir: Path, ids: list[str]) -> None:
@@ -363,7 +399,11 @@ def main() -> None:
     parser.add_argument("--only", choices=["left-right", "up-down"])
     parser.add_argument("--row", type=int, help="join only the seams inside this grid row")
     parser.add_argument("--box", help="feature: x0,y0,x1,y1 in chunk px")
-    parser.add_argument("--brief", help="feature: what to paint in the window")
+    parser.add_argument("--brief", help="feature: what to paint in the window; join: the passage between two rooms")
+    parser.add_argument("--pair", help="join: only this seam, a,b")
+    parser.add_argument("--half", default=str(HALF), help="join: px repainted on each side of a left/right seam, "
+                                                          "or left,right")
+    parser.add_argument("--up", action="store_true", help="settle: fade the row into the chunk below it")
     args = parser.parse_args()
     zone = args.zone if args.zone.is_absolute() else ROOT / args.zone
     if args.step == "paint":
@@ -373,9 +413,9 @@ def main() -> None:
     elif args.step == "feature":
         feature(zone, args.ids[0], tuple(int(v) for v in args.box.split(",")), args.brief)
     elif args.step == "settle":
-        settle(zone, args.row if args.row is not None else 1)
+        settle(zone, args.row if args.row is not None else 1, up=args.up)
     elif args.step == "join":
-        join(zone, args.only, args.row)
+        join(zone, args.only, args.row, tuple(args.pair.split(",")) if args.pair else None, tuple(int(v) for v in args.half.split(",")) if "," in args.half else int(args.half), args.brief)
     else:
         accept(zone, args.ids)
 

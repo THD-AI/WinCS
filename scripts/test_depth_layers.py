@@ -155,5 +155,17 @@ class DepthLayerTests(unittest.TestCase):
         self.assertGreater(colorsys.rgb_to_hsv(*(c / 255 for c in out[0]))[0] * 360, 340)  # pink pulled toward red
 
 
+    def test_a_zone_chunk_reads_its_image_and_its_band(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            zone = Path(folder)
+            (zone / "images").mkdir()
+            Image.new("RGB", (8, 4), (1, 2, 3)).save(zone / "images" / "z-0-0.png")
+            (zone / "world.json").write_text(json.dumps({"chunks": {"z-0-0": {"band": "below"},
+                                                                    "z-0-1": {"band": "level"}}}))
+            self.assertEqual(dl.art_for(zone, "z-0-0").getpixel((0, 0)), (1, 2, 3))
+            self.assertIn(dl.BAND_KEY["below"], dl.key_prompt(zone, "z-0-0"))
+            self.assertEqual(dl.key_prompt(zone, "z-0-1"), dl.KEY_PROMPT)
+
 if __name__ == "__main__":
     unittest.main()
