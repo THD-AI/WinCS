@@ -62,9 +62,9 @@ The anomaly state replaces only the layers that change (usually 3 and 5, sometim
 | Thing | Real size | Stage pixels (stage is 720 px tall) |
 | --- | --- | --- |
 | Screen | – | 1280×720 view of a 720-tall stage (pixel grain 2 px) |
-| Hero | 6 ft / 1.83 m | **80 px tall**, body box 28×76 |
+| Hero | 6 ft / 1.83 m | **114 px drawn in a 118 px frame** (1.5× since 24 Oct, A15: the plates are drawn about 1.5–1.8× bigger than the old 76 px hero – the bench seat sat at his hip); physics body box stays 28×76 |
 | 1 ft | 0.30 m | ≈ 13 px |
-| Dexter (plush) | 1.5 ft in the story; drawn ≈ 2 ft, head just above the hero's knee | **27 px** (0.35 of the hero) |
+| Dexter (plush) | 1.5 ft in the story; drawn ≈ 2 ft, head just above the hero's knee | **40 px** (1.5× since 24 Oct; story distances still count in 27 px plush-lengths) |
 | Dexter (after Jenny, end of the slice) | ≈ 3.5 ft | 46 px (each region boss he absorbs adds a quarter of the way from 27 to 101 px) |
 | Dexter (bigger plush, mid-arc) | 4 ft | 56 px (0.73 of the hero) |
 | Dexter (final, the mascot) | 8.5 ft | 101 px (1.33 of the hero) |
