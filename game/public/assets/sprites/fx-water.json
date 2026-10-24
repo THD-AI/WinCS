@@ -1,0 +1,302 @@
+{
+ "frames": {
+  "lily-bob-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "lily-bob-01": {
+   "frame": {
+    "x": 128,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "lily-bob-02": {
+   "frame": {
+    "x": 256,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "lily-bob-03": {
+   "frame": {
+    "x": 384,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ripple-00": {
+   "frame": {
+    "x": 0,
+    "y": 22,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ripple-01": {
+   "frame": {
+    "x": 128,
+    "y": 22,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ripple-02": {
+   "frame": {
+    "x": 256,
+    "y": 22,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ripple-03": {
+   "frame": {
+    "x": 384,
+    "y": 22,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sparkle-00": {
+   "frame": {
+    "x": 0,
+    "y": 44,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sparkle-01": {
+   "frame": {
+    "x": 128,
+    "y": 44,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sparkle-02": {
+   "frame": {
+    "x": 256,
+    "y": 44,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sparkle-03": {
+   "frame": {
+    "x": 384,
+    "y": 44,
+    "w": 126,
+    "h": 20
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 126,
+    "h": 20
+   },
+   "sourceSize": {
+    "w": 126,
+    "h": 20
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "fx-water.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 510,
+   "h": 64
+  },
+  "scale": "1"
+ }
+}
