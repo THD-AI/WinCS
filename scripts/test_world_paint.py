@@ -72,3 +72,57 @@ def test_overlap_joins_on_a_cut_inside_the_band():
     band = out[240:240 + wp.OVERLAP_V]
     assert set(map(tuple, band.reshape(-1, 3))) <= {(200, 10, 10), (10, 200, 10)}
     assert (out[240 + wp.OVERLAP_V:400] == (10, 200, 10)).all()           # the first piece below it
+
+
+def test_settle_up_fades_the_upper_row_and_leaves_the_row_below():
+    import json
+    import shutil
+    import tempfile
+    from pathlib import Path
+    zone_dir = Path(tempfile.mkdtemp())
+    name = f"test-settle-{zone_dir.name}"
+    (zone_dir / "images").mkdir()
+    (zone_dir / "zone.json").write_text(json.dumps({"zone": name}))
+    chunks = {"a": {"id": "a", "col": 0, "row": 0}, "b": {"id": "b", "col": 0, "row": 1}}
+    (zone_dir / "world.json").write_text(json.dumps({"chunks": chunks}))
+    Image.new("RGB", (wp.W, wp.H), (100, 100, 100)).save(zone_dir / "images" / "a.png")
+    below = neighbour()
+    below.save(zone_dir / "images" / "b.png")
+    try:
+        wp.settle(zone_dir, 0, up=True)
+        raw = wp.ROOT / "tmp" / "zones" / name / "join"
+        out = np.asarray(Image.open(raw / "a.png")).astype(int)
+        assert np.abs(out[-1] - np.asarray(below)[0].astype(int)).max() <= 1   # the bottom row meets the row below
+        assert (out[0] == 100).all()                                           # far from the seam: unchanged
+        assert not (raw / "b.png").exists()                                    # the row below is never touched
+    finally:
+        shutil.rmtree(zone_dir)
+        shutil.rmtree(wp.ROOT / "tmp" / "zones" / name, ignore_errors=True)
+
+
+def test_a_passage_join_paints_a_wider_window_with_its_brief(monkeypatch):
+    seen = {}
+
+    def call(name, prompt, base, mask, refs, zone, extra=()):
+        seen["prompt"], seen["open"] = prompt, (np.asarray(mask)[..., 3] == 0)
+        return base
+    monkeypatch.setattr(wp, "call", call)
+    zone = {"style": "", "people": "", "inputs": ["x"]}
+    a, b = neighbour(), neighbour()
+    assert wp.join_one(zone, a, b, "left-right", "a|b", half=320, brief="a breach in the wall") is not None
+    cols = np.where(seen["open"][0])[0]
+    assert (cols.min(), cols.max()) == (wp.W // 2 - 320, wp.W // 2 + 319)
+    assert "a breach in the wall" in seen["prompt"] and "THE PASSAGE" in seen["prompt"]
+    wp.join_one(zone, a, b, "left-right", "a|b", half=(480, 160))
+    assert "THE PASSAGE" not in seen["prompt"]
+    cols = np.where(seen["open"][0])[0]
+    assert (cols.min(), cols.max()) == (wp.W // 2 - 480, wp.W // 2 + 159)    # leaned into the left chunk
+
+
+def test_a_median_step_matches_the_drift_but_does_not_smear_a_speck():
+    new = Image.new("RGB", (wp.W, wp.H), (100, 100, 100))
+    below = np.full((wp.H, wp.W, 3), 120, np.uint8)
+    below[0, 500:504] = (250, 40, 40)                                      # a leaf in the row below
+    out = np.asarray(wp.match_rows(new, Image.fromarray(below), ramp=48, blur=0, median=31)).astype(int)
+    assert (out[-1, :400] == 120).all()                                    # the drift is matched
+    assert (out[-40:, 500:504] < 125).all()                                # the leaf is not dragged up

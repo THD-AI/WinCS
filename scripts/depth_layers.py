@@ -165,8 +165,32 @@ def write_masks(region: Path, chunk: str, bands: list[str], size: tuple[int, int
 
 
 def art_for(region: Path, chunk: str) -> Image.Image:
+    """A stage chunk's clean art (layers.json), or a world zone chunk's painted image (images/<chunk>.png)."""
+    if not (region / "layers.json").exists():
+        return Image.open(region / "images" / f"{chunk}.png").convert("RGB")
     layers = json.loads((region / "layers.json").read_text(encoding="utf-8"))
     return Image.open(region / layers["chunks"][chunk]["states"]["clean"]).convert("RGB")
+
+
+# A world zone chunk away from pond level reads the same seven colours differently (docs/09 "World pipeline").
+BAND_KEY = {
+    "above": ("THIS CHUNK is high in the sky: the open sky and clouds are cyan; the top surface of every girder beam "
+              "you can walk along, with the beam under it, is red; ladders, vines, hanging leaves, girder posts and a "
+              "tree crown are yellow. There is no far forest, no mid trees, no water and no foreground here."),
+    "below": ("THIS CHUNK is underground, under the pond: the deep water at the top and its surface hanging as a "
+              "ceiling, and any flooded pool, are navy; every floor, ledge, step and the top of every girder you can "
+              "walk on, as a solid band down from its walking surface, is red; the back walls, arches, piers, "
+              "ladders, pipes, rock and weed behind you are yellow; dark plants right at the bottom edge in front "
+              "are magenta. There is no sky, no far forest and no mid trees here."),
+}
+
+
+def key_prompt(region: Path, chunk: str) -> str:
+    world = region / "world.json"
+    if not world.exists():
+        return KEY_PROMPT
+    band = json.loads(world.read_text(encoding="utf-8"))["chunks"][chunk]["band"]
+    return KEY_PROMPT + ("\n\n" + BAND_KEY[band] if band in BAND_KEY else "")
 
 
 def raw_dir(region: Path) -> Path:
@@ -863,7 +887,7 @@ def main() -> None:
     art = art_for(region, args.chunk)
     raw = raw_dir(region) / f"{args.chunk}--depth.png"
     if args.step == "key":
-        key = api(f"{args.chunk}--depth", art, KEY_PROMPT)
+        key = api(f"{args.chunk}--depth", art, key_prompt(region, args.chunk))
         if key is None:
             sys.exit(1)
         key.save(raw)
