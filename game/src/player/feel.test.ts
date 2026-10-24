@@ -125,7 +125,10 @@ describe('clip timing from anims.json', () => {
     expect(m.clip).toBe('fall');
     const ledge = new LocomotionAnimation(clips);
     ledge.update('walk', 1 / 60, 90);
-    expect(ledge.update('fall', 1 / 60, 90, air(20)).frame).toBe('jump-05');
+    // A step's worth of air (FALL_GRACE) keeps the stride; past it, the descent.
+    expect(ledge.update('fall', 1 / 60, 90, air(20)).frame).not.toMatch(/^jump/);
+    for (let i = 0; i < 7; i++) ledge.update('fall', 1 / 60, 90, air(20 + i * 20));
+    expect(ledge.update('fall', 1 / 60, 90, air(180)).frame).toBe('jump-05');
   });
   it('plays the drawn hit clip at its fps instead of a tint, and the knockback for heavy hits', () => {
     const hurt = new HurtAnimation(table('hero-hurt'), { death: { frames: 12, fps: 12, loop: false } });

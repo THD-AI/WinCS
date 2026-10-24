@@ -16,6 +16,9 @@ import { spawnPuff, type PuffKind } from './dust';
 import { HurtAnimation } from './hurt';
 import type { Position } from '../core/events';
 import { Interaction } from './interaction';
+import { HeroSlices, PonchoSway } from './idle-life';
+import { parseAtmosphere, type Wind } from '../stage/atmosphere/config';
+import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
 
 export class Player {
@@ -48,6 +51,10 @@ export class Player {
   private blades: Phaser.GameObjects.Graphics;
   private hurt: HurtAnimation;
   private groundOffset = { offset: 0, cover: 0 };
+  private slices: HeroSlices;
+  private sway = new PonchoSway();
+  private wind: Wind | null = null;
+  private idleLife = { breath: 0, sway: 0 };
   get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active; }
   get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
@@ -67,6 +74,7 @@ export class Player {
     this.footfalls = footfalls(scene, this.clips);
     this.hurt = new HurtAnimation(scene.cache.json.get('hero-hurt.anims') ?? {}, scene.cache.json.get('hero-death.anims') ?? {});
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
+    this.slices = new HeroSlices(scene, this.sprite);
     this.blades = scene.add.graphics().setDepth(101);
     // After every scene update (the chair may swap the hero's frame): place the feet in the ground.
     const settle = () => this.settle();
@@ -113,7 +121,9 @@ export class Player {
    * fetched here, and a region without one keeps the fallback (stone-like, 1 px).
    */
   ground(manifest: StageManifest, state: RegionState, data?: unknown) {
-    const use = (parsed: ReturnType<typeof parseSurfaces> | null) => { this.surfaces = new SurfaceMap(parsed, manifest, state); };
+    // The poncho sways with the region's own wind (atmosphere.json, the defaults without one).
+    this.wind = parseAtmosphere(this.scene.cache.json.get(dataKey(manifest.region, 'atmosphere')) ?? {}, state).atmosphere.wind;
+    const use =(parsed: ReturnType<typeof parseSurfaces> | null) => { this.surfaces = new SurfaceMap(parsed, manifest, state); };
     if (data && typeof data === 'object' && Object.keys(data).length) {
       try { use(parseSurfaces(data)); return; } catch (error) { console.error(error); }
     }
@@ -209,10 +219,14 @@ export class Player {
       ? this.air.hard ? 'hard-landing' : 'land' : this.body.sliding ? 'fall'
       : !this.body.grounded ? this.body.vy < 0 ? 'jump' : 'fall'
       : Math.abs(this.body.vx) > (WALK_SPEED + RUN_SPEED) / 2 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
+    this.animation.wounded = this.life.health <= 2;
     const locomotion = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000,
       Math.abs(this.body.vx), { vy: this.body.vy, launch: JUMP_SPEED });
     const hurtPose = this.hurt.update(this.life, milliseconds / 1000, axis !== 0 || !this.body.grounded);
     const pose = hurtPose ?? interactionPose ?? locomotion;
+    const standing = pose === locomotion && this.animation.standing && this.body.grounded && this.life.dead === 0;
+    this.idleLife = { breath: standing ? this.animation.breath : 0,
+      sway: this.sway.update(this.wind, this.body.x, this.scene.game.loop.time / 1000, milliseconds / 1000, standing) };
     if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');
     this.sprite.setFlipX(this.motion.facing < 0).setAlpha(this.hurt.alpha(this.life, this.scene.time.now));
@@ -255,9 +269,9 @@ export class Player {
   private settle() {
     const { offset, cover } = this.groundOffset;
     this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y) + offset);
-    const frame = this.sprite.frame;
-    if (cover > 0) this.sprite.setCrop(0, 0, frame.width, frame.height - cover);
-    else if (this.sprite.isCropped) this.sprite.setCrop();
+    // Breath and poncho only on the hero's own standing frames (a chair pose swapped in later is drawn whole).
+    const own = this.sprite.texture.key === 'hero-move' || this.sprite.texture.key === 'hero-idle';
+    this.slices.apply(own ? this.idleLife.breath : 0, own ? this.idleLife.sway : 0, cover);
     this.blades.clear();
     const colors = this.surface.material.blades;
     if (!colors?.length || cover === 0) return;
