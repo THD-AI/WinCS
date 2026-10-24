@@ -551,6 +551,70 @@ def continuation(bands, hole):
     return owner
 
 
+CLEAR_PROMPT = (
+    "This is one chunk of a side-scrolling stage. Paint ONLY the transparent area: the open late-afternoon sky with "
+    "its clouds and, lower down, the hazy far forest and the mid-distance autumn trees continuing exactly from what is "
+    "visible around the hole - same light, palette, fine 2-pixel grain and scale. No overhanging branches, no leaves "
+    "hanging from above, nothing cut off. No characters, no text. The second image is the style master.")
+
+
+def hanging(bands, reach: int = 320):
+    """Overhead canopy pieces that hang from nothing: rear-band pieces touching the chunk's top edge that end
+    above `reach` px (a whole tree reaches the ground). The grown chunks got them from feature repaints; they
+    show as foliage with a straight cut once the layers move."""
+    import numpy as np
+    from scipy import ndimage
+    labels, n = ndimage.label(bands == "rear")
+    out = np.zeros(bands.shape, bool)
+    for i, box in enumerate(ndimage.find_objects(labels), 1):
+        if box and box[0].start == 0 and box[0].stop < reach:
+            out[box] |= labels[box] == i
+    return out
+
+
+def clear(region: Path, chunk: str, reuse: bool = False) -> None:
+    """Paint the hanging canopy pieces out of the chunk's art (sky, far and mid continue there) and give their
+    pixels to sky, far or mid: sky where the painting is sky-coloured, else the nearer of the far and mid bands
+    around. Writes the art (the original stays in tmp/) and the sky/far/mid masks."""
+    import numpy as np
+    from scipy import ndimage
+    config = json.loads((region / "layers.json").read_text(encoding="utf-8"))["chunks"][chunk]
+    art_path = region / config["states"]["clean"]
+    keep_art = raw_dir(region) / f"{chunk}--before-clear.png"
+    if not keep_art.exists():
+        Image.open(art_path).convert("RGB").save(keep_art)
+    bands = partition(region, chunk, Image.open(keep_art).convert("RGBA"))
+    hang = hanging(bands)
+    if not hang.any():
+        print(f"{chunk}: nothing hangs", flush=True)
+        return
+    hole = ndimage.binary_dilation(hang, iterations=3) & np.isin(bands, ("sky", "far", "mid", "rear"))
+    art = Image.open(art_path).convert("RGB")
+    raw = raw_dir(region) / f"{chunk}--clear.png"
+    if reuse and raw.exists():
+        painted = Image.open(raw).convert("RGB")
+    else:
+        painted = api(f"{chunk}--clear", art, CLEAR_PROMPT, l_image(hole), (STYLE,))
+        if painted is None:
+            return
+        painted.save(raw)
+    p, rgb = np.array(painted), np.array(art)
+    rgb[hole] = p[hole]
+    Image.fromarray(rgb).save(art_path, optimize=True)
+    sky = hole & sky_array(p)
+    d_far = ndimage.distance_transform_edt(~((bands == "far") & ~hole))
+    d_mid = ndimage.distance_transform_edt(~((bands == "mid") & ~hole))
+    new = bands.copy()
+    new[hole & ~sky] = np.where(d_far[hole & ~sky] < d_mid[hole & ~sky], "far", "mid")
+    new[sky] = "sky"
+    for name in ("sky", "far", "mid"):
+        path = region / "masks" / f"{chunk}.{DEPTH[name][0]}.png"
+        mask = Image.new("RGBA", art.size, (255, 255, 255, 0))
+        mask.putalpha(l_image(new == name))
+        mask.save(path, optimize=True)
+    print(f"{chunk}: cleared {int(hang.sum())} px of hanging canopy -> {art_path.relative_to(ROOT)}", flush=True)
+
+
 def rdp(points: list[tuple[int, int]], tolerance: float) -> list[tuple[int, int]]:
     """Ramer–Douglas–Peucker: the fewest points that stay within `tolerance` px of the traced line."""
     if len(points) < 3:
@@ -750,7 +814,7 @@ def region_layers(region: Path) -> list[Path]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("step", choices=["key", "masks", "fill", "complete", "near", "under", "collision", "region"])
+    parser.add_argument("step", choices=["key", "masks", "fill", "complete", "near", "under", "clear", "collision", "region"])
     parser.add_argument("region", type=Path)
     parser.add_argument("chunk", nargs="?", help="not for region")
     parser.add_argument("--only", nargs="+", choices=PARALLAX, default=list(PARALLAX), help="fill: these layers")
@@ -783,6 +847,8 @@ def main() -> None:
         complete(region, args.chunk, art, tuple(n for n in args.only if n != "sky") or ("far", "mid"), args.reuse)
     elif args.step == "near":
         near(region, args.chunk, args.reuse)
+    elif args.step == "clear":
+        clear(region, args.chunk, args.reuse)
     elif args.step == "under":
         under(region, args.chunk, args.reuse)
     else:
