@@ -6,9 +6,7 @@
     "enemy-rover", "enemy-crab", "enemy-drone",
     "fx", "fx-leaves", "fx-ground", "fx-water",
     "boss-jenny", "boss-jenny-2", "coffee-machine",
-    "dexter", "dexter-acts", "pocket-computer", "mensa-food"
+    "dexter", "dexter-acts", "dexter-prologue", "pocket-computer", "mensa-food"
   ],
-  "optional": [
-    "dexter-prologue"
-  ]
+  "optional": []
 }

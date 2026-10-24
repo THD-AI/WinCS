@@ -1,0 +1,206 @@
+{
+ "frames": {
+  "look-back-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "look-back-01": {
+   "frame": {
+    "x": 26,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "look-back-02": {
+   "frame": {
+    "x": 52,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "wait-00": {
+   "frame": {
+    "x": 0,
+    "y": 33,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "wait-01": {
+   "frame": {
+    "x": 26,
+    "y": 33,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "wait-02": {
+   "frame": {
+    "x": 52,
+    "y": 33,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sit-00": {
+   "frame": {
+    "x": 0,
+    "y": 66,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "sit-01": {
+   "frame": {
+    "x": 26,
+    "y": 66,
+    "w": 24,
+    "h": 31
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 31
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 31
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "dexter-prologue.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 76,
+   "h": 97
+  },
+  "scale": "1"
+ }
+}

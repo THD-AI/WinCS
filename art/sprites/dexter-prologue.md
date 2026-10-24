@@ -6,7 +6,7 @@
 
 ![Dexter · prologue additions](images/dexter-prologue-preview.png)
 
-**Review:** 🟡 Drawn 24 Oct for the prologue (workstream 5): the poses dexter and dexter-acts lack (sit on the bench, look back, wait). Review export only (tmp/atlas) until Alexander approves – it adds to an approved character.
+**Review:** ✅ Approved 24 Oct by Alexander; exported to game/public/assets/sprites/ with export_atlas.py.
 
 ## In motion
 
