@@ -14,6 +14,9 @@ export.json:
      "layers": {"01-distance": {"file": "images/01-distance-{name}.png", "z": 1, "scroll": 0.2}},
      "states": {"anomaly": ["01-distance", ...], "clean": [...]},
      "composed": {"anomaly": "images/after-{name}.png"},          # what --verify compares with
+     # a layer with "region": true is one plate for the whole region (per chunk, plates at scroll != 1
+     # overlap or leave gaps), cut into chunk-wide tiles: "file" takes {tile}, chunk j carries tile j;
+     # "rest": the chunk's own plate it was quilted from, which --verify rebuilds the chunk with
      "aliases": "media-sources.json"}                               # optional: shared plates
 
 Usage:
@@ -75,6 +78,12 @@ def manifest(region: Path) -> tuple[dict, dict[str, Path]]:
                 if layer_id not in config["layers"]:
                     raise ExportError(f"{region.name}: state {state} draws unknown layer {layer_id!r}")
                 layer = config["layers"][layer_id]
+                if layer.get("region"):  # one plate for the region in chunk-wide tiles; chunk j carries tile j
+                    tile = region / layer["file"].format(tile=chunk["x"])
+                    if chunk["y"] != 0 or not tile.exists():
+                        continue
+                    layers.append({"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(tile)})
+                    continue
                 plate = source(region, layer["file"], chunk.get("name", chunk_id), aliases)
                 layers.append({"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(plate)})
             collision = region / f"{chunk_id}.{state}.collision.json"
@@ -99,11 +108,20 @@ def export(region: Path, out: Path) -> dict:
 
 
 def verify(region: Path, out: Path) -> list[str]:
-    """Rebuild every chunk state from the exported plates and compare with the region's art."""
+    """Rebuild every chunk state from the exported plates and compare with the region's art.
+
+    A region-wide parallax plate ("region": true) is not the chunk's own picture: for it, the chunk's
+    "rest" plate (its own filled layer, what the region plate was quilted from) stands in."""
     from PIL import Image, ImageChops  # only --verify needs Pillow
 
     config = json.loads((region / "export.json").read_text(encoding="utf-8"))
     stage = json.loads((out / region.name / "stage.json").read_text(encoding="utf-8"))
+    aliases = json.loads((region / config["aliases"]).read_text(encoding="utf-8")).get("aliases", {})         if config.get("aliases") else {}
+
+    def rest(pattern: str, name: str) -> Path:
+        path = ROOT / pattern.format(name=name)
+        return path if path.exists() or path.name not in aliases else path.parent / aliases[path.name]
+
     report = []
     for chunk in stage["chunks"]:
         name = config["chunks"][chunk["id"]].get("name", chunk["id"])
@@ -111,9 +129,16 @@ def verify(region: Path, out: Path) -> list[str]:
             pattern = config.get("composed", {}).get(state)
             if not pattern:
                 continue
+            exported = {layer["id"]: out / region.name / layer["file"] for layer in content["layers"]}
+            rests = {lid: rest(L["rest"], name) for lid, L in config["layers"].items() if L.get("region")}
+            if any(not path.exists() for path in rests.values()):
+                report.append(f"{chunk['id']}.{state} (not checked: its region plates' sources are not in tmp/)")
+                continue
             canvas = Image.new("RGBA", tuple(stage["chunkSize"]), (0, 0, 0, 0))
-            for layer in content["layers"]:
-                canvas = Image.alpha_composite(canvas, Image.open(out / region.name / layer["file"]).convert("RGBA"))
+            for layer_id in config["states"][state]:
+                layer = config["layers"][layer_id]
+                path = rests[layer_id] if layer.get("region") else exported[layer_id]
+                canvas = Image.alpha_composite(canvas, Image.open(path).convert("RGBA"))
             art = Image.open(region / pattern.format(name=name)).convert("RGB")
             if ImageChops.difference(canvas.convert("RGB"), art).getbbox():
                 raise ExportError(f"{region.name}/{chunk['id']}.{state}: the exported layers don't rebuild "

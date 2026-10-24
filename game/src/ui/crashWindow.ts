@@ -13,7 +13,7 @@ export interface CrashWindow {
 }
 
 /** A bevelled grey window centred at (x, y), with the THD.exe title bar, the red X icon and one OK button. */
-export function crashWindow(scene: Phaser.Scene, x: number, y: number): CrashWindow {
+export function crashWindow(scene: Phaser.Scene, x: number, y: number, text = CRASH_TEXT): CrashWindow {
   const g = scene.add.graphics();
   bevel(g, -W / 2, -H / 2, W, H);
   g.fillStyle(C.title).fillRect(-W / 2 + 4, -H / 2 + 4, W - 8, 24);
@@ -25,7 +25,7 @@ export function crashWindow(scene: Phaser.Scene, x: number, y: number): CrashWin
   g.lineStyle(1, C.dark).strokeRect(-37, H / 2 - 39, 74, 22);
   const font = { fontFamily: 'Tahoma, Verdana, sans-serif', fontSize: '15px' };
   const title = scene.add.text(-W / 2 + 10, -H / 2 + 8, 'THD.exe', { ...font, color: '#ffffff', fontStyle: 'bold' });
-  const message = scene.add.text(-W / 2 + 72, -16, CRASH_TEXT, { ...font, color: '#000000' });
+  const message = scene.add.text(-W / 2 + 72, -16, text, { ...font, color: '#000000' });
   const okLabel = scene.add.text(0, H / 2 - 28, 'OK', { ...font, color: '#000000' }).setOrigin(0.5);
   const ok = scene.add.zone(0, H / 2 - 28, 80, 28).setInteractive({ useHandCursor: true });
   const container = scene.add.container(x, y, [g, title, message, okLabel, ok]);
