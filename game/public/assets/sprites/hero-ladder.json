@@ -1,0 +1,182 @@
+{
+ "frames": {
+  "ladder-top-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ladder-top-01": {
+   "frame": {
+    "x": 78,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ladder-top-02": {
+   "frame": {
+    "x": 156,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ladder-top-03": {
+   "frame": {
+    "x": 234,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ladder-bottom-00": {
+   "frame": {
+    "x": 0,
+    "y": 120,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ladder-bottom-01": {
+   "frame": {
+    "x": 78,
+    "y": 120,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "ladder-bottom-02": {
+   "frame": {
+    "x": 156,
+    "y": 120,
+    "w": 76,
+    "h": 118
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 76,
+    "h": 118
+   },
+   "sourceSize": {
+    "w": 76,
+    "h": 118
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "hero-ladder.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 310,
+   "h": 238
+  },
+  "scale": "1"
+ }
+}

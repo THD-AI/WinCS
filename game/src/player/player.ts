@@ -3,7 +3,7 @@ import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement, RUN_SPEED, WALK_SPEED } from './movement';
 import { jump, jumpState, JUMP_SPEED, landing, LANDING_TIMES, pogo, type LandingTimes } from './jump';
-import { climb, climbFlip, dropThrough, surfaceNear, traversal } from './traversal';
+import { climb, climbFlip, dropThrough, surfaceNear, takeLadderEnd, traversal } from './traversal';
 import { catalogue, clipLength, LocomotionAnimation, type Catalogue, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
@@ -81,7 +81,7 @@ export class Player {
     this.life = new Life(this.body, bosses);
     this.air = jumpState(this.body.y);
     this.clips = catalogue(Object.fromEntries(
-      ['hero-move', 'hero-run', 'hero-idle', 'hero-air'].map(board => [board, scene.cache.json.get(`${board}.anims`)])));
+      ['hero-move', 'hero-run', 'hero-idle', 'hero-air', 'hero-ladder'].map(board => [board, scene.cache.json.get(`${board}.anims`)])));
     this.animation = new LocomotionAnimation(this.clips);
     if (this.clips.land && this.clips['hard-landing']) this.landingTimes = {
       soft: clipLength(this.clips.land, 'land'), hard: clipLength(this.clips['hard-landing'], 'hard-landing') };
@@ -272,6 +272,7 @@ export class Player {
       ? this.air.hard ? 'hard-landing' : 'land' : this.body.sliding ? 'fall'
       : !this.body.grounded ? this.body.vy < 0 ? 'jump' : 'fall'
       : Math.abs(this.body.vx) > (WALK_SPEED + RUN_SPEED) / 2 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
+    this.animation.ladderEnd(takeLadderEnd(this.traversal));
     this.animation.wounded = this.life.health <= 2;
     const locomotion = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000,
       Math.abs(this.body.vx), { vy: this.body.vy, launch: JUMP_SPEED });

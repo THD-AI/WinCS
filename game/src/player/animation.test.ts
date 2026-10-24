@@ -123,3 +123,43 @@ describe('stepped locomotion animation', () => {
     expect(machine.update('walk', 0).frame).toBe('idle-00');
   });
 });
+
+describe('ladder ends (hero-ladder board, Alexander 24 Oct)', () => {
+  const climbTo = (machine: LocomotionAnimation) => { machine.update('ladder', 1 / 12); return machine; };
+  it('climbs over the top: ladder-top forward, held while standing, then the idle', () => {
+    expect(clips['ladder-top'].board).toBe('hero-ladder'); expect(clips['ladder-top'].frames).toBe(4);
+    const machine = climbTo(new LocomotionAnimation(clips));
+    machine.ladderEnd({ clip: 'ladder-top', reverse: false });
+    const seen = [machine.update('idle', 0).frame];
+    for (let i = 0; i < 3; i++) seen.push(machine.update('idle', 1 / 12).frame);
+    expect(seen).toEqual(['ladder-top-00', 'ladder-top-01', 'ladder-top-02', 'ladder-top-03']);
+    expect(machine.update('idle', 1 / 12).frame).toBe('idle-00');
+  });
+  it('steps off the bottom with ladder-bottom forward, straight into a walk if he moves on', () => {
+    const machine = climbTo(new LocomotionAnimation(clips));
+    machine.ladderEnd({ clip: 'ladder-bottom', reverse: false });
+    expect(machine.update('idle', 0).frame).toBe('ladder-bottom-00');
+    tick(machine, 'idle', 2); expect(machine.update('walk', 0).frame).toBe('ladder-bottom-02');
+    machine.update('walk', 1 / 12); expect(machine.clip).toBe('walk');
+  });
+  it('gets on reversed: ladder-top from the deck, ladder-bottom from the ground, then the climb', () => {
+    for (const clip of ['ladder-top', 'ladder-bottom']) {
+      const machine = new LocomotionAnimation(clips);
+      machine.ladderEnd({ clip, reverse: true });
+      const frames = clips[clip].frames;
+      const seen = [machine.update('ladder', 0).frame];
+      for (let i = 1; i < frames; i++) seen.push(machine.update('ladder', 1 / 12).frame);
+      expect(seen).toEqual(Array.from({ length: frames }, (_, n) => `${clip}-${String(frames - 1 - n).padStart(2, '0')}`));
+      // A stop on the ladder (the player passes no time) holds the frame.
+      expect(machine.update('ladder', 0).frame).toBe(`${clip}-00`);
+      expect(machine.update('ladder', 1 / 12).frame).toBe('ladder-00');
+    }
+  });
+  it('a jump cuts a ladder end at once, and a missing board plays nothing', () => {
+    const machine = climbTo(new LocomotionAnimation(clips));
+    machine.ladderEnd({ clip: 'ladder-top', reverse: false });
+    expect(machine.update('jump', 0, 0, { vy: -400, launch: 485 }).board).toBe('hero-air');
+    const bare = new LocomotionAnimation({ ...clips, 'ladder-top': undefined! });
+    bare.ladderEnd({ clip: 'ladder-top', reverse: false }); expect(bare.clip).toBe('idle');
+  });
+});
