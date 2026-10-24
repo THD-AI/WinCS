@@ -9,11 +9,11 @@
   [
    [
     0,
-    132
+    566
    ],
    [
     2160,
-    132
+    566
    ]
   ]
  ],
@@ -36,10 +36,10 @@
    "id": "jenny-ram",
    "kind": "jenny-ram",
    "x": 1080,
-   "y": 40,
+   "y": 474,
    "w": 40,
    "h": 92,
-   "note": "Jenny crosses the bridge and rams the hero; the region turns (M4-S1 #54)"
+   "note": "Jenny comes down the creek path and rams the hero; the region turns (M4-S1 #54, P5)"
   }
  ],
  "spawn": [],
