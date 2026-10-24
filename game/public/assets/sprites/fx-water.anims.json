@@ -1,0 +1,17 @@
+{
+ "lily-bob": {
+  "frames": 4,
+  "fps": 4,
+  "loop": true
+ },
+ "ripple": {
+  "frames": 4,
+  "fps": 8,
+  "loop": false
+ },
+ "sparkle": {
+  "frames": 4,
+  "fps": 10,
+  "loop": false
+ }
+}

@@ -1,7 +1,7 @@
 # Dexter · moves
 
 <!-- nav:start -->
-[← Prop · coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **20 / 21** · [Dexter · gestures →](dexter-acts.md)
+[← Prop · coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **20 / 26** · [Dexter · gestures →](dexter-acts.md)
 <!-- nav:end -->
 
 ![Dexter · moves](images/dexter-preview.png)
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter.png` · rebuild: `python scripts/make_boards.py draw dexter --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Prop · coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **20 / 21** · [Dexter · gestures →](dexter-acts.md)
+[← Prop · coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **20 / 26** · [Dexter · gestures →](dexter-acts.md)
 <!-- nav:end -->
