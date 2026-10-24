@@ -128,7 +128,8 @@
    "y": 320,
    "w": 80,
    "h": 76,
-   "note": "past the gap: Dexter waits on the far side, hopping on the spot"
+   "note": "past the gap: Dexter waits on the far side, hopping on the spot",
+   "act": "wait"
   }
  ],
  "spawn": [],

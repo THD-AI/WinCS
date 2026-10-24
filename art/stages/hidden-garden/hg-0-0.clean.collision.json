@@ -73,11 +73,12 @@
   {
    "id": "dexter-waypoint-1",
    "kind": "dexter-waypoint",
-   "x": 760,
+   "x": 620,
    "y": 355,
-   "w": 80,
+   "w": 220,
    "h": 76,
-   "note": "the bench: walking up makes Dexter hop off and waddle ahead"
+   "note": "walking up to the bench (x >= 620) makes Dexter hop off and beckon; the first quest starts",
+   "act": "wake"
   },
   {
    "id": "dexter-waypoint-2",
@@ -86,7 +87,8 @@
    "y": 398,
    "w": 80,
    "h": 76,
-   "note": "at the fallen birch: Dexter hops onto it and looks back"
+   "note": "at the fallen birch: Dexter hops onto it and looks back",
+   "act": "wait"
   }
  ],
  "spawn": [
