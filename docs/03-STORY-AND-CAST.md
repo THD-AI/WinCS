@@ -82,6 +82,26 @@ flowchart LR
 
 Lane B's `boss-defeated` starts it; in dev builds **Shift + F8** runs it anywhere.
 
+### Dexter at the coffee machine ([#52](https://github.com/THD-AI/WinCS/issues/52))
+
+`CoffeeVisit` (`game/src/story/`) draws beat 4 into the stage. When the stage starts it seats Dexter at every `coffee-machine` box with a `dexter` spawn within 160 px of its foot (Rusty Creek: `coffee-1` and `dexter-1` in rc-1-0), so he is there before you. Lane B's coffee save (`save` with the machine's id as `checkpoint`) starts the visit. Every `enemy-defeated` leaves an `fx` pool where the enemy fell; he takes them at your next save, so the beat works with and without fighting.
+
+```mermaid
+flowchart LR
+  S["stage starts"] --> W["waiting<br/>Dexter idle beside<br/>the machine, 27 px"]
+  F["enemy-defeated<br/>(position)"] -.-> P["pool<br/>fx black-fluid<br/>stays where it fell"]
+  W -->|"first save<br/>at this machine"| B["bow 0.7 s"] --> SW["sweat 1 s"]
+  SW --> G["give 1.1 s<br/>pocket computer + muffin<br/>arc to the hero"]
+  G --> U["pocketMap.unlock()<br/>Tab / Esc opens the map"]
+  G --> A{"pools<br/>left?"}
+  W -->|"later saves"| A
+  P -.-> A
+  A -->|yes| AB["absorb 0.9 s<br/>per pool, oldest first,<br/>the pool thins and is gone"] --> A
+  A -->|no| I["idle"]
+```
+
+**Sizes, measured against the 76 px hero ([04 – Scale](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows)):** Dexter 27 px; the coffee machine 80 px tall on its base cabinet, a little taller than the hero, filling its 40 × 80 collision box; the pocket computer a 19 × 10 px case closed (≈ 45 cm, the photographed suitcase shrunk to carry); food pickups 13–18 px, around the 16 px icon size. He doesn't grow at a coffee machine: only bosses make him bigger (decision 41). In dev builds **Shift + F4** seats him in the view, leaves one pool and saves at his machine.
+
 ## The rest of the arc (post-jam)
 
 Regions 2–5 each end with a boss that Dexter absorbs. Archive notes reveal that the experiment's logs mention a "mascot-shaped containment vessel". In the Playground region Dexter stops pretending. The final fight is Dexter at 8.5 ft. **Endings** (Duck Season style): defeat him (he collapses back into a torn plush), or refuse to feed him (skip the absorbs), which leads to a different, quieter ending.

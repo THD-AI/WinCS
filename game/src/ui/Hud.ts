@@ -50,7 +50,9 @@ export class Hud extends Phaser.Scene {
       if (button.index === MENU_PAD) toggleMap(this.scene);
     });
     // Dev builds: F4 hands over the pocket computer and marks the first rooms visited (#69 verification; F2 is the player's debug readout).
-    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F4', () => {
+    // Shift + F4 is Dexter's coffee-machine visit (#52).
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F4', (event: KeyboardEvent) => {
+      if (event.shiftKey) return;
       pocketMap.unlock();
       pocketMap.visit('hidden-garden', 'hg-0-0');
       pocketMap.visit('rusty-creek', 'rc-0-0');

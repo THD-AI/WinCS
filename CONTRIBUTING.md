@@ -160,6 +160,7 @@ npm --prefix game run dev          # http://localhost:5173 – stages are genera
 | F4 then Tab (dev) | hand over the pocket computer, then open the map |
 | F6 / F7 (dev) | step through the sound loops / effects; M mutes |
 | F8 (dev) | the THD.exe crossing |
+| Shift + F4 (dev) | Dexter at the coffee machine: bow, sweat, the pocket computer and a muffin, then he absorbs a pool; Tab opens the map after |
 | Shift + F8 (dev) | the end of the slice: Dexter absorbs, the glitch, "To be continued.", the credits |
 | F9 / F10 (dev) | anomaly FX / atmosphere test chunks (V toggles, A switches the leaves, Esc closes) |
 

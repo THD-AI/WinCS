@@ -5,13 +5,14 @@ import { addImageCut, addPixelStretch, add404Void } from '../fx/anomaly';
 import { sound } from '../fx/sound/Audio';
 import { crashWindow } from '../ui/crashWindow';
 import { creditsText } from '../ui/creditsView';
+import { createAnims, loadAtlases, type AtlasAnim } from './atlases';
 import { dexterScale, EndingSequence, type EndingPhase } from './endingSequence';
 
 export const END_TEXT = 'To be continued.';
 
 /** The approved atlases this scene draws (scripts/export_atlas.py); frame names are `<anim>-NN`. */
 const ATLASES = ['dexter', 'dexter-acts', 'fx'] as const;
-const ANIMS: [atlas: string, anim: string, frames: number, repeat: number][] = [
+const ANIMS: AtlasAnim[] = [
   ['fx', 'black-fluid', 6, 0], ['dexter', 'hop', 4, -1], ['dexter-acts', 'absorb', 4, 0],
 ];
 const STAGE = 'Stage';
@@ -39,18 +40,10 @@ export class Ending extends Phaser.Scene {
   constructor() { super({ key: 'Ending', active: true }); }
 
   preload(): void {
-    for (const key of ATLASES) {
-      if (!this.textures.exists(key)) this.load.atlas(key, `assets/sprites/${key}.png`, `assets/sprites/${key}.json`);
-    }
+    loadAtlases(this, ATLASES);
   }
 
   create(): void {
-    for (const [atlas, anim, frames, repeat] of ANIMS) {
-      const key = `${atlas}:${anim}`;
-      if (this.anims.exists(key) || !this.textures.exists(atlas)) continue;
-      const names = Array.from({ length: frames }, (_, i) => ({ key: atlas, frame: `${anim}-${String(i).padStart(2, '0')}` }));
-      this.anims.create({ key, frames: names, frameRate: 12, repeat });
-    }
     const stop = gameEvents.on('boss-defeated', ({ position }) => this.begin(position));
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, stop);
     // Dev builds: Shift + F8 runs the ending anywhere (#58 verification; F8 alone is the crossing).
@@ -66,6 +59,7 @@ export class Ending extends Phaser.Scene {
     if (this.run) return;
     this.at = position ? this.toView(position) : FALLBACK;
     if (this.scene.isActive(STAGE)) this.scene.pause(STAGE);
+    createAnims(this, ANIMS);
     this.run = new EndingSequence(() => window.location.assign(window.location.pathname));
     this.run.start();
     this.scene.bringToTop();
