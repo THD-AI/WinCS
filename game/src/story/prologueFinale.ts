@@ -39,9 +39,9 @@ export class FinaleSequence {
     this.elapsed += dt;
     const i = TIMED.indexOf(this.phase as (typeof TIMED)[number]);
     if (i >= 0 && this.elapsed >= FINALE[TIMED[i]]) {
-      const next = TIMED[i + 1] ?? 'crash';
-      this.enter(next);
-      if (next === 'crash') this.onCrash();
+      const last = i === TIMED.length - 1;
+      this.enter(last ? 'crash' : TIMED[i + 1]);
+      if (last) this.onCrash();
     }
     return this.phase;
   }

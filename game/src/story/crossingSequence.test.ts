@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CrossingSequence, TIMING, TIMING_404 } from './crossingSequence';
+import { CrossingSequence, tearLayout, TIMING, TIMING_404 } from './crossingSequence';
 
 describe('the crossing', () => {
   it('runs hit, freeze and the dialog, then waits for OK', () => {
@@ -46,6 +46,21 @@ describe('the 404 crossing', () => {
     expect(landed).toBe(0);
     expect(run.update(TIMING_404.cut)).toBe('done');
     expect(landed).toBe(1);
+  });
+
+  it('tears the frame inside the view, the void just past the hero', () => {
+    const view = { w: 1280, h: 720 };
+    for (const hero of [{ x: 640, y: 500 }, { x: 10, y: 700 }, { x: 1275, y: 20 }]) {
+      const tear = tearLayout(hero, view);
+      for (const a of [tear.void, tear.stretch, ...tear.cuts.map(c => c.area)]) {
+        expect(a.x).toBeGreaterThanOrEqual(0);
+        expect(a.y).toBeGreaterThanOrEqual(0);
+        expect(a.x + a.w).toBeLessThanOrEqual(view.w);
+        expect(a.y + a.h).toBeLessThanOrEqual(view.h);
+      }
+    }
+    const mid = tearLayout({ x: 640, y: 500 }, view).void;
+    expect(mid.x + mid.w / 2).toBeGreaterThan(640);
   });
 
   it('keeps the classic crossing without a pull', () => {

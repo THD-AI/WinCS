@@ -225,10 +225,10 @@ export class DexterGuide {
 export function stopsFrom(boxes: { id?: string; kind?: string; act?: unknown; x: number; w: number }[]): { wakeX: number; stops: Stop[] } {
   const waypoints = boxes.filter(box => box.kind === 'dexter-waypoint').sort((a, b) => a.x - b.x);
   const wake = waypoints.find(box => box.act === 'wake') ?? waypoints[0];
-  const stops = waypoints.filter(box => box !== wake).map(box => ({
+  const stops = waypoints.filter(box => box !== wake).map((box): Stop => ({
     id: box.id ?? 'waypoint',
     x: box.x + box.w / 2,
-    act: box.act === 'point' || box.act === 'pond' ? box.act : 'wait' as const,
+    act: box.act === 'point' || box.act === 'pond' ? box.act : 'wait',
   }));
   return { wakeX: wake ? wake.x : -Infinity, stops };
 }
