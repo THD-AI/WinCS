@@ -114,7 +114,7 @@ def guide(col: int) -> Image.Image:
 # chunk seams at the same height, a higher tier by ladders. The way up is the shed's own ladder grown into a rusty
 # girder tower (TOWER, painted into the zone's copy of the level chunk) that reaches the first beam.
 TOWER = (1240, 1287)   # the shed ladder's climb box x range (hg-2-0), continued up into the band above
-SHAFT = (1500, 1530)   # the storm-drain shaft from the boardwalk (hg-3-0) down into the drain hall
+SHAFT = (1540, 1580)   # the storm-drain shaft from the boardwalk (hg-3-0) down the drain hall's painted ladder
 BEAMS = [  # (col, x0, x1, y) in chunk px of row 0
     (0, 980, 2160, 560), (1, 0, 900, 560), (1, 1000, 2160, 520), (2, 0, 1500, 520),
     (0, 1500, 2160, 300), (1, 0, 620, 300), (2, 600, 1800, 330),
@@ -184,17 +184,98 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
             data["noGo"] = carve(data["noGo"], SHAFT[0] - 10, SHAFT[1] + 10)
             data["climb"] = data["climb"] + [box(SHAFT[0], 380, SHAFT[1], H, kind="ladder")]
         return data
-    data["walk"] = [[[x, y] for x, y in floor_line(col)]]
-    data["noGo"] = [box(0, 0, W, CEILING - 40, kind="water")]
-    if col == 1:
-        data["noGo"] = carve(data["noGo"], SHAFT[0] - 10, SHAFT[1] + 10)
-        data["climb"] = [box(SHAFT[0], 0, SHAFT[1], FLOOR, kind="ladder")]
-    if col == 2:
-        data["oneWay"] = [[[x0, y], [x1, y]] for x0, x1, y in ((200, 980, 420), (1150, 1900, 470))]
-        data["climb"] = [box(560, 420, 590, FLOOR, kind="ladder")]
+    bands = key_bands(cid)
+    if bands is None:  # before the depth key: the guide's own floor, ceiling and ladders
+        data["walk"] = [[[x, y] for x, y in floor_line(col)]]
+        data["noGo"] = [box(0, 0, W, CEILING - 40, kind="water")]
+        if col == 1:
+            data["noGo"] = carve(data["noGo"], SHAFT[0] - 10, SHAFT[1] + 10)
+            data["climb"] = [box(SHAFT[0], 0, SHAFT[1], FLOOR, kind="ladder")]
+        if col == 2:
+            data["oneWay"] = [[[x0, y], [x1, y]] for x0, x1, y in ((200, 980, 420), (1150, 1900, 470))]
+            data["climb"] = [box(560, 420, 590, FLOOR, kind="ladder")]
+    else:  # stage 7: traced from the painting's depth key, so the floors are where the art has them
+        water = (bands == "water").mean(1) > 0.6
+        ceiling = next((y for y in range(H) if not water[y]), 0)  # the water band at the top, seen from below
+        steps = ladders(bands)
+        data["walk"] = floors(bands, steps, ceiling + 8)
+        if not any(max(y for _, y in line) > FLOOR - 80 for line in data["walk"]):
+            data["walk"].append([[x, y] for x, y in floor_line(col)])  # the key read the floor as rock: the guide's
+        data["noGo"] = [box(0, 0, W, ceiling, kind="water")] if ceiling else []
+        # the painted ladder under the shaft takes the shaft's exact columns, so the two pieces are one ladder
+        shaft = [(x0, x1) for x0, x1, _, _ in steps if col == 1 and x0 <= SHAFT[1] and x1 >= SHAFT[0]]
+        data["climb"] = [box(SHAFT[0], 0, SHAFT[1], bottom, kind="ladder") if (x0, x1) in shaft else
+                         box(x0, max(top, ceiling), x1, bottom, kind="ladder") for x0, x1, top, bottom in steps]
+        if col == 1:
+            data["noGo"] = carve(data["noGo"], SHAFT[0] - 10, SHAFT[1] + 10)
     data["interact"] = [{"id": f"{cid}-{STORY[col]['beat']}", "kind": STORY[col]["beat"], "x": 1000, "y": FLOOR - 120,
                          "w": 120, "h": 120, "note": STORY[col]["story"]}]
     return data
+
+
+def key_bands(cid: str):
+    """The chunk's depth key (depth_layers.py key) as an H x W array of band names, or None before it exists."""
+    import numpy as np
+    import depth_layers as dl
+    path = ROOT / "tmp" / "boards" / ZONE.name / f"{cid}--depth.png"
+    if not path.exists():
+        return None
+    key = Image.open(path).resize((W, H), Image.Resampling.NEAREST)
+    return np.array(dl.vote(dl.snap(key), (W, H))).reshape(H, W)
+
+
+def ladders(bands) -> list[tuple[int, int, int, int]]:
+    """Ladders in the key: columns where the play colour flips 16+ times (rungs), 8+ px wide -> (x0, x1, top, bottom)."""
+    import numpy as np
+    red = bands == "play"
+    flips = (red[1:] != red[:-1]).sum(0)
+    out, start = [], None
+    for x in range(W + 1):
+        hit = x < W and flips[x] >= 16
+        if hit and start is None:
+            start = x
+        if not hit and start is not None:
+            if x - start >= 8:
+                mid = red[:, (start + x) // 2]
+                ys = np.flatnonzero(mid[1:] != mid[:-1])
+                out.append((start, x, int(ys.min()), int(ys.max()) + 1))
+            start = None
+    return out
+
+
+def floors(bands, skip: list[tuple[int, int, int, int]], top: int) -> list[list[list[int]]]:
+    """Walk lines along the tops of the key's play band (10+ px thick, below `top`), linked column to column
+    within 8 px and across gaps up to 160 px (a pillar or a ladder in front of the floor is scenery, not a wall);
+    lines shorter than 120 px are dropped; a point every 48 px."""
+    import numpy as np
+    red = bands == "play"
+    thick = np.ones_like(red)
+    for d in range(10):
+        thick[:H - d] &= red[d:]
+        thick[H - d:] = False
+    tops = thick & ~np.vstack([np.zeros((1, W), bool), red[:-1]])
+    lines, active = [], []
+    for x in range(0, W, 4):
+        if any(x0 - 4 <= x <= x1 + 4 for x0, x1, _, _ in skip):
+            continue
+        nxt = []
+        for y in np.flatnonzero(tops[:, x]):
+            if y < top:
+                continue
+            line = next((l for l in active if abs(l[-1][1] - y) <= 8 and x - l[-1][0] <= 160 and l not in nxt), None)
+            if line is None:
+                line = []
+                lines.append(line)
+            line.append((x, int(y)))
+            nxt.append(line)
+        active = nxt + [l for l in active if l not in nxt and x - l[-1][0] <= 160]
+    out = []
+    for line in lines:
+        if line[-1][0] - line[0][0] < 120:
+            continue
+        pts = [line[0]] + [p for p in line[1:-1] if p[0] - line[0][0] >= 48 and (p[0] - line[0][0]) % 48 < 4] + [line[-1]]
+        out.append([[x, y] for x, y in dict(pts).items()])
+    return out
 
 
 def reach(collisions: dict[str, dict], grid: dict[str, tuple[int, int]]) -> list[str]:
