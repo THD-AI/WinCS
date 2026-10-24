@@ -6,7 +6,7 @@ import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sw
 import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
-import { actionEdges, attackClick } from './action-input';
+import { actionEdges, attackClick, AttackBuffer } from './action-input';
 import { lowStreak, swingArc } from './swingFx';
 import { LOW_CONTACT, LowSweep } from './lowSweep';
 import { pickAssist } from './assist';
@@ -31,6 +31,8 @@ export class ChairCombat {
   private altKey: Phaser.Input.Keyboard.Key;
   private physical: { any(codes: readonly string[]): boolean };
   private wasDown = false;
+  /** A press the chair could not take yet (action-input.ts). */
+  private buffer = new AttackBuffer();
   /** The left mouse button on the canvas (attackClick): held, and its edges since the last frame. */
   private mouse = { down: false, pressed: false, released: false };
   private special = false;
@@ -104,6 +106,21 @@ export class ChairCombat {
     if (pick.lunge > 0) this.player.lunge(pick.direction * pick.lunge);
     return pick;
   }
+  /** A plain tap: the side swing, or the up attack under a hovering drone (assist.ts). */
+  private startTap() {
+    const first = this.sweeps.phase === 'idle';
+    if (first && this.assist('sweep', SWEEP_CONTACT.reach)?.up) { this.startOverhead('up'); return; }
+    this.sweeps.press(this.player.facing);
+    if (first) sound.play('chair-whoosh');
+  }
+  private startOverhead(kind: 'up' | 'slam') {
+    if (kind === 'up' && this.overhead.phase === 'idle') this.assist('up', UP_CONTACT.right);
+    if (this.overhead.begin(kind, this.player.facing)) sound.play('chair-whoosh');
+  }
+  private startLow() {
+    this.assist('low', LOW_CONTACT.reach);
+    if (this.low.begin(this.player.facing)) sound.play('chair-whoosh');
+  }
   register(target: Damageable) {
     this.targets.set(target.id, target);
     return () => { if (this.targets.get(target.id) === target) this.targets.delete(target.id); };
@@ -152,14 +169,18 @@ export class ChairCombat {
     const { pressed, released } = actionEdges(down, this.wasDown, justDown, justUp);
     const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
     const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
-    if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
+    this.buffer.step(milliseconds / 1000);
+    if (this.enabled && pressed && this.player.dodge.active) {
+      // Pressed during a dodge-dash: struck as the dash ends.
+      this.buffer.hold(up ? 'up' : below ? 'down' : 'tap');
+    } else if (this.enabled && this.player.canAttack && pressed && (up || below && !this.player.body.grounded)) {
       this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel(); this.low.cancel();
-      if (up && this.overhead.phase === 'idle') this.assist('up', UP_CONTACT.right);
-      if (this.overhead.begin(up ? 'up' : 'slam', this.player.facing)) sound.play('chair-whoosh');
+      // The slam's descent and pogo queue their own next press (overhead.ts); other overhead poses buffer it.
+      const queues = this.overhead.phase === 'idle' || this.overhead.phase === 'pogo' || this.overhead.phase === 'descend';
+      if (queues) this.startOverhead(up ? 'up' : 'slam'); else this.buffer.hold(up ? 'up' : 'down');
     } else if (this.enabled && this.player.canAttack && pressed && below && this.overhead.phase === 'idle') {
       this.special = true; this.plainTap = false; this.guard.cancel(); this.sweeps.cancel();
-      if (!this.low.active) this.assist('low', LOW_CONTACT.reach);
-      if (this.low.begin(this.player.facing)) sound.play('chair-whoosh');
+      if (this.low.active) this.buffer.hold('down'); else this.startLow();
     } else if (this.enabled && this.player.canAttack && pressed) {
       this.plainTap = true;
       if (this.sweeps.phase === 'idle' && this.overhead.phase === 'idle' && !this.low.active) this.guard.press(this.player.facing);
@@ -168,19 +189,22 @@ export class ChairCombat {
       && this.overhead.phase === 'idle' && !this.low.active && this.enabled && this.player.canAttack) this.guard.press(this.player.facing);
     let tap = false;
     if (released) { tap = this.guard.phase === 'idle' ? this.plainTap : this.guard.release(); this.plainTap = false; }
-    if (this.enabled && this.player.canAttack && !this.special && tap && this.overhead.phase === 'idle' && !this.low.active && released) {
-      const first = this.sweeps.phase === 'idle';
-      // A tap under a hovering drone strikes up instead (assist.ts).
-      if (first && this.assist('sweep', SWEEP_CONTACT.reach)?.up) {
-        if (this.overhead.begin('up', this.player.facing)) sound.play('chair-whoosh');
-      } else {
-        this.sweeps.press(this.player.facing);
-        if (first) sound.play('chair-whoosh');
-      }
+    if (this.enabled && this.player.canAttack && !this.special && tap && released) {
+      if (this.overhead.phase === 'idle' && !this.low.active) this.startTap(); else this.buffer.hold('tap');
     }
     if (released) this.special = false;
     this.wasDown = down;
+    // A buffered press starts the moment the chair is free.
+    if (this.buffer.pending && this.enabled && this.player.canAttack && this.overhead.phase === 'idle' && !this.low.active
+      && this.guard.phase === 'idle') {
+      const kind = this.buffer.take();
+      if (kind === 'tap') this.startTap();
+      else if (kind === 'up') this.startOverhead('up');
+      else if (this.player.body.grounded) this.startLow();
+      else this.startOverhead('slam');
+    }
     if (!this.enabled || !this.player.canAttack) {
+      if (!this.player.dodge.active) this.buffer.clear();
       this.sweeps.cancel(); this.overhead.cancel(); this.low.cancel(); this.plainTap = false;
       if (!this.enabled || this.guard.phase !== 'break' || this.player.life.dead > 0) this.guard.cancel();
     }
