@@ -118,10 +118,10 @@ export function stepBody(body: Body, geometry: Geometry[], dt: number, ignoreOne
   let contact: { y: number; slope: number; slide: boolean } | undefined;
   if (body.vy >= 0) {
     if (wasGrounded) {
-      // Stay on the ground: follow the floor, step up or down a step, prefer the nearest floor.
+      // Stay on the ground: follow the floor, step down a step, or step up onto the highest floor a step above.
       const reach = STEP_UP + Math.abs(body.x - oldX) * 1.2 + 0.1;
       contact = surfaces.filter(s => Math.abs(s.y - oldY) <= reach)
-        .sort((a, b) => Math.abs(a.y - oldY) - Math.abs(b.y - oldY) || a.y - b.y)[0];
+        .sort((a, b) => a.y - b.y)[0];
     }
     // Falling: land on the first floor the feet cross from above.
     contact ??= surfaces.filter(s => oldY <= s.y + 0.01 && nextY >= s.y).sort((a, b) => a.y - b.y)[0];

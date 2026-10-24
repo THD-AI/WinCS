@@ -9,7 +9,7 @@ import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
 import { deathDust } from '../combat/life-visuals';
 import type { StageManifest, RegionState } from '../stage/manifest';
-import { FALLBACK, loadSurfaces, parseSurfaces, SurfaceMap, type Surface } from './surfaces';
+import { FALLBACK, loadSurfaces, parseSurfaces, SurfaceMap, type Puff, type Surface } from './surfaces';
 import { blades, Grounding } from './grounding';
 import { footfalls } from './footfall';
 import { spawnPuff, type PuffKind } from './dust';
@@ -17,6 +17,9 @@ import { HurtAnimation } from './hurt';
 import type { Position } from '../core/events';
 import { Interaction } from './interaction';
 import { GuardPush } from '../combat/guard';
+
+/** The splash of a region without a `water` material. */
+const SPLASH: Puff = { sprite: 'splash', shape: 'dust', colors: ['#9cc8f0', '#e8f4ff', '#4f86c6'], count: 8 };
 
 export class Player {
   readonly body: Body;
@@ -200,9 +203,14 @@ export class Player {
       const hazards = geometry.flatMap(g => g.hazard);
       const bounced = this.onHazards(hazards);
       const hazard = hazards.find(box => overlaps(this.body, box));
+      // Water is never floor: falling in splashes and puts the hero back on the bank he last stood on.
+      const water = geometry.flatMap(g => g.noGo).find(box => box.kind === 'water' && overlaps(this.body, box));
       const noGo = this.body.y > 900 || geometry.some(g => g.noGo.some(box => overlaps(this.body, box)));
       if (hazard && !bounced) this.resetFromDanger(Number(hazard.damage) || 1);
-      else if (noGo) this.resetFromDanger();
+      else if (noGo) {
+        if (water) spawnPuff(this.scene, this.body.x, water.y, this.surfaces?.named('water')?.material.puff ?? SPLASH, 'hard-land', 1);
+        this.resetFromDanger();
+      }
       else if (this.body.grounded && this.life.knock === 0) this.life.rememberSafe(this.body);
     }
     const desired: MotionPose = this.traversal.ladder ? 'ladder' : this.air.landing > 0
