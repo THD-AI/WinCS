@@ -45,9 +45,9 @@ About three minutes of play, without words or text: **cozy → something wrong �
 
 | Beat | Mood | What the player sees | Trigger (data) | Where in code |
 | --- | --- | --- | --- | --- |
-| 1 Arrival | cozy | Late afternoon at the garden gate. A small black plush sits on a bench, swinging its legs (`dexter-prologue` sit) | stage start, `player` and `dexter-bench` spawns | `Prologue` seats him |
-| 2 The first quest | cozy | Walk up and he hops off, looks back and beckons. That is the quest, and nobody explains it | `dexter-waypoint-1` (`act: wake`), the hero passes its left edge | `DexterGuide` sit → hop-off → wait |
-| 3 Follow Dexter | cozy | He waddles ahead along the walk lines, hops up steps and across the boardwalk gap, stops at each waypoint and waits, looking back, until you are close. If you fall far behind, he stops and beckons | `dexter-waypoint-2…5`, `-pond-1…2` (`act: wait`) | `DexterGuide` lead / wait |
+| 1 Arrival | cozy | Late afternoon: you start in the open garden gate, on the gravel path. Ahead, a small black plush sits on a bench, swinging its legs (`dexter-prologue` sit) | stage start, the `player` spawn in the gate (hg-0-0 x 205) and `dexter-bench` | `Prologue` seats him |
+| 2 The first quest | cozy | Walk up the path and he looks round (`look-back`), bows (`dexter-acts` bow), hops off and beckons. That is the quest, and nobody explains it. Run straight at him and he skips the bow | `dexter-waypoint-1` (`act: wake`, from x 420, ~9 m short of the bench), the hero passes its left edge | `DexterGuide` sit → wake → hop-off → wait |
+| 3 Follow Dexter | cozy | He **leads**: always ahead of you, at your own pace – about four plush-lengths in front, walking when you walk and scampering when you run, hopping ahead when you close in. You can never overtake him. He hops steps and gaps on the walk lines. Only when you lag (more than 5 m behind at a waypoint, or 8 m anywhere) does he stop, look back, beckon, and – left waiting – sweat | `dexter-waypoint-2…5`, `-pond-1…2` (`act: wait`) | `DexterGuide` lead / wait |
 | 3a Secrets | cozy | A muffin shows itself in the hollow behind the grass when you come near (+1 health). At the top of the terraces Dexter points back up at a glint on the shed roof | `hollow` (`secret`) and its item spawn, `glint-roof`, `dexter-waypoint-4` (`act: point`) | `Prologue.placeSecrets` |
 | 4 The jetty | something wrong | Dexter stops on the jetty and points at the water. You walk past him to the edge. Control is taken, the light drains a little, and the reflection shows the rusty girder maze that isn't there | `dexter-waypoint-pond-3` (`act: pond`), then the hero in `pond-edge` (`anomaly`) | `FinaleSequence` reveal; emits **`anomaly-reveal`** for the water renderer |
 | 5 The shove | the turn | He steps up behind you and shoves (`dexter` shove). You are knocked out over the water, and for one frame he is a black silhouette (`creepy`) | the finale's timing (reveal 2.2 s, step 0.65 s, shove 0.48 s, fall 0.42 s) | `FinaleSequence` step / shove / fall |
@@ -57,8 +57,9 @@ About three minutes of play, without words or text: **cozy → something wrong �
 
 ```mermaid
 flowchart LR
-  A["1 arrival<br/>Dexter sits on the bench"] -->|"hero passes wake box"| B["2 hop off,<br/>look back, beckon"]
-  B --> C["3 lead<br/>walk · hop · wait at each waypoint"]
+  A["1 arrival in the gate<br/>Dexter sits on the bench"] -->|"hero passes wake box"| B["2 look round, bow,<br/>hop off, beckon"]
+  B --> C["3 lead at the hero's pace<br/>walk · scamper · hop ahead"]
+  C -->|"hero far behind"| W["wait: look back,<br/>beckon, sweat"] -->|"hero within 6 plush"| C
   C -->|"waypoint 4"| C2["point up at<br/>the roof glint"] --> C
   C -.->|"near the hollow"| M["muffin<br/>(secret)"]
   C -->|"pond-3"| D["4 jetty<br/>Dexter points at the water"]
@@ -69,7 +70,9 @@ flowchart LR
   P --> L["8 clean Rusty Creek"]
 ```
 
-Dexter is the 27 px plush (decision 41), drawn at depth 101 with a 1 px warm rim so the black plush reads against the hedges. In dev builds, `game.scene.getScene('Flow').prologue.skipToPond()` puts Dexter on the jetty and the hero just before it.
+Dexter is the 27 px plush (decision 41), drawn at depth 101 with a 1 px warm rim (`addRim`, `stage/atmosphere/pipeline.ts`) so the black plush reads against the hedges; a landing squashes him a little.
+
+**The lead rule** (#160 P4 – in the first build you could run past him, which was uncanny). Every distance is in plush-lengths (27 px) or metres (43 px), in `GUIDE` (`prologueGuide.ts`): he holds a **lead of 4 plush** (108 px) at the hero's own speed (walk 95, run 198 px/s, `player/movement.ts`); closer than that he speeds up, inside **3 plush** he hops ahead (one hop clip, at sprint speed), inside **2 plush** he scampers at his **sprint, 1.35 × the hero's run** – so a running hero can never close on him. Step and gap hops along the walk lines are never slower than the hero. When the hero stops he ambles on at 1 m/s until 8 m ahead, then waits; at a `wait` waypoint he pauses for a hero more than 5 m behind and not coming on. The pond is the one place he lets you pass: he stops on the jetty and you walk by him to the edge. The route is read from the walk lines at runtime, so re-authored terrain needs no change here. In dev builds, `game.scene.getScene('Flow').prologue.skipToPond()` puts Dexter on the jetty and the hero just before it.
 
 ## Region 1 story beats
 

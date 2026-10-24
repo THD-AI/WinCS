@@ -113,11 +113,11 @@
   {
    "id": "dexter-waypoint-1",
    "kind": "dexter-waypoint",
-   "x": 620,
+   "x": 420,
    "y": 355,
-   "w": 220,
+   "w": 420,
    "h": 76,
-   "note": "walking up to the bench (x >= 620) makes Dexter hop off and beckon; the first quest starts",
+   "note": "walking up the path towards the bench (x >= 420, ~9 m short of it) wakes Dexter: he looks round, bows, hops off and leads; the first quest starts",
    "act": "wake"
   },
   {
@@ -135,8 +135,9 @@
   {
    "id": "player",
    "kind": "player",
-   "x": 120,
-   "y": 460
+   "x": 205,
+   "y": 454,
+   "note": "the hero starts in the open gate (pillars x=95-310, gate leaves x=130-275), on the gravel path; Dexter is seen on the bench ahead (#160 P4)"
   },
   {
    "id": "dexter-bench",
