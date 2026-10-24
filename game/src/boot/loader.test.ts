@@ -91,7 +91,7 @@ describe('fetchJson', () => {
 
 describe('asset loader', () => {
   it('loads a region and hands Stage its data, with {} for absent optional files', async () => {
-    const h = harness({ missing: ['surfaces.json', 'dexter-prologue'] });
+    const h = harness({ missing: ['surfaces.json'] });
     const manifest = await h.loader.region('hidden-garden', 'clean', true);
     expect(manifest?.region).toBe('hidden-garden');
     const data = h.loader.stageData(manifest!, 'clean');
