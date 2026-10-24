@@ -139,6 +139,7 @@ Every weapon is a real object we photographed and posed with on 23 Oct.
 | **Sign pole** (yellow town-sign on a steel pole) | Campus (region 3) | Heavy forward thrust, long reach; breaks guards | Slow, strong |
 
 - Every hit gets hit-stop, a pixel impact burst, a short knockback and a sound.
+- Every swing is visible (playtest 24 Oct): a pale arc sweeps in front of the hero around the shoulder, brightest on the contact frame (`combat/swingFx.ts`); the up attack and slam flash their strike box; a landed hit adds a white impact ring and a ring of sparks.
 - Enemies show a 0.4–0.6 s **tell** (flash, rear-up, lidar turns red) before attacking.
 - **Guard:** blocks frontal damage and pushes you back a little. A heavy hit (Jenny) breaks the guard.
 

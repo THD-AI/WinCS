@@ -7,6 +7,7 @@ import { Overhead, SLAM_SPEED } from './overhead';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges } from './action-input';
+import { swingArc } from './swingFx';
 import { CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
@@ -30,6 +31,8 @@ export class ChairCombat {
   private directions;
   private previousY: number;
   private debug: Phaser.GameObjects.Graphics;
+  /** The visible swing: an arc in front of the hero, and the flash of the overhead strike (swingFx.ts). */
+  private trail: Phaser.GameObjects.Graphics;
   private label: Phaser.GameObjects.Text;
   private visible = false;
   enabled: boolean;
@@ -62,6 +65,7 @@ export class ChairCombat {
     };
     scene.events.once('shutdown', () => { player.onGuard = oldGuard; });
     this.debug = scene.add.graphics().setDepth(10003);
+    this.trail = scene.add.graphics().setDepth(105).setBlendMode(Phaser.BlendModes.ADD);
     this.label = scene.add.text(20, 260, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setDepth(10004).setScrollFactor(0).setVisible(false);
     const toggle = () => { this.visible = !this.visible; this.label.setVisible(this.visible); };
@@ -73,12 +77,17 @@ export class ChairCombat {
     this.targets.set(target.id, target);
     return () => { if (this.targets.get(target.id) === target) this.targets.delete(target.id); };
   }
+  /** A landed hit: a white impact ring and a burst of sparks at the target, with the hit sound. */
   private spark(box: Rect) {
     sound.play('chair-hit');
-    for (let i = 0; i < 6; i++) {
-      const pixel = this.scene.add.rectangle(box.x + box.w / 2, box.y + box.h / 2, 3, 2, 0xfff4cb).setDepth(120);
-      this.scene.tweens.add({ targets: pixel, x: pixel.x - 12 + i * 5, y: pixel.y - 14 + i % 3 * 8,
-        alpha: 0, duration: 140, onComplete: () => pixel.destroy() });
+    const x = box.x + box.w / 2, y = box.y + box.h / 2;
+    const ring = this.scene.add.circle(x, y, 10, 0xffffff, 0.85).setDepth(120).setBlendMode(Phaser.BlendModes.ADD);
+    this.scene.tweens.add({ targets: ring, scale: 2.4, alpha: 0, duration: 160, ease: 'Quad.easeOut', onComplete: () => ring.destroy() });
+    for (let i = 0; i < 10; i++) {
+      const angle = (i / 10) * Math.PI * 2;
+      const pixel = this.scene.add.rectangle(x, y, 4, 3, i % 3 ? 0xfff4cb : 0xffc35a).setDepth(120);
+      this.scene.tweens.add({ targets: pixel, x: x + Math.cos(angle) * (18 + (i % 3) * 6), y: y + Math.sin(angle) * (14 + (i % 2) * 6),
+        alpha: 0, duration: 200, onComplete: () => pixel.destroy() });
     }
   }
   private dummy() {
@@ -154,6 +163,14 @@ export class ChairCombat {
     }
     if (this.overhead.pose) this.player.sprite.setTexture('chair-overhead', this.overhead.pose).setFlipX(this.overhead.direction < 0);
     if (this.guard.pose) this.player.sprite.setTexture('chair-block', this.guard.pose).setFlipX(this.guard.direction < 0);
+    this.trail.clear();
+    const arc = swingArc(this.sweeps.phase, this.sweeps.frame, this.sweeps.direction, this.player.body);
+    if (arc) {
+      this.trail.lineStyle(arc.width, 0xfff4cb, 0.55 * arc.alpha).beginPath().arc(arc.x, arc.y, arc.radius, arc.start, arc.end).strokePath();
+      this.trail.lineStyle(3, 0xffffff, arc.alpha).beginPath().arc(arc.x, arc.y, arc.radius + arc.width / 2, arc.start, arc.end).strokePath();
+    }
+    const strike = this.overhead.box(this.player.body, this.previousY);
+    if (strike) this.trail.fillStyle(0xfff4cb, 0.35).fillRoundedRect(strike.x, strike.y, strike.w, strike.h, 6);
     this.debug.clear();
     const box = this.sweeps.box(this.player.body) ?? this.overhead.box(this.player.body, this.previousY);
     if (this.visible && box) this.debug.lineStyle(2, 0xff7835).strokeRect(box.x, box.y, box.w, box.h);
