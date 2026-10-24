@@ -1,5 +1,5 @@
 {
-  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps. Clean draws the bank over the clean architecture (24 Oct, Alexander): the bank is in front, the bridge piers behind it.",
+  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps. Clean draws the bank over the clean architecture (24 Oct, Alexander): the bank is in front, the bridge piers behind it. The maze has no railing and no foliage lens (24 Oct, Alexander): only the clean creek does.",
   "chunks": {
     "rc-0-0": {
       "x": 0,
@@ -49,14 +49,17 @@
       "file": "images/06-near-rails-{name}.png",
       "z": 6,
       "scroll": 1.0,
-      "why": "Per chunk at scroll 1 since 24 Oct (Alexander): the railing stands on the bank; as a 1.1 parallax plate it slid against it and looked like it was flying."
+      "dy": 47,
+      "why": "Attached to the bank (24 Oct, Alexander; the crossings collage: the railing stands on the path's creek-side edge). The plate was painted 47 px off the ground: its post feet at y 519, the bank's coping at 566. Per chunk at scroll 1, so it never slides against the bank."
     },
     "07-foliage": {
       "file": "layers/rusty-creek.07-foliage.{tile}.png",
       "z": 7,
       "scroll": 1.15,
       "region": true,
-      "rest": "art/stages/rusty-creek/images/07-foliage-{name}.png"
+      "rest": "art/stages/rusty-creek/images/07-foliage-{name}.png",
+      "dy": 47,
+      "why": "The lens foliage in front (not on the bank), with the same 47 px Y correction as the railing (24 Oct, Alexander)."
     },
     "04-water": {
       "file": "images/04-water-{name}.png",
@@ -70,8 +73,6 @@
       "03-bank",
       "02-supports",
       "05-traversal",
-      "06-near-rails",
-      "07-foliage",
       "04-water"
     ],
     "clean": [
