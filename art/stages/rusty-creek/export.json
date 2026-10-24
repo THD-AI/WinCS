@@ -50,9 +50,7 @@
       "z": 6,
       "scroll": 1.1,
       "region": true,
-      "rest": "art/stages/rusty-creek/images/06-near-rails-{name}.png",
-      "off": true,
-      "why": "Off in the game since 24 Oct (Lex, playtest A15 and chat 11:07): the railing across the foreground cluttered the view. The plate stays for --verify."
+      "rest": "art/stages/rusty-creek/images/06-near-rails-{name}.png"
     },
     "07-foliage": {
       "file": "layers/rusty-creek.07-foliage.{tile}.png",
