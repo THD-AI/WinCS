@@ -4,6 +4,24 @@ export type Catalogue = Record<string, Clip>;
 export type MotionPose = 'idle' | 'walk' | 'run' | 'jump' | 'fall' | 'ladder' | 'land' | 'hard-landing';
 const VARIANTS = ['look-around', 'check-tablet', 'check-wounds'];
 const LOOPS = ['idle', 'walk', 'run', 'fall', 'ladder'];
+/** Clips the feet are on the ground in: the cycles and the bridges between them. */
+const GROUND = ['idle', 'walk', 'run', 'idle-walk', 'walk-run', 'run-start'];
+/**
+ * Seconds of air a walk-off keeps its stride for: the creek's deck plates and bank blocks meet with 2–5 px gaps
+ * and 10–50 px steps, and each one used to flash the fall pose, a landing crouch and a run-start from a stand
+ * (the Rusty Creek fidget). A drop shorter than this (about 8 px) is a step, not a fall.
+ */
+export const FALL_GRACE = 0.12;
+/** Idle variants: the key pose each holds (frame, s), and whether it plays back out (its last frame is not a stand). */
+export const VARIANT_HOLD: Record<string, { frame: number; hold: number; back?: boolean }> = {
+  'look-around': { frame: 2, hold: 0.9 },
+  'check-tablet': { frame: 2, hold: 1.4 },
+  'check-wounds': { frame: 3, hold: 0.7, back: true },
+};
+/** Seconds of standing before an idle variant: the first wait, plus a random extra up to the second. */
+export const VARIANT_DELAY = [5, 4];
+/** Idle loops (0.5 s each) per half breath: the chest rises for two loops and settles for two. */
+export const BREATH_LOOPS = 2;
 type Step = { clip: string; reverse?: boolean };
 
 export function catalogue(tables: Record<string, AnimationTable>): Catalogue {
@@ -57,7 +75,26 @@ export class LocomotionAnimation {
   private speed = 0;
   private lastVy = 0;
   private wasAirborne = false;
-  constructor(private clips: Catalogue, private random = Math.random) {}
+  private airTime = 0;
+  private lastGround: MotionPose = 'idle';
+  private idleLoops = 0;
+  private lastVariant = '';
+  private variantDelay: number;
+  /** Set by the player at low health: the idle variant is then the check of the wounds. */
+  wounded = false;
+  constructor(private clips: Catalogue, private random = Math.random) { this.variantDelay = this.nextDelay(); }
+  private nextDelay() { return VARIANT_DELAY[0] + this.random() * VARIANT_DELAY[1]; }
+  /** 1 while the chest is up: two idle loops in, two out, changing only where the idle clip loops (no pop mid-frame). */
+  get breath() { return this.clip === 'idle' && Math.floor(this.idleLoops / BREATH_LOOPS) % 2 === 1 ? 1 : 0; }
+  /** Standing still: the idle loop or one of its variants (where the poncho may sway). */
+  get standing() { return this.clip === 'idle' || VARIANTS.includes(this.clip); }
+  private pickVariant() {
+    const fresh = VARIANTS.filter(name => this.clips[name] && name !== this.lastVariant);
+    if (this.wounded && fresh.includes('check-wounds')) return 'check-wounds';
+    const calm = fresh.filter(name => name !== 'check-wounds');
+    const pool = calm.length ? calm : fresh;
+    return pool[Math.min(pool.length - 1, Math.floor(this.random() * pool.length))];
+  }
   private metadata() { return this.clips[this.clip] ?? this.clips.idle; }
   private set(step: Step) {
     this.clip = step.clip; this.reverse = !!step.reverse;
@@ -71,8 +108,16 @@ export class LocomotionAnimation {
     }
     if (this.queue.length) return;
     if (VARIANTS.includes(this.clip) && desired === 'idle' && !this.finished) return;
-    if (['land', 'hard-landing'].includes(this.clip) && !this.finished) return;
-    if (!['idle', 'walk', 'run'].includes(this.clip)) this.set({ clip: 'idle' });
+    // A landing gives way to movement once its first pose has shown (a hard landing: its held impact); standing
+    // still, it plays out.
+    if (this.clip === 'land' && !this.finished && desired === 'idle') return;
+    if (this.clip === 'hard-landing' && !this.finished && (desired === 'idle' || this.frame < 1)) return;
+    // Out of the air, off a ladder or out of a landing: straight into the cycle the body is in, at its contact
+    // pose – never through the standing idle and a run-start while the body is already moving.
+    if (!['idle', 'walk', 'run'].includes(this.clip)) {
+      this.set({ clip: VARIANTS.includes(this.clip) || !this.clips[desired] ? 'idle' : desired });
+      if (this.clip === desired) return;
+    }
     if (this.clip === desired) return;
     if (this.clip !== 'idle' && this.frame !== 0 && this.frame !== 4) return;
     const plans: Record<string, Step[]> = {
@@ -90,6 +135,8 @@ export class LocomotionAnimation {
   private duration() {
     const clip = this.metadata();
     if (clip.stride && this.speed > 1) return clip.stride / clip.frames / this.speed;
+    const hold = VARIANT_HOLD[this.clip];
+    if (hold && !this.reverse && this.frame === hold.frame) return hold.hold;
     return holdFrames(this.clip, this.frame) / clip.fps;
   }
   /** Jump: hold the crouch on the ground frame, then follow the arc; fall: the descent, then the fall loop. */
@@ -97,13 +144,17 @@ export class LocomotionAnimation {
     const relaunch = air.vy < 0 && this.lastVy >= 0; // a pogo bounce or a fresh jump from the fall loop
     this.lastVy = air.vy;
     if (this.clip !== 'jump' && this.clip !== 'fall' || this.clip === 'fall' && relaunch) {
+      // Only a jump from the ground shows the crouch; a walk-off or a bounce starts on the arc, and so does a jump
+      // out of a landing, whose own crouch was the anticipation.
+      const crouched = this.clip === 'land' || this.clip === 'hard-landing';
       this.queue = []; this.set({ clip: 'jump' });
-      // Only a jump from the ground shows the crouch; a walk-off or a bounce starts on the arc.
-      if (desired !== 'jump' || relaunch && this.wasAirborne) this.frame = 1;
+      if (desired !== 'jump' || relaunch && this.wasAirborne || crouched) this.frame = 1;
     } else if (relaunch) this.frame = 1;
     this.wasAirborne = true;
     if (this.clip === 'fall') return null; // the fall loop keeps looping until landing
-    const crouch = this.frame === 0 && this.elapsed + Math.min(dt, 0.1) < 1 / this.metadata().fps;
+    // The crouch shows for one rendered frame: the body is already rising, and holding it for a 12 fps frame
+    // (5 rendered frames, ~25 px of rise) read as a jump that starts late – the jump-spam complaint.
+    const crouch = this.frame === 0 && this.elapsed === 0;
     this.elapsed += Math.min(dt, 0.1);
     if (crouch) return this.pose();
     const frame = arcFrame(air.vy, air.launch, this.metadata().frames);
@@ -116,8 +167,10 @@ export class LocomotionAnimation {
     const next = this.frame + (this.reverse ? -1 : 1);
     if (next >= 0 && next < this.metadata().frames) { this.frame = next; return; }
     if (this.queue.length) this.set(this.queue.shift()!);
-    else if (LOOPS.includes(this.clip) && this.metadata().loop) this.frame = 0;
-    else this.finished = true;
+    else if (LOOPS.includes(this.clip) && this.metadata().loop) { this.frame = 0; if (this.clip === 'idle') this.idleLoops++; }
+    else if (VARIANT_HOLD[this.clip]?.back && !this.reverse && this.metadata().frames > 1) {
+      this.reverse = true; this.frame = this.metadata().frames - 2; // back out to the stand
+    } else this.finished = true;
   }
   /**
    * `speed`: the body's horizontal speed in px/s, which paces the strided cycles. `air`: the body's vertical
@@ -125,16 +178,23 @@ export class LocomotionAnimation {
    */
   update(desired: MotionPose, dt: number, speed = 0, air?: { vy: number; launch: number }) {
     this.speed = speed;
+    // A short walk-off (a step between deck plates) keeps the stride instead of flashing the fall pose.
+    this.airTime = desired === 'fall' ? this.airTime + Math.min(dt, 0.1) : 0;
+    if (desired === 'fall' && this.airTime <= FALL_GRACE && GROUND.includes(this.clip) && !this.wasAirborne
+      && (!air || air.vy >= 0)) desired = this.lastGround;
+    else if (desired === 'idle' || desired === 'walk' || desired === 'run') this.lastGround = desired;
     if (air && (desired === 'jump' || desired === 'fall') && this.clips.jump) {
       const pose = this.arc(desired, dt, air);
       if (pose) return pose;
     } else if (desired !== 'jump' && desired !== 'fall') { this.lastVy = 0; this.wasAirborne = false; }
+    if (desired !== 'idle') this.idleLoops = 0;
     this.idleTime = desired === 'idle' ? this.idleTime + dt : 0;
     this.request(desired);
-    if (this.clip === 'idle' && desired === 'idle' && this.idleTime >= 5) {
-      const available = VARIANTS.filter(name => this.clips[name]);
-      if (available.length) this.set({ clip: available[Math.min(available.length - 1, Math.floor(this.random() * available.length))] });
-      this.idleTime = 0;
+    // A variant starts where the idle loops (idle-05 → variant-00), never the same one twice running.
+    if (this.clip === 'idle' && desired === 'idle' && this.idleTime >= this.variantDelay && this.frame === 0) {
+      const pick = this.pickVariant();
+      if (pick) { this.set({ clip: pick }); this.lastVariant = pick; }
+      this.idleTime = 0; this.variantDelay = this.nextDelay();
     }
     this.elapsed += Math.min(dt, 0.1);
     for (let n = 0; n < 12 && !this.finished && this.elapsed + 1e-9 >= this.duration(); n++) {
