@@ -1,3 +1,33 @@
 html, body, #game { margin: 0; width: 100%; height: 100%; overflow: hidden; }
 body { background: #0c1218; }
 canvas { display: block; image-rendering: pixelated; }
+
+/* The game menu (ui/menu.ts): pixel-crisp, THD teal on night blue, readable at any window size. */
+.wm-open { position: fixed; top: 10px; right: 10px; z-index: 20; width: 40px; height: 40px; border: 2px solid #8fd3c9;
+  background: #0c1218cc; color: #e8f4ef; font: 700 20px/1 monospace; cursor: pointer; }
+.wm-open:hover, .wm-open:focus-visible { background: #1d3a3f; outline: none; }
+.wm-root { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; background: #05080bb3; }
+.wm-root[hidden] { display: none; }
+.wm-panel { width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto; background: #0f1a21;
+  border: 3px solid #8fd3c9; box-shadow: 6px 6px 0 #000; color: #e8f4ef; font: 14px/1.45 ui-monospace, Consolas, monospace; }
+.wm-head { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: #16303a;
+  border-bottom: 2px solid #8fd3c9; }
+.wm-title { font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.wm-tabs { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 14px 0; }
+.wm-panel button { font: inherit; color: inherit; cursor: pointer; }
+.wm-close, .wm-tab, .wm-chip { background: #16303a; border: 2px solid #3d6b72; padding: 4px 10px; }
+.wm-tab[aria-selected="true"], .wm-chip[aria-pressed="true"] { background: #8fd3c9; color: #0f1a21; border-color: #8fd3c9; }
+.wm-close:hover, .wm-tab:hover, .wm-chip:hover, .wm-panel button:focus-visible { border-color: #e8f4ef; outline: none; }
+.wm-body { padding: 14px; display: grid; gap: 12px; }
+.wm-table { border-collapse: collapse; width: 100%; }
+.wm-table th { text-align: left; color: #8fd3c9; font-weight: 700; padding: 4px 6px; border-bottom: 2px solid #3d6b72; }
+.wm-table td { padding: 5px 6px; border-bottom: 1px solid #22404a; }
+.wm-key { color: #ffd38a; white-space: nowrap; }
+.wm-field { display: grid; grid-template-columns: 110px 1fr; gap: 10px; align-items: start; }
+.wm-label { color: #8fd3c9; font-weight: 700; padding-top: 3px; }
+.wm-row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.wm-check { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.wm-check input { accent-color: #8fd3c9; width: 16px; height: 16px; }
+.wm-note { color: #9fb7b3; margin: 0; }
+.wm-list { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+@media (max-width: 520px) { .wm-field { grid-template-columns: 1fr; gap: 4px; } }
