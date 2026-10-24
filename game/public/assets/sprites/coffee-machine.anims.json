@@ -1,0 +1,12 @@
+{
+ "idle": {
+  "frames": 3,
+  "fps": 12,
+  "loop": true
+ },
+ "pour": {
+  "frames": 4,
+  "fps": 12,
+  "loop": false
+ }
+}

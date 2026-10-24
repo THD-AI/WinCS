@@ -6,7 +6,7 @@
 
 ![Item · pocket computer](images/pocket-computer-preview.png)
 
-**Review:** 🟡 Drawn 24 Oct, awaiting Alexander's review (#52). Closed case 19 × 10 px (≈ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups. Not exported until approved.
+**Review:** ✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Closed case 19 × 10 px (≈ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups.
 
 ## In motion
 

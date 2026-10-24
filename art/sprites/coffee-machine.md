@@ -6,7 +6,7 @@
 
 ![Prop · coffee machine (save point)](images/coffee-machine-preview.png)
 
-**Review:** 🟡 Drawn 24 Oct, awaiting Alexander's review (#52). 42 × 80 px in the game: fills the 40 × 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png. Not exported until approved.
+**Review:** ✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. 42 × 80 px in the game: fills the 40 × 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png.
 
 ## In motion
 

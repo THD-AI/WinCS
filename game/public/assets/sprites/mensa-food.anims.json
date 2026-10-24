@@ -1,0 +1,22 @@
+{
+ "muffin": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "cake": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "wafer": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "leberkaese": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ }
+}

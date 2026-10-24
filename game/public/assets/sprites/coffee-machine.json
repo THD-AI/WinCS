@@ -1,0 +1,182 @@
+{
+ "frames": {
+  "idle-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "idle-01": {
+   "frame": {
+    "x": 46,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "idle-02": {
+   "frame": {
+    "x": 92,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "pour-00": {
+   "frame": {
+    "x": 0,
+    "y": 86,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "pour-01": {
+   "frame": {
+    "x": 46,
+    "y": 86,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "pour-02": {
+   "frame": {
+    "x": 92,
+    "y": 86,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "pour-03": {
+   "frame": {
+    "x": 138,
+    "y": 86,
+    "w": 44,
+    "h": 84
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 84
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 84
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "coffee-machine.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 182,
+   "h": 170
+  },
+  "scale": "1"
+ }
+}

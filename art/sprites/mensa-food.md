@@ -6,7 +6,7 @@
 
 ![Mensa · food pickups](images/mensa-food-preview.png)
 
-**Review:** 🟡 Drawn 24 Oct, awaiting Alexander's review (#52). Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 × 14, cake 18 × 14, wafer 17 × 13, Leberkäse roll 18 × 18 px – around the documented 16 px. Not exported until approved.
+**Review:** ✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 × 14, cake 18 × 14, wafer 17 × 13, Leberkäse roll 18 × 18 px – around the documented 16 px.
 
 ## In motion
 
