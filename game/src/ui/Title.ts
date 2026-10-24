@@ -70,6 +70,9 @@ export class Title extends Phaser.Scene {
       const source = this.textures.get(MENU_KEY).getSourceImage();
       const scale = Math.max(VIEW_WIDTH / source.width, VIEW_HEIGHT / source.height);
       this.keyArt = this.add.image(VIEW_WIDTH / 2, VIEW_HEIGHT / 2, MENU_KEY).setScale(scale).setScrollFactor(0).setDepth(UI_DEPTH - 1);
+      // The key art and the live garden take turns: the painting dissolves into the panning stage and back.
+      this.tweens.add({ targets: this.keyArt, alpha: 0, delay: 9000, duration: 2600, hold: 16_000, yoyo: true,
+        repeat: -1, repeatDelay: 9000, ease: 'Sine.easeInOut' });
     }
   }
 
@@ -143,6 +146,7 @@ export class Title extends Phaser.Scene {
   private start(): void {
     this.leaving = true;
     sound.loop('hidden-garden'); // the slice opens in the prologue garden; the key press unlocked audio
+    if (this.keyArt) this.tweens.killTweensOf(this.keyArt);
     this.tweens.add({ targets: [this.titleLayer, this.keyArt].filter(Boolean), alpha: 0, duration: 450, ease: 'Quad.easeOut' });
     this.pan?.stop();
     this.scene.launch(STAGE, this.stageData);
