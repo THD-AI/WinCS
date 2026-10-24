@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
-import { Boot, Preload, Stage, UI } from './core/scaffold';
+import { Boot } from './boot/Boot';
+import { Preload } from './boot/Preload';
+import { Stage, UI } from './core/scaffold';
 import { displayScale, VIEW_HEIGHT, VIEW_WIDTH } from './core/viewport';
 import { LANE_A_SCENES } from './scenes/registry';
 import './style.css';
