@@ -1,8 +1,9 @@
 import type Phaser from 'phaser';
 import type { StageManifest } from './manifest';
 export interface Bounds { x: number; y: number; width: number; height: number }
-export interface Follow { x: number; y: number; lead: number }
-export interface Target { x: number; y: number; vx: number }
+/** `focus`: the ground height the camera frames; it only moves when the hero leaves the vertical dead zone. */
+export interface Follow { x: number; y: number; lead: number; focus?: number }
+export interface Target { x: number; y: number; vx: number; grounded?: boolean }
 export function gridBounds(manifest: StageManifest): Bounds {
   const xs = manifest.chunks.map(c => c.x * manifest.chunkSize[0]);
   const ys = manifest.chunks.map(c => c.y * manifest.chunkSize[1]);
@@ -10,21 +11,43 @@ export function gridBounds(manifest: StageManifest): Bounds {
     width: Math.max(...xs) - Math.min(...xs) + manifest.chunkSize[0],
     height: Math.max(...ys) - Math.min(...ys) + manifest.chunkSize[1] };
 }
+/** Look-ahead in px at full run speed (258 px/s and above), and the speed below which there is none. */
+export const LEAD = 120;
+export const LEAD_SPEED = 258;
+/** Vertical dead zone around the framed ground: slopes and steps inside it never move the camera. */
+export const DEAD_ZONE = { up: 40, down: 16 };
+/** While airborne the focus holds, unless the hero rises this far above it (a climb) or drops below it. */
+export const AIR_ZONE = { up: 150, down: 0 };
+/** Where the framed ground sits on screen, from the top (0–1). */
+export const FRAME_Y = 0.64;
 const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 const ease = (from: number, to: number, rate: number, dt: number) => from + (to - from) * (1 - Math.exp(-rate * dt));
-/** Keep fractional smoothing state, but only expose integer camera coordinates. */
+
+/** Moves `focus` just enough to keep `y` inside [focus − up, focus + down]. */
+export function deadZone(focus: number, y: number, zone: { up: number; down: number }) {
+  return clamp(focus, y - zone.down, y + zone.up);
+}
+
+/**
+ * Keep fractional smoothing state, but expose whole pixels that keep the hero's own screen position steady:
+ * the camera is the hero's rounded position minus the rounded hero-to-camera offset, so at a steady
+ * (stride-paced) speed the hero does not shimmer by a pixel against the scenery while the camera eases.
+ */
 export function follow(state: Follow, target: Target, bounds: Bounds, dt: number, width = 1280, height = 720) {
-  state.lead = ease(state.lead, clamp(target.vx / 258, -1, 1) * 120, 7, dt);
+  state.lead = ease(state.lead, clamp(target.vx / LEAD_SPEED, -1, 1) * LEAD, 3.5, dt);
+  state.focus = deadZone(state.focus ?? target.y, target.y, target.grounded === false ? AIR_ZONE : DEAD_ZONE);
   const maxX = bounds.x + Math.max(0, bounds.width - width);
   const maxY = bounds.y + Math.max(0, bounds.height - height);
   state.x = clamp(ease(state.x, clamp(target.x - width / 2 + state.lead, bounds.x, maxX), 8, dt), bounds.x, maxX);
-  state.y = clamp(ease(state.y, clamp(target.y - height * 0.64, bounds.y, maxY), 5, dt), bounds.y, maxY);
-  return { x: Math.round(state.x), y: Math.round(state.y) };
+  state.y = clamp(ease(state.y, clamp(state.focus - height * FRAME_Y, bounds.y, maxY), 5, dt), bounds.y, maxY);
+  const snap = (hero: number, camera: number, min: number, max: number) =>
+    clamp(Math.round(hero) - Math.round(hero - camera), Math.ceil(min), Math.floor(max));
+  return { x: snap(target.x, state.x, bounds.x, maxX), y: snap(target.y, state.y, bounds.y, maxY) };
 }
 export function cameraFollow(scene: Phaser.Scene, manifest: StageManifest) {
   const camera = scene.cameras.main, bounds = gridBounds(manifest);
   camera.roundPixels = true;
-  const state = { x: camera.scrollX, y: camera.scrollY, lead: 0 };
+  const state: Follow = { x: camera.scrollX, y: camera.scrollY, lead: 0 };
   return (target: Target, milliseconds: number) => {
     const position = follow(state, target, bounds, Math.min(milliseconds / 1000, 0.1), camera.width, camera.height);
     camera.setScroll(position.x, position.y);

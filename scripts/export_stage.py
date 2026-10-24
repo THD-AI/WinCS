@@ -103,6 +103,8 @@ def export(region: Path, out: Path) -> dict:
     target.mkdir(parents=True)
     for name, path in files.items():
         shutil.copyfile(path, target / name)
+    if (region / "surfaces.json").exists():  # the hero's ground materials (docs/15, workstream 3)
+        shutil.copyfile(region / "surfaces.json", target / "surfaces.json")
     (target / "stage.json").write_text(json.dumps(stage, indent=1) + "\n", encoding="utf-8", newline="\n")
     return stage
 

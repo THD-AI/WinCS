@@ -48,7 +48,7 @@ export class Stage extends Phaser.Scene {
   get playerActor() { return this.player; }
   get chair() { return this.combat; }
   constructor() { super('Stage'); }
-  create(data: { manifest: StageManifest; state: RegionState; collisions: CollisionChunk[]; spawn?: Position }) {
+  create(data: { manifest: StageManifest; state: RegionState; collisions: CollisionChunk[]; spawn?: Position; surfaces?: unknown }) {
     drawStage(this, data.manifest, data.state);
     collisionDebug(this, data.collisions);
     const machine = import.meta.env.DEV && new URLSearchParams(location.search).has('coffee-test')
@@ -58,6 +58,7 @@ export class Stage extends Phaser.Scene {
     this.player = new Player(this, data.collisions, data.manifest.region, this.defeatedBosses,
       machine ? { x: machine.x + machine.w / 2, y: machine.y + machine.h }
         : rover ? { x: rover.x - BODY_WIDTH * 3, y: rover.y } : data.spawn);
+    this.player.ground(data.manifest, data.state, data.surfaces);
     this.player.onHealthChanged = health => {
       const hud = this.scene.get('HUD') as Phaser.Scene & { model?: { setHealth(health: number, at: number): void } };
       hud.model?.setHealth(health, this.time.now);

@@ -2,12 +2,18 @@ import Phaser from 'phaser';
 import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement, RUN_SPEED, WALK_SPEED } from './movement';
-import { jump, jumpState, landing, pogo } from './jump';
+import { jump, jumpState, JUMP_SPEED, landing, LANDING_TIMES, pogo, type LandingTimes } from './jump';
 import { climb, dropThrough, traversal } from './traversal';
-import { catalogue, LocomotionAnimation, type MotionPose } from './animation';
+import { catalogue, clipLength, LocomotionAnimation, type Catalogue, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
-import { deathDust, lifePose, paintLife } from '../combat/life-visuals';
+import { deathDust } from '../combat/life-visuals';
+import type { StageManifest, RegionState } from '../stage/manifest';
+import { FALLBACK, loadSurfaces, parseSurfaces, SurfaceMap, type Surface } from './surfaces';
+import { blades, Grounding } from './grounding';
+import { footfalls } from './footfall';
+import { spawnPuff, type PuffKind } from './dust';
+import { HurtAnimation } from './hurt';
 import type { Position } from '../core/events';
 import { Interaction } from './interaction';
 import { GuardPush } from '../combat/guard';
@@ -31,6 +37,17 @@ export class Player {
   private traversal = traversal();
   private animation: LocomotionAnimation;
   private interaction = new Interaction();
+  private clips: Catalogue;
+  private landingTimes: LandingTimes = LANDING_TIMES;
+  private surfaces: SurfaceMap | null = null;
+  private surface: Surface = FALLBACK;
+  private grounding = new Grounding();
+  private footfalls: Record<string, number[]> = {};
+  private lastFrame = '';
+  private landed: PuffKind | null = null;
+  private blades: Phaser.GameObjects.Graphics;
+  private hurt: HurtAnimation;
+  private groundOffset = { offset: 0, cover: 0 };
   get canAttack() { return this.traversal.ladder === null && this.life.dead === 0 && this.life.knock === 0 && !this.interaction.active; }
   get facing() { return this.motion.facing; }
   constructor(private scene: Phaser.Scene, private chunks: CollisionChunk[],
@@ -39,9 +56,19 @@ export class Player {
     this.body = { x: this.spawn.x, y: this.spawn.y, vx: 0, vy: 0, grounded: true };
     this.life = new Life(this.body, bosses);
     this.air = jumpState(this.body.y);
-    this.animation = new LocomotionAnimation(catalogue(Object.fromEntries(
-      ['hero-move', 'hero-run', 'hero-idle', 'hero-air'].map(board => [board, scene.cache.json.get(`${board}.anims`)]))));
+    this.clips = catalogue(Object.fromEntries(
+      ['hero-move', 'hero-run', 'hero-idle', 'hero-air'].map(board => [board, scene.cache.json.get(`${board}.anims`)])));
+    this.animation = new LocomotionAnimation(this.clips);
+    if (this.clips.land && this.clips['hard-landing']) this.landingTimes = {
+      soft: clipLength(this.clips.land, 'land'), hard: clipLength(this.clips['hard-landing'], 'hard-landing') };
+    this.footfalls = footfalls(scene, this.clips);
+    this.hurt = new HurtAnimation(scene.cache.json.get('hero-hurt.anims') ?? {}, scene.cache.json.get('hero-death.anims') ?? {});
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
+    this.blades = scene.add.graphics().setDepth(101);
+    // After every scene update (the chair may swap the hero's frame): place the feet in the ground.
+    const settle = () => this.settle();
+    scene.events.on('postupdate', settle);
+    scene.events.once('shutdown', () => scene.events.off('postupdate', settle));
     this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,J') as Record<string, Phaser.Input.Keyboard.Key>;
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
@@ -69,6 +96,7 @@ export class Player {
     if (!this.life.hit(amount, this.body.x >= sourceX ? 1 : -1)) return false;
     this.guardPush.cancel();
     this.interaction.cancel();
+    this.hurt.start(amount);
     const position = { x: this.body.x, y: this.body.y };
     gameEvents.emit('player-hit', { health: this.life.health, damage: amount, position });
     if (this.life.dead > 0) {
@@ -76,6 +104,18 @@ export class Player {
       this.scene.time.delayedCall(600, () => deathDust(this.scene, position));
     } else this.body.vy = -90;
     return true;
+  }
+  /**
+   * The region's ground materials (surfaces.json). `data` comes from Preload; when it is absent the file is
+   * fetched here, and a region without one keeps the fallback (stone-like, 1 px).
+   */
+  ground(manifest: StageManifest, state: RegionState, data?: unknown) {
+    const use = (parsed: ReturnType<typeof parseSurfaces> | null) => { this.surfaces = new SurfaceMap(parsed, manifest, state); };
+    if (data && typeof data === 'object' && Object.keys(data).length) {
+      try { use(parseSurfaces(data)); return; } catch (error) { console.error(error); }
+    }
+    use(null);
+    void loadSurfaces(manifest.region).then(parsed => { if (parsed) use(parsed); });
   }
   heal(amount: number) {
     if (this.life.heal(amount)) this.onHealthChanged(this.life.health);
@@ -146,7 +186,8 @@ export class Player {
         jump(this.body, this.air, jumpDown, dt);
       }
       if (!climbing) stepBody(this.body, geometry, dt, this.traversal.drop > 0);
-      landing(this.body, this.air, wasGrounded, dt);
+      landing(this.body, this.air, wasGrounded, dt, this.landingTimes);
+      if (!wasGrounded && this.body.grounded && !climbing && !dropped) this.landed = this.air.hard ? 'hard-land' : 'land';
       if (lifeStep.knockFinished || shove !== 0 && this.guardPush.remaining === 0) this.body.vx = 0;
       this.motion.vx = this.body.vx;
       remaining -= dt;
@@ -165,12 +206,14 @@ export class Player {
       : !this.body.grounded ? this.body.vy < 0 ? 'jump' : 'fall'
       : Math.abs(this.body.vx) > (WALK_SPEED + RUN_SPEED) / 2 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
     const locomotion = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000,
-      Math.abs(this.body.vx));
-    const pose = lifePose(this.life) ?? interactionPose ?? locomotion;
+      Math.abs(this.body.vx), { vy: this.body.vy, launch: JUMP_SPEED });
+    const hurtPose = this.hurt.update(this.life, milliseconds / 1000, axis !== 0 || !this.body.grounded);
+    const pose = hurtPose ?? interactionPose ?? locomotion;
     if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');
-    this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y)).setFlipX(this.motion.facing < 0);
-    paintLife(this.sprite, this.life, this.scene.time.now);
+    this.sprite.setFlipX(this.motion.facing < 0).setAlpha(this.hurt.alpha(this.life, this.scene.time.now));
+    this.feel(pose, milliseconds / 1000);
+    this.settle();
     if (axis) this.lastSpeed = Math.abs(this.body.vx);
     this.debug.clear();
     if (this.showDebug) this.debug.lineStyle(2, 0xffffff).strokeRect(this.body.x - BODY_WIDTH / 2,
@@ -181,6 +224,43 @@ export class Player {
       `held ${this.motion.held.toFixed(2)}s | x ${this.body.x.toFixed(1)} y ${this.body.y.toFixed(1)}`,
       `jump ${this.air.height.toFixed(1)}px | ${this.traversal.ladder ? 'climb' : this.body.sliding ? 'slide' : 'walk'} slope ${(Math.atan(this.body.slope ?? 0) * 180 / Math.PI).toFixed(1)}°`,
       `anim ${this.animation.clip} | ${pose.frame} | land ${this.air.hard ? 'hard' : 'normal'}`,
+      `ground ${this.surface.name} | sink ${this.groundOffset.offset}px | cover ${this.groundOffset.cover}`,
     ]);
+  }
+  /** Surface under the feet, the sink it asks for, and the puffs of footfalls and landings. */
+  private feel(pose: { board: string; frame: string }, dt: number) {
+    const grounded = this.body.grounded && this.traversal.ladder === null && this.life.dead === 0;
+    this.surface = this.surfaces?.at(this.body.x, this.body.y) ?? FALLBACK;
+    const hard = this.air.hard;
+    const left = this.air.landing / Math.max(1e-6, hard ? this.landingTimes.hard : this.landingTimes.soft);
+    this.groundOffset = this.grounding.update({ material: this.surface.material, grounded,
+      slope: this.body.slope ?? 0, landing: left, hard }, dt);
+    const puff = this.surface.material.puff;
+    if (this.landed) {
+      spawnPuff(this.scene, this.body.x, this.body.y, puff, this.landed, this.motion.facing);
+      this.landed = null;
+    } else if (grounded && pose.frame !== this.lastFrame) {
+      const clip = pose.frame.slice(0, -3), n = Number(pose.frame.slice(-2));
+      // The planted foot is ahead of the hip at heel strike: the puff comes off that foot.
+      if (this.footfalls[clip]?.includes(n)) spawnPuff(this.scene, this.body.x + this.motion.facing * 4, this.body.y,
+        puff, 'step', this.body.vx || this.motion.facing);
+    }
+    this.lastFrame = pose.frame;
+  }
+  /** Runs after the player's and every later update: the feet sink, the ground covers their lowest rows, tufts stand in front. */
+  private settle() {
+    const { offset, cover } = this.groundOffset;
+    this.sprite.setPosition(Math.round(this.body.x), Math.round(this.body.y) + offset);
+    const frame = this.sprite.frame;
+    if (cover > 0) this.sprite.setCrop(0, 0, frame.width, frame.height - cover);
+    else if (this.sprite.isCropped) this.sprite.setCrop();
+    this.blades.clear();
+    const colors = this.surface.material.blades;
+    if (!colors?.length || cover === 0) return;
+    const ground = Math.round(this.body.y) + offset - cover;
+    for (const blade of blades(Math.round(this.body.x), 12, cover, colors.length)) {
+      this.blades.fillStyle(Number.parseInt(colors[blade.color].slice(1), 16), 1)
+        .fillRect(blade.x, ground + cover - blade.height, 1, blade.height);
+    }
   }
 }
