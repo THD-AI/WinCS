@@ -1,5 +1,5 @@
 {
-  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps. Clean draws the water UNDER the bank (24 Oct, Alexander): the bank's coping is the walkway the hero stands on; the anomaly keeps the water last.",
+  "note": "Draw order follows creek_layers.py compose(): the plates are soft and blend, so the water is drawn last. z names the docs/04 role; loaders draw in list order. 01-distance (0.2), 06-near-rails (1.1) and 07-foliage (1.15) are region-wide plates in chunk-wide tiles (depth_layers.py region, #150): per chunk they overlapped or left gaps. Clean draws the bank over the clean architecture (24 Oct, Alexander): the bank is in front, the bridge piers behind it.",
   "chunks": {
     "rc-0-0": {
       "x": 0,
@@ -46,11 +46,10 @@
       "scroll": 1.0
     },
     "06-near-rails": {
-      "file": "layers/rusty-creek.06-near-rails.{tile}.png",
+      "file": "images/06-near-rails-{name}.png",
       "z": 6,
-      "scroll": 1.1,
-      "region": true,
-      "rest": "art/stages/rusty-creek/images/06-near-rails-{name}.png"
+      "scroll": 1.0,
+      "why": "Per chunk at scroll 1 since 24 Oct (Alexander): the railing stands on the bank; as a 1.1 parallax plate it slid against it and looked like it was flying."
     },
     "07-foliage": {
       "file": "layers/rusty-creek.07-foliage.{tile}.png",
@@ -77,11 +76,11 @@
     ],
     "clean": [
       "01-distance",
-      "04-water",
-      "03-bank",
       "clean-architecture",
+      "03-bank",
       "06-near-rails",
-      "07-foliage"
+      "07-foliage",
+      "04-water"
     ]
   },
   "composed": {
