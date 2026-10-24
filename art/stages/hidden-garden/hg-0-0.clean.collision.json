@@ -95,8 +95,9 @@
   {
    "id": "player",
    "kind": "player",
-   "x": 120,
-   "y": 460
+   "x": 205,
+   "y": 454,
+   "note": "the hero starts in the open gate (pillars x=95-310, gate leaves x=130-275), on the gravel path; Dexter is seen on the bench ahead (#160 P4)"
   },
   {
    "id": "dexter-bench",
