@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Rover, CHARGE_SPEED, PATROL_SPEED } from './rover';
+import { Rover, CHARGE_SPEED, PATROL_SPEED, ROVER_WIDTH, ROVER_HEIGHT } from './rover';
 import { parseCollision, placeCollision } from '../stage/collision';
 import type { Damageable } from '../combat/sweeps';
 import { Sweeps, intersects } from '../combat/sweeps';
@@ -12,7 +12,7 @@ const tutorial = () => {
 describe('autonomous rover', () => {
   it('patrols the real tutorial range at half walking speed without leaving its deck', () => {
     const rover = tutorial(); expect(rover.patrol).toEqual([640, 880]);
-    expect(rover.bounds).toEqual({ x: 744.5, y: 483, w: 31, h: 25 });
+    expect(rover.bounds).toEqual({ x: 760 - ROVER_WIDTH / 2, y: 508 - ROVER_HEIGHT, w: ROVER_WIDTH, h: ROVER_HEIGHT });
     expect(PATROL_SPEED).toBeCloseTo(2.2 * 43 / 2); rover.step(1); expect(rover.x).toBeCloseTo(760 + PATROL_SPEED);
     for (let n = 0; n < 30; n++) { rover.step(0.1); expect(rover.x).toBeGreaterThanOrEqual(640); expect(rover.x).toBeLessThanOrEqual(880); }
   });
@@ -49,8 +49,8 @@ describe('autonomous rover', () => {
   });
   it('uses three-frame hit recovery and lets the hero jump clear of the body', () => {
     const rover = tutorial(); expect(rover.hit(1, -1)).toBe(true); expect(rover.hit(1, -1)).toBe(false);
-    rover.step(3 / 12); expect(rover.x).toBeCloseTo(744.5); expect(rover.phase).toBe('patrol');
-    expect(intersects(rover.bounds, { x: 730, y: 360, w: 28, h: 76 })).toBe(false);
-    expect(intersects(rover.bounds, { x: 730, y: 432, w: 28, h: 76 })).toBe(true);
+    rover.step(3 / 12); expect(rover.x).toBeCloseTo(760 - ROVER_WIDTH / 2); expect(rover.phase).toBe('patrol');
+    expect(intersects(rover.bounds, { x: 730, y: 508 - ROVER_HEIGHT - 77, w: 28, h: 76 })).toBe(false);
+    expect(intersects(rover.bounds, { x: 730, y: 508 - 76, w: 28, h: 76 })).toBe(true);
   });
 });

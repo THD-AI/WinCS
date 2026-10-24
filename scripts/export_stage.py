@@ -80,6 +80,8 @@ def manifest(region: Path) -> tuple[dict, dict[str, Path]]:
                 if layer_id not in config["layers"]:
                     raise ExportError(f"{region.name}: state {state} draws unknown layer {layer_id!r}")
                 layer = config["layers"][layer_id]
+                if layer.get("off"):  # kept in the art (and --verify), left out of the game
+                    continue
                 if layer.get("region"):  # one plate for the region in chunk-wide tiles; chunk j carries tile j
                     tile = region / layer["file"].format(tile=chunk["x"])
                     if chunk["y"] != 0 or not tile.exists():

@@ -10,10 +10,11 @@ import type { Rect } from '../combat/sweeps';
  * (idle 4, walk 8, stab 5, collapse 5, all 12 fps).
  */
 /** Its box is the walking body (walk-00…07 alpha bounds are ~60 x 36 px; the idle legs spread wider). */
-export const CRAB_WIDTH = 60, CRAB_HEIGHT = 36, CRAB_HEALTH = 4;
-export const CRAB_TELL = 0.6, CRAB_SPEED = WALK_SPEED / 3, CRAB_SPOT = 110;
+// 1.74x since 24 Oct (drawn 80 px, was 46): readable next to the 114 px hero.
+export const CRAB_WIDTH = 104, CRAB_HEIGHT = 63, CRAB_HEALTH = 4;
+export const CRAB_TELL = 0.6, CRAB_SPEED = WALK_SPEED / 3, CRAB_SPOT = 190; // sees further than it strikes (CRAB_STRIKE), so it creeps in first
 /** The stab reaches this far past its front (px) during the stab clip's middle frames. */
-export const STAB_REACH = 30;
+export const STAB_REACH = 52;
 /**
  * It raises its legs only when the stab would land: the hero's centre within its half-width, the stab and the hero's
  * half-width (less a 4 px bite). Further off – up to CRAB_SPOT – it creeps toward the hero instead of stabbing air.

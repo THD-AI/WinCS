@@ -83,10 +83,10 @@ describe('contact damage', () => {
 describe('hit boxes match the drawings (playtest 24 Oct, M1)', () => {
   it('the drone box covers the drawn quadcopter, the crab box its walking body', async () => {
     const { DRONE_WIDTH, DRONE_HEIGHT, Drone } = await import('./drone');
-    // Measured alpha bounds: drone hover 44 x 45 px, crab walk ~60 x 36 px, all with feet at the pivot.
-    expect([DRONE_WIDTH, DRONE_HEIGHT]).toEqual([45, 45]);
-    expect(CRAB_WIDTH).toBe(60);
+    // Measured alpha bounds at the 24 Oct size: drone hover ~77 x 77 px, crab walk ~104 x 63 px, feet at the pivot.
+    expect([DRONE_WIDTH, DRONE_HEIGHT]).toEqual([77, 77]);
+    expect(CRAB_WIDTH).toBe(104);
     const drone = new Drone({ x: 1150, y: 470 }, [900, 1500]);
-    expect(drone.bounds).toEqual({ x: 1150 - 22.5, y: 425, w: 45, h: 45 });
+    expect(drone.bounds).toEqual({ x: 1150 - DRONE_WIDTH / 2, y: 470 - DRONE_HEIGHT, w: DRONE_WIDTH, h: DRONE_HEIGHT });
   });
 });
