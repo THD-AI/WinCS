@@ -128,10 +128,11 @@ export class Player {
     this.onHealthChanged(this.life.health);
     gameEvents.emit('save', { checkpoint: id, region: this.region, position: { x: this.body.x, y: this.body.y } });
   }
-  beginInteraction() {
+  beginInteraction(name = 'interact') {
     if (!this.canAttack || !this.body.grounded) return false;
-    const clip = this.scene.cache.json.get('hero-hurt.anims').interact;
-    this.interaction.begin(clip);
+    const clip = this.scene.cache.json.get('hero-hurt.anims')[name];
+    if (!clip) return false;
+    this.interaction.begin(clip, name);
     this.motion = { ...movement(), facing: this.motion.facing }; this.body.vx = 0; this.body.vy = 0;
     return true;
   }
