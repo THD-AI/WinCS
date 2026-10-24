@@ -139,6 +139,48 @@ The route already exists as a graph ([route.json](../art/stages/rusty-creek/rout
 
 Target play time for the slice: 8–12 minutes.
 
+### Rebuild plan ([#157](https://github.com/THD-AI/WinCS/issues/157))
+
+The three chunks above were the proof of concept for map generation, made before the location concepts, the direction pack and the Hidden Garden's pipeline. The rebuild re-derives Region 1 from the sources and grows it the way the garden was grown. It also fixes the slice's length: with three chunks, a player who runs straight through finishes the whole slice in about 5 minutes. The target is 8–12.
+
+**Sources:** the style master ("Rusty Creek, first light": blue-green riveted rusty girders, ladders, autumn trees, the creek, a rusty railing in front), the location concept in `art/locations/`, the creek, rail and steel-bridge photos (`media-sources.json`), and the [anomaly language](../art/direction/anomaly-language.md) (cuts, stretched rows, 404 holes, crash dialogs).
+
+```mermaid
+flowchart LR
+  subgraph clean["clean (the bridge)"]
+    C0["rc-0-0<br/>404 landing on the creek path,<br/>under the rail bridge"] --> C1["rc-1-0<br/>path along the water ·<br/>Dexter watches far ahead ·<br/>jenny-ram"]
+  end
+  C1 -->|"crash"| M0
+  subgraph maze["anomaly (the rust maze)"]
+    M0["rc-0-0 entry<br/>chair · first rover ·<br/>ladder · lookout: muffin + note 1"] --> M1["rc-1-0 the fork<br/>high: ladders, crab<br/>low: creek, 2 rovers, drone"]
+    M1 --> M2["rc-2-0 reconnection<br/>coffee machine + Dexter ·<br/>cache: Leberkäse"]
+    M2 --> M3["rc-3-0 the climb<br/>scaffold tower up and down,<br/>rovers on the decks"]
+    M3 --> M4["rc-4-0 boss clearing<br/>gate · Jenny ·<br/>overlook: note 2"]
+  end
+```
+
+| Chunk | Clean | Anomaly (the maze) | Walk lines (brief for `grow_stage.py`) | Play time (walk) |
+| --- | --- | --- | --- | --- |
+| rc-0-0 | the 404 landing: the cement creek path under the rail bridge | entry: the chair on the first deck, one rover on the low deck, a ladder up, the lookout dead end | the path at y≈566; maze decks at 508 / 461, a ladder to 165 | 40 s |
+| rc-1-0 | the path along the water; Dexter watches; `jenny-ram` | the fork: a high route (two ladders, a crab on a deck) and a low route along the creek (two rovers, the drone over it) | high deck ≈165, low deck ≈570; they rejoin at the right edge | 60 s |
+| rc-2-0 | – | the reconnection: the coffee machine and Dexter (`coffee-1`, `dexter-1`), the Leberkäse cache | one broad deck ≈537 with a step down to the machine | 30 s |
+| rc-3-0 | – | **new:** the climb, a scaffold tower beside a steel bridge pier, up three ladders and down the far side, a rover on each deck | decks at ≈540, 400, 260, 140; down by a slide or a drop | 50 s |
+| rc-4-0 | – | the boss clearing: a wide open girder floor, the gate behind you, Jenny; the overlook with note 2 | one floor at ≈565, an overlook at ≈105 | 90 s + boss |
+
+The clean state needs only rc-0-0 and rc-1-0, because the ram happens there. The rest exists only as the maze. That's two more chunks than today. Walking, the maze goes from about 2.3 to about 4 minutes, so a straight run of the whole slice lands at about 8–9 minutes.
+
+**Pipeline, the same as the garden ([09](09-ART-PIPELINE.md)):**
+
+1. **Seed:** draw rc-0-0 anomaly from the style master (it is that plate) with `make_boards.py draw`, at pixel factor 1, 2160 × 720.
+2. **Grow:** `grow_stage.py art/stages/rusty-creek rc-0-0 right rc-1-0`, then onwards to rc-4-0. Each chunk's board has a brief with its walk lines (the column above) and a `route` the guide draws. Then use `feature` for anything the model smooths away: ladders, the scaffold tower, the gate.
+3. **Clean pair:** repaint rc-0-0 and rc-1-0 as the clean creek. The structure layers change, and the far layers, bank and water stay pixel-identical.
+4. **Split:** `depth_layers.py` (key, masks, fill, complete, near, under, clear) gives the region plates, the near grass and railing band, and the walkable `play` band. Then `split_layers.py` and `export_stage.py --verify`.
+5. **Collision:** traced from the `play` band (`depth_layers.py collision`), adjusted by hand, and `collision_check.py` with 0 problems (reach, joins, step-ups ≤ 16 px).
+6. **Encounters:** re-placed from the new art: player spawn, chair, rovers, crab, drone, coffee machine, Dexter, pickups, boss gate, Jenny and `jenny-ram`.
+7. **Compare:** a parallax preview and `compare.py` against the style master and the direction boards go in the PR.
+
+**When:** after the jury. The current three chunks are what the jury plays, and swapping the region's art, collision and every encounter three hours before the freeze would risk the whole slice.
+
 ## Hidden Garden – the prologue level
 
 Docs/03 beat 2 asks for about three minutes of calm garden before the pond: hills, the deck, reeds, a secret behind grass, a log to jump, a slope to climb ([#50](https://github.com/THD-AI/WinCS/issues/50)). At 3.5 m/s (153 px/s) one 2160 px chunk is 14 s of walking, so the prologue is **five chunks** in a row: ≈ 70 s on foot, plus Dexter's waits and two detours. The pond chunk that exists becomes the last one, `hg-4-0`; the four before it grow leftwards from it, each from the edge of the one to its right, so the path meets at the same height (top y = 441).
