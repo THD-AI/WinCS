@@ -21,9 +21,9 @@ export const CONTROLS: [string, string, string][] = [
   ['Interact, climb up', 'W, ↑', 'Up'],
   ['Drop through, climb down', 'S, ↓', 'Down'],
   ['Jump (hold for higher)', 'Space, K', 'A / Cross'],
-  ['Attack (tap) / guard (hold)', 'J', 'X / Square'],
-  ['Up attack', '↑ + J', 'Up + X'],
-  ['Down slam in the air', '↓ + J', 'Down + X'],
+  ['Attack (tap) / guard (hold)', 'J or X', 'X / Square'],
+  ['Up attack', '↑ + J / X', 'Up + X'],
+  ['Down slam in the air', '↓ + J / X', 'Down + X'],
   ['Pocket computer (map)', 'Tab', 'Back / Select'],
   ['This menu', 'Esc', 'Start'],
 ];

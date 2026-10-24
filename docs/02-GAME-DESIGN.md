@@ -23,11 +23,11 @@ Left, right, up, down and two buttons. That works on keyboard, gamepad and a tou
 
 | Input | Keyboard | Gamepad | Action |
 | --- | --- | --- | --- |
-| ← → | A / D, arrows | Stick, D-pad | Walk; run after 0.4 s held |
+| ← → | A / D, arrows (read by key position, any layout) | Stick, D-pad | Walk; run after 0.4 s held |
 | ↑ | W, ↑ | Up | Interact (sign, coffee machine, Dexter, pickup); climb ladder |
 | ↓ | S, ↓ | Down | Drop through one-way platform; climb down |
 | **Jump** | Space / K | A / Cross | Jump. Hold for higher (variable height) |
-| **Act** | J | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
+| **Act** | J, X | X / Square | Tap: attack with the current weapon. Hold: guard (chair) |
 | ↑ + Act | | | Up attack |
 | ↓ + Act in air | | | Down slam / pogo (bounce off an enemy or hazard) |
 | Menu | Esc | Start | The game menu: controls, settings, debug mode, coming soon (pauses the game) |
