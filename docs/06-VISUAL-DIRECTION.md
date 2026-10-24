@@ -1,7 +1,7 @@
 # 06 – Visual direction
 
 <!-- nav:start -->
-[← 05 – Enemies and bosses](05-ENEMIES-AND-BOSSES.md) · [Design docs](README.md) · **6 / 15** · [07 – Asset manifest →](07-ASSET-MANIFEST.md)
+[← 05 – Enemies and bosses](05-ENEMIES-AND-BOSSES.md) · [Design docs](README.md) · **6 / 16** · [07 – Asset manifest →](07-ASSET-MANIFEST.md)
 <!-- nav:end -->
 
 ![Style master – Rusty Creek](../art/direction/images/style-master-preview.png)
@@ -69,5 +69,5 @@ Everything in the game must look like it belongs in the **style master** above. 
 Hollow Knight: silhouettes, rim light, HUD restraint · Planet of Lana: scale, layers, soft hills (Lana is hand-painted, not pixel art – we take its framing and layering, not its rendering) · Dead Cells: Toxic Garden greenhouse, hit impact · 9 Years of Shadows: pixel richness · Kingdom Two Crowns: water reflections, goo · Children of Morta: concentrated colourful FX · Little Nightmares: the hooded silhouette · Terraria: boss size and readability · Monkey Island (classic): small funny details in scenes.
 
 <!-- nav:start -->
-[← 05 – Enemies and bosses](05-ENEMIES-AND-BOSSES.md) · [Design docs](README.md) · **6 / 15** · [07 – Asset manifest →](07-ASSET-MANIFEST.md)
+[← 05 – Enemies and bosses](05-ENEMIES-AND-BOSSES.md) · [Design docs](README.md) · **6 / 16** · [07 – Asset manifest →](07-ASSET-MANIFEST.md)
 <!-- nav:end -->

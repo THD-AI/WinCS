@@ -1,7 +1,7 @@
 # 04 – World and levels
 
 <!-- nav:start -->
-[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 15** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
+[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 16** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
 <!-- nav:end -->
 
 ![Hidden Garden – where it starts](../art/direction/images/hidden-garden-preview.png)
@@ -210,5 +210,5 @@ flowchart LR
 For each next region: one hand-drawn route sketch on top of its collage. Mark the entry, branches, secrets, enemies and the boss room with arrows, using the colour legend above. Screenshots from reference games are welcome. These sketches are the input for generating that region's stage art.
 
 <!-- nav:start -->
-[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 15** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
+[← 03 – Story and cast](03-STORY-AND-CAST.md) · [Design docs](README.md) · **4 / 16** · [05 – Enemies and bosses →](05-ENEMIES-AND-BOSSES.md)
 <!-- nav:end -->

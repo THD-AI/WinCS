@@ -1,7 +1,7 @@
 # 09 – Art pipeline
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 15** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 16** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->
 
 ![Rusty Creek – seven registered layers composed](../art/stages/rusty-creek/images/after-center.png)
@@ -359,5 +359,5 @@ python scripts/navigation.py && python scripts/check_docs.py
 - ❌ photos, audio, raw API output and rejected takes (`tmp/`), contact sheets, HTML viewers
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 15** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 16** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->
