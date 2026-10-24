@@ -87,7 +87,8 @@ export class Rooms {
     const at = door ?? (this.open ? undefined : note);
     this.prompt.setVisible(!!at);
     if (at) {
-      this.prompt.setText(door ? `↑  ${String(door.label ?? 'enter')}` : '↑  read');
+      // A door says nothing, only the key: the garden's prologue is wordless (docs/03). A note is read.
+      this.prompt.setText(door ? '↑' : '↑  read');
       this.prompt.setPosition(Math.round(at.x + at.w / 2), Math.round(at.y - 10 + 3 * Math.sin(this.scene.time.now / 300)));
     }
   }

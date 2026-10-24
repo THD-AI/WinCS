@@ -523,7 +523,6 @@
    "kind": "door",
    "id": "cellar-stairs",
    "to": "shed-door",
-   "label": "up to the shed",
    "note": "Under the shed: the first archive note in a crate \u2013 an experiment log that mentions a 'mascot-shaped containment vessel'. Warm light: a place to breathe (secret horror: calm first)."
   },
   {

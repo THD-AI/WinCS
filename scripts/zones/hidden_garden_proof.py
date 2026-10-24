@@ -196,7 +196,7 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
 def shed_door() -> dict:
     """The shed's painted door, over the terrace path (hg-2-0)."""
     return box(SHED_DOOR[0], 306 - BODY, SHED_DOOR[1], 306, kind="door", id="shed-door", to="cellar-stairs",
-               label="into the shed", note="The shed door you should not open: stairs down to the cellar.")
+               note="The shed door you should not open: stairs down to the cellar.")
 
 
 def finds(cid: str, col: int, walk: list) -> list[dict]:
@@ -206,7 +206,7 @@ def finds(cid: str, col: int, walk: list) -> list[dict]:
         x = (SHED_DOOR[0] + SHED_DOOR[1]) // 2
         y = floor_at(walk, x, "high")
         out.append(box(SHED_DOOR[0], y - BODY, SHED_DOOR[1], y, kind="door", id="cellar-stairs", to="shed-door",
-                       label="up to the shed", note=STORY[0]["story"]))
+                       note=STORY[0]["story"]))
     for c, nid, x, which, title, text in FINDS:
         if c == col and walk:
             y = floor_at(walk, x, which)

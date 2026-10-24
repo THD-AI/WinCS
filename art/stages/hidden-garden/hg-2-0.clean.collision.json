@@ -130,7 +130,6 @@
    "kind": "door",
    "id": "shed-door",
    "to": "cellar-stairs",
-   "label": "into the shed",
    "note": "The shed door you should not open: stairs down to the cellar."
   }
  ],
