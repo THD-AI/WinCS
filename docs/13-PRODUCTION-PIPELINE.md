@@ -102,6 +102,8 @@ Frames are drawn as **key poses**, never interpolated by the model; transitions 
 
 ## 3 · Stages: chunks, layers, four directions
 
+The whole process from a location concept to a zone lives in one place: [09 – World pipeline](09-ART-PIPELINE.md#world-pipeline).
+
 ```mermaid
 flowchart TB
   CON["Stage concept, clean + anomaly ✅<br/>art/locations"] --> SK[Lex's route sketch<br/>entry, branches, secrets, boss room]
