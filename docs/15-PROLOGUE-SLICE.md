@@ -75,6 +75,30 @@ flowchart TD
 - **Region swap**: `swapRegion(scene, { region, state, spawn? })` (`stage/swap.ts`).
 - **Dev handle**: `window.game` in dev builds for checks.
 
+## The loader contract (workstream 1)
+
+`game/src/boot/` holds the only two scenes that load files. **Boot** draws the pixel font in code and loads the UI atlas + `ui-layout.json`; **Preload** loads a region behind the loading screen and starts **Title** (first load) or **Stage** (a region swap).
+
+```mermaid
+flowchart LR
+  B["Boot<br/>pixel font, UI atlas"] --> P["Preload<br/>{region?, state?, spawn?}"]
+  P --> W0["stage.json"] --> W1["wave 1 JSON (fetch)<br/>atmosphere, surfaces, board JSON,<br/>map stages"] --> W2["wave 2 (Phaser loader)<br/>collision, plates, board sheets,<br/>menu-key.png"]
+  W2 -->|"no errors"| D{"first load?"}
+  W2 -->|"required file failed"| E["Retry [R] / Continue [C]<br/>production: 1 auto-retry,<br/>then continues in 6 s"] --> D
+  D -->|yes| T["Title<br/>key art ↔ live garden"] -->|Start: crossfade| S["Stage"]
+  D -->|"no (swapRegion)"| S
+```
+
+- **What loads:** every atlas in [`game/src/stage/boards.json`](../game/src/stage/boards.json) (`required` falls back to a placeholder, `optional` may be absent) – add a board with one line there; the region's `stage.json`, its collision files and plates; the optional `atmosphere.json` and `surfaces.json` from `game/public/assets/stages/<region>/` (absent → `{}`; `scripts/export_stage.py` must copy them from `art/stages/<region>/`); every region's `stage.json` for the map (`map-stage-<region>`); `ui/menu-key.png` (optional).
+- **What Stage receives** (`game/src/boot/contract.ts` `StageData`): `{ manifest, state, collisions, atmosphere, surfaces, spawn? }` – `atmosphere` and `surfaces` are plain objects, parsed by their owners (2, 3).
+- **Caches:** atlases by board id (`dexter`, `fx-leaves`, …), clips in the JSON cache as `<board>.anims`, plates as `<region>:<file>`, UI as `ui` / `ui-layout`. Scenes read these; they never call `this.load`.
+- **Never hangs:** JSON requests time out after 20 s, a dev server's HTML fallback counts as missing, a wave with no byte moving for 25 s gives up, and every failure lands on screen. A region swap reloads only what the new region adds.
+- **Dev checks:** `window.game.scene.getScene('Preload').tracker.summary()`; `?skip-menu` goes straight to the stage.
+
+| Loading | Menu (key art) | Menu (live garden) |
+| --- | --- | --- |
+| ![The loading screen mid-way](images/boot-loading.png) | ![The menu over the key art](images/boot-menu-key-art.png) | ![The menu over the live garden](images/boot-menu-live-garden.png) |
+
 ## Rules for every workstream
 
 - Branch `feature/<issue or slice>-<topic>` from `slice/prologue`; draft PR **into `slice/prologue`**, with a mermaid diagram, before/after evidence (screenshot, GIF or `compare.py`), and how to test. Never push to main or to another workstream's branch; never merge.
