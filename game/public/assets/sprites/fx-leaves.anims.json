@@ -1,0 +1,17 @@
+{
+ "birch": {
+  "frames": 5,
+  "fps": 8,
+  "loop": true
+ },
+ "maple": {
+  "frames": 5,
+  "fps": 8,
+  "loop": true
+ },
+ "oak": {
+  "frames": 5,
+  "fps": 8,
+  "loop": true
+ }
+}
