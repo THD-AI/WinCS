@@ -4,7 +4,8 @@ import { parseManifest, stageLayers, type StageManifest, type RegionState } from
 export const BOARDS = ['hero-move', 'hero-run', 'hero-idle', 'hero-air', 'hero-hurt', 'hero-death',
   'chair-side', 'chair-overhead', 'chair-block', 'enemy-rover', 'enemy-crab', 'enemy-drone', 'fx', 'boss-jenny', 'boss-jenny-2', 'coffee-machine',
   'dexter', 'dexter-acts', 'pocket-computer', 'mensa-food'] as const;
-export interface AnimationClip { frames: number; fps: number; loop: boolean }
+/** `stride`: a locomotion cycle's stride in game px (compare.py stride) – it is played by distance, not by time. */
+export interface AnimationClip { frames: number; fps: number; loop: boolean; stride?: number }
 export type AnimationTable = Record<string, AnimationClip>;
 export const stageBase = (region: string) => `/assets/stages/${region}/`;
 export const textureKey = (region: string, file: string) => `${region}:${file}`;

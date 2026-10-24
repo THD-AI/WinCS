@@ -8,6 +8,19 @@ const tick = (machine: LocomotionAnimation, pose: MotionPose, frames: number) =>
   for (let i = 0; i < frames; i++) machine.update(pose, 1 / 12);
 };
 describe('stepped locomotion animation', () => {
+  it('plays the walk and run cycles by distance, so the planted foot never slides', () => {
+    expect(clips.walk.stride).toBe(43); expect(clips.run.stride).toBe(82);
+    const machine = new LocomotionAnimation(clips);
+    tick(machine, 'walk', 4); expect(machine.clip).toBe('walk');
+    const start = machine.frame;
+    // 43 px per 8-frame cycle: 5.375 px per frame. Travel 4 frames' worth at any speed and the cycle moves 4 frames.
+    for (const speed of [40, 94.6]) {
+      const from = machine.frame;
+      for (let t = 0; t < 4 * 5.375 / speed - 1e-6; t += 1 / 240) machine.update('walk', 1 / 240, speed);
+      expect((machine.frame - from + 8) % 8).toBe(4);
+    }
+    expect(machine.frame).toBe(start);
+  });
   it('uses the actual movement animation tables', () => {
     expect(clips.walk.frames).toBe(8); expect(clips.run.frames).toBe(8);
     expect(clips.land.start).toBe(8);

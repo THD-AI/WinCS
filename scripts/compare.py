@@ -74,6 +74,40 @@ def frame(atlas: str, name: str) -> Image.Image:
     return piece.crop(piece.getchannel("A").getbbox())
 
 
+def feet(piece: Image.Image, band: int = 3) -> list[tuple[int, int]]:
+    """Runs of opaque pixels in the bottom `band` rows of a frame: the feet on the ground, left to right."""
+    alpha = piece.getchannel("A")
+    w, h = piece.size
+    rows = [y for y in range(h) if any(alpha.getpixel((x, y)) > 128 for x in range(w))]
+    if not rows:
+        return []
+    xs = sorted({x for y in range(max(rows) - band + 1, max(rows) + 1) for x in range(w) if alpha.getpixel((x, y)) > 128})
+    runs: list[list[int]] = []
+    for x in xs:
+        if runs and x - runs[-1][1] <= 2:
+            runs[-1][1] = x
+        else:
+            runs.append([x, x])
+    return [(a, b) for a, b in runs]
+
+
+def stride(atlas: str, anim: str) -> tuple[float, float, list[str]]:
+    """The step length of a locomotion cycle: the widest spread between two planted feet (double support), and
+    the stride – two steps – that the body must travel per cycle for the feet not to slide."""
+    clips = json.loads((SPRITES / f"{atlas}.anims.json").read_text(encoding="utf-8"))
+    report, step = [], 0.0
+    for i in range(clips[anim]["frames"]):
+        runs = feet(frame(atlas, f"{anim}-{i:02d}"))
+        spread = (runs[-1][0] + runs[-1][1]) / 2 - (runs[0][0] + runs[0][1]) / 2 if len(runs) >= 2 else 0.0
+        step = max(step, spread)
+        report.append(f"{anim}-{i:02d}: feet {runs} spread {spread:.1f}")
+    fps = clips[anim]["fps"]
+    speed = 2 * step * fps / clips[anim]["frames"]
+    report.append(f"{atlas}:{anim}: step {step:.1f} px, stride {2 * step:.1f} px per {clips[anim]['frames']}-frame cycle"
+                  f" -> {speed:.0f} px/s at {fps} fps without sliding")
+    return step, 2 * step, report
+
+
 def documented(atlas: str) -> int | None:
     if atlas.startswith("hero"):
         return DOCUMENTED["hero"]
@@ -168,6 +202,8 @@ def main() -> None:
     two.add_argument("frames", nargs="+", help="atlas:frame, e.g. hero-move:walk-00")
     two.add_argument("--out", type=Path, required=True)
     two.add_argument("--atlas-dir", type=Path, help="read atlases from here (an export to tmp/ before approval)")
+    four = sub.add_parser("stride", help="the stride of a walk or run cycle, measured from its planted feet")
+    four.add_argument("clips", nargs="+", help="atlas:anim, e.g. hero-move:walk")
     three = sub.add_parser("parallax", help="a stage region at several camera positions")
     three.add_argument("region", type=Path)
     three.add_argument("--state", default="clean")
@@ -177,6 +213,11 @@ def main() -> None:
     if getattr(args, "atlas_dir", None):
         global SPRITES
         SPRITES = args.atlas_dir if args.atlas_dir.is_absolute() else ROOT / args.atlas_dir
+    if args.mode == "stride":
+        for spec in args.clips:
+            atlas, anim = spec.split(":")
+            print("\n".join(stride(atlas, anim)[2]))
+        return
     if args.mode == "images":
         out = images(args.ref, args.ours, args.width, args.grid)
     elif args.mode == "parallax":

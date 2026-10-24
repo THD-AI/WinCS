@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
-import { horizontal, move, movement } from './movement';
+import { horizontal, move, movement, RUN_SPEED, WALK_SPEED } from './movement';
 import { jump, jumpState, landing, pogo } from './jump';
 import { climb, dropThrough, traversal } from './traversal';
 import { catalogue, LocomotionAnimation, type MotionPose } from './animation';
@@ -163,8 +163,9 @@ export class Player {
     const desired: MotionPose = this.traversal.ladder ? 'ladder' : this.air.landing > 0
       ? this.air.hard ? 'hard-landing' : 'land' : this.body.sliding ? 'fall'
       : !this.body.grounded ? this.body.vy < 0 ? 'jump' : 'fall'
-      : Math.abs(this.body.vx) > 180 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
-    const locomotion = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000);
+      : Math.abs(this.body.vx) > (WALK_SPEED + RUN_SPEED) / 2 ? 'run' : Math.abs(this.body.vx) > 5 ? 'walk' : 'idle';
+    const locomotion = this.animation.update(desired, desired === 'ladder' && vertical === 0 ? 0 : milliseconds / 1000,
+      Math.abs(this.body.vx));
     const pose = lifePose(this.life) ?? interactionPose ?? locomotion;
     if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');

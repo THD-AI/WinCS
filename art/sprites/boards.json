@@ -46,7 +46,8 @@
           [
             {
               "anim": "walk",
-              "frames": 8
+              "frames": 8,
+              "stride": 43
             }
           ]
         ]
@@ -122,7 +123,8 @@
             {
               "anim": "run",
               "frames": 8,
-              "scale": 1.12
+              "scale": 1.12,
+              "stride": 82
             }
           ]
         ]

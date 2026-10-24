@@ -12,6 +12,7 @@
  "run": {
   "frames": 8,
   "fps": 12,
-  "loop": true
+  "loop": true,
+  "stride": 82
  }
 }
