@@ -127,3 +127,20 @@ export function waterlineAt(spans: readonly WaterSpan[], x: number): number | nu
 
 /** Where a sprite's mirror image goes: its feet at `feet` mirror to 2·waterline − feet. */
 export const mirrorY = (waterline: number, feet: number) => 2 * waterline - feet;
+
+/** After the reveal's `duration`, the wrong reflection fades out over this long (ms). */
+export const REVEAL_SETTLE = 700;
+
+/**
+ * Opacity (0–1) of the wrong reflection `elapsed` ms into a reveal of `duration` ms, or null when it is
+ * over. It flickers in 90 ms steps – on more often as the reveal builds – then settles out.
+ */
+export function revealAlpha(elapsed: number, duration: number): number | null {
+  if (elapsed < 0 || elapsed > duration + REVEAL_SETTLE) return null;
+  const build = Math.min(1, elapsed / Math.max(1, duration * 0.4));
+  const settle = elapsed <= duration ? 1 : 1 - (elapsed - duration) / REVEAL_SETTLE;
+  const step = Math.floor(elapsed / 90);
+  const hash = Math.abs(Math.sin(step * 12.9898 + 78.233) * 43758.5453) % 1;
+  const on = elapsed > duration || hash < 0.3 + 0.45 * build;
+  return Math.max(0, (on ? 1 : 0.15) * build * settle);
+}

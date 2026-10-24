@@ -17,6 +17,8 @@
     "front": { "every": 420, "scale": [1, 2], "scroll": 1.15, "alpha": 1, "tint": "#ffffff" },
     "behind": { "every": 300, "scale": [1, 1.25], "scroll": 0.85, "alpha": 0.9, "tint": "#d8d0c8" }
   },
-  "water": { "layer": "04-water", "reflect": { "alpha": 0.5, "tint": "#7890b0" }, "pads": 3, "padTint": "#c8a070", "padScale": 1.15, "ripples": 900, "sparkles": 220 },
+  "water": { "layer": "04-water", "reflect": { "alpha": 0.5, "tint": "#7890b0" }, "pads": 3, "padTint": "#c8a070", "padScale": 1.15, "ripples": 900, "sparkles": 220,
+    "wrong": { "image": "wrong-reflection.png", "alpha": 0.75 } },
+  "assets": ["wrong-reflection.png"],
   "states": { "anomaly": { "leaves": { "fall": "up" } } }
 }

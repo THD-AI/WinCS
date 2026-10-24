@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import garden from '../../../../art/stages/hidden-garden/atmosphere.json';
 import { DEFAULT_ATMOSPHERE, layerAtmosphere, parseAtmosphere } from './config';
 import { gustAt, maxSway, swayAt, swayWeight } from './wind';
-import { anchorProfile, autumnPalette, mirrorY, onScreen, PROFILE_SIZE, waterline, waterlineAt, waterPoints, type Pixels, type WaterSpan } from './analysis';
+import { anchorProfile, autumnPalette, mirrorY, revealAlpha, REVEAL_SETTLE, onScreen, PROFILE_SIZE, waterline, waterlineAt, waterPoints, type Pixels, type WaterSpan } from './analysis';
 import { seeded } from './sprites';
 import { FOREGROUND_DEPTH, HERO_DEPTH, layerDepth, layerRanks, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from '../depth';
 
@@ -169,5 +169,25 @@ describe('reflections', () => {
   it('places pads the same way every run', () => {
     const a = seeded(404), b = seeded(404);
     expect([a(), a(), a()]).toEqual([b(), b(), b()]);
+  });
+});
+
+describe('anomaly-reveal', () => {
+  it('flickers in, holds, settles out, then is over', () => {
+    expect(revealAlpha(-1, 2000)).toBeNull();
+    expect(revealAlpha(0, 2000)).toBe(0);
+    const during = Array.from({ length: 20 }, (_, i) => revealAlpha(1000 + i * 45, 2000)!);
+    expect(Math.max(...during)).toBe(1);
+    expect(Math.min(...during)).toBeLessThan(1); // it flickers
+    expect(revealAlpha(2000 + REVEAL_SETTLE / 2, 2000)).toBeCloseTo(0.5);
+    expect(revealAlpha(2000 + REVEAL_SETTLE + 1, 2000)).toBeNull();
+  });
+
+  it('only takes a wrong image that is one of the region assets', () => {
+    const ok = parseAtmosphere({ assets: ['wrong.png'], water: { wrong: { image: 'wrong.png' } } });
+    expect(ok.atmosphere.water?.wrong).toEqual({ image: 'wrong.png', alpha: 0.7 });
+    const bad = parseAtmosphere({ assets: ['../x.png'], water: { wrong: { image: 'y.png' } } });
+    expect(bad.atmosphere.water?.wrong).toBeNull();
+    expect(bad.problems.length).toBe(2);
   });
 });

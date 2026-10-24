@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { stageLayers, type StageManifest, type RegionState, type StageLayer } from './manifest';
-import { textureKey } from './assets';
+import { stageBase, textureKey } from './assets';
 import { gridBounds } from './camera';
 import { above, isForeground, layerDepth, layerRanks, LEAVES_BEHIND_DEPTH, LEAVES_FRONT_DEPTH } from './depth';
 import { layerAtmosphere, parseAtmosphere, type Atmosphere, type LayerFx } from './atmosphere/config';
@@ -9,7 +9,8 @@ import { WaterLife } from './atmosphere/water';
 import { sheetAnimations } from './atmosphere/sprites';
 import { layerPipeline, newUniforms, useLayerPipeline, type LayerUniforms } from './atmosphere/pipeline';
 import { addLeaves, type LeafEmitters } from './atmosphere/leaves';
-import { Reflection } from './atmosphere/reflection';
+import { Reflection, WrongReflection, waterMask } from './atmosphere/reflection';
+import { gameEvents, type GameEvents } from '../core/events';
 
 /** One drawn layer and what the atmosphere does with it. */
 export interface DrawnLayer {
@@ -34,6 +35,8 @@ export interface StageHandles {
   waterlineAt(x: number): number | null;
   /** Mirror an actor in the water (the hero, Dexter); returns null where the stage has no water reflection. */
   reflect(sprite: Phaser.GameObjects.Sprite): Reflection | null;
+  /** Show the wrong reflection around a water point for `duration` ms (what anomaly-reveal does); false if it can't. */
+  reveal(position: { x: number; y: number }, duration: number): boolean;
   destroy(): void;
 }
 
@@ -142,6 +145,29 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     : null;
   const reflections: Reflection[] = [];
   const water = waterDrawn;
+  let mask: ReturnType<typeof waterMask> | undefined;
+  const sharedMask = () => (mask ??= waterMask(scene, spans)).mask;
+
+  // anomaly-reveal (prologue): the wrong picture flickers in the water. Its image comes with the region's
+  // atmosphere assets; until the loader (workstream 1) brings them, the stage fetches it here.
+  let wrong: WrongReflection | undefined;
+  const wrongConfig = atmosphere.water?.wrong;
+  const wrongKey = wrongConfig ? textureKey(manifest.region, wrongConfig.image) : '';
+  if (wrongConfig && pipeline && !scene.textures.exists(wrongKey)) {
+    scene.load.image(wrongKey, stageBase(manifest.region) + wrongConfig.image);
+    scene.load.start();
+  }
+  const reveal = (position: { x: number; y: number }, duration: number) => {
+    const line = waterlineAt(spans, position.x);
+    if (!wrongConfig || !pipeline || !water || line === null || !scene.textures.exists(wrongKey)) return false;
+    wrong ??= new WrongReflection(scene, wrongKey, above(water.image.depth) - 0.1, sharedMask(), wrongConfig.alpha);
+    wrong.show(position.x, line, scene.time.now, duration);
+    return true;
+  };
+  const onReveal = (event: GameEvents['anomaly-reveal']) => { if (event.region === manifest.region) reveal(event.position, event.duration); };
+  const offReveal = gameEvents.on('anomaly-reveal', onReveal);
+  // Story code can tell the water reacts to anomaly-reveal (and drop its own fallback).
+  scene.data.set('water-reveal', Boolean(wrongConfig && pipeline));
 
   const frame = (time: number) => {
     // Layers off screen are not drawn (each would still cost a draw call).
@@ -154,6 +180,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     leaves?.update(time / 1000);
     life?.update(time, camera);
     for (let i = 0; i < reflections.length; i++) reflections[i].update();
+    wrong?.update(scene.time.now);
   };
   scene.events.on(Phaser.Scenes.Events.POST_UPDATE, frame);
   const handles: StageHandles = {
@@ -162,18 +189,26 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     reflect(sprite) {
       const reflect = atmosphere.water?.reflect;
       if (!reflect || !water || !pipeline) return null;
-      const r = new Reflection(sprite, spans, reflect.alpha, reflect.tint, above(water.image.depth), pipeline);
+      const r = new Reflection(sprite, spans, reflect.alpha, reflect.tint, above(water.image.depth), sharedMask());
       reflections.push(r);
       return r;
     },
+    reveal,
     destroy() {
       scene.events.off(Phaser.Scenes.Events.POST_UPDATE, frame);
+      offReveal();
+      wrong?.destroy();
+      mask?.destroy();
       leaves?.destroy();
       life?.destroy();
       reflections.forEach(r => r.destroy());
       layers.forEach(d => d.image.destroy());
     },
   };
-  scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => scene.events.off(Phaser.Scenes.Events.POST_UPDATE, frame));
+  scene.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+    scene.events.off(Phaser.Scenes.Events.POST_UPDATE, frame);
+    offReveal();
+    mask?.destroy();
+  });
   return handles;
 }

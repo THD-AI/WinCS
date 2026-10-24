@@ -4,6 +4,7 @@
  * field is reported and replaced by its default, so a typo never blanks the stage.
  */
 import { isForeground } from '../depth';
+import { assetFile } from '../manifest';
 
 export interface Wind {
   /** Steady sway, as a share of a layer's amplitude (0–1). */
@@ -73,6 +74,8 @@ export interface Water {
   /** Mean ms between ripple rings / sparkles on screen (0: none). */
   ripples: number;
   sparkles: number;
+  /** anomaly-reveal: the picture that flickers in the water (a file in `assets`) and its peak opacity. */
+  wrong: { image: string; alpha: number } | null;
 }
 
 export interface Atmosphere {
@@ -82,6 +85,8 @@ export interface Atmosphere {
   layers: Record<string, Partial<LayerFx>>;
   leaves: Leaves;
   water: Water | null;
+  /** Extra images in the region folder the atmosphere uses; exported and loaded with the stage. */
+  assets: string[];
 }
 
 export const DEFAULT_ATMOSPHERE: Atmosphere = {
@@ -93,7 +98,8 @@ export const DEFAULT_ATMOSPHERE: Atmosphere = {
     front: { every: 420, scale: [1, 2], scroll: 1.15, alpha: 1, tint: 0xffffff },
     behind: { every: 300, scale: [1, 1.25], scroll: 0.85, alpha: 0.9, tint: 0xd8d0c8 },
   },
-  water: { layer: '04-water', reflect: { alpha: 0.5, tint: 0x7890b0 }, pads: 3, padTint: 0xc8a070, padScale: 1.15, ripples: 900, sparkles: 220 },
+  water: { layer: '04-water', reflect: { alpha: 0.5, tint: 0x7890b0 }, pads: 3, padTint: 0xc8a070, padScale: 1.15, ripples: 900, sparkles: 220, wrong: null },
+  assets: [],
 };
 
 type Obj = Record<string, unknown>;
@@ -244,9 +250,23 @@ export function parseAtmosphere(value: unknown, state?: string): { atmosphere: A
       padScale: read.number(wa, 'padScale', d.water!.padScale, 0.25, 4, 'water'),
       ripples: read.number(wa, 'ripples', d.water!.ripples, 0, 60_000, 'water'),
       sparkles: read.number(wa, 'sparkles', d.water!.sparkles, 0, 60_000, 'water'),
+      wrong: null,
     };
   }
-  return { atmosphere: { wind, defaults, layers, leaves, water }, problems: read.problems };
+  const assets: string[] = [];
+  if (root.assets !== undefined) {
+    if (Array.isArray(root.assets) && root.assets.every(assetFile)) assets.push(...root.assets);
+    else read.problems.push('assets must be a list of file names in the region folder');
+  }
+  if (water && wa) {
+    const wrong = read.section(wa, 'wrong', 'water');
+    if (wrong) {
+      if (typeof wrong.image === 'string' && assets.includes(wrong.image)) {
+        water.wrong = { image: wrong.image, alpha: read.number(wrong, 'alpha', 0.7, 0, 1, 'water.wrong') };
+      } else read.problems.push('water.wrong.image must be one of assets');
+    }
+  }
+  return { atmosphere: { wind, defaults, layers, leaves, water, assets }, problems: read.problems };
 }
 
 /**

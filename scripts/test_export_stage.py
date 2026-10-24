@@ -67,6 +67,13 @@ class ExportStageTests(unittest.TestCase):
         published = json.loads((self.out / 'test-region' / 'atmosphere.json').read_text(encoding='utf-8'))
         self.assertEqual(published, {'wind': {'base': 0.5}})
         self.assertFalse((self.out / 'test-region' / 'surfaces.json').exists())
+        Image.new('RGBA', (4, 4)).save(self.region / 'wrong.png')
+        (self.region / 'atmosphere.json').write_text('{"assets": ["wrong.png"]}', encoding='utf-8')
+        es.export(self.region, self.out)
+        self.assertTrue((self.out / 'test-region' / 'wrong.png').exists())
+        (self.region / 'atmosphere.json').write_text('{"assets": ["../escape.png"]}', encoding='utf-8')
+        with self.assertRaisesRegex(es.ExportError, 'not a file in the region'):
+            es.export(self.region, self.out)
         (self.region / 'atmosphere.json').write_text('{"wind": ', encoding='utf-8')
         with self.assertRaisesRegex(es.ExportError, 'atmosphere.json is not valid JSON'):
             es.export(self.region, self.out)

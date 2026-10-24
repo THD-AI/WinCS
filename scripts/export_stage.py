@@ -108,10 +108,17 @@ def export(region: Path, out: Path) -> dict:
     for name in DATA_FILES:  # optional region data the game loads next to stage.json
         if (region / name).exists():
             try:
-                json.loads((region / name).read_text(encoding="utf-8"))
+                data = json.loads((region / name).read_text(encoding="utf-8"))
             except json.JSONDecodeError as error:
                 raise ExportError(f"{region.name}: {name} is not valid JSON ({error})") from error
             shutil.copyfile(region / name, target / name)
+            # "assets": extra images in the region folder the file refers to (atmosphere.json)
+            for asset in data.get("assets", []) if isinstance(data, dict) else []:
+                path = region / asset
+                if Path(asset).is_absolute() or ".." in Path(asset).parts or not path.is_file():
+                    raise ExportError(f"{region.name}: {name} lists asset {asset!r}, which is not a file in the region")
+                (target / asset).parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(path, target / asset)
     (target / "stage.json").write_text(json.dumps(stage, indent=1) + "\n", encoding="utf-8", newline="\n")
     return stage
 
