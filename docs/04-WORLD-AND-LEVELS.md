@@ -84,17 +84,44 @@ Every time a chunk's layers are made, it also gets an annotation drawn over the 
 
 | Colour | Shape | Meaning |
 | --- | --- | --- |
-| 🟩 Green | line | Walkable ground and gentle slopes (≤ 40°) |
-| 🟫 Brown | line | Slide slope (> 40°): you skid down |
+| 🟩 Green | line | Walkable ground and gentle slopes (≤ 40°); the hero never slides on it. Treads of planks and stairs are flat green lines, one per tread |
+| 🟫 Brown | line | Slide slope: the only line you skid down |
 | 🟨 Yellow | line | One-way platform (decks, planks, tray stacks): stand on top, jump up through, ↓ + Jump to drop |
 | 🩵 Cyan | point | Ledge: a grabbable edge (reserved – the pull-up was cut for the jam) |
 | 🟦 Blue | box | Climb zone: ladder, vines, scaffold, stairs |
-| 🟥 Red | box | Solid: wall or ceiling you can't enter |
-| ⬛ Black | box | No-go / kill-free reset: out of bounds, deep water – respawn at last safe ground |
+| 🟥 Red | box | Solid (`kind` wall / log / obstacle): stops the body, its top is floor – the fallen birch is one. In the overlays a short red stroke at a line end marks a **ledge face** |
+| ⬛ Black | box | No-go / kill-free reset: out of bounds; `kind: "water"` (tinted blue in the overlays) is the pond – never floor, falling in splashes and respawns at the last safe ground |
 | 🟧 Orange | box | Hazard: current, sap, sparks – 1 cell of damage |
 | 🟪 Purple | box | Interactable or trigger: coffee machine, pickup, Dexter, sign, **the anomaly**, boss gate, chunk exit |
 | 🤍 White | dot | Spawn: player, enemy, item, Dexter |
 | 🌬️ Pale blue | box | Glide lift (later): updraft that carries a gliding hero up |
+
+### Terrain model (P1)
+
+The trail is where you walk, and every stretch of it is typed. Physics reads only the geometry above; the `terrain` list in each collision file names what each stretch *is*, and the checker holds the geometry to it.
+
+```mermaid
+flowchart LR
+  T["terrain range<br/>{x, y?, kind, material}"] --> K{kind}
+  K -->|ground| G["walk line: follow it, any slope ≤ 40°"]
+  K -->|"step / stair / plank"| S["flat treads; a rise ≤ 16 px is walked up and down"]
+  K -->|"ledge / wall"| L["line end nothing passes under = a face:<br/>16–100 px stops you, jump it (≤ 88)"]
+  K -->|"log / obstacle"| O["solid box: stops you, stand on its top"]
+  K -->|slide| SL["slide line: the only place you skid"]
+  W["noGo kind water"] --> R["never floor: splash, respawn at the bank"]
+  T --> M["material → surfaces.json<br/>(sink, cover, blades, puff)"]
+```
+
+| Rule | Number | Where |
+| --- | --- | --- |
+| Step: walked up and down without a jump | rise ≤ 16 px | `STEP_UP`, `game/src/player/body.ts` |
+| Ledge face: stops the body; higher ones are background you walk in front of | 16 < rise ≤ 100 px | `FACE_REACH` |
+| An end with a floor ≤ 120 px under it is an overhang (the bench platform), not a face | 120 px | `FACE_DEPTH` |
+| A face a lower floor stops at must be jumpable | ≤ 88 px | `collision_check.py` |
+| Treads (`step`, `stair`, `plank`) are flat | slope ≤ 0.05 | `collision_check.py` |
+| No floor over the pond's water pixels (04-water layer, not the play layer) | – | `collision_check.py` |
+
+`python scripts/collision_check.py --surfaces` rebuilds the region's `surfaces.json` ranges from the terrain (the materials stay hand-tuned there; a `water` material carries the splash).
 
 Export: `art/stages/<region>/<chunk>.<state>.collision.json` – polylines, points and boxes in stage pixels, one file per chunk and state. They are drawn in **Tiled**, one object layer per row of the legend, on top of the composed chunk, and `scripts/collision_from_tiled.py` converts the export; Rusty Creek's first set was written straight from the art. Chunk ids are grid positions (`rc-0-0`, `rc-1-0` …), mapped to their art in the region's `chunks.json`. `python scripts/collision_check.py --overlay` checks every file against the schema and the 28×76 body (every spawn, pickup and trigger reachable, neighbouring chunks meeting at one ground height) and draws the review overlays into the region's `collision/` folder. The game builds the physics from it. Pixel masks never stand in for collision. The exact schema is in [13 – Production pipeline](13-PRODUCTION-PIPELINE.md#contract-collisionjson).
 

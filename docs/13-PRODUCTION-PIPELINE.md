@@ -141,7 +141,7 @@ Draw every object in **stage pixels** on top of the 2160×720 chunk, one Tiled o
 | `walk` | polyline | ground and gentle slopes ≤ 40°, girder tops you stand on |
 | `slide` | polyline | slopes > 40° you skid down |
 | `one-way` | polyline | decks, planks, scaffold boards: jump up through, ↓ + Jump drops |
-| `climb` | box + `kind` | **ladders, vines, scaffold, stairs** – stairs are climb zones or a walk slope, never steps of boxes |
+| `climb` | box + `kind` | **ladders, vines, scaffold** – stairs are flat walk treads (rises ≤ 16 px are stepped; docs/04 terrain model), never slopes and never steps of boxes |
 | `solid` | box | walls and ceilings |
 | `no-go` | box | out of bounds, deep water: reset without damage |
 | `hazard` | box + `damage` | current, sap, sparks |
@@ -172,6 +172,8 @@ Draw every object in **stage pixels** on top of the 2160×720 chunk, one Tiled o
 ```
 
 Coordinates are integers in stage pixels, origin top left; polylines run left to right; `kind` values are lower-case with dashes. Adding a field is fine; renaming one needs both lanes to agree in an issue.
+
+Optional `terrain` (docs/04 terrain model): `[{"x": [x0, x1], "y": [y0, y1]?, "kind": "ground|step|stair|plank|ledge|wall|log|obstacle|slide", "material": "<surfaces.json material>", "note"?}]` – chunk-local ranges, first match wins, every walk/oneWay/slide segment covered. Solids take an optional `kind` (`wall`, `log`, `obstacle`), no-go boxes `kind: "water"`. A chunk with `terrain` was re-authored by hand: `depth_layers.py collision` keeps its floors.
 
 ## 5 · The other hand-over contracts
 

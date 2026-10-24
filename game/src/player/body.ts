@@ -12,6 +12,8 @@ export const STEP_UP = 16;
 export const FACE_REACH = 100;
 /** A floor this far under a line's end means the end is an overhang the body passes under, not a face. */
 export const FACE_DEPTH = 120;
+/** A falling body lands on a floor whose end is at most this far from its centre (half the 28 px body, less a margin). */
+export const FOOTHOLD = 8;
 export interface Body { x: number; y: number; vx: number; vy: number; grounded: boolean; slope?: number; sliding?: boolean }
 export function overlaps(body: Body, box: Box) {
   return body.x + HALF > box.x && body.x - HALF < box.x + box.w
@@ -108,10 +110,18 @@ export function stepBody(body: Body, geometry: Geometry[], dt: number, ignoreOne
   body.sliding = false;
   body.slope = 0;
   const surfaces: { y: number; slope: number; slide: boolean }[] = [];
+  const holds: typeof surfaces = [];
   for (const floor of floors(geometry, ignoreOneWay)) {
     const h = heightAt(floor.line, body.x);
     if (h) surfaces.push({ ...h, slide: floor.slide });
+    else {
+      // Feet overhang: with no floor under the centre, a floor end up to FOOTHOLD px away still holds (a stepping stone's edge).
+      const [first, last] = [floor.line[0], floor.line[floor.line.length - 1]];
+      const end = body.x < first[0] && first[0] - body.x <= FOOTHOLD ? first : body.x > last[0] && body.x - last[0] <= FOOTHOLD ? last : null;
+      if (end) holds.push({ y: end[1], slope: 0, slide: floor.slide });
+    }
   }
+  if (!surfaces.length) surfaces.push(...holds);
   for (const wall of solids) {
     if (body.x + HALF > wall.x && body.x - HALF < wall.x + wall.w) surfaces.push({ y: wall.y, slope: 0, slide: false });
   }

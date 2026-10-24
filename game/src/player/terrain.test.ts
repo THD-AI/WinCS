@@ -49,6 +49,15 @@ describe('terrain: steps, ledges, walls, treads', () => {
     }
     expect(b.y).toBe(240);
   });
+  it('lands on a stepping stone whose edge is under the feet but not under the centre', () => {
+    const g = [world([[[100, 300], [160, 300]]])];
+    const b: Body = { x: 94, y: 280, vx: 0, vy: 200, grounded: false };
+    for (let i = 0; i < 30; i++) stepBody(b, g, 1 / 120);
+    expect(b.grounded).toBe(true); expect(b.y).toBe(300);
+    const off: Body = { x: 80, y: 280, vx: 0, vy: 200, grounded: false };
+    for (let i = 0; i < 30; i++) stepBody(off, g, 1 / 120);
+    expect(off.grounded).toBe(false);
+  });
   it('slides only on authored slide lines', () => {
     const steep: Point[] = [[0, 100], [200, 260]];
     const walking = run(body(100, 180, 0), [world([steep])], 30, 0);
