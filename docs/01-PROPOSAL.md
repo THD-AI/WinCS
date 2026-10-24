@@ -1,7 +1,7 @@
 # 01 – Proposal
 
 <!-- nav:start -->
-[← Design documents](README.md) · [Design docs](README.md) · **1 / 14** · [02 – Game design →](02-GAME-DESIGN.md)
+[← Design documents](README.md) · [Design docs](README.md) · **1 / 15** · [02 – Game design →](02-GAME-DESIGN.md)
 <!-- nav:end -->
 
 ![Rusty Creek – our first stage, current art](../art/stages/rusty-creek/images/after-center.png)
@@ -70,5 +70,5 @@ Everything else in this folder is the full game, kept so the jam slice is built 
 | Alexander | Pipeline, art generation, build/deploy, integration |
 
 <!-- nav:start -->
-[← Design documents](README.md) · [Design docs](README.md) · **1 / 14** · [02 – Game design →](02-GAME-DESIGN.md)
+[← Design documents](README.md) · [Design docs](README.md) · **1 / 15** · [02 – Game design →](02-GAME-DESIGN.md)
 <!-- nav:end -->

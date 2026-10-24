@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { carriesChair } from './chairPickup';
 import type { Player } from '../player/player';
 import { sound } from '../fx/sound/Audio';
 import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sweeps';
@@ -28,8 +29,9 @@ export class ChairCombat {
   private label: Phaser.GameObjects.Text;
   private visible = false;
   enabled: boolean;
-  constructor(private scene: Phaser.Scene, private player: Player, region: string) {
-    this.enabled = region === 'rusty-creek';
+  constructor(private scene: Phaser.Scene, private player: Player, _region: string) {
+    // Armed once the hero picked the chair up (chairPickup.ts), in every region after that.
+    this.enabled = carriesChair(scene);
     this.key = scene.input.keyboard!.addKey('J');
     this.directions = scene.input.keyboard!.addKeys('W,S,UP,DOWN') as Record<string, Phaser.Input.Keyboard.Key>;
     this.previousY = player.body.y;

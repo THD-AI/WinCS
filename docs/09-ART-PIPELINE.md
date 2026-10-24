@@ -1,7 +1,7 @@
 # 09 – Art pipeline
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 14** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 15** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->
 
 ![Rusty Creek – seven registered layers composed](../art/stages/rusty-creek/images/after-center.png)
@@ -86,6 +86,24 @@ flowchart LR
 - **The key only says which band, never which pixel.** It drifts a few pixels at fine edges, so near the sky the real pixel decides: open sky is ≈ (40–60, 120–140, 240) and hazy far treetops ≈ (80, 120, 180), so "sky" means blue above 200. Path, water and foreground keep their exact rectangles and colour rules, which run after the masks and win.
 - **Fills never change the picture at rest.** A fill is kept only under the nearer layers, and the layer's own pixels are copied from the art, so `--verify` still rebuilds the chunk exactly. The camera only ever reveals painted scenery.
 - **Several chunks: one plate per slow layer for the whole region.** Per chunk, plates at scroll *s* < 1 overlap by 2160 × (1 − *s*) and cut each other off with hard vertical edges; at *s* > 1 (the foreground) they spread apart and leave gaps. `depth_layers.py region` quilts each layer marked `"region": true` in `export.json` from the chunks' own plates (`"rest"`): chunk *i* at *i* × 2160 × *s*, each next plate taking over along a min-error path in a 192 px band and only where it has pixels; a foreground gap is filled with the earlier plate's edge mirrored. The first chunk carries the plate, so it lands at x = 0 under any placement rule, and `--verify` still rebuilds every chunk at rest from its own plates. The Hidden Garden's mid plate is 6992 px wide, in four 2160 px tiles. Rusty Creek's distance (0.2), rails (1.1) and foliage (1.15) are quilted the same way ([#150](https://github.com/THD-AI/WinCS/issues/150)); shared plates ("= left") resolve through its aliases. `python scripts/compare.py parallax art/stages/<region>` shows any region as the game draws it.
+
+### Every plate complete – the hot dog (docs/15 P2, P3)
+
+Masked and moved, a cut-out shows: holes where a nearer layer stood, a canopy that ends in a straight line, a mid plate that stops in steps. Alexander's playtest (24 Oct) asked for every layer **rendered complete**, stacked like a hot dog from the far background to the blurred leaves at the lens, with grass in front of the trail that covers the feet. The steps after `masks` and `split`:
+
+```mermaid
+flowchart TB
+  C["clear: hanging canopy pieces<br/>(rear touching the top, ending above 320 px)<br/>painted out; sky / far / mid masks updated"] --> N["near: magenta band along the walk line<br/>(collision walk, longest line per column)<br/>model paints grass tufts, the key is dropped<br/>→ masks/&lt;chunk&gt;.06-near.png, art updated"]
+  N --> U["under: rear, water, path painted behind<br/>the foreground (model) and the near strip (old art)<br/>column continuation picks the band<br/>→ fills/&lt;chunk&gt;.&lt;layer&gt;.png"]
+  U --> P["complete: far and mid painted under EVERY<br/>nearer pixel down to the bottom, skyline drawn<br/>by the model, its sky dropped<br/>→ tmp/…/filled/ (region sources)"]
+  P --> S["split_layers.py: a fill goes into its layer<br/>only where a nearer layer owns the pixel<br/>→ still exact at rest"]
+  S --> R["region: far / mid quilted on a min-error seam,<br/>the sky cross-faded (blend 480 px)"]
+```
+
+- **Bands, back to front** (z · scroll): sky 0 · 0.1 → far forest 1 · 0.25 → mid trees 2 · 0.6 → rear (reeds, walls, sheds, big trees) 3 · 1 → water and its reflections 4 · 1 → the trail 5 · 1 → **near strip** 6 · 1 (over the actors, `NEAR_DEPTH` 120 in `depth.ts`) → foreground leaves 7 · 1.2 (blurred, `FOREGROUND_DEPTH` 200). The trail's geometry never moves, so its collision stays valid.
+- **A fill never shows at rest.** It lives under nearer pixels only; `split_layers.py --check` and `export_stage.py --verify` still rebuild every chunk exactly. Fills are committed (`fills/`), their paintings stay in `tmp/boards/<region>/` (`--reuse` cuts again without the API).
+- **The model leaves big holes white sometimes** (four of fifteen complete paintings): white counts as sky and is dropped, so check how deep the painting reaches before trusting it; a far plate only needs to reach below the mid skyline.
+- **Magenta key for new plants.** Asked to paint grass on the art directly, the model repaints the whole band and nothing is separable; on flat magenta it keeps the key, and tinted edge pixels take the colour of the nearest clean plant pixel.
 
 ## Prompting lessons (23 Oct, all runs)
 
@@ -245,6 +263,53 @@ flowchart LR
 
 **Masks in one line each:** the mask is a PNG the size of the first input; transparent = may change, opaque = keep. It always comes from a board's own raw (never hand-painted), and protected pixels are re-pasted after the call.
 
+## Atmosphere – a stage that moves (atmosphere.json)
+
+The plates stay exactly as painted; `game/src/stage/render.ts` (`drawStage`) brings them to life from `art/stages/<region>/atmosphere.json`, which `export_stage.py` publishes next to `stage.json` (with every file in its `assets`). Nothing is placed by hand: each layer's anchors and waterline are read from its own alpha at load, the leaf colours from its own pixels.
+
+```mermaid
+flowchart LR
+  A["atmosphere.json<br/>wind · layers · leaves · water"] --> P["drawStage<br/>z 0–5 under the actors, z 6–7 over them<br/>(stage/depth.ts)"]
+  L["layer PNGs (alpha)"] --> X["analysis.ts<br/>anchor per column · waterline<br/>water points · autumn palette"]
+  X --> S["one WebGL pipeline<br/>sway (top moves, base still, stone stays)<br/>bob · DOF blur · ripple · shimmer · rim"]
+  P --> S
+  P --> F["leaves (fx-leaves) in front / behind<br/>pads · rings · sparkles (fx-water)<br/>hero reflection · anomaly-reveal"]
+```
+
+| Key | Meaning |
+| --- | --- |
+| `wind` | `base` steady sway share (0–1), `gust` extra lean (0–2), `gustSpeed` px/s, `gustLength` px between fronts, `frequency` Hz, `direction` −1 left / 1 right |
+| `defaults` | a layer without its own entry: `sway` × scroll² (nearer moves more), `reach`, `anchor`, `foliage`; foreground (z ≥ 6) also gets `bob`, `blur` |
+| `layers.<id>` | `sway` px at full weight · `reach` px from the anchor to full weight · `anchor` `"base"` (lowest opaque row per column: trees, foreground plants) or `"top"` (surface top: grass on the path) · `foliage` saturation under which pixels never move (stone, wood) · `bob` px vertical · `blur` px depth of field · `ripple` px · `shimmer` 0–1 (water) |
+| `leaves` | `palette` (`[]` = sampled from the art) · `fall` `"down"` / `"up"` · `front` / `behind`: `every` ms, `scale` [min, max], `scroll` parallax, `alpha`, `tint`; `null` turns one off. Uses the `fx-leaves` sheet, pixel leaves drawn in code without it |
+| `water` | `layer` id (waterline from its alpha) · `reflect` {`alpha`, `tint`} for actors (`null`: none) · `pads` per 1000 px · `padTint` · `padScale` · `ripples` / `sparkles` mean ms (0: none) · `wrong` {`image`, `alpha`}: the picture `anomaly-reveal` flickers in the pond |
+| `assets` | extra images in the region folder (published by the export, loaded with the stage) |
+| `states.<state>` | section-wise overrides for a state (the anomaly's leaves rise) |
+
+A bad field is reported in the console and replaced by its default; `{}` (no file) gives the defaults. The Hidden Garden's [atmosphere.json](../art/stages/hidden-garden/atmosphere.json); `wrong-reflection.png` there is a flipped, feathered crop of Rusty Creek's `after-center.png`.
+
+| | |
+| --- | --- |
+| ![Pond, layers ranked region-wide, ripples, pads, leaves](images/atmosphere/pond-after.png) | ![Terraces with the blurred foreground over the path](images/atmosphere/terraces-foreground.png) |
+| ![The water ripples and shimmers (3×)](images/atmosphere/pond-ripple-zoom.png) | ![anomaly-reveal: the maze in the pond](images/atmosphere/anomaly-reveal.png) |
+
+## One asset system (assets.py, #158)
+
+`art/inventory.csv` is the plan: every asset the slice needs, with its measured size, animations, sources and status. `scripts/assets.py` checks it against the repo, so the sheet can't drift from the files:
+
+```mermaid
+flowchart LR
+  I["art/inventory.csv<br/>the plan"] --> D{"derive from files"}
+  B["boards.json<br/>review ✅?"] --> D
+  G["art/sprites/images<br/>drawn?"] --> D
+  E["game/public/assets<br/>exported?"] --> D
+  D --> S["status<br/>missing · planned · drawn ·<br/>exported · approved · n/a<br/>+ where the sheet disagrees"]
+  D --> C["check<br/>exported clips vs the<br/>inventory's frame counts"]
+  D --> N["next<br/>what to do, with the command"]
+```
+
+`python scripts/assets.py status [--strict]` · `check <id>` · `next`. A new asset starts as a row in the sheet; `next` then names the step that moves it on (draw → export for review → Alexander's ✅).
+
 ## Commands
 
 ```bash
@@ -269,5 +334,5 @@ python scripts/navigation.py && python scripts/check_docs.py
 - ❌ photos, audio, raw API output and rejected takes (`tmp/`), contact sheets, HTML viewers
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 14** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 15** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->

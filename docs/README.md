@@ -17,5 +17,6 @@ Read them in order; every page has Previous / Next at the top and bottom. The nu
 | 11 | [Decisions](11-DECISIONS.md) | What is decided, what is open |
 | 12 | [Team workflow](12-TEAM-WORKFLOW.md) | Setup, branches, PRs, rules for agents |
 | 13 | [Production pipeline](13-PRODUCTION-PIPELINE.md) | How every image, layer, sprite, stage and collision box is made; the hand-over formats; the two agent lanes |
+| 15 | [The prologue slice (rebuild)](15-PROLOGUE-SLICE.md) | The menu-to-anomaly rebuild: what the player gets, the quality bar, five workstreams, their contracts; progress in [prologue-tracker.csv](prologue-tracker.csv) |
 
 **Evidence:** [meetings and transcripts](meetings/README.md) · **Research:** [event facts](research/degdev-3.md) · [what we love in each game](research/what-we-love.md) · [engine notes](research/engine-evidence.md) · [project board and automation](research/github-automation.md)

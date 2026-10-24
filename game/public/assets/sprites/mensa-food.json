@@ -1,0 +1,110 @@
+{
+ "frames": {
+  "muffin-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 22
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 22
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 22
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "cake-00": {
+   "frame": {
+    "x": 0,
+    "y": 24,
+    "w": 22,
+    "h": 22
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 22
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 22
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "wafer-00": {
+   "frame": {
+    "x": 0,
+    "y": 48,
+    "w": 22,
+    "h": 22
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 22
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 22
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "leberkaese-00": {
+   "frame": {
+    "x": 0,
+    "y": 72,
+    "w": 22,
+    "h": 22
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 22,
+    "h": 22
+   },
+   "sourceSize": {
+    "w": 22,
+    "h": 22
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "mensa-food.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 22,
+   "h": 94
+  },
+  "scale": "1"
+ }
+}

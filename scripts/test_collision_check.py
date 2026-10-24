@@ -75,6 +75,29 @@ class CollisionCheckTests(unittest.TestCase):
         run = subprocess.run([sys.executable, str(SCRIPT)], capture_output=True, text=True)
         self.assertEqual(run.returncode, 0, run.stdout + run.stderr)
 
+    def test_faces_are_line_ends_nothing_passes_under(self):
+        tiers = [[[0, 300], [200, 300]], [[200, 270], [400, 270]]]
+        self.assertIn({'x': 200, 'top': 270, 'side': -1}, cc.faces(chunk(walk=tiers)))
+        bench = [[[0, 300], [600, 300]], [[200, 260], [300, 260]]]  # the trail runs on in front of it
+        self.assertFalse([f for f in cc.faces(chunk(walk=bench)) if f['top'] == 260])
+        seam = [[[0, 300], [200, 300]], [[200, 290], [600, 290]]]  # a step: no face
+        self.assertFalse([f for f in cc.faces(chunk(walk=seam)) if f['x'] == 200])
+
+    def test_terrain_kinds_materials_coverage_and_flat_treads(self):
+        typed = lambda *ranges: cc.terrain(chunk(walk=[[[0, 300], [300, 300]], [[300, 296], [600, 280]]],
+                                                 terrain=list(ranges)), NAME, {'stone', 'wood'})
+        ground = {'x': [0, 300], 'kind': 'ground', 'material': 'stone'}
+        self.assertEqual(typed(ground, {'x': [300, 600], 'kind': 'ground', 'material': 'stone'}), [])
+        self.assertTrue(any('is a slope; treads are flat' in p for p in typed(ground, {'x': [300, 600], 'kind': 'plank', 'material': 'wood'})))
+        self.assertTrue(any('has no terrain type' in p for p in typed(ground)))
+        self.assertTrue(any("kind 'lava'" in p for p in typed(ground, {'x': [300, 600], 'kind': 'lava', 'material': 'stone'})))
+        self.assertTrue(any("material 'ice'" in p for p in typed(ground, {'x': [300, 600], 'kind': 'ground', 'material': 'ice'})))
+
+    def test_a_wall_taller_than_a_jump_at_the_foot_of_a_floor_is_named(self):
+        walls = [[[0, 300], [200, 300]], [[200, 205], [600, 205]]]  # 95 px: stops the body, no jump clears it
+        ranges = [{'x': [0, 600], 'kind': 'ground', 'material': 'stone'}]
+        self.assertTrue(any('more than a jump' in p for p in cc.terrain(chunk(walk=walls, terrain=ranges), NAME, None)))
+
     def test_edge_heights(self):
         left = chunk(walk=[[[0, 300], [600, 280]]])
         self.assertEqual(cc.floor_at_edge(left, True), 280)

@@ -1,7 +1,7 @@
 # 03 – Story and cast
 
 <!-- nav:start -->
-[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 14** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
+[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 15** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
 <!-- nav:end -->
 
 ![Dexter, from plush to final form](../art/direction/images/dexter-stages-preview.png)
@@ -41,22 +41,44 @@ Dexter is THD's black panther mascot ("Deggster") as a **1.5 ft plush**: black v
 
 ## Prologue script (the jam's opening)
 
-| Beat | What the player sees | What the player does |
-| --- | --- | --- |
-| 1 | Hidden Garden, late afternoon. Birdsong. A small black plush sits on a bench. | Walk right (movement tutorial) |
-| 2 | The plush hops off and waddles away, looking back, like the White Rabbit. About 3 minutes of calm garden: hills, the deck, reeds, secrets behind grass. Lex's layout, toned down – less parkour, nothing fantastical yet | Follow; jump a log; climb a slope |
-| 3 | Dexter stops at the pond and points at the ground. One patch of the reflection shows a rusty girder maze that isn't there | Walk up to the edge |
-| 4 | Dexter shoves (or trips) you in → white flash, the normal damage recoil… No cutscene, no dialogue | – |
-| 5 | …but instead of landing, the hero lifts and spins like a starfish; pixels tear | – |
-| 6 | Freeze. An old Windows-style error window: **"THD.exe has stopped responding."** [OK] | Press Act to click OK |
-| 7 | Black. Glitch lines. | – |
-| 8 | The hero lands in clean Rusty Creek, by the metal bridge, and the damage animation finishes. Dexter is gone | Control returns |
+About three minutes of play, without words or text: **cozy → something wrong → the shove → the 404 → the pull**. Every beat starts from the Hidden Garden's collision data (`art/stages/hidden-garden/*.collision.json`). `Flow` starts `story/Prologue.ts` whenever the stage has Dexter's bench. Dexter's lead is the pure model `prologueGuide.ts`, the pond is `prologueFinale.ts`, and the crash is `Crossing` in its `'404'` variant (`crossingSequence.ts` `TIMING_404`); all three are unit-tested.
+
+| Beat | Mood | What the player sees | Trigger (data) | Where in code |
+| --- | --- | --- | --- | --- |
+| 1 Arrival | cozy | Late afternoon: you start in the open garden gate, on the gravel path. Ahead, a small black plush sits on a bench, swinging its legs (`dexter-prologue` sit) | stage start, the `player` spawn in the gate (hg-0-0 x 205) and `dexter-bench` | `Prologue` seats him |
+| 2 The first quest | cozy | Walk up the path and he looks round (`look-back`), bows (`dexter-acts` bow), hops off and beckons. That is the quest, and nobody explains it. Run straight at him and he skips the bow | `dexter-waypoint-1` (`act: wake`, from x 420, ~9 m short of the bench), the hero passes its left edge | `DexterGuide` sit → wake → hop-off → wait |
+| 3 Follow Dexter | cozy | He **leads**: always ahead of you, at your own pace – about four plush-lengths in front, walking when you walk and scampering when you run, hopping ahead when you close in. You can never overtake him. He hops steps and gaps on the walk lines. Only when you lag (more than 5 m behind at a waypoint, or 8 m anywhere) does he stop, look back, beckon, and – left waiting – sweat | `dexter-waypoint-2…5`, `-pond-1…2` (`act: wait`) | `DexterGuide` lead / wait |
+| 3a Secrets | cozy | A muffin shows itself in the hollow behind the grass when you come near (+1 health). At the top of the terraces Dexter points back up at a glint on the shed roof | `hollow` (`secret`) and its item spawn, `glint-roof`, `dexter-waypoint-4` (`act: point`) | `Prologue.placeSecrets` |
+| 4 The jetty | something wrong | Dexter stops on the jetty and points at the water. You walk past him to the edge. Control is taken, the light drains a little, and the reflection shows the rusty girder maze that isn't there | `dexter-waypoint-pond-3` (`act: pond`), then the hero in `pond-edge` (`anomaly`) | `FinaleSequence` reveal; emits **`anomaly-reveal`** for the water renderer |
+| 5 The shove | the turn | He steps up behind you and shoves (`dexter` shove). You are knocked out over the water, and for one frame he is a black silhouette (`creepy`) | the finale's timing (reveal 2.2 s, step 0.65 s, shove 0.48 s, fall 0.42 s) | `FinaleSequence` step / shove / fall |
+| 6 The 404 | glitch | A white flash. The frame freezes and tears around you (image cuts, a stretched column, the 404 void in the water). Then the window: **THD.exe – "404: Hidden Garden not found."** [OK] | the end of the fall | `Crossing` `'404'`: hit → freeze → dialog |
+| 7 The pull | dread | After OK, the torn garden spins and collapses into the void, streaks rush inwards and the hero is dragged in, shrinking. Then black | Act / Enter / Space / click | `Crossing` pull (1.7 s) → cut |
+| 8 Landing | quiet | Clean Rusty Creek, by the metal bridge. Dexter is gone | the cut | `swapRegion(rusty-creek, clean)` |
+
+```mermaid
+flowchart LR
+  A["1 arrival in the gate<br/>Dexter sits on the bench"] -->|"hero passes wake box"| B["2 look round, bow,<br/>hop off, beckon"]
+  B --> C["3 lead at the hero's pace<br/>walk · scamper · hop ahead"]
+  C -->|"hero far behind"| W["wait: look back,<br/>beckon, sweat"] -->|"hero within 6 plush"| C
+  C -->|"waypoint 4"| C2["point up at<br/>the roof glint"] --> C
+  C -.->|"near the hollow"| M["muffin<br/>(secret)"]
+  C -->|"pond-3"| D["4 jetty<br/>Dexter points at the water"]
+  D -->|"hero in pond-edge"| R["reveal 2.2 s<br/>anomaly-reveal → wrong reflection"]
+  R --> S["5 step + shove<br/>knocked over the water,<br/>one creepy frame"]
+  S --> T["6 404<br/>frame tears, void opens,<br/>THD.exe – 404: Hidden Garden not found."]
+  T -->|OK| P["7 pull<br/>the frame collapses into the void"]
+  P --> L["8 clean Rusty Creek"]
+```
+
+Dexter is the 27 px plush (decision 41), drawn at depth 101 with a 1 px warm rim (`addRim`, `stage/atmosphere/pipeline.ts`) so the black plush reads against the hedges; a landing squashes him a little.
+
+**The lead rule** (#160 P4 – in the first build you could run past him, which was uncanny). Every distance is in plush-lengths (27 px) or metres (43 px), in `GUIDE` (`prologueGuide.ts`): he holds a **lead of 4 plush** (108 px) at the hero's own speed (walk 95, run 198 px/s, `player/movement.ts`); closer than that he speeds up, inside **3 plush** he hops ahead (one hop clip, at sprint speed), inside **2 plush** he scampers at his **sprint, 1.35 × the hero's run** – so a running hero can never close on him. Step and gap hops along the walk lines are never slower than the hero. When the hero stops he ambles on at 1 m/s until 8 m ahead, then waits; at a `wait` waypoint he pauses for a hero more than 5 m behind and not coming on. The pond is the one place he lets you pass: he stops on the jetty and you walk by him to the edge. The route is read from the walk lines at runtime, so re-authored terrain needs no change here. In dev builds, `game.scene.getScene('Flow').prologue.skipToPond()` puts Dexter on the jetty and the hero just before it.
 
 ## Region 1 story beats
 
-1. You land in **clean** Rusty Creek: the real creek, rails and the metal bridge. Quiet, no enemies, nothing wrong yet.
-2. On the bridge, **Jenny**, the driverless race car, comes out of nowhere and rams you. You fly back with the same cartoon knockback, and the anomaly activates: the region **turns** into the rust maze and you are back at its start ([02](02-GAME-DESIGN.md)).
-3. The maze is the real tutorial: jumping, climbing, ladders. A plywood chair lies by the path – **pick it up**. First fight: one autonomous rover.
+1. You land in **clean** Rusty Creek on the **creek path** – the cement walk along the water, under the rusted rail bridge. The bridge stays above you as the railway; you never walk on it. Quiet, no enemies, nothing wrong yet.
+2. Further along the path, **Jenny**, the driverless race car, comes down it towards you. One event, under 3 s before the crash window: first only her **headlights and engine** from beyond the right edge (the tell), then she rolls into view revving and smoking, charges, and hits you – you are thrown the way she drives, in the hurt clip, while she skids on. The frame breaks into the **crash** crossing ("THD.exe has stopped responding", cracks – not the 404's tear), and you land at the start of the rust maze ([02](02-GAME-DESIGN.md)). Only Dexter pushes you from behind; Jenny only ever comes from the front.
+3. The maze is the real tutorial: jumping, climbing, ladders. A plywood chair lies by the path with a **glint** over it – **pick it up**: the hero bends down for it (the four-frame `pick-up` clip), holds it up, and a wordless key/button glyph (J on a key cap, X on a pad button, a swing arc over both) floats over him until his first swing. Then the encounters: rovers on the decks you walk, a crab on the high route that raises its front legs before it stabs, and a drone over the low route that tilts and dives when you pass under it.
 4. Midway, at the first coffee machine: **Dexter is already sitting there.** He bows and sweats – sorry – and hands you the **pocket computer** and a muffin. No words.
 5. The boss clearing: **Jenny** again, now for real (see [enemies](05-ENEMIES-AND-BOSSES.md)).
 6. Jenny stalls and leaks black fluid. Dexter appears and **absorbs it**, a little too eagerly. He is visibly taller, and he hops off ahead of you. The jam slice ends here: the screen glitches and a "to be continued" error dialog appears.
@@ -82,6 +104,26 @@ flowchart LR
 
 Lane B's `boss-defeated` starts it; in dev builds **Shift + F8** runs it anywhere.
 
+### Dexter at the coffee machine ([#52](https://github.com/THD-AI/WinCS/issues/52))
+
+`CoffeeVisit` (`game/src/story/`) draws beat 4 into the stage. When the stage starts it seats Dexter at every `coffee-machine` box with a `dexter` spawn within 160 px of its foot (Rusty Creek: `coffee-1` and `dexter-1` in rc-1-0), so he is there before you. Lane B's coffee save (`save` with the machine's id as `checkpoint`) starts the visit. Every `enemy-defeated` leaves an `fx` pool where the enemy fell; he takes them at your next save, so the beat works with and without fighting.
+
+```mermaid
+flowchart LR
+  S["stage starts"] --> W["waiting<br/>Dexter idle beside<br/>the machine, 27 px"]
+  F["enemy-defeated<br/>(position)"] -.-> P["pool<br/>fx black-fluid<br/>stays where it fell"]
+  W -->|"first save<br/>at this machine"| B["bow 0.7 s"] --> SW["sweat 1 s"]
+  SW --> G["give 1.1 s<br/>pocket computer + muffin<br/>arc to the hero"]
+  G --> U["pocketMap.unlock()<br/>Tab / Esc opens the map"]
+  G --> A{"pools<br/>left?"}
+  W -->|"later saves"| A
+  P -.-> A
+  A -->|yes| AB["absorb 0.9 s<br/>per pool, oldest first,<br/>the pool thins and is gone"] --> A
+  A -->|no| I["idle"]
+```
+
+**Sizes, measured against the 76 px hero ([04 – Scale](04-WORLD-AND-LEVELS.md#scale--the-numbers-everything-follows)):** Dexter 27 px; the coffee machine 80 px tall on its base cabinet, a little taller than the hero, filling its 40 × 80 collision box; the pocket computer a 19 × 10 px case closed (≈ 45 cm, the photographed suitcase shrunk to carry); food pickups 13–18 px, around the 16 px icon size. He doesn't grow at a coffee machine: only bosses make him bigger (decision 41). In dev builds **Shift + F4** seats him in the view, leaves one pool and saves at his machine.
+
 ## The rest of the arc (post-jam)
 
 Regions 2–5 each end with a boss that Dexter absorbs. Archive notes reveal that the experiment's logs mention a "mascot-shaped containment vessel". In the Playground region Dexter stops pretending. The final fight is Dexter at 8.5 ft. **Endings** (Duck Season style): defeat him (he collapses back into a torn plush), or refuse to feed him (skip the absorbs), which leads to a different, quieter ending.
@@ -98,5 +140,5 @@ Regions 2–5 each end with a boss that Dexter absorbs. Archive notes reveal tha
 **Secret replay bosses** (after one completion, a joke layer): professors and university figures as giant bosses in the Terraria Moon Lord / Wall of Flesh mould. They tie into the corrupted subjects (the AI / algorithms professor → the pathfinding rust maze). Private portraits stay out of the repository.
 
 <!-- nav:start -->
-[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 14** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
+[← 02 – Game design](02-GAME-DESIGN.md) · [Design docs](README.md) · **3 / 15** · [04 – World and levels →](04-WORLD-AND-LEVELS.md)
 <!-- nav:end -->

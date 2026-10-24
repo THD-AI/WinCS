@@ -1,7 +1,7 @@
 # 02 – Game design
 
 <!-- nav:start -->
-[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 14** · [03 – Story and cast →](03-STORY-AND-CAST.md)
+[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 15** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->
 
 ![What playing looks like – HUD and the pocket computer's map](../art/direction/images/hud-preview.png)
@@ -38,7 +38,7 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 
 ## Movement
 
-- **Walk / run:** one speed curve, about 3.5 m/s walking and 6 m/s running, with a short acceleration so the poncho has weight.
+- **Walk / run:** one speed curve, **2.2 m/s walking and 4.6 m/s running** (95 and 198 px/s at 43 px/m), with a short acceleration so the poncho has weight. The speeds come from the art (#156): the approved walk cycle's stride is 43 px and the run's 82 px (`python scripts/compare.py stride hero-move:walk hero-run:run`), and both cycles are played by distance – one frame per stride ÷ frames of travel – so the planted foot never slides at any speed. The first numbers (3.5 / 6 m/s) were 2.3–2.5× faster than the feet could carry the body.
 - **Jump:** variable height, from about 1.2 m (tap) to 2.2 m (hold). Coyote time is 0.1 s and jump buffering 0.12 s. These two are the cheapest things that make a platformer feel good.
 - **Hills:** the ground is a smooth polyline. You walk up and down slopes up to 40°, like Planet of Lana and Ori. There are no staircase blocks.
 - **Slides:** slopes steeper than 40° are slides. You skid down them fast with the poncho flapping, and can jump off at any point.
@@ -48,6 +48,30 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 - **Glide (later, Lex's proposal):** hold Jump in the air and the poncho opens like a sail for a slow, steerable fall. You glide for as long as you're in the air – **there is no stamina bar** (decided in A14). It's the Region 2 upgrade that opens Lost in the Green's upper routes. It's in the design and the collision data from day one, but not in the jam slice.
 - **Four directions:** every region is explored left/right *and* up/down: a mountainside route, a lower branch, an underground pocket ([04](04-WORLD-AND-LEVELS.md)).
 - **No wall-jump, no dash in the jam slice.**
+
+### Feel and grounding (prologue slice, workstream 3)
+
+The hero stands *in* the ground, not on it, and every pose comes from the drawn clips at their own timing. All of it is data: `art/stages/<region>/surfaces.json` (exported next to `stage.json`) and the atlases' `anims.json`.
+
+```mermaid
+flowchart LR
+  SF["surfaces.json<br/>chunk-local x / y ranges → material"] --> SM["SurfaceMap.at(x, y)"]
+  SM --> G["Grounding<br/>sink + slope + landing settle,<br/>eased, 0 in the air"]
+  G --> SP["sprite y + sink,<br/>lowest `cover` rows cropped,<br/>tufts in front"]
+  A["atlas pixels"] --> FF["footfalls<br/>planted feet rise: walk 00/04, run 01/05"]
+  FF --> PF["fx-ground puff by surface<br/>(dust / grass / leaf-kick)"]
+  L["landing / hard landing"] --> PF
+  AJ["anims.json fps"] --> T["clip timing, landing lengths,<br/>hit / knockback / death"]
+```
+
+- **Sink by surface (visual only, physics unchanged).** Grass and leaves 3 px with the lowest 2 rows hidden and a few grass tufts drawn over the feet; earth and gravel 2 px; stone and wood 1 px; the creek's steel 1 px. The sink eases (no pop stepping from stone onto grass) and is 0 in the air. On a slope the sprite drops by the lower foot (8 px × slope, at most 4 px) instead of rotating the pixel art. A landing presses 1 px (hard: 2 px) further in and eases out over the landing clip – the drawn landing poses are the squash; nothing is scaled.
+- **Footfalls** are measured from the atlas at load: a frame where the number of planted feet (opaque runs ≥ 6 px wide in the bottom 2 rows) rises. That is walk 00/04 and run 01/05 on the approved cycles. Each footfall kicks the surface's `fx-ground` clip behind the foot; a landing kicks one to each side, a hard landing wider plus debris pixels.
+- **Jump and fall follow the arc, not the clock:** the jump row's crouch shows for one rendered frame on take-off (none out of a landing – the landing was the crouch), frames 1–4 map the rise (apex pose at vy 0) and 5–6 the descent; a fall longer than a jump's own drops into the fall loop; a walk-off starts on the descent. The landing is the jump row's own crouch and stand (07/08), the hard landing its clip with the impact held on twos; both lengths come from `anims.json`.
+- **Steps are not falls (wave 2, P6):** a walk-off keeps its stride for 0.12 s of air (about 8 px), a step drop under 10 px lands without a pose, and a moving hero lands on the crouch only (a hard landing on its impact) and goes straight into the walk or run cycle it is in – never through the standing idle and a run-start. A released jump keeps its launch speed until it can still reach the 52 px minimum under 3× gravity, then brakes: a tap hop tops out in 0.18 s. A buffered press launches on the tick after touchdown.
+- **Idle life:** the standing hero breathes – the chest rises 1 px for two idle loops in four, changing only where the idle clip loops – and the poncho's lower half takes 1 px downwind while a gust of the region's wind passes (whole pixels, three crops of the same frame; the legs never move). The variants (look-around, check-tablet; check-wounds at two hearts or fewer) start where the idle loops after 5–9 s standing, hold their key pose, and never repeat back to back.
+- **Hurt and death** play the drawn `hit` clip (its first frame is the white flash), `knockback` for hits of 2+ hearts recovering through `hit` 03–07, and `death` – all at their fps. The invulnerability blink starts after the clip; walking away ends the recovery early.
+- **Camera:** look-ahead 120 px at run speed, eased slowly enough that a turn never whips; a vertical dead zone (40 px up, 16 px down) so slopes and steps do not bob the view, and through a jump the framing holds unless the hero climbs 150 px above it or drops below it. The camera snaps to whole pixels as *hero position − rounded offset*, so at a stride-paced walk the hero stays on one screen pixel while the scenery scrolls.
+- **Spawns and resets** stand on the walk line within 8 px, so an authored spawn a pixel inside the ground does not fall through.
 
 ## Health, damage, death
 
@@ -249,5 +273,5 @@ Concepts for every pair: [stage concepts](../art/locations/README.md).
 Gore, blood, an apocalypse, a minimap, crafting, an economy, procedural runs, a stamina bar, spells, **dialogue of any kind**. Nobody speaks and there are no thought bubbles (A14): Dexter acts – he points, bows, sweats, hands things over. The only text is UI: the crash window, the pocket computer, archive notes.
 
 <!-- nav:start -->
-[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 14** · [03 – Story and cast →](03-STORY-AND-CAST.md)
+[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 15** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->

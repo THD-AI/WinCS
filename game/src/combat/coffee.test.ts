@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CoffeeUse, coffeeAlpha } from './coffee';
+import { CoffeeUse, coffeeFrame } from './coffee';
 import { Life } from './life';
 import { parseCollision, placeCollision } from '../stage/collision';
 import type { Body } from '../player/body';
@@ -10,10 +10,9 @@ const chunk = placeCollision(parseCollision(raw, 'rc-1-0', 'anomaly'), [2160, 0]
 const machines = chunk.world.interact;
 const body = (): Body => ({ x: 3950, y: 537, vx: 0, vy: 0, grounded: true });
 describe('coffee save interaction', () => {
-  it('flickers for one 12 fps frame every two seconds while idle', () => {
-    expect(coffeeAlpha(0)).toBe(0.65); expect(coffeeAlpha(82)).toBe(0.65);
-    expect(coffeeAlpha(84)).toBe(1); expect(coffeeAlpha(1999)).toBe(1);
-    expect(coffeeAlpha(2000)).toBe(0.65); expect(coffeeAlpha(2084)).toBe(1);
+  it('glows steadily, flickers one frame every two seconds, and every fourth flicker shows the pond', () => {
+    expect(coffeeFrame(0, 12)).toBe(1); expect(coffeeFrame(84, 12)).toBe(0); expect(coffeeFrame(1999, 12)).toBe(0);
+    expect(coffeeFrame(2000, 12)).toBe(1); expect(coffeeFrame(4000, 12)).toBe(1); expect(coffeeFrame(6000, 12)).toBe(2);
   });
   it('uses the authored 40×80 machine at the translated walk surface and the approved drink timing', () => {
     expect(machines.find(box => box.kind === 'coffee-machine')).toMatchObject({ id: 'coffee-1', x: 3930, y: 457, w: 40, h: 80 });

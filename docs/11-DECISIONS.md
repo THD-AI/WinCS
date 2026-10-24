@@ -1,7 +1,7 @@
 # 11 – Decisions
 
 <!-- nav:start -->
-[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
+[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 15** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
 <!-- nav:end -->
 
 One line per decision: what was decided, who decided it, and when. An **open** item needs the team. Older decision history (D001–D036) is in Git history; this log restarts from the consolidated design on 23 Oct.
@@ -53,5 +53,5 @@ One line per decision: what was decided, who decided it, and when. An **open** i
 | 43 | **Mechanics stem from the art.** `art/` (direction, locations, stages, sprites) is the source; the numbers in the docs are starting points to refine, not fixed. The current Rusty Creek stage was the map-generation prototype and is outdated: Region 1 is rebuilt from the direction with the Hidden Garden's method ([#157](https://github.com/THD-AI/WinCS/issues/157)). Missing or unreadable art is drawn with gpt-image-2.5-sunburst through one asset system ([#158](https://github.com/THD-AI/WinCS/issues/158), [#159](https://github.com/THD-AI/WinCS/issues/159)) | ✅ | Alexander · 24 Oct |
 
 <!-- nav:start -->
-[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 14** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
+[← 10 – Jam plan](10-JAM-PLAN.md) · [Design docs](README.md) · **11 / 15** · [12 – Team workflow →](12-TEAM-WORKFLOW.md)
 <!-- nav:end -->

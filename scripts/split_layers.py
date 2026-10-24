@@ -17,6 +17,11 @@ Mask rules, applied in order (coordinates in chunk pixels, x1/y1 exclusive):
     {"layer": "06-near", "alpha": "images/06-near-rails-left.png"}   # where that image is opaque
 A rule can name "states": ["anomaly"] to apply to one state only.
 
+Fills (docs/15 P3, every layer rendered complete): art/stages/<region>/fills/<chunk>.<layer>.png, when it
+exists, is what that layer shows behind the nearer layers (depth_layers.py under). It goes into the layer
+only where a NEARER layer owns the pixel, so the stack still rebuilds the art exactly at rest, and a nearer
+layer that moves at another scroll uncovers painted scenery instead of a hole.
+
 Usage:
     python scripts/split_layers.py art/stages/hidden-garden     # write the layer files
     python scripts/split_layers.py --check                      # CI: every region still rebuilds exactly
@@ -87,17 +92,30 @@ def assign(chunk: dict, state: str, source: Image.Image, folder: Path) -> Image.
     return owner
 
 
-def split(source: Image.Image, owner: Image.Image) -> dict[str, Image.Image]:
-    """Cut the source into one RGBA image per layer that owns any pixel."""
+def split(source: Image.Image, owner: Image.Image, fills: dict[str, Image.Image] | None = None) -> dict[str, Image.Image]:
+    """Cut the source into one RGBA image per layer that owns any pixel; a layer's fill goes under the nearer layers."""
     out = {}
     for index, name in enumerate(LAYERS):
         keep = owner.point(lambda v, i=index: 255 if v == i else 0)
         if not keep.getbbox():
             continue
         layer = Image.new("RGBA", source.size, (0, 0, 0, 0))
+        fill = (fills or {}).get(name)
+        if fill is not None:
+            if fill.size != source.size:
+                raise SplitError(f"the {name} fill is {fill.size}, the chunk is {source.size}")
+            nearer = owner.point(lambda v, i=index: 255 if v > i else 0)
+            layer.paste(fill, mask=ImageChops.multiply(nearer, fill.getchannel("A")))
         layer.paste(source, mask=ImageChops.multiply(keep, source.getchannel("A")))
         out[name] = layer
     return out
+
+
+def fills_for(region: Path, chunk_id: str) -> dict[str, Image.Image]:
+    """The chunk's committed fills, fills/<chunk>.<layer>.png (depth_layers.py under)."""
+    folder = region / "fills"
+    return {name: Image.open(folder / f"{chunk_id}.{name}.png").convert("RGBA")
+            for name in LAYERS if (folder / f"{chunk_id}.{name}.png").exists()}
 
 
 def stack(layers: dict[str, Image.Image], size: tuple[int, int]) -> Image.Image:
@@ -157,7 +175,7 @@ def run(region: Path, check: bool) -> list[str]:
             continue
         states = {}
         for state, source in sources.items():
-            layers = split(source, assign(chunk, state, source, region))
+            layers = split(source, assign(chunk, state, source, region), fills_for(region, chunk_id))
             if not same(stack(layers, size), source):  # cannot happen unless split() is broken
                 raise SplitError(f"{chunk_id}.{state}: recomposition differs from the source")
             states[state] = layers

@@ -29,10 +29,7 @@ export class Hud extends Phaser.Scene {
 
   constructor() { super({ key: 'HUD', active: true }); }
 
-  preload(): void {
-    this.load.atlas(UI_ATLAS, 'assets/ui/ui.png', 'assets/ui/ui.json');
-    this.load.json(UI_LAYOUT, 'assets/ui/ui-layout.json');
-  }
+  // The UI atlas is loaded by Boot (boot/manifest.ts), not here: two loaders asking for one texture key race.
 
   create(): void {
     this.graphics = this.add.graphics();
@@ -50,7 +47,9 @@ export class Hud extends Phaser.Scene {
       if (button.index === MENU_PAD) toggleMap(this.scene);
     });
     // Dev builds: F4 hands over the pocket computer and marks the first rooms visited (#69 verification; F2 is the player's debug readout).
-    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F4', () => {
+    // Shift + F4 is Dexter's coffee-machine visit (#52).
+    if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F4', (event: KeyboardEvent) => {
+      if (event.shiftKey) return;
       pocketMap.unlock();
       pocketMap.visit('hidden-garden', 'hg-0-0');
       pocketMap.visit('rusty-creek', 'rc-0-0');
@@ -81,6 +80,7 @@ export class Hud extends Phaser.Scene {
     const now = this.time.now;
     const boss = this.model.boss;
     this.bossName.setText(boss ? boss.name.toUpperCase() : '');
+    if (!this.art && this.textures.exists(UI_ATLAS)) this.art = this.buildArt(); // Boot's UI atlas arrives after HUD starts
     if (this.art) return this.updateArt(this.art, now);
     this.model.cells(now).forEach((state, i) => this.drawCell(g, CELL.x + i * (CELL.w + CELL.gap), CELL.y, state));
     if (boss) this.drawBossBar(g, this.model.bossFraction());
@@ -139,4 +139,34 @@ export class Hud extends Phaser.Scene {
     g.fillStyle(COLOURS.empty).fillRect(x, y, BAR.w, BAR.h);
     g.fillStyle(COLOURS.cracked).fillRect(x, y, Math.round(BAR.w * fraction), BAR.h);
   }
+}
+
+/**
+ * A wordless control hint in the HUD's style (docs/06 restraint, P7): a key cap with J, a pad's X button and a
+ * swing arc over them, in the battery cells' teal and the cracked-cell amber on their dark edge. No words, so it
+ * reads in any language. Drawn into `scene` with (x, y) as its bottom centre, so the stage can float it over the
+ * hero's head.
+ */
+export function drawControlGlyph(scene: Phaser.Scene, x: number, y: number): Phaser.GameObjects.Container {
+  const g = scene.add.graphics();
+  const label = (cx: number, cy: number, letter: string, color: string) => scene.add.text(cx, cy, letter,
+    { fontFamily: 'monospace', fontSize: '15px', color, fontStyle: 'bold' }).setOrigin(0.5);
+  // The key cap: J.
+  g.fillStyle(COLOURS.edge).fillRoundedRect(-45, -33, 26, 28, 4);
+  g.fillStyle(COLOURS.empty).fillRoundedRect(-43, -31, 22, 22, 3);
+  g.lineStyle(2, COLOURS.full).strokeRoundedRect(-43, -31, 22, 22, 3);
+  // The slash between keyboard and pad, as a pixel diagonal.
+  g.fillStyle(0xe8e4dc);
+  for (let i = 0; i < 5; i++) g.fillRect(-6 + i * 2, -12 - i * 4, 2, 4);
+  // The pad button: X.
+  g.fillStyle(COLOURS.edge).fillCircle(32, -19, 13);
+  g.fillStyle(0x2c4fa8).fillCircle(32, -20, 11);
+  g.lineStyle(2, 0x9ab8ff).strokeCircle(32, -20, 11);
+  // The swing: an arc with an arrow head over both, outlined so it reads over leaves and girders.
+  for (const [width, colour] of [[6, COLOURS.edge], [3, COLOURS.cracked]] as const) {
+    g.lineStyle(width, colour).beginPath().arc(0, -10, 54, Math.PI * 1.15, Math.PI * 1.85).strokePath();
+  }
+  g.fillStyle(COLOURS.edge).fillTriangle(38, -56, 53, -44, 35, -37);
+  g.fillStyle(COLOURS.cracked).fillTriangle(40, -53, 50, -44, 37, -40);
+  return scene.add.container(x, y, [g, label(-32, -20, 'J', '#b8f5e6'), label(32, -20, 'X', COLOURS.text)]).setScale(1.5);
 }

@@ -5,6 +5,10 @@
       -> reach:  with the 28x76 body, every spawn, pickup and trigger can be reached from the
                  player spawn (or the chunk's left edge), and the chunk's right edge is reachable
       -> joins:  neighbouring chunks of one state meet at the same ground height
+      -> terrain: typed floor ranges (docs/04 terrain model) - known kinds and materials, every floor
+         covered, plank/stair/step treads flat, no floor over the pond's water pixels, no wall face
+         taller than a jump where a lower floor stops at its foot
+      -> --surfaces: <region>/surfaces.json chunk ranges rebuilt from the terrain (materials stay)
       -> --overlay: <region>/collision/<chunk>.<state>.png, the docs/04 legend over the art at half
          size, committed next to the data for review
 
@@ -16,7 +20,7 @@ Dropping is free: fall damage does not exist. Girder decks are one-way: the hero
 of the maze, so headroom only matters under `solid` boxes.
 
 Usage:
-    python scripts/collision_check.py [art/stages/rusty-creek] [--overlay]
+    python scripts/collision_check.py [art/stages/rusty-creek] [--overlay] [--surfaces]
 """
 
 from __future__ import annotations
@@ -33,6 +37,12 @@ BODY = (28, 76)
 RISE = 88       # highest ledge a held jump reaches, with margin (96 px in docs/04)
 ACROSS = 140    # widest gap a running jump clears
 SNAP = 6        # ends this close count as one continuous floor
+STEP_UP = 16    # rises the grounded body walks up without a jump (game/src/player/body.ts)
+FACE_DEPTH = 120  # a floor this far under a line end makes it an overhang, not a face (body.ts)
+FACE_REACH = 100  # a face stops feet at most this far below its top; taller ones are background (body.ts)
+TERRAIN = {"ground", "step", "stair", "plank", "ledge", "wall", "log", "obstacle", "slide"}
+FLAT = {"step", "stair", "plank"}  # treads: never a slope
+FLAT_SLOPE = 0.05
 LISTS = ["walk", "slide", "oneWay"]
 BOXES = ["climb", "solid", "noGo", "hazard", "interact", "glideLift"]
 POINTS = ["spawn", "ledge"]
@@ -146,8 +156,8 @@ def links(data: dict, s: list[dict]) -> dict[int, set[int]]:
             if lo < hi:
                 mid = (lo + hi) / 2
                 ay, by = y_at(a["line"], mid), y_at(b["line"], mid)
-                if b["key"] == "oneWay" and 0 < ay - by <= RISE:
-                    link(i, j)
+                if 0 < ay - by <= RISE:
+                    link(i, j)              # floors are one-sided: jump up onto any line above
                 if a["key"] == "oneWay" and by > ay:
                     link(i, j)
     for box in data["climb"]:
@@ -211,6 +221,106 @@ def touches(s: list[dict], seen: set[int], box: dict) -> bool:
     return False
 
 
+def faces(data: dict) -> list[dict]:
+    """Line ends nothing passes under: the walls body.ts stops a body at (side -1 faces left)."""
+    every = [line for k in ("walk", "slide") for line in data[k]]
+    under = every + data["oneWay"]
+    out = []
+    for line in every:
+        for (x, top), side in ((line[0], -1), (line[-1], 1)):
+            passes = any(o is not line and (h := y_at(o, x - side)) is not None and top + STEP_UP < h <= top + FACE_DEPTH
+                         for o in under)
+            continues = any(o is not line and (h := y_at(o, x + side)) is not None and abs(h - top) <= STEP_UP
+                            for o in under)
+            if not passes and not continues:
+                out.append({"x": x, "top": top, "side": side})
+    return out
+
+
+def terrain(data: dict, name: str, materials: set | None) -> list[str]:
+    """The typed terrain: kinds, materials, coverage of every floor, flat treads, wall heights."""
+    errors = []
+    ranges = data.get("terrain")
+    if ranges is None:
+        return errors
+    for i, t in enumerate(ranges):
+        x = t.get("x")
+        if not (isinstance(x, list) and len(x) == 2 and x[0] < x[1]):
+            errors.append(f"{name}: terrain[{i}] needs an x range")
+            return errors
+        if t.get("kind") not in TERRAIN:
+            errors.append(f"{name}: terrain[{i}] kind {t.get('kind')!r} is not one of {sorted(TERRAIN)}")
+        if materials is not None and t.get("material") not in materials:
+            errors.append(f"{name}: terrain[{i}] material {t.get('material')!r} is not in surfaces.json")
+
+    def typed(x: float, y: float):
+        return next((t for t in ranges if t["x"][0] <= x < t["x"][1]
+                     and (not t.get("y") or t["y"][0] <= y < t["y"][1])), None)
+
+    for key in ("walk", "slide", "oneWay"):
+        for i, line in enumerate(data[key]):
+            for a, b in zip(line, line[1:]):
+                t = typed((a[0] + b[0]) / 2, (a[1] + b[1]) / 2)
+                if t is None:
+                    errors.append(f"{name}: {key}[{i}] at {a}->{b} has no terrain type")
+                elif t["kind"] in FLAT and abs(b[1] - a[1]) > abs(b[0] - a[0]) * FLAT_SLOPE:
+                    errors.append(f"{name}: {key}[{i}] {t['kind']} at {a}->{b} is a slope; treads are flat")
+    for f in faces(data):
+        # The floor that stops at the face's foot, just outside it.
+        below = [h for line in data["walk"] + data["slide"] + data["oneWay"]
+                 if (h := y_at(line, f["x"] + f["side"])) is not None and h > f["top"]]
+        if below and RISE < min(below) - f["top"] <= FACE_REACH:
+            errors.append(f"{name}: wall at x={f['x']} is {min(below) - f['top']:.0f} px tall, more than a jump ({RISE})")
+    return errors
+
+
+def water(data: dict, name: str, region: Path) -> list[str]:
+    """No floor stands on the pond: the pixels under the feet are water and not play."""
+    wet = region / "layers" / f"{data['chunk']}.04-water.png"
+    play = region / "layers" / f"{data['chunk']}.05-play.png"
+    if not wet.exists() or not play.exists():
+        return []
+    import numpy as np
+    from PIL import Image
+    w = np.array(Image.open(wet).convert("RGBA"))[:, :, 3] > 128
+    p = np.array(Image.open(play).convert("RGBA"))[:, :, 3] > 128
+    rows = np.where(w.mean(axis=1) > 0.5)[0]
+    if not len(rows):
+        return []
+    surface = int(rows.min())  # the pond's waterline: the first row that is mostly water
+    errors = []
+    for key in ("walk", "oneWay"):
+        for i, line in enumerate(data[key]):
+            bad = []
+            for x in range(line[0][0], line[-1][0] + 1, 4):
+                yy = int(round(y_at(line, x))) + 4
+                if surface - 2 <= yy < w.shape[0] and x < w.shape[1] and w[yy, x] and not p[yy, x]:
+                    bad.append(x)
+            if bad:
+                errors.append(f"{name}: {key}[{i}] stands on water at x={bad[0]}..{bad[-1]}")
+    return errors
+
+
+def write_surfaces(region: Path, loaded: dict) -> None:
+    """surfaces.json keeps its materials; each typed chunk's ranges come from its terrain."""
+    path = region / "surfaces.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    typed = {chunk: geo["terrain"] for (chunk, _state), geo in sorted(loaded.items()) if geo.get("terrain") is not None}
+    if not typed:
+        return
+    for chunk, ranges in typed.items():
+        data["chunks"][chunk] = [{k: v for k, v in (("x", t["x"]), ("y", t.get("y")), ("material", t["material"]),
+                                                     ("note", f"{t['kind']}: {t['note']}" if t.get("note") else t["kind"]))
+                                  if v is not None} for t in ranges]
+    # One material and one range per line, as the file is written by hand.
+    line = lambda v: json.dumps(v, ensure_ascii=False)
+    out = ["{"] + [f' {line(k)}: {line(v)},' for k, v in data.items() if k not in ("materials", "chunks")]
+    out += [' "materials": {', ",\n".join(f"  {line(k)}: {line(v)}" for k, v in data["materials"].items()), " },"]
+    out += [' "chunks": {', ",\n".join(f"  {line(c)}: [\n" + ",\n".join(f"   {line(r)}" for r in rs) + "\n  ]"
+                                       for c, rs in data["chunks"].items()), " }", "}"]
+    path.write_bytes(("\n".join(out) + "\n").encode("utf-8"))
+
+
 def floor_at_edge(data: dict, right: bool) -> float | None:
     x = data["size"][0] if right else 0
     ys = [y_at(a["line"], x) for a in surfaces(data) if a["key"] == "walk" and a["x0"] <= x <= a["x1"]]
@@ -229,9 +339,19 @@ def overlay(data: dict, art: Path, out: Path) -> None:
             d.rectangle((b["x"], b["y"], b["x"] + b["w"] - 1, b["y"] + b["h"] - 1), fill=(*c, 70), outline=(*c, 255), width=3)
             if b.get("id") or b.get("kind"):
                 d.text((b["x"] + 4, b["y"] + 4), b.get("id") or b["kind"], fill=(255, 255, 255, 255))
+    for b in data["noGo"]:
+        if b.get("kind") == "water":
+            d.rectangle((b["x"], b["y"], b["x"] + b["w"] - 1, b["y"] + b["h"] - 1), fill=(40, 120, 255, 70))
     for key in ("walk", "oneWay", "slide"):
         for line in data[key]:
             d.line([tuple(p) for p in line], fill=(*COLOURS[key], 255), width=5)
+    for f in faces(data):
+        d.line([(f["x"], f["top"]), (f["x"], f["top"] + 50)], fill=(*COLOURS["solid"], 255), width=5)
+    for t in data.get("terrain", []):
+        ys = [y for k in ("walk", "oneWay", "slide") for line in data[k]
+              if (y := y_at(line, (t["x"][0] + t["x"][1]) / 2)) is not None and (not t.get("y") or t["y"][0] <= y < t["y"][1])]
+        if ys:
+            d.text(((t["x"][0] + t["x"][1]) / 2 - 24, min(ys) + 10), f"{t['kind']}/{t['material']}", fill=(255, 255, 255, 255))
     for p in data["spawn"]:
         x, y = p["x"], p["y"]
         if p["kind"] == "player":
@@ -247,6 +367,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("regions", nargs="*", type=Path, help="region folders (default: every stage)")
     parser.add_argument("--overlay", action="store_true", help="draw <region>/collision/<chunk>.<state>.png")
+    parser.add_argument("--surfaces", action="store_true", help="rebuild <region>/surfaces.json ranges from the terrain")
     args = parser.parse_args()
     regions = args.regions or sorted(p for p in STAGES.iterdir() if p.is_dir())
     errors, count = [], 0
@@ -254,18 +375,22 @@ def main() -> None:
         files = sorted(region.glob("*.collision.json"))
         order = json.loads((region / "chunks.json").read_text(encoding="utf-8")) if (region / "chunks.json").exists() else None
         loaded = {}
+        surfaces_file = region / "surfaces.json"
+        materials = set(json.loads(surfaces_file.read_text(encoding="utf-8"))["materials"]) if surfaces_file.exists() else None
         for path in files:
             name = path.name
             data = json.loads(path.read_text(encoding="utf-8"))
             problems = validate(data, name)
             if not problems:
-                problems = reach(data, name)
+                problems = reach(data, name) + terrain(data, name, materials) + water(data, name, region)
             errors += problems
             loaded[(data.get("chunk"), data.get("state"))] = data
             count += 1
             if args.overlay and order and not problems:
                 art = region / order["art"][data["state"]].format(chunk=order["chunks"][data["chunk"]])
                 overlay(data, art, region / "collision" / f"{data['chunk']}.{data['state']}.png")
+        if args.surfaces and surfaces_file.exists():
+            write_surfaces(region, loaded)
         if order:
             for state in order["art"]:
                 chain = list(order["chunks"])

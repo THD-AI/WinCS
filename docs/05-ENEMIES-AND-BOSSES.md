@@ -1,7 +1,7 @@
 # 05 – Enemies and bosses
 
 <!-- nav:start -->
-[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 14** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
+[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 15** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
 <!-- nav:end -->
 
 ![Boss – Jenny, the self-driving race car](../art/direction/images/boss-jenny-preview.png)
@@ -15,6 +15,7 @@ Every enemy is a real **autonomous** machine from THD – things that already dr
 | **Rover** | THD's autonomous vehicle project (ultrasonic + lidar), yellow wheels | Knee-high (≈ 25 px) | 3 | Patrols a deck. Spots you with its lidar, then charges in a straight line | Lidar turns red, rears up for 0.5 s | Jump over the charge and hit it from behind; guard works |
 | **Crab** | Autonomous six-legged hexapod robot | Waist-high, wide (≈ 40 px) | 4 | Creeps toward you; rears up and stabs with its front legs; can walk under decks | Front legs raised for 0.6 s | Step back, then punish; up-attack when it's on a deck above |
 | **Drone** | Large autonomous quadcopter | 1 m span (≈ 45 px), flies at head height | 8 (chair) / 3 (tray) | Hovers out of reach and drops screws or sparking batteries; dives when you're under it | Red eye flashes and it tilts | **Avoid it** in Region 1 (hide under girders). Kill it later with the tray. Coming back for drones is intended backtracking |
+| *In the game (P7):* | `enemies/rover.ts`, `crab.ts`, `drone.ts`, drawn by `rovers.ts` from the collision spawns | | | Rovers on the decks you walk (rc-0-0: rover-1, -4, -5; rc-1-0: rover-2, -3, -6; rc-2-0: rover-7); crab-1 on the high route, drone-1 over the low route | Crab and drone flash red and play their servo / hum during the tell | |
 | *Later:* Mutant plant | Toxic Garden | – | – | Stationary, spits sap | Mouth swells | Down-slam its head |
 
 All of them: contact damage 1 cell, white hit flash, 3–4 frame knockback, and they stop dead and leak black fluid when defeated.
@@ -69,6 +70,8 @@ Lex's read (A14), which the fight follows: Jenny is a **shielded** enemy. Her no
 - **Charge** does 2 cells. **Parts** do 1. Guarding a charge breaks the guard.
 - The arena is the Rusty Creek boss clearing: one flat girder floor, two walls, the creek below. Falling in is a hazard (−1 cell).
 - **Death:** she stalls, smokes and leaks black fluid. Dexter appears and absorbs it.
+- **In the game** (`enemies/jenny.ts`, `enemies/jennyBoss.ts`, #57): the arena comes from collision, not code: the `boss-gate` box's right edge is the left wall, which closes behind you once you're through, and the floor line under her `jenny` spawn ends at the right wall. Her hit box is the car body under the cockpit, 250 × 56 px inside the ~290 × 134 px sprite, and her charge speeds (540 / 600 / 660 px/s) are tuned so a standing full jump (96 px) lets her pass under in the arena (`jumpable()` is unit-tested). A revving Jenny also hurts on contact (1 cell).
+- **What reads (P8, Alexander's playtest):** the **rev** shakes her, puffs exhaust from the tail and flashes her headlight – that is the tell. Her **charge** never passes through you without consequence: you are thrown up (520 px/s) and the way she drives, play the hurt clip, get the usual second of invulnerability, and she brakes to a third of her speed for 0.25 s with a hit-stop and a screen shake. Her **open back** glows orange at the tail – faint while she drives (hits from behind count), bright and pulsing while she is stunned, with the hazard light blinking over it. Every chair hit that lands flashes her white, shakes the screen a little and sparks; a hit on the **armoured nose** clanks, throws grey sparks and bounces you back. **Parts** bounce up to twice, then lie on the floor as hazards for 2.5 s and blink before they vanish. Clip lengths come from `boss-jenny*.anims.json`. Beating her emits `boss-defeated`, and the `Ending` scene takes over. Dying resets the fight. Dev: `?boss-test` spawns you at the gate.
 - What we took from Terraria's Wall of Flesh: one huge shape crossing the whole screen, very readable, and you know exactly what to do after seeing it once.
 
 ## Later bosses
@@ -82,5 +85,5 @@ Lex's read (A14), which the fight follows: Jenny is a **shielded** enemy. Her no
 | Secret | **Professors** (replay) | Giant, Moon Lord-scale joke bosses after one completion |
 
 <!-- nav:start -->
-[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 14** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
+[← 04 – World and levels](04-WORLD-AND-LEVELS.md) · [Design docs](README.md) · **5 / 15** · [06 – Visual direction →](06-VISUAL-DIRECTION.md)
 <!-- nav:end -->

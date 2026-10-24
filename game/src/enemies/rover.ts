@@ -5,6 +5,8 @@ import type { Position } from '../core/events';
 // docs/05: measured idle-00 alpha bounds and controller tuning.
 export const ROVER_WIDTH = 31, ROVER_HEIGHT = 25;
 export const TELL_SECONDS = 0.5, PATROL_SPEED = WALK_SPEED / 2, CHARGE_SPEED = RUN_SPEED;
+/** How far ahead a rover's lidar spots the hero (px): its own range, no longer tied to the hero's walk speed. */
+export const SPOT_RANGE = 150;
 export type RoverPhase = 'patrol' | 'tell' | 'charge' | 'recover' | 'hit' | 'wreck' | 'dead';
 export class Rover {
   x: number;
@@ -37,7 +39,7 @@ export class Rover {
       const dt = Math.min(remaining, 1 / 120); remaining -= dt; this.elapsed += dt;
       switch (this.phase) {
         case 'patrol':
-          if (hero && (hero.x - this.x) * this.direction > 0 && Math.abs(hero.x - this.x) <= WALK_SPEED
+          if (hero && (hero.x - this.x) * this.direction > 0 && Math.abs(hero.x - this.x) <= SPOT_RANGE
             && Math.abs(hero.y - this.y) <= BODY_HEIGHT) { this.enter('tell'); break; }
           this.x += this.direction * PATROL_SPEED * dt;
           if (this.x <= this.patrol[0] || this.x >= this.patrol[1]) {

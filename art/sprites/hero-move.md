@@ -1,7 +1,7 @@
 # The student · walk
 
 <!-- nav:start -->
-[← The student · hero design](hero.md) · [Sprite boards](README.md) · **2 / 18** · [The student · idle variants →](hero-idle.md)
+[← The student · hero design](hero.md) · [Sprite boards](README.md) · **2 / 26** · [The student · idle variants →](hero-idle.md)
 <!-- nav:end -->
 
 ![The student · walk](images/hero-move-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-move.png` · rebuild: `python scripts/make_boards.py draw hero-move --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · hero design](hero.md) · [Sprite boards](README.md) · **2 / 18** · [The student · idle variants →](hero-idle.md)
+[← The student · hero design](hero.md) · [Sprite boards](README.md) · **2 / 26** · [The student · idle variants →](hero-idle.md)
 <!-- nav:end -->

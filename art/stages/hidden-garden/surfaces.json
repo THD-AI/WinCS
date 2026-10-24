@@ -1,0 +1,56 @@
+{
+ "region": "hidden-garden",
+ "note": "What the hero stands on. Ranges are chunk-local px (x from the left edge of the chunk, optional y band for stacked floors), read off layers/hg-*.05-play.png against the walk lines; the first match wins, else `default`. sink: px the feet sink in (visual only, physics unchanged); cover: lowest sprite rows hidden by the ground; blades: tufts drawn in front of the feet; puff: what a footfall or landing kicks up – `sprite` names an fx-ground clip, the procedural pixels in the garden palette are the fallback and the extra debris of a hard landing.",
+ "default": "grass",
+ "materials": {
+  "grass": {"sink": 3, "cover": 2, "blades": ["#c98a2a", "#e0a63c", "#8f5a1c"], "puff": {"sprite": "grass", "shape": "blade", "colors": ["#d79a34", "#f0bf55", "#9c6420"], "count": 5}},
+  "leaves": {"sink": 3, "cover": 2, "blades": ["#d0702a", "#e89a3a", "#9a3f1c"], "puff": {"sprite": "leaf-kick", "shape": "leaf", "colors": ["#e07a2c", "#f2a640", "#b4471f"], "count": 5}},
+  "earth": {"sink": 2, "cover": 1, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b89a6e", "#d8c09a", "#8c7350"], "count": 5}},
+  "gravel": {"sink": 2, "cover": 1, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b8a58a", "#d9cbb0", "#8a7a66"], "count": 4}},
+  "stone": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#c9bfa8", "#e6dcc4", "#9b927f"], "count": 3}},
+  "wood": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#c8b08a", "#e9dbbf", "#9a8060"], "count": 3}},
+  "water": {"sink": 0, "cover": 0, "puff": {"sprite": "splash", "shape": "dust", "colors": ["#9cc8f0", "#e8f4ff", "#4f86c6"], "count": 8}}
+ },
+ "chunks": {
+  "hg-0-0": [
+   {"x": [1630, 1836], "y": [380, 396], "material": "wood", "note": "log: the fallen birch (solid)"},
+   {"x": [702, 958], "y": [420, 440], "material": "gravel", "note": "ledge: bench platform: the bank runs on in front of it"},
+   {"x": [0, 130], "material": "leaves", "note": "ground"},
+   {"x": [130, 285], "material": "stone", "note": "ground: gate path pavers"},
+   {"x": [285, 1008], "material": "leaves", "note": "ground: the bank"},
+   {"x": [1008, 1576], "material": "grass", "note": "ground: the bank"},
+   {"x": [1576, 1590], "material": "stone", "note": "step: step up onto the slab"},
+   {"x": [1590, 1880], "material": "stone", "note": "ground: paved slab under the birch"},
+   {"x": [1880, 2160], "material": "stone", "note": "wall: low wall top: jump up from the slab or the log"}
+  ],
+  "hg-1-0": [
+   {"x": [480, 628], "y": [400, 720], "material": "earth", "note": "ground: the hollow under the path"},
+   {"x": [0, 205], "material": "stone", "note": "wall: wall top"},
+   {"x": [205, 640], "material": "gravel", "note": "ground: hill path over the hollow"},
+   {"x": [640, 1942], "material": "earth", "note": "ground: oak crest path"},
+   {"x": [1942, 2160], "material": "stone", "note": "wall: wall top"}
+  ],
+  "hg-2-0": [
+   {"x": [918, 1268], "y": [0, 250], "material": "wood", "note": "plank: shed roof"},
+   {"x": [0, 552], "material": "stone", "note": "wall: terrace foot"},
+   {"x": [552, 757], "material": "stone", "note": "ledge: terrace tiers: hop up, drop down"},
+   {"x": [757, 1452], "material": "stone", "note": "ground: terrace"},
+   {"x": [1452, 1647], "material": "stone", "note": "ledge: terrace tiers"},
+   {"x": [1647, 2160], "material": "stone", "note": "wall: terrace foot"}
+  ],
+  "hg-3-0": [
+   {"x": [0, 838], "material": "stone", "note": "wall: wall top"},
+   {"x": [838, 866], "material": "stone", "note": "ledge: rubble at the broken wall end"},
+   {"x": [910, 980], "material": "stone", "note": "ground: stepping stone"},
+   {"x": [1040, 1077], "material": "stone", "note": "ground: stepping stone at the wall foot"},
+   {"x": [1077, 1253], "material": "stone", "note": "wall: wall top: a 69 px face, jump up from the stone"},
+   {"x": [1253, 1360], "material": "stone", "note": "ledge: the broken section: drop in, hop out"},
+   {"x": [1360, 2160], "material": "stone", "note": "wall: wall top"}
+  ],
+  "hg-4-0": [
+   {"x": [0, 177], "material": "stone", "note": "wall: wall top: drop to the pond walk"},
+   {"x": [177, 1020], "material": "stone", "note": "ground: pond walk"},
+   {"x": [1020, 1330], "material": "wood", "note": "plank: pier"}
+  ]
+ }
+}

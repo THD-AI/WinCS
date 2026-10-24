@@ -1,0 +1,31 @@
+id,workstream,item,acceptance,status,pr
+1.1,1 boot,Single loader,"Preload loads every atlas, stage, collision, atmosphere and surfaces once; no scene loads by itself; never stalls",done,#167
+1.2,1 boot,Loading screen,"Art-directed, real progress bar, error state with retry",done,#167
+1.3,1 boot,Menu,"DEGGSTER.EXE in the game's style over the garden art; Start / Credits; keyboard + pad",done,#167
+1.4,1 boot,Fade into the garden,"Menu → garden without a black flash; music/ambience start",done,#167
+2.1,2 atmosphere,All layers drawn,"sky, far, mid region plates, rear, water, play, foreground in order and scroll",review,#168
+2.2,2 atmosphere,Foreground blur + occlusion,"z 6–7 slightly blurred, drawn over the hero",review,#168
+2.3,2 atmosphere,Wind sway,"grass, leaves, trees sway by depth with gusts; data in atmosphere.json",review,#168
+2.4,2 atmosphere,Falling leaves,"front and back particles in the autumn palette",review,#168
+2.5,2 atmosphere,Water reflection,"pond reflects scene and hero, ripples, shimmer, lily pads bob",review,#168
+3.1,3 hero,Feet in the ground,"sink 2–4 px by surface from surfaces.json",review,#166
+3.2,3 hero,Step and land FX,"dust / leaves kicked up per surface",review,#166
+3.3,3 hero,Smooth transitions,"no pops between idle, walk, run, jump, land; stride pacing (#164)",review,#166
+3.4,3 hero,Camera,"steady follow, look-ahead, no jitter on slopes",review,#166
+4.1,4 prologue,First quest,"Dexter on the bench; walking up starts the quest; wordless",review,#169
+4.2,4 prologue,Dexter's walk,"waypoints 1–5 with walk/hop/point; waits and looks back",review,#169
+4.3,4 prologue,Secrets,"muffin behind the grass, the glint on the shed roof",review,#169
+4.4,4 prologue,The pond,"Dexter points, the reflection is wrong, the shove",review,#169
+4.5,4 prologue,404 and the pull,"frame tears, 404 void, THD.exe 404 window, pulled into the anomaly, land in clean Rusty Creek",review,#169
+5.1,5 art,Asset inventory,"art/inventory.csv: every prologue asset with size, frames, source, status",review,#165
+5.2,5 art,Falling leaf + ripple + dust sprites,"drawn from the garden refs, exported",review,#165
+5.3,5 art,Menu and loading art,"key art from the style master and the garden",review,#165
+5.4,5 art,Readability,"every prologue sprite readable at 1× on the garden background (#159)",review,#165
+P1,6 terrain,Walkable surfaces from the art,"no walking on water; planks and stairs as steps, not slopes; logs and walls stop you or must be jumped; no falling at chunk ends",review,#173
+P2,6+7,Feet in the trail,"a grass/plant strip in front of the trail covers the feet (7); surface effects per material – walk side: typed terrain drives surfaces.json, water splash (6, #173)",todo,
+P3,7 layers,Layers rendered complete,"no visible cut-outs while layers scroll; occluded parts painted in; clean edges",todo,
+P4,8 dexter,Dexter leads at your pace,"never overtaken; hero spawns at the entrance",todo,
+P5,9 region 1,Land on the creek path,"after the 404 on the cement road under the rail bridge; one clear ram",todo,
+P6,10 motion,Hero motion polish,"no jitter in Rusty Creek; jump spam crisp; more idle life",todo,
+P7,9 region 1,Chair moment and encounters,"a pickup moment with a wordless attack glyph; more enemies on the route",todo,
+P8,9 region 1,Jenny reads,"knockback, tell, open back, hit feedback, threatening parts",todo,

@@ -4,8 +4,10 @@ import type { AnimationClip } from '../stage/assets';
 export class Interaction {
   private elapsed = 0;
   private clip: AnimationClip | undefined;
+  private name = 'interact';
   get active() { return this.clip !== undefined; }
-  begin(clip: AnimationClip) { this.clip = clip; this.elapsed = 0; }
+  /** `name` is the hero-hurt clip whose frames play (default `interact`; the chair uses `pick-up`). */
+  begin(clip: AnimationClip, name = 'interact') { this.clip = clip; this.name = name; this.elapsed = 0; }
   cancel() { this.clip = undefined; }
   step(seconds: number) {
     if (!this.clip) return undefined;
@@ -13,6 +15,6 @@ export class Interaction {
     const frame = Math.min(clip.frames - 1, Math.floor((this.elapsed + 1e-9) * clip.fps));
     this.elapsed += seconds;
     if (this.elapsed + 1e-9 >= clip.frames / clip.fps) this.cancel();
-    return { board: 'hero-hurt', frame: 'interact-' + String(frame).padStart(2, '0') };
+    return { board: 'hero-hurt', frame: this.name + '-' + String(frame).padStart(2, '0') };
   }
 }

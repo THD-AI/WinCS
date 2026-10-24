@@ -1,7 +1,7 @@
 # 07 – Asset manifest
 
 <!-- nav:start -->
-[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 14** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
+[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 15** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
 <!-- nav:end -->
 
 Every asset the jam slice needs, with frame counts. **Status:** ✅ approved · 🟡 drawn, in review · ⬜ to do. "Board" is the sprite board in `art/sprites/boards.json`; game-ready atlases are exported from boards into `game/public/assets/`.
@@ -43,9 +43,10 @@ Frame lists approved as they are (A14).
 
 | Asset | Board | Notes | Status |
 | --- | --- | --- | --- |
-| Food pickups | `mensa-food` | muffin, cake, wafer, Leberkäse roll; 16 px icons + sparkle. Approved (A14) | ⬜ |
-| Drinks + coffee machine (save point) | `mensa-drinks` | coffee machine idle/flicker/pour | ⬜ |
-| Pocket computer | `pocket-computer` | pickup + 3 screen mockups (map, archive, menu) | ⬜ |
+| Food pickups | `mensa-food` | muffin, cake, wafer, Leberkäse roll, 1 frame each, 13–18 px; the sparkle is drawn in code. Approved (A14) | ✅ ([#154](https://github.com/THD-AI/WinCS/pull/154)) |
+| Coffee machine (save point) | `coffee-machine` | idle 3 (steady, flicker, pond on the screen) · pour 4; 80 px | ✅ ([#154](https://github.com/THD-AI/WinCS/pull/154)) |
+| Drinks | `mensa-drinks` | iced coffee, strawberry milk, iced tea, mug; 16 px icons | ⬜ |
+| Pocket computer | `pocket-computer` | bob 4 (closed, floating) · open 3; 10 px tall closed. The map screens are the UI atlas (#127) | ✅ ([#154](https://github.com/THD-AI/WinCS/pull/154)) |
 | Sign pole (post-jam weapon) | `wayfinder` | prop, pull-out 5, thrust 5 | ⬜ |
 | Campus robot (collectible companion, post-jam) | `companion-robot` | idle 4 · drive 6 · hop/scan/sleep | ⬜ |
 | HUD | – | 5 battery cells (full/cracked/empty, crack animation), glitch meter orbs, boss bar; pocket computer case, CRT screen and map tiles ([art/ui](../art/ui/README.md)). Approved (A14; sprites 24 Oct) | ✅ |
@@ -68,5 +69,5 @@ Footsteps (girder, grass), chair whoosh + hit, rover motor, crab servos, drone h
 Every sound is **synthesized at runtime with Web Audio** – no audio files, so nothing to license and nothing that breaks decision 14 (no audio in Git). Recipes are plain data in `game/src/fx/sound/recipes.ts` (effects) and `loops.ts` (Hidden Garden, Rusty Creek, Jenny); the `Audio` scene plays them. Game code calls `sound.play('chair-whoosh')` / `sound.loop('boss-jenny')`; hits, defeats, the boss and region turns are wired to the game events, and the anomaly state plays the region loop slightly flat. M mutes.
 
 <!-- nav:start -->
-[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 14** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
+[← 06 – Visual direction](06-VISUAL-DIRECTION.md) · [Design docs](README.md) · **7 / 15** · [08 – Tech stack and where things live →](08-TECH-STACK.md)
 <!-- nav:end -->

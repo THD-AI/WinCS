@@ -1,0 +1,12 @@
+{
+ "bob": {
+  "frames": 4,
+  "fps": 12,
+  "loop": true
+ },
+ "open": {
+  "frames": 3,
+  "fps": 12,
+  "loop": false
+ }
+}

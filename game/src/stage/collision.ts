@@ -9,7 +9,16 @@ export const BOXES = ['climb', 'solid', 'noGo', 'hazard', 'interact', 'glideLift
 export const POINTS = ['spawn', 'ledge'] as const;
 export type Geometry = Record<typeof LINES[number], Point[][]>
   & Record<typeof BOXES[number], Box[]> & Record<typeof POINTS[number], Marker[]>;
-export type CollisionData = Geometry & { chunk: string; state: RegionState; size: [number, number] };
+/**
+ * The terrain model (docs/04): what each stretch of floor is. Physics reads the geometry – walk lines step up
+ * rises up to STEP_UP, line ends nothing passes under are ledge faces, `solid` boxes (kind wall/log/obstacle) stop
+ * the body, only `slide` lines slide, `noGo` kind water is never floor – and the terrain names the kind and the
+ * material (surfaces.json is rebuilt from it by scripts/collision_check.py --surfaces).
+ */
+export const TERRAIN_KINDS = ['ground', 'step', 'stair', 'plank', 'ledge', 'wall', 'log', 'obstacle', 'slide'] as const;
+export type TerrainKind = typeof TERRAIN_KINDS[number];
+export interface TerrainRange { x: [number, number]; y?: [number, number]; kind: TerrainKind; material: string; note?: string }
+export type CollisionData = Geometry & { chunk: string; state: RegionState; size: [number, number]; terrain?: TerrainRange[] };
 export interface CollisionChunk { local: CollisionData; origin: Point; world: Geometry }
 
 function assert(condition: unknown, message: string): asserts condition {
@@ -53,7 +62,21 @@ export function parseCollision(value: unknown, chunk: string, state: RegionState
       if (key === 'hazard') assert(integer(item.damage) && item.damage > 0, 'hazard damage');
     }
   }
+  if (value.terrain !== undefined) {
+    assert(Array.isArray(value.terrain), 'terrain must be an array');
+    const range = (v: unknown) => Array.isArray(v) && v.length === 2 && v.every(n => typeof n === 'number') && v[0] < v[1];
+    for (const t of value.terrain) {
+      assert(object(t) && range(t.x) && (t.y === undefined || range(t.y)), 'terrain range');
+      assert((TERRAIN_KINDS as readonly unknown[]).includes(t.kind), `terrain kind ${String(t.kind)}`);
+      assert(kind(t.material), 'terrain material');
+    }
+  }
   return value as unknown as CollisionData;
+}
+
+/** The authored terrain at chunk-local feet (x, y): the first range that holds them. */
+export function terrainAt(data: Pick<CollisionData, 'terrain'>, x: number, y: number): TerrainRange | undefined {
+  return data.terrain?.find(t => x >= t.x[0] && x < t.x[1] && (!t.y || y >= t.y[0] && y < t.y[1]));
 }
 
 /** Grid offsets apply to geometry and local horizontal patrol bounds, not metadata. */

@@ -1,7 +1,7 @@
 # 13 – Production pipeline
 
 <!-- nav:start -->
-[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 14** · [Meetings and voice notes →](meetings/README.md)
+[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 15** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
 <!-- nav:end -->
 
 How every image, layer, sprite, animation, stage and collision box gets from a photo to the game, and how two AI agents build it in parallel without stepping on each other. The *what* is in [07 – Asset manifest](07-ASSET-MANIFEST.md) and the *how to prompt* in [09 – Art pipeline](09-ART-PIPELINE.md); this page is the order of work, the hand-over formats and the lanes. Every box in the diagrams names the issue that delivers it.
@@ -92,10 +92,11 @@ Every sheet, in the order the game needs them:
 | `hero-hurt`, `hero-death` | hit 8 · knockback 3 · death 12 · interact 3 · pick up 4 · look at device 3 | [M2-S12 #83](https://github.com/THD-AI/WinCS/issues/83) | damage, the THD.exe crossing |
 | `chair-side`, `chair-overhead`, `chair-block` | sweep A 8 · sweep B 8 · recoil 2 · up 6 · slam 7 · pogo 4 · guard up 4 · hold 3 · impact 4 · break 4 | [M2-S10 #81](https://github.com/THD-AI/WinCS/issues/81) | combat |
 | `enemy-rover`, `enemy-crab`, `enemy-drone`, `fx` | rover 4/6/4/5 · crab 4/8/5/5 · drone 4/3/5/3 · black fluid 6 | [M2-S11 #82](https://github.com/THD-AI/WinCS/issues/82) | enemies |
-| `mensa-food`, `mensa-drinks` | 16 px icons + sparkle; coffee machine idle/flicker/pour | [M2-S13 #84](https://github.com/THD-AI/WinCS/issues/84) | healing, save points |
+| `mensa-food`, `mensa-drinks` | food 4 × 1 frame, 13–18 px (sparkle in code) · drink icons | [M2-S13 #84](https://github.com/THD-AI/WinCS/issues/84) | healing |
+| `coffee-machine` | idle 3 · pour 4, 80 px | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | save points |
 | `dexter`, `dexter-acts` | idle 3 · hop 4 · walk 6 · point 3 · shove 4 · beckon 3 · bow · sweat · proud · creepy shadow · absorb 4 | [M3-S5 #86](https://github.com/THD-AI/WinCS/issues/86) | prologue, Region 1 beats |
 | `boss-jenny`, `boss-jenny-2` | rev 4 · charge 4 · crash 4 · stunned 3 · reboot 2 · debris ×5 | [M4-S6 #87](https://github.com/THD-AI/WinCS/issues/87) | the boss |
-| `pocket-computer` | pickup + 3 screens | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | menu, map |
+| `pocket-computer` | bob 4 · open 3 (screens: UI atlas) | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | menu, map |
 
 Frames are drawn as **key poses**, never interpolated by the model; transitions are short bridge clips that start and end on poses shared with the loops ([09 – Smooth, not rubbery](09-ART-PIPELINE.md#smooth-not-rubbery)).
 
@@ -142,7 +143,7 @@ Draw every object in **stage pixels** on top of the 2160×720 chunk, one Tiled o
 | `walk` | polyline | ground and gentle slopes ≤ 40°, girder tops you stand on |
 | `slide` | polyline | slopes > 40° you skid down |
 | `one-way` | polyline | decks, planks, scaffold boards: jump up through, ↓ + Jump drops |
-| `climb` | box + `kind` | **ladders, vines, scaffold, stairs** – stairs are climb zones or a walk slope, never steps of boxes |
+| `climb` | box + `kind` | **ladders, vines, scaffold** – stairs are flat walk treads (rises ≤ 16 px are stepped; docs/04 terrain model), never slopes and never steps of boxes |
 | `solid` | box | walls and ceilings |
 | `no-go` | box | out of bounds, deep water: reset without damage |
 | `hazard` | box + `damage` | current, sap, sparks |
@@ -173,6 +174,8 @@ Draw every object in **stage pixels** on top of the 2160×720 chunk, one Tiled o
 ```
 
 Coordinates are integers in stage pixels, origin top left; polylines run left to right; `kind` values are lower-case with dashes. Adding a field is fine; renaming one needs both lanes to agree in an issue.
+
+Optional `terrain` (docs/04 terrain model): `[{"x": [x0, x1], "y": [y0, y1]?, "kind": "ground|step|stair|plank|ledge|wall|log|obstacle|slide", "material": "<surfaces.json material>", "note"?}]` – chunk-local ranges, first match wins, every walk/oneWay/slide segment covered. Solids take an optional `kind` (`wall`, `log`, `obstacle`), no-go boxes `kind: "water"`. A chunk with `terrain` was re-authored by hand: `depth_layers.py collision` keeps its floors.
 
 ## 5 · The other hand-over contracts
 
@@ -263,5 +266,5 @@ flowchart LR
 ```
 
 <!-- nav:start -->
-[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 14** · [Meetings and voice notes →](meetings/README.md)
+[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 15** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
 <!-- nav:end -->

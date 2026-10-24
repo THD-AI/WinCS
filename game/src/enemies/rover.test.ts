@@ -13,15 +13,15 @@ describe('autonomous rover', () => {
   it('patrols the real tutorial range at half walking speed without leaving its deck', () => {
     const rover = tutorial(); expect(rover.patrol).toEqual([640, 880]);
     expect(rover.bounds).toEqual({ x: 744.5, y: 483, w: 31, h: 25 });
-    expect(PATROL_SPEED).toBe(75.25); rover.step(1); expect(rover.x).toBeCloseTo(835.25);
+    expect(PATROL_SPEED).toBeCloseTo(2.2 * 43 / 2); rover.step(1); expect(rover.x).toBeCloseTo(760 + PATROL_SPEED);
     for (let n = 0; n < 30; n++) { rover.step(0.1); expect(rover.x).toBeGreaterThanOrEqual(640); expect(rover.x).toBeLessThanOrEqual(880); }
   });
   it('shows red lidar and rear-up for exactly half a second before a locked straight charge', () => {
     const rover = tutorial(); rover.step(1 / 120, { x: 840, y: 508 });
     expect(rover.phase).toBe('tell'); expect(rover.pose).toBe('charge-00');
     rover.step(0.25); expect(rover.pose).toBe('charge-01'); expect(rover.x).toBe(760);
-    rover.step(0.25); expect(rover.phase).toBe('charge'); expect(CHARGE_SPEED).toBe(258);
-    rover.step(0.1, { x: 700, y: 400 }); expect(rover.x).toBeCloseTo(785.8); expect(rover.direction).toBe(1);
+    rover.step(0.25); expect(rover.phase).toBe('charge'); expect(CHARGE_SPEED).toBeCloseTo(4.6 * 43);
+    rover.step(0.1, { x: 700, y: 400 }); expect(rover.x).toBeCloseTo(760 + CHARGE_SPEED * 0.1, 1); expect(rover.direction).toBe(1);
     rover.step(1); expect(rover.x).toBeLessThanOrEqual(880);
   });
   it('spots only forward within the documented tuning band', () => {

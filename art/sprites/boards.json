@@ -46,7 +46,8 @@
           [
             {
               "anim": "walk",
-              "frames": 8
+              "frames": 8,
+              "stride": 43
             }
           ]
         ]
@@ -122,7 +123,8 @@
             {
               "anim": "run",
               "frames": 8,
-              "scale": 1.12
+              "scale": 1.12,
+              "stride": 82
             }
           ]
         ]
@@ -672,24 +674,98 @@
       "inputs": [
         "ref2:20261023_125955.jpg",
         "ref2:20261023_130000.jpg",
+        "ref2:20261023_130003.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Key item: the aluminium experiment suitcase from the photos (silver case, black screen in the lid, circuit board, coloured buttons and plug sockets inside), shrunk into a hand-held 'pocket computer' the hero carries. Top row: the item as a pickup sprite - closed case glowing softly, 4-frame floating bob; then opened, screen lighting up, 3 frames. Bottom area: three mock in-game screens as the device would show them, drawn in the same pixel style with a green-on-black CRT look: (1) MAP screen - a rough grid map of connected campus rooms with a blinking player dot and unexplored rooms dark; (2) ARCHIVE screen - a list of collected notes as icons (no readable words); (3) MENU screen - icons for items, map, archive, settings. Screens use icons and blocks only, no readable words."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Key item sprite sheet: the aluminium experiment suitcase from the photos, copied exactly - a silver hard case with rounded corners and a carry handle, a black screen in the lid, a white circuit tray inside with a green circuit board, rows of yellow and green buttons, plug sockets - shrunk into a hand-held 'pocket computer'. Side-on three-quarter view. 2 rows. Row 1, exactly 4 frames: the case CLOSED, lying flat, with a soft green glow at its seam, bobbing up and down a little (frames 1-4 of a gentle float). Row 2, exactly 3 frames: the case OPENING - the lid lifts halfway, the lid fully open with the dark screen, the screen lit up green with a simple block grid on it (no words). Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
+      "atlas": {
+        "height": 10,
+        "rows": [
+          [
+            {
+              "anim": "bob",
+              "frames": 4,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "open",
+              "frames": 3,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Closed case 19 × 10 px (≈ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups."
     },
     {
       "id": "mensa-food",
       "title": "Mensa · food pickups",
       "factor": 2,
       "inputs": [
+        "repo:art/sprites/images/coffee-machine-preview.png",
         "ref2:20261023_125038.jpg",
-        "ref2:20261023_125042.jpg",
         "ref2:20261023_125049.jpg",
         "ref2:20261023_125100.jpg",
         "ref2:20261023_125259.jpg",
-        "ref2:20261023_125302.jpg",
         "repo:art/direction/images/style-master-preview.png"
       ],
-      "prompt": "Healing pickup sprites, copying each photographed item EXACTLY as it really looks, NOT an idealized product shot: the muffin squashed inside wrinkled, glare-streaked cling film with a creased sticker; the marbled chocolate-vanilla cake slice in crumpled cling film on a white paper; the chocolate-coated wafer in its yellow-red foil wrapper (no readable brand); the Leberkaese roll in a torn brown paper bag with the meat slice sticking out unevenly. Row 1: each item large, slightly lopsided, with the real imperfections and reflections. Row 2: each item as a small in-game pickup (about 16 pixels) with a 2-frame sparkle. Row 3: a 'being eaten' sequence for the Leberkaese roll - whole, one bite, two bites, crumbs - 4 frames."
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Image 1 is an approved sprite sheet from this game: draw this sheet in exactly that pixel-art look and at that sheet layout - small sprites in a row on magenta. Pickup sprite sheet of FOUR DIFFERENT cafeteria foods, one per FOOD photo (images 2 to 5), in that order - never repeat an item: (1) the chocolate MUFFIN from image 2, squashed in wrinkled, glare-streaked cling film; (2) the marbled chocolate-vanilla CAKE SLICE from image 3, a flat rectangular slab in crumpled cling film on a white paper; (3) the chocolate WAFER bar from image 4 in its flat yellow-red foil wrapper (no readable brand); (4) the LEBERKAESE ROLL from image 5, a round crusty kaiser roll with a thick pink meat slice sticking out, half in a torn brown paper bag. Copy each EXACTLY as it really looks, not an idealized product shot. All four at the SAME pixel scale, about the same size as each other, small pickups resting on the ground line. 1 row, exactly 4 frames: muffin, cake slice, wafer, Leberkaese roll (the game adds the pickup sparkle). The four foods must look clearly different from each other in shape and colour. Every frame stands on the SAME invisible ground line at the SAME scale. Frames are evenly spaced from left to right with wide clear magenta gaps between neighbours. Count the frames: the row has EXACTLY 4. No people, no scenery.",
+      "atlas": {
+        "height": 16,
+        "rows": [
+          [
+            {
+              "anim": "muffin",
+              "frames": 1
+            },
+            {
+              "anim": "cake",
+              "frames": 1
+            },
+            {
+              "anim": "wafer",
+              "frames": 1
+            },
+            {
+              "anim": "leberkaese",
+              "frames": 1
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 × 14, cake 18 × 14, wafer 17 × 13, Leberkäse roll 18 × 18 px – around the documented 16 px."
+    },
+    {
+      "id": "coffee-machine",
+      "title": "Prop · coffee machine (save point)",
+      "factor": 2,
+      "inputs": [
+        "ref2:20261023_125138.jpg",
+        "ref2:20261023_125141.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable brand names: Prop sprite sheet: the self-service coffee machine from the first two photos, copied exactly - black and brushed-steel body, three steel bean hoppers on top, a big glowing touchscreen with a grid of drink buttons, a bright green light strip down its left side, a steel drip tray and spout - standing on its own black base cabinet so the whole unit is a little TALLER than an adult (about 190 cm) and about half as wide as it is tall. Real wear: fingerprints, a coffee stain on the tray, a scuffed cabinet. Strict front-three-quarter side view, the same in every frame. 2 rows. Row 1, exactly 3 frames: IDLE, the screen glowing steadily, then the screen FLICKERING (a band of static across it), then the screen showing a still dark POND image for one frame (an anomaly hint). Row 2, exactly 4 frames: POUR, a white cafeteria mug under the spout fills with coffee in 4 steps, a little steam on the last. Every frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no scenery.",
+      "atlas": {
+        "height": 80,
+        "rows": [
+          [
+            {
+              "anim": "idle",
+              "frames": 3
+            }
+          ],
+          [
+            {
+              "anim": "pour",
+              "frames": 4,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. 42 × 80 px in the game: fills the 40 × 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png."
     },
     {
       "id": "mensa-drinks",
@@ -817,6 +893,199 @@
         ]
       },
       "review": "✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+    },
+    {
+      "id": "fx-leaves",
+      "title": "FX · falling leaves",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/fx-preview.png",
+        "repo:art/stages/hidden-garden/images/hg-4-0.png@520,470,900,230",
+        "repo:references/campus/images/hidden-gardens.png@435,700,630,240",
+        "repo:references/campus/images/hidden-gardens.png@20,1010,510,310",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no arrows: Image 1 is an approved effect sprite sheet from this game: draw this sheet in exactly that pixel-art look and sheet layout - small sprites in rows on magenta. Effect sprite sheet: single FALLING AUTUMN LEAVES that tumble through the Hidden Garden, copied from the leaves in images 2 to 4 (the floating maple leaves on the pond, the yellow leaves in the grass, the willow screen). Each leaf is drawn LARGE and simple because the game shows it only 8 pixels tall, in front of orange and dark autumn trees: a THICK very dark brown-black outline all the way round (as thick as the stem), a bright, saturated, LIGHT fill (a pale lemon birch, a vivid red-orange maple, a warm tan oak) with one light highlight side, no fine veins, a short thick stem. The silhouette must read against both bright orange foliage and dark shadows. 3 rows, each row is ONE leaf kind tumbling as it falls, seen from the side: the leaf turns over in the air - flat face, tilted, edge-on thin sliver, tilted the other way, the back face. Row 1, exactly 5 frames: a small oval BIRCH leaf, bright lemon yellow. Row 2, exactly 5 frames: a five-pointed MAPLE leaf, orange to red. Row 3, exactly 5 frames: a round-lobed OAK leaf, russet brown. All leaves the SAME size, centred on one line. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 8,
+        "rows": [
+          [
+            {
+              "anim": "birch",
+              "frames": 5,
+              "fps": 8,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "maple",
+              "frames": 5,
+              "fps": 8,
+              "float": true
+            }
+          ],
+          [
+            {
+              "anim": "oak",
+              "frames": 5,
+              "fps": 8,
+              "float": true
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Second draw: the first take's thin outlines and fine veins melted into the orange trees at 8 px (6 of 8 test frames LOW in scripts/readability.py); thick dark outlines and lighter fills brought it to 2 of 8. 7–10 px in the game."
+    },
+    {
+      "id": "fx-ground",
+      "title": "FX · footstep puffs",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/fx-preview.png",
+        "repo:art/stages/hidden-garden/images/hg-0-0.png@560,380,560,100",
+        "repo:references/campus/images/hidden-gardens.png@435,700,630,240",
+        "repo:art/stages/hidden-garden/images/hg-4-0.png@0,440,700,120",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no arrows: Image 1 is an approved effect sprite sheet from this game: draw this sheet in exactly that pixel-art look and sheet layout - small sprites in rows on magenta. Effect sprite sheet: small puffs kicked up by a footstep or a landing on the ground of the Hidden Garden (images 2 to 4: the stone-slab path, the grass with yellow leaves, the pond edge). Every effect sits ON the ground line and bursts up and outward from one point, seen from the side, low and wide (about twice as wide as tall), and fades out by breaking into specks. 4 rows. Row 1, exactly 4 frames: DUST, a soft warm grey-beige dust puff - small burst, round cloud, wider thinner cloud, a few last specks. Row 2, exactly 4 frames: GRASS, a few green and straw-yellow grass blades and seeds flicked up and falling back. Row 3, exactly 4 frames: LEAF KICK, three or four tiny yellow and orange leaves kicked up in an arc and settling. Row 4, exactly 4 frames: SPLASH, a small blue-white water splash with droplets, crown, droplets falling, a flat ring. All effects at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 12,
+        "rows": [
+          [
+            {
+              "anim": "dust",
+              "frames": 4,
+              "loop": false,
+              "even": true
+            }
+          ],
+          [
+            {
+              "anim": "grass",
+              "frames": 4,
+              "loop": false,
+              "even": true
+            }
+          ],
+          [
+            {
+              "anim": "leaf-kick",
+              "frames": 4,
+              "loop": false,
+              "even": true
+            }
+          ],
+          [
+            {
+              "anim": "splash",
+              "frames": 4,
+              "loop": false,
+              "even": true
+            }
+          ]
+        ]
+      },
+      "review": "🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Dust 21–30 × 5–12 px, grass and leaf kick ≈ 25 × 14, splash ≈ 25 × 16 – about one step wide next to the 76 px hero. Rows are `even` (they break into specks)."
+    },
+    {
+      "id": "fx-water",
+      "title": "FX · pond ripples and lily pad",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/fx-preview.png",
+        "repo:art/stages/hidden-garden/images/hg-4-0.png@280,560,1000,160",
+        "repo:art/stages/hidden-garden/images/hg-0-0.png@1000,480,1000,180",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no arrows: Image 1 is an approved effect sprite sheet from this game: draw this sheet in exactly that pixel-art look and sheet layout - small sprites in rows on magenta. Effect sprite sheet for the Hidden Garden pond (images 2 and 3: its lily pads, its blue water with warm orange reflections and white glints). 3 rows. Row 1, exactly 4 frames: LILY PAD BOB, one dark olive-green round lily pad with a notch, seen almost edge-on from the side like in image 2 (a flat ellipse about four times as wide as tall), bobbing on the water - level, tipped a little left, level and a little lower, tipped a little right. Row 2, exactly 4 frames: RIPPLE, a ring on the water seen from the side as a flat ellipse made of thin light-blue and white pixel lines, growing wider and fainter: small ring, wider ring, wide broken ring, a few faint dashes. Row 3, exactly 4 frames: SPARKLE, a sun glint on the water, a small white-gold four-point twinkle that grows, flares, shrinks and fades. Keep the lily pads and ripples the SAME width as each other. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no hero, no scenery.",
+      "atlas": {
+        "height": 16,
+        "rows": [
+          [
+            {
+              "anim": "lily-bob",
+              "frames": 4,
+              "fps": 4
+            }
+          ],
+          [
+            {
+              "anim": "ripple",
+              "frames": 4,
+              "fps": 8,
+              "loop": false,
+              "even": true
+            }
+          ],
+          [
+            {
+              "anim": "sparkle",
+              "frames": 4,
+              "fps": 10,
+              "loop": false,
+              "even": true,
+              "scale": 0.5
+            }
+          ]
+        ],
+        "_measured": "Lily pads in hg-4-0 (x 670, y 660) measure about 68 x 14-17 px; height 16 on lily-bob-01 gives 58 x 16. The sparkle is halved (scale 0.5) to a 12 px glint."
+      },
+      "review": "🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Lily pad 58 × 14–16 px, measured against the painted pads in hg-4-0 (≈ 68 × 14–17); ripple 37–71 px wide; sparkle halved to a 12 px glint. The plate's pads are browner than this olive pad – tint in code if it stands out."
+    },
+    {
+      "id": "dexter-prologue",
+      "title": "Dexter · prologue additions",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/dexter-preview.png",
+        "repo:art/direction/images/dexter-stages-preview.png@535,585,125,205",
+        "repo:art/direction/images/dexter-stages-preview.png@290,225,390,570",
+        "merch:Deggster-9487_1280x1280.jpg",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the feet), with NO text at all - no titles, no captions, no frame numbers, no labels under the figures: DEXTER, the university's black panther mascot as the small PLUSH toy from the first two images (an approved sprite sheet of him from this game, then his approved design) - copy that plush exactly: CHUNKY toy proportions, a BIG round head about 45 % of his whole height, wide rounded ears, big ice-blue eyes, an orange nose, small white fangs, long white whiskers, a short soft body in a light-grey THD crest T-shirt and light-grey shorts, short stubby black arms and legs, big black paw feet with white claw dots, a short curled tail. Black velvet fur with soft dark-grey highlights so the shapes read at small size. A cute, slightly too-alive plush that moves by itself - never slim, never a cat on two legs, never a human body. Strict side view, facing RIGHT, the head turned a little toward the viewer so both eyes show, the same size in every frame as on the approved sheet. He never talks: everything is body language. These are the poses his approved sheet (image 1) is missing for the first quest. 2 rows. Row 1, exactly 6 frames: LOOK BACK, 3 frames (standing, facing right, he turns his big head back over his shoulder toward the viewer and the left, then holds the look), then WAIT, 3 frames (standing, facing right, he taps one foot and his tail swishes, impatient but friendly). Row 2, exactly 2 frames: SIT, Dexter sitting on an invisible bench edge with his stubby legs dangling down in front, paws in his lap, facing right - frame 1 still, frame 2 his head tilted and the tail curled the other way. Draw the seat as nothing: he sits in the air at the height of a bench seat, his legs hanging. Every standing frame stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY the number stated. No people, no bench, no scenery.",
+      "atlas": {
+        "height": 27,
+        "rows": [
+          [
+            {
+              "anim": "look-back",
+              "frames": 3,
+              "loop": false
+            },
+            {
+              "anim": "wait",
+              "frames": 3,
+              "fps": 6
+            }
+          ],
+          [
+            {
+              "anim": "sit",
+              "frames": 2,
+              "fps": 2
+            }
+          ]
+        ]
+      },
+      "review": "✅ Approved 24 Oct by Alexander; exported to game/public/assets/sprites/ with export_atlas.py."
+    },
+    {
+      "id": "menu-key",
+      "title": "Menu · the Hidden Garden at first light",
+      "factor": 2,
+      "keyed": false,
+      "size": "2560x1440",
+      "colours": 192,
+      "inputs": [
+        "repo:art/direction/images/style-master-preview.png",
+        "repo:art/stages/hidden-garden/images/hg-4-0.png",
+        "repo:art/stages/hidden-garden/images/hg-0-0.png",
+        "repo:art/direction/images/hidden-garden-preview.png@0,0,1536,560"
+      ],
+      "prompt": "Key art for the game's title menu, a full 16:9 picture in exactly the hi-bit pixel-art look of the first image (the style master) - the magenta and sprite-sheet rules do NOT apply to this one image: it is a full scene. ABSOLUTELY NO TEXT, no logo, no title, no letters, no UI, no characters, no people, no animals. The scene: the Hidden Garden pond from images 2 and 3 at FIRST LIGHT, early morning - the low sun just rising behind the far conifer forest on the left, a pale gold-and-rose sky turning blue above, thin mist lying over the still pond. Strict side view like a game screen, everything parallel to the screen: the far hills and dark conifers, the band of autumn trees in yellow, orange and russet, the tall golden reed bed, the low stone wall and the small timber jetty at the water's edge, the empty park bench on the left. The pond fills the lower third and mirrors everything like a Kingdom Two Crowns reflection, with lily pads and a few floating maple leaves, and a dark blurred foreground of autumn leaves and grass along the bottom edge. Leave calm, simple sky in the upper middle (the game puts its title there). Cozy and beautiful, and only on a second look a little too still: in the reflection right below the jetty, one small patch reflects something that is not there - a faint rusty blue-green girder - very subtle.",
+      "review": "🟡 Drawn 24 Oct for the prologue menu (workstream 5); exported to game/public/assets/ui/menu-key.png with scripts/export_key_art.py, awaiting Alexander's review."
     },
     {
       "id": "intro-anomaly",

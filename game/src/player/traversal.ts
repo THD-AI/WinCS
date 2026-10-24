@@ -4,7 +4,8 @@ export const CLIMB_SPEED = 70;
 export interface Traversal { ladder: Box | null; drop: number; detach: number }
 export const traversal = (): Traversal => ({ ladder: null, drop: 0, detach: 0 });
 
-function surfaceNear(geometry: Geometry[], x: number, y: number) {
+/** The walk or one-way surface within 8 px of (x, y), else y. */
+export function surfaceNear(geometry: Geometry[], x: number, y: number) {
   const candidates: number[] = [];
   for (const world of geometry) for (const line of [...world.walk, ...world.oneWay]) {
     for (let i = 1; i < line.length; i++) {
