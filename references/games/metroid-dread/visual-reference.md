@@ -4,7 +4,7 @@
 [← Metroid Dread](README.md) · [Game references](../../README.md) · **6 / 36** · [Apple Knight →](../apple-knight/README.md)
 <!-- nav:end -->
 
-![Metroid Dread: start with this gameplay reference](images/gallery-1.jpg)
+*Metroid Dread: start with this gameplay reference*
 
 **Look for:** Separate the playable side view from cinematic shots; look for movement affordances.
 
@@ -26,7 +26,7 @@ Side-on running and aiming, platforms, projectile effects and minimap.
 
 ## gallery-2.jpg
 
-![Reference view: E.M.M.I. pursuit space, constrained routes, door and minimap state.](images/gallery-2.jpg)
+*Reference view: E.M.M.I. pursuit space, constrained routes, door and minimap state.*
 
 E.M.M.I. pursuit space, constrained routes, door and minimap state.
 
@@ -37,7 +37,7 @@ E.M.M.I. pursuit space, constrained routes, door and minimap state.
 
 ## gallery-3.jpg
 
-![Reference view: Cinematic capture closeup: compare production cost and camera change with the gameplay views; do not budget this for the jam.](images/gallery-3.jpg)
+*Reference view: Cinematic capture closeup: compare production cost and camera change with the gameplay views; do not budget this for the jam.*
 
 Cinematic capture closeup: compare production cost and camera change with the gameplay views; do not budget this for the jam.
 

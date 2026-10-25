@@ -23,7 +23,7 @@ ABSOLUTELY NO TEXT, NO LABELS, NO NAMES, NO MEASUREMENTS. A character lineup on 
 - `20261022_145925.jpg` (GameJam_ References, outside Git)
 - `20261023_130003.jpg` (GameJam_References-2, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/cast.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo cast`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/cast.png` · rebuild: `python scripts/make_boards.py draw cast --redo --config art/direction/direction.json`
 
 <!-- nav:start -->
 [← Boss · Jenny, the runaway race car](boss-jenny.md) · [Visual direction](README.md) · **9 / 14** · [Dexter · plush to mascot →](dexter-stages.md)

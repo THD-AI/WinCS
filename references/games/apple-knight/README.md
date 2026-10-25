@@ -6,7 +6,7 @@
 
 ## At a glance · Immediate platforming
 
-[![Apple Knight: gameplay reference](images/store-1.png)](visual-reference.md)
+[Apple Knight: gameplay reference](visual-reference.md)
 
 **Look for:** Spot the route, obstacle and player first. What would give our version its own comic rule?
 

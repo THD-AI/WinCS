@@ -17,9 +17,9 @@ A real GAMEPLAY screenshot, same camera as the first image: strict side view, wi
 - [style-master](style-master.md) (this pack)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 - [after-center.png](../stages/rusty-creek/images/after-center.png)
-- [bad-seed-02.jpg](../../references/games/dead-cells/images/bad-seed-02.jpg)
+- `games/dead-cells/images/bad-seed-02.jpg` (GameJam_GameRefs, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/combat.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo combat`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/combat.png` · rebuild: `python scripts/make_boards.py draw combat --redo --config art/direction/direction.json`
 
 <!-- nav:start -->
 [← Dexter · plush to mascot](dexter-stages.md) · [Visual direction](README.md) · **11 / 14** · [Anomaly crossing · the crash frame →](anomaly-language.md)

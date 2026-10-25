@@ -4,7 +4,7 @@
 [← Kingdom Two Crowns](README.md) · [Game references](../../README.md) · **16 / 36** · [Kingdom Eighties →](../kingdom-eighties/README.md)
 <!-- nav:end -->
 
-![Kingdom Two Crowns: start with this gameplay reference](images/01-official-gameplay.jpg)
+*Kingdom Two Crowns: start with this gameplay reference*
 
 **Look for:** Notice the single ground line and layered scenery. Minimal input does not mean a tiny simulation.
 
@@ -24,7 +24,7 @@ Nighttime side-view scene: threats, recruited people and warm light on one strip
 
 ## images/02-official-gameplay.jpg
 
-![Split-screen co-op view, not two vertically connected world floors.](images/02-official-gameplay.jpg)
+*Split-screen co-op view, not two vertically connected world floors.*
 
 Split-screen co-op view, not two vertically connected world floors.
 
@@ -35,7 +35,7 @@ Split-screen co-op view, not two vertically connected world floors.
 
 ## images/03-official-gameplay.jpg
 
-![Daylight forest shrine/landmark: foreground silhouette and water reflection.](images/03-official-gameplay.jpg)
+*Daylight forest shrine/landmark: foreground silhouette and water reflection.*
 
 Daylight forest shrine/landmark: foreground silhouette and water reflection.
 

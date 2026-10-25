@@ -4,7 +4,7 @@
 [← Hollow Knight](README.md) · [Game references](../../README.md) · **2 / 36** · [9 Years of Shadows →](../9-years-of-shadows/README.md)
 <!-- nav:end -->
 
-![Hollow Knight: start with this gameplay reference](images/blue-cave.jpg)
+*Hollow Knight: start with this gameplay reference*
 
 **Look for:** The tiny bright silhouette, readable ledges and feeling of a much larger place.
 
@@ -26,7 +26,7 @@ Vertical platform spacing and the bright character against a blue background.
 
 ## mines.jpg
 
-![Reference view: Horizontal movement, a landing ledge, hazards below and effects competing for contrast.](images/mines.jpg)
+*Reference view: Horizontal movement, a landing ledge, hazards below and effects competing for contrast.*
 
 Horizontal movement, a landing ledge, hazards below and effects competing for contrast.
 
@@ -37,7 +37,7 @@ Horizontal movement, a landing ledge, hazards below and effects competing for co
 
 ## white-palace.jpg
 
-![Reference view: Enemy scale and ground combat silhouette against layered architecture. Source filename retained; location identity is not inferred.](images/white-palace.jpg)
+*Reference view: Enemy scale and ground combat silhouette against layered architecture. Source filename retained; location identity is not inferred.*
 
 Enemy scale and ground combat silhouette against layered architecture. Source filename retained; location identity is not inferred.
 

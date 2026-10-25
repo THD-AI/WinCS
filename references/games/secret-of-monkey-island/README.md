@@ -4,7 +4,7 @@
 [← Duck Season · visual reference](../duck-season/visual-reference.md) · [Game references](../../README.md) · **33 / 36** · [The Secret of Monkey Island · classic · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[![The Secret of Monkey Island · classic pixel art: visual study](images/classic-01.png)](visual-reference.md)
+[The Secret of Monkey Island · classic pixel art: visual study](visual-reference.md)
 
 **The original 1990 game’s pixel-art presentation is the reference, rather than the Special Edition repaint.**
 

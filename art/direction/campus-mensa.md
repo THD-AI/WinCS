@@ -19,7 +19,7 @@ Same camera, framing and pixel style as the first image (wide side view, hero sm
 - `20261022_142033.jpg` (GameJam_ References, outside Git)
 - `20261022_141518.jpg` (GameJam_ References, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/campus-mensa.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo campus-mensa`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/campus-mensa.png` · rebuild: `python scripts/make_boards.py draw campus-mensa --redo --config art/direction/direction.json`
 
 <!-- nav:start -->
 [← Lost in the Green · secret paths](lost-in-the-green.md) · [Visual direction](README.md) · **4 / 14** · [Mensa · coffee machine save point →](mensa-interior.md)

@@ -25,7 +25,7 @@ Match the first image's pixel style and light, laid out as a neat prop sheet on 
 - `20261023_131357.jpg` (GameJam_References-2, outside Git)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/props.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo props`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/props.png` · rebuild: `python scripts/make_boards.py draw props --redo --config art/direction/direction.json`
 
 <!-- nav:start -->
 [← HUD and pocket computer](hud.md) · [Visual direction](README.md) · **14 / 14** · [Visual direction →](README.md)

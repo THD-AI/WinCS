@@ -2,7 +2,7 @@
 
 [← Real playground board](../../campus/playground.md) · [Visual library](../../README.md) · [Next: Planet of Lana layers →](../../games/planet-of-lana/layers-and-motion.md)
 
-![Playground trailer at 0:15: small figures in a warm refuge under a creature](images/frame-015.jpg)
+*Playground trailer at 0:15: small figures in a warm refuge under a creature*
 
 **The supplied trailer is the horror reference.** [Watch the original](https://www.youtube.com/watch?v=P8U22dvli4w). Credit: Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar. Research reviewed 22 October 2026.
 
@@ -16,61 +16,61 @@ Ten clean source-video screenshots at 0:05–0:50 sample the 72-second trailer. 
 
 ## 0:05
 
-[![Tiny figures and a light beam inside a mouth-like play structure; drawings keep the setting recognizably child-made.](images/frame-005.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=5s)
+[Tiny figures and a light beam inside a mouth-like play structure; drawings keep the setting recognizably child-made.](https://www.youtube.com/watch?v=P8U22dvli4w&t=5s)
 
 Tiny figures and a light beam inside a mouth-like play structure; drawings keep the setting recognizably child-made.
 
 ## 0:10
 
-[![A creature emerging into a rope-net space; a familiar tube becomes a threat frame.](images/frame-010.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=10s)
+[A creature emerging into a rope-net space; a familiar tube becomes a threat frame.](https://www.youtube.com/watch?v=P8U22dvli4w&t=10s)
 
 A creature emerging into a rope-net space; a familiar tube becomes a threat frame.
 
 ## 0:15
 
-[![Small warm refuge under a looming creature: scale and light isolate the children.](images/frame-015.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=15s)
+[Small warm refuge under a looming creature: scale and light isolate the children.](https://www.youtube.com/watch?v=P8U22dvli4w&t=15s)
 
 Small warm refuge under a looming creature: scale and light isolate the children.
 
 ## 0:20
 
-[![Glossy organic eye-like forms contrast with constructed equipment.](images/frame-020.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=20s)
+[Glossy organic eye-like forms contrast with constructed equipment.](https://www.youtube.com/watch?v=P8U22dvli4w&t=20s)
 
 Glossy organic eye-like forms contrast with constructed equipment.
 
 ## 0:25
 
-[![One-eyed rounded creature and a balloon-like accent; toy softness against an unsettling face.](images/frame-025.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=25s)
+[One-eyed rounded creature and a balloon-like accent; toy softness against an unsettling face.](https://www.youtube.com/watch?v=P8U22dvli4w&t=25s)
 
 One-eyed rounded creature and a balloon-like accent; toy softness against an unsettling face.
 
 ## 0:30
 
-[![Long limbs cross a red-lit construction of toy blocks and tubes.](images/frame-030.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=30s)
+[Long limbs cross a red-lit construction of toy blocks and tubes.](https://www.youtube.com/watch?v=P8U22dvli4w&t=30s)
 
 Long limbs cross a red-lit construction of toy blocks and tubes.
 
 ## 0:35
 
-[![Bright confetti and climbing-wall holds interrupt the darkness.](images/frame-035.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=35s)
+[Bright confetti and climbing-wall holds interrupt the darkness.](https://www.youtube.com/watch?v=P8U22dvli4w&t=35s)
 
 Bright confetti and climbing-wall holds interrupt the darkness.
 
 ## 0:40
 
-[![Rope-grid barriers separate the figures from a large creature.](images/frame-040.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=40s)
+[Rope-grid barriers separate the figures from a large creature.](https://www.youtube.com/watch?v=P8U22dvli4w&t=40s)
 
 Rope-grid barriers separate the figures from a large creature.
 
 ## 0:45
 
-[![A creature interrupts the climbing route; the playground becomes an occupied space.](images/frame-045.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=45s)
+[A creature interrupts the climbing route; the playground becomes an occupied space.](https://www.youtube.com/watch?v=P8U22dvli4w&t=45s)
 
 A creature interrupts the climbing route; the playground becomes an occupied space.
 
 ## 0:50
 
-[![Children sit at the opening of a tall play tower against a starry sky.](images/frame-050.jpg)](https://www.youtube.com/watch?v=P8U22dvli4w&t=50s)
+[Children sit at the opening of a tall play tower against a starry sky.](https://www.youtube.com/watch?v=P8U22dvli4w&t=50s)
 
 Children sit at the opening of a tall play tower against a starry sky.
 

@@ -20,9 +20,9 @@ Match the first image's style exactly. Boss arena: the open boss clearing at the
 - `RolloutJenny16_9.jpeg` (GameJam_Merch, outside Git)
 - [after-right.png](../stages/rusty-creek/images/after-right.png)
 - [hero-preview.png](../sprites/images/hero-preview.png)
-- [wall-188.jpg](../../references/games/terraria/images/wall-188.jpg)
+- `games/terraria/images/wall-188.jpg` (GameJam_GameRefs, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/boss-jenny.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo boss-jenny`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/boss-jenny.png` · rebuild: `python scripts/make_boards.py draw boss-jenny --redo --config art/direction/direction.json`
 
 <!-- nav:start -->
 [← Playground · the slide](playground.md) · [Visual direction](README.md) · **8 / 14** · [The cast · machines and companion →](cast.md)

@@ -15,7 +15,8 @@ Usage:
 
 Photos are found under WINCS_PHOTOS (default: ~/Downloads), with the prefixes
 ref1: "GameJam_ References", ref2: "GameJam_References-2", gam: "gam",
-merch: "GameJam_Merch" (public reference photos: THD Campus Store webshop.th-deg.de, the
+merch: "GameJam_Merch", game: "GameJam_GameRefs" (other games' screenshots and frames, kept out of the public
+repository: games/<title>/images/…, animation/<title>/images/…) (public reference photos: THD Campus Store webshop.th-deg.de, the
 Deggster costume from th-deg.de, Jenny from fast-forest.de).
 "repo:" paths are inside this repository; "out:<id>" is another board's raw.
 Needs OPENAI_API_KEY (environment or .env) for `draw`.
@@ -49,7 +50,8 @@ def use_config(path: Path) -> None:
     RAW = ROOT / "tmp" / "boards" / CONFIG.parent.name / "raw"
     OUT = CONFIG.parent / "images"
 PHOTOS = Path(os.environ.get("WINCS_PHOTOS", Path.home() / "Downloads"))
-PREFIX = {"ref1": "GameJam_ References", "ref2": "GameJam_References-2", "gam": "gam", "merch": "GameJam_Merch"}
+PREFIX = {"ref1": "GameJam_ References", "ref2": "GameJam_References-2", "gam": "gam", "merch": "GameJam_Merch",
+          "game": "GameJam_GameRefs"}  # other games' screenshots and trailer frames: design study, never in Git
 PAPER = (232, 228, 220)  # preview background where the magenta was
 COLOURS = 96
 

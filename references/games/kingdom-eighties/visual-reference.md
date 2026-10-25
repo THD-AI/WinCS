@@ -4,7 +4,7 @@
 [← Kingdom Eighties](README.md) · [Game references](../../README.md) · **18 / 36** · [Stardew Valley →](../stardew-valley/README.md)
 <!-- nav:end -->
 
-![Kingdom Eighties: start with this gameplay reference](images/03-official-gameplay.jpg)
+*Kingdom Eighties: start with this gameplay reference*
 
 **Look for:** Look at the small-town props and lighting. Familiar places can make absurd situations funnier.
 
@@ -14,7 +14,7 @@ Collected 21 October 2026 from the developer/publisher store listing. Visually i
 
 ## images/01-official-gameplay.jpg
 
-![Split-screen co-op promotional gameplay view: compare repeated horizontal strips.](images/01-official-gameplay.jpg)
+*Split-screen co-op promotional gameplay view: compare repeated horizontal strips.*
 
 Split-screen co-op promotional gameplay view: compare repeated horizontal strips.
 
@@ -25,7 +25,7 @@ Split-screen co-op promotional gameplay view: compare repeated horizontal strips
 
 ## images/02-official-gameplay.jpg
 
-![Side-view neighborhood composition with cables, tree canopy and bicycle.](images/02-official-gameplay.jpg)
+*Side-view neighborhood composition with cables, tree canopy and bicycle.*
 
 Side-view neighborhood composition with cables, tree canopy and bicycle.
 

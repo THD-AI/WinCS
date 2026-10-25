@@ -6,7 +6,7 @@
 
 ## At a glance · Ordinary places, strange trouble
 
-[![Kingdom Eighties: gameplay reference](images/03-official-gameplay.jpg)](visual-reference.md)
+[Kingdom Eighties: gameplay reference](visual-reference.md)
 
 **Look for:** Look at the small-town props and lighting. Familiar places can make absurd situations funnier.
 

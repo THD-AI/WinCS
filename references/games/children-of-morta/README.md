@@ -4,7 +4,7 @@
 [← Visual reference views](../stardew-valley/visual-reference.md) · [Game references](../../README.md) · **21 / 36** · [Visual reference views →](visual-reference.md)
 <!-- nav:end -->
 
-[![Children of Morta · pixels and magic: visual study](images/01-official-gameplay.jpg)](visual-reference.md)
+[Children of Morta · pixels and magic: visual study](visual-reference.md)
 
 **Alexander likes its visual design and magic/effects. This is not a request for the family/homecoming system.**
 

@@ -1,225 +1,225 @@
 {
-  "name": "Visual direction",
-  "readme": "One style for the whole game, set before any sprite is drawn. The **style master** is our real Rusty Creek stage plus the approved hero, finished as an in-game screenshot; every other image takes it as its first input, then its location collage, the hero sheet and one reference game. The rules distilled from the pack are in [06 – Visual direction](../../docs/06-VISUAL-DIRECTION.md). Click an image for its page: brief, inputs and review notes, with Previous / Next.",
-  "model": "gpt-image-2.5-sunburst",
-  "size": "1536x864",
-  "style": "STYLE (shared by every image in this pack): a 16:9 IN-GAME SCREENSHOT of a 2D side-scrolling exploration-action game. Detailed modern hi-bit pixel art with a fine 2-pixel grain, exactly like the pixel grain, palette and light of the style master: warm low autumn sun, saturated golds and oranges against cool blue sky and slate-teal steel, rust as the accent colour. Strict flat side view, no perspective vanishing point. Depth is built from parallax layers like Planet of Lana: soft hazy far background, detailed mid-ground where the character walks, and darker foreground elements that belong to THIS location. Copy the style master's pixel grain, palette and light ONLY - never its composition, its railing, its creek or its leaf band unless this brief asks for water. The hero is SMALL in the frame - about one eighth of the screen height - a lone figure in a large, legible world. Characters read as clean silhouettes with a thin warm rim light, like Hollow Knight. No text, no logos, no watermark, no UI unless the brief asks for it.",
-  "people": "The hero is always OUR character from the hero sheet: a 6 ft adult in the grey/blue/teal THD poncho with cream tassels and a THD crest on the back, a deep hood that shows only black shadow (no face, no hair, never a recognisable gender), black backpack, grey jeans, white sneakers. Never draw real people from any photo.",
-  "boards": [
-    {
-      "id": "style-master",
-      "title": "Style master · Rusty Creek, first light",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "repo:art/stages/rusty-creek/images/after-center.png",
-        "repo:art/sprites/images/hero-preview.png"
-      ],
-      "prompt": "The first image IS our game's stage, Rusty Creek: keep its composition, the blue-green riveted rusty girder maze, ladders, autumn trees and creek exactly, only widen it to 16:9 and finish it as a real game screenshot. Place the hero from the second image (the THD poncho character) small, walking right along the lowest broad girder deck in the left third of the frame. Add a darker foreground band of autumn leaves and a rusty railing along the bottom edge, gentle haze on the far trees, sunlight glinting on the creek, a few drifting leaves. This image will be the reference that every other image of the game must match.",
-      "review": "✅ Owner: \"perfect.\" The anchor for the whole pack – our real Rusty Creek plate with the hero at Planet of Lana scale."
-    },
-    {
-      "id": "hidden-garden",
-      "title": "Hidden Garden · the lake anomaly",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:references/campus/images/hidden-gardens.png",
-        "repo:references/games/kingdom-two-crowns/images/01-official-gameplay.jpg",
-        "repo:art/sprites/images/hero-preview.png"
-      ],
-      "prompt": "Region 0, the tutorial. Scene from the Hidden Garden collage: reed beds, stone-slab paths, a small timber deck and a still pond across the lower third, mirrored like Kingdom Two Crowns' water. Late afternoon, calm, a little too quiet. FOCUS, centre of the frame: DEXTER, a small black panther plush mascot in a light-grey T-shirt (1.5 ft, knee height to the hero), stands on the timber deck at the water's edge, one paw pointing down at the pond. The hero stands two steps behind him on the left, small. In the pond right below Dexter, ONE rectangular patch of the reflection is clearly WRONG: instead of reeds it reflects a rusty blue-green girder maze that does not exist in the scene, its edges torn into glitchy pixels and faint cyan light. The rest of the reflection is normal. Uncanny but beautiful.",
-      "review": "✅ Owner: \"absolutely a masterpiece – the first introductory zone.\" Dexter pointing at the first anomaly is how every region's anomaly gets introduced."
-    },
-    {
-      "id": "lost-in-the-green",
-      "title": "Lost in the Green · secret paths",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:references/campus/images/lost-in-the-green.png",
-        "repo:references/games/planet-of-lana/images/gameplay-050.jpg",
-        "repo:art/sprites/images/hero-preview.png"
-      ],
-      "prompt": "No water and no ruins in this scene. A natural hillside: a narrow path of grey stone slabs climbs a smooth, gently curving grassy hill from bottom-left to the upper right (soft slope like Planet of Lana, no blocks, no walls). Tall cream pampas grass, birches and autumn shrubs form layered screens. The hero walks up the slab path in the left third, half hidden behind a foreground screen of tall grass. CLEARLY VISIBLE in the middle of the path ahead of the hero, about knee height: a small four-wheeled lab rover robot (silver aluminium chassis, four chunky yellow wheels, a black cylindrical lidar on top) driving toward the hero, a thin red lidar beam sweeping the grass. On the right, a dark gap in a hedge glows faintly cyan - a secret path. Golden afternoon light through the birches.",
-      "review": "✅ Owner: \"perfect.\" Keep: hills going up like a mountain, diverging paths, up-down exploration, leaves over the camera."
-    },
-    {
-      "id": "campus-mensa",
-      "title": "Campus · the plaza and the Mensa scaffold",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "ref1:20261022_142033.jpg",
-        "ref1:20261022_141518.jpg"
-      ],
-      "prompt": "Same camera, framing and pixel style as the first image (wide side view, hero small), but at THD's campus instead of the creek - NO water, NO creek. A long salmon-pink building facade with white columns PARALLEL to the screen; in the middle a tall section wrapped from pavement to roof in construction SCAFFOLDING filling a third of the frame width - aluminium tubes, wide plank decks on four levels, zigzag ladders - empty, no workers; the hero (second image) climbs the ladder between the second and third deck; a paved plaza along the bottom with the yellow town-sign and green assembly-point sign, bikes, young autumn trees; dark blurred hedge leaves along the bottom edge. Golden late afternoon. Secret horror detail: one top-floor window shows its room in bright daylight. No text.",
-      "review": "🟡 Owner: \"very not good\" (first take). Four redraws: the model keeps copying the symmetric corridor photo or drops the scaffold. Superseded by the [Campus stage concept](../locations/campus-clean.md); the scaffold becomes its own layer."
-    },
-    {
-      "id": "mensa-interior",
-      "title": "Mensa · coffee machine save point",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "ref2:20261023_125138.jpg",
-        "ref2:20261023_124941.jpg",
-        "ref2:20261023_130817.jpg",
-        "repo:references/games/hollow-knight/images/white-palace.jpg",
-        "repo:art/sprites/images/hero-preview.png"
-      ],
-      "prompt": "Match the first image's style exactly. Interior side view of the empty university cafeteria at night: red glossy counter fronts with granite tops, glass display cases with wrapped muffins and cake, stacks of yellow trays, the black-and-steel self-service coffee machine glowing like a shrine - our save point, equivalent to Hollow Knight's bench. The hero sits on a plywood chair beside it, resting; Dexter the panther plush sits on the counter, trading a wrapped Leberkaese roll. Warm pool of light around the machine, the rest of the hall in deep blue shadow, one flickering ceiling panel.",
-      "review": "✅ Owner: good. Keep the out-of-focus tables and chairs in the foreground as a blur layer."
-    },
-    {
-      "id": "toxic-garden",
-      "title": "Toxic Garden · the corten beds",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "repo:references/campus/images/toxic-garden.png",
-        "ref1:20261022_142942.jpg",
-        "ref1:20261022_142948.jpg",
-        "ref1:20261022_143102.jpg",
-        "ref1:20261022_143206.jpg"
-      ],
-      "prompt": "Match the first image's pixel style and Planet of Lana framing. OUTDOORS, from the Toxic Garden collage and photos (images 3-7) - NOT a greenhouse, NO glass roof, NO interior: long raised beds edged with rust-orange corten steel, gravel paths, big granite boulders and a cairn of stacked stones, dense plantings of deep crimson and burgundy foliage, purple asters and silver-grey shrubs, red maples, all under the concrete underside of a huge highway bridge that cuts across the top of the frame. The palette comes from the collage: rust orange, crimson, purple, silver-grey, concrete. Strict side view; the corten beds step up and down as platforms. The hero (second image) small on a corten edge. Toxic, but secret horror: the plants look almost normal - a few too many red leaves, the flower heads all slightly turned toward the hero, a faint shimmer over the gravel. Blurred crimson leaves in the foreground. No gore, no monsters with mouths.",
-      "review": "✅ Redone outdoors after owner feedback (the greenhouse was wrong): corten beds, granite and the cairn, crimson, purple and silver plantings under the highway bridge, the collage's own palette. Secret-horror detail kept subtle."
-    },
-    {
-      "id": "playground",
-      "title": "Playground · the slide",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "repo:references/campus/images/playground.png",
-        "ref1:20261022_142552.jpg",
-        "ref1:20261022_142555.jpg",
-        "ref1:20261022_142620.jpg",
-        "repo:references/animation/playground/images/frame-020.jpg"
-      ],
-      "prompt": "Match the first image's pixel style and Planet of Lana framing. The real campus adventure playground from the photos (images 3-6) in strict side view: leaning green and yellow timber poles, a rope-net tunnel bridge between two timber towers, a wooden climbing house, a timber plank ramp, sand ground, a metal tube slide. Its towers, bridge and ramp form a readable climb route. Late golden light turning to dusk, long shadows. The hero (second image) small, halfway up the plank ramp. Secret horror, subtle: the tube slide's opening is just a little too dark and a little too wide, and one swing hangs perfectly still while the others sway. Blurred foreground grass at the bottom edge. No monster mouth, no gore.",
-      "review": "✅ Revised: strict side view, towers, net bridge, ramp and slide as one readable climb route; the slide's opening only a little too dark."
-    },
-    {
-      "id": "boss-jenny",
-      "title": "Boss · Jenny, the runaway race car",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "merch:Jenny15GDX_4.jpg",
-        "merch:Jenny14GDX-rollout.jpg",
-        "merch:RolloutJenny16_9.jpeg",
-        "repo:art/stages/rusty-creek/images/after-right.png",
-        "repo:art/sprites/images/hero-preview.png",
-        "repo:references/games/terraria/images/wall-188.jpg"
-      ],
-      "prompt": "Match the first image's style exactly. Boss arena: the open boss clearing at the end of Rusty Creek (fifth image) - a broad flat girder floor with the creek below. Boss: JENNY, THD's autonomous Formula Student race car from the photos - carbon black and dark-grey bodywork with lime-green, teal and blue stripe graphics, wide front wing, big rear wing, slick tyres, roll hoop - DRIVING ITSELF: the cockpit is EMPTY (no driver, no helmet), a camera and lidar sensor sit on the roll hoop, the blue autonomous-status light on the roll hoop is flashing. The anomaly has taken over her self-driving: headlight-like sensors glow, a little black fluid seeps from the panel seams. She is mid-charge toward the hero with speed lines and tyre smoke; springs and bolts fly off. The hero from the sixth image (small) jumps over her. A thin boss health bar at the bottom of the screen, no text. Huge, readable boss silhouette like Terraria's Wall of Flesh fight.",
-      "review": "✅ Owner: good. Fast Forest's real livery, empty cockpit, autonomy light. Animation plan: the boss sprite board (rev, charge, crash, stunned) on the same pipeline as every sprite."
-    },
-    {
-      "id": "cast",
-      "title": "The cast · machines and companion",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "merch:Deggster-9487_1280x1280.jpg",
-        "ref2:20261023_135554.jpg",
-        "ref2:20261023_125948.jpg",
-        "ref2:20261023_125941.jpg",
-        "ref1:20261022_145925.jpg",
-        "ref2:20261023_130003.jpg"
-      ],
-      "prompt": "ABSOLUTELY NO TEXT, NO LABELS, NO NAMES, NO MEASUREMENTS. A character lineup on a plain warm-grey backdrop with one ground line, side views, at TRUE relative scale, in the first image's pixel style and light. Left to right: (1) the hero from the second image, 6 ft tall - this height is the ruler; (2) Dexter the black panther plush mascot with light-grey T-shirt from the third image, only 1.5 ft - reaching the hero's knee; (3) Dexter mid-corruption, 4 ft, limbs longer, seams splitting; (4) Dexter FINAL FORM, 8.5 ft - CLEARLY TALLER than the hero by almost half again, lanky panther-humanoid, black goo dripping from joints and torn seams like Kingdom Two Crowns' Greed, glowing ice-blue eyes; (5) the black quadcopter drone from the photo hovering at head height; (6) the yellow-wheeled lidar rover, knee high; (7) the six-legged hexapod walker, waist high; (8) the cute dark-grey THD box delivery robot, knee high; (9) at the far right, Jenny: the green-and-black open-wheel Formula Student race car from the last photo, full car length, glowing headlight eyes.",
-      "review": "✅ Owner: pretty good. The machines at a shared scale; Dexter's growth has its own image."
-    },
-    {
-      "id": "dexter-stages",
-      "title": "Dexter · plush to mascot",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "merch:Deggster-9487_1280x1280.jpg",
-        "merch:deggster-costume-store.jpg",
-        "repo:references/games/duck-season/images/ending-0800.jpg"
-      ],
-      "prompt": "ABSOLUTELY NO TEXT, NO LABELS. Four figures on one ground line, side views, TRUE relative scale, in the first image's pixel style and light, on a quiet late-afternoon campus lawn. (1) The hero from the second image, 6 ft - the ruler. (2) DEXTER as the small black panther plush from the third image (grey T-shirt, ice-blue eyes, orange nose), 1.5 ft, his head at the hero's knee. (3) Dexter as a bigger plush, 4 ft, chest height, stitching slightly strained. (4) Dexter's FINAL FORM: the university's full-size panther MASCOT COSTUME from the fourth photo (big fluffy black panther head with ice-blue eyes, orange nose, white whiskers and fangs, black furry neck sleeve, light-grey crest T-shirt, black furry gloves and feet) but 8.5 ft tall, towering over the hero. It looks friendly and harmless at first glance - a waving university mascot like in Duck Season - and is WRONG on a second look: thick black fluid seeps out exactly where the costume pieces join - the gap between the head and the neck sleeve, the glove cuffs at the wrists, the ankles - and drips down; the head sits very slightly too far forward; the eyes are a little too glossy. Secret horror: subtle, no gore, no monster transformation.",
-      "review": "✅ Owner: \"perfect.\" The plush becomes the 8.5 ft mascot costume, black fluid seeping where the pieces join."
-    },
-    {
-      "id": "combat",
-      "title": "Combat · the chair in Rusty Creek",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "repo:art/stages/rusty-creek/images/after-center.png",
-        "repo:references/games/dead-cells/images/bad-seed-02.jpg"
-      ],
-      "prompt": "A real GAMEPLAY screenshot, same camera as the first image: strict side view, wide, the hero small (one eighth of the screen height). Location: the rusty blue-green girder maze of Rusty Creek (third image). On a broad girder deck the hero from the second image (THD poncho, shadow-filled hood) swings a honey-plywood stacking chair with thin black steel legs in a HORIZONTAL SIDE SWEEP into a six-legged autonomous crab robot, which is knocked back with a small white impact flash and a few sparks and bolts (Dead Cells-style hit feel: short, crisp, readable). Further along the deck a small yellow-wheeled autonomous rover charges in, its lidar glowing red; above, a black autonomous quadcopter drone hovers out of reach. Minimal HUD in the top-left: five battery cells (four full) and a three-segment glitch meter. Dark blurred foreground leaves at the bottom edge. Clean readable silhouettes, no gore.",
-      "review": "✅ Third take, after the owner asked for a complete redo: now a real gameplay frame – wide side view, the hero small, a horizontal chair sweep into the autonomous crab robot, the rover charging in. (Earlier takes: the photographed teammate instead of the hero, then a close-up on a slope.)"
-    },
-    {
-      "id": "anomaly-language",
-      "title": "Anomaly crossing · the crash frame",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "repo:art/sprites/images/hero-preview.png",
-        "repo:art/direction/images/hidden-garden-preview.png"
-      ],
-      "prompt": "ONE single game frame, no panels: the Hidden Garden pond scene from the third image, frozen. The hero (second image) hangs in mid-air above the deck in the knocked-back DAMAGE pose (arms flung out, white hit-flash outline), a few pixel cracks radiating across the frozen picture, which is slightly darkened. In the centre of the screen, ON TOP of everything, an old Windows-style error dialog box drawn in crisp pixel art: grey window with a blue title bar that reads THD.exe and a small X button, a red circle with a white X icon on the left, the line THD.exe has stopped responding. and one OK button. Nothing else - no menus, no loading screens, no captions.",
-      "review": "✅ Redone for the owner's cheaper crossing: one frame – the hero frozen in the damage sprite over the pond, pixel cracks, and the window \"THD.exe has stopped responding.\" [OK]. No animation beyond sprites the hero needs anyway. (Rejected takes invented a 'Leave the Hidden Garden?' menu and a loading screen.)"
-    },
-    {
-      "id": "hud",
-      "title": "HUD and pocket computer",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "ref2:20261023_125955.jpg",
-        "repo:references/games/hollow-knight/images/blue-cave.jpg",
-        "repo:art/sprites/images/hero-preview.png"
-      ],
-      "prompt": "Match the first image's style exactly. A gameplay screenshot in Rusty Creek with the minimal HUD, Hollow Knight style: top-left, five small battery cells for health (three full, one cracked, one empty) and a three-segment glitch meter (two charged, glowing cyan with torn pixel edges). Bottom-right, the hero holds up the POCKET COMPUTER - the aluminium experiment suitcase from the photo shrunk to a handheld - and its screen is enlarged as an overlay panel in the centre: a green-on-black CRT map of connected rooms with one blinking player dot and dark unexplored rooms. Icons only, no readable text.",
-      "review": "✅ Owner: \"magnificent.\" Battery cells, glitch meter, the pocket computer's green CRT map."
-    },
-    {
-      "id": "props",
-      "title": "Props and pickups",
-      "factor": 2,
-      "keyed": false,
-      "inputs": [
-        "out:style-master",
-        "ref2:20261023_125038.jpg",
-        "ref2:20261023_125049.jpg",
-        "ref2:20261023_125100.jpg",
-        "ref2:20261023_125259.jpg",
-        "ref2:20261023_125008.jpg",
-        "ref2:20261023_130822.jpg",
-        "ref2:20261023_130804.jpg",
-        "ref2:20261023_131357.jpg",
-        "repo:art/sprites/images/hero-preview.png"
-      ],
-      "prompt": "Match the first image's pixel style and light, laid out as a neat prop sheet on a plain warm-grey backdrop, side views, at TRUE scale relative to the 6 ft hero standing at the left: the cling-film-wrapped muffin, marbled cake slice, foil-wrapped chocolate wafer (no brand text), Leberkaese roll in a brown paper bag, strawberry milk carton, iced-coffee cup, a yellow cafeteria tray, the plywood stacking chair, the yellow town-style sign on its steel pole with the green assembly-point sign, the aluminium pocket-computer suitcase. Each prop copies the real photographed object with its real imperfections - wrinkles, glare, scuffs - not an idealised product shot.",
-      "review": "✅ Owner: good. Real wrinkles and wear, true scale next to the hero."
-    }
-  ]
+ "name": "Visual direction",
+ "readme": "One style for the whole game, set before any sprite is drawn. The **style master** is our real Rusty Creek stage plus the approved hero, finished as an in-game screenshot; every other image takes it as its first input, then its location collage, the hero sheet and one reference game. The rules distilled from the pack are in [06 – Visual direction](../../docs/06-VISUAL-DIRECTION.md). Click an image for its page: brief, inputs and review notes, with Previous / Next.",
+ "model": "gpt-image-2.5-sunburst",
+ "size": "1536x864",
+ "style": "STYLE (shared by every image in this pack): a 16:9 IN-GAME SCREENSHOT of a 2D side-scrolling exploration-action game. Detailed modern hi-bit pixel art with a fine 2-pixel grain, exactly like the pixel grain, palette and light of the style master: warm low autumn sun, saturated golds and oranges against cool blue sky and slate-teal steel, rust as the accent colour. Strict flat side view, no perspective vanishing point. Depth is built from parallax layers like Planet of Lana: soft hazy far background, detailed mid-ground where the character walks, and darker foreground elements that belong to THIS location. Copy the style master's pixel grain, palette and light ONLY - never its composition, its railing, its creek or its leaf band unless this brief asks for water. The hero is SMALL in the frame - about one eighth of the screen height - a lone figure in a large, legible world. Characters read as clean silhouettes with a thin warm rim light, like Hollow Knight. No text, no logos, no watermark, no UI unless the brief asks for it.",
+ "people": "The hero is always OUR character from the hero sheet: a 6 ft adult in the grey/blue/teal THD poncho with cream tassels and a THD crest on the back, a deep hood that shows only black shadow (no face, no hair, never a recognisable gender), black backpack, grey jeans, white sneakers. Never draw real people from any photo.",
+ "boards": [
+  {
+   "id": "style-master",
+   "title": "Style master · Rusty Creek, first light",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "repo:art/stages/rusty-creek/images/after-center.png",
+    "repo:art/sprites/images/hero-preview.png"
+   ],
+   "prompt": "The first image IS our game's stage, Rusty Creek: keep its composition, the blue-green riveted rusty girder maze, ladders, autumn trees and creek exactly, only widen it to 16:9 and finish it as a real game screenshot. Place the hero from the second image (the THD poncho character) small, walking right along the lowest broad girder deck in the left third of the frame. Add a darker foreground band of autumn leaves and a rusty railing along the bottom edge, gentle haze on the far trees, sunlight glinting on the creek, a few drifting leaves. This image will be the reference that every other image of the game must match.",
+   "review": "✅ Owner: \"perfect.\" The anchor for the whole pack – our real Rusty Creek plate with the hero at Planet of Lana scale."
+  },
+  {
+   "id": "hidden-garden",
+   "title": "Hidden Garden · the lake anomaly",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:references/campus/images/hidden-gardens.png",
+    "game:games/kingdom-two-crowns/images/01-official-gameplay.jpg",
+    "repo:art/sprites/images/hero-preview.png"
+   ],
+   "prompt": "Region 0, the tutorial. Scene from the Hidden Garden collage: reed beds, stone-slab paths, a small timber deck and a still pond across the lower third, mirrored like Kingdom Two Crowns' water. Late afternoon, calm, a little too quiet. FOCUS, centre of the frame: DEXTER, a small black panther plush mascot in a light-grey T-shirt (1.5 ft, knee height to the hero), stands on the timber deck at the water's edge, one paw pointing down at the pond. The hero stands two steps behind him on the left, small. In the pond right below Dexter, ONE rectangular patch of the reflection is clearly WRONG: instead of reeds it reflects a rusty blue-green girder maze that does not exist in the scene, its edges torn into glitchy pixels and faint cyan light. The rest of the reflection is normal. Uncanny but beautiful.",
+   "review": "✅ Owner: \"absolutely a masterpiece – the first introductory zone.\" Dexter pointing at the first anomaly is how every region's anomaly gets introduced."
+  },
+  {
+   "id": "lost-in-the-green",
+   "title": "Lost in the Green · secret paths",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:references/campus/images/lost-in-the-green.png",
+    "game:games/planet-of-lana/images/gameplay-050.jpg",
+    "repo:art/sprites/images/hero-preview.png"
+   ],
+   "prompt": "No water and no ruins in this scene. A natural hillside: a narrow path of grey stone slabs climbs a smooth, gently curving grassy hill from bottom-left to the upper right (soft slope like Planet of Lana, no blocks, no walls). Tall cream pampas grass, birches and autumn shrubs form layered screens. The hero walks up the slab path in the left third, half hidden behind a foreground screen of tall grass. CLEARLY VISIBLE in the middle of the path ahead of the hero, about knee height: a small four-wheeled lab rover robot (silver aluminium chassis, four chunky yellow wheels, a black cylindrical lidar on top) driving toward the hero, a thin red lidar beam sweeping the grass. On the right, a dark gap in a hedge glows faintly cyan - a secret path. Golden afternoon light through the birches.",
+   "review": "✅ Owner: \"perfect.\" Keep: hills going up like a mountain, diverging paths, up-down exploration, leaves over the camera."
+  },
+  {
+   "id": "campus-mensa",
+   "title": "Campus · the plaza and the Mensa scaffold",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "ref1:20261022_142033.jpg",
+    "ref1:20261022_141518.jpg"
+   ],
+   "prompt": "Same camera, framing and pixel style as the first image (wide side view, hero small), but at THD's campus instead of the creek - NO water, NO creek. A long salmon-pink building facade with white columns PARALLEL to the screen; in the middle a tall section wrapped from pavement to roof in construction SCAFFOLDING filling a third of the frame width - aluminium tubes, wide plank decks on four levels, zigzag ladders - empty, no workers; the hero (second image) climbs the ladder between the second and third deck; a paved plaza along the bottom with the yellow town-sign and green assembly-point sign, bikes, young autumn trees; dark blurred hedge leaves along the bottom edge. Golden late afternoon. Secret horror detail: one top-floor window shows its room in bright daylight. No text.",
+   "review": "🟡 Owner: \"very not good\" (first take). Four redraws: the model keeps copying the symmetric corridor photo or drops the scaffold. Superseded by the [Campus stage concept](../locations/campus-clean.md); the scaffold becomes its own layer."
+  },
+  {
+   "id": "mensa-interior",
+   "title": "Mensa · coffee machine save point",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "ref2:20261023_125138.jpg",
+    "ref2:20261023_124941.jpg",
+    "ref2:20261023_130817.jpg",
+    "game:games/hollow-knight/images/white-palace.jpg",
+    "repo:art/sprites/images/hero-preview.png"
+   ],
+   "prompt": "Match the first image's style exactly. Interior side view of the empty university cafeteria at night: red glossy counter fronts with granite tops, glass display cases with wrapped muffins and cake, stacks of yellow trays, the black-and-steel self-service coffee machine glowing like a shrine - our save point, equivalent to Hollow Knight's bench. The hero sits on a plywood chair beside it, resting; Dexter the panther plush sits on the counter, trading a wrapped Leberkaese roll. Warm pool of light around the machine, the rest of the hall in deep blue shadow, one flickering ceiling panel.",
+   "review": "✅ Owner: good. Keep the out-of-focus tables and chairs in the foreground as a blur layer."
+  },
+  {
+   "id": "toxic-garden",
+   "title": "Toxic Garden · the corten beds",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "repo:references/campus/images/toxic-garden.png",
+    "ref1:20261022_142942.jpg",
+    "ref1:20261022_142948.jpg",
+    "ref1:20261022_143102.jpg",
+    "ref1:20261022_143206.jpg"
+   ],
+   "prompt": "Match the first image's pixel style and Planet of Lana framing. OUTDOORS, from the Toxic Garden collage and photos (images 3-7) - NOT a greenhouse, NO glass roof, NO interior: long raised beds edged with rust-orange corten steel, gravel paths, big granite boulders and a cairn of stacked stones, dense plantings of deep crimson and burgundy foliage, purple asters and silver-grey shrubs, red maples, all under the concrete underside of a huge highway bridge that cuts across the top of the frame. The palette comes from the collage: rust orange, crimson, purple, silver-grey, concrete. Strict side view; the corten beds step up and down as platforms. The hero (second image) small on a corten edge. Toxic, but secret horror: the plants look almost normal - a few too many red leaves, the flower heads all slightly turned toward the hero, a faint shimmer over the gravel. Blurred crimson leaves in the foreground. No gore, no monsters with mouths.",
+   "review": "✅ Redone outdoors after owner feedback (the greenhouse was wrong): corten beds, granite and the cairn, crimson, purple and silver plantings under the highway bridge, the collage's own palette. Secret-horror detail kept subtle."
+  },
+  {
+   "id": "playground",
+   "title": "Playground · the slide",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "repo:references/campus/images/playground.png",
+    "ref1:20261022_142552.jpg",
+    "ref1:20261022_142555.jpg",
+    "ref1:20261022_142620.jpg",
+    "game:animation/playground/images/frame-020.jpg"
+   ],
+   "prompt": "Match the first image's pixel style and Planet of Lana framing. The real campus adventure playground from the photos (images 3-6) in strict side view: leaning green and yellow timber poles, a rope-net tunnel bridge between two timber towers, a wooden climbing house, a timber plank ramp, sand ground, a metal tube slide. Its towers, bridge and ramp form a readable climb route. Late golden light turning to dusk, long shadows. The hero (second image) small, halfway up the plank ramp. Secret horror, subtle: the tube slide's opening is just a little too dark and a little too wide, and one swing hangs perfectly still while the others sway. Blurred foreground grass at the bottom edge. No monster mouth, no gore.",
+   "review": "✅ Revised: strict side view, towers, net bridge, ramp and slide as one readable climb route; the slide's opening only a little too dark."
+  },
+  {
+   "id": "boss-jenny",
+   "title": "Boss · Jenny, the runaway race car",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "merch:Jenny15GDX_4.jpg",
+    "merch:Jenny14GDX-rollout.jpg",
+    "merch:RolloutJenny16_9.jpeg",
+    "repo:art/stages/rusty-creek/images/after-right.png",
+    "repo:art/sprites/images/hero-preview.png",
+    "game:games/terraria/images/wall-188.jpg"
+   ],
+   "prompt": "Match the first image's style exactly. Boss arena: the open boss clearing at the end of Rusty Creek (fifth image) - a broad flat girder floor with the creek below. Boss: JENNY, THD's autonomous Formula Student race car from the photos - carbon black and dark-grey bodywork with lime-green, teal and blue stripe graphics, wide front wing, big rear wing, slick tyres, roll hoop - DRIVING ITSELF: the cockpit is EMPTY (no driver, no helmet), a camera and lidar sensor sit on the roll hoop, the blue autonomous-status light on the roll hoop is flashing. The anomaly has taken over her self-driving: headlight-like sensors glow, a little black fluid seeps from the panel seams. She is mid-charge toward the hero with speed lines and tyre smoke; springs and bolts fly off. The hero from the sixth image (small) jumps over her. A thin boss health bar at the bottom of the screen, no text. Huge, readable boss silhouette like Terraria's Wall of Flesh fight.",
+   "review": "✅ Owner: good. Fast Forest's real livery, empty cockpit, autonomy light. Animation plan: the boss sprite board (rev, charge, crash, stunned) on the same pipeline as every sprite."
+  },
+  {
+   "id": "cast",
+   "title": "The cast · machines and companion",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "merch:Deggster-9487_1280x1280.jpg",
+    "ref2:20261023_135554.jpg",
+    "ref2:20261023_125948.jpg",
+    "ref2:20261023_125941.jpg",
+    "ref1:20261022_145925.jpg",
+    "ref2:20261023_130003.jpg"
+   ],
+   "prompt": "ABSOLUTELY NO TEXT, NO LABELS, NO NAMES, NO MEASUREMENTS. A character lineup on a plain warm-grey backdrop with one ground line, side views, at TRUE relative scale, in the first image's pixel style and light. Left to right: (1) the hero from the second image, 6 ft tall - this height is the ruler; (2) Dexter the black panther plush mascot with light-grey T-shirt from the third image, only 1.5 ft - reaching the hero's knee; (3) Dexter mid-corruption, 4 ft, limbs longer, seams splitting; (4) Dexter FINAL FORM, 8.5 ft - CLEARLY TALLER than the hero by almost half again, lanky panther-humanoid, black goo dripping from joints and torn seams like Kingdom Two Crowns' Greed, glowing ice-blue eyes; (5) the black quadcopter drone from the photo hovering at head height; (6) the yellow-wheeled lidar rover, knee high; (7) the six-legged hexapod walker, waist high; (8) the cute dark-grey THD box delivery robot, knee high; (9) at the far right, Jenny: the green-and-black open-wheel Formula Student race car from the last photo, full car length, glowing headlight eyes.",
+   "review": "✅ Owner: pretty good. The machines at a shared scale; Dexter's growth has its own image."
+  },
+  {
+   "id": "dexter-stages",
+   "title": "Dexter · plush to mascot",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "merch:Deggster-9487_1280x1280.jpg",
+    "merch:deggster-costume-store.jpg",
+    "game:games/duck-season/images/ending-0800.jpg"
+   ],
+   "prompt": "ABSOLUTELY NO TEXT, NO LABELS. Four figures on one ground line, side views, TRUE relative scale, in the first image's pixel style and light, on a quiet late-afternoon campus lawn. (1) The hero from the second image, 6 ft - the ruler. (2) DEXTER as the small black panther plush from the third image (grey T-shirt, ice-blue eyes, orange nose), 1.5 ft, his head at the hero's knee. (3) Dexter as a bigger plush, 4 ft, chest height, stitching slightly strained. (4) Dexter's FINAL FORM: the university's full-size panther MASCOT COSTUME from the fourth photo (big fluffy black panther head with ice-blue eyes, orange nose, white whiskers and fangs, black furry neck sleeve, light-grey crest T-shirt, black furry gloves and feet) but 8.5 ft tall, towering over the hero. It looks friendly and harmless at first glance - a waving university mascot like in Duck Season - and is WRONG on a second look: thick black fluid seeps out exactly where the costume pieces join - the gap between the head and the neck sleeve, the glove cuffs at the wrists, the ankles - and drips down; the head sits very slightly too far forward; the eyes are a little too glossy. Secret horror: subtle, no gore, no monster transformation.",
+   "review": "✅ Owner: \"perfect.\" The plush becomes the 8.5 ft mascot costume, black fluid seeping where the pieces join."
+  },
+  {
+   "id": "combat",
+   "title": "Combat · the chair in Rusty Creek",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "repo:art/stages/rusty-creek/images/after-center.png",
+    "game:games/dead-cells/images/bad-seed-02.jpg"
+   ],
+   "prompt": "A real GAMEPLAY screenshot, same camera as the first image: strict side view, wide, the hero small (one eighth of the screen height). Location: the rusty blue-green girder maze of Rusty Creek (third image). On a broad girder deck the hero from the second image (THD poncho, shadow-filled hood) swings a honey-plywood stacking chair with thin black steel legs in a HORIZONTAL SIDE SWEEP into a six-legged autonomous crab robot, which is knocked back with a small white impact flash and a few sparks and bolts (Dead Cells-style hit feel: short, crisp, readable). Further along the deck a small yellow-wheeled autonomous rover charges in, its lidar glowing red; above, a black autonomous quadcopter drone hovers out of reach. Minimal HUD in the top-left: five battery cells (four full) and a three-segment glitch meter. Dark blurred foreground leaves at the bottom edge. Clean readable silhouettes, no gore.",
+   "review": "✅ Third take, after the owner asked for a complete redo: now a real gameplay frame – wide side view, the hero small, a horizontal chair sweep into the autonomous crab robot, the rover charging in. (Earlier takes: the photographed teammate instead of the hero, then a close-up on a slope.)"
+  },
+  {
+   "id": "anomaly-language",
+   "title": "Anomaly crossing · the crash frame",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "repo:art/sprites/images/hero-preview.png",
+    "repo:art/direction/images/hidden-garden-preview.png"
+   ],
+   "prompt": "ONE single game frame, no panels: the Hidden Garden pond scene from the third image, frozen. The hero (second image) hangs in mid-air above the deck in the knocked-back DAMAGE pose (arms flung out, white hit-flash outline), a few pixel cracks radiating across the frozen picture, which is slightly darkened. In the centre of the screen, ON TOP of everything, an old Windows-style error dialog box drawn in crisp pixel art: grey window with a blue title bar that reads THD.exe and a small X button, a red circle with a white X icon on the left, the line THD.exe has stopped responding. and one OK button. Nothing else - no menus, no loading screens, no captions.",
+   "review": "✅ Redone for the owner's cheaper crossing: one frame – the hero frozen in the damage sprite over the pond, pixel cracks, and the window \"THD.exe has stopped responding.\" [OK]. No animation beyond sprites the hero needs anyway. (Rejected takes invented a 'Leave the Hidden Garden?' menu and a loading screen.)"
+  },
+  {
+   "id": "hud",
+   "title": "HUD and pocket computer",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "ref2:20261023_125955.jpg",
+    "game:games/hollow-knight/images/blue-cave.jpg",
+    "repo:art/sprites/images/hero-preview.png"
+   ],
+   "prompt": "Match the first image's style exactly. A gameplay screenshot in Rusty Creek with the minimal HUD, Hollow Knight style: top-left, five small battery cells for health (three full, one cracked, one empty) and a three-segment glitch meter (two charged, glowing cyan with torn pixel edges). Bottom-right, the hero holds up the POCKET COMPUTER - the aluminium experiment suitcase from the photo shrunk to a handheld - and its screen is enlarged as an overlay panel in the centre: a green-on-black CRT map of connected rooms with one blinking player dot and dark unexplored rooms. Icons only, no readable text.",
+   "review": "✅ Owner: \"magnificent.\" Battery cells, glitch meter, the pocket computer's green CRT map."
+  },
+  {
+   "id": "props",
+   "title": "Props and pickups",
+   "factor": 2,
+   "keyed": false,
+   "inputs": [
+    "out:style-master",
+    "ref2:20261023_125038.jpg",
+    "ref2:20261023_125049.jpg",
+    "ref2:20261023_125100.jpg",
+    "ref2:20261023_125259.jpg",
+    "ref2:20261023_125008.jpg",
+    "ref2:20261023_130822.jpg",
+    "ref2:20261023_130804.jpg",
+    "ref2:20261023_131357.jpg",
+    "repo:art/sprites/images/hero-preview.png"
+   ],
+   "prompt": "Match the first image's pixel style and light, laid out as a neat prop sheet on a plain warm-grey backdrop, side views, at TRUE scale relative to the 6 ft hero standing at the left: the cling-film-wrapped muffin, marbled cake slice, foil-wrapped chocolate wafer (no brand text), Leberkaese roll in a brown paper bag, strawberry milk carton, iced-coffee cup, a yellow cafeteria tray, the plywood stacking chair, the yellow town-style sign on its steel pole with the green assembly-point sign, the aluminium pocket-computer suitcase. Each prop copies the real photographed object with its real imperfections - wrinkles, glare, scuffs - not an idealised product shot.",
+   "review": "✅ Owner: good. Real wrinkles and wear, true scale next to the hero."
+  }
+ ]
 }

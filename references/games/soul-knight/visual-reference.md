@@ -4,7 +4,7 @@
 [← Soul Knight](README.md) · [Game references](../../README.md) · **12 / 36** · [Drova – Forsaken Kin →](../drova-forsaken-kin/README.md)
 <!-- nav:end -->
 
-![Soul Knight: start with this gameplay reference](images/switch-02.jpg)
+*Soul Knight: start with this gameplay reference*
 
 **Look for:** Find the safe space between projectiles. Keep the joke visible while the action happens.
 
@@ -14,7 +14,7 @@ Collected 21 October 2026 from the developer/publisher store listing. Visually i
 
 ## images/01-official-gameplay.jpg
 
-![Illustrated combat promotional card, not a pixel gameplay capture.](images/01-official-gameplay.jpg)
+*Illustrated combat promotional card, not a pixel gameplay capture.*
 
 Illustrated combat promotional card, not a pixel gameplay capture.
 
@@ -25,7 +25,7 @@ Illustrated combat promotional card, not a pixel gameplay capture.
 
 ## images/02-official-gameplay.jpg
 
-![Illustrated loot promotional card, not an inventory screenshot.](images/02-official-gameplay.jpg)
+*Illustrated loot promotional card, not an inventory screenshot.*
 
 Illustrated loot promotional card, not an inventory screenshot.
 
@@ -36,7 +36,7 @@ Illustrated loot promotional card, not an inventory screenshot.
 
 ## images/03-official-gameplay.jpg
 
-![Illustrated boss promotional card, not a verified gameplay encounter.](images/03-official-gameplay.jpg)
+*Illustrated boss promotional card, not a verified gameplay encounter.*
 
 Illustrated boss promotional card, not a verified gameplay encounter.
 
@@ -55,7 +55,7 @@ Nintendo publisher screenshots, visually inspected. This older platform edition 
 
 ### images/switch-01.jpg
 
-![Character-selection hub: multiple character silhouettes, shared room and UI.](images/switch-01.jpg)
+*Character-selection hub: multiple character silhouettes, shared room and UI.*
 
 Character-selection hub: multiple character silhouettes, shared room and UI.
 
@@ -76,7 +76,7 @@ A contained room encounter: player, enemies, bullets and walls share one top-dow
 
 ### images/switch-03.jpg
 
-![Dense projectile encounter: safe-space readability and effect contrast become critical.](images/switch-03.jpg)
+*Dense projectile encounter: safe-space readability and effect contrast become critical.*
 
 Dense projectile encounter: safe-space readability and effect contrast become critical.
 

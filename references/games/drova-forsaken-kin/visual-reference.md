@@ -4,7 +4,7 @@
 [← Drova – Forsaken Kin](README.md) · [Game references](../../README.md) · **14 / 36** · [Kingdom Two Crowns →](../kingdom-two-crowns/README.md)
 <!-- nav:end -->
 
-![Drova – Forsaken Kin: start with this gameplay reference](images/01-official-gameplay.jpg)
+*Drova – Forsaken Kin: start with this gameplay reference*
 
 **Look for:** Notice paths, fences and buildings. One small prop can imply a larger society.
 
@@ -24,7 +24,7 @@ Oblique settlement scene: narrow routes bounded by fences and architecture.
 
 ## images/02-official-gameplay.jpg
 
-![Dialogue in a settlement: social interaction shares the exploration camera.](images/02-official-gameplay.jpg)
+*Dialogue in a settlement: social interaction shares the exploration camera.*
 
 Dialogue in a settlement: social interaction shares the exploration camera.
 
@@ -35,7 +35,7 @@ Dialogue in a settlement: social interaction shares the exploration camera.
 
 ## images/03-official-gameplay.jpg
 
-![Dark encounter space: local light and enemy scale affect readability.](images/03-official-gameplay.jpg)
+*Dark encounter space: local light and enemy scale affect readability.*
 
 Dark encounter space: local light and enemy scale affect readability.
 

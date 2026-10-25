@@ -12,7 +12,7 @@ Selected visual research, 22 October 2026. These are existing-game references, n
 
 ## 1:53 · Wall of Flesh enters as a tall, advancing body with several attack points.
 
-[![Wall of Flesh enters as a tall, advancing body with several attack points.](images/wall-113.jpg)](https://www.youtube.com/watch?v=aXkgcce3zLA&t=113s)
+[Wall of Flesh enters as a tall, advancing body with several attack points.](https://www.youtube.com/watch?v=aXkgcce3zLA&t=113s)
 
 Wall of Flesh enters as a tall, advancing body with several attack points.
 
@@ -20,7 +20,7 @@ Credit: Re-Logic; gameplay recording JoeDuh / Joseph Afflitto. [Source at 1:53](
 
 ## 3:08 · Large eyes and mouth remain separate focal targets along a moving wall.
 
-[![Large eyes and mouth remain separate focal targets along a moving wall.](images/wall-188.jpg)](https://www.youtube.com/watch?v=aXkgcce3zLA&t=188s)
+[Large eyes and mouth remain separate focal targets along a moving wall.](https://www.youtube.com/watch?v=aXkgcce3zLA&t=188s)
 
 Large eyes and mouth remain separate focal targets along a moving wall.
 
@@ -28,7 +28,7 @@ Credit: Re-Logic; gameplay recording JoeDuh / Joseph Afflitto. [Source at 3:08](
 
 ## 3:45 · The pursuer dominates one screen edge
 
-[![The pursuer dominates one screen edge; the encounter keeps pushing the player.](images/wall-225.jpg)](https://www.youtube.com/watch?v=aXkgcce3zLA&t=225s)
+[The pursuer dominates one screen edge; the encounter keeps pushing the player.](https://www.youtube.com/watch?v=aXkgcce3zLA&t=225s)
 
 The pursuer dominates one screen edge; the encounter keeps pushing the player.
 
@@ -36,7 +36,7 @@ Credit: Re-Logic; gameplay recording JoeDuh / Joseph Afflitto. [Source at 3:45](
 
 ## 1:37 · Moon Lord
 
-[![Moon Lord: head, hands and torso form a large multipart silhouette.](images/moon-097.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=97s)
+[Moon Lord: head, hands and torso form a large multipart silhouette.](https://www.youtube.com/watch?v=rgkkUPYymzw&t=97s)
 
 Moon Lord: head, hands and torso form a large multipart silhouette.
 
@@ -44,7 +44,7 @@ Credit: Re-Logic; gameplay recording FFM TV. [Source at 1:37](https://www.youtub
 
 ## 3:14 · A bright directional beam cuts across the encounter
 
-[![A bright directional beam cuts across the encounter; compare the tell with the body pose.](images/moon-194.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=194s)
+[A bright directional beam cuts across the encounter; compare the tell with the body pose.](https://www.youtube.com/watch?v=rgkkUPYymzw&t=194s)
 
 A bright directional beam cuts across the encounter; compare the tell with the body pose.
 
@@ -52,7 +52,7 @@ Credit: Re-Logic; gameplay recording FFM TV. [Source at 3:14](https://www.youtub
 
 ## 6:28 · Separated hand/eye targets and body make several simultaneous points of attention.
 
-[![Separated hand/eye targets and body make several simultaneous points of attention.](images/moon-388.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=388s)
+[Separated hand/eye targets and body make several simultaneous points of attention.](https://www.youtube.com/watch?v=rgkkUPYymzw&t=388s)
 
 Separated hand/eye targets and body make several simultaneous points of attention.
 
@@ -60,7 +60,7 @@ Credit: Re-Logic; gameplay recording FFM TV. [Source at 6:28](https://www.youtub
 
 ## 9:42 · The exposed central body contrasts with the outstretched hands
 
-[![The exposed central body contrasts with the outstretched hands; study the boss, not the platforms.](images/moon-582.jpg)](https://www.youtube.com/watch?v=rgkkUPYymzw&t=582s)
+[The exposed central body contrasts with the outstretched hands; study the boss, not the platforms.](https://www.youtube.com/watch?v=rgkkUPYymzw&t=582s)
 
 The exposed central body contrasts with the outstretched hands; study the boss, not the platforms.
 

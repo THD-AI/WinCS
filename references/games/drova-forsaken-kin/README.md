@@ -6,7 +6,7 @@
 
 ## At a glance · A place with a life of its own
 
-[![Drova – Forsaken Kin: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
+[Drova – Forsaken Kin: gameplay reference](visual-reference.md)
 
 **Look for:** Notice paths, fences and buildings. One small prop can imply a larger society.
 

@@ -4,7 +4,7 @@
 [← Dead Cells · Dilapidated Arboretum · visual reference](../dead-cells/visual-reference.md) · [Game references](../../README.md) · **27 / 36** · [Terraria · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[![Terraria · two bosses, specific reasons: visual study](images/moon-097.jpg)](visual-reference.md)
+[Terraria · two bosses, specific reasons: visual study](visual-reference.md)
 
 **Wall of Flesh and Moon Lord are the references. Alexander explicitly rejects Terraria as the terrain/readability model.**
 

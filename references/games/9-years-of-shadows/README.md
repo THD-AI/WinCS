@@ -6,7 +6,7 @@
 
 ## At a glance · Pixel spectacle
 
-[![9 Years of Shadows: gameplay reference](images/scene-3.png)](visual-reference.md)
+[9 Years of Shadows: gameplay reference](visual-reference.md)
 
 **Look for:** Compare the richly decorated stage with the space the player actually needs to read.
 

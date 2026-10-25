@@ -4,7 +4,7 @@
 [← Stardew Valley](README.md) · [Game references](../../README.md) · **20 / 36** · [Children of Morta · pixels and magic →](../children-of-morta/README.md)
 <!-- nav:end -->
 
-![Stardew Valley: start with this gameplay reference](images/01-official-gameplay.jpg)
+*Stardew Valley: start with this gameplay reference*
 
 **Look for:** Find the everyday objects that suggest something to do. Borrow care and clarity, not a whole farming economy.
 
@@ -24,7 +24,7 @@ Farm exterior: tile grid, task objects and UI in a top-down camera.
 
 ## images/02-official-gameplay.jpg
 
-![Mine interior: limited visibility and route geometry change the scene mood.](images/02-official-gameplay.jpg)
+*Mine interior: limited visibility and route geometry change the scene mood.*
 
 Mine interior: limited visibility and route geometry change the scene mood.
 
@@ -35,7 +35,7 @@ Mine interior: limited visibility and route geometry change the scene mood.
 
 ## images/03-official-gameplay.jpg
 
-![Settlement path and riverbank: landmarks and boundaries make navigation readable.](images/03-official-gameplay.jpg)
+*Settlement path and riverbank: landmarks and boundaries make navigation readable.*
 
 Settlement path and riverbank: landmarks and boundaries make navigation readable.
 

@@ -2,7 +2,7 @@
 
 [← Game study](README.md) · [Full visual gallery](visual-reference.md) · [Our stage workflow →](../../../docs/09-ART-PIPELINE.md)
 
-![Developer demonstration of painted scenery arranged on shallow geometry](images/tree-depth.gif)
+*Developer demonstration of painted scenery arranged on shallow geometry*
 
 **This is a real developer demonstration, not our reconstruction.** Credit: Wishfully; [developer interview and original demonstration](https://www.gamedeveloper.com/business/exploring-the-art-and-animation-behind-hand-painted-odyssey-i-planet-of-lana-i-). Full source URLs and hashes are in [the media manifest](media-sources.json).
 
@@ -12,13 +12,13 @@
 
 In the 2021 interview, Wishfully describes hand-painted textures, some projected onto planes and given shallow modeled depth. The studio names Unity, Maya LT for characters/environment work, Maya for some baked lighting, Photoshop concept painting, and a custom wind system. The original is a hand-painted hybrid; it is not evidence for a pixel-art pipeline or an entirely flat-mask renderer. This is historical development evidence, not a claim that every shipped scene uses identical techniques.
 
-![Developer tree-painting and wind demonstration](images/tree-wind.gif)
+*Developer tree-painting and wind demonstration*
 
 The second published demonstration moves from tree construction/painting to an animated tree. The small changing foliage silhouette is local animation; it is a different effect from a whole depth plane moving against the camera. The exact deformation algorithm, mask channels and wind parameters are not disclosed here.
 
 ## Read one landscape as depth bands
 
-![Gameplay Trailer 0:35: forest, pool and reflection](images/gameplay-035.jpg)
+*Gameplay Trailer 0:35: forest, pool and reflection*
 
 **Our visual decomposition**, based on the official Gameplay Trailer at 0:35, not extracted source layers:
 
@@ -35,7 +35,7 @@ A painted reflection does not imply a simulated second world. Our lake transitio
 
 ## Curves in pixels; geometry in the controller
 
-![Gameplay Trailer 0:20: irregular banks and rock silhouettes](images/gameplay-020.jpg)
+*Gameplay Trailer 0:20: irregular banks and rock silhouettes*
 
 A contour can slope, round out, break into a cliff and curve again without being assembled from square tiles. Pixel art samples that silhouette at the chosen density; it does not decide the underlying collision. The [classic Monkey Island views](../secret-of-monkey-island/visual-reference.md) are a complementary pixel-contour study.
 

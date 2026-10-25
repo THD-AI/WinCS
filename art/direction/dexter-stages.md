@@ -18,9 +18,9 @@ ABSOLUTELY NO TEXT, NO LABELS. Four figures on one ground line, side views, TRUE
 - [hero-preview.png](../sprites/images/hero-preview.png)
 - `Deggster-9487_1280x1280.jpg` (GameJam_Merch, outside Git)
 - `deggster-costume-store.jpg` (GameJam_Merch, outside Git)
-- [ending-0800.jpg](../../references/games/duck-season/images/ending-0800.jpg)
+- `games/duck-season/images/ending-0800.jpg` (GameJam_GameRefs, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter-stages.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo dexter-stages`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter-stages.png` · rebuild: `python scripts/make_boards.py draw dexter-stages --redo --config art/direction/direction.json`
 
 <!-- nav:start -->
 [← The cast · machines and companion](cast.md) · [Visual direction](README.md) · **10 / 14** · [Combat · the chair in Rusty Creek →](combat.md)

@@ -6,7 +6,7 @@
 
 ## At a glance · A little readable chaos
 
-[![Soul Knight: gameplay reference](images/switch-02.jpg)](visual-reference.md)
+[Soul Knight: gameplay reference](visual-reference.md)
 
 **Look for:** Find the safe space between projectiles. Keep the joke visible while the action happens.
 

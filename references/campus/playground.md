@@ -12,7 +12,7 @@
 
 [▶ Supplied Playground trailer](https://youtu.be/P8U22dvli4w) · **[Ten timecoded trailer screenshots and stage observations](../animation/playground/README.md)**
 
-[![Playground trailer at 0:10: creature in a rope-net space](../animation/playground/images/frame-010.jpg)](../animation/playground/README.md)
+[Playground trailer at 0:10: creature in a rope-net space](../animation/playground/README.md)
 
 *Rodrigo Goulão de Sousa; music/sound Jérémy Ben Ammar. Clean source-video frame at 0:10. Reference only, not runtime art.*
 

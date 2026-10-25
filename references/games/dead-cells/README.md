@@ -4,7 +4,7 @@
 [← Planet of Lana · visual reference](../planet-of-lana/visual-reference.md) · [Game references](../../README.md) · **25 / 36** · [Dead Cells · Dilapidated Arboretum · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[![Dead Cells · the greenhouse: visual study](images/bad-seed-02.jpg)](visual-reference.md)
+[Dead Cells · the greenhouse: visual study](visual-reference.md)
 
 **The Dilapidated Arboretum’s overgrown greenhouse is the visual target: plants, rusting structure, enclosed paths and broken geometry.**
 

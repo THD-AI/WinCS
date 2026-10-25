@@ -12,7 +12,7 @@ Selected visual research, 22 October 2026. These are existing-game references, n
 
 ## 3:20 · The dog is inside the dark living room, beyond its expected television role.
 
-[![The dog is inside the dark living room, beyond its expected television role.](images/ending-0200.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=200s)
+[The dog is inside the dark living room, beyond its expected television role.](https://www.youtube.com/watch?v=aUP66wTKdXM&t=200s)
 
 The dog is inside the dark living room, beyond its expected television role.
 
@@ -20,7 +20,7 @@ Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 3:
 
 ## 5:30 · The mascot occupies the room near the television and an electrical boundary.
 
-[![The mascot occupies the room near the television and an electrical boundary.](images/ending-0330.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=330s)
+[The mascot occupies the room near the television and an electrical boundary.](https://www.youtube.com/watch?v=aUP66wTKdXM&t=330s)
 
 The mascot occupies the room near the television and an electrical boundary.
 
@@ -28,7 +28,7 @@ Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 5:
 
 ## 5:50 · The child is isolated with the cartridge in a dark ending tableau.
 
-[![The child is isolated with the cartridge in a dark ending tableau.](images/ending-0350.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=350s)
+[The child is isolated with the cartridge in a dark ending tableau.](https://www.youtube.com/watch?v=aUP66wTKdXM&t=350s)
 
 The child is isolated with the cartridge in a dark ending tableau.
 
@@ -36,7 +36,7 @@ Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 5:
 
 ## 13:20 · A bright party-like ending tableau follows the threatening mascot sequences.
 
-[![A bright party-like ending tableau follows the threatening mascot sequences.](images/ending-0800.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=800s)
+[A bright party-like ending tableau follows the threatening mascot sequences.](https://www.youtube.com/watch?v=aUP66wTKdXM&t=800s)
 
 A bright party-like ending tableau follows the threatening mascot sequences.
 
@@ -44,7 +44,7 @@ Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 13
 
 ## 15:50 · The mascot is framed on the television again
 
-[![The mascot is framed on the television again; context has changed after earlier intrusions.](images/ending-0950.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=950s)
+[The mascot is framed on the television again; context has changed after earlier intrusions.](https://www.youtube.com/watch?v=aUP66wTKdXM&t=950s)
 
 The mascot is framed on the television again; context has changed after earlier intrusions.
 
@@ -52,7 +52,7 @@ Credit: Stress Level Zero; gameplay recording Let's STFU and Play. [Source at 15
 
 ## 16:20 · The dog operates a bank of surveillance screens
 
-[![The dog operates a bank of surveillance screens: a reversal of who watches whom.](images/ending-0980.jpg)](https://www.youtube.com/watch?v=aUP66wTKdXM&t=980s)
+[The dog operates a bank of surveillance screens: a reversal of who watches whom.](https://www.youtube.com/watch?v=aUP66wTKdXM&t=980s)
 
 The dog operates a bank of surveillance screens: a reversal of who watches whom.
 

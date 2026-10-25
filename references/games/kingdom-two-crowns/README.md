@@ -6,7 +6,7 @@
 
 ## At a glance · Tiny controls, large consequences
 
-[![Kingdom Two Crowns: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
+[Kingdom Two Crowns: gameplay reference](visual-reference.md)
 
 **Look for:** Notice the single ground line and layered scenery. Minimal input does not mean a tiny simulation.
 

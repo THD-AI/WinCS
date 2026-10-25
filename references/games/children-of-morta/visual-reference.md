@@ -4,7 +4,7 @@
 [← Children of Morta · pixels and magic](README.md) · [Game references](../../README.md) · **22 / 36** · [Planet of Lana · soft terrain and layered depth →](../planet-of-lana/README.md)
 <!-- nav:end -->
 
-![Children of Morta: start with this gameplay reference](images/01-official-gameplay.jpg)
+*Children of Morta: start with this gameplay reference*
 
 **Look for:** Study detailed pixel design and magical effects; preserve the character silhouette through bright spell shapes. Family/homecoming mechanics are not the requested reference.
 
@@ -24,7 +24,7 @@ Top-down combat: crowded effects and HUD compete with enemy silhouettes.
 
 ## images/02-official-gameplay.jpg
 
-![Character/upgrade selection interface; this is not a world-navigation view.](images/02-official-gameplay.jpg)
+*Character/upgrade selection interface; this is not a world-navigation view.*
 
 Character/upgrade selection interface; this is not a world-navigation view.
 
@@ -35,7 +35,7 @@ Character/upgrade selection interface; this is not a world-navigation view.
 
 ## images/03-official-gameplay.jpg
 
-![Top-down battle: character spacing, enemy tells and visibility under effects.](images/03-official-gameplay.jpg)
+*Top-down battle: character spacing, enemy tells and visibility under effects.*
 
 Top-down battle: character spacing, enemy tells and visibility under effects.
 

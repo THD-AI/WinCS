@@ -1,6 +1,6 @@
 # Reference games
 
-[![Hollow Knight](games/hollow-knight/images/blue-cave.jpg)](games/hollow-knight/README.md)
+[Hollow Knight](games/hollow-knight/README.md)
 
 The 18 games we learn from, each with a short study and a gallery. Every page has Previous / Next at both ends, so you can read straight through. What we take from each one is summarised in [what we love](../docs/research/what-we-love.md) and applied in [06 – Visual direction](../docs/06-VISUAL-DIRECTION.md). Our own photos, turned into location boards, are in [campus collages](campus/README.md).
 
@@ -12,19 +12,19 @@ Reference roles we agreed: Terraria = Wall of Flesh / Moon Lord bosses only; Lit
 
 | Reference | What catches your eye? |
 | --- | --- |
-| [![Hollow Knight: reference frame](games/hollow-knight/images/blue-cave.jpg)](games/hollow-knight/README.md) | **[Hollow Knight](games/hollow-knight/README.md)**<br>Vatsal’s starting point<br>[More views + sources](games/hollow-knight/visual-reference.md) |
-| [![9 Years of Shadows: reference frame](games/9-years-of-shadows/images/scene-3.png)](games/9-years-of-shadows/README.md) | **[9 Years of Shadows](games/9-years-of-shadows/README.md)**<br>Pixel spectacle<br>[More views + sources](games/9-years-of-shadows/visual-reference.md) |
-| [![Metroid Dread: reference frame](games/metroid-dread/images/gallery-1.jpg)](games/metroid-dread/README.md) | **[Metroid Dread](games/metroid-dread/README.md)**<br>Learn a move, see a new route<br>[More views + sources](games/metroid-dread/visual-reference.md) |
-| [![Apple Knight: reference frame](games/apple-knight/images/store-1.png)](games/apple-knight/README.md) | **[Apple Knight](games/apple-knight/README.md)**<br>Immediate platforming<br>[More views + sources](games/apple-knight/visual-reference.md) |
-| [![Animal Well: reference frame](games/animal-well/images/catch.gif)](games/animal-well/README.md) | **[Animal Well](games/animal-well/README.md)**<br>What happens if I try this?<br>[More views + sources](games/animal-well/visual-reference.md) |
-| [![Soul Knight: reference frame](games/soul-knight/images/switch-02.jpg)](games/soul-knight/README.md) | **[Soul Knight](games/soul-knight/README.md)**<br>A little readable chaos<br>[More views + sources](games/soul-knight/visual-reference.md) |
-| [![Drova – Forsaken Kin: reference frame](games/drova-forsaken-kin/images/01-official-gameplay.jpg)](games/drova-forsaken-kin/README.md) | **[Drova – Forsaken Kin](games/drova-forsaken-kin/README.md)**<br>A place with a life of its own<br>[More views + sources](games/drova-forsaken-kin/visual-reference.md) |
-| [![Kingdom Two Crowns: reference frame](games/kingdom-two-crowns/images/01-official-gameplay.jpg)](games/kingdom-two-crowns/README.md) | **[Kingdom Two Crowns](games/kingdom-two-crowns/README.md)**<br>Tiny controls, large consequences<br>[More views + sources](games/kingdom-two-crowns/visual-reference.md) |
-| [![Kingdom Eighties: reference frame](games/kingdom-eighties/images/03-official-gameplay.jpg)](games/kingdom-eighties/README.md) | **[Kingdom Eighties](games/kingdom-eighties/README.md)**<br>Ordinary places, strange trouble<br>[More views + sources](games/kingdom-eighties/visual-reference.md) |
-| [![Stardew Valley: reference frame](games/stardew-valley/images/01-official-gameplay.jpg)](games/stardew-valley/README.md) | **[Stardew Valley](games/stardew-valley/README.md)**<br>Small acts, visible changes<br>[More views + sources](games/stardew-valley/visual-reference.md) |
-| [![Children of Morta: reference frame](games/children-of-morta/images/01-official-gameplay.jpg)](games/children-of-morta/README.md) | **[Children of Morta](games/children-of-morta/README.md)**<br>Pixel design and magic/effects<br>[More views + sources](games/children-of-morta/visual-reference.md) |
-| [![Planet of Lana: reference frame](games/planet-of-lana/images/01-official-gameplay.jpg)](games/planet-of-lana/README.md) | **[Planet of Lana](games/planet-of-lana/README.md)**<br>Let the picture tell it<br>[More views + sources](games/planet-of-lana/visual-reference.md) |
-| [![Dead Cells: reference frame](games/dead-cells/images/bad-seed-02.jpg)](games/dead-cells/README.md) | **[Dead Cells](games/dead-cells/README.md)**<br>Overgrown Arboretum greenhouse<br>[More views + sources](games/dead-cells/visual-reference.md) |
+| [Hollow Knight: reference frame](games/hollow-knight/README.md) | **[Hollow Knight](games/hollow-knight/README.md)**<br>Vatsal’s starting point<br>[More views + sources](games/hollow-knight/visual-reference.md) |
+| [9 Years of Shadows: reference frame](games/9-years-of-shadows/README.md) | **[9 Years of Shadows](games/9-years-of-shadows/README.md)**<br>Pixel spectacle<br>[More views + sources](games/9-years-of-shadows/visual-reference.md) |
+| [Metroid Dread: reference frame](games/metroid-dread/README.md) | **[Metroid Dread](games/metroid-dread/README.md)**<br>Learn a move, see a new route<br>[More views + sources](games/metroid-dread/visual-reference.md) |
+| [Apple Knight: reference frame](games/apple-knight/README.md) | **[Apple Knight](games/apple-knight/README.md)**<br>Immediate platforming<br>[More views + sources](games/apple-knight/visual-reference.md) |
+| [Animal Well: reference frame](games/animal-well/README.md) | **[Animal Well](games/animal-well/README.md)**<br>What happens if I try this?<br>[More views + sources](games/animal-well/visual-reference.md) |
+| [Soul Knight: reference frame](games/soul-knight/README.md) | **[Soul Knight](games/soul-knight/README.md)**<br>A little readable chaos<br>[More views + sources](games/soul-knight/visual-reference.md) |
+| [Drova – Forsaken Kin: reference frame](games/drova-forsaken-kin/README.md) | **[Drova – Forsaken Kin](games/drova-forsaken-kin/README.md)**<br>A place with a life of its own<br>[More views + sources](games/drova-forsaken-kin/visual-reference.md) |
+| [Kingdom Two Crowns: reference frame](games/kingdom-two-crowns/README.md) | **[Kingdom Two Crowns](games/kingdom-two-crowns/README.md)**<br>Tiny controls, large consequences<br>[More views + sources](games/kingdom-two-crowns/visual-reference.md) |
+| [Kingdom Eighties: reference frame](games/kingdom-eighties/README.md) | **[Kingdom Eighties](games/kingdom-eighties/README.md)**<br>Ordinary places, strange trouble<br>[More views + sources](games/kingdom-eighties/visual-reference.md) |
+| [Stardew Valley: reference frame](games/stardew-valley/README.md) | **[Stardew Valley](games/stardew-valley/README.md)**<br>Small acts, visible changes<br>[More views + sources](games/stardew-valley/visual-reference.md) |
+| [Children of Morta: reference frame](games/children-of-morta/README.md) | **[Children of Morta](games/children-of-morta/README.md)**<br>Pixel design and magic/effects<br>[More views + sources](games/children-of-morta/visual-reference.md) |
+| [Planet of Lana: reference frame](games/planet-of-lana/README.md) | **[Planet of Lana](games/planet-of-lana/README.md)**<br>Let the picture tell it<br>[More views + sources](games/planet-of-lana/visual-reference.md) |
+| [Dead Cells: reference frame](games/dead-cells/README.md) | **[Dead Cells](games/dead-cells/README.md)**<br>Overgrown Arboretum greenhouse<br>[More views + sources](games/dead-cells/visual-reference.md) |
 
 ## Connect the dots
 
