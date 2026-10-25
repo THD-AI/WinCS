@@ -36,7 +36,7 @@ export class Player {
   onHealthChanged: (health: number) => void = () => {};
   onHazards: (boxes: Box[]) => boolean = () => false;
   onGuard: (damage: number, sourceX: number) => boolean = () => false;
-  private guardPush = new GuardPush();
+  private guardPush: GuardPush;
   /** The dodge-dash (dodge.ts); `dodgeWas` is last frame's button, `ghost` the time to the next after-image. */
   readonly dodge = new Dodge();
   private dodgeWas = false;
@@ -102,6 +102,7 @@ export class Player {
     scene.events.once('shutdown', () => scene.events.off('postupdate', settle));
     this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,Z,J,X,L,C,SHIFT') as Record<string, Phaser.Input.Keyboard.Key>;
     this.physical = physicalKeys(scene);
+    this.guardPush = new GuardPush(scene.cache.json.get('chair-block.anims'));
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setScrollFactor(0).setDepth(10002).setVisible(false);

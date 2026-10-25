@@ -1,6 +1,7 @@
 import { WALK_SPEED, RUN_SPEED } from '../player/movement';
 import { BODY_HEIGHT } from '../player/body';
 import type { Position } from '../core/events';
+import { clipTime, frameAt, frameCount, type Clips } from '../combat/clips';
 
 // docs/05: measured idle-00 alpha bounds and controller tuning.
 // 3x since 24 Oct (Lex: the small robots were barely visible next to the 114 px hero): 75 px drawn.
@@ -21,7 +22,8 @@ export class Rover {
   private hitDirection = 1;
   /** Seconds left idling at a patrol end before it turns. */
   turning = 0;
-  constructor(readonly spawn: Position, readonly patrol: [number, number]) {
+  /** `clips`: enemy-rover.anims.json (idle, drive, charge, wreck). */
+  constructor(readonly spawn: Position, readonly patrol: [number, number], private clips?: Clips) {
     this.x = spawn.x; this.y = spawn.y;
   }
   private enter(phase: RoverPhase) { this.phase = phase; this.elapsed = 0; this.turning = 0; }
@@ -66,16 +68,17 @@ export class Rover {
           break;
         case 'recover': if (this.elapsed + 1e-9 >= TELL_SECONDS) this.enter('patrol'); break;
         case 'hit':
-          this.x = Math.max(this.patrol[0], Math.min(this.patrol[1], this.x + this.hitDirection * ROVER_WIDTH / 2 / (3 / 12) * dt));
-          if (this.elapsed + 1e-9 >= 3 / 12) this.enter('patrol');
+          // knocked back half its width over three frames of its idle clip, flashing
+          this.x = Math.max(this.patrol[0], Math.min(this.patrol[1], this.x + this.hitDirection * ROVER_WIDTH / 2 / clipTime(this.clips, 'idle', 3) * dt));
+          if (this.elapsed + 1e-9 >= clipTime(this.clips, 'idle', 3)) this.enter('patrol');
           break;
-        case 'wreck': if (this.elapsed + 1e-9 >= 5 / 12) { this.enter('dead'); defeated = true; } break;
+        case 'wreck': if (this.elapsed + 1e-9 >= clipTime(this.clips, 'wreck', frameCount(this.clips, 'wreck', 5))) { this.enter('dead'); defeated = true; } break;
       }
     }
     return defeated;
   }
   get pose() {
-    const frame = Math.floor((this.elapsed + 1e-9) * 12);
+    const frame = frameAt(this.clips, this.phase === 'patrol' && !this.turning ? 'drive' : this.phase === 'wreck' ? 'wreck' : this.phase === 'charge' ? 'charge' : 'idle', this.elapsed);
     if (this.phase === 'wreck' || this.phase === 'dead') return `wreck-${String(this.phase === 'dead' ? 4 : Math.min(4, frame)).padStart(2, '0')}`;
     if (this.phase === 'hit') return 'idle-00'; // The renderer flashes the living body white.
     if (this.phase === 'tell') return `charge-0${this.elapsed + 1e-9 < TELL_SECONDS / 2 ? 0 : 1}`;

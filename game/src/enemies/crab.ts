@@ -1,3 +1,4 @@
+import { clipTime, frameAt, frameCount, type Clips } from '../combat/clips';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { TURN_SECONDS } from './rover';
 import { WALK_SPEED } from '../player/movement';
@@ -20,7 +21,7 @@ export const STAB_REACH = 52;
  * half-width (less a 4 px bite). Further off – up to CRAB_SPOT – it creeps toward the hero instead of stabbing air.
  */
 export const CRAB_STRIKE = CRAB_WIDTH / 2 + STAB_REACH + BODY_WIDTH / 2 - 4;
-const STAB_SECONDS = 5 / 12, COLLAPSE_SECONDS = 5 / 12, HIT_SECONDS = 3 / 12, RECOVER = 0.5;
+const RECOVER = 0.5;
 export type CrabPhase = 'walk' | 'tell' | 'stab' | 'recover' | 'hit' | 'collapse' | 'dead';
 
 export class Crab {
@@ -35,13 +36,15 @@ export class Crab {
   turning = 0;
   /** Whether it moved in the last step (its legs walk only then). */
   private moving = true;
-  constructor(readonly spawn: Position, readonly patrol: [number, number]) { this.x = spawn.x; this.y = spawn.y; }
+  /** `clips`: enemy-crab.anims.json (idle, walk, stab, collapse). */
+  constructor(readonly spawn: Position, readonly patrol: [number, number], private clips?: Clips) { this.x = spawn.x; this.y = spawn.y; }
+  private seconds(clip: string, authored: number) { return clipTime(this.clips, clip, frameCount(this.clips, clip, authored)); }
   private enter(phase: CrabPhase) { this.phase = phase; this.elapsed = 0; this.turning = 0; this.moving = true; }
   reset() { this.x = this.spawn.x; this.health = CRAB_HEALTH; this.direction = -1; this.enter('walk'); }
   get bounds(): Rect { return { x: this.x - CRAB_WIDTH / 2, y: this.y - CRAB_HEIGHT, w: CRAB_WIDTH, h: CRAB_HEIGHT }; }
   /** The stab's reach while its legs are out (frames 2–3 of 5), else undefined. */
   get attack(): Rect | undefined {
-    if (this.phase !== 'stab' || this.elapsed < 2 / 12 || this.elapsed >= 4 / 12) return undefined;
+    if (this.phase !== 'stab' || this.elapsed < clipTime(this.clips, 'stab', 2) || this.elapsed >= clipTime(this.clips, 'stab', 4)) return undefined;
     const front = this.x + this.direction * CRAB_WIDTH / 2;
     return { x: this.direction > 0 ? front : front - STAB_REACH, y: this.y - CRAB_HEIGHT, w: STAB_REACH, h: CRAB_HEIGHT };
   }
@@ -81,19 +84,21 @@ export class Crab {
           break;
         }
         case 'tell': if (this.elapsed >= CRAB_TELL) this.enter('stab'); break;
-        case 'stab': if (this.elapsed >= STAB_SECONDS) this.enter('recover'); break;
+        case 'stab': if (this.elapsed >= this.seconds('stab', 5)) this.enter('recover'); break;
         case 'recover': if (this.elapsed >= RECOVER) this.enter('walk'); break;
         case 'hit':
           this.x = Math.max(this.patrol[0], Math.min(this.patrol[1], this.x + this.hitDirection * 40 * dt));
-          if (this.elapsed >= HIT_SECONDS) this.enter('recover');
+          if (this.elapsed >= clipTime(this.clips, 'idle', 3)) this.enter('recover');
           break;
-        case 'collapse': if (this.elapsed >= COLLAPSE_SECONDS) { this.enter('dead'); defeated = true; } break;
+        case 'collapse': if (this.elapsed >= this.seconds('collapse', 5)) { this.enter('dead'); defeated = true; } break;
       }
     }
     return defeated;
   }
   get pose() {
-    const n = Math.floor((this.elapsed + 1e-9) * 12);
+    const clip = this.phase === 'walk' && this.moving ? 'walk' : this.phase === 'tell' || this.phase === 'stab' ? 'stab'
+      : this.phase === 'collapse' ? 'collapse' : 'idle';
+    const n = frameAt(this.clips, clip, this.elapsed);
     const f = (clip: string, i: number) => `${clip}-${String(i).padStart(2, '0')}`;
     switch (this.phase) {
       case 'walk': return this.moving ? f('walk', n % 8) : f('idle', n % 4);

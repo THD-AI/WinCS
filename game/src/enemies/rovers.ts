@@ -72,13 +72,13 @@ export class Rovers {
       const at = { x: spawn.x, y: spawn.y };
       let row: Omit<Row, 'sprite' | 'label' | 'id' | 'kind'>;
       if (kind === 'rover') {
-        const model = new Rover(at, patrol);
+        const model = new Rover(at, patrol, scene.cache.json.get('enemy-rover.anims'));
         row = { model, harmful: () => harmfulPhase('rover', model.phase), onBlocked: () => model.deflect(model.x >= this.player.body.x ? 1 : -1) };
       } else if (kind === 'crab') {
-        const model = new Crab(at, patrol);
+        const model = new Crab(at, patrol, scene.cache.json.get('enemy-crab.anims'));
         row = { model, harmful: () => harmfulPhase('crab', model.phase), attack: () => model.attack };
       } else {
-        const model = new Drone(at, patrol);
+        const model = new Drone(at, patrol, scene.cache.json.get('enemy-drone.anims'));
         row = { model, harmful: () => harmfulPhase('drone', model.phase) };
       }
       const model = row.model;
