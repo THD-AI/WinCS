@@ -183,3 +183,15 @@ class DepthLayerTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class BlackVoidTests(unittest.TestCase):
+    def test_a_black_blob_counts_and_dark_outlines_do_not(self):
+        import numpy as np
+        painted = np.full((40, 60, 3), 90, np.uint8)
+        painted[5:6, :, :] = 0                 # a 1 px dark outline across the window: art
+        painted[20:30, 10:30, :] = 0           # a 10 x 20 black void
+        window = np.ones((40, 60), bool)
+        self.assertEqual(dl.black_void(painted, window), 200)
+        window[20:30, 10:30] = False           # outside the painted window it does not count
+        self.assertEqual(dl.black_void(painted, window), 60)

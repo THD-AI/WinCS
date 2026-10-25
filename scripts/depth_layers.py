@@ -596,12 +596,38 @@ def under(region: Path, chunk: str, reuse: bool = False) -> list[Path]:
 # in front of it, and what must not be painted there.
 WHOLE = {
     "rear": ("the room's back wall - its masonry, concrete, arches, piers, pipes or rock, whatever the wall around "
-             "the hole is made of, with its lanterns' light", "floors, ledges, girders, ladders, water, weeds or plants"),
+             "the hole is made of, with its lanterns' light, closed and lit like the wall around it",
+             "floors, ledges, girders, ladders, water, weeds or plants, and no new openings, pipe mouths or black holes"),
     "water": ("the deep water with its light and its dark, the same water as around the hole",
               "floors, ledges, girders, ladders, weeds or plants"),
     "play": ("the floors, walkways, ledges and girders, continued as they run", "weeds, plants or grass"),
 }
 WHOLE_REACH = 96  # water and floor continue this far behind what stands in front of them
+BLACK = 6          # a channel maximum under this is flat black
+BLACK_VOID = 600   # a flat-black blob this big in the painted window is a hole or a made-up opening: paint again
+
+
+def black_void(painted, window) -> int:
+    """The biggest flat-black blob (4-connected, px) the model painted inside the window. Thin dark outlines are art;
+    a blob is an empty window or an invented opening (hg-3-1's back wall came back with a black pipe mouth behind a
+    girder). Plain numpy flood fill: CI has no scipy."""
+    import numpy as np
+    black = (np.asarray(painted).max(2) < BLACK) & np.asarray(window, bool)
+    seen, best = np.zeros_like(black), 0
+    for y, x in zip(*np.nonzero(black)):
+        if seen[y, x]:
+            continue
+        stack, size = [(y, x)], 0
+        seen[y, x] = True
+        while stack:
+            cy, cx = stack.pop()
+            size += 1
+            for ny, nx in ((cy + 1, cx), (cy - 1, cx), (cy, cx + 1), (cy, cx - 1)):
+                if 0 <= ny < black.shape[0] and 0 <= nx < black.shape[1] and black[ny, nx] and not seen[ny, nx]:
+                    seen[ny, nx] = True
+                    stack.append((ny, nx))
+        best = max(best, size)
+    return best
 WHOLE_PROMPT = (
     "This is one chunk of a side-scrolling stage: a room under the ground. Paint ONLY the transparent area: {what}, "
     "continuing it from what is visible around the hole - the same light, palette, fine 2-pixel grain and scale. "
@@ -634,8 +660,14 @@ def whole(region: Path, chunk: str, art: Image.Image, reuse: bool = False) -> li
         else:
             what, nots = WHOLE[name]
             # 2 px into the layer's own edge, so no fringe of the nearer layer survives in the painting
-            painted = api(f"{chunk}--whole-{name}", art, WHOLE_PROMPT.format(what=what, front=nots),
-                          l_image(ndimage.binary_dilation(front, iterations=2)), (STYLE,))
+            hole = ndimage.binary_dilation(front, iterations=2)
+            for _ in range(3):  # flat black in the window is a hole or a void the model made up: paint it again
+                painted = api(f"{chunk}--whole-{name}", art, WHOLE_PROMPT.format(what=what, front=nots),
+                              l_image(hole), (STYLE,))
+                void = 0 if painted is None else black_void(painted, front)
+                if void <= BLACK_VOID:
+                    break
+                print(f"{chunk}: {name} came back with a {void} px black void, painting again", flush=True)
             if painted is None:
                 continue
             painted.save(raw)
