@@ -3,6 +3,7 @@ import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
 import { UI_ATLAS_KEY, UI_LAYOUT_KEY } from './manifest';
 import { pixelSafe, pixelText } from './pixelFont';
 import { formatBytes, type Summary } from './progress';
+import { THEME } from '../ui/credits';
 
 /** The slice's palette (style master, HUD direction): night ink, cream, phosphor green, teal charge, rust. */
 export const PALETTE = {
@@ -101,6 +102,7 @@ export class LoadingView {
     this.done = true;
     this.status.setText(pixelSafe('(RESPONDING)')).setTint(PALETTE.teal).setVisible(true);
     this.line('DEGGSTER.EXE IS NOW RESPONDING.', PALETTE.cream);
+    this.line(`WARNING: ${THEME}`, PALETTE.rust);
     this.hint.setText('');
   }
 

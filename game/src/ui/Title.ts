@@ -7,7 +7,7 @@ import { VIEW_HEIGHT, VIEW_WIDTH } from '../core/viewport';
 import { sound } from '../fx/sound/Audio';
 import { gridBounds } from '../stage/camera';
 import { drawStage } from '../stage/render';
-import { MENU, moveSelection, SUBTITLE, TITLE } from './credits';
+import { MENU, moveSelection, SUBTITLE, THEME_LINE, TITLE } from './credits';
 import { creditsText } from './creditsView';
 
 const STAGE = 'Stage';
@@ -86,12 +86,13 @@ export class Title extends Phaser.Scene {
     const subtitle = pixelText(this, cx - 12, 206, SUBTITLE, 3, PALETTE.rust).setOrigin(0.5).setDropShadow(1, 1, PALETTE.ink, 1);
     const cursor = pixelText(this, subtitle.x + subtitle.displayWidth / 2 + 6, 206, '~', 3, PALETTE.rust).setOrigin(0, 0.5).setDropShadow(1, 1, PALETTE.ink, 1);
     this.time.addEvent({ delay: 530, loop: true, callback: () => cursor.setVisible(!cursor.visible) });
+    const theme = pixelText(this, cx, 262, THEME_LINE, 2, PALETTE.cream).setOrigin(0.5).setAlpha(0.8).setDropShadow(1, 1, PALETTE.ink, 1);
     this.menu = MENU.map((item, i) => pixelText(this, cx, 500 + i * 56, item, 4, PALETTE.cream).setOrigin(0.5).setDropShadow(1, 1, PALETTE.ink, 1)
       .setInteractive({ useHandCursor: true })
       .on('pointerover', () => this.select(i))
       .on('pointerdown', () => { this.select(i); this.confirm(); }));
     const hint = pixelText(this, cx, VIEW_HEIGHT - 40, 'ARROWS / WASD  CHOOSE     ENTER / SPACE / J  SELECT', 2, PALETTE.cream).setOrigin(0.5).setDropShadow(1, 1, PALETTE.ink, 1);
-    this.titleLayer = this.add.container(0, 0, [shade, title, subtitle, cursor, ...this.menu, hint])
+    this.titleLayer = this.add.container(0, 0, [shade, title, subtitle, cursor, theme, ...this.menu, hint])
       .setScrollFactor(0).setDepth(UI_DEPTH);
     const veil = this.add.rectangle(0, 0, VIEW_WIDTH, VIEW_HEIGHT, PALETTE.night, 0.88).setOrigin(0);
     this.creditsLayer = this.add.container(0, 0, [veil, ...creditsText(this, 'Act / Esc – back')])
