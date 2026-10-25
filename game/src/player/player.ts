@@ -3,7 +3,7 @@ import type { CollisionChunk, Box } from '../stage/collision';
 import { BODY_HEIGHT, BODY_WIDTH, overlaps, stepBody, type Body } from './body';
 import { horizontal, move, movement, RUN_SPEED, WALK_SPEED } from './movement';
 import { jump, jumpState, JUMP_SPEED, landing, LANDING_TIMES, pogo, type LandingTimes } from './jump';
-import { climb, climbFlip, dropThrough, fallLine, surfaceNear, takeLadderEnd, traversal } from './traversal';
+import { climb, dropThrough, fallLine, surfaceNear, takeLadderEnd, traversal } from './traversal';
 import { catalogue, clipLength, LocomotionAnimation, type Catalogue, type MotionPose } from './animation';
 import { gameEvents } from '../core/events';
 import { Life } from '../combat/life';
@@ -300,7 +300,7 @@ export class Player {
       sway: this.sway.update(this.wind, this.body.x, this.scene.game.loop.time / 1000, milliseconds / 1000, standing) };
     if (this.scene.textures.get(pose.board).has(pose.frame)) this.sprite.setTexture(pose.board, pose.frame);
     else this.sprite.setTexture('hero-move', 'idle-00');
-    this.sprite.setFlipX(this.traversal.ladder && pose === locomotion ? climbFlip(this.body.y) : this.motion.facing < 0).setAlpha(this.hurt.alpha(this.life, this.scene.time.now));
+    this.sprite.setFlipX(this.traversal.ladder && pose === locomotion ? false : this.motion.facing < 0).setAlpha(this.hurt.alpha(this.life, this.scene.time.now));
     if (this.dodge.active) this.dodgePose(milliseconds / 1000);
     this.feel(pose, milliseconds / 1000);
     this.settle();
