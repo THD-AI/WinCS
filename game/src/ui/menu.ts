@@ -200,6 +200,7 @@ export class GameMenu {
       field('Debug mode', check(s.on, 'On – draws over the game; screenshots record what is on', on => debugStore.set({ on }))),
       field('Show', row(
         check(s.backdrop, 'Purple backdrop', v => debugStore.set({ backdrop: v })),
+        check(s.white, '… white instead (check every layer against both)', v => debugStore.set({ white: v })),
         check(s.collision, 'Collision', v => debugStore.set({ collision: v })),
         check(s.actors, 'Actors: boxes, facing, sight, paths', v => debugStore.set({ actors: v })),
         check(s.stats, 'FPS and position', v => debugStore.set({ stats: v })))),
