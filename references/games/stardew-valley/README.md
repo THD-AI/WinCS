@@ -6,7 +6,7 @@
 
 ## At a glance · Small acts, visible changes
 
-[Stardew Valley: gameplay reference](visual-reference.md)
+[![Stardew Valley: gameplay reference](images/01-official-gameplay.jpg)](visual-reference.md)
 
 **Look for:** Find the everyday objects that suggest something to do. Borrow care and clarity, not a whole farming economy.
 

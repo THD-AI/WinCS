@@ -16,10 +16,10 @@ No water and no ruins in this scene. A natural hillside: a narrow path of grey s
 
 - [style-master](style-master.md) (this pack)
 - [lost-in-the-green.png](../../references/campus/images/lost-in-the-green.png)
-- `games/planet-of-lana/images/gameplay-050.jpg` (GameJam_GameRefs, outside Git)
+- [gameplay-050.jpg](../../references/games/planet-of-lana/images/gameplay-050.jpg)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/lost-in-the-green.png` · rebuild: `python scripts/make_boards.py draw lost-in-the-green --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/lost-in-the-green.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo lost-in-the-green`
 
 <!-- nav:start -->
 [← Hidden Garden · the lake anomaly](hidden-garden.md) · [Visual direction](README.md) · **3 / 14** · [Campus · the plaza and the Mensa scaffold →](campus-mensa.md)

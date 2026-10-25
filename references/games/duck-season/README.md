@@ -4,7 +4,7 @@
 [← Little Nightmares · visual reference](../little-nightmares/visual-reference.md) · [Game references](../../README.md) · **31 / 36** · [Duck Season · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[Duck Season · the mascot changes its role: visual study](visual-reference.md)
+[![Duck Season · the mascot changes its role: visual study](images/ending-0200.jpg)](visual-reference.md)
 
 **Study the dog mascot and contrasting endings: familiar performer, intruder, threat, then a changed explanation.**
 

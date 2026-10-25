@@ -4,7 +4,7 @@
 [← Terraria · visual reference](../terraria/visual-reference.md) · [Game references](../../README.md) · **29 / 36** · [Little Nightmares · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[Little Nightmares · character shape: visual study](visual-reference.md)
+[![Little Nightmares · character shape: visual study](images/six-character.png)](visual-reference.md)
 
 **Character design only: a simple garment mass, concealed face, small exposed limbs and a readable silhouette.**
 

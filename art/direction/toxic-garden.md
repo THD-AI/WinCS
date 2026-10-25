@@ -22,7 +22,7 @@ Match the first image's pixel style and Planet of Lana framing. OUTDOORS, from t
 - `20261022_143102.jpg` (GameJam_ References, outside Git)
 - `20261022_143206.jpg` (GameJam_ References, outside Git)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/toxic-garden.png` · rebuild: `python scripts/make_boards.py draw toxic-garden --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/toxic-garden.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo toxic-garden`
 
 <!-- nav:start -->
 [← Mensa · coffee machine save point](mensa-interior.md) · [Visual direction](README.md) · **6 / 14** · [Playground · the slide →](playground.md)

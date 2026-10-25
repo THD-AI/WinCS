@@ -4,7 +4,7 @@
 [← 9 Years of Shadows](README.md) · [Game references](../../README.md) · **4 / 36** · [Metroid Dread →](../metroid-dread/README.md)
 <!-- nav:end -->
 
-*9 Years of Shadows: start with this gameplay reference*
+![9 Years of Shadows: start with this gameplay reference](images/scene-3.png)
 
 **Look for:** Compare the richly decorated stage with the space the player actually needs to read.
 
@@ -26,7 +26,7 @@ Dialogue and portrait overlay show UI and illustration cost beyond platforming s
 
 ## scene-5.png
 
-*Reference view: Theater architecture, character scale and a companion in a wide side-on space.*
+![Reference view: Theater architecture, character scale and a companion in a wide side-on space.](images/scene-5.png)
 
 Theater architecture, character scale and a companion in a wide side-on space.
 
@@ -37,7 +37,7 @@ Theater architecture, character scale and a companion in a wide side-on space.
 
 ## scene-2.png
 
-*Reference view: Vertical shaft framing and airborne enemies; compare character contrast against ornament.*
+![Reference view: Vertical shaft framing and airborne enemies; compare character contrast against ornament.](images/scene-2.png)
 
 Vertical shaft framing and airborne enemies; compare character contrast against ornament.
 

@@ -16,10 +16,10 @@ Match the first image's style exactly. A gameplay screenshot in Rusty Creek with
 
 - [style-master](style-master.md) (this pack)
 - `20261023_125955.jpg` (GameJam_References-2, outside Git)
-- `games/hollow-knight/images/blue-cave.jpg` (GameJam_GameRefs, outside Git)
+- [blue-cave.jpg](../../references/games/hollow-knight/images/blue-cave.jpg)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hud.png` · rebuild: `python scripts/make_boards.py draw hud --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hud.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo hud`
 
 <!-- nav:start -->
 [← Anomaly crossing · the crash frame](anomaly-language.md) · [Visual direction](README.md) · **13 / 14** · [Props and pickups →](props.md)

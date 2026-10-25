@@ -4,7 +4,7 @@
 [← Visual reference views](../children-of-morta/visual-reference.md) · [Game references](../../README.md) · **23 / 36** · [Planet of Lana · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[Planet of Lana · soft terrain and layered depth: visual study](visual-reference.md)
+[![Planet of Lana · soft terrain and layered depth: visual study](images/gameplay-035.jpg)](visual-reference.md)
 
 **Borrow the flowing silhouettes, horizontal composition and separated depth, then translate them into our own pixel-art language.**
 

@@ -4,7 +4,7 @@
 [← Animal Well](README.md) · [Game references](../../README.md) · **10 / 36** · [Soul Knight →](../soul-knight/README.md)
 <!-- nav:end -->
 
-*Animal Well: start with this gameplay reference*
+![Animal Well: start with this gameplay reference](images/catch.gif)
 
 **Look for:** Watch an object interaction. Could one consistent rule produce a surprising second use?
 
@@ -16,7 +16,7 @@ Views were visually inspected. GIF inspection showed a rendered frame; this is n
 
 ## capybara.gif
 
-*Reference view: Symmetrical room, small player scale, creature placement and environmental interaction framing.*
+![Reference view: Symmetrical room, small player scale, creature placement and environmental interaction framing.](images/capybara.gif)
 
 Symmetrical room, small player scale, creature placement and environmental interaction framing.
 
@@ -27,7 +27,7 @@ Symmetrical room, small player scale, creature placement and environmental inter
 
 ## ghostbuster.gif
 
-*Reference view: Dark traversal space with bright interactive accents; inspect the animation before choosing a specific effect.*
+![Reference view: Dark traversal space with bright interactive accents; inspect the animation before choosing a specific effect.](images/ghostbuster.gif)
 
 Dark traversal space with bright interactive accents; inspect the animation before choosing a specific effect.
 

@@ -12,7 +12,7 @@ Selected visual research, 22 October 2026. These are existing-game references, n
 
 ## Large hood, concealed face, small bare limbs and a simple garment mass
 
-[Large hood, concealed face, small bare limbs and a simple garment mass: study shape and proportions, not the costume or ambience.](https://en.bandainamcoent.eu/little-nightmares/little-nightmares-ii)
+[![Large hood, concealed face, small bare limbs and a simple garment mass: study shape and proportions, not the costume or ambience.](images/six-character.png)](https://en.bandainamcoent.eu/little-nightmares/little-nightmares-ii)
 
 Large hood, concealed face, small bare limbs and a simple garment mass: study shape and proportions, not the costume or ambience.
 

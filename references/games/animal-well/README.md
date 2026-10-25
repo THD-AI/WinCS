@@ -6,7 +6,7 @@
 
 ## At a glance · What happens if I try this?
 
-[Animal Well: gameplay reference](visual-reference.md)
+[![Animal Well: gameplay reference](images/catch.gif)](visual-reference.md)
 
 **Look for:** Watch an object interaction. Could one consistent rule produce a surprising second use?
 

@@ -20,9 +20,9 @@ Match the first image's pixel style and Planet of Lana framing. The real campus 
 - `20261022_142552.jpg` (GameJam_ References, outside Git)
 - `20261022_142555.jpg` (GameJam_ References, outside Git)
 - `20261022_142620.jpg` (GameJam_ References, outside Git)
-- `animation/playground/images/frame-020.jpg` (GameJam_GameRefs, outside Git)
+- [frame-020.jpg](../../references/animation/playground/images/frame-020.jpg)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/playground.png` · rebuild: `python scripts/make_boards.py draw playground --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/playground.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo playground`
 
 <!-- nav:start -->
 [← Toxic Garden · the corten beds](toxic-garden.md) · [Visual direction](README.md) · **7 / 14** · [Boss · Jenny, the runaway race car →](boss-jenny.md)

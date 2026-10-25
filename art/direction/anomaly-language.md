@@ -18,7 +18,7 @@ ONE single game frame, no panels: the Hidden Garden pond scene from the third im
 - [hero-preview.png](../sprites/images/hero-preview.png)
 - [hidden-garden-preview.png](images/hidden-garden-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/anomaly-language.png` · rebuild: `python scripts/make_boards.py draw anomaly-language --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/anomaly-language.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo anomaly-language`
 
 <!-- nav:start -->
 [← Combat · the chair in Rusty Creek](combat.md) · [Visual direction](README.md) · **12 / 14** · [HUD and pocket computer →](hud.md)

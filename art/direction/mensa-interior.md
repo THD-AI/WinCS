@@ -18,10 +18,10 @@ Match the first image's style exactly. Interior side view of the empty universit
 - `20261023_125138.jpg` (GameJam_References-2, outside Git)
 - `20261023_124941.jpg` (GameJam_References-2, outside Git)
 - `20261023_130817.jpg` (GameJam_References-2, outside Git)
-- `games/hollow-knight/images/white-palace.jpg` (GameJam_GameRefs, outside Git)
+- [white-palace.jpg](../../references/games/hollow-knight/images/white-palace.jpg)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/mensa-interior.png` · rebuild: `python scripts/make_boards.py draw mensa-interior --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/mensa-interior.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo mensa-interior`
 
 <!-- nav:start -->
 [← Campus · the plaza and the Mensa scaffold](campus-mensa.md) · [Visual direction](README.md) · **5 / 14** · [Toxic Garden · the corten beds →](toxic-garden.md)

@@ -4,7 +4,7 @@
 [← The Secret of Monkey Island · classic · visual reference](../secret-of-monkey-island/visual-reference.md) · [Game references](../../README.md) · **35 / 36** · [Infinity Blade · visual reference →](visual-reference.md)
 <!-- nav:end -->
 
-[Infinity Blade · technology remembered as myth: visual study](visual-reference.md)
+[![Infinity Blade · technology remembered as myth: visual study](images/iii-008.jpg)](visual-reference.md)
 
 **Post-technological science fantasy: a medieval civilization living around vast infrastructure it only partly understands.**
 

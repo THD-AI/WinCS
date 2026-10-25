@@ -6,7 +6,7 @@
 
 ## At a glance · Learn a move, see a new route
 
-[Metroid Dread: gameplay reference](visual-reference.md)
+[![Metroid Dread: gameplay reference](images/gallery-1.jpg)](visual-reference.md)
 
 **Look for:** Separate the playable side view from cinematic shots; look for movement affordances.
 

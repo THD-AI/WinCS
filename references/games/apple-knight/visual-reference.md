@@ -4,7 +4,7 @@
 [← Apple Knight](README.md) · [Game references](../../README.md) · **8 / 36** · [Animal Well →](../animal-well/README.md)
 <!-- nav:end -->
 
-*Apple Knight: start with this gameplay reference*
+![Apple Knight: start with this gameplay reference](images/store-1.png)
 
 **Look for:** Spot the route, obstacle and player first. What would give our version its own comic rule?
 
@@ -26,7 +26,7 @@ Forest combat and title overlay; useful for terrain layering, not a clean timing
 
 ## store-2.png
 
-*Reference view: Platform gaps, spike floor, projectile and enemy placement in one readable hazard view.*
+![Reference view: Platform gaps, spike floor, projectile and enemy placement in one readable hazard view.](images/store-2.png)
 
 Platform gaps, spike floor, projectile and enemy placement in one readable hazard view.
 
@@ -37,7 +37,7 @@ Platform gaps, spike floor, projectile and enemy placement in one readable hazar
 
 ## store-3.png
 
-*Reference view: Dragon encounter demonstrates the extra boss and effect workload.*
+![Reference view: Dragon encounter demonstrates the extra boss and effect workload.](images/store-3.png)
 
 Dragon encounter demonstrates the extra boss and effect workload.
 

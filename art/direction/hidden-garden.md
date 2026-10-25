@@ -16,10 +16,10 @@ Region 0, the tutorial. Scene from the Hidden Garden collage: reed beds, stone-s
 
 - [style-master](style-master.md) (this pack)
 - [hidden-gardens.png](../../references/campus/images/hidden-gardens.png)
-- `games/kingdom-two-crowns/images/01-official-gameplay.jpg` (GameJam_GameRefs, outside Git)
+- [01-official-gameplay.jpg](../../references/games/kingdom-two-crowns/images/01-official-gameplay.jpg)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hidden-garden.png` · rebuild: `python scripts/make_boards.py draw hidden-garden --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hidden-garden.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo hidden-garden`
 
 <!-- nav:start -->
 [← Style master · Rusty Creek, first light](style-master.md) · [Visual direction](README.md) · **2 / 14** · [Lost in the Green · secret paths →](lost-in-the-green.md)

@@ -6,7 +6,7 @@
 
 ## At a glance · Vatsal’s starting point
 
-[Hollow Knight: gameplay reference](visual-reference.md)
+[![Hollow Knight: gameplay reference](images/blue-cave.jpg)](visual-reference.md)
 
 **Look for:** The tiny bright silhouette, readable ledges and feeling of a much larger place.
 

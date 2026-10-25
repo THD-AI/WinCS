@@ -17,7 +17,7 @@ The first image IS our game's stage, Rusty Creek: keep its composition, the blue
 - [after-center.png](../stages/rusty-creek/images/after-center.png)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 
-Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/style-master.png` · rebuild: `python scripts/make_boards.py draw style-master --redo --config art/direction/direction.json`
+Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/style-master.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo style-master`
 
 <!-- nav:start -->
 [← Visual direction](README.md) · [Visual direction](README.md) · **1 / 14** · [Hidden Garden · the lake anomaly →](hidden-garden.md)
