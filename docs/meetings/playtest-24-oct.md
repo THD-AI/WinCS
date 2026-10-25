@@ -11,7 +11,7 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 
 | # | What they said | Interpretation | Status |
 | --- | --- | --- | --- |
-| R1 | The hero blends into the background (trees, tree line, buildings); try a white poncho or a purple "Teletubby" sweater – "something for Alex to decide" | The grey/blue/teal THD poncho sits in the same values as the autumn scenery | ❓ colour; a brighter rim or outline is the quick fix |
+| R1 | The hero blends into the background (trees, tree line, buildings); try a white poncho or a purple "Teletubby" sweater – "something for Alex to decide" | The grey/blue/teal THD poncho sits in the same values as the autumn scenery | 🔧 the quick fix is in: Settings → Hero → "Brighter outline" (a cool white rim instead of the warm one); the poncho colour itself is still ❓ Alexander's |
 | R2 | Enemies are "way too small", barely visible; the professor didn't realise the robots were enemies. Vatsal: robots +300 % (≈ half the hero), hero ×1.5. Lex: "maybe don't make them bigger, but make them actually visible" | Rovers are 25 px against an 80 px hero. Scale against the world is the open question (Alexander: "is the character too small?") | ❓ bigger vs more visible – see the scale note below |
 | R3 | The attack animation is confusing, "barely noticeable that it is an attack" | Swing and hit need a visible arc, flash and impact | 🔧 fights branch |
 | R4 | The foreground bar or pipe in the middle of the view clutters it: move it behind (in front of the tree line, behind the buildings) | Rusty Creek's near-rails plate (z 6, scroll 1.1) crosses the play area | ⏭ a layer move; check with the Debug tab's layer switches |

@@ -19,6 +19,7 @@ import { Interaction } from './interaction';
 import { HeroSlices, PonchoSway } from './idle-life';
 import { parseAtmosphere, type Wind } from '../stage/atmosphere/config';
 import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
+import { heroRim, preferences } from '../core/preferences';
 import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
 import { bindings, CODES, physicalKeys, type Action } from './physicalKeys';
@@ -89,7 +90,11 @@ export class Player {
     this.hurt = new HurtAnimation(scene.cache.json.get('hero-hurt.anims') ?? {}, scene.cache.json.get('hero-death.anims') ?? {});
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
     this.slices = new HeroSlices(scene, this.sprite);
-    for (const sprite of [this.sprite, ...this.slices.parts]) addRim(sprite, ACTOR_RIM.colour, ACTOR_RIM.strength);
+    // The actors' warm rim, or a brighter cool outline when the player asked for it (Settings, playtest R1).
+    const rim = () => { const r = heroRim(preferences.state, ACTOR_RIM); for (const s of [this.sprite, ...this.slices.parts]) addRim(s, r.colour, r.strength); };
+    rim();
+    const offRim = preferences.on(rim);
+    scene.events.once('shutdown', offRim);
     this.blades = scene.add.graphics().setDepth(101);
     // After every scene update (the chair may swap the hero's frame): place the feet in the ground.
     const settle = () => this.settle();

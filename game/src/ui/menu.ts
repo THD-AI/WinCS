@@ -1,4 +1,5 @@
 import { debugStore, ZOOMS } from '../core/debug';
+import { preferences } from '../core/preferences';
 import { ACTIONS, bindings, CODES, keyName, type Action } from '../player/physicalKeys';
 import { download, falls } from '../stage/fallCapture';
 
@@ -154,6 +155,7 @@ export class GameMenu {
       field('Volume', volume),
       field('Zoom', zoom),
       field('Screen', full),
+      field('Hero', check(preferences.state.heroOutline, 'Brighter outline – easier to see against the leaves', on => preferences.set({ heroOutline: on }))),
       field('Keys', this.keys()),
     ];
   }
