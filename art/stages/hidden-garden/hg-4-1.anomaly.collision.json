@@ -642,7 +642,38 @@
    "text": "Down here everything is the right way round.\nIt is the garden that hangs upside down.\nDo not feed the vessel."
   }
  ],
- "spawn": [],
+ "spawn": [
+  {
+   "id": "hg-4-1-drip-0",
+   "kind": "drip",
+   "x": 330,
+   "y": 162
+  },
+  {
+   "id": "hg-4-1-drip-1",
+   "kind": "drip",
+   "x": 650,
+   "y": 312
+  },
+  {
+   "id": "hg-4-1-drip-2",
+   "kind": "drip",
+   "x": 1010,
+   "y": 414
+  },
+  {
+   "id": "hg-4-1-drip-3",
+   "kind": "drip",
+   "x": 1590,
+   "y": 446
+  },
+  {
+   "id": "hg-4-1-drip-4",
+   "kind": "drip",
+   "x": 1720,
+   "y": 262
+  }
+ ],
  "ledge": [],
  "glideLift": [],
  "terrain": [

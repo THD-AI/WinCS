@@ -36,7 +36,8 @@ STAGES = ROOT / "art" / "stages"
 BODY = (28, 76)
 RISE = 88       # highest ledge a held jump reaches, with margin (96 px in docs/04)
 ACROSS = 140    # widest gap a running jump clears
-FLOATS = ("drone", "balloon", "pipe-eyes", "dexter-sighting")  # need no reachable floor: they fly, float, or stand
+FLOATS = ("drone", "balloon", "pipe-eyes", "dexter-sighting", "lamp", "drip")  # need no reachable floor: they fly,
+# float, stand, hang on a wall (a lamp) or fall from the ceiling (a drip)
 # where the hero cannot go (stage/props.ts, story/sightings.ts)
 SNAP = 6        # ends this close count as one continuous floor
 STEP_UP = 16    # rises the grounded body walks up without a jump (game/src/player/body.ts)

@@ -9,6 +9,7 @@
     "03-rear": { "sway": 1.6, "reach": 300, "foliage": 0.3 },
     "04-water": { "ripple": 1.5, "shimmer": 0.5 },
     "05-play": { "sway": 1.5, "reach": 28, "anchor": "top", "foliage": 0.35 },
+    "06-pillars": { "sway": 0 },
     "06-near": { "sway": 2.4, "reach": 36, "anchor": "base", "foliage": 0.6, "bob": 0, "blur": 0 },
     "07-foreground": { "sway": 3.5, "reach": 150, "foliage": 0.15, "bob": 1, "blur": 1.25 }
   },
@@ -16,6 +17,7 @@
     "03-rear": { "sway": 0 },
     "04-water": { "ripple": 0.8, "shimmer": 0.3 },
     "05-play": { "sway": 0 },
+    "06-pillars": { "sway": 0 },
     "06-near": { "sway": 1.2, "reach": 80, "anchor": "base", "foliage": 0.6 }
   },
   "leaves": {

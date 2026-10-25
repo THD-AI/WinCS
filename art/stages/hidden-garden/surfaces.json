@@ -54,10 +54,9 @@
    {"x": [1020, 1330], "material": "wood", "note": "plank: pier"}
   ],
   "hg-2-1": [
-   {"x": [0, 1136], "y": [328, 352], "material": "stone", "note": "ground: the floor"},
    {"x": [0, 2036], "y": [589, 619], "material": "stone", "note": "ground: the floor"},
-   {"x": [1204, 2160], "y": [329, 353], "material": "stone", "note": "ground: the floor"},
-   {"x": [2036, 2160], "y": [617, 643], "material": "stone", "note": "ground: the floor"}
+   {"x": [2036, 2160], "y": [617, 643], "material": "stone", "note": "ground: the floor"},
+   {"x": [0, 2160], "y": [330, 354], "material": "stone", "note": "ground: the floor"}
   ],
   "hg-3-1": [
    {"x": [0, 1360], "y": [126, 150], "material": "stone", "note": "ground: the floor"},

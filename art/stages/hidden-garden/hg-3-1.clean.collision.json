@@ -847,6 +847,14 @@
    "h": 588,
    "kind": "ladder",
    "id": "hgz-1-1-ladder-0"
+  },
+  {
+   "x": 358,
+   "y": 134,
+   "w": 38,
+   "h": 508,
+   "kind": "ladder",
+   "id": "hgz-1-1-ladder-m0"
   }
  ],
  "solid": [],
@@ -912,6 +920,60 @@
    "y": 646,
    "act": "creepy",
    "face": -1
+  },
+  {
+   "id": "hg-3-1-lamp-0",
+   "kind": "lamp",
+   "x": 640,
+   "y": 235
+  },
+  {
+   "id": "hg-3-1-lamp-1",
+   "kind": "lamp",
+   "x": 1170,
+   "y": 235
+  },
+  {
+   "id": "hg-3-1-lamp-2",
+   "kind": "lamp",
+   "x": 130,
+   "y": 560
+  },
+  {
+   "id": "hg-3-1-lamp-3",
+   "kind": "lamp",
+   "x": 635,
+   "y": 560
+  },
+  {
+   "id": "hg-3-1-lamp-4",
+   "kind": "lamp",
+   "x": 1160,
+   "y": 560
+  },
+  {
+   "id": "hg-3-1-drip-0",
+   "kind": "drip",
+   "x": 260,
+   "y": 104
+  },
+  {
+   "id": "hg-3-1-drip-1",
+   "kind": "drip",
+   "x": 900,
+   "y": 104
+  },
+  {
+   "id": "hg-3-1-drip-2",
+   "kind": "drip",
+   "x": 1380,
+   "y": 104
+  },
+  {
+   "id": "hg-3-1-drip-3",
+   "kind": "drip",
+   "x": 1850,
+   "y": 104
   }
  ],
  "ledge": [],

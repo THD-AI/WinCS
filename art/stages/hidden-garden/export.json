@@ -90,6 +90,12 @@
       "z": 5,
       "scroll": 1.0,
       "optional": true
+    },
+    "06-pillars": {
+      "file": "layers/{name}.06-pillars.png",
+      "z": 6,
+      "scroll": 1.0,
+      "optional": true
     }
   },
   "states": {
@@ -100,6 +106,7 @@
       "03-rear",
       "04-water",
       "05-play",
+      "06-pillars",
       "06-near",
       "07-foreground"
     ],
@@ -111,6 +118,7 @@
       "04-water",
       "05-play",
       "05-tears",
+      "06-pillars",
       "06-near",
       "07-foreground"
     ]

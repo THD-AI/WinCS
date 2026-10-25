@@ -303,6 +303,10 @@
         {
           "layer": "06-near",
           "alpha": "masks/hg-2-1.06-near.png"
+        },
+        {
+          "layer": "06-pillars",
+          "alpha": "masks/hg-2-1.06-pillars.png"
         }
       ]
     },
