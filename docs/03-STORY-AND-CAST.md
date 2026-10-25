@@ -25,6 +25,7 @@ The jam slice is one build-up, not a list of beats: **cozy → something wrong �
 | # | Beat | Mood | What lands | Scene · trigger | Budget |
 | --- | --- | --- | --- | --- | --- |
 | 1 | The garden | cozy | Dexter on his bench, the first quest is to follow him; secrets reward looking around | `Prologue` · the bench in the region data | 2–3 min |
+| 1b | *Detour:* under the garden | uneasy, curious | the shed door you should not open: a cellar where Dexter beckons from upstairs, back toward the stairs; the storm drain with a red balloon pressed against the pond's underside, a paper boat at the outlet and two plush eyes in the pipe that are gone on a second look; the reflection hall where the girders hang from the water – and a tear that turns the whole underground into its anomaly. Dexter is down here too, once per room, and never when you come close | the shed door (`door`), `Props`, `Sightings`, the `turn` box | +2–3 min (optional) |
 | 2 | The pond | something wrong | the reflection shows the rust maze; he shoves you, and for one frame he is a silhouette | `FinaleSequence` · `pond-edge` | 20 s |
 | 3 | The 404 | glitch | "404: Hidden Garden not found." – the garden tears and pulls you in | `Crossing` `'404'` · the fall | 10 s |
 | 4 | Alone in the creek | quiet, watched | Dexter is gone – but far down the path a small black plush stands and **watches**. He never comes closer; when you near him he hops away | `Watcher` · the `jenny-ram` box (he stands 240 px past it) | 40 s |
@@ -38,6 +39,8 @@ The jam slice is one build-up, not a list of beats: **cozy → something wrong �
 ```mermaid
 flowchart LR
   G["1 garden<br/>cozy · follow Dexter"] --> P["2 pond<br/>wrong reflection · shove"]
+  G -.->|"the shed door"| U["1b under the garden (optional)<br/>Dexter in every room · balloon · eyes · the tear"]
+  U -.->|"the stairs back up"| G
   P --> F["3 404<br/>the garden tears"]
   F --> W["4 creek, alone<br/>Dexter watches from too far"]
   W -->|"hero within 8 m"| H["5 silence 1.2 s<br/>music stops"]
@@ -50,7 +53,9 @@ flowchart LR
   R --> E["To be continued."]
 ```
 
-**Foreshadowing, never explained:** the wrong reflection (beat 2), Dexter watching from too far away (4), every pool he takes at the coffee machine (8), his look back (10) – the same look as in the garden, from a Dexter who is now more than half your height. His growth is shown and never commented on.
+**Timing:** beats 1–10 add up to about 8½–11 minutes, inside the slice's 8–12; the detour under the garden adds 2–3 minutes for the players who open the shed door, and the turn there shows the anomaly state the pond only hints at.
+
+**Foreshadowing, never explained:** the underground before the pond (1b) – Dexter in rooms he could not have reached before you, the eyes that watch and are gone, the Feldversuch notes and their "mascot-shaped containment vessel" – the wrong reflection (beat 2), Dexter watching from too far away (4), every pool he takes at the coffee machine (8), his look back (10) – the same look as in the garden, from a Dexter who is now more than half your height. His growth is shown and never commented on.
 
 ## The hero
 
