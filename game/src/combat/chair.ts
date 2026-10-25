@@ -11,7 +11,7 @@ import { lowStreak, swingArc } from './swingFx';
 import { LOW_CONTACT, LowSweep } from './lowSweep';
 import { pickAssist } from './assist';
 import { UP_CONTACT } from './overhead';
-import { CODES, physicalKeys } from '../player/physicalKeys';
+import { bindings, CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
 const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
@@ -161,14 +161,16 @@ export class ChairCombat {
     this.guard.step(milliseconds / 1000);
     if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const down = this.key.isDown || this.altKey.isDown || this.physical.any(CODES.attack) || !!pad?.X || this.mouse.down;
+    // J and X (Phaser's keys) count only while attack has its default keys; a rebound attack is its own key alone.
+    const named = bindings.isDefault('attack');
+    const down = named && (this.key.isDown || this.altKey.isDown) || this.physical.any(CODES.attack) || !!pad?.X || this.mouse.down;
     // Both edge checks run every frame so neither key keeps a stale Just-flag.
-    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean) || this.mouse.released;
-    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean) || this.mouse.pressed;
+    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean) && named || this.mouse.released;
+    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean) && named || this.mouse.pressed;
     this.mouse.pressed = false; this.mouse.released = false;
     const { pressed, released } = actionEdges(down, this.wasDown, justDown, justUp);
-    const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
-    const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
+    const up = bindings.isDefault('up') && (this.directions.W.isDown || this.directions.UP.isDown) || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
+    const below = bindings.isDefault('down') && (this.directions.S.isDown || this.directions.DOWN.isDown) || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     this.buffer.step(milliseconds / 1000);
     if (this.enabled && pressed && this.player.dodge.active) {
       // Pressed during a dodge-dash: struck as the dash ends.

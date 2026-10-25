@@ -1,9 +1,10 @@
 import { debugStore, ZOOMS } from '../core/debug';
+import { ACTIONS, bindings, CODES, keyName, type Action } from '../player/physicalKeys';
 import { download, falls } from '../stage/fallCapture';
 
 /**
  * The game menu (docs/02 "Menu and debug mode"): a small ☰ button in the corner, Esc or the pad's Start. It pauses
- * the stage and has four tabs – Controls (keyboard and gamepad), Settings (sound, zoom, full screen), Debug (the
+ * the stage and has four tabs – Controls (keyboard and gamepad), Settings (sound, zoom, full screen, keys), Debug (the
  * switches in core/debug.ts and every stage layer) and Coming soon. Plain DOM over the canvas: crisp at any scale,
  * mouse, touch and keyboard all work. The stage tells it what it has (`MenuHost`); the menu never reaches into
  * the scenes itself.
@@ -36,8 +37,17 @@ export const COMING = [
   'The poncho glide after Rusty Creek – updrafts off the water, gaps only a glide crosses',
   'More crabs and drones in the maze',
   'Lost in the Green, the Mensa, the Toxic Garden and the Playground',
-  'Touch controls and rebindable keys',
+  'Touch controls',
 ];
+
+/** The actions Settings → Keys can rebind, as the player reads them. */
+export const KEY_LABELS: Record<Action, string> = {
+  left: 'Walk left', right: 'Walk right', up: 'Interact, climb up', down: 'Drop through, climb down',
+  jump: 'Jump', attack: 'Attack / guard', dodge: 'Dodge-dash',
+};
+
+/** An action's keys for the menu: "A, ←", or "none" when the player gave all of them away. */
+export const keysText = (codes: readonly string[]) => codes.length ? [...new Set(codes.map(keyName))].join(', ') : 'none';
 
 type Tab = 'controls' | 'settings' | 'debug' | 'coming';
 const TABS: [Tab, string][] = [['controls', 'Controls'], ['settings', 'Settings'], ['debug', 'Debug'], ['coming', 'Coming soon']];
@@ -50,6 +60,9 @@ export class GameMenu {
   private tab: Tab = 'controls';
   private open = false;
   private offStore: () => void;
+  /** The action waiting for its new key in Settings → Keys. */
+  private listening?: Action;
+  private stopListening?: () => void;
 
   constructor(parent: HTMLElement, private host: MenuHost) {
     this.button = el('button', 'wm-open', '☰') as HTMLButtonElement;
@@ -94,6 +107,7 @@ export class GameMenu {
   toggle(open = !this.open) {
     if (open === this.open) return;
     this.open = open;
+    if (!open) this.stopListening?.();
     this.root.hidden = !open;
     this.host.pause(open);
     if (open) { this.render(); (this.panel.querySelector('.wm-tab[aria-selected="true"]') as HTMLElement | null)?.focus(); }
@@ -115,7 +129,9 @@ export class GameMenu {
       row.append(el('td', '', action), el('td', 'wm-key', keys), el('td', 'wm-key', pad));
       table.append(row);
     }
-    return [table, el('p', 'wm-note', 'Two laptop layouts: WASD with J attack, K jump, L dodge – or the arrows with Z jump, X attack, C dodge. Touch controls are coming.')];
+    const own = ACTIONS.filter(a => !bindings.isDefault(a)).map(a => `${KEY_LABELS[a]}: ${keysText(CODES[a])}`);
+    return [table, el('p', 'wm-note', 'Two laptop layouts: WASD with J attack, K jump, L dodge – or the arrows with Z jump, X attack, C dodge. Change any of them in Settings → Keys.'),
+      ...own.length ? [el('p', 'wm-note', `Your own keys – ${own.join(' · ')}.`)] : []];
   }
 
   private settings(): HTMLElement[] {
@@ -138,7 +154,42 @@ export class GameMenu {
       field('Volume', volume),
       field('Zoom', zoom),
       field('Screen', full),
+      field('Keys', this.keys()),
     ];
+  }
+
+  /** Settings → Keys (playtest M5): click an action, press its new key (Esc keeps the old one). */
+  private keys(): HTMLElement {
+    const list = el('div', 'wm-keys');
+    for (const action of ACTIONS) {
+      const waiting = this.listening === action;
+      const b = el('button', 'wm-chip', waiting ? 'Press a key… (Esc: keep)' : keysText(CODES[action])) as HTMLButtonElement;
+      b.setAttribute('aria-pressed', String(waiting));
+      b.title = `Change the key for ${KEY_LABELS[action].toLowerCase()}`;
+      b.onclick = () => this.listen(action);
+      list.append(row(el('span', 'wm-key-label', KEY_LABELS[action]), b));
+    }
+    const reset = el('button', 'wm-chip', 'Reset to the defaults') as HTMLButtonElement;
+    reset.disabled = ACTIONS.every(a => bindings.isDefault(a));
+    reset.onclick = () => { this.stopListening?.(); bindings.reset(); this.render(); };
+    list.append(reset);
+    return list;
+  }
+
+  /** The next key pressed goes to the action – caught before the game and the menu's own Esc see it. */
+  private listen(action: Action) {
+    this.stopListening?.();
+    this.listening = action;
+    const onKey = (event: KeyboardEvent) => {
+      event.preventDefault();
+      event.stopPropagation();
+      if (event.code !== 'Escape') bindings.set(action, event.code);
+      this.stopListening?.();
+      this.render();
+    };
+    window.addEventListener('keydown', onKey, true);
+    this.stopListening = () => { window.removeEventListener('keydown', onKey, true); this.listening = undefined; this.stopListening = undefined; };
+    this.render();
   }
 
   private debug(): HTMLElement[] {
@@ -175,7 +226,7 @@ export class GameMenu {
     return [list];
   }
 
-  destroy() { this.offStore(); this.button.remove(); this.root.remove(); }
+  destroy() { this.stopListening?.(); this.offStore(); this.button.remove(); this.root.remove(); }
 }
 
 function el(tag: string, className = '', text?: string): HTMLElement {

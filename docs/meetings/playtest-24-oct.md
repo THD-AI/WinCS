@@ -38,7 +38,7 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 | M2 | Ladder: alternate the arms by flipping the climb sprite each rung (no new art) | 🔧 |
 | M3 | WASD did not move the hero (A16) | 🔧 the code reads A/D/W/S – checking keyboard layouts |
 | M4 | Attack only on J is awkward for arrow-key players: add a second bind (Z/X), or move it | 🔧 second bind X |
-| M5 | Rebindable keys in Settings (nice to have) | ⏭ listed under Coming soon |
+| M5 | Rebindable keys in Settings (nice to have) | ✅ Settings → Keys: one key of your own per action, saved in the browser; the Controls tab lists your keys |
 
 ## Menu and debug (A17 and Alexander)
 

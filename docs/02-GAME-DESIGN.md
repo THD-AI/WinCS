@@ -46,7 +46,7 @@ The weapon is switched in the pocket computer menu (or ←/→ while the menu is
 A ☰ button in the top-right corner, Esc or the pad's Start open the **game menu** and pause the stage (`game/src/ui/menu.ts`, plain DOM over the canvas so it stays crisp and works with mouse, touch and keyboard). Four tabs:
 
 - **Controls** – the table above, for keyboard and gamepad.
-- **Settings** – sound on/off and volume, zoom (the game's own view or 133 / 200 / 286 % wider), full screen.
+- **Settings** – sound on/off and volume, zoom (the game's own view or 133 / 200 / 286 % wider), full screen, and **Keys**. In Keys, click an action and press its new key (Esc keeps the old one). The key then belongs to that action alone and is taken from any other. The choice is saved in the browser, and "Reset to the defaults" brings back both laptop layouts. Esc, Tab and the debug keys stay the game's (`player/physicalKeys.ts` `Bindings`).
 - **Debug** – debug mode and its switches (`game/src/core/debug.ts`); the corner line names every switch that is on, so a playtest screenshot records what was showing:
   - **Layers**: every stage layer by id and z, switched off in all chunks at once; with the **purple backdrop** any hole or seam in a plate behind it shows at once (the hot-dog rule, docs/09).
   - **Collision**: walk lines, one-way beams, ladders, walls, water, hazards, triggers (the F2 legend).

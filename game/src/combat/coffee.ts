@@ -2,7 +2,7 @@ import type Phaser from 'phaser';
 import type { Box, CollisionChunk } from '../stage/collision';
 import { overlaps, type Body } from '../player/body';
 import type { Player } from '../player/player';
-import { CODES, physicalKeys } from '../player/physicalKeys';
+import { bindings, CODES, physicalKeys } from '../player/physicalKeys';
 
 /**
  * The approved machine's idle clip (coffee-machine.anims.json: steady, flicker, the pond on the screen). It glows
@@ -56,8 +56,8 @@ export class CoffeePoints {
   }
   update() {
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const up = this.keys.W.isDown || this.keys.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
-    const attacking = this.keys.J.isDown || this.keys.X.isDown || this.physical.any(CODES.attack) || !!pad?.X;
+    const up = bindings.isDefault('up') && (this.keys.W.isDown || this.keys.UP.isDown) || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
+    const attacking = bindings.isDefault('attack') && (this.keys.J.isDown || this.keys.X.isDown) || this.physical.any(CODES.attack) || !!pad?.X;
     const machine = this.use.step(up, this.player.body, this.player.canAttack && !attacking, this.machines);
     if (machine && this.player.beginInteraction()) this.player.saveCheckpoint(machine.id!);
     const frame = `idle-0${coffeeFrame(this.scene.time.now, this.fps)}`;
