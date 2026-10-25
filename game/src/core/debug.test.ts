@@ -1,5 +1,5 @@
 import { describe as suite, expect, it } from 'vitest';
-import { DebugStore, describe } from './debug';
+import { DebugStore, describe, backdropColour } from './debug';
 
 suite('debug mode switches', () => {
   it('shows nothing until debug mode is on', () => {
@@ -27,5 +27,12 @@ suite('debug mode switches', () => {
     store.set({ on: true, actors: false, backdrop: true, zoom: 0.5 });
     store.toggleLayer('01-far');
     expect(describe(store.state)).toBe('debug: backdrop collision stats | hidden: 01-far | zoom 0.5');
+    store.set({ white: true });
+    expect(describe(store.state)).toMatch(/^debug: backdrop-white /);
+  });
+
+  it('paints the backdrop purple, or white to check a layer against both', () => {
+    expect(backdropColour({ white: false })).toBe(0x9b30ff);
+    expect(backdropColour({ white: true })).toBe(0xffffff);
   });
 });

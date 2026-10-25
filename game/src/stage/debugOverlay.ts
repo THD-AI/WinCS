@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { debugStore, describe, type DebugState } from '../core/debug';
+import { backdropColour, debugStore, describe, type DebugState } from '../core/debug';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { SPOT_RANGE } from '../enemies/rover';
 import { CRAB_SPOT } from '../enemies/crab';
@@ -36,7 +36,6 @@ export interface DexterLike { x: number; state: string; stop?: { x: number }; ro
 
 /** How far each kind sees ahead (px), from its model's constants; the sight box is one body high. */
 export const SIGHT: Record<string, number> = { rover: SPOT_RANGE, crab: CRAB_SPOT, drone: DRONE_SPOT };
-const PURPLE = 0x9b30ff;
 const ALERT = new Set(['tell', 'charge', 'stab', 'dive']);
 
 /** The sight box in front of an enemy: from its centre `range` px the way it faces, one body high. */
@@ -72,7 +71,7 @@ export class DebugOverlay {
   private apply(state: DebugState) {
     // Layer visibility: the stage's culling (render.ts) asks debugStore each frame.
     const camera = this.scene.cameras.main;
-    camera.setBackgroundColor(debugStore.shows('backdrop') ? PURPLE : this.background);
+    camera.setBackgroundColor(debugStore.shows('backdrop') ? backdropColour(state) : this.background);
     camera.setZoom(state.zoom); // a Settings choice: wider views work with debug mode off too
     this.collision.setVisible(debugStore.shows('collision'));
     this.stats.setVisible(debugStore.shows('stats'));
