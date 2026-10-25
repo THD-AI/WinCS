@@ -1,0 +1,136 @@
+{
+ "chunk": "hg-4-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    392
+   ],
+   [
+    177,
+    392
+   ]
+  ],
+  [
+   [
+    177,
+    441
+   ],
+   [
+    1323,
+    441
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [],
+ "solid": [
+  {
+   "x": 1326,
+   "y": 300,
+   "w": 24,
+   "h": 141,
+   "kind": "wall",
+   "note": "the pier's end post"
+  }
+ ],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 478,
+   "w": 2160,
+   "h": 242,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "pond-edge",
+   "kind": "anomaly",
+   "x": 1250,
+   "y": 365,
+   "w": 70,
+   "h": 76,
+   "note": "the jetty edge: with Dexter at the jetty the finale runs - the wrong reflection (anomaly-reveal), the shove, the 404, the pull (story/Prologue.ts)"
+  },
+  {
+   "id": "to-rusty-creek",
+   "kind": "chunk-exit",
+   "x": 1250,
+   "y": 365,
+   "w": 70,
+   "h": 76,
+   "note": "the way out of the garden is the 404 pull into clean Rusty Creek (rc-0-0); story/Prologue.ts swaps the region"
+  },
+  {
+   "id": "dexter-waypoint-pond-1",
+   "kind": "dexter-waypoint",
+   "x": 215,
+   "y": 365,
+   "w": 80,
+   "h": 76,
+   "note": "the old bench by the pond: Dexter waits here and looks back",
+   "act": "wait"
+  },
+  {
+   "id": "dexter-waypoint-pond-2",
+   "kind": "dexter-waypoint",
+   "x": 680,
+   "y": 365,
+   "w": 80,
+   "h": 76,
+   "note": "mid-path: Dexter hops ahead and beckons",
+   "act": "wait"
+  },
+  {
+   "id": "dexter-waypoint-pond-3",
+   "kind": "dexter-waypoint",
+   "x": 1150,
+   "y": 365,
+   "w": 80,
+   "h": 76,
+   "note": "the jetty: Dexter stops and points at the water; the hero passes him to the edge",
+   "act": "pond"
+  }
+ ],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    177
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top: drop to the pond walk"
+  },
+  {
+   "x": [
+    177,
+    1020
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "pond walk"
+  },
+  {
+   "x": [
+    1020,
+    1330
+   ],
+   "kind": "plank",
+   "material": "wood",
+   "note": "pier"
+  }
+ ]
+}

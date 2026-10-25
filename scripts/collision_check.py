@@ -36,10 +36,13 @@ STAGES = ROOT / "art" / "stages"
 BODY = (28, 76)
 RISE = 88       # highest ledge a held jump reaches, with margin (96 px in docs/04)
 ACROSS = 140    # widest gap a running jump clears
+FLOATS = ("drone", "balloon", "pipe-eyes", "dexter-sighting")  # need no reachable floor: they fly, float, or stand
+# where the hero cannot go (stage/props.ts, story/sightings.ts)
 SNAP = 6        # ends this close count as one continuous floor
 STEP_UP = 16    # rises the grounded body walks up without a jump (game/src/player/body.ts)
 FACE_DEPTH = 120  # a floor this far under a line end makes it an overhang, not a face (body.ts)
 FACE_REACH = 100  # a face stops feet at most this far below its top; taller ones are background (body.ts)
+STREAM = 64     # water narrower than this under the feet is a stream crossing the floor, not a pond
 TERRAIN = {"ground", "step", "stair", "plank", "ledge", "wall", "log", "obstacle", "slide"}
 FLAT = {"step", "stair", "plank"}  # treads: never a slope
 FLAT_SLOPE = 0.05
@@ -200,8 +203,8 @@ def reach(data: dict, name: str) -> list[str]:
             b["kind"] == "chunk-exit" for b in data["interact"]):
         errors.append(f"{name}: the right edge is not reachable")
     for p in data["spawn"]:
-        if p["kind"] in ("drone",):
-            continue  # flies
+        if p["kind"] in FLOATS:
+            continue  # flies, floats or hides in a wall
         if not set(standing(s, p["x"], p["y"], 40 if p["kind"] != "player" else 12)) & seen:
             errors.append(f"{name}: spawn {p['id']} at ({p['x']}, {p['y']}) is not on a reachable floor")
     for b in data["interact"]:
@@ -296,8 +299,15 @@ def water(data: dict, name: str, region: Path) -> list[str]:
                 yy = int(round(y_at(line, x))) + 4
                 if surface - 2 <= yy < w.shape[0] and x < w.shape[1] and w[yy, x] and not p[yy, x]:
                     bad.append(x)
-            if bad:
-                errors.append(f"{name}: {key}[{i}] stands on water at x={bad[0]}..{bad[-1]}")
+            # A wet run narrower than STREAM is a stream or a splash crossing the floor (a drain's outlet), not a pond.
+            runs = [[bad[0], bad[0]]] if bad else []
+            for x in bad[1:]:
+                if x - runs[-1][1] > 4:
+                    runs.append([x, x])
+                runs[-1][1] = x
+            for x0, x1 in runs:
+                if x1 - x0 >= STREAM:
+                    errors.append(f"{name}: {key}[{i}] stands on water at x={x0}..{x1}")
     return errors
 
 

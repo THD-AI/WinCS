@@ -1,0 +1,74 @@
+{
+ "chunk": "rcz-1-1",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    552
+   ],
+   [
+    1728,
+    552
+   ]
+  ],
+  [
+   [
+    336,
+    552
+   ],
+   [
+    936,
+    552
+   ]
+  ],
+  [
+   [
+    1728,
+    528
+   ],
+   [
+    2160,
+    528
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 1088,
+   "y": 0,
+   "w": 32,
+   "h": 552,
+   "kind": "ladder"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 336,
+   "y": 582,
+   "w": 600,
+   "h": 138,
+   "kind": "water",
+   "note": "water: never floor"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "rcz-1-1-bench",
+   "kind": "rest",
+   "x": 1874,
+   "y": 478,
+   "w": 140,
+   "h": 50,
+   "note": "a bench on the creek path \u2013 sit, the music settles"
+  }
+ ]
+}

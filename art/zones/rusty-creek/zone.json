@@ -1,0 +1,59 @@
+{
+  "zone": "rusty-creek",
+  "title": "Rusty Creek – the zone",
+  "note": "The input of the world pipeline for Region 1 (#157, docs/09 'World pipeline'), from the stacked direction in art/locations/rusty-creek-stacked.md (#182): the rails and the rust maze above, the creek path at water level, the campus's built underground below – culverts, storm drains, service rooms and the wrong reflection; never caves. The concept gives the look and the vocabulary, never the layout or the scale: scripts/world_map.py generates the map, sized to the hero's real moves.",
+  "seed": 157,
+  "grid": [
+    3,
+    3
+  ],
+  "bands": [
+    "above",
+    "level",
+    "below"
+  ],
+  "concept": {
+    "anomaly": "art/locations/rusty-creek-stacked/anomaly.png",
+    "clean": "art/locations/rusty-creek-stacked/clean.png"
+  },
+  "inputs": [
+    "repo:art/direction/images/style-master-preview.png"
+  ],
+  "model": "gpt-image-2.5-sunburst",
+  "style": "LOOK: detailed hi-bit pixel art with a fine 2-pixel grain in the warm palette and first light of the first image (Rusty Creek): rusty blue-green steel girders and rail bridges, ivy on stone piers, a cement creek path with railings, the calm creek with reflections, campus buildings and trees behind in hazy layers. Strict side view, an architect's elevation: everything runs parallel to the screen, nothing recedes. The hero is about 76 px tall in this image, so a doorway is about 110 px tall and a ladder rung step about 12 px. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
+  "people": "No people, no animals, no plush toys and no characters of any kind: this is an empty stage the game puts its characters into.",
+  "vocabulary": {
+    "above": "high above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees",
+    "level": "the creek at water level: the cement creek path with a railing and benches, steps, ivy-covered stone bridge piers, the calm creek with reflections, reeds at the bank",
+    "below": "under the creek bed, built campus space - never caves: arched concrete storm drains lit by bulkhead lamps, tiled service rooms with doors and pipes, round outfalls, and the wrong reflection: a tall flooded hall whose ceiling is the rooms above, the girder maze hanging upside down into still black water"
+  },
+  "anomaly": {
+    "note": "The 404 is data, never painted: chunks are painted clean; the preview and the game draw these tears over them in the anomaly state.",
+    "kinds": {
+      "cut": "a rectangle of sky turned flat grey with torn, pixel-stepped edges",
+      "stretch": "a strip of the picture smeared into vertical streaks from one row"
+    },
+    "count": 3
+  },
+  "note_inputs": "Paint inputs are the style master only (docs/09: a whole concept as a look reference gets copied, layout and all; #182: 'zone-a as a reference = zone-a's layout').",
+  "words": {
+    "roles": {
+      "above": "the bridge and the rust maze",
+      "level": "the creek path",
+      "below": "the drains and the wrong reflection"
+    },
+    "notes": {
+      "mound": "a culvert mouth in the bank, a lamp inside",
+      "rest": "a bench on the creek path – sit, the music settles",
+      "glint": "a glint at the high girder's end",
+      "hollow": "a lit service room: lockers, a desk, a hanging lamp"
+    },
+    "brief": {
+      "deck": "A steel footbridge on posts crosses the creek where the guide shows it.",
+      "mound": "An embankment rises where the guide's brown mound is; the purple room in it is a culvert mouth with a bulkhead lamp and a small locker – a secret, built and lit, never a cave.",
+      "rest": "A park bench stands on the cement creek path.",
+      "hollow": "The purple room is a warm lit service room with lockers, a desk and a hanging lamp, built in concrete and tile.",
+      "above": "Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm – most of the image is sky."
+    }
+  }
+}

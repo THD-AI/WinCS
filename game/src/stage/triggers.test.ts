@@ -18,6 +18,13 @@ describe('interact triggers', () => {
     expect(triggers.step(body(1300, 441))).toEqual([pond]);
   });
 
+  it('a box the hero starts in fires only after leaving it (a turn lands you on the turn box)', () => {
+    const triggers = new Triggers([chunk([pond])], 'hidden-garden');
+    expect(triggers.step(body(1260, 441))).toEqual([]);
+    expect(triggers.step(body(1400, 441))).toEqual([]);
+    expect(triggers.step(body(1260, 441))).toEqual([pond]);
+  });
+
   it('ignores boxes without an id or kind', () => {
     const triggers = new Triggers([chunk([{ x: 0, y: 0, w: 100, h: 100 }, pond])], 'hidden-garden');
     expect(triggers.step(body(50, 90))).toEqual([]);

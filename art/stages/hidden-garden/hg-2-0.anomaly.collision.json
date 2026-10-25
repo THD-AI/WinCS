@@ -1,0 +1,207 @@
+{
+ "chunk": "hg-2-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    387
+   ],
+   [
+    552,
+    388
+   ]
+  ],
+  [
+   [
+    552,
+    364
+   ],
+   [
+    655,
+    364
+   ]
+  ],
+  [
+   [
+    655,
+    336
+   ],
+   [
+    757,
+    336
+   ]
+  ],
+  [
+   [
+    757,
+    306
+   ],
+   [
+    1452,
+    306
+   ]
+  ],
+  [
+   [
+    1452,
+    336
+   ],
+   [
+    1553,
+    336
+   ]
+  ],
+  [
+   [
+    1553,
+    365
+   ],
+   [
+    1647,
+    365
+   ]
+  ],
+  [
+   [
+    1647,
+    389
+   ],
+   [
+    2160,
+    390
+   ]
+  ],
+  [
+   [
+    918,
+    146
+   ],
+   [
+    1268,
+    146
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "id": "shed-ladder",
+   "kind": "ladder",
+   "x": 1240,
+   "y": 140,
+   "w": 47,
+   "h": 166
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 482,
+   "w": 2160,
+   "h": 238,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "dexter-waypoint-4",
+   "kind": "dexter-waypoint",
+   "x": 1500,
+   "y": 228,
+   "w": 80,
+   "h": 76,
+   "note": "the top of the terrace: Dexter points back up at the glint on the shed roof, then waits",
+   "act": "point"
+  },
+  {
+   "x": 1095,
+   "y": 230,
+   "w": 80,
+   "h": 76,
+   "kind": "door",
+   "id": "shed-door",
+   "to": "cellar-stairs",
+   "note": "The shed door you should not open: stairs down to the cellar."
+  }
+ ],
+ "spawn": [
+  {
+   "id": "glint-roof",
+   "kind": "item",
+   "x": 1207,
+   "y": 146,
+   "note": "the glint on the shed roof"
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    918,
+    1268
+   ],
+   "y": [
+    0,
+    250
+   ],
+   "kind": "plank",
+   "material": "wood",
+   "note": "shed roof"
+  },
+  {
+   "x": [
+    0,
+    552
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "terrace foot"
+  },
+  {
+   "x": [
+    552,
+    757
+   ],
+   "kind": "ledge",
+   "material": "stone",
+   "note": "terrace tiers: hop up, drop down"
+  },
+  {
+   "x": [
+    757,
+    1452
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "terrace"
+  },
+  {
+   "x": [
+    1452,
+    1647
+   ],
+   "kind": "ledge",
+   "material": "stone",
+   "note": "terrace tiers"
+  },
+  {
+   "x": [
+    1647,
+    2160
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "terrace foot"
+  }
+ ]
+}

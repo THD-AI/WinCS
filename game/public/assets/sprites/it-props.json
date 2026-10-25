@@ -1,0 +1,230 @@
+{
+ "frames": {
+  "balloon-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "balloon-01": {
+   "frame": {
+    "x": 26,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "balloon-02": {
+   "frame": {
+    "x": 52,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "eyes-00": {
+   "frame": {
+    "x": 0,
+    "y": 42,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "eyes-01": {
+   "frame": {
+    "x": 26,
+    "y": 42,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "eyes-02": {
+   "frame": {
+    "x": 52,
+    "y": 42,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "boat-00": {
+   "frame": {
+    "x": 0,
+    "y": 84,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "boat-01": {
+   "frame": {
+    "x": 26,
+    "y": 84,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "boat-02": {
+   "frame": {
+    "x": 52,
+    "y": 84,
+    "w": 24,
+    "h": 40
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 24,
+    "h": 40
+   },
+   "sourceSize": {
+    "w": 24,
+    "h": 40
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "it-props.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 76,
+   "h": 124
+  },
+  "scale": "1"
+ }
+}

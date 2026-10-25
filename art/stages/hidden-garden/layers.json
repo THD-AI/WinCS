@@ -285,6 +285,66 @@
           ]
         }
       ]
+    },
+    "hg-2-1": {
+      "states": {
+        "clean": "images/hg-2-1.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "alpha": "masks/hg-2-1.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/hg-2-1.05-play.png"
+        },
+        {
+          "layer": "06-near",
+          "alpha": "masks/hg-2-1.06-near.png"
+        }
+      ]
+    },
+    "hg-3-1": {
+      "states": {
+        "clean": "images/hg-3-1.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "alpha": "masks/hg-3-1.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/hg-3-1.05-play.png"
+        },
+        {
+          "layer": "06-near",
+          "alpha": "masks/hg-3-1.06-near.png"
+        }
+      ]
+    },
+    "hg-4-1": {
+      "states": {
+        "clean": "images/hg-4-1.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "alpha": "masks/hg-4-1.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/hg-4-1.05-play.png"
+        },
+        {
+          "layer": "06-near",
+          "alpha": "masks/hg-4-1.06-near.png"
+        }
+      ]
     }
   }
 }

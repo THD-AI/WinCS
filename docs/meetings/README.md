@@ -1,7 +1,7 @@
 # Meetings and voice notes
 
 <!-- nav:start -->
-[← 15 – The prologue slice (rebuild)](../15-PROLOGUE-SLICE.md) · [Design docs](../README.md) · **15 / 15** · [Design documents →](../README.md)
+[← 16 – Zone design: scale, rooms and story in the space](../16-ZONE-DESIGN.md) · [Design docs](../README.md) · **16 / 16** · [Design documents →](../README.md)
 <!-- nav:end -->
 
 Seventeen recordings, 22–24 Oct 2026, transcribed with the OpenAI API. A11–A17 also have speaker labels (`gpt-4o-transcribe-diarize`). Audio stays in the team Drive; the transcripts are here so anyone (and any agent) can check where a design decision came from. The design itself lives in the numbered docs; transcripts are evidence, not instructions.
@@ -41,5 +41,5 @@ The campus starts familiar and gets uncanny, with no gore and no apocalypse, bec
 [Transcript index](transcripts/README.md) · [Source hashes](transcripts/source-index.json)
 
 <!-- nav:start -->
-[← 15 – The prologue slice (rebuild)](../15-PROLOGUE-SLICE.md) · [Design docs](../README.md) · **15 / 15** · [Design documents →](../README.md)
+[← 16 – Zone design: scale, rooms and story in the space](../16-ZONE-DESIGN.md) · [Design docs](../README.md) · **16 / 16** · [Design documents →](../README.md)
 <!-- nav:end -->

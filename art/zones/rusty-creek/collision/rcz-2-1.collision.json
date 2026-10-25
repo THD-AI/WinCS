@@ -1,0 +1,108 @@
+{
+ "chunk": "rcz-2-1",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    528
+   ],
+   [
+    576,
+    528
+   ]
+  ],
+  [
+   [
+    576,
+    504
+   ],
+   [
+    1968,
+    504
+   ]
+  ],
+  [
+   [
+    672,
+    504
+   ],
+   [
+    1296,
+    504
+   ]
+  ],
+  [
+   [
+    1968,
+    504
+   ],
+   [
+    2160,
+    504
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 1736,
+   "y": 0,
+   "w": 32,
+   "h": 504,
+   "kind": "ladder"
+  },
+  {
+   "x": 1688,
+   "y": 504,
+   "w": 32,
+   "h": 216,
+   "kind": "ladder"
+  }
+ ],
+ "solid": [
+  {
+   "x": 2136,
+   "y": 0,
+   "w": 24,
+   "h": 720,
+   "kind": "wall"
+  }
+ ],
+ "noGo": [
+  {
+   "x": 672,
+   "y": 534,
+   "w": 624,
+   "h": 186,
+   "kind": "water",
+   "note": "water: never floor"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "rcz-2-1-chest",
+   "kind": "secret",
+   "x": 382,
+   "y": 488,
+   "w": 60,
+   "h": 40,
+   "note": "a culvert mouth in the bank, a lamp inside"
+  },
+  {
+   "id": "rcz-2-1-bench",
+   "kind": "rest",
+   "x": 218,
+   "y": 478,
+   "w": 140,
+   "h": 50,
+   "note": "a bench on the creek path \u2013 sit, the music settles"
+  }
+ ]
+}

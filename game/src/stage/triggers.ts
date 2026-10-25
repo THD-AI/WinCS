@@ -10,17 +10,23 @@ import type { Box, CollisionChunk } from './collision';
 export class Triggers {
   private readonly boxes: Box[];
   private inside = new Set<Box>();
+  private primed = false;
 
   constructor(chunks: CollisionChunk[], private region: string) {
     this.boxes = chunks.flatMap(chunk => chunk.world.interact).filter(box => box.id && box.kind);
   }
 
-  /** The boxes the body entered since the last step. */
+  /**
+   * The boxes the body entered since the last step. A box the body starts in fires only after it was left: a turned
+   * region lands the hero on the very box that turned it.
+   */
   step(body: Body): Box[] {
     const entered: Box[] = [];
+    const first = !this.primed;
+    this.primed = true;
     for (const box of this.boxes) {
       const now = overlaps(body, box);
-      if (now && !this.inside.has(box)) entered.push(box);
+      if (now && !this.inside.has(box) && !first) entered.push(box);
       if (now) this.inside.add(box); else this.inside.delete(box);
     }
     return entered;
@@ -28,7 +34,9 @@ export class Triggers {
 
   emit(body: Body): void {
     for (const box of this.step(body)) {
-      gameEvents.emit('trigger-entered', { id: box.id!, kind: box.kind!, region: this.region, position: { x: body.x, y: body.y } });
+      const state = box.state === 'clean' || box.state === 'anomaly' ? box.state : undefined;
+      gameEvents.emit('trigger-entered', { id: box.id!, kind: box.kind!, region: this.region, position: { x: body.x, y: body.y },
+        ...(state && { state }) });
     }
   }
 }

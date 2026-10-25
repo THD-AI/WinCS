@@ -9,8 +9,8 @@ export interface GameEvents {
   'region-turned': { region: string; state: RegionState };
   'boss-defeated': { id: string; position: Position };
   'save': { checkpoint: string; region: string; position: Position };
-  /** The hero's body entered an interact box (collision `interact`); fires once per entry. */
-  'trigger-entered': { id: string; kind: string; region: string; position: Position };
+  /** The hero's body entered an interact box (collision `interact`); fires once per entry. `state`: a `turn` box's target. */
+  'trigger-entered': { id: string; kind: string; region: string; position: Position; state?: RegionState };
   /**
    * The prologue's pond shows what isn't there (docs/03, beat 'something wrong'): fired once when the hero
    * reaches the jetty edge, before Dexter's shove. `position` is the water point under the edge (stage px);

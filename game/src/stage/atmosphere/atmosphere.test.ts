@@ -56,6 +56,14 @@ describe('atmosphere.json', () => {
     const water = layerAtmosphere(atmo, { id: '04-water', z: 4, scroll: 1 });
     expect(water.sway).toBe(0);
   });
+  it('a room without sky takes the indoor entries over the layer entries: built walls do not sway', () => {
+    const atmo = parseAtmosphere({ layers: { '03-rear': { sway: 1.6, reach: 300 } }, indoor: { '03-rear': { sway: 0 } } }).atmosphere;
+    const rear = { id: '03-rear', z: 3, scroll: 1 };
+    expect(layerAtmosphere(atmo, rear).sway).toBe(1.6);
+    expect(layerAtmosphere(atmo, rear, true).sway).toBe(0);
+    expect(layerAtmosphere(atmo, rear, true).reach).toBe(300);       // what indoor does not set stays the layer's
+    expect(parseAtmosphere({ indoor: { '03-rear': 5 } }).problems).toContain('indoor.03-rear must be an object');
+  });
 });
 
 describe('depth bands', () => {

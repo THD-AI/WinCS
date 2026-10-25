@@ -83,11 +83,15 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
   const pipeline = layerPipeline(scene.game);
   pipeline?.setWind(atmosphere.wind);
 
+  // Rows with sky (the level row): the pond's surface, the wind and the leaves are there. A row without sky is a
+  // room (the cellar under the garden): its water has no waterline to mirror in, its walls and floors take `indoor`.
+  const skyRows = new Set(manifest.chunks.filter(c => c.states[state]?.layers.some(l => l.id === '00-sky')).map(c => c.y));
   const ranks = layerRanks(manifest.chunks.map(chunk => chunk.states[state]?.layers ?? []));
   const layers: DrawnLayer[] = stageLayers(manifest, state).map(layer => {
     const image = scene.add.image(layer.x, layer.y, textureKey(manifest.region, layer.file))
-      .setOrigin(0).setScrollFactor(layer.scroll).setDepth(layerDepth(layer.z, ranks.get(layer.id)!));
-    const fx = layerAtmosphere(atmosphere, layer);
+      // Parallax is sideways only: a region with rows (rooms) must not slide its plates up and down against the ground.
+      .setOrigin(0).setScrollFactor(layer.scroll, 1).setDepth(layerDepth(layer.z, ranks.get(layer.id)!));
+    const fx = layerAtmosphere(atmosphere, layer, !skyRows.has(Math.round(layer.y / manifest.chunkSize[1])));
     const uniforms = newUniforms();
     uniforms.sway.set([fx.sway, fx.reach, fx.foliage, fx.bob]);
     uniforms.water.set([-1, fx.ripple, fx.shimmer, fx.blur]);
@@ -118,7 +122,7 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
     if (d.layer.id === waterId) {
       const line = waterline(pixels);
       d.uniforms.water[0] = line;
-      if (line >= 0) {
+      if (line >= 0 && skyRows.has(Math.round(d.image.y / manifest.chunkSize[1]))) {
         spans.push({ x0: d.image.x, x1: d.image.x + d.image.width, y: d.image.y + line, image: d.image });
         spans.sort((a, b) => a.x0 - b.x0);
         if (life) {
@@ -174,6 +178,9 @@ export function drawStage(scene: Phaser.Scene, manifest: StageManifest, state: R
       if (pending < 0 && !layers[i].analysed) pending = i;
     }
     if (pending >= 0) analyse(layers[pending]);
+    // Leaves fall where there is sky: not in the cellar under the garden (a row is a room, camera.ts roomBounds).
+    const outdoors = skyRows.has(Math.floor((camera.scrollY + camera.height / 2) / manifest.chunkSize[1]));
+    leaves?.front?.setVisible(outdoors); leaves?.behind?.setVisible(outdoors);
     leaves?.update(time / 1000);
     life?.update(time, camera);
     for (let i = 0; i < reflections.length; i++) reflections[i].update();

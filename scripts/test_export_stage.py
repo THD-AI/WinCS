@@ -53,6 +53,19 @@ class ExportStageTests(unittest.TestCase):
         written = json.loads((self.out / 'test-region' / 'stage.json').read_text())
         self.assertEqual(written['chunks'], stage['chunks'])
 
+    def test_an_optional_layer_is_drawn_only_where_its_plate_exists(self):
+        Image.new('RGBA', (40, 20), (0, 0, 0, 0)).save(self.region / 'images' / 'tears-right.png')
+        self.config['layers']['tears'] = {'file': 'images/tears-{name}.png', 'z': 5, 'scroll': 1.0, 'optional': True}
+        self.config['states']['anomaly'] = ['sky', 'front', 'tears']
+        self.save()
+        stage = es.export(self.region, self.out)
+        ids = {c['id']: [l['id'] for l in c['states']['anomaly']['layers']] for c in stage['chunks']}
+        self.assertEqual(ids, {'t-0-0': ['sky', 'front'], 't-1-0': ['sky', 'front', 'tears']})
+        del self.config['layers']['tears']['optional']                       # without the flag a missing plate fails
+        self.save()
+        with self.assertRaises(es.ExportError):
+            es.export(self.region, self.out)
+
     def test_shared_plates_are_copied_once(self):
         stage = es.export(self.region, self.out)
         skies = {c['states']['clean']['layers'][0]['file'] for c in stage['chunks']}

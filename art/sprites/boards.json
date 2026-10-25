@@ -1129,6 +1129,47 @@
       ],
       "prompt": "Storyboard strip, 8 panels in a 4x2 grid separated by thin black gutters (the magenta rule does NOT apply here: each panel has a full side-view pixel-art scene of the Hidden Garden lake from the reference: reeds, stone edge, water). Panels: 1 the hero follows Dexter, who hops ahead toward the lake; 2 Dexter stops at the water's edge and points at a strange glowing ripple; 3 the hero touches the surface - white hit flash; 4 the hero is knocked back in the classic damage pose; 5 instead of landing, the hero is lifted into the air spinning like a starfish, pixels tearing around them; 6 a frozen frame with a grey old-desktop-style error dialog box drawn over the scene (empty title bar, an X icon, blank text lines, a single OK button - no readable words); 7 cut to black with a few glitch lines; 8 the hero lands in a new, darker overgrown area, finishing the damage animation, Dexter nowhere to be seen.",
       "keyed": false
+    },
+    {
+      "id": "it-props",
+      "title": "Props · the storm drain's IT details",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/mensa-food-preview.png",
+        "repo:art/sprites/images/dexter-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw this sheet in exactly that pixel-art look - small detailed props in rows on magenta, the same pixel grain and the same soft warm lantern rim light. Prop sprite sheet of three small story details found in a campus storm drain (secret horror: friendly at first glance, wrong on a second look). 3 rows. Row 1, exactly 3 frames: ONE RED BALLOON, an ordinary glossy latex party balloon, deep red with a white highlight, tied knot at the bottom and a thin white string hanging straight down about one and a half times the balloon's height - frame 1 at rest, frame 2 pressed up a little (top slightly flattened as if against a ceiling), frame 3 turned slightly so the highlight moves. Row 2, exactly 3 frames: TWO EYES IN THE DARK - only the pair of glossy round ice-blue plush eyes of the black panther plush from image 2, side by side, with a thin ring of very dark navy fabric around each eye (nothing else of the head): frame 1 open and calm, frame 2 the same with a bright white glint, frame 3 narrowed to half - too glossy, watching. Row 3, exactly 3 frames: ONE SMALL PAPER BOAT folded from a sheet of lined notebook paper (lines only, no writing), slightly soggy and grey at the waterline, side view - frame 1 level, frame 2 tipped a little left, frame 3 tipped a little right, rocking. Sizes against each other: the balloon (without its string) is about twice as tall as the paper boat; the pair of eyes is about as wide as the boat. Every frame of a row stands on the SAME invisible ground line at the SAME scale. Each row's frames are evenly spaced from left to right with wide clear magenta gaps between neighbours, and rows are separated by empty magenta bands. Draw distinct key poses, never blurred in-betweens. Count the frames: each row has EXACTLY 3. No people, no scenery, no pipe, no water.",
+      "atlas": {
+        "height": 36,
+        "rows": [
+          [
+            {
+              "anim": "balloon",
+              "frames": 3,
+              "fps": 3
+            }
+          ],
+          [
+            {
+              "anim": "eyes",
+              "frames": 3,
+              "fps": 4,
+              "parts": 2,
+              "scale": 0.75
+            }
+          ],
+          [
+            {
+              "anim": "boat",
+              "frames": 3,
+              "fps": 3,
+              "scale": 0.7
+            }
+          ]
+        ]
+      },
+      "review": "🟨 Awaiting Alexander's review (25 Oct). First draw: three distinct props in the food sheet's look. The board's 1 px balloon string broke up when crushed, so the game draws the string; the eyes are two pieces per frame (\"parts\": 2). Sizes per animation: balloon about 18 px, eyes 7 px, boat 9 px against the 76 px hero. In the drain: previews/it-props-in-drain.png."
     }
   ]
 }

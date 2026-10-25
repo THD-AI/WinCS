@@ -1,7 +1,7 @@
 # 02 – Game design
 
 <!-- nav:start -->
-[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 15** · [03 – Story and cast →](03-STORY-AND-CAST.md)
+[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 16** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->
 
 ![What playing looks like – HUD and the pocket computer's map](../art/direction/images/hud-preview.png)
@@ -53,6 +53,7 @@ A ☰ button in the top-right corner, Esc or the pad's Start open the **game men
   - **Actors**: the hero's body, speed and ground; every rover, crab and drone with its hitbox, facing arrow, sight box (red when it sees the hero), patrol path and turn points, phase and health; Jenny's arena, box, facing and phase; Dexter's position, state and next stop.
   - **FPS and position**: frame rate, the hero's position and chunk.
   - **Falls**: falling out of the level (below every floor, not into water) is always recorded – the frame, the position, the last safe spot and the last two seconds of the path. With `npm run dev` it lands in `tmp/falls/` (gitignored, via `game/vite.config.ts`); in a build the Debug tab saves the last one.
+  - **Teleport** (`stage/teleports.ts`): "◀ Previous place" and "Next checkpoint ▶" in the hero's row, and a button for every place read from the region's collision – the start, coffee machines (save points), Jenny's gate, the pond's 404, doors, chunk exits, each chunk's left edge. **Level** jumps to the Hidden Garden, its anomaly state, clean Rusty Creek or the rust maze. Both close the menu.
 - **Coming soon** – what is next (the stacked zones, the glide, the next regions).
 
 Falling into water is not a fall: the hero splashes and is put back on the bank they last stood on.
@@ -360,5 +361,5 @@ Concepts for every pair: [stage concepts](../art/locations/README.md).
 Gore, blood, an apocalypse, a minimap, crafting, an economy, procedural runs, a stamina bar, spells, **dialogue of any kind**. Nobody speaks and there are no thought bubbles (A14): Dexter acts – he points, bows, sweats, hands things over. The only text is UI: the crash window, the pocket computer, archive notes.
 
 <!-- nav:start -->
-[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 15** · [03 – Story and cast →](03-STORY-AND-CAST.md)
+[← 01 – Proposal](01-PROPOSAL.md) · [Design docs](README.md) · **2 / 16** · [03 – Story and cast →](03-STORY-AND-CAST.md)
 <!-- nav:end -->

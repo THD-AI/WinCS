@@ -9,7 +9,8 @@
   "gravel": {"sink": 2, "cover": 1, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b8a58a", "#d9cbb0", "#8a7a66"], "count": 4}},
   "stone": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#c9bfa8", "#e6dcc4", "#9b927f"], "count": 3}},
   "wood": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#c8b08a", "#e9dbbf", "#9a8060"], "count": 3}},
-  "water": {"sink": 0, "cover": 0, "puff": {"sprite": "splash", "shape": "dust", "colors": ["#9cc8f0", "#e8f4ff", "#4f86c6"], "count": 8}}
+  "water": {"sink": 0, "cover": 0, "puff": {"sprite": "splash", "shape": "dust", "colors": ["#9cc8f0", "#e8f4ff", "#4f86c6"], "count": 8}},
+  "steel": {"sink": 0, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#8a5a3a", "#b07a4e", "#5e6f73"], "count": 3}}
  },
  "chunks": {
   "hg-0-0": [
@@ -41,7 +42,7 @@
   "hg-3-0": [
    {"x": [0, 838], "material": "stone", "note": "wall: wall top"},
    {"x": [838, 866], "material": "stone", "note": "ledge: rubble at the broken wall end"},
-   {"x": [910, 980], "material": "stone", "note": "ground: stepping stone"},
+   {"x": [902, 980], "material": "stone", "note": "ground: stepping stone"},
    {"x": [1040, 1077], "material": "stone", "note": "ground: stepping stone at the wall foot"},
    {"x": [1077, 1253], "material": "stone", "note": "wall: wall top: a 69 px face, jump up from the stone"},
    {"x": [1253, 1360], "material": "stone", "note": "ledge: the broken section: drop in, hop out"},
@@ -51,6 +52,34 @@
    {"x": [0, 177], "material": "stone", "note": "wall: wall top: drop to the pond walk"},
    {"x": [177, 1020], "material": "stone", "note": "ground: pond walk"},
    {"x": [1020, 1330], "material": "wood", "note": "plank: pier"}
+  ],
+  "hg-2-1": [
+   {"x": [0, 1136], "y": [328, 352], "material": "stone", "note": "ground: the floor"},
+   {"x": [0, 2036], "y": [589, 619], "material": "stone", "note": "ground: the floor"},
+   {"x": [1204, 2160], "y": [329, 353], "material": "stone", "note": "ground: the floor"},
+   {"x": [2036, 2160], "y": [617, 643], "material": "stone", "note": "ground: the floor"}
+  ],
+  "hg-3-1": [
+   {"x": [0, 1360], "y": [126, 150], "material": "stone", "note": "ground: the floor"},
+   {"x": [0, 568], "y": [330, 354], "material": "stone", "note": "ground: the floor"},
+   {"x": [0, 140], "y": [625, 652], "material": "stone", "note": "ground: the floor"},
+   {"x": [140, 344], "y": [630, 663], "material": "stone", "note": "ground: the floor"},
+   {"x": [344, 564], "y": [613, 639], "material": "stone", "note": "ground: the floor"},
+   {"x": [564, 1236], "y": [631, 664], "material": "stone", "note": "ground: the floor"},
+   {"x": [568, 1744], "y": [337, 361], "material": "stone", "note": "ground: the floor"},
+   {"x": [1236, 1492], "y": [626, 671], "material": "stone", "note": "ground: the floor"},
+   {"x": [1360, 1664], "y": [128, 152], "material": "stone", "note": "ground: the floor"},
+   {"x": [1824, 2160], "y": [630, 661], "material": "stone", "note": "ground: the floor"},
+   {"x": [1492, 1824], "y": [613, 640], "material": "stone", "note": "ground: the floor"},
+   {"x": [1664, 2016], "y": [128, 152], "material": "stone", "note": "ground: the floor"},
+   {"x": [1836, 2004], "y": [340, 364], "material": "stone", "note": "ground: the floor"}
+  ],
+  "hg-4-1": [
+   {"x": [0, 248], "y": [370, 394], "material": "steel", "note": "plank: a girder hanging from the water"},
+   {"x": [820, 1068], "y": [128, 152], "material": "steel", "note": "plank: a girder hanging from the water"},
+   {"x": [960, 1104], "y": [343, 367], "material": "steel", "note": "plank: a girder hanging from the water"},
+   {"x": [1168, 1512], "y": [103, 127], "material": "steel", "note": "plank: a girder hanging from the water"},
+   {"x": [0, 2160], "y": [606, 659], "material": "earth", "note": "ground: the floor"}
   ]
  }
 }

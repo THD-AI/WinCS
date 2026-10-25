@@ -5,9 +5,10 @@ import { RAM, ramFrame, ramPlan, type RamFrame } from '../enemies/jennyRam';
 import { sound } from '../fx/sound/Audio';
 import type { CollisionChunk } from '../stage/collision';
 import type { StageManifest } from '../stage/manifest';
-import { swapRegion, type RegionTarget } from '../stage/swap';
+import { swapRegion, turnTarget, type RegionTarget } from '../stage/swap';
 import type { CrossingData, CrossingHero } from './Crossing';
 import { Prologue } from './Prologue';
+import { Sightings } from './sightings';
 import { Watcher } from './watcher';
 
 const STAGE = 'Stage';
@@ -37,11 +38,14 @@ export class Flow extends Phaser.Scene {
     const begin = () => this.beginPrologue(stage);
     stage?.events.on(Phaser.Scenes.Events.CREATE, begin);
     if (stage && this.scene.isActive(STAGE)) begin();
-    const stop = gameEvents.on('trigger-entered', ({ kind, region, position }) => {
+    const stop = gameEvents.on('trigger-entered', ({ kind, region, position, state }) => {
       if (this.busy) return;
       // The pond is the prologue's finale; without a prologue (no bench in the data) it is the plain crossing.
       if (kind === 'anomaly' && region === 'hidden-garden' && !this.prologue) this.cross(AFTER_PROLOGUE);
       if (kind === 'jenny-ram' && region === 'rusty-creek') this.ram(position);
+      // The underground's tear (docs/09): the region turns where you stand, clean <-> anomaly.
+      const turn = turnTarget(kind, region, state, position);
+      if (turn) this.cross(turn);
     });
     const ready = gameEvents.on('region-turned', () => { this.time.delayedCall(500, () => { this.busy = false; }); });
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -59,6 +63,8 @@ export class Flow extends Phaser.Scene {
     // Clean Rusty Creek: Dexter watches from far down the path, where Jenny will come from (#160).
     const ram = Watcher.spot(chunks);
     if (ram) new Watcher(stage, ram);
+    // The Hidden Garden's underground: Dexter is down there too, once per room (clean state only).
+    new Sightings(stage, chunks);
     if (!Prologue.fits(chunks)) return;
     const prologue = new Prologue(stage, chunks, data?.manifest?.region ?? 'hidden-garden', (hero, onLand) => this.crash404(hero, onLand));
     this.prologue = prologue;

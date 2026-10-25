@@ -1,0 +1,235 @@
+{
+ "chunk": "hg-0-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    466
+   ],
+   [
+    130,
+    461
+   ],
+   [
+    240,
+    454
+   ],
+   [
+    330,
+    462
+   ],
+   [
+    440,
+    470
+   ],
+   [
+    1000,
+    470
+   ],
+   [
+    1576,
+    473
+   ]
+  ],
+  [
+   [
+    702,
+    431
+   ],
+   [
+    958,
+    431
+   ]
+  ],
+  [
+   [
+    1576,
+    460
+   ],
+   [
+    1590,
+    460
+   ]
+  ],
+  [
+   [
+    1590,
+    446
+   ],
+   [
+    1880,
+    446
+   ]
+  ],
+  [
+   [
+    1880,
+    384
+   ],
+   [
+    2160,
+    384
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [],
+ "solid": [
+  {
+   "x": 0,
+   "y": 0,
+   "w": 8,
+   "h": 720,
+   "kind": "wall",
+   "note": "the garden's west wall"
+  },
+  {
+   "x": 1630,
+   "y": 388,
+   "w": 206,
+   "h": 58,
+   "kind": "log",
+   "note": "the fallen birch: jump onto it or over it"
+  }
+ ],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 482,
+   "w": 2160,
+   "h": 238,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "dexter-waypoint-1",
+   "kind": "dexter-waypoint",
+   "x": 420,
+   "y": 355,
+   "w": 420,
+   "h": 76,
+   "note": "walking up the path towards the bench (x >= 420, ~9 m short of it) wakes Dexter: he looks round, bows, hops off and leads; the first quest starts",
+   "act": "wake"
+  },
+  {
+   "id": "dexter-waypoint-2",
+   "kind": "dexter-waypoint",
+   "x": 1500,
+   "y": 398,
+   "w": 80,
+   "h": 76,
+   "note": "at the fallen birch: Dexter hops onto it and looks back",
+   "act": "wait"
+  }
+ ],
+ "spawn": [
+  {
+   "id": "player",
+   "kind": "player",
+   "x": 205,
+   "y": 454,
+   "note": "the hero starts in the open gate (pillars x=95-310, gate leaves x=130-275), on the gravel path; Dexter is seen on the bench ahead (#160 P4)"
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    1630,
+    1836
+   ],
+   "y": [
+    380,
+    396
+   ],
+   "kind": "log",
+   "material": "wood",
+   "note": "the fallen birch (solid)"
+  },
+  {
+   "x": [
+    702,
+    958
+   ],
+   "y": [
+    420,
+    440
+   ],
+   "kind": "ledge",
+   "material": "gravel",
+   "note": "bench platform: the bank runs on in front of it"
+  },
+  {
+   "x": [
+    0,
+    130
+   ],
+   "kind": "ground",
+   "material": "leaves"
+  },
+  {
+   "x": [
+    130,
+    285
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "gate path pavers"
+  },
+  {
+   "x": [
+    285,
+    1008
+   ],
+   "kind": "ground",
+   "material": "leaves",
+   "note": "the bank"
+  },
+  {
+   "x": [
+    1008,
+    1576
+   ],
+   "kind": "ground",
+   "material": "grass",
+   "note": "the bank"
+  },
+  {
+   "x": [
+    1576,
+    1590
+   ],
+   "kind": "step",
+   "material": "stone",
+   "note": "step up onto the slab"
+  },
+  {
+   "x": [
+    1590,
+    1880
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "paved slab under the birch"
+  },
+  {
+   "x": [
+    1880,
+    2160
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "low wall top: jump up from the slab or the log"
+  }
+ ]
+}

@@ -1,0 +1,175 @@
+{
+ "chunk": "hg-3-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    390
+   ],
+   [
+    838,
+    391
+   ]
+  ],
+  [
+   [
+    838,
+    437
+   ],
+   [
+    866,
+    437
+   ]
+  ],
+  [
+   [
+    902,
+    459
+   ],
+   [
+    980,
+    459
+   ]
+  ],
+  [
+   [
+    1040,
+    462
+   ],
+   [
+    1077,
+    462
+   ]
+  ],
+  [
+   [
+    1077,
+    393
+   ],
+   [
+    1253,
+    393
+   ]
+  ],
+  [
+   [
+    1253,
+    438
+   ],
+   [
+    1360,
+    438
+   ]
+  ],
+  [
+   [
+    1360,
+    393
+   ],
+   [
+    2160,
+    392
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 472,
+   "w": 2160,
+   "h": 248,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "dexter-waypoint-5",
+   "kind": "dexter-waypoint",
+   "x": 1100,
+   "y": 320,
+   "w": 80,
+   "h": 76,
+   "note": "past the gap: Dexter waits on the far side, hopping on the spot",
+   "act": "wait"
+  }
+ ],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    838
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top"
+  },
+  {
+   "x": [
+    838,
+    866
+   ],
+   "kind": "ledge",
+   "material": "stone",
+   "note": "rubble at the broken wall end"
+  },
+  {
+   "x": [
+    902,
+    980
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "stepping stone"
+  },
+  {
+   "x": [
+    1040,
+    1077
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "stepping stone at the wall foot"
+  },
+  {
+   "x": [
+    1077,
+    1253
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top: a 69 px face, jump up from the stone"
+  },
+  {
+   "x": [
+    1253,
+    1360
+   ],
+   "kind": "ledge",
+   "material": "stone",
+   "note": "the broken section: drop in, hop out"
+  },
+  {
+   "x": [
+    1360,
+    2160
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top"
+  }
+ ]
+}

@@ -155,5 +155,43 @@ class DepthLayerTests(unittest.TestCase):
         self.assertGreater(colorsys.rgb_to_hsv(*(c / 255 for c in out[0]))[0] * 360, 340)  # pink pulled toward red
 
 
+    def test_a_zone_chunk_reads_its_image_and_its_band(self):
+        import json
+        with tempfile.TemporaryDirectory() as folder:
+            zone = Path(folder)
+            (zone / "images").mkdir()
+            Image.new("RGB", (8, 4), (1, 2, 3)).save(zone / "images" / "z-0-0.png")
+            (zone / "world.json").write_text(json.dumps({"chunks": {"z-0-0": {"band": "below"},
+                                                                    "z-0-1": {"band": "level"}}}))
+            self.assertEqual(dl.art_for(zone, "z-0-0").getpixel((0, 0)), (1, 2, 3))
+            self.assertIn(dl.BAND_KEY["below"], dl.key_prompt(zone, "z-0-0"))
+            self.assertEqual(dl.key_prompt(zone, "z-0-1"), dl.KEY_PROMPT)
+
+    def test_bleed_continues_a_layer_under_its_neighbour_and_keeps_painted_fills(self):
+        import numpy as np
+        rgb = np.zeros((10, 40, 3), np.uint8)
+        rgb[:5] = (200, 100, 50)                                    # the layer: the top half
+        own = np.zeros((10, 40), bool); own[:5] = True
+        front = ~own                                                # a nearer layer below it
+        plate = np.zeros((10, 40, 4), np.uint8)
+        plate[9, 0] = (1, 2, 3, 255)                                # a painted fill already there
+        out, added = dl.bleed_plate(rgb, own, front, plate, reach=3)
+        self.assertEqual(added, 3 * 40)                             # rows 5-7: within 3 px of the layer
+        self.assertEqual(tuple(out[6, 10]), (200, 100, 50, 255))
+        self.assertEqual(out[8, 10, 3], 0)                          # beyond the reach: still empty
+        self.assertEqual(tuple(out[9, 0]), (1, 2, 3, 255))          # the painted fill wins
+
 if __name__ == "__main__":
     unittest.main()
+
+
+class BlackVoidTests(unittest.TestCase):
+    def test_a_black_blob_counts_and_dark_outlines_do_not(self):
+        import numpy as np
+        painted = np.full((40, 60, 3), 90, np.uint8)
+        painted[5:6, :, :] = 0                 # a 1 px dark outline across the window: art
+        painted[20:30, 10:30, :] = 0           # a 10 x 20 black void
+        window = np.ones((40, 60), bool)
+        self.assertEqual(dl.black_void(painted, window), 200)
+        window[20:30, 10:30] = False           # outside the painted window it does not count
+        self.assertEqual(dl.black_void(painted, window), 60)

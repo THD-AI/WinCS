@@ -1,7 +1,7 @@
 # 09 – Art pipeline
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 15** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 16** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->
 
 ![Rusty Creek – seven registered layers composed](../art/stages/rusty-creek/images/after-center.png)
@@ -28,6 +28,100 @@ reference games (references/)─┘                                          ▲
 | 7 | **Annotation** – walkable lines, slides, ledges, climb zones, solids, hazards, interactables, spawns | `<chunk>.<state>.collision.json` | by hand in Tiled (Lex), then `collision_from_tiled.py` |
 | 8 | **Sprites** – boards per character/enemy/item, drawn with the hero sheet and the style master | `art/sprites/` | `make_boards.py` |
 | 9 | **Export** – atlases and plates the game loads | `game/public/assets/` | `export_atlas.py` |
+
+## World pipeline
+
+The single way every zone is made (24 Oct). The concepts in `art/locations/` and `art/direction/` set the **look and the vocabulary**, never the layout or the scale; the lore sets what each room is (docs/03: TH Deggendorf's campus, the quantum experiment's overlap, possessed campus robots, Dexter – and no caves: underground is built campus space). Scale, room kinds and storytelling rules: [16 – Zone design](16-ZONE-DESIGN.md). A zone is a **grid of 2160×720 chunks in four directions** that **grows out of approved art** – never painted from nothing, never from a whole stage or concept passed as a "style" input (the model copies its layout).
+
+```mermaid
+flowchart TD
+  Z["zone.json · concept, look, vocabulary"] --> M["0 · map – world.json<br/>grid, bands, rooms, story beat per room, links, 404 tears"]
+  M --> B["1 · blockout – blockout/&lt;id&gt;.png<br/>soft guides: walk curves, rooms, water, girders, ladders"]
+  B --> G["2 · grow – from the approved neighbour<br/>left/right (grow_stage.py) · up/down (world_paint.py grow)"]
+  G --> J["3 · join – left/right windows, min-error cuts<br/>settle – up/down seams faded to the exact edge"]
+  J --> F["feature – one story detail per window,<br/>the model sees the art under it"]
+  F --> A["4 · artifact gate – world_gate.py<br/>seam, guide left, hole, route, repeat, grain, palette, text"]
+  A -->|fail| G
+  A --> D["5 · depth – depth_layers.py key / masks / fills"]
+  D --> X["6 · anomaly as data – 404 tears from world.json,<br/>drawn as fx (world_preview.py draw_tears)"]
+  X --> C["7 · collision – traced from the depth key,<br/>world_map.check: reachable and leavable"]
+  C --> V["8 · previews – world_preview.py map / concept"]
+  V --> S["9 · into the game – the zone's new rows become<br/>chunks of the region's stage (export, split, checks)"]
+```
+
+| # | Stage | Command | Writes |
+| --- | --- | --- | --- |
+| 0 | Map | `python scripts/world_map.py art/zones/<zone>` (seeded) or a zone script such as `scripts/zones/hidden_garden_proof.py` (authored frame) | `world.json` |
+| 1 | Blockout | (same) | `blockout/<id>.png`, `collision/` |
+| 2 | Grow | `python scripts/world_paint.py grow art/zones/<zone> <from> <up\|down> <new>` · sideways `grow_stage.py` | `tmp/zones/<zone>/grow/` |
+| 3 | Join, settle | `world_paint.py join … --only left-right --row N` · `world_paint.py settle … --row N [--up]` · two different rooms: `join … --pair a,b --half 560,48 --brief "the passage"` | `tmp/zones/<zone>/join/` |
+| – | Feature | `world_paint.py feature … <id> --box x0,y0,x1,y1 --brief "…"` (refuses a window the model left empty) | `tmp/zones/<zone>/join/` |
+| 4 | Gate | `world_paint.py accept …` then `python scripts/world_gate.py art/zones/<zone>` (exit 1 on any FAIL) | `images/`, `previews/gate.json` |
+| 5 | Depth | `depth_layers.py key / masks / fill` per chunk (as below) | `layers/`, `masks/`, `fills/` |
+| 6 | Anomaly | tears in `world.json` → `world_preview.draw_tears` (the game ports it) | fx |
+| 7 | Collision | traced from the chunk's depth key (`depth_layers.py key`): floors along the play band's tops, ladders where its rungs flip, the water on top as no-go – `scripts/zones/<zone>_proof.py` writes `collision/`, then `world_map.check` (every surface reachable and leavable) | `collision/` |
+| 8 | Previews | `python scripts/world_preview.py map art/zones/<zone> --state anomaly --grid` · `… concept …` | `previews/` |
+| 9 | Into the game | `scripts/zones/<zone>_proof.py --stage`, then `split_layers.py art/stages/<region>`, `collision_check.py art/stages/<region> --surfaces`, `export_stage.py --verify` | `art/stages/<region>/` (the one committed copy) |
+
+**Proven on the Hidden Garden (24 Oct, `art/zones/hidden-garden/`), and playable:** the shipped prologue row (`hg-2-0` … `hg-4-0`) on top, and grown under it: the garden cellar under the shed, the campus storm drain under the boardwalk (the game's *IT* room) and, under the jetty, the wrong reflection – girders hanging upside down from the water. 3 × 2 chunks; the gate passes on all six; `previews/vs-concept.png` sits next to the concept. The row below is in the game as `hg-2-1`, `hg-3-1`, `hg-4-1`:
+
+- **The way in is the shed door** you should not open (↑ at the door; the pond stays the prologue's finale). The cellar's stairs door is straight under it and leads back.
+- **Rooms, not open sky:** a region's rows are rooms (`camera.ts roomBounds`). The camera frames only the hero's row and snaps when a door changes it. Parallax scrolls sideways only. Leaves, lily pads and reflections stay where there is sky.
+- **What you find** (docs/03: notes hint, never explain):
+  - Feldversuch Q-7's log sheets: the containment vessel ordered "mascot-shaped, Campus Store, 1.5 ft", and "do not feed the vessel";
+  - a pencil note on the cellar's upper storey, reached by the ladder;
+  - the Stadtentwässerung report at the outlet (the paper boat, the red balloon under the pond);
+  - a string tied to the rail on the drain's high ledge;
+  - the drain's possessed campus rover;
+  - an upper route over the drain's ledge into the reflection's girders.
+
+What the proof taught (rules now):
+
+- **Grow from the art, not the concept.** The first take painted a chunk from its guide with the concept as a reference and got the concept back; a guide alone gets generic fantasy. Grown from an approved neighbour's edge, the model continues the place and follows the guide's rooms.
+- **A neighbour's edge never includes the lens.** The near strip and the blurred foreground are layers; growing from a picture that has them continues the blur.
+- **Up/down seams are texture, not colour:** after joining, `settle` fades each lower chunk into the exact bottom row of the one above (48 rows) – the gate's seam check failed at 29 until it did.
+- **Measure a band against its own concept:** an underground chunk's palette is checked against the anomaly concept's lower half – its flooded maze – not its sunny sky. Grain still compares with the whole picture: a crop scaled to the chunk is enlarged and blurred.
+- **Small story details are props, not repaints:** asked for eyes in a drain pipe, the model painted the pipe out. Details that should blink, appear or vanish (the eyes, the balloon, the paper boat) go to the sprite pipeline.
+- **Collision comes from the painting, not the guide:** the model moves floors and ladders a little (the cellar's water ceiling came out at y 85, the guide said 210). So the grown chunks' floors and ladders are traced from their depth key, then made walkable as the body meets them:
+  - a floor needs 90 px of headroom;
+  - a ladder is 16+ px wide, and its top keeps the body under the water ceiling;
+  - pieces closer than the body is wide (28 px) are one floor;
+  - a floor runs on to a chunk edge less than 64 px away;
+  - a pool under the feet (64+ px) sinks the floor to its bed, a stream (narrower) is walked through;
+  - a 88–120 px face nobody can jump or pass under (a crate stack) is back wall;
+  - a beam high in the hall is one flat tread;
+  - and only floors the grid's graph reaches survive.
+
+  `terrain.test.ts` walks the row below end to end.
+- **Two different rooms meet through a passage:** a plain join left the drain → reflection seam abrupt (a sunset window under the pond). A wider window with a brief paints the breach: `--half 320,320`. A window that ends at the seam keeps the old edge, so it fixes nothing.
+- **Every layer is whole, checked on purple.** Layers move against each other: parallax, sway, ripple. A cut-out layer shows its holes as soon as one moves, and in debug mode they show plainly. Seen on purple (24 Oct, Alexander), the underground's back walls were full of holes, and so were the garden's far and mid plates. The fixes:
+  - `depth_layers.py whole` paints a room's back wall, water and floor whole under every nearer layer, as `fills/`;
+  - `complete` does the same for the garden's far and mid, quilted again by `region` (level row only);
+  - a room without sky takes `atmosphere.json` `indoor`: walls and floors stay still, weeds sway, water ripples gently;
+  - `whole` paints again when its painting has a flat-black void (`black_void`, over 600 px). Checked layer by layer in debug mode, hg-3-1's back wall had a made-up black pipe mouth behind a girder (25 Oct).
+- **Rusty Creek goes through the same pipeline (#157):** `art/zones/rusty-creek/zone.json` from the stacked direction (#227), and `world_map.py`'s 3×3 map and blockout (seed 157). A zone names its own places in `zone.json` `"words"`: the creek has culverts and service rooms, never caves. First paint take (25 Oct, 9 calls): every chunk came back as the style master. The style master *is* Rusty Creek, so a "look only" reference that shows the very place being painted gets copied, guide and all. A zone's look reference must never be a picture of that zone; for the creek, either grow from its own approved plates (the Hidden Garden method) or paint with a reference of another place.
+- **Depth underground has no parallax:** the grown row's masks (`depth_layers.py masks … --all`, `masks/`, `previews/depth-below.png`) are water, play and foreground, everything else the back wall; a `below` chunk writes no sky, far or mid (the pond scenes' refine scattered specks of them). The key says what is navy: only the water on top – asked loosely, the model painted the cellar's dark rooms as water. Keep the better key per chunk (`tmp/boards/<zone>/key-try*/`).
+- **A band grows from what reaches it:** "no trees" in the sky brief cut the big tree's crown flat at the seam; the brief says what continues up from below.
+- **No band above the pond:** girders over the garden read out of context (Alexander, 24 Oct); the zone grows down, into built campus space.
+- **The drain's story props are sprites** (`it-props`, 25 Oct): one board from the approved food sheet (image 1, for the look) and Dexter's sheet (his eyes). Each prop is a `spawn` marker in the zone script (`PROPS`), drawn by `stage/props.ts`:
+  - the red balloon is pressed against the pond's underside, and its string runs down to the rail where the note is. The board's 1 px string broke up in the downscale, so the game crops it and draws the string;
+  - the plush eyes watch from the dark of the lower outlet. Come within 320 px and they narrow, then they are gone until the region loads again;
+  - the paper boat rocks at the outlet.
+
+  The eyes are two pieces per frame (`export_atlas.py` `"parts": 2`). Per-animation `scale` keeps real sizes: the boat is about 50 cm next to the 183 cm hero. `collision_check.py` lets floating props (balloon, eyes) have no floor. Preview: `art/sprites/previews/it-props-in-drain.png`.
+- **The underground turns, clean ⇄ anomaly** (25 Oct): the Hidden Garden has an anomaly state now. It shares every clean plate and adds one tears plate per chunk (`tears/<chunk>.png`, the `05-tears` layer, `optional`, so only chunks with tears draw it). The plates come from `world.json`'s tears with the same `tear_overlay` the previews use:
+  - the pond's underside torn open over the cellar;
+  - the drain's water ceiling smeared down its far shaft;
+  - the reflection hall's tear, hanging over the floor;
+  - and the two sky tears of the level row.
+
+  The hall's tear is the `turn` box: walk in and the region crosses (THD.exe window) to the other state where you stand. In the clean state it is only a grey flicker now and then (`props.ts flicker`). The anomaly collision is the clean one with the box leading back and without Dexter's bench, so no prologue runs and Dexter is gone. Leaves fall up (`atmosphere.json` states). Debug: Level → "Hidden Garden (anomaly)".
+- **Dexter in the rooms** (25 Oct): while the plush waits at the pond above, he is also down here, once per room, wordless (`story/sightings.ts`, markers `dexter-sighting` from the zone script's `SIGHTINGS`):
+  - beckoning from the cellar's upper storey, back toward the stairs;
+  - a shape too still at the far end of the drain;
+  - waiting on a girder that hangs from the water, where the hero cannot go.
+
+  Come within 300 px in his room and he flickers out, gone until the region loads again. The anomaly state has none (ids start with `dexter`, dropped with his bench). Preview: `art/sprites/previews/dexter-in-the-rooms.png`.
 
 ## Growing a stage in four directions
 
@@ -336,5 +430,5 @@ python scripts/navigation.py && python scripts/check_docs.py
 - ❌ photos, audio, raw API output and rejected takes (`tmp/`), contact sheets, HTML viewers
 
 <!-- nav:start -->
-[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 15** · [10 – Jam plan →](10-JAM-PLAN.md)
+[← 08 – Tech stack and where things live](08-TECH-STACK.md) · [Design docs](README.md) · **9 / 16** · [10 – Jam plan →](10-JAM-PLAN.md)
 <!-- nav:end -->

@@ -1,7 +1,7 @@
 # 13 – Production pipeline
 
 <!-- nav:start -->
-[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 15** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
+[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 16** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
 <!-- nav:end -->
 
 How every image, layer, sprite, animation, stage and collision box gets from a photo to the game, and how two AI agents build it in parallel without stepping on each other. The *what* is in [07 – Asset manifest](07-ASSET-MANIFEST.md) and the *how to prompt* in [09 – Art pipeline](09-ART-PIPELINE.md); this page is the order of work, the hand-over formats and the lanes. Every box in the diagrams names the issue that delivers it.
@@ -93,6 +93,7 @@ Every sheet, in the order the game needs them:
 | `chair-side`, `chair-overhead`, `chair-block` | sweep A 8 · sweep B 8 · recoil 2 · up 6 · slam 7 · pogo 4 · guard up 4 · hold 3 · impact 4 · break 4 | [M2-S10 #81](https://github.com/THD-AI/WinCS/issues/81) | combat |
 | `enemy-rover`, `enemy-crab`, `enemy-drone`, `fx` | rover 4/6/4/5 · crab 4/8/5/5 · drone 4/3/5/3 · black fluid 6 | [M2-S11 #82](https://github.com/THD-AI/WinCS/issues/82) | enemies |
 | `mensa-food`, `mensa-drinks` | food 4 × 1 frame, 13–18 px (sparkle in code) · drink icons | [M2-S13 #84](https://github.com/THD-AI/WinCS/issues/84) | healing |
+| `it-props` | balloon 3 · eyes 3 (`parts: 2`) · boat 3 | – | the storm drain's story props (`stage/props.ts`) |
 | `coffee-machine` | idle 3 · pour 4, 80 px | inside [M4-S4 #52](https://github.com/THD-AI/WinCS/issues/52) | save points |
 | `dexter`, `dexter-acts` | idle 3 · hop 4 · walk 6 · point 3 · shove 4 · beckon 3 · bow · sweat · proud · creepy shadow · absorb 4 | [M3-S5 #86](https://github.com/THD-AI/WinCS/issues/86) | prologue, Region 1 beats |
 | `boss-jenny`, `boss-jenny-2` | rev 4 · charge 4 · crash 4 · stunned 3 · reboot 2 · debris ×5 | [M4-S6 #87](https://github.com/THD-AI/WinCS/issues/87) | the boss |
@@ -101,6 +102,8 @@ Every sheet, in the order the game needs them:
 Frames are drawn as **key poses**, never interpolated by the model; transitions are short bridge clips that start and end on poses shared with the loops ([09 – Smooth, not rubbery](09-ART-PIPELINE.md#smooth-not-rubbery)).
 
 ## 3 · Stages: chunks, layers, four directions
+
+The whole process from a location concept to a zone lives in one place: [09 – World pipeline](09-ART-PIPELINE.md#world-pipeline).
 
 ```mermaid
 flowchart TB
@@ -174,6 +177,8 @@ Draw every object in **stage pixels** on top of the 2160×720 chunk, one Tiled o
 ```
 
 Coordinates are integers in stage pixels, origin top left; polylines run left to right; `kind` values are lower-case with dashes. Adding a field is fine; renaming one needs both lanes to agree in an issue.
+
+Rooms (`game/src/stage/rooms.ts`): an `interact` box of kind `door` names the other door in `to` (each leads back); its prompt is the key alone (↑, no words), and ↑ fades through it. A `note` carries `title` and `text`, shows a glint, and ↑ reads it. A region's grid rows are rooms joined by doors: the camera frames one row at a time (`camera.ts roomBounds`). A `turn` box carries `state` (`clean` or `anomaly`): walking into it crosses (THD.exe window) to that state of the same region, landing where you stand. The other state's file has the same box leading back. A box the hero starts in fires only after it was left (`triggers.ts`).
 
 Optional `terrain` (docs/04 terrain model): `[{"x": [x0, x1], "y": [y0, y1]?, "kind": "ground|step|stair|plank|ledge|wall|log|obstacle|slide", "material": "<surfaces.json material>", "note"?}]` – chunk-local ranges, first match wins, every walk/oneWay/slide segment covered. Solids take an optional `kind` (`wall`, `log`, `obstacle`), no-go boxes `kind: "water"`. A chunk with `terrain` was re-authored by hand: `depth_layers.py collision` keeps its floors.
 
@@ -266,5 +271,5 @@ flowchart LR
 ```
 
 <!-- nav:start -->
-[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 15** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
+[← 12 – Team workflow](12-TEAM-WORKFLOW.md) · [Design docs](README.md) · **13 / 16** · [15 – The prologue slice (rebuild) →](15-PROLOGUE-SLICE.md)
 <!-- nav:end -->

@@ -17,6 +17,7 @@ export.json:
      # a layer with "region": true is one plate for the whole region (per chunk, plates at scroll != 1
      # overlap or leave gaps), cut into chunk-wide tiles: "file" takes {tile}, chunk j carries tile j;
      # "rest": the chunk's own plate it was quilted from, which --verify rebuilds the chunk with
+     # "optional": true – a chunk without the file just doesn't draw that layer (the anomaly's tears)
      "aliases": "media-sources.json"}                               # optional: shared plates
 
 Usage:
@@ -91,6 +92,8 @@ def manifest(region: Path) -> tuple[dict, dict[str, Path]]:
                         entry["dy"] = layer["dy"]
                     layers.append(entry)
                     continue
+                if layer.get("optional") and not (region / layer["file"].format(name=chunk.get("name", chunk_id))).exists():
+                    continue  # a layer only some chunks have (the anomaly's tears)
                 plate = source(region, layer["file"], chunk.get("name", chunk_id), aliases)
                 entry = {"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(plate)}
                 if layer.get("dy"):  # a plate painted off its ground, moved down onto it (drawn and verified there)
@@ -154,13 +157,18 @@ def verify(region: Path, out: Path) -> list[str]:
             if not pattern:
                 continue
             exported = {layer["id"]: out / region.name / layer["file"] for layer in content["layers"]}
-            rests = {lid: rest(L["rest"], name) for lid, L in config["layers"].items() if L.get("region")}
+            # A chunk below or above the level row has no region-wide plates (manifest() skips them): its own
+            # layers alone rebuild it.
+            rests = {lid: rest(L["rest"], name) for lid, L in config["layers"].items() if L.get("region")} \
+                if chunk["y"] == 0 else {}
             if any(not path.exists() for path in rests.values()):
                 report.append(f"{chunk['id']}.{state} (not checked: its region plates' sources are not in tmp/)")
                 continue
             canvas = Image.new("RGBA", tuple(stage["chunkSize"]), (0, 0, 0, 0))
             for layer_id in config["states"][state]:
                 layer = config["layers"][layer_id]
+                if layer.get("region") and chunk["y"] != 0 or layer_id not in exported and not layer.get("region"):
+                    continue  # not drawn for this chunk (a row away from the level, or a layer it has no pixels in)
                 path = rests[layer_id] if layer.get("region") else exported[layer_id]
                 plate = Image.open(path).convert("RGBA")
                 if layer.get("dy"):

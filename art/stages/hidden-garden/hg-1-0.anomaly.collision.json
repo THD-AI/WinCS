@@ -1,0 +1,234 @@
+{
+ "chunk": "hg-1-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    384
+   ],
+   [
+    205,
+    384
+   ],
+   [
+    232,
+    377
+   ],
+   [
+    300,
+    352
+   ],
+   [
+    407,
+    327
+   ],
+   [
+    470,
+    312
+   ]
+  ],
+  [
+   [
+    640,
+    278
+   ],
+   [
+    735,
+    257
+   ],
+   [
+    829,
+    241
+   ],
+   [
+    946,
+    230
+   ],
+   [
+    1000,
+    227
+   ],
+   [
+    1100,
+    226
+   ],
+   [
+    1200,
+    229
+   ],
+   [
+    1255,
+    236
+   ],
+   [
+    1327,
+    252
+   ],
+   [
+    1362,
+    257
+   ],
+   [
+    1481,
+    284
+   ],
+   [
+    1701,
+    345
+   ],
+   [
+    1807,
+    369
+   ],
+   [
+    1918,
+    383
+   ],
+   [
+    1942,
+    387
+   ],
+   [
+    2160,
+    387
+   ]
+  ],
+  [
+   [
+    480,
+    449
+   ],
+   [
+    628,
+    449
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [
+  [
+   [
+    470,
+    312
+   ],
+   [
+    556,
+    296
+   ],
+   [
+    640,
+    278
+   ]
+  ]
+ ],
+ "climb": [
+  {
+   "id": "hollow-grass",
+   "kind": "vines",
+   "x": 472,
+   "y": 306,
+   "w": 24,
+   "h": 143,
+   "note": "the grass curtain: climb back out of the hollow"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 482,
+   "w": 2160,
+   "h": 238,
+   "kind": "water",
+   "note": "the pond: never floor; falling in splashes and respawns at the bank"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "dexter-waypoint-3",
+   "kind": "dexter-waypoint",
+   "x": 1040,
+   "y": 139,
+   "w": 80,
+   "h": 76,
+   "note": "the oak on the crest: Dexter waits and looks back",
+   "act": "wait"
+  },
+  {
+   "id": "hollow",
+   "kind": "secret",
+   "x": 480,
+   "y": 373,
+   "w": 148,
+   "h": 76,
+   "note": "behind the grass: a muffin (#50 'secrets behind grass')"
+  }
+ ],
+ "spawn": [
+  {
+   "id": "muffin-hollow",
+   "kind": "item",
+   "x": 560,
+   "y": 449
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    480,
+    628
+   ],
+   "y": [
+    400,
+    720
+   ],
+   "kind": "ground",
+   "material": "earth",
+   "note": "the hollow under the path"
+  },
+  {
+   "x": [
+    0,
+    205
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top"
+  },
+  {
+   "x": [
+    205,
+    640
+   ],
+   "kind": "ground",
+   "material": "gravel",
+   "note": "hill path over the hollow"
+  },
+  {
+   "x": [
+    640,
+    1942
+   ],
+   "kind": "ground",
+   "material": "earth",
+   "note": "oak crest path"
+  },
+  {
+   "x": [
+    1942,
+    2160
+   ],
+   "kind": "wall",
+   "material": "stone",
+   "note": "wall top"
+  }
+ ]
+}

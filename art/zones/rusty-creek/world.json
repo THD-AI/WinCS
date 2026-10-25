@@ -1,0 +1,338 @@
+{
+ "zone": "rusty-creek",
+ "seed": 157,
+ "chunk": [
+  2160,
+  720
+ ],
+ "grid": [
+  3,
+  3
+ ],
+ "prefix": "rcz",
+ "chunks": {
+  "rcz-0-0": {
+   "id": "rcz-0-0",
+   "col": 0,
+   "row": 0,
+   "band": "above",
+   "role": "the bridge and the rust maze",
+   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm \u2013 most of the image is sky.",
+   "interact": [
+    {
+     "id": "rcz-0-0-glint",
+     "kind": "secret",
+     "x": 1920,
+     "y": 152,
+     "w": 40,
+     "h": 40,
+     "note": "a glint at the high girder's end"
+    }
+   ]
+  },
+  "rcz-1-0": {
+   "id": "rcz-1-0",
+   "col": 1,
+   "row": 0,
+   "band": "above",
+   "role": "the bridge and the rust maze",
+   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm \u2013 most of the image is sky.",
+   "interact": [
+    {
+     "id": "rcz-1-0-glint",
+     "kind": "secret",
+     "x": 696,
+     "y": 152,
+     "w": 40,
+     "h": 40,
+     "note": "a glint at the high girder's end"
+    }
+   ]
+  },
+  "rcz-2-0": {
+   "id": "rcz-2-0",
+   "col": 2,
+   "row": 0,
+   "band": "above",
+   "role": "the bridge and the rust maze",
+   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm \u2013 most of the image is sky.",
+   "interact": [
+    {
+     "id": "rcz-2-0-glint",
+     "kind": "secret",
+     "x": 1152,
+     "y": 224,
+     "w": 40,
+     "h": 40,
+     "note": "a glint at the high girder's end"
+    }
+   ]
+  },
+  "rcz-0-1": {
+   "id": "rcz-0-1",
+   "col": 0,
+   "row": 1,
+   "band": "level",
+   "role": "the creek path",
+   "brief": "The creek at water level: the cement creek path with a railing and benches, steps, ivy-covered stone bridge piers, the calm creek with reflections, reeds at the bank. A steel footbridge on posts crosses the creek where the guide shows it. A park bench stands on the cement creek path.",
+   "interact": [
+    {
+     "id": "rcz-0-1-bench",
+     "kind": "rest",
+     "x": 458,
+     "y": 430,
+     "w": 140,
+     "h": 50,
+     "note": "a bench on the creek path \u2013 sit, the music settles"
+    }
+   ]
+  },
+  "rcz-1-1": {
+   "id": "rcz-1-1",
+   "col": 1,
+   "row": 1,
+   "band": "level",
+   "role": "the creek path",
+   "brief": "The creek at water level: the cement creek path with a railing and benches, steps, ivy-covered stone bridge piers, the calm creek with reflections, reeds at the bank. A steel footbridge on posts crosses the creek where the guide shows it. A park bench stands on the cement creek path.",
+   "interact": [
+    {
+     "id": "rcz-1-1-bench",
+     "kind": "rest",
+     "x": 1874,
+     "y": 478,
+     "w": 140,
+     "h": 50,
+     "note": "a bench on the creek path \u2013 sit, the music settles"
+    }
+   ]
+  },
+  "rcz-2-1": {
+   "id": "rcz-2-1",
+   "col": 2,
+   "row": 1,
+   "band": "level",
+   "role": "the creek path",
+   "brief": "The creek at water level: the cement creek path with a railing and benches, steps, ivy-covered stone bridge piers, the calm creek with reflections, reeds at the bank. A steel footbridge on posts crosses the creek where the guide shows it. An embankment rises where the guide's brown mound is; the purple room in it is a culvert mouth with a bulkhead lamp and a small locker \u2013 a secret, built and lit, never a cave. A park bench stands on the cement creek path.",
+   "interact": [
+    {
+     "id": "rcz-2-1-chest",
+     "kind": "secret",
+     "x": 382,
+     "y": 488,
+     "w": 60,
+     "h": 40,
+     "note": "a culvert mouth in the bank, a lamp inside"
+    },
+    {
+     "id": "rcz-2-1-bench",
+     "kind": "rest",
+     "x": 218,
+     "y": 478,
+     "w": 140,
+     "h": 50,
+     "note": "a bench on the creek path \u2013 sit, the music settles"
+    }
+   ]
+  },
+  "rcz-0-2": {
+   "id": "rcz-0-2",
+   "col": 0,
+   "row": 2,
+   "band": "below",
+   "role": "the drains and the wrong reflection",
+   "brief": "Under the creek bed, built campus space - never caves: arched concrete storm drains lit by bulkhead lamps, tiled service rooms with doors and pipes, round outfalls, and the wrong reflection: a tall flooded hall whose ceiling is the rooms above, the girder maze hanging upside down into still black water. The purple room is a warm lit service room with lockers, a desk and a hanging lamp, built in concrete and tile.",
+   "interact": [
+    {
+     "id": "rcz-0-2-lamp",
+     "kind": "secret",
+     "x": 240,
+     "y": 564,
+     "w": 60,
+     "h": 60,
+     "note": "a lit service room: lockers, a desk, a hanging lamp"
+    }
+   ]
+  },
+  "rcz-1-2": {
+   "id": "rcz-1-2",
+   "col": 1,
+   "row": 2,
+   "band": "below",
+   "role": "the drains and the wrong reflection",
+   "brief": "Under the creek bed, built campus space - never caves: arched concrete storm drains lit by bulkhead lamps, tiled service rooms with doors and pipes, round outfalls, and the wrong reflection: a tall flooded hall whose ceiling is the rooms above, the girder maze hanging upside down into still black water.",
+   "interact": []
+  },
+  "rcz-2-2": {
+   "id": "rcz-2-2",
+   "col": 2,
+   "row": 2,
+   "band": "below",
+   "role": "the drains and the wrong reflection",
+   "brief": "Under the creek bed, built campus space - never caves: arched concrete storm drains lit by bulkhead lamps, tiled service rooms with doors and pipes, round outfalls, and the wrong reflection: a tall flooded hall whose ceiling is the rooms above, the girder maze hanging upside down into still black water. The purple room is a warm lit service room with lockers, a desk and a hanging lamp, built in concrete and tile.",
+   "interact": [
+    {
+     "id": "rcz-2-2-lamp",
+     "kind": "secret",
+     "x": 1860,
+     "y": 588,
+     "w": 60,
+     "h": 60,
+     "note": "a lit service room: lockers, a desk, a hanging lamp"
+    }
+   ]
+  }
+ },
+ "links": [
+  {
+   "a": "rcz-0-0",
+   "b": "rcz-0-1",
+   "by": "shaft",
+   "at": 528
+  },
+  {
+   "a": "rcz-0-0",
+   "b": "rcz-1-0",
+   "by": "door",
+   "at": 360
+  },
+  {
+   "a": "rcz-0-1",
+   "b": "rcz-0-2",
+   "by": "shaft",
+   "at": 528
+  },
+  {
+   "a": "rcz-0-1",
+   "b": "rcz-1-1",
+   "by": "door",
+   "at": 552
+  },
+  {
+   "a": "rcz-0-2",
+   "b": "rcz-1-2",
+   "by": "door",
+   "at": 648
+  },
+  {
+   "a": "rcz-1-0",
+   "b": "rcz-1-1",
+   "by": "shaft",
+   "at": 1104
+  },
+  {
+   "a": "rcz-1-0",
+   "b": "rcz-2-0",
+   "by": "door",
+   "at": 456
+  },
+  {
+   "a": "rcz-1-1",
+   "b": "rcz-2-1",
+   "by": "door",
+   "at": 528
+  },
+  {
+   "a": "rcz-1-2",
+   "b": "rcz-2-2",
+   "by": "door",
+   "at": 624
+  },
+  {
+   "a": "rcz-2-0",
+   "b": "rcz-2-1",
+   "by": "shaft",
+   "at": 1752
+  },
+  {
+   "a": "rcz-2-1",
+   "b": "rcz-2-2",
+   "by": "shaft",
+   "at": 1704
+  }
+ ],
+ "anomaly": {
+  "tears": [
+   {
+    "kind": "cut",
+    "chunk": "rcz-1-0",
+    "box": [
+     768,
+     24,
+     1224,
+     192
+    ],
+    "seed": 1286
+   },
+   {
+    "kind": "cut",
+    "chunk": "rcz-2-0",
+    "box": [
+     336,
+     192,
+     1008,
+     312
+    ],
+    "seed": 5360
+   },
+   {
+    "kind": "stretch",
+    "chunk": "rcz-0-0",
+    "box": [
+     1488,
+     144,
+     1776,
+     432
+    ],
+    "seed": 8711,
+    "from": 432
+   }
+  ]
+ },
+ "beats": [
+  {
+   "chunk": "rcz-0-0",
+   "kind": "secret",
+   "note": "a glint at the high girder's end"
+  },
+  {
+   "chunk": "rcz-1-0",
+   "kind": "secret",
+   "note": "a glint at the high girder's end"
+  },
+  {
+   "chunk": "rcz-2-0",
+   "kind": "secret",
+   "note": "a glint at the high girder's end"
+  },
+  {
+   "chunk": "rcz-0-1",
+   "kind": "rest",
+   "note": "a bench on the creek path \u2013 sit, the music settles"
+  },
+  {
+   "chunk": "rcz-1-1",
+   "kind": "rest",
+   "note": "a bench on the creek path \u2013 sit, the music settles"
+  },
+  {
+   "chunk": "rcz-2-1",
+   "kind": "secret",
+   "note": "a culvert mouth in the bank, a lamp inside"
+  },
+  {
+   "chunk": "rcz-2-1",
+   "kind": "rest",
+   "note": "a bench on the creek path \u2013 sit, the music settles"
+  },
+  {
+   "chunk": "rcz-0-2",
+   "kind": "secret",
+   "note": "a lit service room: lockers, a desk, a hanging lamp"
+  },
+  {
+   "chunk": "rcz-2-2",
+   "kind": "secret",
+   "note": "a lit service room: lockers, a desk, a hanging lamp"
+  }
+ ]
+}
