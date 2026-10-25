@@ -1,12 +1,12 @@
-# Enemy · rover
+# Enemy Â· rover
 
 <!-- nav:start -->
-[← Enemy · drone](enemy-drone.md) · [Sprite boards](README.md) · **13 / 31** · [Enemy · crab →](enemy-crab.md)
+[← Enemy Â· drone](enemy-drone.md) · [Sprite boards](README.md) · **13 / 32** · [Enemy Â· crab →](enemy-crab.md)
 <!-- nav:end -->
 
-![Enemy · rover](images/enemy-rover-preview.png)
+![Enemy Â· rover](images/enemy-rover-preview.png)
 
-**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/enemy-rover.png` · rebuild: `python scripts/make_boards.py draw enemy-rover --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Enemy · drone](enemy-drone.md) · [Sprite boards](README.md) · **13 / 31** · [Enemy · crab →](enemy-crab.md)
+[← Enemy Â· drone](enemy-drone.md) · [Sprite boards](README.md) · **13 / 32** · [Enemy Â· crab →](enemy-crab.md)
 <!-- nav:end -->

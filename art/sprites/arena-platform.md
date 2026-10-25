@@ -1,12 +1,12 @@
-# Prop · Jenny's arena platforms
+# Prop Â· Jenny's arena platforms
 
 <!-- nav:start -->
-[← Secret · the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **30 / 31** · [Prop · the platforms' chains →](arena-chain.md)
+[← Secret Â· the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **30 / 32** · [Prop Â· the platforms' chains →](arena-chain.md)
 <!-- nav:end -->
 
-![Prop · Jenny's arena platforms](images/arena-platform-preview.png)
+![Prop Â· Jenny's arena platforms](images/arena-platform-preview.png)
 
-**Review:** 🟨 Awaiting Alexander's review (25 Oct). Replaces the strip cut from the maze plate, which read flat and floated with no reason (Alexander). Drawn with volume from the coffee-machine sheet's look and the maze's own girder as the material reference: a riveted box girder with a grated underside, 202 × 25 px in the game. The prompt asked for eye-bolts and chain stubs, and the model drew the platform alone, so it is locked and the chains are their own board.
+**Review:** ðŸŸ¨ Awaiting Alexander's review (25 Oct). Replaces the strip cut from the maze plate, which read flat and floated with no reason (Alexander). Drawn with volume from the coffee-machine sheet's look and the maze's own girder as the material reference: a riveted box girder with a grated underside, 202 Ã— 25 px in the game. The prompt asked for eye-bolts and chain stubs, and the model drew the platform alone, so it is locked and the chains are their own board.
 
 ## Brief
 
@@ -21,5 +21,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/arena-platform.png` · rebuild: `python scripts/make_boards.py draw arena-platform --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Secret · the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **30 / 31** · [Prop · the platforms' chains →](arena-chain.md)
+[← Secret Â· the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **30 / 32** · [Prop Â· the platforms' chains →](arena-chain.md)
 <!-- nav:end -->

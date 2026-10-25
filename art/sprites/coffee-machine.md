@@ -1,12 +1,12 @@
-# Prop · coffee machine (save point)
+# Prop Â· coffee machine (save point)
 
 <!-- nav:start -->
-[← Mensa · food pickups](mensa-food.md) · [Sprite boards](README.md) · **20 / 31** · [Dexter · moves →](dexter.md)
+[← Mensa Â· food pickups](mensa-food.md) · [Sprite boards](README.md) · **20 / 32** · [Dexter Â· moves →](dexter.md)
 <!-- nav:end -->
 
-![Prop · coffee machine (save point)](images/coffee-machine-preview.png)
+![Prop Â· coffee machine (save point)](images/coffee-machine-preview.png)
 
-**Review:** ✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. 42 × 80 px in the game: fills the 40 × 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png.
+**Review:** âœ… Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. 42 Ã— 80 px in the game: fills the 40 Ã— 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png.
 
 ## In motion
 
@@ -27,5 +27,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/coffee-machine.png` · rebuild: `python scripts/make_boards.py draw coffee-machine --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Mensa · food pickups](mensa-food.md) · [Sprite boards](README.md) · **20 / 31** · [Dexter · moves →](dexter.md)
+[← Mensa Â· food pickups](mensa-food.md) · [Sprite boards](README.md) · **20 / 32** · [Dexter Â· moves →](dexter.md)
 <!-- nav:end -->

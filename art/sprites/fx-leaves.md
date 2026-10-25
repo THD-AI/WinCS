@@ -1,12 +1,12 @@
-# FX · falling leaves
+# FX Â· falling leaves
 
 <!-- nav:start -->
-[← Dexter · gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 31** · [FX · footstep puffs →](fx-ground.md)
+[← Dexter Â· gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 32** · [FX Â· footstep puffs →](fx-ground.md)
 <!-- nav:end -->
 
-![FX · falling leaves](images/fx-leaves-preview.png)
+![FX Â· falling leaves](images/fx-leaves-preview.png)
 
-**Review:** 🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Second draw: the first take's thin outlines and fine veins melted into the orange trees at 8 px (6 of 8 test frames LOW in scripts/readability.py); thick dark outlines and lighter fills brought it to 2 of 8. 7–10 px in the game.
+**Review:** ðŸŸ¡ Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Second draw: the first take's thin outlines and fine veins melted into the orange trees at 8 px (6 of 8 test frames LOW in scripts/readability.py); thick dark outlines and lighter fills brought it to 2 of 8. 7â€“10 px in the game.
 
 ## In motion
 
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx-leaves.png` · rebuild: `python scripts/make_boards.py draw fx-leaves --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Dexter · gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 31** · [FX · footstep puffs →](fx-ground.md)
+[← Dexter Â· gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 32** · [FX Â· footstep puffs →](fx-ground.md)
 <!-- nav:end -->

@@ -1,12 +1,12 @@
-# Boss · Jenny, attacks
+# Boss Â· Jenny, attacks
 
 <!-- nav:start -->
-[← FX · black fluid](fx.md) · [Sprite boards](README.md) · **16 / 31** · [Boss · Jenny, stunned and debris →](boss-jenny-2.md)
+[← FX Â· black fluid](fx.md) · [Sprite boards](README.md) · **16 / 32** · [Boss Â· Jenny, stunned and debris →](boss-jenny-2.md)
 <!-- nav:end -->
 
-![Boss · Jenny, attacks](images/boss-jenny-preview.png)
+![Boss Â· Jenny, attacks](images/boss-jenny-preview.png)
 
-**Review:** ✅ Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** âœ… Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/boss-jenny.png` · rebuild: `python scripts/make_boards.py draw boss-jenny --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX · black fluid](fx.md) · [Sprite boards](README.md) · **16 / 31** · [Boss · Jenny, stunned and debris →](boss-jenny-2.md)
+[← FX Â· black fluid](fx.md) · [Sprite boards](README.md) · **16 / 32** · [Boss Â· Jenny, stunned and debris →](boss-jenny-2.md)
 <!-- nav:end -->

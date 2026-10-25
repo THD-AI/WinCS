@@ -1,12 +1,12 @@
-# FX · pond ripples and lily pad
+# FX Â· pond ripples and lily pad
 
 <!-- nav:start -->
-[← FX · footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 31** · [Dexter · prologue additions →](dexter-prologue.md)
+[← FX Â· footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 32** · [Dexter Â· prologue additions →](dexter-prologue.md)
 <!-- nav:end -->
 
-![FX · pond ripples and lily pad](images/fx-water-preview.png)
+![FX Â· pond ripples and lily pad](images/fx-water-preview.png)
 
-**Review:** 🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Lily pad 58 × 14–16 px, measured against the painted pads in hg-4-0 (≈ 68 × 14–17); ripple 37–71 px wide; sparkle halved to a 12 px glint. The plate's pads are browner than this olive pad – tint in code if it stands out.
+**Review:** ðŸŸ¡ Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Lily pad 58 Ã— 14â€“16 px, measured against the painted pads in hg-4-0 (â‰ˆ 68 Ã— 14â€“17); ripple 37â€“71 px wide; sparkle halved to a 12 px glint. The plate's pads are browner than this olive pad â€“ tint in code if it stands out.
 
 ## In motion
 
@@ -28,5 +28,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx-water.png` · rebuild: `python scripts/make_boards.py draw fx-water --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX · footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 31** · [Dexter · prologue additions →](dexter-prologue.md)
+[← FX Â· footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 32** · [Dexter Â· prologue additions →](dexter-prologue.md)
 <!-- nav:end -->

@@ -1,12 +1,12 @@
-# Dexter · moves
+# Dexter Â· moves
 
 <!-- nav:start -->
-[← Prop · coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **21 / 31** · [Dexter · gestures →](dexter-acts.md)
+[← Prop Â· coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **21 / 32** · [Dexter Â· gestures →](dexter-acts.md)
 <!-- nav:end -->
 
-![Dexter · moves](images/dexter-preview.png)
+![Dexter Â· moves](images/dexter-preview.png)
 
-**Review:** ✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** âœ… Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter.png` · rebuild: `python scripts/make_boards.py draw dexter --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Prop · coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **21 / 31** · [Dexter · gestures →](dexter-acts.md)
+[← Prop Â· coffee machine (save point)](coffee-machine.md) · [Sprite boards](README.md) · **21 / 32** · [Dexter Â· gestures →](dexter-acts.md)
 <!-- nav:end -->

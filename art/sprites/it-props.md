@@ -1,7 +1,7 @@
 # Props · the storm drain's IT details
 
 <!-- nav:start -->
-[← Menu · the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 31** · [Secret · the rubber chicken →](rubber-chicken.md)
+[← Menu Â· the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 32** · [Secret Â· the rubber chicken →](rubber-chicken.md)
 <!-- nav:end -->
 
 ![Props · the storm drain's IT details](images/it-props-preview.png)
@@ -27,5 +27,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/it-props.png` · rebuild: `python scripts/make_boards.py draw it-props --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Menu · the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 31** · [Secret · the rubber chicken →](rubber-chicken.md)
+[← Menu Â· the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 32** · [Secret Â· the rubber chicken →](rubber-chicken.md)
 <!-- nav:end -->

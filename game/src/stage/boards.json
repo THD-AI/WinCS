@@ -8,5 +8,5 @@
     "boss-jenny", "boss-jenny-2", "coffee-machine",
     "dexter", "dexter-acts", "dexter-prologue", "pocket-computer", "mensa-food"
   ],
-  "optional": ["it-props", "rubber-chicken"]
+  "optional": ["it-props", "rubber-chicken", "arena-wall"]
 }

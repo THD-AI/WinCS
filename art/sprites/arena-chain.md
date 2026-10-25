@@ -1,12 +1,12 @@
-# Prop · the platforms' chains
+# Prop Â· the platforms' chains
 
 <!-- nav:start -->
-[← Prop · Jenny's arena platforms](arena-platform.md) · [Sprite boards](README.md) · **31 / 31** · [Sprite boards →](README.md)
+[← Prop Â· Jenny's arena platforms](arena-platform.md) · [Sprite boards](README.md) · **31 / 32** · [Prop Â· Jenny's arena wall →](arena-wall.md)
 <!-- nav:end -->
 
-![Prop · the platforms' chains](images/arena-chain-preview.png)
+![Prop Â· the platforms' chains](images/arena-chain-preview.png)
 
-**Review:** 🟨 Awaiting Alexander's review (25 Oct). The platforms hang from the girder over the arena: scripts/arena_platforms.py tiles this chain's link period from each platform end up to the girder's underside. The second frame came out as a second chain instead of an eye-bolt, so it is unused.
+**Review:** ðŸŸ¨ Awaiting Alexander's review (25 Oct). The platforms hang from the girder over the arena: scripts/arena_platforms.py tiles this chain's link period from each platform end up to the girder's underside. The second frame came out as a second chain instead of an eye-bolt, so it is unused.
 
 ## Brief
 
@@ -21,5 +21,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/arena-chain.png` · rebuild: `python scripts/make_boards.py draw arena-chain --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Prop · Jenny's arena platforms](arena-platform.md) · [Sprite boards](README.md) · **31 / 31** · [Sprite boards →](README.md)
+[← Prop Â· Jenny's arena platforms](arena-platform.md) · [Sprite boards](README.md) · **31 / 32** · [Prop Â· Jenny's arena wall →](arena-wall.md)
 <!-- nav:end -->

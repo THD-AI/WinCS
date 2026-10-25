@@ -1,6 +1,6 @@
 {
   "name": "Sprite boards",
-  "readme": "Sprite reference boards: the hero sheet (approved) and the animation, enemy, item and boss boards that follow the [visual direction](../direction/README.md). Each board is drawn from real photos of the pose or object, keyed on magenta and crushed to a transparent 1x image. Frame lists and status are in [07 – Asset manifest](../../docs/07-ASSET-MANIFEST.md); the pipeline is in [09](../../docs/09-ART-PIPELINE.md). The [poncho photo board](source-boards/ponchos.png) is the source for the hero's poncho.",
+  "readme": "Sprite reference boards: the hero sheet (approved) and the animation, enemy, item and boss boards that follow the [visual direction](../direction/README.md). Each board is drawn from real photos of the pose or object, keyed on magenta and crushed to a transparent 1x image. Frame lists and status are in [07 â€“ Asset manifest](../../docs/07-ASSET-MANIFEST.md); the pipeline is in [09](../../docs/09-ART-PIPELINE.md). The [poncho photo board](source-boards/ponchos.png) is the source for the hero's poncho.",
   "model": "gpt-image-2.5-sunburst",
   "size": "1536x1024",
   "style": "Detailed modern HI-BIT PIXEL ART in the look of a modern detailed pixel-art side-scroller: crisp square pixels at a fine 2-pixel grain, rich naturalistic palette with warm autumn light, careful pixel shading and texture (rust, fabric weave, plastic sheen), no anti-aliasing blur, no smooth vector gradients, not chunky 8-bit, not chibi. This is a SPRITE SHEET, not an illustration: no landscape, no sky, no scenery, no panels, no UI frames. Rules: strict side view unless the brief says otherwise; every sprite on the same invisible ground line, same scale within the sheet, evenly spaced with clear empty space between sprites so each can be cut out; frames progress by small continuous changes so they animate smoothly. Solid flat pure magenta #FF00FF background everywhere, no floor, no cast shadows on the background, no frame borders. ABSOLUTELY NO TEXT: no titles, no frame numbers, no arrows, no captions, no labels, no logos - only sprites on magenta. Match the pixel grain, palette and warm rim light of the game's style master (the LAST image), but draw nothing of its scenery. WORLD SCALE: the hero is an adult 6 ft (183 cm) tall; Dexter (the Deggster panther plush) is 1.5 ft (45 cm); Dexter's final form is 8.5 ft (260 cm). Keep real-world proportions between characters and props (a chair seat is at the hero's knee height, a cafeteria tray is as wide as the hero's shoulders).",
@@ -8,7 +8,7 @@
   "boards": [
     {
       "id": "hero",
-      "title": "The student · hero design",
+      "title": "The student Â· hero design",
       "factor": 2,
       "inputs": [
         "out:hero-design",
@@ -18,11 +18,11 @@
       "prompt": "Keep the body, height (6 ft adult), proportions, pose, backpack, grey slim jeans and chunky white sneakers of the hero in the first image, and the poncho's CUT, tassel fringe and geometric zig-zag weave from the second image, but RECOLOUR and redesign the poncho as the university's own THD poncho: heather-grey base, deep THD blue and teal zig-zag bands, with a few thin colourful accent stripes (orange, cream, a little red). The poncho has its OWN deep hood, always up. The face is NEVER visible: inside the hood is only solid dark shadow - no eyes, no glasses, no hair, no chin. Gender must be impossible to tell: no visible hair, no visible face, loose silhouette. No hoodie, no scarf. Clean pixel-art CHARACTER SHEET on a flat magenta background, no scenery and no panels. Row 1, full-body turnaround, 5 figures at identical scale: front, three-quarter front, side facing right, three-quarter back, BACK - on the back the poncho has a bold woven THD crest patch in cream and blue with the letters THD clearly readable. Row 2: a close-up of the hood (pure shadow inside), a close-up of the THD back patch, then a scale lineup on one ground line: the hero, a 1.5 ft black panther plush mascot in a grey T-shirt at knee height (third image), and an 8.5 ft tall shadowy panther-humanoid silhouette with glowing blue eyes.",
       "locked": true,
       "note": "Approved 23 Oct 2026. Drawn from earlier iterations (design anchor outside Git); never redrawn - every other board uses its committed preview.",
-      "review": "✅ Approved 23 Oct. Adult 6 ft, face never visible, THD poncho in grey / THD blue / teal with colourful accents, THD crest on the back, scale lineup with Dexter (1.5 ft) and his final form (8.5 ft). Fourth iteration: chibi proportions, a hoodie and a visible face were rejected along the way."
+      "review": "âœ… Approved 23 Oct. Adult 6 ft, face never visible, THD poncho in grey / THD blue / teal with colourful accents, THD crest on the back, scale lineup with Dexter (1.5 ft) and his final form (8.5 ft). Fourth iteration: chibi proportions, a hoodie and a visible face were rejected along the way."
     },
     {
       "id": "hero-move",
-      "title": "The student · walk",
+      "title": "The student Â· walk",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -52,11 +52,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "hero-idle",
-      "title": "The student · idle variants",
+      "title": "The student Â· idle variants",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -92,11 +92,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "hero-run",
-      "title": "The student · run",
+      "title": "The student Â· run",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -129,11 +129,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "companion-robot",
-      "title": "Campus robot · collectible companion",
+      "title": "Campus robot Â· collectible companion",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -147,7 +147,7 @@
     },
     {
       "id": "hero-hurt",
-      "title": "The student · hurt and interact",
+      "title": "The student Â· hurt and interact",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -192,11 +192,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "hero-death",
-      "title": "The student · death",
+      "title": "The student Â· death",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -222,11 +222,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "hero-air",
-      "title": "The student · jump, fall, climb",
+      "title": "The student Â· jump, fall, climb",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -266,11 +266,11 @@
         ],
         "ref": "jump-08"
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "hero-ladder",
-      "title": "The student · ladder top and bottom",
+      "title": "The student Â· ladder top and bottom",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -300,7 +300,7 @@
     },
     {
       "id": "chair-side",
-      "title": "Chair · side sweep",
+      "title": "Chair Â· side sweep",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -341,11 +341,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "chair-overhead",
-      "title": "Chair · overhead slam",
+      "title": "Chair Â· overhead slam",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -385,11 +385,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "chair-block",
-      "title": "Chair · block",
+      "title": "Chair Â· block",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -428,11 +428,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "tray-throw",
-      "title": "Tray · throw and return",
+      "title": "Tray Â· throw and return",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -447,7 +447,7 @@
     },
     {
       "id": "enemy-drone",
-      "title": "Enemy · drone",
+      "title": "Enemy Â· drone",
       "factor": 2,
       "inputs": [
         "ref2:20261023_135552.jpg",
@@ -491,11 +491,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "enemy-rover",
-      "title": "Enemy · rover",
+      "title": "Enemy Â· rover",
       "factor": 2,
       "inputs": [
         "ref2:20261023_125948.jpg",
@@ -534,11 +534,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "enemy-crab",
-      "title": "Enemy · crab",
+      "title": "Enemy Â· crab",
       "factor": 2,
       "inputs": [
         "ref2:20261023_125939.jpg",
@@ -579,11 +579,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "fx",
-      "title": "FX · black fluid",
+      "title": "FX Â· black fluid",
       "factor": 2,
       "inputs": [
         "repo:art/direction/images/cast-preview.png",
@@ -602,11 +602,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "boss-jenny",
-      "title": "Boss · Jenny, attacks",
+      "title": "Boss Â· Jenny, attacks",
       "factor": 2,
       "inputs": [
         "ref2:20261023_130003.jpg",
@@ -642,11 +642,11 @@
         ],
         "ref": "rev-00"
       },
-      "review": "✅ Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "boss-jenny-2",
-      "title": "Boss · Jenny, stunned and debris",
+      "title": "Boss Â· Jenny, stunned and debris",
       "factor": 2,
       "inputs": [
         "out:boss-jenny@0,110,1536,190",
@@ -695,11 +695,11 @@
         ],
         "ref": "reboot-01"
       },
-      "review": "✅ Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "pocket-computer",
-      "title": "Item · pocket computer",
+      "title": "Item Â· pocket computer",
       "factor": 2,
       "inputs": [
         "ref2:20261023_125955.jpg",
@@ -727,11 +727,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Closed case 19 × 10 px (≈ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups."
+      "review": "âœ… Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Closed case 19 Ã— 10 px (â‰ˆ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups."
     },
     {
       "id": "mensa-food",
-      "title": "Mensa · food pickups",
+      "title": "Mensa Â· food pickups",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/coffee-machine-preview.png",
@@ -765,11 +765,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 × 14, cake 18 × 14, wafer 17 × 13, Leberkäse roll 18 × 18 px – around the documented 16 px."
+      "review": "âœ… Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 Ã— 14, cake 18 Ã— 14, wafer 17 Ã— 13, LeberkÃ¤se roll 18 Ã— 18 px â€“ around the documented 16 px."
     },
     {
       "id": "coffee-machine",
-      "title": "Prop · coffee machine (save point)",
+      "title": "Prop Â· coffee machine (save point)",
       "factor": 2,
       "inputs": [
         "ref2:20261023_125138.jpg",
@@ -795,11 +795,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. 42 × 80 px in the game: fills the 40 × 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png."
+      "review": "âœ… Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. 42 Ã— 80 px in the game: fills the 40 Ã— 80 coffee-1 box in Rusty Creek, a little taller than the 76 px hero on its base cabinet, as in the photos. Lineup in the stage: previews/coffee-visit-lineup.png."
     },
     {
       "id": "mensa-drinks",
-      "title": "Mensa · drinks and coffee",
+      "title": "Mensa Â· drinks and coffee",
       "factor": 2,
       "inputs": [
         "ref2:20261023_124941.jpg",
@@ -814,7 +814,7 @@
     },
     {
       "id": "wayfinder",
-      "title": "Wayfinder sign · prop and pole weapon",
+      "title": "Wayfinder sign Â· prop and pole weapon",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -828,7 +828,7 @@
     },
     {
       "id": "dexter",
-      "title": "Dexter · moves",
+      "title": "Dexter Â· moves",
       "factor": 2,
       "inputs": [
         "repo:art/direction/images/dexter-stages-preview.png@535,585,125,205",
@@ -873,11 +873,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "dexter-acts",
-      "title": "Dexter · gestures",
+      "title": "Dexter Â· gestures",
       "factor": 2,
       "inputs": [
         "repo:art/direction/images/dexter-stages-preview.png@535,585,125,205",
@@ -922,11 +922,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
+      "review": "âœ… Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size."
     },
     {
       "id": "fx-leaves",
-      "title": "FX · falling leaves",
+      "title": "FX Â· falling leaves",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/fx-preview.png",
@@ -965,11 +965,11 @@
           ]
         ]
       },
-      "review": "🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Second draw: the first take's thin outlines and fine veins melted into the orange trees at 8 px (6 of 8 test frames LOW in scripts/readability.py); thick dark outlines and lighter fills brought it to 2 of 8. 7–10 px in the game."
+      "review": "ðŸŸ¡ Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Second draw: the first take's thin outlines and fine veins melted into the orange trees at 8 px (6 of 8 test frames LOW in scripts/readability.py); thick dark outlines and lighter fills brought it to 2 of 8. 7â€“10 px in the game."
     },
     {
       "id": "fx-ground",
-      "title": "FX · footstep puffs",
+      "title": "FX Â· footstep puffs",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/fx-preview.png",
@@ -1016,11 +1016,11 @@
           ]
         ]
       },
-      "review": "🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Dust 21–30 × 5–12 px, grass and leaf kick ≈ 25 × 14, splash ≈ 25 × 16 – about one step wide next to the 76 px hero. Rows are `even` (they break into specks)."
+      "review": "ðŸŸ¡ Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Dust 21â€“30 Ã— 5â€“12 px, grass and leaf kick â‰ˆ 25 Ã— 14, splash â‰ˆ 25 Ã— 16 â€“ about one step wide next to the 76 px hero. Rows are `even` (they break into specks)."
     },
     {
       "id": "fx-water",
-      "title": "FX · pond ripples and lily pad",
+      "title": "FX Â· pond ripples and lily pad",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/fx-preview.png",
@@ -1061,11 +1061,11 @@
         ],
         "_measured": "Lily pads in hg-4-0 (x 670, y 660) measure about 68 x 14-17 px; height 16 on lily-bob-01 gives 58 x 16. The sparkle is halved (scale 0.5) to a 12 px glint."
       },
-      "review": "🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Lily pad 58 × 14–16 px, measured against the painted pads in hg-4-0 (≈ 68 × 14–17); ripple 37–71 px wide; sparkle halved to a 12 px glint. The plate's pads are browner than this olive pad – tint in code if it stands out."
+      "review": "ðŸŸ¡ Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Lily pad 58 Ã— 14â€“16 px, measured against the painted pads in hg-4-0 (â‰ˆ 68 Ã— 14â€“17); ripple 37â€“71 px wide; sparkle halved to a 12 px glint. The plate's pads are browner than this olive pad â€“ tint in code if it stands out."
     },
     {
       "id": "dexter-prologue",
-      "title": "Dexter · prologue additions",
+      "title": "Dexter Â· prologue additions",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/dexter-preview.png",
@@ -1099,11 +1099,11 @@
           ]
         ]
       },
-      "review": "✅ Approved 24 Oct by Alexander; exported to game/public/assets/sprites/ with export_atlas.py."
+      "review": "âœ… Approved 24 Oct by Alexander; exported to game/public/assets/sprites/ with export_atlas.py."
     },
     {
       "id": "menu-key",
-      "title": "Menu · the Hidden Garden at first light",
+      "title": "Menu Â· the Hidden Garden at first light",
       "factor": 2,
       "keyed": false,
       "size": "2560x1440",
@@ -1115,11 +1115,11 @@
         "repo:art/direction/images/hidden-garden-preview.png@0,0,1536,560"
       ],
       "prompt": "Key art for the game's title menu, a full 16:9 picture in exactly the hi-bit pixel-art look of the first image (the style master) - the magenta and sprite-sheet rules do NOT apply to this one image: it is a full scene. ABSOLUTELY NO TEXT, no logo, no title, no letters, no UI, no characters, no people, no animals. The scene: the Hidden Garden pond from images 2 and 3 at FIRST LIGHT, early morning - the low sun just rising behind the far conifer forest on the left, a pale gold-and-rose sky turning blue above, thin mist lying over the still pond. Strict side view like a game screen, everything parallel to the screen: the far hills and dark conifers, the band of autumn trees in yellow, orange and russet, the tall golden reed bed, the low stone wall and the small timber jetty at the water's edge, the empty park bench on the left. The pond fills the lower third and mirrors everything like a Kingdom Two Crowns reflection, with lily pads and a few floating maple leaves, and a dark blurred foreground of autumn leaves and grass along the bottom edge. Leave calm, simple sky in the upper middle (the game puts its title there). Cozy and beautiful, and only on a second look a little too still: in the reflection right below the jetty, one small patch reflects something that is not there - a faint rusty blue-green girder - very subtle.",
-      "review": "🟡 Drawn 24 Oct for the prologue menu (workstream 5); exported to game/public/assets/ui/menu-key.png with scripts/export_key_art.py, awaiting Alexander's review."
+      "review": "ðŸŸ¡ Drawn 24 Oct for the prologue menu (workstream 5); exported to game/public/assets/ui/menu-key.png with scripts/export_key_art.py, awaiting Alexander's review."
     },
     {
       "id": "intro-anomaly",
-      "title": "Intro · the lake anomaly",
+      "title": "Intro Â· the lake anomaly",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/hero-preview.png",
@@ -1173,7 +1173,7 @@
     },
     {
       "id": "rubber-chicken",
-      "title": "Secret · the rubber chicken",
+      "title": "Secret Â· the rubber chicken",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/mensa-food-preview.png",
@@ -1196,11 +1196,11 @@
           ]
         ]
       },
-      "review": "🟨 Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero."
+      "review": "ðŸŸ¨ Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero."
     },
     {
       "id": "arena-platform",
-      "title": "Prop · Jenny's arena platforms",
+      "title": "Prop Â· Jenny's arena platforms",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/coffee-machine-preview.png",
@@ -1220,11 +1220,11 @@
         ]
       },
       "locked": true,
-      "review": "🟨 Awaiting Alexander's review (25 Oct). Replaces the strip cut from the maze plate, which read flat and floated with no reason (Alexander). Drawn with volume from the coffee-machine sheet's look and the maze's own girder as the material reference: a riveted box girder with a grated underside, 202 × 25 px in the game. The prompt asked for eye-bolts and chain stubs, and the model drew the platform alone, so it is locked and the chains are their own board."
+      "review": "ðŸŸ¨ Awaiting Alexander's review (25 Oct). Replaces the strip cut from the maze plate, which read flat and floated with no reason (Alexander). Drawn with volume from the coffee-machine sheet's look and the maze's own girder as the material reference: a riveted box girder with a grated underside, 202 Ã— 25 px in the game. The prompt asked for eye-bolts and chain stubs, and the model drew the platform alone, so it is locked and the chains are their own board."
     },
     {
       "id": "arena-chain",
-      "title": "Prop · the platforms' chains",
+      "title": "Prop Â· the platforms' chains",
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/arena-platform-preview.png",
@@ -1243,7 +1243,32 @@
           ]
         ]
       },
-      "review": "🟨 Awaiting Alexander's review (25 Oct). The platforms hang from the girder over the arena: scripts/arena_platforms.py tiles this chain's link period from each platform end up to the girder's underside. The second frame came out as a second chain instead of an eye-bolt, so it is unused."
+      "review": "ðŸŸ¨ Awaiting Alexander's review (25 Oct). The platforms hang from the girder over the arena: scripts/arena_platforms.py tiles this chain's link period from each platform end up to the girder's underside. The second frame came out as a second chain instead of an eye-bolt, so it is unused."
+    },
+    {
+      "id": "arena-wall",
+      "title": "Prop Â· Jenny's arena wall",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/coffee-machine-preview.png",
+        "repo:art/sprites/images/boss-jenny-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw this sheet in exactly that pixel-art look - the same pixel grain, palette and warm rim light. Prop sprite sheet of ONE tall narrow BARRIER COLUMN that closes a race-track arena on a rusty steel girder maze: a stack of old red-and-white striped plastic and steel crowd-control barrier panels and a rusted scaffold pole, lashed together with orange ratchet straps, standing straight up, about TEN times as tall as it is wide, its top crowned by a small amber rotating warning lamp in a cage (like the race car from image 2 might have hit it before: a few dents, black tyre marks). Strict front view, the same in every frame. 1 row, exactly 2 frames: frame 1 the warning lamp lit bright amber with a glow, frame 2 the same column with the lamp dark. Both frames identical apart from the lamp, same scale, standing on the SAME invisible ground line, with a wide clear magenta gap between them. Count the frames: the row has EXACTLY 2. No people, no car, no scenery, no ground.",
+      "atlas": {
+        "height": 300,
+        "rows": [
+          [
+            {
+              "anim": "lamp",
+              "frames": 2,
+              "fps": 3
+            }
+          ]
+        ]
+      },
+      "despeckle": 12,
+      "review": "ðŸŸ¨ Awaiting Alexander's review (25 Oct). Playtest J7: the arena's walls were code-drawn rectangles with hazard stripes. First draw: a barrier column of red-and-white crowd-control panels strapped to a rusted pole, with a caged warning lamp (lit, dark). 300 px tall in the game, as tall as the walls. The lamp's halo specks are dropped by \"despeckle\"."
     }
   ]
 }

@@ -1,12 +1,12 @@
-# The student · hurt and interact
+# The student Â· hurt and interact
 
 <!-- nav:start -->
-[← The student · run](hero-run.md) · [Sprite boards](README.md) · **5 / 31** · [The student · death →](hero-death.md)
+[← The student Â· run](hero-run.md) · [Sprite boards](README.md) · **5 / 32** · [The student Â· death →](hero-death.md)
 <!-- nav:end -->
 
-![The student · hurt and interact](images/hero-hurt-preview.png)
+![The student Â· hurt and interact](images/hero-hurt-preview.png)
 
-**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-hurt.png` · rebuild: `python scripts/make_boards.py draw hero-hurt --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · run](hero-run.md) · [Sprite boards](README.md) · **5 / 31** · [The student · death →](hero-death.md)
+[← The student Â· run](hero-run.md) · [Sprite boards](README.md) · **5 / 32** · [The student Â· death →](hero-death.md)
 <!-- nav:end -->
