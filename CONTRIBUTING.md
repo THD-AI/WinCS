@@ -75,7 +75,7 @@ The body, when there is one, says *why*. **No AI attribution anywhere**: no co-a
 - **Small.** Aim for under ~400 changed lines of code. Generated art, lockfiles and exports don't count, but go in their own commit.
 - **Linked.** `Closes #n` for the issue this PR completes, `Refs #n` for related work. Never close an epic from a PR.
 - **Verified.** The template asks how: type check, build, and for anything you can see, the Vercel preview and a screenshot.
-- **Draft first.** Open a draft PR as soon as you push; mark it ready when every acceptance box is ticked.
+- **Ready, not draft.** Open the PR ready for review as soon as you push (Alexander, 24 Oct: never as a draft); keep pushing to it until every acceptance box is ticked.
 - **Merge commits**, not squash. Stacks depend on it, and the commits tell the story.
 
 ### Stacked PRs
@@ -103,7 +103,7 @@ main
    - #88 [1/3] docs: team workflow
    ```
 
-**Changing a lower PR after review starts** – commit the fix on the lower branch, then merge it upward one layer at a time (`git switch <upper> && git merge <lower>`). No force-pushes once anyone may have looked at a branch.
+**Changing a lower PR after review starts** – commit the fix on the lower branch, then rebase every branch above it, in order, onto the new tip of the one below (`git rebase <lower>` on each) and push them with `--force-with-lease`, with Alexander's OK. GitHub's stacked PRs need each branch to contain the one below it: a fix carried up by cherry-pick or by merging the lower branch in makes GitHub report the stack as diverged and refuse to merge it (25 Oct). Keep both ends current too: when `main` moves, the bottom of the stack is rebased onto it the same way.
 
 **Merging a stack** – bottom up, one at a time, with merge commits:
 
@@ -131,7 +131,7 @@ Every committed image is produced by a script from a config with real references
 ```bash
 git diff --cached --check
 python scripts/check_docs.py
-python -m unittest discover -s scripts -p "test_*.py"     # if scripts changed
+python -m pytest scripts                                 # if scripts changed
 cd game && npm run typecheck && npm test && npm run build  # game code
 python scripts/compare.py lineup hero-move:walk-03 …       # on-screen changes: the comparison for the PR
 ```

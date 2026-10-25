@@ -223,7 +223,7 @@ The rules both agents follow:
 
 1. **Start from an issue assigned to your person.** Read it, this page, and the doc sections it links. No issue, no branch.
 2. **Stay in your lane's folders** (table at the top). Need something in the other lane? Comment on its issue or open a new one with the bug or task form – don't edit it.
-3. **Branch** `<type>/<issue>-<slug>` from `main`; open a **draft PR** at the first push with `Closes #<issue>`.
+3. **Branch** `<type>/<issue>-<slug>` from `main`; open the **PR, ready for review (not a draft),** at the first push with `Closes #<issue>`.
 4. **Stack** only inside your own lane: `[1/3] …` on `main`, `[2/3]` on the branch below, and so on ([CONTRIBUTING – Stacked PRs](../CONTRIBUTING.md#stacked-prs)). Never base a PR on the other lane's branch; wait for it to reach `main`.
 5. **Sync with `main`** after every merge you see on the board: `git fetch && git merge origin/main` into each open branch, bottom of the stack first. Merge, don't rebase, once a PR is open.
 6. **Shared files** – `game/package.json`, `game/src/main.ts`, `game/src/core/events.ts`, the contracts above – change only in a small PR of their own, titled `chore(shared): …`, merged before anything that depends on it.

@@ -4,7 +4,7 @@
 [← 13 – Production pipeline](13-PRODUCTION-PIPELINE.md) · [Design docs](README.md) · **14 / 16** · [16 – Zone design: scale, rooms and story in the space →](16-ZONE-DESIGN.md)
 <!-- nav:end -->
 
-Alexander, Sat 24 Oct ~04:30: the game must run, look and feel like `art/`, from the menu through the Hidden Garden prologue into the anomaly – as one system that works the same locally and in production, not a set of hardcoded scenes. This page is the plan and the contract every workstream builds against. Integration branch: **`slice/prologue`** (main + #154 + #164). Every workstream branches from it and opens a draft PR **into it**; Claude reviews, plays and merges there; `slice/prologue` reaches main on Alexander's word. Progress lives in [prologue-tracker.csv](prologue-tracker.csv).
+Alexander, Sat 24 Oct ~04:30: the game must run, look and feel like `art/`, from the menu through the Hidden Garden prologue into the anomaly – as one system that works the same locally and in production, not a set of hardcoded scenes. This page is the plan and the contract every workstream builds against. Integration branch: **`slice/prologue`** (main + #154 + #164). Every workstream branches from it and opens a PR, ready for review, **into it**; Claude reviews, plays and merges there; `slice/prologue` reaches main on Alexander's word. Progress lives in [prologue-tracker.csv](prologue-tracker.csv).
 
 ## What the player gets
 
@@ -102,7 +102,7 @@ flowchart LR
 
 ## Rules for every workstream
 
-- Branch `feature/<issue or slice>-<topic>` from `slice/prologue`; draft PR **into `slice/prologue`**, with a mermaid diagram, before/after evidence (screenshot, GIF or `compare.py`), and how to test. Never push to main or to another workstream's branch; never merge.
+- Branch `feature/<issue or slice>-<topic>` from `slice/prologue`; PR (ready for review, not a draft) **into `slice/prologue`**, with a mermaid diagram, before/after evidence (screenshot, GIF or `compare.py`), and how to test. Never push to main or to another workstream's branch; never merge.
 - Commit as `arudaev <hlexhelftd@gmail.com>`, Conventional, no AI attribution. Before pushing: `npm --prefix game run typecheck`, `npx vitest run` (in `game/`), `npm --prefix game run build`; script tests `cd scripts && python -m pytest -q`; `python scripts/check_docs.py` (delete `game/public/assets/stages` first, then run `python scripts/export_stage.py` from `game/` again before playing).
 - Art only through the pipeline: `make_boards.py` with `gpt-image-2.5-sunburst`, real references (photos in `~/Downloads/GameJam_*`, `repo:` crops of `art/direction`), magenta key, no text; `export_atlas.py`. The key is read from `.env` (copy the main checkout's `.env` into your worktree; never commit it, never put the key on a command line).
 - Sizes from the art (decision 41), mechanics from the art (decision 43). Data in files, not constants in code.
