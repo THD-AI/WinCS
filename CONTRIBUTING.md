@@ -103,7 +103,7 @@ main
    - #88 [1/3] docs: team workflow
    ```
 
-**Changing a lower PR after review starts** – commit the fix on the lower branch, then merge it upward one layer at a time (`git switch <upper> && git merge <lower>`). No force-pushes once anyone may have looked at a branch.
+**Changing a lower PR after review starts** – commit the fix on the lower branch, then rebase every branch above it, in order, onto the new tip of the one below (`git rebase <lower>` on each) and push them with `--force-with-lease`, with Alexander's OK. GitHub's stacked PRs need each branch to contain the one below it: a fix carried up by cherry-pick or by merging the lower branch in makes GitHub report the stack as diverged and refuse to merge it (25 Oct). Keep both ends current too: when `main` moves, the bottom of the stack is rebased onto it the same way.
 
 **Merging a stack** – bottom up, one at a time, with merge commits:
 
