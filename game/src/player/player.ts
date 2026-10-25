@@ -21,7 +21,7 @@ import { parseAtmosphere, type Wind } from '../stage/atmosphere/config';
 import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
-import { CODES, physicalKeys } from './physicalKeys';
+import { bindings, CODES, physicalKeys, type Action } from './physicalKeys';
 import { Dodge } from './dodge';
 import { Lunge } from '../combat/assist';
 
@@ -197,14 +197,16 @@ export class Player {
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
     const interacting = this.interaction.active;
     const interactionPose = this.interaction.step(milliseconds / 1000);
-    // Phaser's keys (keyCode) or the physical key (code): WASD works on any layout and with an input method active.
-    const key = (codes: readonly string[], ...names: string[]) => names.some(name => this.keys[name].isDown) || this.physical.any(codes);
-    const axis = interacting ? 0 : horizontal(key(CODES.left, 'A', 'LEFT'), key(CODES.right, 'D', 'RIGHT'),
+    // The physical key (code): WASD works on any layout and with an input method active. Phaser's keys (keyCode)
+    // only back up an action that still has its default keys – a rebound action answers to its own key alone.
+    const key = (action: Action, ...names: string[]) =>
+      this.physical.any(CODES[action]) || bindings.isDefault(action) && names.some(name => this.keys[name].isDown);
+    const axis = interacting ? 0 : horizontal(key('left', 'A', 'LEFT'), key('right', 'D', 'RIGHT'),
       pad?.leftStick.x, pad?.left, pad?.right);
-    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K', 'Z') || !!pad?.A);
-    const vertical = interacting || key(CODES.attack, 'J', 'X') || pad?.X ? 0 : horizontal(key(CODES.up, 'W', 'UP'), key(CODES.down, 'S', 'DOWN'),
+    const jumpDown = !interacting && (key('jump', 'SPACE', 'K', 'Z') || !!pad?.A);
+    const vertical = interacting || key('attack', 'J', 'X') || pad?.X ? 0 : horizontal(key('up', 'W', 'UP'), key('down', 'S', 'DOWN'),
       pad?.leftStick.y, pad?.up, pad?.down);
-    const dodgeDown = !interacting && (key(CODES.dodge, 'L', 'C', 'SHIFT') || !!pad?.B || !!pad?.R1);
+    const dodgeDown = !interacting && (key('dodge', 'L', 'C', 'SHIFT') || !!pad?.B || !!pad?.R1);
     let dodgePressed = dodgeDown && !this.dodgeWas;
     this.dodgeWas = dodgeDown;
     const geometry = this.chunks.map(c => c.world);
