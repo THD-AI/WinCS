@@ -1,7 +1,7 @@
 # Dexter · gestures
 
 <!-- nav:start -->
-[← Dexter · moves](dexter.md) · [Sprite boards](README.md) · **22 / 28** · [FX · falling leaves →](fx-leaves.md)
+[← Dexter · moves](dexter.md) · [Sprite boards](README.md) · **22 / 29** · [FX · falling leaves →](fx-leaves.md)
 <!-- nav:end -->
 
 ![Dexter · gestures](images/dexter-acts-preview.png)
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter-acts.png` · rebuild: `python scripts/make_boards.py draw dexter-acts --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Dexter · moves](dexter.md) · [Sprite boards](README.md) · **22 / 28** · [FX · falling leaves →](fx-leaves.md)
+[← Dexter · moves](dexter.md) · [Sprite boards](README.md) · **22 / 29** · [FX · falling leaves →](fx-leaves.md)
 <!-- nav:end -->

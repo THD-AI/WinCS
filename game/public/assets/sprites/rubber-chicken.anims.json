@@ -1,0 +1,12 @@
+{
+ "rest": {
+  "frames": 1,
+  "fps": 12,
+  "loop": true
+ },
+ "squeak": {
+  "frames": 1,
+  "fps": 12,
+  "loop": false
+ }
+}

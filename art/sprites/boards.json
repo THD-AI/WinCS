@@ -1170,6 +1170,33 @@
         ]
       },
       "review": "🟨 Awaiting Alexander's review (25 Oct). First draw: three distinct props in the food sheet's look. The board's 1 px balloon string broke up when crushed, so the game draws the string; the eyes are two pieces per frame (\"parts\": 2). Sizes per animation: balloon about 18 px, eyes 7 px, boat 9 px against the 76 px hero. In the drain: previews/it-props-in-drain.png."
+    },
+    {
+      "id": "rubber-chicken",
+      "title": "Secret · the rubber chicken",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/mensa-food-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw this sheet in exactly that pixel-art look - small detailed props on magenta, the same pixel grain and the same soft warm rim light. Prop sprite sheet of ONE classic squeaky RUBBER CHICKEN toy - the long-necked plucked yellow rubber chicken with a red comb, an open orange beak, tiny closed eyes, skinny dangling legs - lying on its side on the ground, side view, slightly worn and dusty as if it had been lost in a garden for a while. 1 row, exactly 2 frames: frame 1 resting, frame 2 the same chicken squeezed in the middle, its body pinched thin and its beak wide open mid-squeak, neck stretched. Both frames at the SAME pixel scale, standing on the SAME invisible ground line, evenly spaced with a wide clear magenta gap between them. Draw distinct key poses. Count the frames: the row has EXACTLY 2. No people, no hands, no scenery.",
+      "atlas": {
+        "height": 9,
+        "rows": [
+          [
+            {
+              "anim": "rest",
+              "frames": 1
+            },
+            {
+              "anim": "squeak",
+              "frames": 1,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟨 Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero."
     }
   ]
 }

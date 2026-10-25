@@ -1,7 +1,7 @@
 # The student · run
 
 <!-- nav:start -->
-[← The student · idle variants](hero-idle.md) · [Sprite boards](README.md) · **4 / 28** · [The student · hurt and interact →](hero-hurt.md)
+[← The student · idle variants](hero-idle.md) · [Sprite boards](README.md) · **4 / 29** · [The student · hurt and interact →](hero-hurt.md)
 <!-- nav:end -->
 
 ![The student · run](images/hero-run-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-run.png` · rebuild: `python scripts/make_boards.py draw hero-run --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · idle variants](hero-idle.md) · [Sprite boards](README.md) · **4 / 28** · [The student · hurt and interact →](hero-hurt.md)
+[← The student · idle variants](hero-idle.md) · [Sprite boards](README.md) · **4 / 29** · [The student · hurt and interact →](hero-hurt.md)
 <!-- nav:end -->

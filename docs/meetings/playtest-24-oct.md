@@ -55,7 +55,7 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 | # | What | Status |
 | --- | --- | --- |
 | T1 | The jam theme **"It's spooky outside"** must show | ✅ under the title ("DEGDEV 3 - It's spooky outside."), as the loader's last line ("WARNING: It's spooky outside.") and in the credits |
-| T2 | The **rubber chicken** must be in the game somehow | ❓ smallest version: a rubber chicken prop as a secret pickup or on Dexter's bench; it squeaks |
+| T2 | The **rubber chicken** must be in the game somehow | ✅ a secret: lost behind the garden's gate pillar, left of where you start; walk into it and it squeaks (sprite board `rubber-chicken`, synthesized squeak) |
 
 ## Scale – hero against the world
 

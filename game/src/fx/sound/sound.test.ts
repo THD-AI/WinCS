@@ -13,6 +13,7 @@ const MANIFEST: [string, SoundId[]][] = [
   ['Jenny engine + crash', ['jenny-engine', 'jenny-crash']],
   ['fluid absorb', ['fluid-absorb']],
   ['ding', ['crash-ding']],
+  ['rubber squeak', ['rubber-squeak']],
 ];
 
 describe('synthesized sound', () => {

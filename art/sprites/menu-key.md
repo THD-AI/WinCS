@@ -1,7 +1,7 @@
 # Menu · the Hidden Garden at first light
 
 <!-- nav:start -->
-[← Dexter · prologue additions](dexter-prologue.md) · [Sprite boards](README.md) · **27 / 28** · [Props · the storm drain's IT details →](it-props.md)
+[← Dexter · prologue additions](dexter-prologue.md) · [Sprite boards](README.md) · **27 / 29** · [Props · the storm drain's IT details →](it-props.md)
 <!-- nav:end -->
 
 ![Menu · the Hidden Garden at first light](images/menu-key-preview.png)
@@ -22,5 +22,5 @@ Key art for the game's title menu, a full 16:9 picture in exactly the hi-bit pix
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/menu-key.png` · rebuild: `python scripts/make_boards.py draw menu-key --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Dexter · prologue additions](dexter-prologue.md) · [Sprite boards](README.md) · **27 / 28** · [Props · the storm drain's IT details →](it-props.md)
+[← Dexter · prologue additions](dexter-prologue.md) · [Sprite boards](README.md) · **27 / 29** · [Props · the storm drain's IT details →](it-props.md)
 <!-- nav:end -->
