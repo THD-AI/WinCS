@@ -164,13 +164,13 @@ def level_chunk(c: dict, edges: dict, shafts: dict, rng: random.Random) -> None:
         c["mound"].append([x0 - 120, top, x0 + ROOM[1] + 120, r[2]])
         c["hollow"].append([x0, r[2] - ROOM[0], x0 + ROOM[1], r[2]])
         c["interact"].append({"id": f"{c['id']}-chest", "kind": "secret", "x": x0 + ROOM[1] - 110, "y": r[2] - 40,
-                              "w": 60, "h": 40, "note": "a chest in the cave, under a lantern"})
+                              "w": 60, "h": 40, "note": WORDS["notes"]["mound"]})
     rest = [r for r in runs if r[1] - r[0] >= 360 and not (pond and r[0] < pond[1] and r[1] > pond[0])]
     if rest:  # a bench to sit on: a place of rest
         r = rng.choice(rest)
         x = snap((r[0] + r[1]) / 2)
         c["interact"].append({"id": f"{c['id']}-bench", "kind": "rest", "x": x - 70, "y": r[2] - 50, "w": 140,
-                              "h": 50, "note": "a park bench – sit, the music settles"})
+                              "h": 50, "note": WORDS["notes"]["rest"]})
 
 
 def beams(edges: dict, shafts: dict, rng: random.Random) -> list[list[int]]:
@@ -224,7 +224,7 @@ def above_chunk(c: dict, edges: dict, shafts: dict, rng: random.Random) -> None:
         lx = x0 + 60
         c["climb"].append([lx - 16, y, lx + 16, b[2]])
         c["interact"].append({"id": f"{c['id']}-glint", "kind": "secret", "x": x0 + 360, "y": y - 40, "w": 40, "h": 40,
-                              "note": "a glint at the high beam's end"})
+                              "note": WORDS["notes"]["glint"]})
     for x0, x1, y in c["beams"]:
         c["structure"].append([x0, y, x1, y + 22])
 
@@ -255,7 +255,30 @@ def below_chunk(c: dict, edges: dict, shafts: dict, mirror: list[list[int]], rng
         x0 = 60 if side == "left" else W - 60 - ROOM[1]
         c["hollow"].append([x0, r[2] - ROOM[0] - 40, x0 + ROOM[1], r[2]])
         c["interact"].append({"id": f"{c['id']}-lamp", "kind": "secret", "x": x0 + ROOM[1] // 2 - 30, "y": r[2] - 60,
-                              "w": 60, "h": 60, "note": "a lit cellar: crates, shelves, a hanging lamp"})
+                              "w": 60, "h": 60, "note": WORDS["notes"]["hollow"]})
+
+
+# What the map calls its places, per zone: zone.json "words" overrides any of these (the Hidden Garden's are the
+# default). Rusty Creek has no caves and no pond, so its zone names its own (#157).
+WORDS = {
+    "roles": {"above": "sky route", "level": "pond route", "below": "the wrong reflection"},
+    "notes": {"mound": "a chest in the cave, under a lantern", "rest": "a park bench – sit, the music settles",
+              "glint": "a glint at the high beam's end", "hollow": "a lit cellar: crates, shelves, a hanging lamp"},
+    "brief": {
+        "deck": "A timber deck on posts runs across still water where the guide shows it.",
+        "mound": "A grassy hill rises where the guide's brown mound is; the purple room in it is a cave mouth with a "
+                 "warm lantern and a small chest – a secret, cosy and lit.",
+        "rest": "A wooden park bench stands on the path.",
+        "hollow": "The purple room at the bank is a warm lit cellar with crates, shelves and a hanging lamp.",
+        "above": "Grey beams are long rusty girders hanging in the open sky, vines and orange leaves on them; keep the "
+                 "sky wide and calm – most of the image is sky."},
+}
+
+
+def words(zone: dict) -> dict:
+    """The zone's names for its places: WORDS, with zone.json's "words" on top, key by key."""
+    own = zone.get("words", {})
+    return {part: {**WORDS[part], **own.get(part, {})} for part in WORDS}
 
 
 def generate(zone: dict, seed: int, cols: int, rows: int) -> dict:
@@ -476,20 +499,19 @@ def collision(ch: dict) -> dict:
 
 def brief(ch: dict, zone: dict) -> str:
     """What the paint stage tells the model this chunk is: the band's vocabulary and what the guide holds."""
+    say = words(zone)["brief"]
     parts = [zone["vocabulary"][ch["band"]].capitalize() + "."]
     if ch["deck"]:
-        parts.append("A timber deck on posts runs across still water where the guide shows it.")
+        parts.append(say["deck"])
     if ch["mound"]:
-        parts.append("A grassy hill rises where the guide's brown mound is; the purple room in it is a cave mouth "
-                     "with a warm lantern and a small chest – a secret, cosy and lit.")
+        parts.append(say["mound"])
     if any(i["kind"] == "rest" for i in ch["interact"]):
-        parts.append("A wooden park bench stands on the path.")
+        parts.append(say["rest"])
     if ch["band"] == "below" and ch["hollow"]:
-        parts.append("The purple room at the bank is a warm lit cellar with crates, shelves and a hanging lamp.")
+        parts.append(say["hollow"])
     if ch["band"] == "above":
-        parts.append("Grey beams are long rusty girders hanging in the open sky, vines and orange leaves on them; "
-                     "keep the sky wide and calm – most of the image is sky.")
-    return " ".join(parts)
+        parts.append(say["above"])
+    return " ".join(p for p in parts if p)
 
 
 def build(zone_dir: Path, seed: int | None = None, grid: tuple[int, int] | None = None, tries: int = 50) -> dict:
@@ -507,7 +529,10 @@ def build(zone_dir: Path, seed: int | None = None, grid: tuple[int, int] | None 
         sys.exit(f"no playable map in {tries} seeds from {seed}")
     for ch in world["chunks"].values():
         ch["brief"] = brief(ch, zone)
-        ch["role"] = {"above": "sky route", "level": "pond route", "below": "the wrong reflection"}[ch["band"]]
+        ch["role"] = words(zone)["roles"][ch["band"]]
+        own = {WORDS["notes"][k]: v for k, v in words(zone)["notes"].items()}
+        for item in ch["interact"]:
+            item["note"] = own.get(item.get("note"), item.get("note"))
     for sub in ("blockout", "collision", "previews"):
         (zone_dir / sub).mkdir(exist_ok=True)
     sheet = Image.new("RGB", (cols * W // 4, rows * H // 4))
