@@ -1204,7 +1204,7 @@
       "factor": 2,
       "inputs": [
         "repo:art/sprites/images/coffee-machine-preview.png",
-        "repo:tmp/girder-ref.png",
+        "repo:art/stages/rusty-creek/arena/girder-reference.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
       "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw in exactly that pixel-art look - solid three-dimensional objects drawn as detailed 2D pixel art with volume, the same pixel grain, palette and warm rim light. Image 2 shows the rusty steel girders of the level these props hang in: copy their material exactly - pale blue-grey painted steel eaten by orange rust, riveted flanges, a dark grated underside. Prop sprite sheet, 2 rows. Row 1, exactly 1 frame: ONE short girder PLATFORM segment hung like a stage rigging bar, seen from slightly below like image 2: a long flat box beam about FIVE times as long as it is tall, its front face with rivets, a lit top flange, a dark grated underside with depth, solid end caps showing its thickness; on top, near each end, a heavy steel eye-bolt with the lowest three links of a rusted chain rising straight up from it. Row 2, exactly 1 frame: ONE long straight vertical rusted steel CHAIN hanging perfectly straight up and down, many identical links, about as long as the platform in row 1, the same chain as on the platform. Both rows at the SAME pixel scale. Rows separated by a wide empty magenta band. No people, no scenery, no sky.",
