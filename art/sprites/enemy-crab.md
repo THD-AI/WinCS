@@ -1,7 +1,7 @@
 # Enemy · crab
 
 <!-- nav:start -->
-[← Enemy · rover](enemy-rover.md) · [Sprite boards](README.md) · **14 / 29** · [FX · black fluid →](fx.md)
+[← Enemy · rover](enemy-rover.md) · [Sprite boards](README.md) · **14 / 31** · [FX · black fluid →](fx.md)
 <!-- nav:end -->
 
 ![Enemy · crab](images/enemy-crab-preview.png)
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/enemy-crab.png` · rebuild: `python scripts/make_boards.py draw enemy-crab --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Enemy · rover](enemy-rover.md) · [Sprite boards](README.md) · **14 / 29** · [FX · black fluid →](fx.md)
+[← Enemy · rover](enemy-rover.md) · [Sprite boards](README.md) · **14 / 31** · [FX · black fluid →](fx.md)
 <!-- nav:end -->

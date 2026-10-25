@@ -1,7 +1,7 @@
 # Item · pocket computer
 
 <!-- nav:start -->
-[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 29** · [Mensa · food pickups →](mensa-food.md)
+[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 31** · [Mensa · food pickups →](mensa-food.md)
 <!-- nav:end -->
 
 ![Item · pocket computer](images/pocket-computer-preview.png)
@@ -28,5 +28,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/pocket-computer.png` · rebuild: `python scripts/make_boards.py draw pocket-computer --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 29** · [Mensa · food pickups →](mensa-food.md)
+[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 31** · [Mensa · food pickups →](mensa-food.md)
 <!-- nav:end -->

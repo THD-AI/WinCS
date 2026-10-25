@@ -1197,6 +1197,53 @@
         ]
       },
       "review": "🟨 Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero."
+    },
+    {
+      "id": "arena-platform",
+      "title": "Prop · Jenny's arena platforms",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/coffee-machine-preview.png",
+        "repo:tmp/girder-ref.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw in exactly that pixel-art look - solid three-dimensional objects drawn as detailed 2D pixel art with volume, the same pixel grain, palette and warm rim light. Image 2 shows the rusty steel girders of the level these props hang in: copy their material exactly - pale blue-grey painted steel eaten by orange rust, riveted flanges, a dark grated underside. Prop sprite sheet, 2 rows. Row 1, exactly 1 frame: ONE short girder PLATFORM segment hung like a stage rigging bar, seen from slightly below like image 2: a long flat box beam about FIVE times as long as it is tall, its front face with rivets, a lit top flange, a dark grated underside with depth, solid end caps showing its thickness; on top, near each end, a heavy steel eye-bolt with the lowest three links of a rusted chain rising straight up from it. Row 2, exactly 1 frame: ONE long straight vertical rusted steel CHAIN hanging perfectly straight up and down, many identical links, about as long as the platform in row 1, the same chain as on the platform. Both rows at the SAME pixel scale. Rows separated by a wide empty magenta band. No people, no scenery, no sky.",
+      "atlas": {
+        "height": 25,
+        "rows": [
+          [
+            {
+              "anim": "platform",
+              "frames": 1
+            }
+          ]
+        ]
+      },
+      "locked": true,
+      "review": "🟨 Awaiting Alexander's review (25 Oct). Replaces the strip cut from the maze plate, which read flat and floated with no reason (Alexander). Drawn with volume from the coffee-machine sheet's look and the maze's own girder as the material reference: a riveted box girder with a grated underside, 202 × 25 px in the game. The prompt asked for eye-bolts and chain stubs, and the model drew the platform alone, so it is locked and the chains are their own board."
+    },
+    {
+      "id": "arena-chain",
+      "title": "Prop · the platforms' chains",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/arena-platform-preview.png",
+        "repo:art/sprites/images/coffee-machine-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows), with NO text at all - no titles, no captions, no labels: Image 1 is an approved prop from this game, a rusty steel girder platform: draw in exactly its pixel-art look, pixel grain, palette and rusty orange-on-steel colours. Prop sprite sheet, 1 row, exactly 2 frames, side by side with a wide magenta gap: frame 1, ONE heavy rusted steel CHAIN hanging perfectly straight and vertical, about as long as the platform in image 1 is wide, made of many identical oval links alternating face-on and edge-on, the top and bottom links cut flat; frame 2, ONE heavy steel EYE-BOLT anchor: a small rusted base plate with two rivets and a thick eye ring on top, with a single rusted shackle through the ring - the piece that would sit on top of the platform where the chain is fixed. Both frames at the SAME pixel scale (the chain's links as thick as the shackle). No platform, no people, no scenery.",
+      "atlas": {
+        "height": 120,
+        "rows": [
+          [
+            {
+              "anim": "chain",
+              "frames": 2
+            }
+          ]
+        ]
+      },
+      "review": "🟨 Awaiting Alexander's review (25 Oct). The platforms hang from the girder over the arena: scripts/arena_platforms.py tiles this chain's link period from each platform end up to the girder's underside. The second frame came out as a second chain instead of an eye-bolt, so it is unused."
     }
   ]
 }

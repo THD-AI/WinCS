@@ -1,7 +1,7 @@
 # Secret · the rubber chicken
 
 <!-- nav:start -->
-[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 29** · [Sprite boards →](README.md)
+[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 31** · [Prop · Jenny's arena platforms →](arena-platform.md)
 <!-- nav:end -->
 
 ![Secret · the rubber chicken](images/rubber-chicken-preview.png)
@@ -20,5 +20,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/rubber-chicken.png` · rebuild: `python scripts/make_boards.py draw rubber-chicken --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 29** · [Sprite boards →](README.md)
+[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 31** · [Prop · Jenny's arena platforms →](arena-platform.md)
 <!-- nav:end -->

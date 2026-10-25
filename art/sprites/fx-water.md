@@ -1,7 +1,7 @@
 # FX · pond ripples and lily pad
 
 <!-- nav:start -->
-[← FX · footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 29** · [Dexter · prologue additions →](dexter-prologue.md)
+[← FX · footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 31** · [Dexter · prologue additions →](dexter-prologue.md)
 <!-- nav:end -->
 
 ![FX · pond ripples and lily pad](images/fx-water-preview.png)
@@ -28,5 +28,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx-water.png` · rebuild: `python scripts/make_boards.py draw fx-water --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX · footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 29** · [Dexter · prologue additions →](dexter-prologue.md)
+[← FX · footstep puffs](fx-ground.md) · [Sprite boards](README.md) · **25 / 31** · [Dexter · prologue additions →](dexter-prologue.md)
 <!-- nav:end -->
