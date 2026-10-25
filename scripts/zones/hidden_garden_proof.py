@@ -135,6 +135,14 @@ FINDS = [
     (2, "q7-sheet-9", 1880, "low", "FELDVERSUCH Q-7 – Blatt 9 (wet)",
      "Down here everything is the right way round.\nIt is the garden that hangs upside down.\nDo not feed the vessel."),
 ]
+# The drain's IT details (docs/09: small story details are props, not repaints; art/sprites it-props), chunk-local:
+# (col, id, kind, x, y – a number or the floor under x, extra). The balloon's x, y is where its string is tied to the
+# rail; it floats `rise` px higher, pressed against the pond's underside at the top of the room.
+PROPS = [
+    (1, "drain-balloon", "balloon", 760, 120, {"rise": 98}),
+    (1, "drain-eyes", "pipe-eyes", 891, 583, {}),      # in the dark of the lower outlet; gone on a second look
+    (1, "drain-boat", "paper-boat", 960, "low", {}),   # washed against the outlet
+]
 ROVER = (1, 640, 1200)   # the drain hall's possessed campus rover (docs/03): col, patrol x0, x1 on its floor
 
 
@@ -190,7 +198,16 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
         x = (ROVER[1] + ROVER[2]) // 2
         data["spawn"] = [{"id": f"{cid}-rover", "kind": "rover", "x": x, "y": floor_at(data["walk"], x, "low"),
                           "patrol": [ROVER[1], ROVER[2]], "note": STORY[col]["story"]}]
+    if bands is not None:
+        data["spawn"] += props(cid, col, data["walk"])
     return data
+
+
+def props(cid: str, col: int, walk: list) -> list[dict]:
+    """The chunk's story props as spawn markers (the game's stage/props.ts draws them)."""
+    return [{"id": f"{cid}-{pid.split('-', 1)[1]}", "kind": kind, "x": x,
+             "y": y if isinstance(y, int) else floor_at(walk, x, y), **extra}
+            for c, pid, kind, x, y, extra in PROPS if c == col]
 
 
 def shed_door() -> dict:

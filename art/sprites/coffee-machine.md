@@ -1,7 +1,7 @@
 # Prop · coffee machine (save point)
 
 <!-- nav:start -->
-[← Mensa · food pickups](mensa-food.md) · [Sprite boards](README.md) · **19 / 26** · [Dexter · moves →](dexter.md)
+[← Mensa · food pickups](mensa-food.md) · [Sprite boards](README.md) · **20 / 28** · [Dexter · moves →](dexter.md)
 <!-- nav:end -->
 
 ![Prop · coffee machine (save point)](images/coffee-machine-preview.png)
@@ -27,5 +27,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/coffee-machine.png` · rebuild: `python scripts/make_boards.py draw coffee-machine --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Mensa · food pickups](mensa-food.md) · [Sprite boards](README.md) · **19 / 26** · [Dexter · moves →](dexter.md)
+[← Mensa · food pickups](mensa-food.md) · [Sprite boards](README.md) · **20 / 28** · [Dexter · moves →](dexter.md)
 <!-- nav:end -->

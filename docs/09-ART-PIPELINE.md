@@ -101,7 +101,13 @@ What the proof taught (rules now):
 - **Depth underground has no parallax:** the grown row's masks (`depth_layers.py masks … --all`, `masks/`, `previews/depth-below.png`) are water, play and foreground, everything else the back wall; a `below` chunk writes no sky, far or mid (the pond scenes' refine scattered specks of them). The key says what is navy: only the water on top – asked loosely, the model painted the cellar's dark rooms as water. Keep the better key per chunk (`tmp/boards/<zone>/key-try*/`).
 - **A band grows from what reaches it:** "no trees" in the sky brief cut the big tree's crown flat at the seam; the brief says what continues up from below.
 - **No band above the pond:** girders over the garden read out of context (Alexander, 24 Oct); the zone grows down, into built campus space.
-- **Not done yet:** the clean ⇄ anomaly swap of the lower row; the IT props (the eyes in the pipe, the balloon, the paper boat) as sprites; Dexter does not come down (he waits at the pond).
+- **The drain's story props are sprites** (`it-props`, 25 Oct): one board from the approved food sheet (image 1, for the look) and Dexter's sheet (his eyes). Each prop is a `spawn` marker in the zone script (`PROPS`), drawn by `stage/props.ts`:
+  - the red balloon is pressed against the pond's underside, and its string runs down to the rail where the note is. The board's 1 px string broke up in the downscale, so the game crops it and draws the string;
+  - the plush eyes watch from the dark of the lower outlet. Come within 320 px and they narrow, then they are gone until the region loads again;
+  - the paper boat rocks at the outlet.
+
+  The eyes are two pieces per frame (`export_atlas.py` `"parts": 2`). Per-animation `scale` keeps real sizes: the boat is about 50 cm next to the 183 cm hero. `collision_check.py` lets floating props (balloon, eyes) have no floor. Preview: `art/sprites/previews/it-props-in-drain.png`.
+- **Not done yet:** the clean ⇄ anomaly swap of the lower row; Dexter does not come down (he waits at the pond).
 
 ## Growing a stage in four directions
 

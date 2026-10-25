@@ -76,5 +76,17 @@ class DoorTests(unittest.TestCase):
             self.assertTrue(title and text and 0 < x < W, nid)
 
 
+    def test_the_drain_props_stand_where_the_story_puts_them(self):
+        walk = [[[0, 138], [1360, 138]], [[0, 650], [2160, 650]]]
+        props = {p["kind"]: p for p in hg.props("hgz-1-1", 1, walk)}
+        self.assertEqual(set(props), {"balloon", "pipe-eyes", "paper-boat"})
+        self.assertEqual(props["paper-boat"]["y"], 650)                      # on the lowest floor, at the outlet
+        balloon = props["balloon"]
+        self.assertLess(balloon["y"], 138)                                   # tied to the rail of the top walkway
+        self.assertGreater(balloon["y"] - balloon["rise"], 0)                # floating inside the room
+        self.assertEqual(hg.props("hgz-0-1", 0, walk), [])                   # only the drain has them
+        self.assertEqual(props["pipe-eyes"]["id"], "hgz-1-1-eyes")
+
+
 if __name__ == "__main__":
     unittest.main()

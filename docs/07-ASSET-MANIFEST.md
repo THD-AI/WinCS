@@ -45,6 +45,7 @@ Frame lists approved as they are (A14).
 | --- | --- | --- | --- |
 | Food pickups | `mensa-food` | muffin, cake, wafer, Leberkäse roll, 1 frame each, 13–18 px; the sparkle is drawn in code. Approved (A14) | ✅ ([#154](https://github.com/THD-AI/WinCS/pull/154)) |
 | Coffee machine (save point) | `coffee-machine` | idle 3 (steady, flicker, pond on the screen) · pour 4; 80 px | ✅ ([#154](https://github.com/THD-AI/WinCS/pull/154)) |
+| The storm drain's IT details | `it-props` | balloon 3 (bob; the game draws its string and crops the board's) · eyes 3 (watching, glint, narrowed; 2 pieces each) · paper boat 3 (rocking); about 18 / 7 / 9 px. Placed as `spawn` markers, drawn by `stage/props.ts` | 🟨 awaiting review |
 | Drinks | `mensa-drinks` | iced coffee, strawberry milk, iced tea, mug; 16 px icons | ⬜ |
 | Pocket computer | `pocket-computer` | bob 4 (closed, floating) · open 3; 10 px tall closed. The map screens are the UI atlas (#127) | ✅ ([#154](https://github.com/THD-AI/WinCS/pull/154)) |
 | Sign pole (post-jam weapon) | `wayfinder` | prop, pull-out 5, thrust 5 | ⬜ |

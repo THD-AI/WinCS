@@ -36,6 +36,7 @@ STAGES = ROOT / "art" / "stages"
 BODY = (28, 76)
 RISE = 88       # highest ledge a held jump reaches, with margin (96 px in docs/04)
 ACROSS = 140    # widest gap a running jump clears
+FLOATS = ("drone", "balloon", "pipe-eyes")  # spawns that need no floor under them (stage/props.ts)
 SNAP = 6        # ends this close count as one continuous floor
 STEP_UP = 16    # rises the grounded body walks up without a jump (game/src/player/body.ts)
 FACE_DEPTH = 120  # a floor this far under a line end makes it an overhang, not a face (body.ts)
@@ -201,8 +202,8 @@ def reach(data: dict, name: str) -> list[str]:
             b["kind"] == "chunk-exit" for b in data["interact"]):
         errors.append(f"{name}: the right edge is not reachable")
     for p in data["spawn"]:
-        if p["kind"] in ("drone",):
-            continue  # flies
+        if p["kind"] in FLOATS:
+            continue  # flies, floats or hides in a wall
         if not set(standing(s, p["x"], p["y"], 40 if p["kind"] != "player" else 12)) & seen:
             errors.append(f"{name}: spawn {p['id']} at ({p['x']}, {p['y']}) is not on a reachable floor")
     for b in data["interact"]:

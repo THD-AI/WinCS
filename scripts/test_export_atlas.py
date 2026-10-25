@@ -72,6 +72,18 @@ class ExportAtlasTests(unittest.TestCase):
         with self.assertRaisesRegex(ea.AtlasError, r'row 1 has 3 frames, the config expects 4 \(idle 4\)'):
             ea.export(config([[{'anim': 'idle', 'frames': 4}]]), image)
 
+    def test_parts_join_separate_pieces_into_one_frame(self):
+        # A pair of eyes: each frame is two pieces with a clear gap between them.
+        image = board_image([[(40, 0)] * 4])
+        sheet, atlas, table = ea.export(config([[{'anim': 'eyes', 'frames': 2, 'parts': 2}]]), image)
+        self.assertEqual(list(atlas['frames']), ['eyes-00', 'eyes-01'])
+        self.assertEqual(table['eyes']['frames'], 2)
+        f = atlas['frames']['eyes-00']['frame']
+        box = sheet.crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h'])).getchannel('A').getbbox()
+        self.assertGreater(box[2] - box[0], 10)   # wider than one 10 px piece scaled to 20 px high: both pieces
+        with self.assertRaisesRegex(ea.AtlasError, r'row 1 has 4 frames, the config expects 6'):
+            ea.export(config([[{'anim': 'eyes', 'frames': 3, 'parts': 2}]]), image)
+
     def test_overlapping_neighbours_are_cut_along_seams(self):
         # Each figure's foot reaches under the next one's body: no empty column between them.
         image = Image.new('RGBA', (130, 70), (0, 0, 0, 0))

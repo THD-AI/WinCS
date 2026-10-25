@@ -30,6 +30,13 @@ class CollisionCheckTests(unittest.TestCase):
     def test_a_flat_floor_passes(self):
         self.assertEqual(problems(chunk()), [])
 
+    def test_floating_props_need_no_floor(self):
+        props = [{'id': 'b', 'kind': 'balloon', 'x': 300, 'y': 20}, {'id': 'e', 'kind': 'pipe-eyes', 'x': 300, 'y': 120}]
+        self.assertEqual(problems(chunk(spawn=chunk()['spawn'] + props)), [])
+        boat = {'id': 'boat', 'kind': 'paper-boat', 'x': 300, 'y': 120}       # a boat must rest on the floor
+        self.assertIn(f'{NAME}: spawn boat at (300, 120) is not on a reachable floor',
+                      problems(chunk(spawn=chunk()['spawn'] + [boat])))
+
     def test_schema_errors_are_named(self):
         data = chunk(walk=[[[600, 300], [0, 300]]])
         self.assertIn(f'{NAME}: walk[0] must run left to right', problems(data))

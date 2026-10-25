@@ -1,0 +1,17 @@
+{
+ "balloon": {
+  "frames": 3,
+  "fps": 3,
+  "loop": true
+ },
+ "eyes": {
+  "frames": 3,
+  "fps": 4,
+  "loop": true
+ },
+ "boat": {
+  "frames": 3,
+  "fps": 3,
+  "loop": true
+ }
+}

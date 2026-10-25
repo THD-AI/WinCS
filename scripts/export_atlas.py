@@ -28,6 +28,7 @@ Config, per board:
         [{"anim": "walk", "frames": 8}, {"anim": "jump", "frames": 9, "loop": false, "fps": 10}],
         "skip",
         [{"anim": "death", "frames": 6}], [{"anim": "death", "frames": 6}]]}   # continues: death 12
+    "parts": 2 on an animation: each frame is drawn as that many separate pieces (a pair of eyes).
 
 Usage:
     python scripts/export_atlas.py hero-move [more ids] [--config …] [--out …] [--preview]
@@ -161,6 +162,11 @@ def seam_cells(data: bytes, w: int, h: int, left: int, right: int, count: int,
     return cells
 
 
+def joined(cells: list[list[tuple[int, int]]]) -> list[tuple[int, int]]:
+    """One frame drawn as separate pieces (a pair of eyes): per row, from the first piece's left to the last's right."""
+    return [(min(c[y][0] for c in cells), max(c[y][1] for c in cells)) for y in range(len(cells[0]))]
+
+
 def body_x(sprite: Image.Image) -> float:
     """Centre of the torso: the opaque pixels between 35 % and 65 % of the sprite's height. Walk and run
     cycles keep the body still in the cell (the physics moves it), whichever foot is down."""
@@ -213,7 +219,7 @@ def slice_board(board: dict, image: Image.Image) -> list[tuple[dict, list[tuple[
     for number, (row, (top, ground)) in enumerate(zip(rows, found), 1):
         if row is None:
             continue
-        expected = sum(anim["frames"] for anim in row)
+        expected = sum(anim["frames"] * anim.get("parts", 1) for anim in row)
         columns, problem = frames_in(image, top, ground, expected, any(a.get("even") for a in row))
         if problem:
             names = " + ".join(f"{a['anim']} {a['frames']}" for a in row)
@@ -221,7 +227,9 @@ def slice_board(board: dict, image: Image.Image) -> list[tuple[dict, list[tuple[
             raise AtlasError(f"{board['id']}: row {number} has {counts} ({names}); frames found at "
                              f"x = {[bounds[0][0] for bounds in columns]}" + (f"; {reason}" if reason else ""))
         for anim in row:
-            cut, columns = columns[:anim["frames"]], columns[anim["frames"]:]
+            parts = anim.get("parts", 1)
+            cut, columns = columns[:anim["frames"] * parts], columns[anim["frames"] * parts:]
+            cut = [joined(cut[i:i + parts]) for i in range(0, len(cut), parts)]
             sprites = []
             for bounds in cut:
                 left, right = min(b[0] for b in bounds), max(b[1] for b in bounds)

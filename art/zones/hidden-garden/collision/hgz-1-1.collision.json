@@ -885,6 +885,25 @@
     1200
    ],
    "note": "The campus storm drain under the boardwalk \u2013 the game's IT room (secret horror: a friendly mascot luring you toward water and a drain): a paper boat from the pond washed against the outlet, one balloon resting against the water ceiling, two glossy plush eyes in the dark of the pipe that are gone on a second look. A possessed campus rover patrols the silt; black fluid drips from the outlet and runs toward the jetty \u2013 what Dexter will absorb."
+  },
+  {
+   "id": "hgz-1-1-balloon",
+   "kind": "balloon",
+   "x": 760,
+   "y": 120,
+   "rise": 98
+  },
+  {
+   "id": "hgz-1-1-eyes",
+   "kind": "pipe-eyes",
+   "x": 891,
+   "y": 583
+  },
+  {
+   "id": "hgz-1-1-boat",
+   "kind": "paper-boat",
+   "x": 960,
+   "y": 650
   }
  ]
 }
