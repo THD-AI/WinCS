@@ -1,12 +1,12 @@
-# Secret Â· the rubber chicken
+# Secret · the rubber chicken
 
 <!-- nav:start -->
-[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 32** · [Prop Â· Jenny's arena platforms →](arena-platform.md)
+[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 32** · [Prop · Jenny's arena platforms →](arena-platform.md)
 <!-- nav:end -->
 
-![Secret Â· the rubber chicken](images/rubber-chicken-preview.png)
+![Secret · the rubber chicken](images/rubber-chicken-preview.png)
 
-**Review:** ðŸŸ¨ Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero.
+**Review:** 🟨 Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero.
 
 ## Brief
 
@@ -20,5 +20,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/rubber-chicken.png` · rebuild: `python scripts/make_boards.py draw rubber-chicken --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 32** · [Prop Â· Jenny's arena platforms →](arena-platform.md)
+[← Props · the storm drain's IT details](it-props.md) · [Sprite boards](README.md) · **29 / 32** · [Prop · Jenny's arena platforms →](arena-platform.md)
 <!-- nav:end -->

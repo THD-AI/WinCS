@@ -1,12 +1,12 @@
-# Chair Â· side sweep
+# Chair · side sweep
 
 <!-- nav:start -->
-[← The student Â· ladder top and bottom](hero-ladder.md) · [Sprite boards](README.md) · **9 / 32** · [Chair Â· overhead slam →](chair-overhead.md)
+[← The student · ladder top and bottom](hero-ladder.md) · [Sprite boards](README.md) · **9 / 32** · [Chair · overhead slam →](chair-overhead.md)
 <!-- nav:end -->
 
-![Chair Â· side sweep](images/chair-side-preview.png)
+![Chair · side sweep](images/chair-side-preview.png)
 
-**Review:** âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/chair-side.png` · rebuild: `python scripts/make_boards.py draw chair-side --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student Â· ladder top and bottom](hero-ladder.md) · [Sprite boards](README.md) · **9 / 32** · [Chair Â· overhead slam →](chair-overhead.md)
+[← The student · ladder top and bottom](hero-ladder.md) · [Sprite boards](README.md) · **9 / 32** · [Chair · overhead slam →](chair-overhead.md)
 <!-- nav:end -->

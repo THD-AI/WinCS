@@ -1,12 +1,12 @@
-# FX Â· black fluid
+# FX · black fluid
 
 <!-- nav:start -->
-[← Enemy Â· crab](enemy-crab.md) · [Sprite boards](README.md) · **15 / 32** · [Boss Â· Jenny, attacks →](boss-jenny.md)
+[← Enemy · crab](enemy-crab.md) · [Sprite boards](README.md) · **15 / 32** · [Boss · Jenny, attacks →](boss-jenny.md)
 <!-- nav:end -->
 
-![FX Â· black fluid](images/fx-preview.png)
+![FX · black fluid](images/fx-preview.png)
 
-**Review:** âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx.png` · rebuild: `python scripts/make_boards.py draw fx --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Enemy Â· crab](enemy-crab.md) · [Sprite boards](README.md) · **15 / 32** · [Boss Â· Jenny, attacks →](boss-jenny.md)
+[← Enemy · crab](enemy-crab.md) · [Sprite boards](README.md) · **15 / 32** · [Boss · Jenny, attacks →](boss-jenny.md)
 <!-- nav:end -->

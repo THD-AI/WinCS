@@ -1,12 +1,12 @@
-# FX Â· footstep puffs
+# FX · footstep puffs
 
 <!-- nav:start -->
-[← FX Â· falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 32** · [FX Â· pond ripples and lily pad →](fx-water.md)
+[← FX · falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 32** · [FX · pond ripples and lily pad →](fx-water.md)
 <!-- nav:end -->
 
-![FX Â· footstep puffs](images/fx-ground-preview.png)
+![FX · footstep puffs](images/fx-ground-preview.png)
 
-**Review:** ðŸŸ¡ Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Dust 21â€“30 Ã— 5â€“12 px, grass and leaf kick â‰ˆ 25 Ã— 14, splash â‰ˆ 25 Ã— 16 â€“ about one step wide next to the 76 px hero. Rows are `even` (they break into specks).
+**Review:** 🟡 Drawn 24 Oct for the prologue (workstream 5); exported for the slice, awaiting Alexander's review. Dust 21–30 × 5–12 px, grass and leaf kick ≈ 25 × 14, splash ≈ 25 × 16 – about one step wide next to the 76 px hero. Rows are `even` (they break into specks).
 
 ## In motion
 
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx-ground.png` · rebuild: `python scripts/make_boards.py draw fx-ground --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX Â· falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 32** · [FX Â· pond ripples and lily pad →](fx-water.md)
+[← FX · falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 32** · [FX · pond ripples and lily pad →](fx-water.md)
 <!-- nav:end -->

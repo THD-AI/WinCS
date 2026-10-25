@@ -1,12 +1,12 @@
-# Dexter Â· prologue additions
+# Dexter · prologue additions
 
 <!-- nav:start -->
-[← FX Â· pond ripples and lily pad](fx-water.md) · [Sprite boards](README.md) · **26 / 32** · [Menu Â· the Hidden Garden at first light →](menu-key.md)
+[← FX · pond ripples and lily pad](fx-water.md) · [Sprite boards](README.md) · **26 / 32** · [Menu · the Hidden Garden at first light →](menu-key.md)
 <!-- nav:end -->
 
-![Dexter Â· prologue additions](images/dexter-prologue-preview.png)
+![Dexter · prologue additions](images/dexter-prologue-preview.png)
 
-**Review:** âœ… Approved 24 Oct by Alexander; exported to game/public/assets/sprites/ with export_atlas.py.
+**Review:** ✅ Approved 24 Oct by Alexander; exported to game/public/assets/sprites/ with export_atlas.py.
 
 ## In motion
 
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter-prologue.png` · rebuild: `python scripts/make_boards.py draw dexter-prologue --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX Â· pond ripples and lily pad](fx-water.md) · [Sprite boards](README.md) · **26 / 32** · [Menu Â· the Hidden Garden at first light →](menu-key.md)
+[← FX · pond ripples and lily pad](fx-water.md) · [Sprite boards](README.md) · **26 / 32** · [Menu · the Hidden Garden at first light →](menu-key.md)
 <!-- nav:end -->

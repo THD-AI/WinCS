@@ -1,12 +1,12 @@
-# Boss Â· Jenny, stunned and debris
+# Boss · Jenny, stunned and debris
 
 <!-- nav:start -->
-[← Boss Â· Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **17 / 32** · [Item Â· pocket computer →](pocket-computer.md)
+[← Boss · Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **17 / 32** · [Item · pocket computer →](pocket-computer.md)
 <!-- nav:end -->
 
-![Boss Â· Jenny, stunned and debris](images/boss-jenny-2-preview.png)
+![Boss · Jenny, stunned and debris](images/boss-jenny-2-preview.png)
 
-**Review:** âœ… Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** ✅ Approved 24 Oct by Alexander. 270 px long like the approved direction (docs/04), one livery in both sheets; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/boss-jenny-2.png` · rebuild: `python scripts/make_boards.py draw boss-jenny-2 --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Boss Â· Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **17 / 32** · [Item Â· pocket computer →](pocket-computer.md)
+[← Boss · Jenny, attacks](boss-jenny.md) · [Sprite boards](README.md) · **17 / 32** · [Item · pocket computer →](pocket-computer.md)
 <!-- nav:end -->

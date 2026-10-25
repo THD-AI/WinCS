@@ -1,12 +1,12 @@
-# The student Â· hero design
+# The student · hero design
 
 <!-- nav:start -->
-[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 32** · [The student Â· walk →](hero-move.md)
+[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 32** · [The student · walk →](hero-move.md)
 <!-- nav:end -->
 
-![The student Â· hero design](images/hero-preview.png)
+![The student · hero design](images/hero-preview.png)
 
-**Review:** âœ… Approved 23 Oct. Adult 6 ft, face never visible, THD poncho in grey / THD blue / teal with colourful accents, THD crest on the back, scale lineup with Dexter (1.5 ft) and his final form (8.5 ft). Fourth iteration: chibi proportions, a hoodie and a visible face were rejected along the way.
+**Review:** ✅ Approved 23 Oct. Adult 6 ft, face never visible, THD poncho in grey / THD blue / teal with colourful accents, THD crest on the back, scale lineup with Dexter (1.5 ft) and his final form (8.5 ft). Fourth iteration: chibi proportions, a hoodie and a visible face were rejected along the way.
 
 ## Brief
 
@@ -21,5 +21,5 @@ Keep the body, height (6 ft adult), proportions, pose, backpack, grey slim jeans
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero.png` · rebuild: `python scripts/make_boards.py draw hero --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 32** · [The student Â· walk →](hero-move.md)
+[← Sprite boards](README.md) · [Sprite boards](README.md) · **1 / 32** · [The student · walk →](hero-move.md)
 <!-- nav:end -->

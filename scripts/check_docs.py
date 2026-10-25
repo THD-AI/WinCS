@@ -6,6 +6,8 @@
 - no byte-identical tracked files, no tracked file over 6 MB
 - every committed board image belongs to a board in its config
 - no photos, audio or keys tracked anywhere
+- no double-encoded text (UTF-8 read as Windows-1252 and saved again, so an en dash or a check mark turns into
+  two or three Latin-1 letters)
 """
 from __future__ import annotations
 
@@ -28,6 +30,16 @@ tracked = [ROOT / p for p in subprocess.run(
     ['git', 'ls-files', '-z', '--cached', '--others', '--exclude-standard'], cwd=ROOT,
     capture_output=True, check=True).stdout.decode().split('\0') if p]
 tracked = [p for p in tracked if p.exists()]
+
+# UTF-8 bytes read as Windows-1252 and written back as UTF-8: the lead bytes of "–", "“", "✅", "🟨", "ä" turn
+# into these pairs. A script that reads git's output in the console's code page does it to a whole file.
+_PAIRS = ((0xE2, 0x20AC), (0xE2, 0x153), (0xF0, 0x178))  # the pairs, by code point, so this file stays clean
+_AFTER_C3 = (0xA4, 0xB6, 0xBC, 0x178, 0x2013, 0x153, 0xA9)
+MOJIBAKE = re.compile('|'.join(''.join(map(chr, pair)) for pair in _PAIRS) + '|' + chr(0xC3) + '[' + ''.join(map(chr, _AFTER_C3)) + ']')
+for path in (p for p in tracked if p.suffix in ('.md', '.json', '.ts', '.py', '.csv')):
+    found = MOJIBAKE.search(path.read_text(encoding='utf-8-sig', errors='replace'))
+    if found:
+        errors.append(f'{path.relative_to(ROOT)}: double-encoded text ({found.group(0)!r}), re-save it from the UTF-8 source')
 
 for path in (p for p in tracked if p.suffix == '.md'):
     text = path.read_text(encoding='utf-8-sig')

@@ -1,12 +1,12 @@
-# Dexter Â· gestures
+# Dexter · gestures
 
 <!-- nav:start -->
-[← Dexter Â· moves](dexter.md) · [Sprite boards](README.md) · **22 / 32** · [FX Â· falling leaves →](fx-leaves.md)
+[← Dexter · moves](dexter.md) · [Sprite boards](README.md) · **22 / 32** · [FX · falling leaves →](fx-leaves.md)
 <!-- nav:end -->
 
-![Dexter Â· gestures](images/dexter-acts-preview.png)
+![Dexter · gestures](images/dexter-acts-preview.png)
 
-**Review:** âœ… Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** ✅ Approved 24 Oct by Alexander (#141). 27 px = 0.35 of the hero as in the approved Dexter stages (docs/04, compare.py lineup); exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/dexter-acts.png` · rebuild: `python scripts/make_boards.py draw dexter-acts --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Dexter Â· moves](dexter.md) · [Sprite boards](README.md) · **22 / 32** · [FX Â· falling leaves →](fx-leaves.md)
+[← Dexter · moves](dexter.md) · [Sprite boards](README.md) · **22 / 32** · [FX · falling leaves →](fx-leaves.md)
 <!-- nav:end -->

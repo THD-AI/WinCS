@@ -1,12 +1,12 @@
-# The student Â· idle variants
+# The student · idle variants
 
 <!-- nav:start -->
-[← The student Â· walk](hero-move.md) · [Sprite boards](README.md) · **3 / 32** · [The student Â· run →](hero-run.md)
+[← The student · walk](hero-move.md) · [Sprite boards](README.md) · **3 / 32** · [The student · run →](hero-run.md)
 <!-- nav:end -->
 
-![The student Â· idle variants](images/hero-idle-preview.png)
+![The student · idle variants](images/hero-idle-preview.png)
 
-**Review:** âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-idle.png` · rebuild: `python scripts/make_boards.py draw hero-idle --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student Â· walk](hero-move.md) · [Sprite boards](README.md) · **3 / 32** · [The student Â· run →](hero-run.md)
+[← The student · walk](hero-move.md) · [Sprite boards](README.md) · **3 / 32** · [The student · run →](hero-run.md)
 <!-- nav:end -->
