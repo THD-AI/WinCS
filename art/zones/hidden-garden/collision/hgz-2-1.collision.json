@@ -646,9 +646,9 @@
   {
    "id": "dexter-reflection",
    "kind": "dexter-sighting",
-   "x": 1340,
-   "y": 115,
-   "act": "wait",
+   "x": 760,
+   "y": 643,
+   "act": "beckon",
    "face": -1
   },
   {

@@ -124,10 +124,18 @@ CELLAR_DOOR = (895, 995)
 # floor and no higher (above the ledge they climb into the ceiling girder); the drain's second painted ladder.
 # above: traced floors entirely above this y are replaced by `walk`; climb: x0, x1 of ladders from the floor at y
 # `top` down to the lowest floor; add: climb boxes x0, y0, x1, y1 added as they are.
+# Second playtest (25 Oct): the ledge under the middle arch is 15 px lower than at the sides (he stood on air there),
+# and the drain's top "floor" was the top of its back wall under the water ceiling (he hovered at the pillar): gone,
+# with every ladder trimmed to the floors it joins. `drop`: traced floors entirely above this y go.
 MEASURED = {
-    "hgz-0-1": {"above": 500, "walk": [[[0, 342], [2160, 342]]], "top": 342, "climb": [(447, 482), (1817, 1850)]},
-    "hgz-1-1": {"add": [(358, 134, 396, 642)]},
+    "hgz-0-1": {"above": 500, "walk": [[[0, 342], [720, 342], [760, 357], [1140, 357], [1180, 342], [2160, 342]]],
+                "top": 342, "climb": [(447, 482), (1817, 1850)]},
+    "hgz-1-1": {"drop": 200, "add": [(358, 342, 396, 642)]},
 }
+# Where a ladder passes through the cellar's upper ledge, the ledge's face is in front of the climber (he climbs
+# down behind the stone, not over it): x0, x1 per zone chunk, the face's rows under the floor.
+LEDGE_FACE = {"hgz-0-1": [(432, 497), (1802, 1865)]}
+LEDGE_ROWS = (348, 402)
 GIRDER_TOP = 400   # a traced floor above this is a girder hanging from the water (the reflection)
 BODY = 76      # the hero's body height: a ladder top keeps it below the water ceiling
 
@@ -142,7 +150,7 @@ FINDS = [
     (1, "drain-report", 1110, "low", "Stadtentwässerung Deggendorf – Wartungsbericht, Auslass 4",
      "Grate replaced twice. Opened from the inside both times.\nAt the outlet: 1 paper boat (dry). 1 red balloon, "
      "resting against the underside of the pond. It does not float up.\nThe outlet hums at night. The campus jingle."),
-    (1, "balloon-string", 760, "top", "(a string, tied to the rail)",
+    (1, "balloon-string", 760, "high", "(a string, tied to the rail)",
      "The string goes up into the water.\nSomething on the other end tugs back. Twice. Friendly."),
     (2, "q7-sheet-9", 1880, "low", "FELDVERSUCH Q-7 – Blatt 9 (wet)",
      "Down here everything is the right way round.\nIt is the garden that hangs upside down.\nDo not feed the vessel."),
@@ -173,7 +181,9 @@ AMBIENT = {
 SIGHTINGS = [
     (0, "dexter-cellar", 1500, "top", "beckon", -1),    # upstairs in an arch, waving you back toward the stairs
     (1, "dexter-drain", 1990, "low", "creepy", -1),     # at the far end of the drain, a shape too still
-    (2, "dexter-reflection", 1340, "top", "wait", -1),  # on a girder hanging from the water, waiting
+    # on the hall's floor, in view from where you come in, beckoning you on to the tear (Alexander, 25 Oct: on its
+    # high girder at the far end he was nowhere to be seen in the hall)
+    (2, "dexter-reflection", 760, "low", "beckon", -1),
 ]
 
 # The 404 as data (docs/09 stage 6): tears drawn over the clean chunks in the anomaly state, chunk px. The lower row:
@@ -257,6 +267,16 @@ def measured(cid: str, data: dict) -> None:
     if "climb" in fix:
         data["climb"] = [box(x0, fix["top"], x1, floor_at(data["walk"], (x0 + x1) // 2, "low"), kind="ladder",
                              id=f"{cid}-ladder-{n}") for n, (x0, x1) in enumerate(fix["climb"])]
+    if "drop" in fix:
+        data["walk"] = [l for l in data["walk"] if max(y for _, y in l) >= fix["drop"]]
+        trimmed = []
+        for c in data["climb"]:
+            ys = [floor_y for line in data["walk"] for a, b in zip(line, line[1:])
+                  if a[0] <= c["x"] + c["w"] and b[0] >= c["x"]
+                  and c["y"] - 12 <= (floor_y := round(a[1] + (b[1] - a[1]) * (c["x"] + c["w"] / 2 - a[0]) / max(1, b[0] - a[0]))) <= c["y"] + c["h"] + 12]
+            if len(ys) >= 2:
+                trimmed.append({**c, "y": min(ys), "h": max(ys) - min(ys)})
+        data["climb"] = trimmed
     data["climb"] += [box(x0, y0, x1, y1, kind="ladder", id=f"{cid}-ladder-m{n}") for n, (x0, y0, x1, y1) in
                       enumerate(fix.get("add", []))]
 
@@ -665,6 +685,8 @@ def pillar_mask(zid: str) -> Image.Image | None:
     draw = ImageDraw.Draw(mask)
     for x0, x1 in PILLARS[zid]:
         draw.rectangle((x0, PILLAR_ROWS[0], x1 - 1, PILLAR_ROWS[1] - 1), fill=(255, 255, 255, 255))
+    for x0, x1 in LEDGE_FACE.get(zid, []):
+        draw.rectangle((x0, LEDGE_ROWS[0], x1 - 1, LEDGE_ROWS[1] - 1), fill=(255, 255, 255, 255))
     return mask
 
 
