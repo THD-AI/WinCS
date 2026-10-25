@@ -1,0 +1,503 @@
+{
+  "rcz-0-0": {
+    "guide": {
+      "value": 8.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 78.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.885,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.416,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.635,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.398,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-1-0": {
+      "value": 6.13,
+      "limit": 15.297,
+      "pass": true
+    },
+    "seam rcz-0-1": {
+      "value": 9.006,
+      "limit": 25.885,
+      "pass": true
+    }
+  },
+  "rcz-1-0": {
+    "guide": {
+      "value": 13.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 126.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.958,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 8.0,
+      "limit": 4.0,
+      "pass": true,
+      "waived": "Alexander, 25 Oct: kept. The repeated 48 px blocks all sit on the riveted girder flanges (y 24-48): real rivets repeat at a fixed pitch, it is not the model copying a patch."
+    },
+    "period": {
+      "value": 0.452,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.659,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.411,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-0-0": {
+      "value": 6.13,
+      "limit": 15.297,
+      "pass": true
+    },
+    "seam rcz-2-0": {
+      "value": 12.087,
+      "limit": 13.839,
+      "pass": true
+    },
+    "seam rcz-1-1": {
+      "value": 15.956,
+      "limit": 30.885,
+      "pass": true
+    }
+  },
+  "rcz-2-0": {
+    "guide": {
+      "value": 28.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 63.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.9,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 6.0,
+      "limit": 4.0,
+      "pass": true,
+      "waived": "Alexander, 25 Oct: kept. The repeated 48 px blocks all sit on the riveted girder flanges (y 24-48): real rivets repeat at a fixed pitch, it is not the model copying a patch."
+    },
+    "period": {
+      "value": 0.392,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.676,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.447,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-1-0": {
+      "value": 12.087,
+      "limit": 13.839,
+      "pass": true
+    },
+    "seam rcz-2-1": {
+      "value": 18.955,
+      "limit": 36.344,
+      "pass": true
+    }
+  },
+  "rcz-0-1": {
+    "guide": {
+      "value": 6.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 54.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.994,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 2.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.165,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 1.218,
+      "limit": 2.5,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.169,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-1-1": {
+      "value": 14.069,
+      "limit": 14.449,
+      "pass": true
+    },
+    "seam rcz-0-0": {
+      "value": 9.006,
+      "limit": 25.885,
+      "pass": true
+    },
+    "seam rcz-0-2": {
+      "value": 0.0,
+      "limit": 15.133,
+      "pass": true
+    }
+  },
+  "rcz-1-1": {
+    "guide": {
+      "value": 45.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 73.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.997,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.16,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.955,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.241,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 2.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-0-1": {
+      "value": 14.069,
+      "limit": 14.449,
+      "pass": true
+    },
+    "seam rcz-2-1": {
+      "value": 8.998,
+      "limit": 15.0,
+      "pass": true
+    },
+    "seam rcz-1-0": {
+      "value": 15.956,
+      "limit": 30.885,
+      "pass": true
+    },
+    "seam rcz-1-2": {
+      "value": 5.788,
+      "limit": 23.439,
+      "pass": true
+    }
+  },
+  "rcz-2-1": {
+    "guide": {
+      "value": 43.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 738.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.961,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.31,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.871,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.303,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 3.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-1-1": {
+      "value": 8.998,
+      "limit": 15.0,
+      "pass": true
+    },
+    "seam rcz-2-0": {
+      "value": 18.955,
+      "limit": 36.344,
+      "pass": true
+    },
+    "seam rcz-2-2": {
+      "value": 3.081,
+      "limit": 44.672,
+      "pass": true
+    }
+  },
+  "rcz-0-2": {
+    "guide": {
+      "value": 5.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 32.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.79,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.099,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.818,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.275,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-1-2": {
+      "value": 11.2,
+      "limit": 24.904,
+      "pass": true
+    },
+    "seam rcz-0-1": {
+      "value": 0.0,
+      "limit": 15.133,
+      "pass": true
+    }
+  },
+  "rcz-1-2": {
+    "guide": {
+      "value": 8.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 399.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.752,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.112,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.837,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.331,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 3.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-0-2": {
+      "value": 11.2,
+      "limit": 24.904,
+      "pass": true
+    },
+    "seam rcz-2-2": {
+      "value": 13.746,
+      "limit": 24.264,
+      "pass": true
+    },
+    "seam rcz-1-1": {
+      "value": 5.788,
+      "limit": 23.439,
+      "pass": true
+    }
+  },
+  "rcz-2-2": {
+    "guide": {
+      "value": 74.0,
+      "limit": 600.0,
+      "pass": true
+    },
+    "hole": {
+      "value": 2223.0,
+      "limit": 10000.0,
+      "pass": true
+    },
+    "route": {
+      "value": 0.762,
+      "limit": 0.6,
+      "pass": true
+    },
+    "repeat": {
+      "value": 1.0,
+      "limit": 4.0,
+      "pass": true
+    },
+    "period": {
+      "value": 0.119,
+      "limit": 0.6,
+      "pass": true
+    },
+    "grain": {
+      "value": 0.824,
+      "limit": 0.6,
+      "pass": true
+    },
+    "palette": {
+      "value": 0.319,
+      "limit": 0.55,
+      "pass": true
+    },
+    "text": {
+      "value": 1.0,
+      "limit": 5.0,
+      "pass": true
+    },
+    "seam rcz-1-2": {
+      "value": 13.746,
+      "limit": 24.264,
+      "pass": true
+    },
+    "seam rcz-2-1": {
+      "value": 3.081,
+      "limit": 44.672,
+      "pass": true
+    }
+  },
+  "pass": true
+}
