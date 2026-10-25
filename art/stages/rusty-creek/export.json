@@ -65,6 +65,14 @@
       "file": "images/04-water-{name}.png",
       "z": 4,
       "scroll": 1.0
+    },
+    "05-arena": {
+      "file": "arena/{name}.png",
+      "z": 5,
+      "scroll": 1.0,
+      "optional": true,
+      "why": "Jenny's arena platforms (playtest J6): two beams of the maze's own girder, 84 px over her floor – reachable with a full jump, high enough that she drives under them. An overlay: drawn in the game, left out of the masters (creek_layers.py pins them) and of --verify.",
+      "overlay": true
     }
   },
   "states": {
@@ -73,6 +81,7 @@
       "03-bank",
       "02-supports",
       "05-traversal",
+      "05-arena",
       "04-water"
     ],
     "clean": [
