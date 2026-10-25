@@ -327,11 +327,11 @@ def finds(cid: str, col: int, walk: list) -> list[dict]:
     return out
 
 
-def key_bands(cid: str):
+def key_bands(cid: str, zone: Path = ZONE):
     """The chunk's depth key (depth_layers.py key) as an H x W array of band names, or None before it exists."""
     import numpy as np
     import depth_layers as dl
-    path = ROOT / "tmp" / "boards" / ZONE.name / f"{cid}--depth.png"
+    path = ROOT / "tmp" / "boards" / zone.name / f"{cid}--depth.png"
     if not path.exists():
         return None
     key = Image.open(path).resize((W, H), Image.Resampling.NEAREST)
@@ -412,7 +412,7 @@ EDGE = 64      # a traced floor this close to the chunk's edge is cut by a pilla
 JUMP = 88      # the highest ledge a held jump reaches (collision_check RISE); 88-120 px faces block and can't be jumped
 
 
-def walkable(cid: str, lines: list, climbs: list[dict]) -> list:
+def walkable(cid: str, lines: list, climbs: list[dict], zone: Path = ZONE) -> list:
     """The traced floors as the hero's body meets them (body.ts, collision_check.py):
     - a floor ending less than EDGE px from the chunk's edge goes on to the edge (rooms join at the seams);
     - never on water: a point with water under the feet (the zone's water mask) sinks to the ground under it;
@@ -432,8 +432,8 @@ def walkable(cid: str, lines: list, climbs: list[dict]) -> list:
         return next((a[1] + (b[1] - a[1]) * (x - a[0]) / max(1, b[0] - a[0]) for a, b in zip(line, line[1:])
                      if a[0] <= x <= b[0]), None)
 
-    water = ZONE / "masks" / f"{cid}.04-water.png"
-    play = ZONE / "masks" / f"{cid}.05-play.png"
+    water = zone / "masks" / f"{cid}.04-water.png"
+    play = zone / "masks" / f"{cid}.05-play.png"
     if water.exists():
         wet = np.asarray(Image.open(water).getchannel("A")) > 128
         solid = np.asarray(Image.open(play).getchannel("A")) > 128 if play.exists() else np.zeros_like(wet)
