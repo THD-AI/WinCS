@@ -546,5 +546,14 @@
    "text": "It waves.\nNobody taught it to wave."
   }
  ],
- "spawn": []
+ "spawn": [
+  {
+   "id": "dexter-cellar",
+   "kind": "dexter-sighting",
+   "x": 1500,
+   "y": 341,
+   "act": "beckon",
+   "face": -1
+  }
+ ]
 }

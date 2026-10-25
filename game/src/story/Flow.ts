@@ -8,6 +8,7 @@ import type { StageManifest } from '../stage/manifest';
 import { swapRegion, turnTarget, type RegionTarget } from '../stage/swap';
 import type { CrossingData, CrossingHero } from './Crossing';
 import { Prologue } from './Prologue';
+import { Sightings } from './sightings';
 import { Watcher } from './watcher';
 
 const STAGE = 'Stage';
@@ -62,6 +63,8 @@ export class Flow extends Phaser.Scene {
     // Clean Rusty Creek: Dexter watches from far down the path, where Jenny will come from (#160).
     const ram = Watcher.spot(chunks);
     if (ram) new Watcher(stage, ram);
+    // The Hidden Garden's underground: Dexter is down there too, once per room (clean state only).
+    new Sightings(stage, chunks);
     if (!Prologue.fits(chunks)) return;
     const prologue = new Prologue(stage, chunks, data?.manifest?.region ?? 'hidden-garden', (hero, onLand) => this.crash404(hero, onLand));
     this.prologue = prologue;

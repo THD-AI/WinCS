@@ -904,6 +904,14 @@
    "kind": "paper-boat",
    "x": 960,
    "y": 650
+  },
+  {
+   "id": "dexter-drain",
+   "kind": "dexter-sighting",
+   "x": 1990,
+   "y": 646,
+   "act": "creepy",
+   "face": -1
   }
  ]
 }

@@ -114,7 +114,12 @@ What the proof taught (rules now):
   - and the two sky tears of the level row.
 
   The hall's tear is the `turn` box: walk in and the region crosses (THD.exe window) to the other state where you stand. In the clean state it is only a grey flicker now and then (`props.ts flicker`). The anomaly collision is the clean one with the box leading back and without Dexter's bench, so no prologue runs and Dexter is gone. Leaves fall up (`atmosphere.json` states). Debug: Level → "Hidden Garden (anomaly)".
-- **Not done yet:** Dexter does not come down (he waits at the pond).
+- **Dexter in the rooms** (25 Oct): while the plush waits at the pond above, he is also down here, once per room, wordless (`story/sightings.ts`, markers `dexter-sighting` from the zone script's `SIGHTINGS`):
+  - beckoning from the cellar's upper storey, back toward the stairs;
+  - a shape too still at the far end of the drain;
+  - waiting on a girder that hangs from the water, where the hero cannot go.
+
+  Come within 300 px in his room and he flickers out, gone until the region loads again. The anomaly state has none (ids start with `dexter`, dropped with his bench). Preview: `art/sprites/previews/dexter-in-the-rooms.png`.
 
 ## Growing a stage in four directions
 

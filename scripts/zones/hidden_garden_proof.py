@@ -145,6 +145,15 @@ PROPS = [
 ]
 ROVER = (1, 640, 1200)
 
+# Dexter in the rooms (docs/03: he acts, never speaks): while he waits at the pond above, the plush is also down
+# here – one wordless sighting per room, gone when you come close (story/sightings.ts). Ids start with "dexter",
+# so the anomaly state drops them with his bench. (col, id, x, floor, act, face: 1 right / -1 left)
+SIGHTINGS = [
+    (0, "dexter-cellar", 1500, "top", "beckon", -1),    # upstairs in an arch, waving you back toward the stairs
+    (1, "dexter-drain", 1990, "low", "creepy", -1),     # at the far end of the drain, a shape too still
+    (2, "dexter-reflection", 1340, "top", "wait", -1),  # on a girder hanging from the water, waiting
+]
+
 # The 404 as data (docs/09 stage 6): tears drawn over the clean chunks in the anomaly state, chunk px. The lower row:
 # the pond's underside torn open over the cellar, the drain's water ceiling smeared down the far shaft, and in the
 # reflection hall the tear you touched, hanging over the floor where the turn box is.
@@ -213,8 +222,14 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
         data["spawn"] = [{"id": f"{cid}-rover", "kind": "rover", "x": x, "y": floor_at(data["walk"], x, "low"),
                           "patrol": [ROVER[1], ROVER[2]], "note": STORY[col]["story"]}]
     if bands is not None:
-        data["spawn"] += props(cid, col, data["walk"])
+        data["spawn"] += props(cid, col, data["walk"]) + sightings(col, data["walk"])
     return data
+
+
+def sightings(col: int, walk: list) -> list[dict]:
+    """The room's Dexter sighting as a spawn marker on its traced floor."""
+    return [{"id": sid, "kind": "dexter-sighting", "x": x, "y": floor_at(walk, x, which), "act": act, "face": face}
+            for c, sid, x, which, act, face in SIGHTINGS if c == col]
 
 
 def props(cid: str, col: int, walk: list) -> list[dict]:
