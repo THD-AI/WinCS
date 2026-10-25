@@ -27,7 +27,8 @@ export type SoundId =
   | 'rover-motor' | 'crab-servo' | 'drone-hum'
   | 'jenny-engine' | 'jenny-crash'
   | 'fluid-absorb' | 'crash-ding'
-  | 'player-hurt' | 'enemy-defeated';
+  | 'player-hurt' | 'enemy-defeated'
+  | 'rubber-squeak';
 
 export const RECIPES: Record<SoundId, Voice[]> = {
   'footstep-girder': [
@@ -78,6 +79,11 @@ export const RECIPES: Record<SoundId, Voice[]> = {
   'enemy-defeated': [
     { wave: 'square', from: 600, to: 150, dur: 0.18, gain: 0.2 },
     { wave: 'noise', dur: 0.1, gain: 0.18, filter: { type: 'lowpass', from: 2000 } },
+  ],
+  // The rubber chicken (playtest T2): squeezed, a rising squeal through the narrow beak, let go, a falling one.
+  'rubber-squeak': [
+    { wave: 'sawtooth', from: 620, to: 1500, dur: 0.16, attack: 0.02, gain: 0.22, filter: { type: 'bandpass', from: 1300, q: 5 } },
+    { wave: 'sawtooth', from: 1450, to: 760, start: 0.17, dur: 0.22, attack: 0.02, gain: 0.18, filter: { type: 'bandpass', from: 1100, q: 5 } },
   ],
 };
 

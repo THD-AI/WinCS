@@ -64,7 +64,7 @@ Frame lists approved as they are (A14).
 
 ## Audio (synthesized in code)
 
-Footsteps (girder, grass), chair whoosh + hit, rover motor, crab servos, drone hum, Jenny engine + crash, fluid absorb, crash-dialog "ding", one ambient loop per region, one boss loop.
+Footsteps (girder, grass), chair whoosh + hit, rover motor, crab servos, drone hum, Jenny engine + crash, fluid absorb, crash-dialog "ding", rubber squeak, one ambient loop per region, one boss loop.
 
 Every sound is **synthesized at runtime with Web Audio** – no audio files, so nothing to license and nothing that breaks decision 14 (no audio in Git). Recipes are plain data in `game/src/fx/sound/recipes.ts` (effects) and `loops.ts` (Hidden Garden, Rusty Creek, Jenny); the `Audio` scene plays them. Game code calls `sound.play('chair-whoosh')` / `sound.loop('boss-jenny')`; hits, defeats, the boss and region turns are wired to the game events, and the anomaly state plays the region loop slightly flat. M mutes.
 

@@ -1,7 +1,7 @@
 # Mensa · food pickups
 
 <!-- nav:start -->
-[← Item · pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **18 / 26** · [Prop · coffee machine (save point) →](coffee-machine.md)
+[← Item · pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **19 / 28** · [Prop · coffee machine (save point) →](coffee-machine.md)
 <!-- nav:end -->
 
 ![Mensa · food pickups](images/mensa-food-preview.png)
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/mensa-food.png` · rebuild: `python scripts/make_boards.py draw mensa-food --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Item · pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **18 / 26** · [Prop · coffee machine (save point) →](coffee-machine.md)
+[← Item · pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **19 / 28** · [Prop · coffee machine (save point) →](coffee-machine.md)
 <!-- nav:end -->

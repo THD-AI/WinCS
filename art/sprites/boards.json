@@ -1129,6 +1129,33 @@
       ],
       "prompt": "Storyboard strip, 8 panels in a 4x2 grid separated by thin black gutters (the magenta rule does NOT apply here: each panel has a full side-view pixel-art scene of the Hidden Garden lake from the reference: reeds, stone edge, water). Panels: 1 the hero follows Dexter, who hops ahead toward the lake; 2 Dexter stops at the water's edge and points at a strange glowing ripple; 3 the hero touches the surface - white hit flash; 4 the hero is knocked back in the classic damage pose; 5 instead of landing, the hero is lifted into the air spinning like a starfish, pixels tearing around them; 6 a frozen frame with a grey old-desktop-style error dialog box drawn over the scene (empty title bar, an X icon, blank text lines, a single OK button - no readable words); 7 cut to black with a few glitch lines; 8 the hero lands in a new, darker overgrown area, finishing the damage animation, Dexter nowhere to be seen.",
       "keyed": false
+    },
+    {
+      "id": "rubber-chicken",
+      "title": "Secret · the rubber chicken",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/mensa-food-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw this sheet in exactly that pixel-art look - small detailed props on magenta, the same pixel grain and the same soft warm rim light. Prop sprite sheet of ONE classic squeaky RUBBER CHICKEN toy - the long-necked plucked yellow rubber chicken with a red comb, an open orange beak, tiny closed eyes, skinny dangling legs - lying on its side on the ground, side view, slightly worn and dusty as if it had been lost in a garden for a while. 1 row, exactly 2 frames: frame 1 resting, frame 2 the same chicken squeezed in the middle, its body pinched thin and its beak wide open mid-squeak, neck stretched. Both frames at the SAME pixel scale, standing on the SAME invisible ground line, evenly spaced with a wide clear magenta gap between them. Draw distinct key poses. Count the frames: the row has EXACTLY 2. No people, no hands, no scenery.",
+      "atlas": {
+        "height": 9,
+        "rows": [
+          [
+            {
+              "anim": "rest",
+              "frames": 1
+            },
+            {
+              "anim": "squeak",
+              "frames": 1,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟨 Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero."
     }
   ]
 }

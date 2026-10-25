@@ -1,0 +1,62 @@
+{
+ "frames": {
+  "rest-00": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 14
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 14
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 14
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  },
+  "squeak-00": {
+   "frame": {
+    "x": 0,
+    "y": 16,
+    "w": 44,
+    "h": 14
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 44,
+    "h": 14
+   },
+   "sourceSize": {
+    "w": 44,
+    "h": 14
+   },
+   "pivot": {
+    "x": 0.5,
+    "y": 1
+   }
+  }
+ },
+ "meta": {
+  "app": "scripts/export_atlas.py",
+  "image": "rubber-chicken.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 44,
+   "h": 30
+  },
+  "scale": "1"
+ }
+}

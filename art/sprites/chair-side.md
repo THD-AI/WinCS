@@ -1,7 +1,7 @@
 # Chair · side sweep
 
 <!-- nav:start -->
-[← The student · jump, fall, climb](hero-air.md) · [Sprite boards](README.md) · **8 / 26** · [Chair · overhead slam →](chair-overhead.md)
+[← The student · ladder top and bottom](hero-ladder.md) · [Sprite boards](README.md) · **9 / 28** · [Chair · overhead slam →](chair-overhead.md)
 <!-- nav:end -->
 
 ![Chair · side sweep](images/chair-side-preview.png)
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/chair-side.png` · rebuild: `python scripts/make_boards.py draw chair-side --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · jump, fall, climb](hero-air.md) · [Sprite boards](README.md) · **8 / 26** · [Chair · overhead slam →](chair-overhead.md)
+[← The student · ladder top and bottom](hero-ladder.md) · [Sprite boards](README.md) · **9 / 28** · [Chair · overhead slam →](chair-overhead.md)
 <!-- nav:end -->

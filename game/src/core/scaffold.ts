@@ -12,6 +12,7 @@ import { Rovers } from '../enemies/rovers';
 import { JennyBoss } from '../enemies/jennyBoss';
 import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
+import { addChickens } from '../stage/chicken';
 import { DebugOverlay, type EnemyLike, type JennyLike, type DexterLike } from '../stage/debugOverlay';
 import { fallCapture } from '../stage/fallCapture';
 import { GameMenu } from '../ui/menu';
@@ -57,6 +58,7 @@ export class Stage extends Phaser.Scene {
     this.rovers = new Rovers(this, this.player, this.combat, data.collisions);
     this.jenny = new JennyBoss(this, this.player, this.combat, data.collisions);
     this.triggers = new Triggers(data.collisions, data.manifest.region);
+    addChickens(this, data.collisions);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.overlay = new DebugOverlay(this, stage, legend, data.collisions, {
