@@ -1,4 +1,5 @@
 import { JENNY_BOX } from './jenny';
+import { frameAt, frameCount, type Clips } from '../combat/clips';
 
 /**
  * Jenny's ram on the clean creek path (docs/03 region 1, #54, P5) as one readable event, timed in seconds:
@@ -49,7 +50,7 @@ export function ramPlan(heroX: number, viewRight: number, heroHalfWidth = 14): R
 /** Everything the ram shows `t` seconds after the trigger: pure, so the choreography is tested and replayable. */
 export interface RamFrame {
   phase: 'hush' | 'lights' | 'rev' | 'charge' | 'thrown' | 'cross';
-  /** Her centre x and frame name (boss-jenny atlas, 12 fps clips). */
+  /** Her centre x and frame name (boss-jenny atlas, at its clips' own speed). */
   jennyX: number; jennyFrame: string;
   /** Headlight alpha 0…1 and the x of the lamps (the right edge before she is seen, her nose after). */
   lights: number; lightsX: number;
@@ -57,10 +58,15 @@ export interface RamFrame {
   hero?: { x: number; y: number; angle: number; frame: string };
 }
 
-export function ramFrame(t: number, plan: RamPlan, hero: { x: number; y: number }, viewRight: number): RamFrame {
+/**
+ * `clips`: the loaded boss-jenny and hero-hurt anims.json (#156: one timing source); without them the authored
+ * 12 fps and frame counts.
+ */
+export function ramFrame(t: number, plan: RamPlan, hero: { x: number; y: number }, viewRight: number,
+  clips: { jenny?: Clips; hurt?: Clips } = {}): RamFrame {
   const clip = (name: string, since: number, loop = true) => {
-    const n = Math.floor(Math.max(0, t - since) * 12);
-    return `${name}-0${loop ? n % 4 : Math.min(3, n)}`;
+    const n = frameAt(clips.jenny, name, Math.max(0, t - since)), frames = frameCount(clips.jenny, name, 4);
+    return `${name}-${String(loop ? n % frames : Math.min(frames - 1, n)).padStart(2, '0')}`;
   };
   const nose = (x: number) => Math.min(viewRight - 8, x - JENNY_BOX.w / 2);
   if (t < RAM.hush) {
@@ -86,7 +92,7 @@ export function ramFrame(t: number, plan: RamPlan, hero: { x: number; y: number 
   return {
     phase: t < plan.crossAt ? 'thrown' : 'cross', jennyX: x, jennyFrame: clip('crash', plan.impactAt, false),
     lights: 1 - s * 0.6, lightsX: x - JENNY_BOX.w / 2,
-    hero: { ...thrown, frame: `hit-0${Math.min(7, Math.floor((t - plan.impactAt) * 12))}` },
+    hero: { ...thrown, frame: `hit-${String(Math.min(frameCount(clips.hurt, 'hit', 8) - 1, frameAt(clips.hurt, 'hit', t - plan.impactAt))).padStart(2, '0')}` },
   };
 }
 
