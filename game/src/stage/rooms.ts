@@ -2,7 +2,7 @@ import type Phaser from 'phaser';
 import type { Box, CollisionChunk } from './collision';
 import { overlaps, type Body } from '../player/body';
 import type { Player } from '../player/player';
-import { CODES, physicalKeys } from '../player/physicalKeys';
+import { CODES, keyName, physicalKeys } from '../player/physicalKeys';
 import { gameEvents } from '../core/events';
 import { PROP_DEPTH } from './depth';
 
@@ -13,10 +13,17 @@ import { PROP_DEPTH } from './depth';
  *   Rooms are grid rows (camera.ts roomBounds), so a door is how you go from the garden into its cellar and back.
  * - `note`: `title` and `text`; a glint marks it, ↑ reads it, walking away (or ↑ again) puts it back.
  * Up is edge-triggered, as at the coffee machine, so holding it through a door does not walk you back.
+ * What can be used shows itself before you reach it (Alexander's playtest, 25 Oct: the cellar's door read as a
+ * purple box and nothing): a door you come near is lit warm and shows the up key, dim until you stand in it; at a
+ * ladder's foot or top the key that climbs it. Still wordless – the keys you bound, never a verb.
  */
 export const DOOR_FADE = 220;
 /** How close (px, centre to body) the note prompt shows, and how far you can walk before a note closes. */
 export const NOTE_RANGE = 90;
+/** How close (px, door centre to body) a door lights up and shows its key. */
+export const DOOR_RANGE = 160;
+/** How close (px, feet to a ladder's end) the ladder shows the key that climbs it. */
+export const LADDER_REACH = 28;
 
 /** The door the body stands in when up is pressed (edge), and where it leads: the other door's floor, centred. */
 export class DoorUse {
@@ -42,6 +49,21 @@ export function nearNote(body: Body, notes: Box[]): Box | undefined {
   return notes.find(n => Math.abs(body.x - (n.x + n.w / 2)) < NOTE_RANGE && body.y > n.y - 20 && body.y < n.y + n.h + 40);
 }
 
+/** The door the body is coming up to on its floor: centre within DOOR_RANGE, feet at the door's foot. */
+export function nearDoor(body: Body, doors: Box[]): Box | undefined {
+  return doors.find(d => Math.abs(body.x - (d.x + d.w / 2)) < DOOR_RANGE && Math.abs(body.y - (d.y + d.h)) < 40);
+}
+
+/** Standing at a ladder's foot (it climbs up) or its top (it climbs down), not on it: where and which way. */
+export function ladderHint(body: Body, climbs: Box[]): { x: number; y: number; up: boolean } | undefined {
+  for (const c of climbs) {
+    if (body.x < c.x - 6 || body.x > c.x + c.w + 6) continue;
+    if (Math.abs(body.y - (c.y + c.h)) < LADDER_REACH) return { x: c.x + c.w / 2, y: body.y, up: true };
+    if (Math.abs(body.y - c.y) < LADDER_REACH) return { x: c.x + c.w / 2, y: body.y, up: false };
+  }
+  return undefined;
+}
+
 export class Rooms {
   private doors: Box[];
   private notes: Box[];
@@ -54,17 +76,22 @@ export class Rooms {
   private open?: Box;
   private read = new Set<string>();
   private glints = new Map<Box, Phaser.GameObjects.Graphics>();
+  private climbs: Box[];
+  private light: Phaser.GameObjects.Graphics;
   private travelling = false;
 
   constructor(private scene: Phaser.Scene, private player: Player, chunks: CollisionChunk[], private region: string) {
     const boxes = chunks.flatMap(chunk => chunk.world.interact);
     this.doors = boxes.filter(box => box.kind === 'door');
     this.notes = boxes.filter(box => box.kind === 'note');
+    this.climbs = chunks.flatMap(chunk => chunk.world.climb);
+    this.light = scene.add.graphics().setDepth(PROP_DEPTH).setBlendMode(1);  // ADD: warm light spilling from the door
     for (const problem of doorProblems(this.doors)) console.warn(`${region}: ${problem}`);
     this.keys = scene.input.keyboard!.addKeys('W,UP') as Record<string, Phaser.Input.Keyboard.Key>;
     this.physical = physicalKeys(scene);
-    this.prompt = scene.add.text(0, 0, '', { fontFamily: 'monospace', fontSize: '13px', color: '#fff3d6',
-      backgroundColor: '#2a1a0ecc', padding: { x: 6, y: 3 } }).setOrigin(0.5, 1).setDepth(10002).setVisible(false);
+    // A keycap: big enough to read at a glance over the painted room (the 13 px tag went unseen in the playtest).
+    this.prompt = scene.add.text(0, 0, '', { fontFamily: 'monospace', fontSize: '18px', fontStyle: 'bold', color: '#fff3d6',
+      backgroundColor: '#2a1a0ee6', padding: { x: 9, y: 5 } }).setOrigin(0.5, 1).setDepth(10002).setVisible(false);
     // A sheet of paper held up to the screen, under the HUD: the camera's, not the world's; never over the hero's floor.
     this.panel = scene.add.text(scene.cameras.main.width / 2, 96, '', {
       fontFamily: 'monospace', fontSize: '14px', color: '#2b2118', backgroundColor: '#efe4c8f2', lineSpacing: 4,
@@ -84,12 +111,25 @@ export class Rooms {
     if (this.open && (this.open !== note || pressed && !through)) this.close();
     else if (note && pressed && !through && !this.open) this.show(note);
     const door = free ? this.doors.find(box => overlaps(body, box)) : undefined;
-    const at = door ?? (this.open ? undefined : note);
-    this.prompt.setVisible(!!at);
+    const coming = free && !door ? nearDoor(body, this.doors) : undefined;
+    const ladder = free && !door && !note ? ladderHint(body, this.climbs) : undefined;
+    const at = door ?? coming ?? (this.open ? undefined : note);
+    const bob = 3 * Math.sin(this.scene.time.now / 300);
+    const upKey = keyName(CODES.up[0] ?? 'ArrowUp');
+    this.light.clear();
+    const lit = door ?? coming;
+    if (lit) {
+      const glow = (door ? 0.2 : 0.11) + 0.04 * Math.sin(this.scene.time.now / 420);
+      this.light.fillStyle(0xffc46b, glow).fillRect(lit.x - 6, lit.y - 30, lit.w + 12, lit.h + 30);
+    }
+    this.prompt.setVisible(!!at || !!ladder);
     if (at) {
       // A door says nothing, only the key: the garden's prologue is wordless (docs/03). A note is read.
-      this.prompt.setText(door ? '↑' : '↑  read');
-      this.prompt.setPosition(Math.round(at.x + at.w / 2), Math.round(at.y - 10 + 3 * Math.sin(this.scene.time.now / 300)));
+      this.prompt.setText(at === note && !door && !coming ? `${upKey}  read` : upKey).setAlpha(coming ? 0.6 : 1);
+      this.prompt.setPosition(Math.round(at.x + at.w / 2), Math.round(at.y - 34 + bob));
+    } else if (ladder) {
+      this.prompt.setText(ladder.up ? `${upKey} ↑` : `${keyName(CODES.down[0] ?? 'ArrowDown')} ↓`).setAlpha(0.85);
+      this.prompt.setPosition(Math.round(ladder.x), Math.round(ladder.y - 96 + bob));
     }
   }
 

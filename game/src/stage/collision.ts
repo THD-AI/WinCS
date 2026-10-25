@@ -97,8 +97,32 @@ export function placeCollision(local: CollisionData, origin: Point): CollisionCh
   return { local, origin, world };
 }
 
+/** How thick (px) the wall is that closes a row where it has no neighbouring chunk. */
+export const EDGE_WALL = 48;
+
+/**
+ * Close every row's open ends: where a chunk has no neighbour to its left or right in its row, a full-height solid
+ * just outside it (kind "edge"), so the hero can't walk off the painted world (Alexander's playtest, 25 Oct: the
+ * cellar under the shed is the left end of its row, and walking left fell out of the map).
+ */
+export function edgeWalls(chunks: CollisionChunk[], placement: { x: number; y: number }[], size: [number, number]): void {
+  const at = new Set(placement.map(p => `${p.x},${p.y}`));
+  chunks.forEach((chunk, i) => {
+    const { x, y } = placement[i];
+    const [ox, oy] = chunk.origin;
+    if (!at.has(`${x - 1},${y}`)) chunk.world.solid.push({ x: ox - EDGE_WALL, y: oy, w: EDGE_WALL, h: size[1], kind: 'edge', id: `${chunk.local.chunk}-edge-left` });
+    if (!at.has(`${x + 1},${y}`)) chunk.world.solid.push({ x: ox + size[0], y: oy, w: EDGE_WALL, h: size[1], kind: 'edge', id: `${chunk.local.chunk}-edge-right` });
+  });
+}
+
 export async function loadCollisions(manifest: StageManifest, state: RegionState,
   request: typeof fetch = (...args) => fetch(...args)): Promise<CollisionChunk[]> {
+  const chunks = await loadPlaced(manifest, state, request);
+  edgeWalls(chunks, manifest.chunks, manifest.chunkSize);
+  return chunks;
+}
+
+function loadPlaced(manifest: StageManifest, state: RegionState, request: typeof fetch): Promise<CollisionChunk[]> {
   return Promise.all(manifest.chunks.map(async chunk => {
     const file = chunk.states[state]?.collision;
     if (!assetFile(file)) throw new Error(`Missing collision: ${manifest.region}/${chunk.id}.${state}`);

@@ -32,7 +32,7 @@ export interface JennyLike {
   x: number; phase: string; facing: number; health: number; active: boolean;
   arena: { left: number; right: number; floor: number }; bounds: { x: number; y: number; w: number; h: number };
 }
-export interface DexterLike { x: number; state: string; stop?: { x: number }; route?: unknown }
+export interface DexterLike { x: number; y?: number; state: string; stop?: { x: number }; route?: unknown }
 
 /** How far each kind sees ahead (px), from its model's constants; the sight box is one body high. */
 export const SIGHT: Record<string, number> = { rover: SPOT_RANGE, crab: CRAB_SPOT, drone: DRONE_SPOT };
@@ -125,7 +125,8 @@ export class DebugOverlay {
     }
     const dexter = this.sources.dexter();
     if (dexter && hero) {
-      const y = groundAt(this.chunks, dexter.x, hero.y);
+      // at his own height when he reports it (the guide stays on his row); else the ground under him nearest the hero
+      const y = typeof dexter.y === 'number' ? dexter.y : groundAt(this.chunks, dexter.x, hero.y);
       g.lineStyle(2, 0x60ff90).strokeRect(dexter.x - 12, y - 30, 24, 30);
       if (dexter.stop) {
         g.lineStyle(1, 0x60ff90, 0.8).beginPath().moveTo(dexter.x, y - 15).lineTo(dexter.stop.x, y - 15).strokePath();

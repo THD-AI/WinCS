@@ -54,13 +54,11 @@
    {"x": [1020, 1330], "material": "wood", "note": "plank: pier"}
   ],
   "hg-2-1": [
-   {"x": [0, 1136], "y": [328, 352], "material": "stone", "note": "ground: the floor"},
    {"x": [0, 2036], "y": [589, 619], "material": "stone", "note": "ground: the floor"},
-   {"x": [1204, 2160], "y": [329, 353], "material": "stone", "note": "ground: the floor"},
-   {"x": [2036, 2160], "y": [617, 643], "material": "stone", "note": "ground: the floor"}
+   {"x": [2036, 2160], "y": [617, 643], "material": "stone", "note": "ground: the floor"},
+   {"x": [0, 2160], "y": [330, 369], "material": "stone", "note": "ground: the floor"}
   ],
   "hg-3-1": [
-   {"x": [0, 1360], "y": [126, 150], "material": "stone", "note": "ground: the floor"},
    {"x": [0, 568], "y": [330, 354], "material": "stone", "note": "ground: the floor"},
    {"x": [0, 140], "y": [625, 652], "material": "stone", "note": "ground: the floor"},
    {"x": [140, 344], "y": [630, 663], "material": "stone", "note": "ground: the floor"},
@@ -68,10 +66,8 @@
    {"x": [564, 1236], "y": [631, 664], "material": "stone", "note": "ground: the floor"},
    {"x": [568, 1744], "y": [337, 361], "material": "stone", "note": "ground: the floor"},
    {"x": [1236, 1492], "y": [626, 671], "material": "stone", "note": "ground: the floor"},
-   {"x": [1360, 1664], "y": [128, 152], "material": "stone", "note": "ground: the floor"},
    {"x": [1824, 2160], "y": [630, 661], "material": "stone", "note": "ground: the floor"},
    {"x": [1492, 1824], "y": [613, 640], "material": "stone", "note": "ground: the floor"},
-   {"x": [1664, 2016], "y": [128, 152], "material": "stone", "note": "ground: the floor"},
    {"x": [1836, 2004], "y": [340, 364], "material": "stone", "note": "ground: the floor"}
   ],
   "hg-4-1": [

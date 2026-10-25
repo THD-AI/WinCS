@@ -37,7 +37,8 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-LAYERS = ("00-sky", "01-far", "02-mid", "03-rear", "04-water", "05-play", "06-near", "07-foreground")
+# 06-pillars: columns the hero walks behind (drawn over the actors like 06-near, but still – the near strip sways).
+LAYERS = ("00-sky", "01-far", "02-mid", "03-rear", "04-water", "05-play", "06-pillars", "06-near", "07-foreground")
 
 
 def filled(path: Path) -> bool:

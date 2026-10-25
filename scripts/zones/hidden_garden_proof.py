@@ -116,21 +116,41 @@ def guide(col: int) -> Image.Image:
 # lies straight under the shed, and its stairs door is right below the shed door. No shaft through the pond: the
 # pond is the prologue's finale, and the shed door you should not open is the secret (Alexander, 24 Oct).
 SHED_DOOR = (1095, 1175)
+# The cellar's way back up is its big painted wooden door, upstairs in the middle arch (Alexander's playtest, 25 Oct:
+# the box used to sit beside it, on a painted ladder, and read as nothing). Paired with the shed door by id.
+CELLAR_DOOR = (895, 995)
+# Measured where the trace disagrees with the painting (Alexander's playtest, 25 Oct): the cellar's upper ledge is one
+# floor behind every pillar, on into the drain's upper ledge; its ladders run from the ledge to the
+# floor and no higher (above the ledge they climb into the ceiling girder); the drain's second painted ladder.
+# above: traced floors entirely above this y are replaced by `walk`; climb: x0, x1 of ladders from the floor at y
+# `top` down to the lowest floor; add: climb boxes x0, y0, x1, y1 added as they are.
+# Second playtest (25 Oct): the ledge under the middle arch is 15 px lower than at the sides (he stood on air there),
+# and the drain's top "floor" was the top of its back wall under the water ceiling (he hovered at the pillar): gone,
+# with every ladder trimmed to the floors it joins. `drop`: traced floors entirely above this y go.
+MEASURED = {
+    "hgz-0-1": {"above": 500, "walk": [[[0, 342], [720, 342], [760, 357], [1140, 357], [1180, 342], [2160, 342]]],
+                "top": 342, "climb": [(447, 482), (1817, 1850)]},
+    "hgz-1-1": {"drop": 200, "add": [(358, 342, 396, 642)]},
+}
+# Where a ladder passes through the cellar's upper ledge, the ledge's face is in front of the climber (he climbs
+# down behind the stone, not over it): x0, x1 per zone chunk, the face's rows under the floor.
+LEDGE_FACE = {"hgz-0-1": [(432, 497), (1802, 1865)]}
+LEDGE_ROWS = (348, 402)
 GIRDER_TOP = 400   # a traced floor above this is a girder hanging from the water (the reflection)
 BODY = 76      # the hero's body height: a ladder top keeps it below the water ceiling
 
 # What you find down there (docs/03: archive notes hint at the experiment and never explain it; the rest is wordless).
 # (col, id, x centre, which floor: "low" / "high" (the one above the lowest) / "top", title, text) – placed on the traced floor.
 FINDS = [
-    (0, "q7-sheet-3", 980, "low", "FELDVERSUCH Q-7 – Protokoll, Blatt 3",
+    (0, "q7-sheet-3", 230, "low", "FELDVERSUCH Q-7 – Protokoll, Blatt 3",
      "Coherence holds 11 s. The pond shows the campus twice.\nIn the second copy the rovers are already awake.\n"
      "Containment vessel ordered: 1 x mascot-shaped, Campus Store, 1.5 ft. It fits."),
-    (0, "q7-margin", 2080, "top", "(pencil, on the back of Blatt 3)",
+    (0, "q7-margin", 1380, "top", "(pencil, on the back of Blatt 3)",
      "It waves.\nNobody taught it to wave."),
     (1, "drain-report", 1110, "low", "Stadtentwässerung Deggendorf – Wartungsbericht, Auslass 4",
      "Grate replaced twice. Opened from the inside both times.\nAt the outlet: 1 paper boat (dry). 1 red balloon, "
      "resting against the underside of the pond. It does not float up.\nThe outlet hums at night. The campus jingle."),
-    (1, "balloon-string", 760, "top", "(a string, tied to the rail)",
+    (1, "balloon-string", 760, "high", "(a string, tied to the rail)",
      "The string goes up into the water.\nSomething on the other end tugs back. Twice. Friendly."),
     (2, "q7-sheet-9", 1880, "low", "FELDVERSUCH Q-7 – Blatt 9 (wet)",
      "Down here everything is the right way round.\nIt is the garden that hangs upside down.\nDo not feed the vessel."),
@@ -144,6 +164,16 @@ PROPS = [
     (1, "drain-boat", "paper-boat", 960, "low", {}),   # washed against the outlet
 ]
 ROVER = (1, 640, 1200)
+# The rooms move (Alexander's playtest, 25 Oct: "extremely static"): the painted lanterns flicker with dust in their
+# light, and the pond above drips through the ceiling. Measured from the paintings: col -> lamps (x, y at the flame),
+# drips (x, y where the drop forms; it falls to the floor under it).
+AMBIENT = {
+    0: {"lamps": [(175, 265), (855, 245), (1335, 280), (2005, 265), (178, 515), (850, 505), (1335, 525), (1995, 515)],
+        "drips": [(300, 104), (760, 104), (1460, 104), (1900, 104)]},
+    1: {"lamps": [(640, 235), (1170, 235), (130, 560), (635, 560), (1160, 560)],
+        "drips": [(260, 104), (900, 104), (1380, 104), (1850, 104)]},
+    2: {"lamps": [], "drips": [(330, 162), (650, 312), (1010, 414), (1590, 446), (1720, 262)]},
+}
 
 # Dexter in the rooms (docs/03: he acts, never speaks): while he waits at the pond above, the plush is also down
 # here – one wordless sighting per room, gone when you come close (story/sightings.ts). Ids start with "dexter",
@@ -151,7 +181,9 @@ ROVER = (1, 640, 1200)
 SIGHTINGS = [
     (0, "dexter-cellar", 1500, "top", "beckon", -1),    # upstairs in an arch, waving you back toward the stairs
     (1, "dexter-drain", 1990, "low", "creepy", -1),     # at the far end of the drain, a shape too still
-    (2, "dexter-reflection", 1340, "top", "wait", -1),  # on a girder hanging from the water, waiting
+    # on the hall's floor, in view from where you come in, beckoning you on to the tear (Alexander, 25 Oct: on its
+    # high girder at the far end he was nowhere to be seen in the hall)
+    (2, "dexter-reflection", 760, "low", "beckon", -1),
 ]
 
 # The 404 as data (docs/09 stage 6): tears drawn over the clean chunks in the anomaly state, chunk px. The lower row:
@@ -215,6 +247,7 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
         data["climb"] = [box(x0, max(top, ceiling + BODY + 8), x1, bottom, kind="ladder", id=f"{cid}-ladder-{n}")
                          for n, (x0, x1, top, bottom) in enumerate(steps)]
         data["walk"] = walkable(cid, data["walk"], data["climb"])
+        measured(cid, data)
     data["interact"] = finds(cid, col, data["walk"])
     data["spawn"] = []
     if col == ROVER[0] and bands is not None:
@@ -222,8 +255,37 @@ def collision(cid: str, col: int, row: int, source: str | None) -> dict:
         data["spawn"] = [{"id": f"{cid}-rover", "kind": "rover", "x": x, "y": floor_at(data["walk"], x, "low"),
                           "patrol": [ROVER[1], ROVER[2]], "note": STORY[col]["story"]}]
     if bands is not None:
-        data["spawn"] += props(cid, col, data["walk"]) + sightings(col, data["walk"])
+        data["spawn"] += props(cid, col, data["walk"]) + sightings(col, data["walk"]) + ambient(cid, col)
     return data
+
+
+def measured(cid: str, data: dict) -> None:
+    """The MEASURED floors and ladders over the traced ones."""
+    fix = MEASURED.get(cid, {})
+    if "walk" in fix:
+        data["walk"] = [l for l in data["walk"] if max(y for _, y in l) >= fix["above"]] + fix["walk"]
+    if "climb" in fix:
+        data["climb"] = [box(x0, fix["top"], x1, floor_at(data["walk"], (x0 + x1) // 2, "low"), kind="ladder",
+                             id=f"{cid}-ladder-{n}") for n, (x0, x1) in enumerate(fix["climb"])]
+    if "drop" in fix:
+        data["walk"] = [l for l in data["walk"] if max(y for _, y in l) >= fix["drop"]]
+        trimmed = []
+        for c in data["climb"]:
+            ys = [floor_y for line in data["walk"] for a, b in zip(line, line[1:])
+                  if a[0] <= c["x"] + c["w"] and b[0] >= c["x"]
+                  and c["y"] - 12 <= (floor_y := round(a[1] + (b[1] - a[1]) * (c["x"] + c["w"] / 2 - a[0]) / max(1, b[0] - a[0]))) <= c["y"] + c["h"] + 12]
+            if len(ys) >= 2:
+                trimmed.append({**c, "y": min(ys), "h": max(ys) - min(ys)})
+        data["climb"] = trimmed
+    data["climb"] += [box(x0, y0, x1, y1, kind="ladder", id=f"{cid}-ladder-m{n}") for n, (x0, y0, x1, y1) in
+                      enumerate(fix.get("add", []))]
+
+
+def ambient(cid: str, col: int) -> list[dict]:
+    """The room's lanterns and drips as spawn markers (the game's stage/ambient.ts animates them)."""
+    room = AMBIENT.get(col, {})
+    return ([{"id": f"{cid}-lamp-{n}", "kind": "lamp", "x": x, "y": y} for n, (x, y) in enumerate(room.get("lamps", []))]
+            + [{"id": f"{cid}-drip-{n}", "kind": "drip", "x": x, "y": y} for n, (x, y) in enumerate(room.get("drips", []))])
 
 
 def sightings(col: int, walk: list) -> list[dict]:
@@ -249,9 +311,9 @@ def finds(cid: str, col: int, walk: list) -> list[dict]:
     """The row-below chunk's interacts: the cellar's stairs door (under the shed door) and the archive notes."""
     out = []
     if col == 0 and walk:
-        x = (SHED_DOOR[0] + SHED_DOOR[1]) // 2
+        x = (CELLAR_DOOR[0] + CELLAR_DOOR[1]) // 2
         y = floor_at(walk, x, "high")
-        out.append(box(SHED_DOOR[0], y - BODY, SHED_DOOR[1], y, kind="door", id="cellar-stairs", to="shed-door",
+        out.append(box(CELLAR_DOOR[0], y - BODY, CELLAR_DOOR[1], y, kind="door", id="cellar-stairs", to="shed-door",
                        note=STORY[0]["story"]))
     if col == TURN[0] and walk:
         x, w, h = TURN[1:]
@@ -475,8 +537,8 @@ def graph(collisions: dict[str, dict], grid: dict[str, tuple[int, int]]) -> dict
         col, row = grid[cid]
         climb = [[b["x"], b["y"], b["x"] + b["w"], b["y"] + b["h"]] for b in data["climb"]]
         for door in (b for b in data["interact"] if b.get("kind") == "door"):
-            climb.append([door["x"], door["y"], door["x"] + door["w"], H] if row == 0 else
-                         [door["x"], 0, door["x"] + door["w"], door["y"] + door["h"]])
+            x0, x1 = SHED_DOOR  # the pair is joined by id in the game; the graph joins them at the shed door's x
+            climb.append([x0, door["y"], x1, H] if row == 0 else [x0, 0, x1, door["y"] + door["h"]])
         chunks[cid] = {"id": cid, "col": col, "row": row, "band": "level" if row == 0 else "other",
                        "walk": [[a, b] for line in data["walk"] for a, b in zip(line, line[1:])],
                        "oneWay": data["oneWay"], "deck": [], "climb": climb,
@@ -515,6 +577,10 @@ def export_stage() -> None:
             if mask.exists():
                 shutil.copy(mask, STAGE / "masks" / f"{sid}.{layer}.png")
                 rules.append({"layer": layer, "alpha": f"masks/{sid}.{layer}.png"})
+        pillars = pillar_mask(zid)
+        if pillars is not None:  # last rule wins: the column is in front of the floor and the weeds behind it
+            pillars.save(STAGE / "masks" / f"{sid}.06-pillars.png")
+            rules.append({"layer": "06-pillars", "alpha": f"masks/{sid}.06-pillars.png"})
         layers["chunks"][sid] = {"states": {"clean": f"images/{sid}.png"}, "default": "03-rear", "rules": rules}
         export["chunks"][sid] = {"x": col + 2, "y": 1}
         data = json.loads((ZONE / "collision" / f"{zid}.collision.json").read_text(encoding="utf-8"))
@@ -535,7 +601,11 @@ def export_stage() -> None:
     shed["interact"] = [i for i in shed["interact"] if i.get("kind") != "door"] + [shed_door()]
     (STAGE / "hg-2-0.clean.collision.json").write_text(json.dumps(shed, indent=1, ensure_ascii=False) + "\n",
                                                        encoding="utf-8")
+    export["layers"]["06-pillars"] = {"file": "layers/{name}.06-pillars.png", "z": 6, "scroll": 1.0, "optional": True}
     anomaly_state(export)
+    for state, order in export["states"].items():
+        if "06-pillars" not in order:
+            order.insert(order.index("06-near"), "06-pillars")
     for path, data in ((STAGE / "layers.json", layers), (STAGE / "export.json", export)):
         path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if "steel" not in surfaces["materials"]:  # the reflection's girders (collision_check --surfaces lays the ranges)
@@ -599,6 +669,25 @@ def anomaly_state(export: dict) -> None:
     export["layers"]["05-tears"] = {"file": "tears/{name}.png", "z": 5, "scroll": 1.0, "optional": True}
     clean = export["states"]["clean"]
     export["states"]["anomaly"] = clean[:clean.index("05-play") + 1] + ["05-tears"] + clean[clean.index("05-play") + 1:]
+
+
+# The steel columns the hero walks behind (Alexander's playtest, 25 Oct: "I don't go behind the pillars"), measured
+# from the painting: zone chunk -> (x0, x1) per column, and the rows they stand in (the top girder to their base).
+PILLARS = {"hgz-0-1": [(42, 88), (375, 425), (655, 708), (1150, 1205), (1675, 1730)]}
+PILLAR_ROWS = (60, 615)
+
+
+def pillar_mask(zid: str) -> Image.Image | None:
+    """The chunk's 06-pillars mask (opaque = the column), or None without columns."""
+    if zid not in PILLARS:
+        return None
+    mask = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(mask)
+    for x0, x1 in PILLARS[zid]:
+        draw.rectangle((x0, PILLAR_ROWS[0], x1 - 1, PILLAR_ROWS[1] - 1), fill=(255, 255, 255, 255))
+    for x0, x1 in LEDGE_FACE.get(zid, []):
+        draw.rectangle((x0, LEDGE_ROWS[0], x1 - 1, LEDGE_ROWS[1] - 1), fill=(255, 255, 255, 255))
+    return mask
 
 
 MASKS = (("04-water", "04-water"), ("05-play", "05-play"), ("07-foreground", "06-near"))  # zone band -> stage layer

@@ -2,14 +2,9 @@ import type { Box, Geometry } from '../stage/collision';
 import type { Body } from './body';
 export const CLIMB_SPEED = 70;
 /**
- * One rung step of the climb (px): the distance one pass of the 4-frame, 8 fps ladder clip covers at CLIMB_SPEED.
- * The climb sprite mirrors every step, so the arms alternate up the ladder without new art (playtest 24 Oct, M2).
+ * The climb is never mirrored: the ladder clip already alternates the arms (frame 2 reaches with the left), and a
+ * mirrored back reads the poncho's THD as DHT (Alexander's playtest, 25 Oct). It replaced the rung-step flip of 24 Oct.
  */
-export const RUNG_STEP = (CLIMB_SPEED * 4) / 8;
-/** Whether the climb sprite is mirrored with the feet at height `y`: it flips each rung step, and holds when he stops. */
-export function climbFlip(y: number): boolean {
-  return ((Math.floor(y / RUNG_STEP) % 2) + 2) % 2 === 1;
-}
 /**
  * Getting on and off a ladder (Alexander, 24 Oct): the hero-ladder board's clips, played forward when he leaves the
  * ladder and reversed when he takes it. ladder-top: hauled up over the deck edge to a stand; ladder-bottom: off the
