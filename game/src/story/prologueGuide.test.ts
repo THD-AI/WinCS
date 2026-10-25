@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { RUN_SPEED, WALK_SPEED } from '../player/movement';
-import { DexterGuide, GUIDE, PLUSH, Route, stopsFrom, type GuideView, type Pt } from './prologueGuide';
+import { DexterGuide, GUIDE, guideLines, PLUSH, Route, stopsFrom, type GuideView, type Pt } from './prologueGuide';
 
 interface Chunk { chunk: string; walk: Pt[][]; oneWay: Pt[][]; interact: { id: string; kind: string; act?: string; x: number; y: number; w: number; h: number }[]; spawn: { id: string; kind: string; x: number; y: number }[] }
 const files = import.meta.glob('../../../art/stages/hidden-garden/hg-*.clean.collision.json', { eager: true, import: 'default' }) as Record<string, Chunk>;
@@ -246,3 +246,12 @@ describe('Dexter leading', () => {
   });
 });
 
+
+describe('his ground', () => {
+  it('is his own row only, never the rooms under it', () => {
+    const chunk = (y: number, line: Pt[]) => ({ origin: [0, y] as [number, number], local: { size: [2160, 720] },
+      world: { walk: [line], oneWay: [] } }) as never;
+    const lines = guideLines([chunk(0, [[0, 456], [2160, 456]]), chunk(720, [[0, 1062], [2160, 1062]])], 456);
+    expect(lines).toEqual([[[0, 456], [2160, 456]]]);
+  });
+});

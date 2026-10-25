@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DoorUse, doorProblems, nearNote } from './rooms';
+import { DoorUse, doorProblems, ladderHint, nearDoor, nearNote } from './rooms';
 import type { Box } from './collision';
 import type { Body } from '../player/body';
 
@@ -36,5 +36,19 @@ describe('rooms: notes', () => {
     expect(nearNote(at(530, 620), [note])).toBe(note);
     expect(nearNote(at(700, 620), [note])).toBeUndefined();
     expect(nearNote(at(530, 300), [note])).toBeUndefined();               // the storey above
+  });
+});
+
+describe('rooms: what can be used shows itself', () => {
+  it('lights a door you come up to on its floor, not one above or below you', () => {
+    expect(nearDoor(at(3150, 1076), [shed, cellar])).toBe(cellar);
+    expect(nearDoor(at(3300, 1076), [shed, cellar])).toBeUndefined();
+    expect(nearDoor(at(3040, 900), [shed, cellar])).toBeUndefined();
+  });
+  it("shows the climb at a ladder's foot and top, not beside it", () => {
+    const ladder: Box = { kind: 'ladder', x: 447, y: 342, w: 35, h: 261 };
+    expect(ladderHint(at(464, 603), [ladder])).toMatchObject({ up: true });
+    expect(ladderHint(at(464, 342), [ladder])).toMatchObject({ up: false });
+    expect(ladderHint(at(600, 603), [ladder])).toBeUndefined();
   });
 });

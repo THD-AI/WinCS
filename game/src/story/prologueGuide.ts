@@ -1,3 +1,4 @@
+import type { CollisionChunk } from '../stage/collision';
 import { RUN_SPEED, WALK_SPEED } from '../player/movement';
 
 /**
@@ -393,4 +394,11 @@ export function stopsFrom(boxes: { id?: string; kind?: string; act?: unknown; x:
     act: box.act === 'point' || box.act === 'pond' ? box.act : 'wait',
   }));
   return { wakeX: wake ? wake.x : -Infinity, stops };
+}
+
+/** The walk and one-way lines of the row (chunks sharing an origin y) that holds the y given: the guide's ground. */
+export function guideLines(chunks: Pick<CollisionChunk, 'local' | 'origin' | 'world'>[], y: number): Pt[][] {
+  const height = chunks[0]?.local.size[1] ?? 720;
+  const row = chunks.filter(c => y >= c.origin[1] && y < c.origin[1] + height);
+  return row.flatMap(c => [...c.world.walk, ...c.world.oneWay]);
 }

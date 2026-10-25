@@ -7,7 +7,7 @@ import type { Box, CollisionChunk, Marker } from '../stage/collision';
 import { createAnims, type AtlasAnim } from './atlases';
 import type { CrossingHero } from './Crossing';
 import { FINALE, FinaleSequence, knockArc, type FinalePhase } from './prologueFinale';
-import { DexterGuide, stopsFrom, type GuideAnim, type GuideView, type Pt } from './prologueGuide';
+import { DexterGuide, guideLines, stopsFrom, type GuideAnim, type GuideView, type Pt } from './prologueGuide';
 
 const ANIMS: AtlasAnim[] = [
   ['dexter', 'idle', 3, -1], ['dexter', 'hop', 4, -1], ['dexter', 'walk', 6, -1], ['dexter', 'point', 3, 0],
@@ -77,10 +77,12 @@ export class Prologue {
   constructor(private readonly stage: StageScene, chunks: CollisionChunk[], private readonly region: string,
     private readonly crash: Crash404) {
     const worlds = chunks.map(c => c.world);
-    const lines: Pt[][] = worlds.flatMap(w => [...w.walk, ...w.oneWay]);
     const boxes = worlds.flatMap(w => w.interact);
     const spawns = worlds.flatMap(w => w.spawn);
     const bench = spawns.find(s => s.id === 'dexter-bench') ?? spawns.find(s => s.kind === 'dexter')!;
+    // He guides along his own row only: given the rooms under it too, he followed the hero down into the cellar
+    // and walked on its floors and through its air (Alexander's playtest, 25 Oct). Rows are rooms (camera.ts).
+    const lines: Pt[][] = guideLines(chunks, bench.y);
     // The hop's length is the dexter board's hop clip (#156: one timing source).
     const hop = (stage.cache.json.get('dexter.anims') as Record<string, { frames: number; fps: number }> | undefined)?.hop;
     this.guide = new DexterGuide({ bench, lines, ...stopsFrom(boxes), ...(hop && { hopClip: hop.frames / hop.fps * 1000 }) });

@@ -1,5 +1,5 @@
 import { expect, it, vi } from 'vitest';
-import { loadCollisions, parseCollision, placeCollision, BOXES, LINES, type CollisionData } from './collision';
+import { edgeWalls, loadCollisions, parseCollision, placeCollision, BOXES, EDGE_WALL, LINES, type CollisionData } from './collision';
 import type { StageManifest } from './manifest';
 
 const fixtures = import.meta.glob<CollisionData>('../../../art/stages/{rusty-creek,hidden-garden}/*.collision.json',
@@ -71,7 +71,9 @@ it('fetches the collision files beside the manifest and builds world coordinates
   const chunks = await loadCollisions(manifest(), 'anomaly', request);
   expect(request).toHaveBeenCalledWith('/assets/stages/rusty-creek/rc-0-0.anomaly.collision.json');
   expect(chunks[1].origin).toEqual([2160, 0]);
-  for (const key of BOXES) expect(chunks[1].world[key]).toHaveLength(chunks[1].local[key].length);
+  // every authored box is placed; the loader only adds the walls that close the row's open ends (edgeWalls)
+  for (const key of BOXES) expect(chunks[1].world[key].filter(b => b.kind !== 'edge')).toHaveLength(chunks[1].local[key].length);
+  expect(chunks[1].world.solid.filter(b => b.kind === 'edge').map(b => b.x)).toEqual([4320]);
 });
 
 it('refuses a missing collision file instead of inferring physics from artwork', async () => {
@@ -79,4 +81,15 @@ it('refuses a missing collision file instead of inferring physics from artwork',
   await expect(loadCollisions(manifest(), 'anomaly', request)).rejects.toThrow('HTTP 404');
   const input = manifest(); input.chunks[0].states.anomaly!.collision = null;
   await expect(loadCollisions(input, 'anomaly', request)).rejects.toThrow('Missing collision:');
+});
+
+it("closes each row where it has no neighbour: the cellar under the shed is its row's left end", () => {
+  const placement = [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 1, y: 1 }];
+  const chunks = placement.map(p => placeCollision(fixture('hg-2-1', 'clean'), [p.x * 2160, p.y * 720]));
+  edgeWalls(chunks, placement, [2160, 720]);
+  const edges = chunks.map(c => c.world.solid.filter(s => s.kind === 'edge').map(s => s.x));
+  expect(edges[0]).toEqual([-EDGE_WALL]);              // the row's left end, nothing to its right is open
+  expect(edges[1]).toEqual([4320]);                    // the row's right end
+  expect(edges[2]).toEqual([2160 - EDGE_WALL, 4320]);  // alone in its row: both ends
+  expect(chunks[2].world.solid.every(s => s.kind !== 'edge' || s.h === 720 && s.y === 720)).toBe(true);
 });
