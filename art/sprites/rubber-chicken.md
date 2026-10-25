@@ -1,7 +1,7 @@
 # Secret · the rubber chicken
 
 <!-- nav:start -->
-[← Menu · the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 28** · [Sprite boards →](README.md)
+[← Menu · the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 29** · [Prop · Jenny's arena wall →](arena-wall.md)
 <!-- nav:end -->
 
 ![Secret · the rubber chicken](images/rubber-chicken-preview.png)
@@ -20,5 +20,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/rubber-chicken.png` · rebuild: `python scripts/make_boards.py draw rubber-chicken --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Menu · the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 28** · [Sprite boards →](README.md)
+[← Menu · the Hidden Garden at first light](menu-key.md) · [Sprite boards](README.md) · **28 / 29** · [Prop · Jenny's arena wall →](arena-wall.md)
 <!-- nav:end -->

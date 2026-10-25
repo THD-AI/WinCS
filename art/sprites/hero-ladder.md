@@ -1,7 +1,7 @@
 # The student · ladder top and bottom
 
 <!-- nav:start -->
-[← The student · jump, fall, climb](hero-air.md) · [Sprite boards](README.md) · **8 / 28** · [Chair · side sweep →](chair-side.md)
+[← The student · jump, fall, climb](hero-air.md) · [Sprite boards](README.md) · **8 / 29** · [Chair · side sweep →](chair-side.md)
 <!-- nav:end -->
 
 ![The student · ladder top and bottom](images/hero-ladder-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-ladder.png` · rebuild: `python scripts/make_boards.py draw hero-ladder --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · jump, fall, climb](hero-air.md) · [Sprite boards](README.md) · **8 / 28** · [Chair · side sweep →](chair-side.md)
+[← The student · jump, fall, climb](hero-air.md) · [Sprite boards](README.md) · **8 / 29** · [Chair · side sweep →](chair-side.md)
 <!-- nav:end -->

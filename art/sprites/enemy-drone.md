@@ -1,7 +1,7 @@
 # Enemy · drone
 
 <!-- nav:start -->
-[← Chair · block](chair-block.md) · [Sprite boards](README.md) · **12 / 28** · [Enemy · rover →](enemy-rover.md)
+[← Chair · block](chair-block.md) · [Sprite boards](README.md) · **12 / 29** · [Enemy · rover →](enemy-rover.md)
 <!-- nav:end -->
 
 ![Enemy · drone](images/enemy-drone-preview.png)
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/enemy-drone.png` · rebuild: `python scripts/make_boards.py draw enemy-drone --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Chair · block](chair-block.md) · [Sprite boards](README.md) · **12 / 28** · [Enemy · rover →](enemy-rover.md)
+[← Chair · block](chair-block.md) · [Sprite boards](README.md) · **12 / 29** · [Enemy · rover →](enemy-rover.md)
 <!-- nav:end -->

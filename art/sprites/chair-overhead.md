@@ -1,7 +1,7 @@
 # Chair · overhead slam
 
 <!-- nav:start -->
-[← Chair · side sweep](chair-side.md) · [Sprite boards](README.md) · **10 / 28** · [Chair · block →](chair-block.md)
+[← Chair · side sweep](chair-side.md) · [Sprite boards](README.md) · **10 / 29** · [Chair · block →](chair-block.md)
 <!-- nav:end -->
 
 ![Chair · overhead slam](images/chair-overhead-preview.png)
@@ -31,5 +31,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/chair-overhead.png` · rebuild: `python scripts/make_boards.py draw chair-overhead --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Chair · side sweep](chair-side.md) · [Sprite boards](README.md) · **10 / 28** · [Chair · block →](chair-block.md)
+[← Chair · side sweep](chair-side.md) · [Sprite boards](README.md) · **10 / 29** · [Chair · block →](chair-block.md)
 <!-- nav:end -->
