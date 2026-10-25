@@ -177,7 +177,7 @@ def art_for(region: Path, chunk: str) -> Image.Image:
 
 # A world zone chunk away from pond level reads the same seven colours differently (docs/09 "World pipeline").
 BAND_KEY = {
-    "below": ("THIS CHUNK is underground, under the pond: ONLY the deep water at the very top and its surface "
+    "below": ("THIS CHUNK is underground, under the pond or the creek: ONLY the deep water at the very top and its surface "
               "hanging as a ceiling are navy - never a dark room, a doorway, a shadow or the dark behind the arches; "
               "every floor, ledge, step and the top of every girder you can walk on, as a solid band down from its "
               "walking surface, is red; everything behind you - the back walls, the dark insides of the rooms and "
