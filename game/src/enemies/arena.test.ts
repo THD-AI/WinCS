@@ -3,8 +3,8 @@ import { JENNY_BOX } from './jenny';
 import { GRAVITY, JUMP_SPEED } from '../player/jump';
 import arena from '../../../art/stages/rusty-creek/rc-2-0.anomaly.collision.json';
 
-/** The platforms' plate (art/stages/rusty-creek/arena/right.png): beams of the maze's girder, this thick. */
-const BEAM = 32;
+/** The platforms (arena-platform board, scripts/arena_platforms.py): girders this thick, hung on chains. */
+const BEAM = 25;
 
 /** The walk line's height at x (the lowest line under it). */
 function floorAt(x: number): number {

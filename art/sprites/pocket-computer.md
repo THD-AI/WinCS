@@ -1,12 +1,12 @@
-# Item · pocket computer
+# Item Â· pocket computer
 
 <!-- nav:start -->
-[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 29** · [Mensa · food pickups →](mensa-food.md)
+[← Boss Â· Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 31** · [Mensa Â· food pickups →](mensa-food.md)
 <!-- nav:end -->
 
-![Item · pocket computer](images/pocket-computer-preview.png)
+![Item Â· pocket computer](images/pocket-computer-preview.png)
 
-**Review:** ✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Closed case 19 × 10 px (≈ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups.
+**Review:** âœ… Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Closed case 19 Ã— 10 px (â‰ˆ 45 cm at the hero's 76 px = 183 cm): the photographed suitcase, shrunk to carry; open with the green screen 22 px tall. The map screens are the approved UI atlas (#127), so this board has no screen mock-ups.
 
 ## In motion
 
@@ -28,5 +28,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/pocket-computer.png` · rebuild: `python scripts/make_boards.py draw pocket-computer --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Boss · Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 29** · [Mensa · food pickups →](mensa-food.md)
+[← Boss Â· Jenny, stunned and debris](boss-jenny-2.md) · [Sprite boards](README.md) · **18 / 31** · [Mensa Â· food pickups →](mensa-food.md)
 <!-- nav:end -->

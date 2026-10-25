@@ -25,7 +25,7 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 | J3 | One Jenny hit leaves you nearly dead (3 of 5) → at most half the health | 🔧 |
 | J4 | Make it obvious she must crash into something to become hittable – the satisfaction of figuring it out | ✅ crash shake, sound and smoke; stun-ending warning; reboot sparks (fights branch) |
 | J5 | Scraps should hurt but must be clearly visible | 🔧 |
-| J6 | An invisible wall in the arena; the arena is "awful to fight in" with limited movement – add platforms in the middle, maybe a slightly higher jump to clear her | ✅ two girder platforms over her floor (`art/stages/rusty-creek/arena/`, an overlay layer): reachable with a full jump, and she drives under them – stand on one and let her pass; the walls are drawn whenever they are closed (#186) |
+| J6 | An invisible wall in the arena; the arena is "awful to fight in" with limited movement – add platforms in the middle, maybe a slightly higher jump to clear her | ✅ two girder platforms hung on chains from the girder over her arena (`scripts/arena_platforms.py`, boards `arena-platform` and `arena-chain`, an overlay layer): reachable with a full jump, and she drives under them – stand on one and let her pass; the walls are drawn whenever they are closed (#186) |
 | J7 | After Jenny: a wall at the right end that says "you can't pass until you beat her", not just the camera stopping | ✅ both walls are drawn as rusted hazard-striped barriers whenever they are closed, and the fight (and the walls) start as soon as you are inside the arena (#186); they fade out when she is beaten |
 | J8 | Landing on top of an enemy hurts the hero | Intended – no change |
 | J9 | Double jump | Rejected (Lex: Metroidvanias give it last or never) |
