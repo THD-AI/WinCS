@@ -280,6 +280,7 @@ The team's open question in A14: how do generated frames move without looking li
 4. **Smears instead of blends** for fast motion: one stretched smear frame on the chair swing and the knockback, as in Spider-Verse. No motion blur or warp.
 5. **One grid, one palette.** Everything is crushed to the same pixel scale and 96-colour palette, and the feet are anchored to one baseline row, so frames don't wobble.
 6. **Preview before approval.** Every sheet gets a looping preview at game size on its review page. A frame that pops is redrawn on its own against its neighbours as inputs.
+7. **Check the switches in motion.** `python scripts/transition_gifs.py` runs the game's own movement, jump and animation code (`game/verification/transitions/trace.ts`) through idle ↔ walk ↔ run ↔ jump ↔ land and draws each transition as a GIF at 30 fps, with ground ticks every foot that move with the world. A foot that slides against the ticks slides in the game; a clip switch should move the outline no more than the cycle's own frame-to-frame step.
 
 ## The crossing (no animation budget)
 
