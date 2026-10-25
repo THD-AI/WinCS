@@ -1,3 +1,4 @@
+import { clipTime, frameAt, frameCount, type Clips } from '../combat/clips';
 import type { Position } from '../core/events';
 import type { Rect } from '../combat/sweeps';
 
@@ -15,7 +16,7 @@ export const DRONE_WIDTH = 77, DRONE_HEIGHT = 77, DRONE_HEALTH = 8;
 export const DRONE_SPEED = 70, DRONE_TELL = 0.5, DIVE_SPEED = 380, CLIMB_SPEED = 160;
 /** It dives when the hero is this close beneath it (px, horizontally). */
 export const DRONE_SPOT = 50;
-const CRASH_SECONDS = 5 / 12, HIT_SECONDS = 3 / 12, DIVE_MAX = 0.6;
+const DIVE_MAX = 0.6;
 export type DronePhase = 'hover' | 'tell' | 'dive' | 'climb' | 'hit' | 'crash' | 'dead';
 
 export class Drone {
@@ -26,7 +27,8 @@ export class Drone {
   direction: -1 | 1 = 1;
   elapsed = 0;
   private target = 0;
-  constructor(readonly spawn: Position, readonly patrol: [number, number]) { this.x = spawn.x; this.y = spawn.y; }
+  /** `clips`: enemy-drone.anims.json (hover, dive, crash, screw). */
+  constructor(readonly spawn: Position, readonly patrol: [number, number], private clips?: Clips) { this.x = spawn.x; this.y = spawn.y; }
   private enter(phase: DronePhase) { this.phase = phase; this.elapsed = 0; }
   reset() { this.x = this.spawn.x; this.y = this.spawn.y; this.health = DRONE_HEALTH; this.enter('hover'); }
   get bounds(): Rect { return { x: this.x - DRONE_WIDTH / 2, y: this.y - DRONE_HEIGHT, w: DRONE_WIDTH, h: DRONE_HEIGHT }; }
@@ -57,18 +59,18 @@ export class Drone {
           break;
         case 'climb': case 'hit':
           this.y = Math.max(this.spawn.y, this.y - CLIMB_SPEED * dt);
-          if (this.phase === 'hit' ? this.elapsed >= HIT_SECONDS : this.y <= this.spawn.y) this.enter(this.y <= this.spawn.y ? 'hover' : 'climb');
+          if (this.phase === 'hit' ? this.elapsed >= clipTime(this.clips, 'hover', 3) : this.y <= this.spawn.y) this.enter(this.y <= this.spawn.y ? 'hover' : 'climb');
           break;
         case 'crash':
           this.y += 200 * dt;
-          if (this.elapsed >= CRASH_SECONDS) { this.enter('dead'); defeated = true; }
+          if (this.elapsed >= clipTime(this.clips, 'crash', frameCount(this.clips, 'crash', 5))) { this.enter('dead'); defeated = true; }
           break;
       }
     }
     return defeated;
   }
   get pose() {
-    const n = Math.floor((this.elapsed + 1e-9) * 12);
+    const n = frameAt(this.clips, this.phase === 'tell' || this.phase === 'dive' ? 'dive' : this.phase === 'crash' ? 'crash' : 'hover', this.elapsed);
     const f = (clip: string, i: number) => `${clip}-${String(i).padStart(2, '0')}`;
     if (this.phase === 'tell' || this.phase === 'dive') return f('dive', Math.min(2, n));
     if (this.phase === 'crash') return f('crash', Math.min(4, n));

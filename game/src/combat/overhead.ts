@@ -1,6 +1,7 @@
 import { intersects, type Damageable, type Rect } from './sweeps';
 import type { Position } from '../core/events';
 import { RUN_SPEED } from '../player/movement';
+import { clipTime, frameAt, frameCount, type Clips } from './clips';
 
 /**
  * docs/02: measured on the 1.5x chair-overhead frames (24 Oct), cell 160×187, foot pivot (80,187). In up-02/03 the
@@ -18,6 +19,8 @@ export class Overhead {
   private elapsed = 0;
   private queued?: { kind: 'up' | 'slam'; direction: -1 | 1 };
   private struck = new Set<string>();
+  /** `clips`: chair-overhead.anims.json (up, slam, pogo). */
+  constructor(private clips?: Clips) {}
   begin(kind: 'up' | 'slam', direction: -1 | 1) {
     if (this.phase === 'pogo' || this.phase === 'descend') { this.queued = { kind, direction }; return true; }
     if (this.phase !== 'idle') return false;
@@ -27,10 +30,12 @@ export class Overhead {
   cancel() { this.enter('idle'); this.struck.clear(); this.queued = undefined; }
   step(dt: number) {
     this.elapsed += dt;
-    if (this.phase === 'windup' && this.elapsed + 1e-9 >= 3 / 12) this.enter('descend');
-    else if (this.phase === 'up' && this.elapsed + 1e-9 >= 6 / 12
-      || this.phase === 'land' && this.elapsed + 1e-9 >= 3 / 12
-      || this.phase === 'pogo' && this.elapsed + 1e-9 >= 4 / 12) {
+    const done = (clip: string, frames: number) => this.elapsed + 1e-9 >= clipTime(this.clips, clip, frames);
+    // slam: 00–02 the windup, 03 the descent (held until the floor), 04–06 the landing
+    if (this.phase === 'windup' && done('slam', 3)) this.enter('descend');
+    else if (this.phase === 'up' && done('up', frameCount(this.clips, 'up', 6))
+      || this.phase === 'land' && done('slam', 3)
+      || this.phase === 'pogo' && done('pogo', frameCount(this.clips, 'pogo', 4))) {
       const queued = this.phase === 'pogo' ? this.queued : undefined; this.cancel();
       if (queued) this.begin(queued.kind, queued.direction);
     }
@@ -38,8 +43,8 @@ export class Overhead {
   land(grounded: boolean) { if (grounded && this.phase === 'descend') this.enter('land'); }
   get pose() {
     if (this.phase === 'idle') return undefined;
-    const frame = Math.floor((this.elapsed + 1e-9) * 12);
     const clip = this.phase === 'up' ? 'up' : this.phase === 'pogo' ? 'pogo' : 'slam';
+    const frame = frameAt(this.clips, clip, this.elapsed);
     const index = this.phase === 'descend' ? 3 : this.phase === 'land' ? Math.min(6, 4 + frame)
       : this.phase === 'windup' ? Math.min(2, frame) : Math.min(clip === 'up' ? 5 : 3, frame);
     return `${clip}-${String(index).padStart(2, '0')}`;
@@ -48,7 +53,7 @@ export class Overhead {
     return { x: position.x + (this.direction > 0 ? left : -right), y, w: right - left, h };
   }
   box(position: Position, previousY: number): Rect | undefined {
-    const frame = Math.floor((this.elapsed + 1e-9) * 12);
+    const frame = frameAt(this.clips, 'up', this.elapsed);
     if (this.phase === 'up' && (frame === 2 || frame === 3)) {
       const c = UP_CONTACT; return this.rect(position, c.left, c.right, position.y - c.top, c.top - c.bottom);
     }

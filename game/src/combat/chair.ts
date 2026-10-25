@@ -4,6 +4,7 @@ import type { Player } from '../player/player';
 import { sound } from '../fx/sound/Audio';
 import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sweeps';
 import { Overhead, SLAM_SPEED } from './overhead';
+import type { Clips } from './clips';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges, attackClick, AttackBuffer } from './action-input';
@@ -19,12 +20,12 @@ const FIXTURE_KNOCK = 8; // docs/02: development fixture displacement, not real 
 const GRAIN = 2; // docs/09: two-pixel grain; retain this overlap after the fixture moves.
 
 export class ChairCombat {
-  readonly sweeps = new Sweeps();
+  readonly sweeps: Sweeps;
   readonly pause = new HitStop();
-  readonly overhead = new Overhead();
-  readonly guard = new Guard();
+  readonly overhead: Overhead;
+  readonly guard: Guard;
   /** ↓ + Act on the ground: the chair along the floor (lowSweep.ts). */
-  readonly low = new LowSweep();
+  readonly low: LowSweep;
   private targets = new Map<string, Damageable>();
   private key: Phaser.Input.Keyboard.Key;
   /** The second attack bind (playtest 24 Oct): X, for players on the arrow keys. */
@@ -46,6 +47,12 @@ export class ChairCombat {
   private visible = false;
   enabled: boolean;
   constructor(private scene: Phaser.Scene, private player: Player, _region: string) {
+    // Every move's timing from its board's anims.json (#156: one timing source).
+    const clips = (board: string) => scene.cache.json.get(`${board}.anims`) as Clips | undefined;
+    this.sweeps = new Sweeps(clips('chair-side'));
+    this.overhead = new Overhead(clips('chair-overhead'));
+    this.low = new LowSweep(clips('chair-overhead'));
+    this.guard = new Guard(clips('chair-block'));
     // Armed once the hero picked the chair up (chairPickup.ts), in every region after that.
     this.enabled = carriesChair(scene);
     this.key = scene.input.keyboard!.addKey('J');
