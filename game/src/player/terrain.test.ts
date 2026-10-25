@@ -80,7 +80,7 @@ describe('terrain: steps, ledges, walls, treads', () => {
   });
 });
 
-const files = import.meta.glob<CollisionData>('../../../art/stages/hidden-garden/*.collision.json', { eager: true, import: 'default' });
+const files = import.meta.glob<CollisionData>('../../../art/stages/hidden-garden/*.clean.collision.json', { eager: true, import: 'default' });
 // Placed by grid id (hg-<col>-<row>); the walks below are the level row's – the cellar row under it has its own test.
 const grid = (chunk: string) => chunk.split('-').slice(1).map(Number) as [number, number];
 const placed = Object.values(files).map(data => placeCollision(parseCollision(data, data.chunk, 'clean'),
