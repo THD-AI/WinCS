@@ -17,7 +17,7 @@ import { DebugOverlay, type EnemyLike, type JennyLike, type DexterLike } from '.
 import { fallCapture } from '../stage/fallCapture';
 import { GameMenu } from '../ui/menu';
 import { spots } from '../stage/teleports';
-import { swapRegion } from '../stage/swap';
+import { holdStage, swapRegion } from '../stage/swap';
 
 // Boot and Preload live in game/src/boot/ (the one loader); Stage receives boot/contract.ts StageData.
 export class Stage extends Phaser.Scene {
@@ -73,7 +73,7 @@ export class Stage extends Phaser.Scene {
     });
     fallCapture(this, () => this.player?.body);
     this.menu = new GameMenu(document.body, {
-      pause: paused => { if (paused) this.scene.pause(); else this.scene.resume(); },
+      pause: paused => holdStage(this.game.scene, paused),
       layers: () => this.overlay?.layers() ?? [],
       travel: {
         spots: () => spots(data.collisions),
