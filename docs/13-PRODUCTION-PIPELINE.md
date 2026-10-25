@@ -178,7 +178,7 @@ Draw every object in **stage pixels** on top of the 2160×720 chunk, one Tiled o
 
 Coordinates are integers in stage pixels, origin top left; polylines run left to right; `kind` values are lower-case with dashes. Adding a field is fine; renaming one needs both lanes to agree in an issue.
 
-Rooms (`game/src/stage/rooms.ts`): an `interact` box of kind `door` names the other door in `to` (each leads back); its prompt is the key alone (↑, no words), and ↑ fades through it. A `note` carries `title` and `text`, shows a glint, and ↑ reads it. A region's grid rows are rooms joined by doors: the camera frames one row at a time (`camera.ts roomBounds`).
+Rooms (`game/src/stage/rooms.ts`): an `interact` box of kind `door` names the other door in `to` (each leads back); its prompt is the key alone (↑, no words), and ↑ fades through it. A `note` carries `title` and `text`, shows a glint, and ↑ reads it. A region's grid rows are rooms joined by doors: the camera frames one row at a time (`camera.ts roomBounds`). A `turn` box carries `state` (`clean` or `anomaly`): walking into it crosses (THD.exe window) to that state of the same region, landing where you stand. The other state's file has the same box leading back. A box the hero starts in fires only after it was left (`triggers.ts`).
 
 Optional `terrain` (docs/04 terrain model): `[{"x": [x0, x1], "y": [y0, y1]?, "kind": "ground|step|stair|plank|ledge|wall|log|obstacle|slide", "material": "<surfaces.json material>", "note"?}]` – chunk-local ranges, first match wins, every walk/oneWay/slide segment covered. Solids take an optional `kind` (`wall`, `log`, `obstacle`), no-go boxes `kind: "water"`. A chunk with `terrain` was re-authored by hand: `depth_layers.py collision` keeps its floors.
 

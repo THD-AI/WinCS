@@ -76,6 +76,25 @@ class DoorTests(unittest.TestCase):
             self.assertTrue(title and text and 0 < x < W, nid)
 
 
+    def test_the_anomaly_collision_turns_back_and_dexter_is_gone(self):
+        clean = {"chunk": "hg-4-1", "state": "clean", "interact": [
+                     {"id": "reflection-404", "kind": "turn", "state": "anomaly", "x": 1240, "y": 560, "w": 80, "h": 80}],
+                 "spawn": [{"id": "dexter-bench", "kind": "dexter", "x": 1, "y": 1}, {"id": "r", "kind": "rover", "x": 2, "y": 2}]}
+        turned = hg.anomaly_collision(clean)
+        self.assertEqual(turned["state"], "anomaly")
+        self.assertEqual(turned["interact"][0]["state"], "clean")
+        self.assertEqual([s["id"] for s in turned["spawn"]], ["r"])
+        self.assertEqual(clean["interact"][0]["state"], "anomaly")            # the clean data is left alone
+
+    def test_every_tear_stays_inside_its_chunk_and_the_turn_box_has_one(self):
+        import world_preview as wp
+        for tear in hg.TEARS:
+            x0, y0, x1, y1 = wp.tear_region(tear)
+            self.assertTrue(0 <= x0 < x1 <= W and 0 <= y0 < y1 <= H, tear)
+        col, x, w, h = hg.TURN
+        hall = [t for t in hg.TEARS if t["chunk"] == f"hgz-{col}-1"]
+        self.assertTrue(any(t["box"][0] <= x + w and t["box"][2] >= x for t in hall))
+
     def test_the_drain_props_stand_where_the_story_puts_them(self):
         walk = [[[0, 138], [1360, 138]], [[0, 650], [2160, 650]]]
         props = {p["kind"]: p for p in hg.props("hgz-1-1", 1, walk)}

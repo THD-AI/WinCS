@@ -64,7 +64,7 @@ export class Stage extends Phaser.Scene {
     this.jenny = new JennyBoss(this, this.player, this.combat, data.collisions);
     this.triggers = new Triggers(data.collisions, data.manifest.region);
     this.rooms = new Rooms(this, this.player, data.collisions, data.manifest.region);
-    this.props = new Props(this, data.collisions, () => this.player?.body);
+    this.props = new Props(this, data.collisions, () => this.player?.body, data.state);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.overlay = new DebugOverlay(this, stage, legend, data.collisions, {

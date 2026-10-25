@@ -107,7 +107,14 @@ What the proof taught (rules now):
   - the paper boat rocks at the outlet.
 
   The eyes are two pieces per frame (`export_atlas.py` `"parts": 2`). Per-animation `scale` keeps real sizes: the boat is about 50 cm next to the 183 cm hero. `collision_check.py` lets floating props (balloon, eyes) have no floor. Preview: `art/sprites/previews/it-props-in-drain.png`.
-- **Not done yet:** the clean ⇄ anomaly swap of the lower row; Dexter does not come down (he waits at the pond).
+- **The underground turns, clean ⇄ anomaly** (25 Oct): the Hidden Garden has an anomaly state now. It shares every clean plate and adds one tears plate per chunk (`tears/<chunk>.png`, the `05-tears` layer, `optional`, so only chunks with tears draw it). The plates come from `world.json`'s tears with the same `tear_overlay` the previews use:
+  - the pond's underside torn open over the cellar;
+  - the drain's water ceiling smeared down its far shaft;
+  - the reflection hall's tear, hanging over the floor;
+  - and the two sky tears of the level row.
+
+  The hall's tear is the `turn` box: walk in and the region crosses (THD.exe window) to the other state where you stand. In the clean state it is only a grey flicker now and then (`props.ts flicker`). The anomaly collision is the clean one with the box leading back and without Dexter's bench, so no prologue runs and Dexter is gone. Leaves fall up (`atmosphere.json` states). Debug: Level → "Hidden Garden (anomaly)".
+- **Not done yet:** Dexter does not come down (he waits at the pond).
 
 ## Growing a stage in four directions
 

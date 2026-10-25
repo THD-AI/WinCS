@@ -622,6 +622,16 @@
  "hazard": [],
  "interact": [
   {
+   "x": 1240,
+   "y": 539,
+   "w": 80,
+   "h": 80,
+   "kind": "turn",
+   "id": "reflection-404",
+   "state": "anomaly",
+   "note": "The tear in the reflection hall: the underground turns, clean <-> anomaly."
+  },
+  {
    "x": 1850,
    "y": 579,
    "w": 60,

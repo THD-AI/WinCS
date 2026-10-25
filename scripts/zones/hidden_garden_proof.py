@@ -143,7 +143,21 @@ PROPS = [
     (1, "drain-eyes", "pipe-eyes", 891, 583, {}),      # in the dark of the lower outlet; gone on a second look
     (1, "drain-boat", "paper-boat", 960, "low", {}),   # washed against the outlet
 ]
-ROVER = (1, 640, 1200)   # the drain hall's possessed campus rover (docs/03): col, patrol x0, x1 on its floor
+ROVER = (1, 640, 1200)
+
+# The 404 as data (docs/09 stage 6): tears drawn over the clean chunks in the anomaly state, chunk px. The lower row:
+# the pond's underside torn open over the cellar, the drain's water ceiling smeared down the far shaft, and in the
+# reflection hall the tear you touched, hanging over the floor where the turn box is.
+TEARS = [
+    {"kind": "cut", "chunk": "hgz-1-0", "box": [700, 40, 1260, 180], "seed": 404},
+    {"kind": "stretch", "chunk": "hgz-2-0", "box": [1300, 60, 1560, 420], "from": 420, "seed": 7},
+    {"kind": "cut", "chunk": "hgz-0-1", "box": [700, 20, 1180, 84], "seed": 41},
+    {"kind": "stretch", "chunk": "hgz-1-1", "box": [1660, 24, 1880, 300], "from": 300, "seed": 13},
+    {"kind": "cut", "chunk": "hgz-2-1", "box": [1200, 500, 1360, 616], "seed": 4041},
+]
+# Where the underground turns (docs/02: every region has two states): the reflection hall's tear, in both states –
+# touch it and the region crosses to the other one where you stand. In the clean state it is a faint flicker.
+TURN = (2, 1240, 80, 80)   # col, x, w, h – on the hall's floor   # the drain hall's possessed campus rover (docs/03): col, patrol x0, x1 on its floor
 
 
 def floor_at(lines: list, x: int, which: str) -> int:
@@ -224,6 +238,11 @@ def finds(cid: str, col: int, walk: list) -> list[dict]:
         y = floor_at(walk, x, "high")
         out.append(box(SHED_DOOR[0], y - BODY, SHED_DOOR[1], y, kind="door", id="cellar-stairs", to="shed-door",
                        note=STORY[0]["story"]))
+    if col == TURN[0] and walk:
+        x, w, h = TURN[1:]
+        y = floor_at(walk, x + w // 2, "low")
+        out.append(box(x, y - h, x + w, y, kind="turn", id="reflection-404", state="anomaly",
+                       note="The tear in the reflection hall: the underground turns, clean <-> anomaly."))
     for c, nid, x, which, title, text in FINDS:
         if c == col and walk:
             y = floor_at(walk, x, which)
@@ -501,12 +520,70 @@ def export_stage() -> None:
     shed["interact"] = [i for i in shed["interact"] if i.get("kind") != "door"] + [shed_door()]
     (STAGE / "hg-2-0.clean.collision.json").write_text(json.dumps(shed, indent=1, ensure_ascii=False) + "\n",
                                                        encoding="utf-8")
+    anomaly_state(export)
     for path, data in ((STAGE / "layers.json", layers), (STAGE / "export.json", export)):
         path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if "steel" not in surfaces["materials"]:  # the reflection's girders (collision_check --surfaces lays the ranges)
         surfaces["materials"]["steel"] = STEEL
         (STAGE / "surfaces.json").write_text(json.dumps(surfaces, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"hidden-garden stage: {', '.join(UNDER.values())} under the level row; the shed door in hg-2-0")
+
+
+def zone_to_stage() -> dict[str, str]:
+    """Zone chunk id -> stage chunk id."""
+    return {**{f"hgz-{col}-0": sid for col, sid in enumerate(TOP)}, **{f"hgz-{col}-1": sid for col, sid in UNDER.items()}}
+
+
+def tears_layer(sid: str, tears: list[dict]) -> Image.Image | None:
+    """The chunk's tears as one RGBA plate over its clean picture (world_preview.tear_overlay, the same pixels
+    draw_tears shows in the previews), or None without tears."""
+    import numpy as np
+    import world_preview as wp
+    if not tears:
+        return None
+    clean = np.asarray(Image.open(STAGE / "images" / f"{sid}.png").convert("RGB"))
+    plate = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    for tear in tears:
+        x0, y0, x1, y1 = wp.tear_region(tear)
+        assert 0 <= x0 and 0 <= y0 and x1 <= W and y1 <= H, f"{sid}: tear {tear['box']} reaches past the chunk"
+        overlay = Image.fromarray(wp.tear_overlay(clean[y0:y1, x0:x1], tear, x0, y0))
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        layer.paste(overlay, (x0, y0))
+        plate = Image.alpha_composite(plate, layer)
+    return plate
+
+
+def anomaly_collision(data: dict) -> dict:
+    """A chunk's anomaly collision: its clean one, with the turn box leading back and Dexter gone (docs/02)."""
+    out = json.loads(json.dumps(data))
+    out["state"] = "anomaly"
+    for item in out["interact"]:
+        if item.get("kind") == "turn":
+            item["state"] = "clean"
+    out["spawn"] = [s for s in out["spawn"] if not str(s.get("id", "")).startswith("dexter")]
+    return out
+
+
+def anomaly_state(export: dict) -> None:
+    """The region's anomaly state: every clean plate shared, plus a tears plate where the chunk has tears
+    (`05-tears`, optional: export_stage.py skips a chunk without one), and an anomaly collision per chunk."""
+    stage_of = zone_to_stage()
+    tears = json.loads((ZONE / "world.json").read_text(encoding="utf-8"))["anomaly"]["tears"]
+    for zid, sid in stage_of.items():
+        plate = tears_layer(sid, [t for t in tears if t["chunk"] == zid])
+        path = STAGE / "tears" / f"{sid}.png"   # beside layers/, which split_layers.py owns
+        if plate is not None:
+            path.parent.mkdir(exist_ok=True)
+            plate.save(path, optimize=True)
+        elif path.exists():
+            path.unlink()
+    for sid in export["chunks"]:
+        clean = json.loads((STAGE / f"{sid}.clean.collision.json").read_text(encoding="utf-8"))
+        (STAGE / f"{sid}.anomaly.collision.json").write_text(
+            json.dumps(anomaly_collision(clean), indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    export["layers"]["05-tears"] = {"file": "tears/{name}.png", "z": 5, "scroll": 1.0, "optional": True}
+    clean = export["states"]["clean"]
+    export["states"]["anomaly"] = clean[:clean.index("05-play") + 1] + ["05-tears"] + clean[clean.index("05-play") + 1:]
 
 
 MASKS = (("04-water", "04-water"), ("05-play", "05-play"), ("07-foreground", "06-near"))  # zone band -> stage layer
@@ -554,9 +631,7 @@ def main() -> None:
     world = {"zone": "hidden-garden", "seed": 0, "chunk": [W, H], "grid": [3, 2], "prefix": "hgz", "chunks": chunks,
              "links": [{"a": "hgz-0-1", "b": "hgz-1-1", "by": "walk"}, {"a": "hgz-1-1", "b": "hgz-2-1", "by": "walk"},
                        {"a": "hgz-0-0", "b": "hgz-0-1", "by": "door", "at": sum(SHED_DOOR) // 2}],
-             "anomaly": {"tears": [
-                 {"kind": "cut", "chunk": "hgz-1-0", "box": [700, 40, 1260, 180], "seed": 404},
-                 {"kind": "stretch", "chunk": "hgz-2-0", "box": [1300, 60, 1560, 420], "from": 420, "seed": 7}]}}
+             "anomaly": {"tears": TEARS}}
     (ZONE / "world.json").write_text(json.dumps(world, indent=1) + "\n", encoding="utf-8")
     problems = reach(collisions, grid)
     print(f"hidden-garden: {len(chunks)} chunks (3 x 2), collision written ({gone} unreachable floor segments dropped); reachability: "

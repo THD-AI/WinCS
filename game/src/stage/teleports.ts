@@ -9,9 +9,10 @@ import type { RegionTarget } from './swap';
  */
 export interface Spot { label: string; x: number; y: number }
 
-/** The slice's levels in story order: the garden's prologue, clean Rusty Creek, the rust maze (docs/03). */
+/** The slice's levels in story order: the garden's prologue, its turned underground, clean Rusty Creek, the rust maze. */
 export const LEVELS: readonly (RegionTarget & { label: string })[] = [
   { label: 'Hidden Garden', region: 'hidden-garden', state: 'clean' },
+  { label: 'Hidden Garden (anomaly)', region: 'hidden-garden', state: 'anomaly' },
   { label: 'Rusty Creek (clean)', region: 'rusty-creek', state: 'clean' },
   { label: 'Rust maze (anomaly)', region: 'rusty-creek', state: 'anomaly' },
 ];
@@ -20,6 +21,7 @@ const NAMED: Record<string, string> = {
   'coffee-machine': 'Coffee machine (save)',
   'boss-gate': "Jenny's gate",
   anomaly: 'The pond (404)',
+  turn: 'The tear (turns the region)',
   'chunk-exit': 'Chunk exit',
 };
 

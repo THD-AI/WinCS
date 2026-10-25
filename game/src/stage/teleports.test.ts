@@ -30,7 +30,8 @@ describe('debug teleport', () => {
     expect(nextSpot(all, { x: 2200, y: 1060 }, 1)?.label).toBe('Door: cellar-stairs');
   });
   it('goes through the levels in story order and wraps', () => {
-    expect(nextLevel(LEVELS[0])).toEqual({ region: 'rusty-creek', state: 'clean' });
-    expect(nextLevel(LEVELS[2])).toEqual({ region: 'hidden-garden', state: 'clean' });
+    expect(nextLevel(LEVELS[0])).toEqual({ region: 'hidden-garden', state: 'anomaly' });
+    expect(nextLevel(LEVELS[1])).toEqual({ region: 'rusty-creek', state: 'clean' });
+    expect(nextLevel(LEVELS[3])).toEqual({ region: 'hidden-garden', state: 'clean' });
   });
 });

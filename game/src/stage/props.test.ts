@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { bob, EYES_NARROW, EYES_NOTICE, EyesModel, propMarkers } from './props';
+import { bob, EYES_NARROW, EYES_NOTICE, EyesModel, flicker, propMarkers } from './props';
 import type { Geometry } from './collision';
 
 const world = (spawn: Geometry['spawn']): Geometry => ({ walk: [], slide: [], oneWay: [], solid: [], climb: [], noGo: [],
@@ -27,5 +27,12 @@ describe('story props', () => {
     const offsets = Array.from({ length: 200 }, (_, i) => bob(i * 50));
     expect(Math.min(...offsets)).toBe(0);
     expect(Math.max(...offsets)).toBe(2);
+  });
+
+  it('the turn box flickers now and then and is invisible most of the time', () => {
+    const seen = Array.from({ length: 2600 }, (_, t) => flicker(t));
+    expect(seen.filter(a => a > 0).length).toBeLessThan(200);
+    expect(Math.max(...seen)).toBeGreaterThan(0.5);
+    expect(flicker(1000)).toBe(0);
   });
 });

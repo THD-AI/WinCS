@@ -17,6 +17,7 @@ export.json:
      # a layer with "region": true is one plate for the whole region (per chunk, plates at scroll != 1
      # overlap or leave gaps), cut into chunk-wide tiles: "file" takes {tile}, chunk j carries tile j;
      # "rest": the chunk's own plate it was quilted from, which --verify rebuilds the chunk with
+     # "optional": true – a chunk without the file just doesn't draw that layer (the anomaly's tears)
      "aliases": "media-sources.json"}                               # optional: shared plates
 
 Usage:
@@ -91,6 +92,8 @@ def manifest(region: Path) -> tuple[dict, dict[str, Path]]:
                         entry["dy"] = layer["dy"]
                     layers.append(entry)
                     continue
+                if layer.get("optional") and not (region / layer["file"].format(name=chunk.get("name", chunk_id))).exists():
+                    continue  # a layer only some chunks have (the anomaly's tears)
                 plate = source(region, layer["file"], chunk.get("name", chunk_id), aliases)
                 entry = {"id": layer_id, "z": layer["z"], "scroll": layer["scroll"], "file": publish(plate)}
                 if layer.get("dy"):  # a plate painted off its ground, moved down onto it (drawn and verified there)

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { holdStage } from './swap';
+import { holdStage, turnTarget } from './swap';
 
 /** A scene manager reduced to one scene's status, acting at once like Phaser's outside its update. */
 function manager(status: 'running' | 'paused' | 'stopped') {
@@ -30,5 +30,15 @@ describe('holdStage', () => {
     holdStage(scenes, false);           // the menu closes afterwards
     expect(scenes.status).toBe('stopped');
     expect(calls).toEqual([]);
+  });
+});
+
+describe('turnTarget', () => {
+  it('turns the region where the hero stands, only for a turn box with a target state', () => {
+    const at = { x: 9920, y: 1362 };
+    expect(turnTarget('turn', 'hidden-garden', 'anomaly', at)).toEqual({ region: 'hidden-garden', state: 'anomaly', spawn: at });
+    expect(turnTarget('turn', 'hidden-garden', 'clean', at)?.state).toBe('clean');
+    expect(turnTarget('turn', 'hidden-garden', undefined, at)).toBeUndefined();
+    expect(turnTarget('anomaly', 'hidden-garden', 'anomaly', at)).toBeUndefined();
   });
 });

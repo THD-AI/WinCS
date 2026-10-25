@@ -12,6 +12,7 @@ import { sheetAnimations } from './atmosphere/sprites';
  * - `pipe-eyes`: two glossy plush eyes in the dark of a pipe, watching. Come closer and they narrow and are gone –
  *   for good, until the region is loaded again (secret horror: friendly first, wrong on a second look).
  * - `paper-boat`: a soggy paper boat rocking at the outlet.
+ * And in the clean state, a flicker where a `turn` interact box is (the tear that turns the region).
  */
 export const PROP_KINDS = ['balloon', 'pipe-eyes', 'paper-boat'] as const;
 export type PropKind = typeof PROP_KINDS[number];
@@ -47,11 +48,26 @@ export function propMarkers(chunks: Pick<CollisionChunk, 'world'>[]): (Marker & 
 /** The balloon's bob (px, negative is up): a slow push against the ceiling, never higher than it. */
 export const bob = (t: number) => Math.round(Math.max(0, Math.sin(t / 900)) * 2);
 
+/**
+ * The turn box's flicker in the clean state (the anomaly state has the baked tear): a grey sliver of the 404 that
+ * shows for a moment now and then. Opacity at time t (ms), 0 most of the time.
+ */
+export function flicker(t: number): number {
+  const phase = t % 2600;
+  return phase < 90 ? 0.55 : phase > 180 && phase < 230 ? 0.3 : 0;
+}
+
 export class Props {
   private eyes: { model: EyesModel; sprite: Phaser.GameObjects.Sprite }[] = [];
   private balloons: { marker: Marker; sprite: Phaser.GameObjects.Sprite; string: Phaser.GameObjects.Graphics }[] = [];
+  private slivers: Phaser.GameObjects.Rectangle[] = [];
 
-  constructor(private scene: Phaser.Scene, chunks: CollisionChunk[], private hero: () => Body | undefined) {
+  constructor(private scene: Phaser.Scene, chunks: CollisionChunk[], private hero: () => Body | undefined, state = 'clean') {
+    if (state === 'clean') {
+      for (const box of chunks.flatMap(chunk => chunk.world.interact).filter(box => box.kind === 'turn')) {
+        this.slivers.push(scene.add.rectangle(box.x + box.w / 2, box.y + box.h / 2, 24, 40, 0x9c9c9c).setDepth(PROP_DEPTH).setAlpha(0));
+      }
+    }
     const anims = sheetAnimations(scene, BOARD);
     if (!anims) return; // the board is not exported: no props, no placeholder
     for (const marker of propMarkers(chunks)) {
@@ -73,6 +89,7 @@ export class Props {
   }
 
   update(dt: number): void {
+    for (const sliver of this.slivers) sliver.setAlpha(flicker(this.scene.time.now));
     const hero = this.hero();
     for (const { model, sprite } of this.eyes) {
       if (!sprite.visible) continue;

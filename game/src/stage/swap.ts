@@ -18,6 +18,11 @@ export function swapRegion(scene: Phaser.Scene, target: RegionTarget): void {
   scene.game.scene.start('Preload', target);
 }
 
+/** A `turn` box's crossing: the same region in the box's target state, landing where the hero stands. */
+export function turnTarget(kind: string, region: string, state: RegionState | undefined, at: Position): RegionTarget | undefined {
+  return kind === 'turn' && state ? { region, state, spawn: { x: at.x, y: at.y } } : undefined;
+}
+
 type Scenes = Pick<Phaser.Scenes.SceneManager, 'pause' | 'resume' | 'isPaused' | 'isActive'>;
 
 /**
