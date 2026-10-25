@@ -39,3 +39,4 @@ hidden-garden 07-foreground,stage layer,renderer (2) – blur over hero,tiles ×
 hidden-garden bench,stage prop,prologue (4) – Dexter sits,painted in hg-0-0 05-play,–,hg-0-0,approved,part of the plate (seat ≈ x 700–880 in hg-0-0); Dexter's sit frames are placed on it
 rusty-creek layers,stage layer,Region 1,3 chunks × 7 layers,clean + anomaly,rusty-creek sources,approved,art ✅; collision ⬜ (docs/07)
 surfaces / atmosphere data,data,"(2), (3)",–,–,–,approved,"art/stages/hidden-garden/{atmosphere,surfaces}.json and rusty-creek/surfaces.json (#166, #168), exported with the stage"
+it-props,sprite,"the storm drain (hg-3-1): balloon, eyes in the pipe, paper boat",balloon ~18 · eyes 7 · boat 9,balloon 3 · eyes 3 · boat 3,food sheet look + Dexter's eyes + style master,exported,stage/props.ts places them from the zone's spawn markers; awaiting Alexander's review
