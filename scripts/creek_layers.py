@@ -106,6 +106,8 @@ def compose(plates, architecture=None):
     config = read(BASE / 'export.json')
     out = blank()
     for role in config['states']['clean' if architecture is not None else 'anomaly']:
+        if config['layers'][role].get('overlay'):
+            continue  # drawn over the art in the game (Jenny's arena platforms), not part of the masters
         layer = architecture if role == 'clean-architecture' else plates[role]
         dy = config['layers'][role].get('dy', 0)
         if dy:  # a plate painted off its ground, moved down onto it

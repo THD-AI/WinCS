@@ -129,6 +129,15 @@
    "h": 76,
    "note": "at the fallen birch: Dexter hops onto it and looks back",
    "act": "wait"
+  },
+  {
+   "id": "rubber-chicken",
+   "kind": "rubber-chicken",
+   "x": 28,
+   "y": 434,
+   "w": 44,
+   "h": 30,
+   "note": "A secret (playtest T2): the rubber chicken, lost behind the gate pillar, left of where you start. It squeaks."
   }
  ],
  "spawn": [

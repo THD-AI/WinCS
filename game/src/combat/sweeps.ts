@@ -1,3 +1,5 @@
+import { frameCount, frameTime, type Clips } from './clips';
+
 export interface Rect { x: number; y: number; w: number; h: number }
 export interface ChairHit { damage: number; direction: -1 | 1; position: { x: number; y: number }; kind: 'sweep' | 'up' | 'slam' }
 export interface Damageable { id: string; active?(): boolean; bounds(): Rect; hit(hit: ChairHit): boolean }
@@ -32,6 +34,8 @@ export class Sweeps {
   private elapsed = 0;
   private queued: -1 | 1 | null = null;
   private struck = new Set<string>();
+  /** `clips`: chair-side.anims.json (sweep-a, sweep-b, recoil). */
+  constructor(private clips?: Clips) {}
   private begin(direction: -1 | 1) {
     this.phase = this.nextB ? 'sweep-b' : 'sweep-a'; this.nextB = !this.nextB;
     this.direction = direction; this.frame = 0; this.elapsed = 0; this.struck.clear();
@@ -44,9 +48,9 @@ export class Sweeps {
   step(dt: number) {
     if (this.phase === 'idle') return;
     this.elapsed += dt;
-    while (this.elapsed + 1e-9 >= 1 / 12 && this.phase !== 'idle') {
-      this.elapsed = Math.max(0, this.elapsed - 1 / 12); this.frame++;
-      if (this.frame < (this.phase === 'recoil' ? 2 : 8)) continue;
+    while (this.phase !== 'idle' && this.elapsed + 1e-9 >= frameTime(this.clips, this.phase)) {
+      this.elapsed = Math.max(0, this.elapsed - frameTime(this.clips, this.phase)); this.frame++;
+      if (this.frame < frameCount(this.clips, this.phase, this.phase === 'recoil' ? 2 : 8)) continue;
       if (this.phase !== 'recoil') { this.phase = 'recoil'; this.frame = 0; }
       else {
         this.phase = 'idle'; this.frame = 0;

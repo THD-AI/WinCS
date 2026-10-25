@@ -58,6 +58,10 @@ export type Crash404 = (hero: CrossingHero, onLand: () => void) => void;
  * `act`, the `secret` box with its item, the roof glint, and the `anomaly` box at the jetty edge.
  */
 export class Prologue {
+  /** The shove clip's speed, from the dexter board (#156: one timing source). */
+  private get shoveFps(): number {
+    return (this.stage.cache.json.get('dexter.anims') as Record<string, { fps: number }> | undefined)?.shove?.fps ?? 12;
+  }
   readonly guide: DexterGuide;
   readonly finale: FinaleSequence;
   private dexter: Phaser.GameObjects.Sprite;
@@ -77,7 +81,9 @@ export class Prologue {
     const boxes = worlds.flatMap(w => w.interact);
     const spawns = worlds.flatMap(w => w.spawn);
     const bench = spawns.find(s => s.id === 'dexter-bench') ?? spawns.find(s => s.kind === 'dexter')!;
-    this.guide = new DexterGuide({ bench, lines, ...stopsFrom(boxes) });
+    // The hop's length is the dexter board's hop clip (#156: one timing source).
+    const hop = (stage.cache.json.get('dexter.anims') as Record<string, { frames: number; fps: number }> | undefined)?.hop;
+    this.guide = new DexterGuide({ bench, lines, ...stopsFrom(boxes), ...(hop && { hopClip: hop.frames / hop.fps * 1000 }) });
     this.pondEdge = boxes.find(b => b.kind === 'anomaly');
     this.finale = new FinaleSequence(() => this.toCrash());
     createAnims(stage, ANIMS);
@@ -135,7 +141,7 @@ export class Prologue {
     }
     if (phase === 'shove') {
       if (entered) this.play('dexter:shove');
-      if (!this.proxy && t * FINALE.shove >= (FINALE.contactFrame * 1000) / 12) this.knock(player);
+      if (!this.proxy && t * FINALE.shove >= FINALE.contactFrame * 1000 / this.shoveFps) this.knock(player);
     }
     if (phase === 'fall') {
       if (entered) {

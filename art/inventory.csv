@@ -40,3 +40,8 @@ hidden-garden bench,stage prop,prologue (4) – Dexter sits,painted in hg-0-0 05
 rusty-creek layers,stage layer,Region 1,3 chunks × 7 layers,clean + anomaly,rusty-creek sources,approved,art ✅; collision ⬜ (docs/07)
 surfaces / atmosphere data,data,"(2), (3)",–,–,–,approved,"art/stages/hidden-garden/{atmosphere,surfaces}.json and rusty-creek/surfaces.json (#166, #168), exported with the stage"
 it-props,sprite,"the storm drain (hg-3-1): balloon, eyes in the pipe, paper boat",balloon ~18 · eyes 7 · boat 9,balloon 3 · eyes 3 · boat 3,food sheet look + Dexter's eyes + style master,exported,stage/props.ts places them from the zone's spawn markers; awaiting Alexander's review
+rubber-chicken,sprite,"secret (hg-0-0, behind the gate pillar)",37×9 (lying),rest 1 · squeak 1,food sheet look + style master,exported,playtest T2; squeaks (synth); awaiting Alexander's review
+arena-platform,stage prop,Jenny's arena (rc-2-0 anomaly),202×25 girder,platform 1,maze girder crop + coffee-machine look,drawn,composed into art/stages/rusty-creek/arena/right.png by scripts/arena_platforms.py; awaiting review
+arena-chain,stage prop,Jenny's arena (rc-2-0 anomaly),"14 px wide, tiled",chain 2,arena-platform look,drawn,"the platforms hang on it, tiled up to the girder above; awaiting review"
+arena-wall,stage prop,Jenny's arena walls (both ends),56×300,lamp 2,coffee-machine look + Jenny sheet,exported,the arena's walls while the fight runs; despeckle 12; awaiting review
+hero-ladder,sprite,hero (3) – ladder ends,76,ladder-top 4 · ladder-bottom 3,hero sheet + pose photos,exported,the climb onto and off a ladder (traversal.ts times are pinned to these clips)

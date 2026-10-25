@@ -14,6 +14,7 @@ import { BODY_WIDTH } from '../player/body';
 import { Triggers } from '../stage/triggers';
 import { Rooms } from '../stage/rooms';
 import { Props } from '../stage/props';
+import { addChickens } from '../stage/chicken';
 import { DebugOverlay, type EnemyLike, type JennyLike, type DexterLike } from '../stage/debugOverlay';
 import { fallCapture } from '../stage/fallCapture';
 import { GameMenu } from '../ui/menu';
@@ -65,6 +66,7 @@ export class Stage extends Phaser.Scene {
     this.triggers = new Triggers(data.collisions, data.manifest.region);
     this.rooms = new Rooms(this, this.player, data.collisions, data.manifest.region);
     this.props = new Props(this, data.collisions, () => this.player?.body, data.state);
+    addChickens(this, data.collisions);
     this.follow = import.meta.env.DEV && new URLSearchParams(location.search).has('inspect')
       ? undefined : cameraFollow(this, data.manifest);
     this.overlay = new DebugOverlay(this, stage, legend, data.collisions, {

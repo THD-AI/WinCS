@@ -27,13 +27,16 @@ export interface GuideSetup {
   stops: Stop[];
   /** walk + oneWay polylines in stage px. */
   lines: Pt[][];
+  /** His hop clip's length (ms), from dexter.anims.json (#156: one timing source); HOP_CLIP without it. */
+  hopClip?: number;
 }
 
 /** The stage's scale (docs/09: the 76 px hero is 1.83 m) and Dexter's height in it (docs/03: a 27 px plush). */
 export const PX_PER_M = 43;
 export const PLUSH = 27;
 /** His hop clip: dexter `hop`, 4 frames at 12 fps. */
-const HOP_CLIP = (4 / 12) * 1000;
+/** His hop clip's length (ms) when the dexter board's anims.json is not given: 4 frames at 12 fps. */
+export const HOP_CLIP = (4 / 12) * 1000;
 
 export const GUIDE = {
   /** He keeps this far ahead of the hero (px): four plush-lengths, ~2.5 m. */
@@ -153,6 +156,8 @@ export class DexterGuide {
   private lastHeroX?: number;
   readonly route: Route;
 
+  /** His hop's length (ms): the hop clip's, from the board. */
+  private get hopMs() { return this.setup.hopClip ?? GUIDE.hopTime; }
   constructor(private readonly setup: GuideSetup) {
     this.x = setup.bench.x;
     this.y = setup.bench.y;
@@ -232,7 +237,7 @@ export class DexterGuide {
     const toY = this.route.groundAt(toX, this.y + PLUSH) ?? this.y;
     this.facing = 1;
     this.enter('hop-off');
-    this.hop = { from: { x: this.x, y: this.y }, to: { x: toX, y: toY }, t: 0, duration: GUIDE.hopOff, height: GUIDE.hopLift + 6 };
+    this.hop = { from: { x: this.x, y: this.y }, to: { x: toX, y: toY }, t: 0, duration: this.hopMs * 1.4, height: GUIDE.hopLift + 6 };
   }
 
   private waitFor(resumeAt: number): void {
@@ -276,7 +281,7 @@ export class DexterGuide {
     const aheadX = this.x + GUIDE.lookAhead;
     const ahead = this.route.groundAt(aheadX, this.y);
     if (ahead !== undefined && Math.abs(this.y - ahead) <= GUIDE.stepRise) return false;
-    const duration = GUIDE.hopTime * 0.75;
+    const duration = this.hopMs * 0.75;
     const reach = (this.hopSpeed() * duration) / 1000;
     let toX = this.x + Math.max(GUIDE.lookAhead + 16, reach);
     let toY = this.route.groundAt(toX, ahead ?? this.y);
@@ -297,7 +302,7 @@ export class DexterGuide {
 
   /** The hero closed in: a hop ahead along the route at sprint speed (one hop clip long). */
   private hopAhead(): boolean {
-    const distance = Math.min(this.end() - this.x, (this.hopSpeed() * GUIDE.hopTime) / 1000);
+    const distance = Math.min(this.end() - this.x, (this.hopSpeed() * this.hopMs) / 1000);
     if (distance < PLUSH) return false;
     let toX = this.x + distance;
     let toY = this.route.groundAt(toX, this.y);
@@ -308,7 +313,7 @@ export class DexterGuide {
       toY = this.route.groundAt(toX, this.y) ?? this.y;
     }
     this.v = Math.max(this.v, this.heroV, GUIDE.walk);
-    this.jump({ x: toX, y: toY }, GUIDE.hopTime, GUIDE.hopLift + Math.max(0, this.y - toY));
+    this.jump({ x: toX, y: toY }, this.hopMs, GUIDE.hopLift + Math.max(0, this.y - toY));
     return true;
   }
 

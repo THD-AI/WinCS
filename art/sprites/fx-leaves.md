@@ -1,7 +1,7 @@
 # FX · falling leaves
 
 <!-- nav:start -->
-[← Dexter · gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 28** · [FX · footstep puffs →](fx-ground.md)
+[← Dexter · gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 32** · [FX · footstep puffs →](fx-ground.md)
 <!-- nav:end -->
 
 ![FX · falling leaves](images/fx-leaves-preview.png)
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx-leaves.png` · rebuild: `python scripts/make_boards.py draw fx-leaves --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Dexter · gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 28** · [FX · footstep puffs →](fx-ground.md)
+[← Dexter · gestures](dexter-acts.md) · [Sprite boards](README.md) · **23 / 32** · [FX · footstep puffs →](fx-ground.md)
 <!-- nav:end -->

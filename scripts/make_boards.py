@@ -275,6 +275,8 @@ def crush(board: dict) -> None:
     else:
         small = image.resize(size, Image.Resampling.BOX).convert("RGBA")
     alpha = small.getchannel("A").point(lambda a: 255 if a >= 128 else 0)
+    if board.get("despeckle"):
+        alpha = despeckle(alpha, board["despeckle"])
     colours = small.convert("RGB").quantize(board.get("colours", COLOURS), method=Image.Quantize.MEDIANCUT,
                                              dither=Image.Dither.NONE)
     sprite = colours.convert("RGBA")
@@ -287,6 +289,36 @@ def crush(board: dict) -> None:
     preview.resize((small.width * f, small.height * f), Image.Resampling.NEAREST).save(
         OUT / f"{board['id']}-preview.png", optimize=True)
     print(f"{board['id']}: {small.width}x{small.height} sprite + preview")
+
+
+def despeckle(alpha: Image.Image, smaller_than: int) -> Image.Image:
+    """Drop the islands of opaque pixels smaller than `smaller_than` (8-connected): a glow the model drew as a soft
+    halo crushes into scattered specks, which read as noise over any backdrop (backdrop_check.py). The game draws
+    glows itself."""
+    w, h = alpha.size
+    solid = [v > 0 for v in alpha.getdata()]
+    seen = [False] * (w * h)
+    out = alpha.copy()
+    for start in range(w * h):
+        if not solid[start] or seen[start]:
+            continue
+        island, todo = [start], [start]
+        seen[start] = True
+        while todo:
+            i = todo.pop()
+            x, y = i % w, i // w
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    nx, ny = x + dx, y + dy
+                    j = ny * w + nx
+                    if 0 <= nx < w and 0 <= ny < h and solid[j] and not seen[j]:
+                        seen[j] = True
+                        island.append(j)
+                        todo.append(j)
+        if len(island) < smaller_than:
+            for i in island:
+                out.putpixel((i % w, i // w), 0)
+    return out
 
 
 def describe(ref: str) -> str:

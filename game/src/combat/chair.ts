@@ -4,6 +4,7 @@ import type { Player } from '../player/player';
 import { sound } from '../fx/sound/Audio';
 import { HitStop, Sweeps, SWEEP_CONTACT, type Damageable, type Rect } from './sweeps';
 import { Overhead, SLAM_SPEED } from './overhead';
+import type { Clips } from './clips';
 import { Guard } from './guard';
 import { BODY_HEIGHT, BODY_WIDTH } from '../player/body';
 import { actionEdges, attackClick, AttackBuffer } from './action-input';
@@ -11,7 +12,7 @@ import { lowStreak, swingArc } from './swingFx';
 import { LOW_CONTACT, LowSweep } from './lowSweep';
 import { pickAssist } from './assist';
 import { UP_CONTACT } from './overhead';
-import { CODES, physicalKeys } from '../player/physicalKeys';
+import { bindings, CODES, physicalKeys } from '../player/physicalKeys';
 
 const ROVER_HEIGHT = 25; // docs/05 and approved enemy-rover:idle-00 alpha height.
 const ROVER_WIDTH = 31; // Approved enemy-rover:idle-00 alpha width; compare.py measures 31×25.
@@ -19,12 +20,12 @@ const FIXTURE_KNOCK = 8; // docs/02: development fixture displacement, not real 
 const GRAIN = 2; // docs/09: two-pixel grain; retain this overlap after the fixture moves.
 
 export class ChairCombat {
-  readonly sweeps = new Sweeps();
+  readonly sweeps: Sweeps;
   readonly pause = new HitStop();
-  readonly overhead = new Overhead();
-  readonly guard = new Guard();
+  readonly overhead: Overhead;
+  readonly guard: Guard;
   /** ↓ + Act on the ground: the chair along the floor (lowSweep.ts). */
-  readonly low = new LowSweep();
+  readonly low: LowSweep;
   private targets = new Map<string, Damageable>();
   private key: Phaser.Input.Keyboard.Key;
   /** The second attack bind (playtest 24 Oct): X, for players on the arrow keys. */
@@ -46,6 +47,12 @@ export class ChairCombat {
   private visible = false;
   enabled: boolean;
   constructor(private scene: Phaser.Scene, private player: Player, _region: string) {
+    // Every move's timing from its board's anims.json (#156: one timing source).
+    const clips = (board: string) => scene.cache.json.get(`${board}.anims`) as Clips | undefined;
+    this.sweeps = new Sweeps(clips('chair-side'));
+    this.overhead = new Overhead(clips('chair-overhead'));
+    this.low = new LowSweep(clips('chair-overhead'));
+    this.guard = new Guard(clips('chair-block'));
     // Armed once the hero picked the chair up (chairPickup.ts), in every region after that.
     this.enabled = carriesChair(scene);
     this.key = scene.input.keyboard!.addKey('J');
@@ -161,14 +168,16 @@ export class ChairCombat {
     this.guard.step(milliseconds / 1000);
     if (this.guard.phase !== 'break') this.guard.direction = this.player.facing;
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
-    const down = this.key.isDown || this.altKey.isDown || this.physical.any(CODES.attack) || !!pad?.X || this.mouse.down;
+    // J and X (Phaser's keys) count only while attack has its default keys; a rebound attack is its own key alone.
+    const named = bindings.isDefault('attack');
+    const down = named && (this.key.isDown || this.altKey.isDown) || this.physical.any(CODES.attack) || !!pad?.X || this.mouse.down;
     // Both edge checks run every frame so neither key keeps a stale Just-flag.
-    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean) || this.mouse.released;
-    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean) || this.mouse.pressed;
+    const justUp = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustUp(k)).some(Boolean) && named || this.mouse.released;
+    const justDown = [this.key, this.altKey].map(k => Phaser.Input.Keyboard.JustDown(k)).some(Boolean) && named || this.mouse.pressed;
     this.mouse.pressed = false; this.mouse.released = false;
     const { pressed, released } = actionEdges(down, this.wasDown, justDown, justUp);
-    const up = this.directions.W.isDown || this.directions.UP.isDown || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
-    const below = this.directions.S.isDown || this.directions.DOWN.isDown || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
+    const up = bindings.isDefault('up') && (this.directions.W.isDown || this.directions.UP.isDown) || this.physical.any(CODES.up) || !!pad?.up || (pad?.leftStick.y ?? 0) < -0.2;
+    const below = bindings.isDefault('down') && (this.directions.S.isDown || this.directions.DOWN.isDown) || this.physical.any(CODES.down) || !!pad?.down || (pad?.leftStick.y ?? 0) > 0.2;
     this.buffer.step(milliseconds / 1000);
     if (this.enabled && pressed && this.player.dodge.active) {
       // Pressed during a dodge-dash: struck as the dash ends.

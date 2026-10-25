@@ -19,9 +19,10 @@ import { Interaction } from './interaction';
 import { HeroSlices, PonchoSway } from './idle-life';
 import { parseAtmosphere, type Wind } from '../stage/atmosphere/config';
 import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
+import { heroRim, preferences } from '../core/preferences';
 import { dataKey } from '../boot/manifest';
 import { GuardPush } from '../combat/guard';
-import { CODES, physicalKeys } from './physicalKeys';
+import { bindings, CODES, physicalKeys, type Action } from './physicalKeys';
 import { Dodge } from './dodge';
 import { Lunge } from '../combat/assist';
 
@@ -35,7 +36,7 @@ export class Player {
   onHealthChanged: (health: number) => void = () => {};
   onHazards: (boxes: Box[]) => boolean = () => false;
   onGuard: (damage: number, sourceX: number) => boolean = () => false;
-  private guardPush = new GuardPush();
+  private guardPush: GuardPush;
   /** The dodge-dash (dodge.ts); `dodgeWas` is last frame's button, `ghost` the time to the next after-image. */
   readonly dodge = new Dodge();
   private dodgeWas = false;
@@ -93,7 +94,11 @@ export class Player {
     this.hurt = new HurtAnimation(scene.cache.json.get('hero-hurt.anims') ?? {}, scene.cache.json.get('hero-death.anims') ?? {});
     this.sprite = scene.add.sprite(this.body.x, this.body.y, 'hero-move', 'idle-00').setOrigin(0.5, 1).setDepth(100);
     this.slices = new HeroSlices(scene, this.sprite);
-    for (const sprite of [this.sprite, ...this.slices.parts]) addRim(sprite, ACTOR_RIM.colour, ACTOR_RIM.strength);
+    // The actors' warm rim, or a brighter cool outline when the player asked for it (Settings, playtest R1).
+    const rim = () => { const r = heroRim(preferences.state, ACTOR_RIM); for (const s of [this.sprite, ...this.slices.parts]) addRim(s, r.colour, r.strength); };
+    rim();
+    const offRim = preferences.on(rim);
+    scene.events.once('shutdown', offRim);
     this.blades = scene.add.graphics().setDepth(101);
     // After every scene update (the chair may swap the hero's frame): place the feet in the ground.
     const settle = () => this.settle();
@@ -101,6 +106,7 @@ export class Player {
     scene.events.once('shutdown', () => scene.events.off('postupdate', settle));
     this.keys = scene.input.keyboard!.addKeys('A,D,W,S,LEFT,RIGHT,UP,DOWN,SPACE,K,Z,J,X,L,C,SHIFT') as Record<string, Phaser.Input.Keyboard.Key>;
     this.physical = physicalKeys(scene);
+    this.guardPush = new GuardPush(scene.cache.json.get('chair-block.anims'));
     this.debug = scene.add.graphics().setDepth(10001);
     this.label = scene.add.text(20, 135, '', { fontFamily: 'monospace', fontSize: '18px', backgroundColor: '#17242d' })
       .setScrollFactor(0).setDepth(10002).setVisible(false);
@@ -197,14 +203,16 @@ export class Player {
     const pad = this.scene.input.gamepad?.getAll().find(p => p.connected);
     const interacting = this.interaction.active;
     const interactionPose = this.interaction.step(milliseconds / 1000);
-    // Phaser's keys (keyCode) or the physical key (code): WASD works on any layout and with an input method active.
-    const key = (codes: readonly string[], ...names: string[]) => names.some(name => this.keys[name].isDown) || this.physical.any(codes);
-    const axis = interacting ? 0 : horizontal(key(CODES.left, 'A', 'LEFT'), key(CODES.right, 'D', 'RIGHT'),
+    // The physical key (code): WASD works on any layout and with an input method active. Phaser's keys (keyCode)
+    // only back up an action that still has its default keys – a rebound action answers to its own key alone.
+    const key = (action: Action, ...names: string[]) =>
+      this.physical.any(CODES[action]) || bindings.isDefault(action) && names.some(name => this.keys[name].isDown);
+    const axis = interacting ? 0 : horizontal(key('left', 'A', 'LEFT'), key('right', 'D', 'RIGHT'),
       pad?.leftStick.x, pad?.left, pad?.right);
-    const jumpDown = !interacting && (key(CODES.jump, 'SPACE', 'K', 'Z') || !!pad?.A);
-    const vertical = interacting || key(CODES.attack, 'J', 'X') || pad?.X ? 0 : horizontal(key(CODES.up, 'W', 'UP'), key(CODES.down, 'S', 'DOWN'),
+    const jumpDown = !interacting && (key('jump', 'SPACE', 'K', 'Z') || !!pad?.A);
+    const vertical = interacting || key('attack', 'J', 'X') || pad?.X ? 0 : horizontal(key('up', 'W', 'UP'), key('down', 'S', 'DOWN'),
       pad?.leftStick.y, pad?.up, pad?.down);
-    const dodgeDown = !interacting && (key(CODES.dodge, 'L', 'C', 'SHIFT') || !!pad?.B || !!pad?.R1);
+    const dodgeDown = !interacting && (key('dodge', 'L', 'C', 'SHIFT') || !!pad?.B || !!pad?.R1);
     let dodgePressed = dodgeDown && !this.dodgeWas;
     this.dodgeWas = dodgeDown;
     const geometry = this.chunks.map(c => c.world);

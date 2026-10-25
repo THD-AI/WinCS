@@ -59,7 +59,7 @@ export class JennyBoss {
   private parts = new Map<Part, Phaser.GameObjects.Sprite>();
   private shadows = new Map<Part, Phaser.GameObjects.Ellipse>();
   /** The arena's two walls, drawn while they are closed so they are never invisible. */
-  private barriers: Phaser.GameObjects.Graphics[] = [];
+  private barriers: (Phaser.GameObjects.Graphics | Phaser.GameObjects.Sprite)[] = [];
   /** Her path in the rev: a strip on the floor from her nose to the wall she will hit. */
   private path?: Phaser.GameObjects.Rectangle;
   /** Stars circling over her while she is stunned: she is dazed, hit her now. */
@@ -124,8 +124,17 @@ export class JennyBoss {
     this.hud?.model?.showBoss(NAME, JENNY_HEALTH);
   }
 
-  /** A closed wall: a rusted barrier with hazard stripes, so it reads as "not until she is beaten". */
-  private drawBarrier(box: Box): Phaser.GameObjects.Graphics {
+  /**
+   * A closed wall reads as "not until she is beaten": the barrier column (`arena-wall` board, its warning lamp
+   * blinking), standing on the wall's foot; without the board, a rusted barrier with hazard stripes.
+   */
+  private drawBarrier(box: Box): Phaser.GameObjects.Graphics | Phaser.GameObjects.Sprite {
+    if (this.scene.textures.exists('arena-wall')) {
+      if (!this.scene.anims.exists('arena-wall:lamp')) this.scene.anims.create({ key: 'arena-wall:lamp', frameRate: 3, repeat: -1,
+        frames: this.scene.anims.generateFrameNames('arena-wall', { prefix: 'lamp-', start: 0, end: 1, zeroPad: 2 }) });
+      return this.scene.add.sprite(box.x + box.w / 2, box.y + box.h, 'arena-wall', 'lamp-00').setOrigin(0.5, 1)
+        .setDepth(DEPTH + 3).setAlpha(0).play('arena-wall:lamp');
+    }
     const g = this.scene.add.graphics({ x: box.x, y: box.y }).setDepth(DEPTH + 3).setAlpha(0);
     g.fillStyle(0x3a2418, 0.85).fillRect(0, 0, box.w, box.h);
     g.lineStyle(2, 0xc8642a, 1).strokeRect(1, 1, box.w - 2, box.h - 2);

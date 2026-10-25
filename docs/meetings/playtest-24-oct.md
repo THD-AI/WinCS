@@ -11,7 +11,7 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 
 | # | What they said | Interpretation | Status |
 | --- | --- | --- | --- |
-| R1 | The hero blends into the background (trees, tree line, buildings); try a white poncho or a purple "Teletubby" sweater – "something for Alex to decide" | The grey/blue/teal THD poncho sits in the same values as the autumn scenery | ❓ colour; a brighter rim or outline is the quick fix |
+| R1 | The hero blends into the background (trees, tree line, buildings); try a white poncho or a purple "Teletubby" sweater – "something for Alex to decide" | The grey/blue/teal THD poncho sits in the same values as the autumn scenery | 🔧 the quick fix is in: Settings → Hero → "Brighter outline" (a cool white rim instead of the warm one); the poncho colour itself is still ❓ Alexander's |
 | R2 | Enemies are "way too small", barely visible; the professor didn't realise the robots were enemies. Vatsal: robots +300 % (≈ half the hero), hero ×1.5. Lex: "maybe don't make them bigger, but make them actually visible" | Rovers are 25 px against an 80 px hero. Scale against the world is the open question (Alexander: "is the character too small?") | ❓ bigger vs more visible – see the scale note below |
 | R3 | The attack animation is confusing, "barely noticeable that it is an attack" | Swing and hit need a visible arc, flash and impact | 🔧 fights branch |
 | R4 | The foreground bar or pipe in the middle of the view clutters it: move it behind (in front of the tree line, behind the buildings) | Rusty Creek's near-rails plate (z 6, scroll 1.1) crosses the play area | ⏭ a layer move; check with the Debug tab's layer switches |
@@ -25,8 +25,8 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 | J3 | One Jenny hit leaves you nearly dead (3 of 5) → at most half the health | 🔧 |
 | J4 | Make it obvious she must crash into something to become hittable – the satisfaction of figuring it out | ✅ crash shake, sound and smoke; stun-ending warning; reboot sparks (fights branch) |
 | J5 | Scraps should hurt but must be clearly visible | 🔧 |
-| J6 | An invisible wall in the arena; the arena is "awful to fight in" with limited movement – add platforms in the middle, maybe a slightly higher jump to clear her | 🔧 hitboxes; platforms are stage data ⏭ |
-| J7 | After Jenny: a wall at the right end that says "you can't pass until you beat her", not just the camera stopping | ✅ a far wall closes the arena during the fight (fights branch); a visible barrier ⏭ |
+| J6 | An invisible wall in the arena; the arena is "awful to fight in" with limited movement – add platforms in the middle, maybe a slightly higher jump to clear her | ✅ two girder platforms hung on chains from the girder over her arena (`scripts/arena_platforms.py`, boards `arena-platform` and `arena-chain`, an overlay layer): reachable with a full jump, and she drives under them – stand on one and let her pass; the walls are drawn whenever they are closed (#186) |
+| J7 | After Jenny: a wall at the right end that says "you can't pass until you beat her", not just the camera stopping | ✅ both walls are drawn as rusted hazard-striped barriers whenever they are closed, and the fight (and the walls) start as soon as you are inside the arena (#186); they fade out when she is beaten |
 | J8 | Landing on top of an enemy hurts the hero | Intended – no change |
 | J9 | Double jump | Rejected (Lex: Metroidvanias give it last or never) |
 
@@ -38,7 +38,7 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 | M2 | Ladder: alternate the arms by flipping the climb sprite each rung (no new art) | 🔧 |
 | M3 | WASD did not move the hero (A16) | 🔧 the code reads A/D/W/S – checking keyboard layouts |
 | M4 | Attack only on J is awkward for arrow-key players: add a second bind (Z/X), or move it | 🔧 second bind X |
-| M5 | Rebindable keys in Settings (nice to have) | ⏭ listed under Coming soon |
+| M5 | Rebindable keys in Settings (nice to have) | ✅ Settings → Keys: one key of your own per action, saved in the browser; the Controls tab lists your keys |
 
 ## Menu and debug (A17 and Alexander)
 
@@ -54,8 +54,8 @@ Vatsal and Lex played the live slice on 24 Oct and recorded what to fix ([A15](t
 
 | # | What | Status |
 | --- | --- | --- |
-| T1 | The jam theme **"It's spooky outside"** must show | ❓ title card or loading line, e.g. the crash window or the title's subtitle |
-| T2 | The **rubber chicken** must be in the game somehow | ❓ smallest version: a rubber chicken prop as a secret pickup or on Dexter's bench; it squeaks |
+| T1 | The jam theme **"It's spooky outside"** must show | ✅ under the title ("DEGDEV 3 - It's spooky outside."), as the loader's last line ("WARNING: It's spooky outside.") and in the credits |
+| T2 | The **rubber chicken** must be in the game somehow | ✅ a secret: lost behind the garden's gate pillar, left of where you start; walk into it and it squeaks (sprite board `rubber-chicken`, synthesized squeak) |
 
 ## Scale – hero against the world
 

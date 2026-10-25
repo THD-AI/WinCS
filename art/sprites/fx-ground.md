@@ -1,7 +1,7 @@
 # FX · footstep puffs
 
 <!-- nav:start -->
-[← FX · falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 28** · [FX · pond ripples and lily pad →](fx-water.md)
+[← FX · falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 32** · [FX · pond ripples and lily pad →](fx-water.md)
 <!-- nav:end -->
 
 ![FX · footstep puffs](images/fx-ground-preview.png)
@@ -29,5 +29,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/fx-ground.png` · rebuild: `python scripts/make_boards.py draw fx-ground --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← FX · falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 28** · [FX · pond ripples and lily pad →](fx-water.md)
+[← FX · falling leaves](fx-leaves.md) · [Sprite boards](README.md) · **24 / 32** · [FX · pond ripples and lily pad →](fx-water.md)
 <!-- nav:end -->

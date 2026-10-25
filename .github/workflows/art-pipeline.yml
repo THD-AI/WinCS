@@ -26,3 +26,4 @@ jobs:
       - run: python scripts/collision_check.py
       - run: python scripts/export_stage.py --verify --out tmp/stage-export
       - run: python scripts/check_docs.py
+      - run: python scripts/assets.py status --strict

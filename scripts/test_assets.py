@@ -57,6 +57,13 @@ class AssetSystemTests(unittest.TestCase):
         self.assertEqual(issues, ["walker: the sheet says 'exported', the files say 'approved'"])
         self.assertEqual(a.upcoming(rows, self.boards), ["plan [planned] -> python scripts/make_boards.py draw plan"])
 
+    def test_status_flags_an_exported_atlas_the_inventory_never_listed(self):
+        self.export("walker", {"walk": {"frames": 8}})
+        self.export("stray", {"idle": {"frames": 2}})
+        rows = [{"id": "walker", "kind": "sprite", "frames/anims": "walk 8", "status": "approved"}]
+        _, issues = a.status(rows, self.boards)
+        self.assertEqual(issues, ["stray: exported to the game but not in art/inventory.csv"])
+
     def test_check_fails_a_clip_that_stays_unreadable_with_the_rim(self):
         import readability
         self.export("walker", {"walk": {"frames": 8}})

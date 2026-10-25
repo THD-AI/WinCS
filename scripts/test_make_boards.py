@@ -38,6 +38,20 @@ class HoleMaskTests(unittest.TestCase):
         self.assertIsNone(mb.hole_mask(image).getbbox())
 
 
+class DespeckleTests(unittest.TestCase):
+    def test_small_islands_go_and_the_sprite_and_its_attached_glow_stay(self):
+        alpha = Image.new('L', (20, 20), 0)
+        alpha.paste(255, (5, 5, 15, 15))          # the sprite
+        alpha.putpixel((15, 4), 255)              # glow touching it diagonally: part of it
+        alpha.putpixel((1, 1), 255)               # a lone speck
+        alpha.paste(255, (18, 18, 20, 20))        # a 4-pixel island
+        out = mb.despeckle(alpha, 5)
+        self.assertEqual(out.getpixel((1, 1)), 0)
+        self.assertEqual(out.getpixel((19, 19)), 0)
+        self.assertEqual(out.getpixel((15, 4)), 255)
+        self.assertEqual(out.getpixel((10, 10)), 255)
+
+
 class BoardPipelineTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()

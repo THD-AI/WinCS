@@ -8,6 +8,8 @@ export interface DebugState {
   on: boolean;
   /** The back of the world painted purple, so a hole in any plate shows at once. */
   backdrop: boolean;
+  /** The backdrop white instead of purple: dark specks and a dark fringe show there, light ones on purple. */
+  white: boolean;
   /** Walk lines, one-way beams, ladders, walls, water, hazards and triggers. */
   collision: boolean;
   /** Hitboxes, facing, sight, patrol paths and state of the hero, the enemies, Jenny and Dexter. */
@@ -25,7 +27,7 @@ type Listener = (state: DebugState) => void;
 export const ZOOMS = [1, 0.75, 0.5, 0.35] as const;
 
 export class DebugStore {
-  private value: DebugState = { on: false, backdrop: false, collision: true, actors: true, stats: true, hidden: new Set(), zoom: 1 };
+  private value: DebugState = { on: false, backdrop: false, white: false, collision: true, actors: true, stats: true, hidden: new Set(), zoom: 1 };
   private listeners = new Set<Listener>();
   get state(): DebugState { return this.value; }
   set(patch: Partial<Omit<DebugState, 'hidden'>>) { this.value = { ...this.value, ...patch }; this.emit(); }
@@ -44,9 +46,14 @@ export class DebugStore {
 export const debugStore = new DebugStore();
 
 /** One line per switch that is on – printed in the corner so a screenshot records the debug setup. */
+/** The debug backdrop's colour: purple, or white when asked (check every layer against both). */
+export const BACKDROPS = { purple: 0x9b30ff, white: 0xffffff } as const;
+export const backdropColour = (state: Pick<DebugState, 'white'>) => state.white ? BACKDROPS.white : BACKDROPS.purple;
+
 export function describe(state: DebugState): string {
   if (!state.on) return '';
-  const on = (['backdrop', 'collision', 'actors', 'stats'] as const).filter(key => state[key]);
+  const on = (['backdrop', 'collision', 'actors', 'stats'] as const).filter(key => state[key])
+    .map(key => key === 'backdrop' && state.white ? 'backdrop-white' : key);
   const hidden = [...state.hidden].sort();
   return [`debug: ${on.join(' ') || 'nothing'}`, hidden.length ? `hidden: ${hidden.join(' ')}` : '',
     state.zoom !== 1 ? `zoom ${state.zoom}` : ''].filter(Boolean).join(' | ');

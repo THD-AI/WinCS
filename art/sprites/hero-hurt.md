@@ -1,7 +1,7 @@
 # The student · hurt and interact
 
 <!-- nav:start -->
-[← The student · run](hero-run.md) · [Sprite boards](README.md) · **5 / 28** · [The student · death →](hero-death.md)
+[← The student · run](hero-run.md) · [Sprite boards](README.md) · **5 / 32** · [The student · death →](hero-death.md)
 <!-- nav:end -->
 
 ![The student · hurt and interact](images/hero-hurt-preview.png)
@@ -26,5 +26,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hero-hurt.png` · rebuild: `python scripts/make_boards.py draw hero-hurt --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← The student · run](hero-run.md) · [Sprite boards](README.md) · **5 / 28** · [The student · death →](hero-death.md)
+[← The student · run](hero-run.md) · [Sprite boards](README.md) · **5 / 32** · [The student · death →](hero-death.md)
 <!-- nav:end -->

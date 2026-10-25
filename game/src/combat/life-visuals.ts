@@ -1,21 +1,6 @@
 import type Phaser from 'phaser';
 import type { Position } from '../core/events';
-import type { Life } from './life';
 
-export function lifePose(life: Life) {
-  if (life.dead > 0) return { board: 'hero-death', frame: `death-${String(Math.min(11, Math.floor((1 - life.dead) * 12))).padStart(2, '0')}` };
-  if (life.knock > 0) {
-    const time = 1 - life.invulnerable;
-    return { board: 'hero-hurt', frame: time < 0.08 ? 'hit-00'
-      : `knockback-${String(Math.min(2, Math.floor((time - 0.08) * 12))).padStart(2, '0')}` };
-  }
-  return null;
-}
-export function paintLife(sprite: Phaser.GameObjects.Sprite, life: Life, time: number) {
-  if (life.dead === 0 && life.invulnerable > 0.92) sprite.setTintFill(0xffffff);
-  else sprite.clearTint();
-  sprite.setAlpha(life.dead === 0 && life.invulnerable > 0 && Math.floor(time / 80) % 2 ? 0.35 : 1);
-}
 /** Small game particles; no raster assets or changes to the approved art. */
 export function deathDust(scene: Phaser.Scene, position: Position) {
   for (let i = 0; i < 18; i++) {

@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { gameEvents, type Position } from '../core/events';
 import { VIEW_WIDTH } from '../core/viewport';
 import { sound } from '../fx/sound/Audio';
+import { ACTOR_RIM, addRim } from '../stage/atmosphere/pipeline';
 import { pocketMap } from '../ui/mapModel';
 import { createAnims, type AtlasAnim } from './atlases';
 import { dexterFor, VisitSequence as Visit, type VisitPhase } from './coffeeSequence';
@@ -124,6 +125,8 @@ export class CoffeeVisit extends Phaser.Scene {
     const from = { x: station.at.x - 8, y: station.at.y - 14 };
     const to = { x: this.hero.x + Math.sign(station.at.x - this.hero.x) * 18, y: this.hero.y };
     const item = this.sprite(host, from.x, from.y, atlas, frame, color, 14, 10);
+    // The audit (#159): the pocket computer melts into the garden path at 1x without the actors' rim.
+    if (item instanceof Phaser.GameObjects.Sprite) addRim(item, ACTOR_RIM.colour, ACTOR_RIM.strength);
     host.tweens.addCounter({
       from: 0, to: 1, delay, duration: 520, ease: 'Sine.easeIn',
       onUpdate: tween => {

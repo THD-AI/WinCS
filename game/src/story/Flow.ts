@@ -104,6 +104,8 @@ export class Flow extends Phaser.Scene {
     const camera = stage.cameras.main;
     const viewRight = camera.scrollX + camera.width;
     const plan = ramPlan(hero.x, viewRight);
+    // Her clips and the hero's hit at their own speed (#156: one timing source).
+    const clips = { jenny: stage.cache.json.get('boss-jenny.anims'), hurt: stage.cache.json.get('hero-hurt.anims') };
     const lights = headlights(stage);
     const jenny = stage.add.sprite(plan.startX, hero.y, 'boss-jenny', 'rev-00').setOrigin(0.5, 1).setDepth(150);
     let thrown: Phaser.GameObjects.Sprite | undefined;
@@ -114,7 +116,7 @@ export class Flow extends Phaser.Scene {
     // Driven by the stage clock (not tweens), so it pauses with the stage and steps in tests.
     const step = (_time: number, delta: number) => {
       t += delta / 1000;
-      const f = ramFrame(t, plan, hero, viewRight);
+      const f = ramFrame(t, plan, hero, viewRight, clips);
       const entered = f.phase !== last;
       last = f.phase;
       jenny.setPosition(Math.round(f.jennyX), hero.y + (f.phase === 'rev' ? Math.floor(t * 24) % 2 : 0)).setFrame(f.jennyFrame);

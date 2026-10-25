@@ -1170,6 +1170,105 @@
         ]
       },
       "review": "🟨 Awaiting Alexander's review (25 Oct). First draw: three distinct props in the food sheet's look. The board's 1 px balloon string broke up when crushed, so the game draws the string; the eyes are two pieces per frame (\"parts\": 2). Sizes per animation: balloon about 18 px, eyes 7 px, boat 9 px against the 76 px hero. In the drain: previews/it-props-in-drain.png."
+    },
+    {
+      "id": "rubber-chicken",
+      "title": "Secret · the rubber chicken",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/mensa-food-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw this sheet in exactly that pixel-art look - small detailed props on magenta, the same pixel grain and the same soft warm rim light. Prop sprite sheet of ONE classic squeaky RUBBER CHICKEN toy - the long-necked plucked yellow rubber chicken with a red comb, an open orange beak, tiny closed eyes, skinny dangling legs - lying on its side on the ground, side view, slightly worn and dusty as if it had been lost in a garden for a while. 1 row, exactly 2 frames: frame 1 resting, frame 2 the same chicken squeezed in the middle, its body pinched thin and its beak wide open mid-squeak, neck stretched. Both frames at the SAME pixel scale, standing on the SAME invisible ground line, evenly spaced with a wide clear magenta gap between them. Draw distinct key poses. Count the frames: the row has EXACTLY 2. No people, no hands, no scenery.",
+      "atlas": {
+        "height": 9,
+        "rows": [
+          [
+            {
+              "anim": "rest",
+              "frames": 1
+            },
+            {
+              "anim": "squeak",
+              "frames": 1,
+              "loop": false
+            }
+          ]
+        ]
+      },
+      "review": "🟨 Awaiting Alexander's review (25 Oct). Playtest T2 (Lex): the rubber chicken must be in the game. First draw, two frames (resting, squeezed mid-squeak); about 34 x 9 px in the game, a little bigger than a real one so it reads next to the 76 px hero."
+    },
+    {
+      "id": "arena-platform",
+      "title": "Prop · Jenny's arena platforms",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/coffee-machine-preview.png",
+        "repo:art/stages/rusty-creek/arena/girder-reference.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw in exactly that pixel-art look - solid three-dimensional objects drawn as detailed 2D pixel art with volume, the same pixel grain, palette and warm rim light. Image 2 shows the rusty steel girders of the level these props hang in: copy their material exactly - pale blue-grey painted steel eaten by orange rust, riveted flanges, a dark grated underside. Prop sprite sheet, 2 rows. Row 1, exactly 1 frame: ONE short girder PLATFORM segment hung like a stage rigging bar, seen from slightly below like image 2: a long flat box beam about FIVE times as long as it is tall, its front face with rivets, a lit top flange, a dark grated underside with depth, solid end caps showing its thickness; on top, near each end, a heavy steel eye-bolt with the lowest three links of a rusted chain rising straight up from it. Row 2, exactly 1 frame: ONE long straight vertical rusted steel CHAIN hanging perfectly straight up and down, many identical links, about as long as the platform in row 1, the same chain as on the platform. Both rows at the SAME pixel scale. Rows separated by a wide empty magenta band. No people, no scenery, no sky.",
+      "atlas": {
+        "height": 25,
+        "rows": [
+          [
+            {
+              "anim": "platform",
+              "frames": 1
+            }
+          ]
+        ]
+      },
+      "locked": true,
+      "review": "🟨 Awaiting Alexander's review (25 Oct). Replaces the strip cut from the maze plate, which read flat and floated with no reason (Alexander). Drawn with volume from the coffee-machine sheet's look and the maze's own girder as the material reference: a riveted box girder with a grated underside, 202 × 25 px in the game. The prompt asked for eye-bolts and chain stubs, and the model drew the platform alone, so it is locked and the chains are their own board."
+    },
+    {
+      "id": "arena-chain",
+      "title": "Prop · the platforms' chains",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/arena-platform-preview.png",
+        "repo:art/sprites/images/coffee-machine-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows), with NO text at all - no titles, no captions, no labels: Image 1 is an approved prop from this game, a rusty steel girder platform: draw in exactly its pixel-art look, pixel grain, palette and rusty orange-on-steel colours. Prop sprite sheet, 1 row, exactly 2 frames, side by side with a wide magenta gap: frame 1, ONE heavy rusted steel CHAIN hanging perfectly straight and vertical, about as long as the platform in image 1 is wide, made of many identical oval links alternating face-on and edge-on, the top and bottom links cut flat; frame 2, ONE heavy steel EYE-BOLT anchor: a small rusted base plate with two rivets and a thick eye ring on top, with a single rusted shackle through the ring - the piece that would sit on top of the platform where the chain is fixed. Both frames at the SAME pixel scale (the chain's links as thick as the shackle). No platform, no people, no scenery.",
+      "atlas": {
+        "height": 120,
+        "rows": [
+          [
+            {
+              "anim": "chain",
+              "frames": 2
+            }
+          ]
+        ]
+      },
+      "review": "🟨 Awaiting Alexander's review (25 Oct). The platforms hang from the girder over the arena: scripts/arena_platforms.py tiles this chain's link period from each platform end up to the girder's underside. The second frame came out as a second chain instead of an eye-bolt, so it is unused."
+    },
+    {
+      "id": "arena-wall",
+      "title": "Prop · Jenny's arena wall",
+      "factor": 2,
+      "inputs": [
+        "repo:art/sprites/images/coffee-machine-preview.png",
+        "repo:art/sprites/images/boss-jenny-preview.png",
+        "repo:art/direction/images/style-master-preview.png"
+      ],
+      "prompt": "On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground shadows, no dust under the objects), with NO text at all - no titles, no captions, no frame numbers, no labels, no readable words or logos: Image 1 is an approved prop sheet from this game: draw this sheet in exactly that pixel-art look - the same pixel grain, palette and warm rim light. Prop sprite sheet of ONE tall narrow BARRIER COLUMN that closes a race-track arena on a rusty steel girder maze: a stack of old red-and-white striped plastic and steel crowd-control barrier panels and a rusted scaffold pole, lashed together with orange ratchet straps, standing straight up, about TEN times as tall as it is wide, its top crowned by a small amber rotating warning lamp in a cage (like the race car from image 2 might have hit it before: a few dents, black tyre marks). Strict front view, the same in every frame. 1 row, exactly 2 frames: frame 1 the warning lamp lit bright amber with a glow, frame 2 the same column with the lamp dark. Both frames identical apart from the lamp, same scale, standing on the SAME invisible ground line, with a wide clear magenta gap between them. Count the frames: the row has EXACTLY 2. No people, no car, no scenery, no ground.",
+      "atlas": {
+        "height": 300,
+        "rows": [
+          [
+            {
+              "anim": "lamp",
+              "frames": 2,
+              "fps": 3
+            }
+          ]
+        ]
+      },
+      "despeckle": 12,
+      "review": "🟨 Awaiting Alexander's review (25 Oct). Playtest J7: the arena's walls were code-drawn rectangles with hazard stripes. First draw: a barrier column of red-and-white crowd-control panels strapped to a rusted pole, with a caged warning lamp (lit, dark). 300 px tall in the game, as tall as the walls. The lamp's halo specks are dropped by \"despeckle\"."
     }
   ]
 }

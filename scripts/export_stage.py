@@ -18,6 +18,7 @@ export.json:
      # overlap or leave gaps), cut into chunk-wide tiles: "file" takes {tile}, chunk j carries tile j;
      # "rest": the chunk's own plate it was quilted from, which --verify rebuilds the chunk with
      # "optional": true – a chunk without the file just doesn't draw that layer (the anomaly's tears)
+     # "overlay": true – drawn in the game over the art, not part of the composed picture --verify compares
      "aliases": "media-sources.json"}                               # optional: shared plates
 
 Usage:
@@ -167,8 +168,10 @@ def verify(region: Path, out: Path) -> list[str]:
             canvas = Image.new("RGBA", tuple(stage["chunkSize"]), (0, 0, 0, 0))
             for layer_id in config["states"][state]:
                 layer = config["layers"][layer_id]
-                if layer.get("region") and chunk["y"] != 0 or layer_id not in exported and not layer.get("region"):
-                    continue  # not drawn for this chunk (a row away from the level, or a layer it has no pixels in)
+                if (layer.get("overlay") or layer.get("region") and chunk["y"] != 0
+                        or layer_id not in exported and not layer.get("region")):
+                    continue  # not drawn for this chunk (a row away from the level, a layer it has no pixels in),
+                    # or drawn over the art in the game, not part of the composed picture
                 path = rests[layer_id] if layer.get("region") else exported[layer_id]
                 plate = Image.open(path).convert("RGBA")
                 if layer.get("dy"):
