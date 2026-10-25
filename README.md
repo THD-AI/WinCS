@@ -20,6 +20,10 @@ A 2D side-scrolling exploration-action game in hi-bit pixel art. You are a facel
 | 🎙️ **[Meetings](docs/meetings/README.md)** | 13 transcribed recordings and what each one decided |
 | 📍 **[Campus collages](references/campus/README.md)** · 🎮 **[Reference games](references/README.md)** | Our photos turned into location boards; the 18 games we learn from |
 
+## Rights
+
+The repository is public so the work can be seen; **all rights are reserved** ([LICENSE](LICENSE), [NOTICE](NOTICE.md)). THD's crest and the Deggster mascot and Fast Forest's car are third-party material, referenced for the THD game jam.
+
 ## Team
 
 Vatsal (creative lead, gameplay) · Lex (level design) · Alexander (pipeline, art, build). How we work: [docs/12-TEAM-WORKFLOW.md](docs/12-TEAM-WORKFLOW.md). Agents: [AGENTS.md](AGENTS.md).
