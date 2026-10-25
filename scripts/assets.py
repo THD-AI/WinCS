@@ -111,6 +111,12 @@ def status(rows: list[dict[str, str]], board_map: dict[str, dict]) -> tuple[list
         issues += problems
         if sheet and sheet != derived and not (sheet == "approved" and derived == "approved"):
             issues.append(f"{row['id']}: the sheet says '{sheet}', the files say '{derived}'")
+    # The other way round: an atlas the game loads that the plan never listed is an asset nobody tracks.
+    listed = {row["id"] for row in rows}
+    for path in sorted(SPRITES.glob("*.anims.json")):
+        aid = path.name[: -len(".anims.json")]
+        if aid not in listed:
+            issues.append(f"{aid}: exported to the game but not in art/inventory.csv")
     return table, issues
 
 
