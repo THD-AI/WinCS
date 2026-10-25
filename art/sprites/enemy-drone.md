@@ -1,12 +1,12 @@
-# Enemy · drone
+# Enemy Â· drone
 
 <!-- nav:start -->
-[← Chair · block](chair-block.md) · [Sprite boards](README.md) · **12 / 29** · [Enemy · rover →](enemy-rover.md)
+[← Chair Â· block](chair-block.md) · [Sprite boards](README.md) · **12 / 31** · [Enemy Â· rover →](enemy-rover.md)
 <!-- nav:end -->
 
-![Enemy · drone](images/enemy-drone-preview.png)
+![Enemy Â· drone](images/enemy-drone-preview.png)
 
-**Review:** ✅ Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
+**Review:** âœ… Approved 23 Oct by Alexander. Counts match docs/07; exported to game/public/assets/sprites/ with export_atlas.py. The looping previews below are at twice game size.
 
 ## In motion
 
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/enemy-drone.png` · rebuild: `python scripts/make_boards.py draw enemy-drone --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Chair · block](chair-block.md) · [Sprite boards](README.md) · **12 / 29** · [Enemy · rover →](enemy-rover.md)
+[← Chair Â· block](chair-block.md) · [Sprite boards](README.md) · **12 / 31** · [Enemy Â· rover →](enemy-rover.md)
 <!-- nav:end -->

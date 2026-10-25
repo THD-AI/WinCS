@@ -1,12 +1,12 @@
-# Mensa · food pickups
+# Mensa Â· food pickups
 
 <!-- nav:start -->
-[← Item · pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **19 / 29** · [Prop · coffee machine (save point) →](coffee-machine.md)
+[← Item Â· pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **19 / 31** · [Prop Â· coffee machine (save point) →](coffee-machine.md)
 <!-- nav:end -->
 
-![Mensa · food pickups](images/mensa-food-preview.png)
+![Mensa Â· food pickups](images/mensa-food-preview.png)
 
-**Review:** ✅ Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 × 14, cake 18 × 14, wafer 17 × 13, Leberkäse roll 18 × 18 px – around the documented 16 px.
+**Review:** âœ… Approved 24 Oct by Alexander (#154); exported to game/public/assets/sprites/ with export_atlas.py. Third draw: the first two copied only the muffin; anchoring on the approved coffee-machine sheet gave four distinct items. One frame each (the model ignored the sparkle frames; the game adds the sparkle). Muffin 16 Ã— 14, cake 18 Ã— 14, wafer 17 Ã— 13, LeberkÃ¤se roll 18 Ã— 18 px â€“ around the documented 16 px.
 
 ## In motion
 
@@ -30,5 +30,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/mensa-food.png` · rebuild: `python scripts/make_boards.py draw mensa-food --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Item · pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **19 / 29** · [Prop · coffee machine (save point) →](coffee-machine.md)
+[← Item Â· pocket computer](pocket-computer.md) · [Sprite boards](README.md) · **19 / 31** · [Prop Â· coffee machine (save point) →](coffee-machine.md)
 <!-- nav:end -->

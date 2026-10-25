@@ -1,12 +1,12 @@
-# Prop · Jenny's arena wall
+# Prop Â· Jenny's arena wall
 
 <!-- nav:start -->
-[← Secret · the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **29 / 29** · [Sprite boards →](README.md)
+[← Secret Â· the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **29 / 31** · [Prop Â· Jenny's arena platforms →](arena-platform.md)
 <!-- nav:end -->
 
-![Prop · Jenny's arena wall](images/arena-wall-preview.png)
+![Prop Â· Jenny's arena wall](images/arena-wall-preview.png)
 
-**Review:** 🟨 Awaiting Alexander's review (25 Oct). Playtest J7: the arena's walls were code-drawn rectangles with hazard stripes. First draw: a barrier column of red-and-white crowd-control panels strapped to a rusted pole, with a caged warning lamp (lit, dark). 300 px tall in the game, as tall as the walls. The lamp's halo specks are dropped by "despeckle".
+**Review:** ðŸŸ¨ Awaiting Alexander's review (25 Oct). Playtest J7: the arena's walls were code-drawn rectangles with hazard stripes. First draw: a barrier column of red-and-white crowd-control panels strapped to a rusted pole, with a caged warning lamp (lit, dark). 300 px tall in the game, as tall as the walls. The lamp's halo specks are dropped by "despeckle".
 
 ## Brief
 
@@ -21,5 +21,5 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/arena-wall.png` · rebuild: `python scripts/make_boards.py draw arena-wall --redo --config art/sprites/boards.json`
 
 <!-- nav:start -->
-[← Secret · the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **29 / 29** · [Sprite boards →](README.md)
+[← Secret Â· the rubber chicken](rubber-chicken.md) · [Sprite boards](README.md) · **29 / 31** · [Prop Â· Jenny's arena platforms →](arena-platform.md)
 <!-- nav:end -->
