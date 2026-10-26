@@ -54,11 +54,14 @@ describe('continuous slope contacts', () => {
   });
   it('crosses the real chunk seams in both states and directions without falling through', () => {
     const files = Object.values(import.meta.glob<CollisionData>('../../../art/stages/rusty-creek/*.collision.json', { eager: true, import: 'default' }));
+    // Along the creek path (the level row, y 522), where the region is walked from chunk to chunk.
+    const path = (line: [number, number][]) => line[0][1] > 400;
     for (const state of ['clean', 'anomaly']) for (const column of [0, 1]) {
-      const left = files.find(f => f.chunk === `rc-${column}-0` && f.state === state)!;
-      const right = files.find(f => f.chunk === `rc-${column + 1}-0` && f.state === state)!;
+      const left = files.find(f => f.chunk === `rc-${column}-1` && f.state === state)!;
+      const right = files.find(f => f.chunk === `rc-${column + 1}-1` && f.state === state)!;
       const geometry = [placeCollision(left, [0, 0]).world, placeCollision(right, [2160, 0]).world];
-      const leftY = left.walk.at(-1)!.at(-1)![1], rightY = right.walk[0][0][1];
+      const leftY = left.walk.filter(path).find(l => l.at(-1)![0] === 2160)!.at(-1)![1];
+      const rightY = right.walk.filter(path).find(l => l[0][0] === 0)![0][1];
       for (const speed of [-258, -150.5, 150.5, 258]) {
         const b = body(speed > 0 ? 2155 : 2165, speed > 0 ? leftY : rightY, speed);
         for (let i = 0; i < 10; i++) {

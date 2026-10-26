@@ -52,8 +52,8 @@ export class Hud extends Phaser.Scene {
       if (event.shiftKey) return;
       pocketMap.unlock();
       pocketMap.visit('hidden-garden', 'hg-0-0');
-      pocketMap.visit('rusty-creek', 'rc-0-0');
-      pocketMap.visit('rusty-creek', 'rc-1-0');
+      pocketMap.visit('rusty-creek', 'rc-0-1');
+      pocketMap.visit('rusty-creek', 'rc-1-1');
     });
     // Dev builds: F3 shows or hides Jenny's bar at 70 % (#54 will start it for real).
     if (import.meta.env.DEV) this.input.keyboard?.on('keydown-F3', () => {

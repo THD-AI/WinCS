@@ -4,7 +4,8 @@ import { Rover } from '../enemies/rover';
 import { pogo, jump } from '../player/jump';
 import { stepBody, type Body } from '../player/body';
 import type { Damageable } from './sweeps';
-import raw from '../../../art/stages/rusty-creek/rc-1-0.anomaly.collision.json';
+import raw from '../../../art/stages/rusty-creek/rc-1-1.anomaly.collision.json';
+import maze from '../../../art/stages/rusty-creek/rc-1-0.anomaly.collision.json';
 import clips from '../../public/assets/sprites/chair-overhead.anims.json';
 
 describe('measured overhead chair attacks', () => {
@@ -20,9 +21,9 @@ describe('measured overhead chair attacks', () => {
     attack.begin('up', -1); attack.step(2 / 12);
     expect(attack.box(feet, 500)).toEqual({ x: 36, y: 319, w: 68, h: 93 });
   });
-  it('reaches the Rusty Creek drone at its hover height from the ground and from the deck under it', () => {
+  it('reaches the Rusty Creek drone at its hover height from the creek path under it', () => {
     const drone = raw.spawn.find(spawn => spawn.kind === 'drone')!;
-    for (const floor of [536, 570]) {
+    for (const floor of raw.walk.filter(line => line[0][1] > drone.y).map(line => line[0][1])) {
       const attack = new Overhead(); let hits = 0;
       const target: Damageable = { id: drone.id, bounds: () => ({ x: drone.x - 22.5, y: drone.y - 45, w: 45, h: 45 }),
         hit: () => { hits++; return true; } };
@@ -30,9 +31,9 @@ describe('measured overhead chair attacks', () => {
       attack.contact({ x: drone.x - 20, y: floor }, floor, [target]); expect(hits).toBe(1);
     }
   });
-  it('hits a 40px crab fixture at its authored one-way deck from below only once', () => {
-    const crab = raw.spawn.find(spawn => spawn.kind === 'crab')!;
-    expect(raw.oneWay.some(line => line.some(point => point[1] === crab.y))).toBe(true);
+  it('hits a 40px crab fixture on its rust-maze girder from below only once', () => {
+    const crab = maze.spawn.find(spawn => spawn.kind === 'crab')!;
+    expect(maze.walk.some(line => line.some(point => point[1] === crab.y))).toBe(true);
     let hits = 0;
     const target: Damageable = { id: crab.id, bounds: () => ({ x: crab.x - 20, y: crab.y - 40, w: 40, h: 40 }),
       hit: hit => { expect(hit.kind).toBe('up'); hits++; return true; } };

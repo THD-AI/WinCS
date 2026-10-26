@@ -33,9 +33,10 @@ describe('surfaces', () => {
     expect(map.at(8640 + 1200, 441).name).toBe('wood'); // pier
   });
   it('matches states, falls back to the default and without a file to the stone-like fallback', () => {
-    const rc = new SurfaceMap(creek, grid(['rc-0-0', 'rc-1-0', 'rc-2-0']), 'anomaly');
-    expect(rc.at(600, 508).name).toBe('stone'); expect(rc.at(600, 461).name).toBe('steel');
-    expect(new SurfaceMap(creek, grid(['rc-0-0']), 'clean').at(600, 508).name).toBe('steel');
+    // Rusty Creek's level row: the creek path is stone, the railway girder's deck above it steel; the maze is steel.
+    const rc = new SurfaceMap(creek, grid(['rc-0-1', 'rc-1-1', 'rc-2-1']), 'anomaly');
+    expect(rc.at(600, 522).name).toBe('stone'); expect(rc.at(600, 62).name).toBe('steel');
+    expect(new SurfaceMap(creek, grid(['rc-0-0']), 'clean').at(600, 524).name).toBe('steel');
     expect(new SurfaceMap(null, grid(['x']), 'clean').at(0, 0)).toBe(FALLBACK);
   });
   it('rejects unknown materials and covers deeper than the sink', () => {
