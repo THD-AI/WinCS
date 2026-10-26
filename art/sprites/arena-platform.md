@@ -15,7 +15,7 @@ On a flat, solid, pure magenta #FF00FF background (no paper colour, no ground sh
 ## Inputs
 
 - [coffee-machine-preview.png](images/coffee-machine-preview.png)
-- [girder-reference.png](../stages/rusty-creek/arena/girder-reference.png)
+- [girder-reference.png](../stages/rusty-creek/prototype/girder-reference.png)
 - [style-master-preview.png](../direction/images/style-master-preview.png)
 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/arena-platform.png` · rebuild: `python scripts/make_boards.py draw arena-platform --redo --config art/sprites/boards.json`

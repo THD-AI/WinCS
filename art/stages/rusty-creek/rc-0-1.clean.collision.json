@@ -1,0 +1,101 @@
+{
+ "chunk": "rc-0-1",
+ "state": "clean",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    522
+   ],
+   [
+    2160,
+    522
+   ]
+  ],
+  [
+   [
+    0,
+    62
+   ],
+   [
+    2160,
+    62
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 330,
+   "y": 54,
+   "w": 42,
+   "h": 468,
+   "kind": "ladder",
+   "id": "rcz-0-1-pier-ladder"
+  },
+  {
+   "x": 1619,
+   "y": 0,
+   "w": 33,
+   "h": 62,
+   "kind": "ladder",
+   "id": "rcz-0-0-ladder-1-on"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 600,
+   "w": 2160,
+   "h": 120,
+   "kind": "water"
+  }
+ ],
+ "hazard": [],
+ "interact": [],
+ "spawn": [
+  {
+   "id": "player",
+   "kind": "player",
+   "x": 300,
+   "y": 522,
+   "note": "The 404 lands the hero on the creek path under the rail bridge (P5)"
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the creek path"
+  },
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    50,
+    74
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "the railway girder's deck"
+  }
+ ]
+}

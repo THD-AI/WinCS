@@ -1,0 +1,154 @@
+{
+ "chunk": "rc-2-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    378
+   ],
+   [
+    168,
+    378
+   ]
+  ],
+  [
+   [
+    120,
+    522
+   ],
+   [
+    272,
+    522
+   ]
+  ],
+  [
+   [
+    168,
+    303
+   ],
+   [
+    632,
+    303
+   ]
+  ],
+  [
+   [
+    696,
+    376
+   ],
+   [
+    1080,
+    376
+   ]
+  ],
+  [
+   [
+    1420,
+    450
+   ],
+   [
+    2160,
+    450
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 708,
+   "y": 376,
+   "w": 34,
+   "h": 344,
+   "kind": "ladder",
+   "id": "rcz-2-0-ladder-1"
+  },
+  {
+   "x": 2008,
+   "y": 450,
+   "w": 33,
+   "h": 270,
+   "kind": "ladder",
+   "id": "rcz-2-0-ladder-4"
+  }
+ ],
+ "solid": [],
+ "noGo": [],
+ "hazard": [],
+ "interact": [],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    168
+   ],
+   "y": [
+    366,
+    390
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    120,
+    272
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    168,
+    632
+   ],
+   "y": [
+    291,
+    315
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    696,
+    1080
+   ],
+   "y": [
+    364,
+    388
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1420,
+    2160
+   ],
+   "y": [
+    438,
+    462
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  }
+ ]
+}

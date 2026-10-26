@@ -4,7 +4,7 @@
 [← Design documents](README.md) · [Design docs](README.md) · **1 / 16** · [02 – Game design →](02-GAME-DESIGN.md)
 <!-- nav:end -->
 
-![Rusty Creek – our first stage, current art](../art/stages/rusty-creek/images/after-center.png)
+![Rusty Creek – our first stage, current art](../art/stages/rusty-creek/prototype/after-center.png)
 
 > **A familiar campus. A plush mascot that wants you to keep fighting. A quantum experiment that broke the pond.**
 

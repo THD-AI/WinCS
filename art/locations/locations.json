@@ -26,7 +26,7 @@
       "keyed": false,
       "inputs": [
         "out:hidden-garden-clean",
-        "repo:art/stages/rusty-creek/images/after-center.png",
+        "repo:art/stages/rusty-creek/prototype/after-center.png",
         "repo:art/direction/images/style-master-preview.png"
       ],
       "prompt": "The SAME stage as the first image - same camera, same layout, same landmarks - a second after the hero touched the pond. The reflection has climbed out of the water: rusty blue-green girders from the second image grow up through the reeds and the deck, the hill path is cut and shifted sideways in places, a strip of trees is stretched into vertical streaks, a rectangle of sky has become flat grey with torn edges. Dexter is gone. Still beautiful, now wrong.",

@@ -1,0 +1,103 @@
+{
+ "chunk": "rc-1-1",
+ "state": "clean",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    522
+   ],
+   [
+    2160,
+    522
+   ]
+  ],
+  [
+   [
+    0,
+    63
+   ],
+   [
+    2160,
+    63
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 1062,
+   "y": 55,
+   "w": 44,
+   "h": 467,
+   "kind": "ladder",
+   "id": "rcz-1-1-pier-ladder"
+  },
+  {
+   "x": 1878,
+   "y": 0,
+   "w": 19,
+   "h": 63,
+   "kind": "ladder",
+   "id": "rcz-1-0-ladder-0-on"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 600,
+   "w": 2160,
+   "h": 120,
+   "kind": "water"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "jenny-ram",
+   "kind": "jenny-ram",
+   "x": 1080,
+   "y": 430,
+   "w": 40,
+   "h": 92,
+   "note": "Jenny comes down the creek path and rams the hero; the region turns (M4-S1 #54, P5)"
+  }
+ ],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the creek path"
+  },
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    51,
+    75
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "the railway girder's deck"
+  }
+ ]
+}
