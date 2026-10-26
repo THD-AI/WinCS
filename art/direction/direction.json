@@ -12,7 +12,7 @@
       "factor": 2,
       "keyed": false,
       "inputs": [
-        "repo:art/stages/rusty-creek/images/after-center.png",
+        "repo:art/stages/rusty-creek/prototype/after-center.png",
         "repo:art/sprites/images/hero-preview.png"
       ],
       "prompt": "The first image IS our game's stage, Rusty Creek: keep its composition, the blue-green riveted rusty girder maze, ladders, autumn trees and creek exactly, only widen it to 16:9 and finish it as a real game screenshot. Place the hero from the second image (the THD poncho character) small, walking right along the lowest broad girder deck in the left third of the frame. Add a darker foreground band of autumn leaves and a rusty railing along the bottom edge, gentle haze on the far trees, sunlight glinting on the creek, a few drifting leaves. This image will be the reference that every other image of the game must match.",
@@ -120,7 +120,7 @@
         "merch:Jenny15GDX_4.jpg",
         "merch:Jenny14GDX-rollout.jpg",
         "merch:RolloutJenny16_9.jpeg",
-        "repo:art/stages/rusty-creek/images/after-right.png",
+        "repo:art/stages/rusty-creek/prototype/after-right.png",
         "repo:art/sprites/images/hero-preview.png",
         "repo:references/games/terraria/images/wall-188.jpg"
       ],
@@ -168,7 +168,7 @@
       "inputs": [
         "out:style-master",
         "repo:art/sprites/images/hero-preview.png",
-        "repo:art/stages/rusty-creek/images/after-center.png",
+        "repo:art/stages/rusty-creek/prototype/after-center.png",
         "repo:references/games/dead-cells/images/bad-seed-02.jpg"
       ],
       "prompt": "A real GAMEPLAY screenshot, same camera as the first image: strict side view, wide, the hero small (one eighth of the screen height). Location: the rusty blue-green girder maze of Rusty Creek (third image). On a broad girder deck the hero from the second image (THD poncho, shadow-filled hood) swings a honey-plywood stacking chair with thin black steel legs in a HORIZONTAL SIDE SWEEP into a six-legged autonomous crab robot, which is knocked back with a small white impact flash and a few sparks and bolts (Dead Cells-style hit feel: short, crisp, readable). Further along the deck a small yellow-wheeled autonomous rover charges in, its lidar glowing red; above, a black autonomous quadcopter drone hovers out of reach. Minimal HUD in the top-left: five battery cells (four full) and a three-segment glitch meter. Dark blurred foreground leaves at the bottom edge. Clean readable silhouettes, no gore.",

@@ -1,0 +1,208 @@
+{
+ "chunk": "rc-0-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    80,
+    327
+   ],
+   [
+    304,
+    327
+   ]
+  ],
+  [
+   [
+    132,
+    524
+   ],
+   [
+    780,
+    524
+   ]
+  ],
+  [
+   [
+    360,
+    208
+   ],
+   [
+    544,
+    208
+   ]
+  ],
+  [
+   [
+    880,
+    473
+   ],
+   [
+    1136,
+    473
+   ]
+  ],
+  [
+   [
+    1136,
+    448
+   ],
+   [
+    1408,
+    448
+   ]
+  ],
+  [
+   [
+    1440,
+    287
+   ],
+   [
+    2160,
+    287
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 495,
+   "y": 208,
+   "w": 33,
+   "h": 316,
+   "kind": "ladder",
+   "id": "rcz-0-0-ladder-0"
+  },
+  {
+   "x": 1619,
+   "y": 287,
+   "w": 33,
+   "h": 433,
+   "kind": "ladder",
+   "id": "rcz-0-0-ladder-1"
+  }
+ ],
+ "solid": [],
+ "noGo": [],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "muffin-1",
+   "kind": "pickup",
+   "item": "muffin",
+   "x": 1500,
+   "y": 259,
+   "w": 24,
+   "h": 28
+  }
+ ],
+ "spawn": [
+  {
+   "id": "rover-5",
+   "kind": "rover",
+   "x": 1800,
+   "y": 287,
+   "patrol": [
+    1560,
+    2040
+   ]
+  },
+  {
+   "id": "rover-6",
+   "kind": "rover",
+   "x": 450,
+   "y": 524,
+   "patrol": [
+    220,
+    700
+   ]
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    80,
+    304
+   ],
+   "y": [
+    315,
+    339
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    132,
+    780
+   ],
+   "y": [
+    512,
+    536
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    360,
+    544
+   ],
+   "y": [
+    196,
+    220
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    880,
+    1136
+   ],
+   "y": [
+    461,
+    485
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1136,
+    1408
+   ],
+   "y": [
+    436,
+    460
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1440,
+    2160
+   ],
+   "y": [
+    275,
+    299
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  }
+ ]
+}

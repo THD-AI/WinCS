@@ -1,0 +1,211 @@
+{
+ "chunk": "rc-2-1",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    522
+   ],
+   [
+    1690,
+    522
+   ]
+  ],
+  [
+   [
+    1690,
+    522
+   ],
+   [
+    2160,
+    522
+   ]
+  ],
+  [
+   [
+    0,
+    65
+   ],
+   [
+    2160,
+    65
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [
+  [
+   [
+    1180,
+    435
+   ],
+   [
+    1382,
+    435
+   ]
+  ],
+  [
+   [
+    1430,
+    435
+   ],
+   [
+    1632,
+    435
+   ]
+  ]
+ ],
+ "climb": [
+  {
+   "x": 1706,
+   "y": 57,
+   "w": 50,
+   "h": 465,
+   "kind": "ladder",
+   "id": "rcz-2-1-pier-ladder"
+  },
+  {
+   "x": 708,
+   "y": 0,
+   "w": 34,
+   "h": 65,
+   "kind": "ladder",
+   "id": "rcz-2-0-ladder-0-on"
+  },
+  {
+   "x": 2008,
+   "y": 0,
+   "w": 33,
+   "h": 65,
+   "kind": "ladder",
+   "id": "rcz-2-0-ladder-1-on"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 600,
+   "w": 2160,
+   "h": 120,
+   "kind": "water"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "x": 340,
+   "y": 446,
+   "w": 130,
+   "h": 76,
+   "kind": "door",
+   "id": "culvert",
+   "to": "drain-door",
+   "note": "The lit culvert mouth in the bank: down into the drains."
+  },
+  {
+   "id": "boss-gate",
+   "kind": "boss-gate",
+   "x": 1096,
+   "y": 422,
+   "w": 30,
+   "h": 100
+  },
+  {
+   "id": "exit-anomaly",
+   "kind": "chunk-exit",
+   "x": 2060,
+   "y": 442,
+   "w": 60,
+   "h": 80
+  }
+ ],
+ "spawn": [
+  {
+   "id": "jenny",
+   "kind": "jenny",
+   "x": 1440,
+   "y": 522
+  },
+  {
+   "id": "dexter-2",
+   "kind": "dexter",
+   "x": 1640,
+   "y": 522
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    1180,
+    1382
+   ],
+   "y": [
+    423,
+    447
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "an arena platform on its chains"
+  },
+  {
+   "x": [
+    1430,
+    1632
+   ],
+   "y": [
+    423,
+    447
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "an arena platform on its chains"
+  },
+  {
+   "x": [
+    0,
+    1690
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the creek path"
+  },
+  {
+   "x": [
+    1690,
+    2160
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the creek path"
+  },
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    53,
+    77
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "the railway girder's deck"
+  }
+ ]
+}

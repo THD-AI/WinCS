@@ -1,0 +1,203 @@
+{
+ "chunk": "rc-1-0",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    657
+   ],
+   [
+    680,
+    657
+   ]
+  ],
+  [
+   [
+    164,
+    331
+   ],
+   [
+    1860,
+    331
+   ]
+  ],
+  [
+   [
+    868,
+    536
+   ],
+   [
+    1612,
+    536
+   ]
+  ],
+  [
+   [
+    1628,
+    658
+   ],
+   [
+    1736,
+    658
+   ]
+  ],
+  [
+   [
+    2084,
+    658
+   ],
+   [
+    2160,
+    658
+   ]
+  ],
+  [
+   [
+    1736,
+    605
+   ],
+   [
+    2084,
+    605
+   ]
+  ],
+  [
+   [
+    1912,
+    378
+   ],
+   [
+    2160,
+    378
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 1878,
+   "y": 605,
+   "w": 19,
+   "h": 115,
+   "kind": "ladder",
+   "id": "rcz-1-0-ladder-0"
+  }
+ ],
+ "solid": [],
+ "noGo": [],
+ "hazard": [],
+ "interact": [],
+ "spawn": [
+  {
+   "id": "crab-1",
+   "kind": "crab",
+   "x": 1200,
+   "y": 536,
+   "patrol": [
+    950,
+    1530
+   ]
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    680
+   ],
+   "y": [
+    645,
+    669
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    164,
+    1860
+   ],
+   "y": [
+    319,
+    343
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    868,
+    1612
+   ],
+   "y": [
+    524,
+    548
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1628,
+    1736
+   ],
+   "y": [
+    646,
+    670
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    2084,
+    2160
+   ],
+   "y": [
+    646,
+    670
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1736,
+    2084
+   ],
+   "y": [
+    593,
+    617
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1912,
+    2160
+   ],
+   "y": [
+    366,
+    390
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  }
+ ]
+}

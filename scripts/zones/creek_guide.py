@@ -125,7 +125,7 @@ def build(name, real_top):
     img = Image.new("RGB", (W, H))
     sky(img); trees(img); top(img); water(img)
     if real_top:
-        ref = Image.open(ROOT / "art/stages/rusty-creek/images/before-center.png").convert("RGB")
+        ref = Image.open(ROOT / "art/stages/rusty-creek/prototype/before-center.png").convert("RGB")
         # bridge photo-painting: scale to full width, its water line (y~595 of 720) to WATER_Y+?
         ref = ref.resize((W, int(720 * W / 2160)))
         img.paste(ref.crop((0, 0, W, 640)), (0, 0))

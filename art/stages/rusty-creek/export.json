@@ -1,0 +1,124 @@
+{
+  "note": "Rusty Creek as a 3 x 3 zone (#157): the rust maze, the creek path, the drains. Every layer scrolls with the path; the anomaly is the same picture with the 404 tears (05-tears) and Jenny's arena platforms (05-arena, an overlay on rc-2-1).",
+  "chunks": {
+    "rc-0-0": {
+      "x": 0,
+      "y": 0
+    },
+    "rc-1-0": {
+      "x": 1,
+      "y": 0
+    },
+    "rc-2-0": {
+      "x": 2,
+      "y": 0
+    },
+    "rc-0-1": {
+      "x": 0,
+      "y": 1
+    },
+    "rc-1-1": {
+      "x": 1,
+      "y": 1
+    },
+    "rc-2-1": {
+      "x": 2,
+      "y": 1
+    },
+    "rc-0-2": {
+      "x": 0,
+      "y": 2
+    },
+    "rc-1-2": {
+      "x": 1,
+      "y": 2
+    },
+    "rc-2-2": {
+      "x": 2,
+      "y": 2
+    }
+  },
+  "layers": {
+    "00-sky": {
+      "file": "layers/{name}.00-sky.png",
+      "z": 0,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "01-far": {
+      "file": "layers/{name}.01-far.png",
+      "z": 1,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "02-mid": {
+      "file": "layers/{name}.02-mid.png",
+      "z": 2,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "03-rear": {
+      "file": "layers/{name}.03-rear.png",
+      "z": 3,
+      "scroll": 1.0,
+      "optional": false
+    },
+    "04-water": {
+      "file": "layers/{name}.04-water.png",
+      "z": 4,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "05-play": {
+      "file": "layers/{name}.05-play.png",
+      "z": 5,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "07-foreground": {
+      "file": "layers/{name}.07-foreground.png",
+      "z": 7,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "05-tears": {
+      "file": "tears/{name}.png",
+      "z": 5,
+      "scroll": 1.0,
+      "optional": true
+    },
+    "05-arena": {
+      "file": "arena/{name}.png",
+      "z": 5,
+      "scroll": 1.0,
+      "optional": true,
+      "overlay": true,
+      "why": "Jenny's arena platforms (playtest J6), on chains from the railway girder"
+    }
+  },
+  "states": {
+    "clean": [
+      "00-sky",
+      "01-far",
+      "02-mid",
+      "03-rear",
+      "04-water",
+      "05-play",
+      "07-foreground"
+    ],
+    "anomaly": [
+      "00-sky",
+      "01-far",
+      "02-mid",
+      "03-rear",
+      "04-water",
+      "05-play",
+      "05-tears",
+      "05-arena",
+      "07-foreground"
+    ]
+  },
+  "composed": {
+    "clean": "images/{name}.png"
+  }
+}
