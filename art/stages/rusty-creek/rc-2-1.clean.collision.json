@@ -1,0 +1,112 @@
+{
+ "chunk": "rc-2-1",
+ "state": "clean",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    522
+   ],
+   [
+    2160,
+    522
+   ]
+  ],
+  [
+   [
+    0,
+    65
+   ],
+   [
+    2160,
+    65
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 1706,
+   "y": 57,
+   "w": 50,
+   "h": 465,
+   "kind": "ladder",
+   "id": "rcz-2-1-pier-ladder"
+  },
+  {
+   "x": 708,
+   "y": 0,
+   "w": 34,
+   "h": 65,
+   "kind": "ladder",
+   "id": "rcz-2-0-ladder-0-on"
+  },
+  {
+   "x": 2008,
+   "y": 0,
+   "w": 33,
+   "h": 65,
+   "kind": "ladder",
+   "id": "rcz-2-0-ladder-1-on"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 600,
+   "w": 2160,
+   "h": 120,
+   "kind": "water"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "x": 340,
+   "y": 446,
+   "w": 130,
+   "h": 76,
+   "kind": "door",
+   "id": "culvert",
+   "to": "drain-door",
+   "note": "The lit culvert mouth in the bank: down into the drains."
+  }
+ ],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the creek path"
+  },
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    53,
+    77
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "the railway girder's deck"
+  }
+ ]
+}

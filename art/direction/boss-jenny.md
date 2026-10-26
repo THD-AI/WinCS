@@ -18,7 +18,7 @@ Match the first image's style exactly. Boss arena: the open boss clearing at the
 - `Jenny15GDX_4.jpg` (GameJam_Merch, outside Git)
 - `Jenny14GDX-rollout.jpg` (GameJam_Merch, outside Git)
 - `RolloutJenny16_9.jpeg` (GameJam_Merch, outside Git)
-- [after-right.png](../stages/rusty-creek/images/after-right.png)
+- [after-right.png](../stages/rusty-creek/prototype/after-right.png)
 - [hero-preview.png](../sprites/images/hero-preview.png)
 - [wall-188.jpg](../../references/games/terraria/images/wall-188.jpg)
 

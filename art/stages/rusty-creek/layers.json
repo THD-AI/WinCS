@@ -1,0 +1,245 @@
+{
+  "note": "Rusty Creek from its zone (art/zones/rusty-creek, scripts/zones/rusty_creek_zone.py --stage).",
+  "chunks": {
+    "rc-0-0": {
+      "states": {
+        "clean": "images/rc-0-0.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/rc-0-0.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/rc-0-0.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/rc-0-0.02-mid.png"
+        },
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-0-0.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-0-0.05-play.png"
+        },
+        {
+          "layer": "07-foreground",
+          "alpha": "masks/rc-0-0.07-foreground.png"
+        }
+      ]
+    },
+    "rc-1-0": {
+      "states": {
+        "clean": "images/rc-1-0.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/rc-1-0.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/rc-1-0.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/rc-1-0.02-mid.png"
+        },
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-1-0.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-1-0.05-play.png"
+        },
+        {
+          "layer": "07-foreground",
+          "alpha": "masks/rc-1-0.07-foreground.png"
+        }
+      ]
+    },
+    "rc-2-0": {
+      "states": {
+        "clean": "images/rc-2-0.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/rc-2-0.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/rc-2-0.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/rc-2-0.02-mid.png"
+        },
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-2-0.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-2-0.05-play.png"
+        },
+        {
+          "layer": "07-foreground",
+          "alpha": "masks/rc-2-0.07-foreground.png"
+        }
+      ]
+    },
+    "rc-0-1": {
+      "states": {
+        "clean": "images/rc-0-1.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/rc-0-1.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/rc-0-1.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/rc-0-1.02-mid.png"
+        },
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-0-1.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-0-1.05-play.png"
+        },
+        {
+          "layer": "07-foreground",
+          "alpha": "masks/rc-0-1.07-foreground.png"
+        }
+      ]
+    },
+    "rc-1-1": {
+      "states": {
+        "clean": "images/rc-1-1.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/rc-1-1.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/rc-1-1.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/rc-1-1.02-mid.png"
+        },
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-1-1.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-1-1.05-play.png"
+        },
+        {
+          "layer": "07-foreground",
+          "alpha": "masks/rc-1-1.07-foreground.png"
+        }
+      ]
+    },
+    "rc-2-1": {
+      "states": {
+        "clean": "images/rc-2-1.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "00-sky",
+          "alpha": "masks/rc-2-1.00-sky.png"
+        },
+        {
+          "layer": "01-far",
+          "alpha": "masks/rc-2-1.01-far.png"
+        },
+        {
+          "layer": "02-mid",
+          "alpha": "masks/rc-2-1.02-mid.png"
+        },
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-2-1.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-2-1.05-play.png"
+        },
+        {
+          "layer": "07-foreground",
+          "alpha": "masks/rc-2-1.07-foreground.png"
+        }
+      ]
+    },
+    "rc-0-2": {
+      "states": {
+        "clean": "images/rc-0-2.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-0-2.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-0-2.05-play.png"
+        }
+      ]
+    },
+    "rc-1-2": {
+      "states": {
+        "clean": "images/rc-1-2.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-1-2.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-1-2.05-play.png"
+        }
+      ]
+    },
+    "rc-2-2": {
+      "states": {
+        "clean": "images/rc-2-2.png"
+      },
+      "default": "03-rear",
+      "rules": [
+        {
+          "layer": "04-water",
+          "alpha": "masks/rc-2-2.04-water.png"
+        },
+        {
+          "layer": "05-play",
+          "alpha": "masks/rc-2-2.05-play.png"
+        }
+      ]
+    }
+  }
+}

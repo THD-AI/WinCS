@@ -7,8 +7,55 @@
   "stone": {"sink": 1, "cover": 0, "puff": {"sprite": "dust", "shape": "dust", "colors": ["#b9b3a3", "#d9d3c2", "#8a857a"], "count": 3}}
  },
  "chunks": {
-  "rc-0-0": [{"x": [0, 2160], "y": [490, 720], "states": ["anomaly"], "material": "stone", "note": "bank blocks"}],
-  "rc-1-0": [{"x": [0, 2160], "y": [490, 720], "states": ["anomaly"], "material": "stone", "note": "bank blocks"}],
-  "rc-2-0": [{"x": [0, 2160], "y": [490, 720], "states": ["anomaly"], "material": "stone", "note": "bank blocks"}]
+  "rc-0-0": [
+   {"x": [80, 304], "y": [315, 339], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [132, 780], "y": [512, 536], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [360, 544], "y": [196, 220], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [880, 1136], "y": [461, 485], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [1136, 1408], "y": [436, 460], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [1440, 2160], "y": [275, 299], "material": "steel", "note": "plank: a girder of the rust maze"}
+  ],
+  "rc-1-0": [
+   {"x": [0, 680], "y": [645, 669], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [164, 1860], "y": [319, 343], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [868, 1612], "y": [524, 548], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [1628, 1736], "y": [646, 670], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [2084, 2160], "y": [646, 670], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [1736, 2084], "y": [593, 617], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [1912, 2160], "y": [366, 390], "material": "steel", "note": "plank: a girder of the rust maze"}
+  ],
+  "rc-2-0": [
+   {"x": [0, 168], "y": [366, 390], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [120, 272], "y": [510, 534], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [168, 632], "y": [291, 315], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [696, 1080], "y": [364, 388], "material": "steel", "note": "plank: a girder of the rust maze"},
+   {"x": [1420, 2160], "y": [438, 462], "material": "steel", "note": "plank: a girder of the rust maze"}
+  ],
+  "rc-0-1": [
+   {"x": [0, 2160], "y": [510, 534], "material": "stone", "note": "ground: the creek path"},
+   {"x": [0, 2160], "y": [50, 74], "material": "steel", "note": "plank: the railway girder's deck"}
+  ],
+  "rc-0-2": [
+   {"x": [0, 56], "y": [184, 210], "material": "stone", "note": "ground: the drains' floor"},
+   {"x": [0, 2160], "y": [150, 176], "material": "stone", "note": "ground: the drains' floor"}
+  ],
+  "rc-1-1": [
+   {"x": [0, 2160], "y": [510, 534], "material": "stone", "note": "ground: the creek path"},
+   {"x": [0, 2160], "y": [51, 75], "material": "steel", "note": "plank: the railway girder's deck"}
+  ],
+  "rc-1-2": [
+   {"x": [0, 2160], "y": [185, 290], "material": "stone", "note": "ground: the drains' floor"}
+  ],
+  "rc-2-1": [
+   {"x": [0, 2160], "y": [510, 534], "material": "stone", "note": "ground: the creek path"},
+   {"x": [0, 2160], "y": [53, 77], "material": "steel", "note": "plank: the railway girder's deck"}
+  ],
+  "rc-2-2": [
+   {"x": [0, 120], "y": [264, 297], "material": "stone", "note": "ground: the drains' floor"},
+   {"x": [212, 336], "y": [223, 255], "material": "stone", "note": "ground: the drains' floor"},
+   {"x": [336, 664], "y": [210, 254], "material": "stone", "note": "ground: the drains' floor"},
+   {"x": [664, 772], "y": [221, 254], "material": "stone", "note": "ground: the drains' floor"},
+   {"x": [772, 2160], "y": [209, 254], "material": "stone", "note": "ground: the drains' floor"}
+  ]
  }
 }

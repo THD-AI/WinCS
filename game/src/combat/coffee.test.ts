@@ -3,19 +3,19 @@ import { CoffeeUse, coffeeFrame } from './coffee';
 import { Life } from './life';
 import { parseCollision, placeCollision } from '../stage/collision';
 import type { Body } from '../player/body';
-import raw from '../../../art/stages/rusty-creek/rc-1-0.anomaly.collision.json';
+import raw from '../../../art/stages/rusty-creek/rc-1-1.anomaly.collision.json';
 import clips from '../../public/assets/sprites/hero-hurt.anims.json';
 
-const chunk = placeCollision(parseCollision(raw, 'rc-1-0', 'anomaly'), [2160, 0]);
+const chunk = placeCollision(parseCollision(raw, 'rc-1-1', 'anomaly'), [2160, 720]);
 const machines = chunk.world.interact;
-const body = (): Body => ({ x: 3950, y: 537, vx: 0, vy: 0, grounded: true });
+const body = (): Body => ({ x: 3950, y: 1242, vx: 0, vy: 0, grounded: true });
 describe('coffee save interaction', () => {
   it('glows steadily, flickers one frame every two seconds, and every fourth flicker shows the pond', () => {
     expect(coffeeFrame(0, 12)).toBe(1); expect(coffeeFrame(84, 12)).toBe(0); expect(coffeeFrame(1999, 12)).toBe(0);
     expect(coffeeFrame(2000, 12)).toBe(1); expect(coffeeFrame(4000, 12)).toBe(1); expect(coffeeFrame(6000, 12)).toBe(2);
   });
   it('uses the authored 40×80 machine at the translated walk surface and the approved drink timing', () => {
-    expect(machines.find(box => box.kind === 'coffee-machine')).toMatchObject({ id: 'coffee-1', x: 3930, y: 457, w: 40, h: 80 });
+    expect(machines.find(box => box.kind === 'coffee-machine')).toMatchObject({ id: 'coffee-1', x: 3930, y: 1162, w: 40, h: 80 });
     expect(clips.interact).toEqual({ frames: 3, fps: 12, loop: false });
     expect(clips.interact.frames / clips.interact.fps).toBe(0.25);
     expect(new CoffeeUse().step(true, body(), true, machines)?.id).toBe('coffee-1');
@@ -47,6 +47,6 @@ describe('coffee save interaction', () => {
     expect(machine?.id).toBe('coffee-1'); expect(life.save(player)).toBe(true);
     expect(life.health).toBe(5); player.x += 200;
     expect(life.hit(5)).toBe(true); expect(life.tick(1).respawned).toBe(true);
-    expect(life.checkpoint).toEqual({ x: 3950, y: 537 }); expect(life.health).toBe(5);
+    expect(life.checkpoint).toEqual({ x: 3950, y: 1242 }); expect(life.health).toBe(5);
   });
 });

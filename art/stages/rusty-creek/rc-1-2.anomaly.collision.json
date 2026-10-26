@@ -1,0 +1,61 @@
+{
+ "chunk": "rc-1-2",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    197
+   ],
+   [
+    1960,
+    197
+   ],
+   [
+    2050,
+    270
+   ],
+   [
+    2160,
+    278
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 584,
+   "w": 2160,
+   "h": 136,
+   "kind": "water"
+  }
+ ],
+ "hazard": [],
+ "interact": [],
+ "spawn": [],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    185,
+    290
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the drains' floor"
+  }
+ ]
+}

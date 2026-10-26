@@ -27,7 +27,7 @@ The stepping-stone creek and the Playground slides are connectors between anomal
 
 | Clean Rusty Creek | Anomaly Rusty Creek |
 | --- | --- |
-| ![Clean](../art/stages/rusty-creek/images/before-center.png) | ![Anomaly](../art/stages/rusty-creek/images/after-center.png) |
+| ![Clean](../art/stages/rusty-creek/prototype/before-center.png) | ![Anomaly](../art/stages/rusty-creek/prototype/after-center.png) |
 
 All seven pairs as concepts: **[stage concepts](../art/locations/README.md)**. Both states share the camera, layout and landmarks, so the anomaly can swap layers (as in Rusty Creek, where only the structure layers change) instead of redrawing the world.
 
@@ -127,21 +127,21 @@ Export: `art/stages/<region>/<chunk>.<state>.collision.json` – polylines, poin
 
 ## Rusty Creek – the jam level
 
-![Rusty Creek – full route, three chunks](../art/stages/rusty-creek/images/after-left.png)
+![Rusty Creek – the zone, 3 × 3 chunks](../art/zones/rusty-creek/previews/grown.png)
 
-The route already exists as a graph ([route.json](../art/stages/rusty-creek/route.json): 47 nodes, 47 edges, verified connected). The beats on it:
+Since 26 Oct the level is a 3 × 3 zone grown from one cut of its stacked concept ([#157](https://github.com/THD-AI/WinCS/issues/157), [stage README](../art/stages/rusty-creek/README.md)): the rust maze above (`rc-x-0`), the creek path under the railway girder (`rc-x-1`), the drains below (`rc-x-2`). The rows are rooms joined by ladders (pier ladders up to the girder's deck, maze ladders on up) and by the culvert's door down into the drains. The beats, on the anomaly's floors (`rusty_creek_zone.py` `ANOMALY`):
 
 | Chunk | Beat | Content |
 | --- | --- | --- |
-| Left – *entry, first climb* | Land from the pond crash. Quiet. | The **chair** lies on the first deck. One **rover** patrols the low deck (tutorial fight). Ladder up to the first branch. Optional lookout dead end: muffin + note #1 |
-| Center – *branches, reconnection* | The maze opens up | Two routes: high (ladders, a **crab** on a deck) and low (along the creek, two rovers). A **drone** hovers over the low route: too hard to kill with the chair, so avoid it under girders. **Coffee machine** + **Dexter** (pocket computer) at the reconnection. Cache dead end: Leberkäse roll |
-| Right – *boss clearing, exit* | Wide open girder floor | Boss gate closes behind you. **Jenny**. After the fight, Dexter absorbs the black fluid and the exit anomaly opens. Overlook dead end: note #2 (first hint about Dexter) |
+| `rc-0-1` – *entry* | Land from the ram. Quiet. | The **chair** on the path, two **rovers** along it, a pier ladder up to the girder's deck: note #1. Up into the maze (`rc-0-0`): a rover on its girders, a muffin |
+| `rc-1-1` – *the creek* | Along the water | Two rovers on the path, the **drone** over it. **Coffee machine** + **Dexter** (pocket computer). On the deck: Leberkäse roll. Above, in the maze (`rc-1-0`): the **crab** on a girder |
+| `rc-2-1` – *the arena* | The path under the girder | The culvert's door down into the drains (`rc-2-2`: a rover, note #2). Boss gate closes behind you, **Jenny** on her floor with two chained platforms; past her the exit |
 
 Target play time for the slice: 8–12 minutes.
 
-### Rebuild plan ([#157](https://github.com/THD-AI/WinCS/issues/157))
+### Rebuild plan ([#157](https://github.com/THD-AI/WinCS/issues/157)) – built 26 Oct as the 3 × 3 zone above
 
-The three chunks above were the proof of concept for map generation, made before the location concepts, the direction pack and the Hidden Garden's pipeline. The rebuild re-derives Region 1 from the sources and grows it the way the garden was grown. It also fixes the slice's length: with three chunks, a player who runs straight through finishes the whole slice in about 5 minutes. The target is 8–12.
+The one-row stage (`rc-0-0` … `rc-2-0`, before 26 Oct) was the proof of concept for map generation, made before the location concepts, the direction pack and the Hidden Garden's pipeline. The rebuild re-derives Region 1 from the sources and grows it the way the garden was grown. It also fixes the slice's length: with three chunks, a player who runs straight through finishes the whole slice in about 5 minutes. The target is 8–12.
 
 **Sources:** the style master ("Rusty Creek, first light": blue-green riveted rusty girders, ladders, autumn trees, the creek, a rusty railing in front), the location concept in `art/locations/`, the creek, rail and steel-bridge photos (`media-sources.json`), and the [anomaly language](../art/direction/anomaly-language.md) (cuts, stretched rows, 404 holes, crash dialogs).
 

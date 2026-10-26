@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { JENNY_BOX } from './jenny';
 import { GRAVITY, JUMP_SPEED } from '../player/jump';
-import arena from '../../../art/stages/rusty-creek/rc-2-0.anomaly.collision.json';
+import arena from '../../../art/stages/rusty-creek/rc-2-1.anomaly.collision.json';
 
 /** The platforms (arena-platform board, scripts/arena_platforms.py): girders this thick, hung on chains. */
 const BEAM = 25;

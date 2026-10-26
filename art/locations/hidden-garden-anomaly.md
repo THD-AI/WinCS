@@ -15,7 +15,7 @@ The SAME stage as the first image - same camera, same layout, same landmarks - a
 ## Inputs
 
 - [hidden-garden-clean](hidden-garden-clean.md) (this pack)
-- [after-center.png](../stages/rusty-creek/images/after-center.png)
+- [after-center.png](../stages/rusty-creek/prototype/after-center.png)
 - [style-master-preview.png](../direction/images/style-master-preview.png)
 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/hidden-garden-anomaly.png` · rebuild: `python scripts/make_boards.py draw --config art/locations/locations.json --redo hidden-garden-anomaly`

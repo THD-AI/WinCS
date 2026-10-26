@@ -3,12 +3,12 @@ import { add404Void, addImageCut, addPixelStretch } from './anomaly';
 
 const BASE = 'assets/stages/rusty-creek/';
 const LAYERS = [
-  { key: 'rc-test-distance', file: '01-distance-left.png', scroll: 0.2 },
-  { key: 'rc-test-traversal', file: '05-traversal-left.png', scroll: 1 },
+  { key: 'rc-test-distance', file: 'rc-0-1.01-far.png', scroll: 1 },
+  { key: 'rc-test-traversal', file: 'rc-0-1.05-play.png', scroll: 1 },
 ];
 
 /**
- * Dev only (#37 verification): the first Rusty Creek chunk with each anomaly effect on it.
+ * Dev only (#37 verification): the creek path's first chunk (rc-0-1) with each anomaly effect on it.
  * F9 opens it from the HUD; V shows and hides the effects; arrows pan; Esc closes.
  */
 export class AnomalyTest extends Phaser.Scene {

@@ -41,8 +41,8 @@ ANOMALY = ("STATE: anomaly - the SAME place, same camera, same layout, after the
 
 S = "repo:art/direction/images/style-master-preview.png"
 ZA = "repo:tmp/zones/concepts/zone-a.png"
-BC = "repo:art/stages/rusty-creek/images/before-center.png"
-AC = "repo:art/stages/rusty-creek/images/after-center.png"
+BC = "repo:art/stages/rusty-creek/prototype/before-center.png"
+AC = "repo:art/stages/rusty-creek/prototype/after-center.png"
 TAKES = {
   # clean: layout from my painted guide (edited image), look from refs
   "clean-1": ("guide-a.png", [S, ZA], "The first image is a rough flat LAYOUT GUIDE: keep every shape where it is "
