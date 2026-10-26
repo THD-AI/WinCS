@@ -36,9 +36,10 @@ BANDS = {
     "path": ("hg-0-0.png", (300, 300, 1380, 480), 137),
     "air": ("hg-0-0.png", (1000, 160, 2080, 340), 120),
     "pond": ("hg-4-0.png", (300, 500, 1380, 680), 70),
-    # The rust maze: the first rover's deck (y 508) in rc-0-0 and the creek floor (y 569) in rc-1-0.
-    "deck": (("rusty-creek", "rc-0-0", "anomaly"), (300, 330, 1380, 510), 178),
-    "maze": (("rusty-creek", "rc-1-0", "anomaly"), (300, 390, 1380, 570), 179),
+    # Rusty Creek's anomaly: the creek path under the railway girder (y 522) in rc-0-1, and a rust-maze girder (y 331)
+    # in rc-1-0 – where the rovers and the crab drive.
+    "deck": (("rusty-creek", "rc-0-1", "anomaly"), (300, 344, 1380, 524), 178),
+    "maze": (("rusty-creek", "rc-1-0", "anomaly"), (300, 152, 1380, 332), 179),
 }
 # --all: the band where each atlas appears (default: the maze deck).
 HOME = {"dexter": "path", "dexter-acts": "path", "dexter-prologue": "path", "fx-ground": "path", "hero-move": "path",

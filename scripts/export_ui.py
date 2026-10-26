@@ -161,7 +161,7 @@ def nine_slice(piece: Image.Image, w: int, h: int, inset: int) -> Image.Image:
 
 def contact(pieces: dict[str, Image.Image], lay: dict) -> Image.Image:
     """The HUD and the open map over a Rusty Creek frame, at game size and the measured placements."""
-    plate = ROOT / "art" / "stages" / "rusty-creek" / "images" / "after-center.png"
+    plate = ROOT / "art" / "stages" / "rusty-creek" / "images" / "rc-1-1.png"
     frame = Image.open(plate).convert("RGBA").crop((0, 0, 1280, 720)) if plate.exists() \
         else Image.new("RGBA", (1280, 720), (23, 36, 45, 255))
     put = lambda name, xy: name in pieces and frame.alpha_composite(pieces[name], xy)

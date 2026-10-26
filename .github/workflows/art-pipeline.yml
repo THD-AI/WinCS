@@ -33,7 +33,6 @@ jobs:
       - run: python -m pip install -r requirements-art.txt
       # pytest runs both styles: unittest classes and plain test functions (unittest discover skipped the latter)
       - run: python -m pytest scripts -v -p no:cacheprovider
-      - run: python scripts/creek_layers.py
       - run: python scripts/split_layers.py --check
       - run: python scripts/collision_check.py
       - run: python scripts/export_stage.py --verify --out tmp/stage-export
