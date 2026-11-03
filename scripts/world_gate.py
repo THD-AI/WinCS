@@ -397,13 +397,25 @@ def gate(grid: dict[str, tuple[int, int]], images: Path, concept: np.ndarray | d
     return report
 
 
+def waive(report: dict, waivers: list[dict]) -> dict:
+    """Mark checks Alexander accepted as they are (zone.json "gate": {"waive": [{"chunk", "check", "why"}]}): the check
+    still runs and keeps its value, it passes as WAIVED with the reason. Only a named chunk's named check."""
+    for w in waivers:
+        r = report.get(w["chunk"], {}).get(w["check"])
+        if r is not None and not r["pass"]:
+            r.update({"pass": True, "waived": w["why"]})
+    report["pass"] = all(r["pass"] for cid, checks in report.items() if cid != "pass" for r in checks.values())
+    return report
+
+
 def show(report: dict) -> None:
     """One line per chunk per check."""
     for cid, checks in report.items():
         if cid == "pass":
             continue
         for name, r in checks.items():
-            print(f"{cid:>10}  {name:<18} {'PASS' if r['pass'] else 'FAIL'}  {r['value']:>10g}  (limit {r['limit']:g})")
+            verdict = "WAIVED" if r.get("waived") else "PASS" if r["pass"] else "FAIL"
+            print(f"{cid:>10}  {name:<18} {verdict:<6}  {r['value']:>10g}  (limit {r['limit']:g})")
     print("gate:", "PASS" if report["pass"] else "FAIL")
 
 
@@ -447,6 +459,8 @@ def main(argv: list[str] | None = None) -> int:
             under = (whole, whole[whole.shape[0] // 2:])  # grain against the whole, palette against the maze
             concept = {cid: under if c.get("band") == "below" else concept for cid, c in world["chunks"].items()}
     report = gate(grid, images, concept, blockouts, args.chunks)
+    if args.zone and (zone / "zone.json").exists():
+        report = waive(report, json.loads((zone / "zone.json").read_text(encoding="utf-8")).get("gate", {}).get("waive", []))
     show(report)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

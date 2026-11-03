@@ -1,0 +1,139 @@
+{
+  "name": "Rusty Creek zone – grow boards",
+  "readme": "Routes for growing the creek's level row sideways from the approved start chunk (grow_stage.py).",
+  "model": "gpt-image-2.5-sunburst",
+  "size": "2160x720",
+  "style": "LOOK: continue the finished art exactly - detailed hi-bit pixel art with a fine 2-pixel grain, warm autumn palette, low golden morning light: the rusty blue-green riveted railway girder, ivy-covered concrete piers, autumn trees and hazy campus buildings behind, the cement creek path with its grey pipe railing, the stone bank wall, the calm creek with reflections. Strict side view, an architect's elevation: everything runs parallel to the screen, nothing recedes. The hero is about 114 px tall here: a railing is about 50 px, a doorway about 120 px, a ladder rung step about 12 px. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
+  "people": "No people, no animals, no plush toys and no characters of any kind: this is an empty stage the game puts its characters into.",
+  "boards": [
+    {
+      "id": "rcz-0-1",
+      "inputs": [],
+      "prompt": "The approved start chunk (cut from the #227 concept); only features are painted into it.",
+      "route": {
+        "walk": [
+          [
+            [
+              0,
+              522
+            ],
+            [
+              2160,
+              522
+            ]
+          ]
+        ],
+        "water": [
+          [
+            0,
+            600,
+            2160,
+            720
+          ]
+        ],
+        "ladder": [
+          [
+            300,
+            214,
+            390,
+            522
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rcz-1-1",
+      "inputs": [],
+      "prompt": "The cement creek path with its grey pipe railing continues at the same height, the stone bank wall under it, the calm creek with reflections along the bottom, the railway girder on its piers continues across the top, autumn trees and hazy campus buildings behind. One more concrete pier with ivy holds the girder near the middle; a steel ladder climbs that pier from the path up to the girder's maintenance walk. A park bench on the path near the right edge.",
+      "route": {
+        "walk": [
+          [
+            [
+              0,
+              522
+            ],
+            [
+              2160,
+              522
+            ]
+          ]
+        ],
+        "water": [
+          [
+            0,
+            600,
+            2160,
+            720
+          ]
+        ],
+        "ladder": [
+          [
+            1090,
+            0,
+            1120,
+            522
+          ]
+        ],
+        "structure": [
+          [
+            1800,
+            470,
+            1950,
+            522
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rcz-2-1",
+      "inputs": [],
+      "prompt": "The cement creek path with its grey pipe railing continues at the same height, the stone bank wall under it, the calm creek with reflections along the bottom, the railway girder on its piers continues across the top, autumn trees and hazy campus buildings behind. A park bench on the path near the left edge. Below the path, a round concrete culvert mouth opens in the bank wall at the water line, a caged bulkhead lamp glowing inside. Near the right edge a steel ladder climbs a pier up to the girder, and a round manhole shaft with a ladder drops from the path down into the dark.",
+      "route": {
+        "walk": [
+          [
+            [
+              0,
+              522
+            ],
+            [
+              2160,
+              522
+            ]
+          ]
+        ],
+        "water": [
+          [
+            0,
+            600,
+            2160,
+            720
+          ]
+        ],
+        "structure": [
+          [
+            150,
+            470,
+            300,
+            522
+          ]
+        ],
+        "hollow": [
+          [
+            330,
+            542,
+            490,
+            640
+          ]
+        ],
+        "ladder": [
+          [
+            1700,
+            214,
+            1810,
+            522
+          ]
+        ]
+      }
+    }
+  ]
+}

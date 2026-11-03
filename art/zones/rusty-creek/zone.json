@@ -16,11 +16,9 @@
     "anomaly": "art/locations/rusty-creek-stacked/anomaly.png",
     "clean": "art/locations/rusty-creek-stacked/clean.png"
   },
-  "inputs": [
-    "repo:art/direction/images/style-master-preview.png"
-  ],
+  "inputs": [],
   "model": "gpt-image-2.5-sunburst",
-  "style": "LOOK: detailed hi-bit pixel art with a fine 2-pixel grain in the warm palette and first light of the first image (Rusty Creek): rusty blue-green steel girders and rail bridges, ivy on stone piers, a cement creek path with railings, the calm creek with reflections, campus buildings and trees behind in hazy layers. Strict side view, an architect's elevation: everything runs parallel to the screen, nothing recedes. The hero is about 76 px tall in this image, so a doorway is about 110 px tall and a ladder rung step about 12 px. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
+  "style": "LOOK: continue the finished art exactly - detailed hi-bit pixel art with a fine 2-pixel grain, warm autumn palette, low golden morning light: the rusty blue-green riveted railway girder, ivy-covered concrete piers, autumn trees and hazy campus buildings behind, the cement creek path with its grey pipe railing, the stone bank wall, the calm creek with reflections. Strict side view, an architect's elevation: everything runs parallel to the screen, nothing recedes. The hero is about 114 px tall here: a railing is about 50 px, a doorway about 120 px, a ladder rung step about 12 px. TONE: secret horror - calm and pretty first. No text, no logos, no UI.",
   "people": "No people, no animals, no plush toys and no characters of any kind: this is an empty stage the game puts its characters into.",
   "vocabulary": {
     "above": "high above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees",
@@ -35,7 +33,7 @@
     },
     "count": 3
   },
-  "note_inputs": "Paint inputs are the style master only (docs/09: a whole concept as a look reference gets copied, layout and all; #182: 'zone-a as a reference = zone-a's layout').",
+  "note_inputs": "No look image: every chunk grows from approved art (the start chunk). Painting a flat guide with any look image copied that image - the style master (the creek itself), the Hidden Garden plate, a swatch sheet - and a guide alone gave a generic harbour; all four takes ignored the guide (25 Oct, docs/09).",
   "words": {
     "roles": {
       "above": "the bridge and the rust maze",
@@ -55,5 +53,30 @@
       "hollow": "The purple room is a warm lit service room with lockers, a desk and a hanging lamp, built in concrete and tile.",
       "above": "Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm – most of the image is sky."
     }
+  },
+  "start": {
+    "chunk": "rcz-0-1",
+    "from": "art/locations/rusty-creek-stacked/clean-preview.png",
+    "box": [
+      8,
+      16,
+      2168,
+      736
+    ],
+    "note": "The level row starts from the #227 concept's level band, cut 1:1 (the concept is at game scale: railing ≈ 50 px). Approved by Alexander, 25 Oct; every other chunk grows from it."
+  },
+  "gate": {
+    "waive": [
+      {
+        "chunk": "rcz-1-0",
+        "check": "repeat",
+        "why": "Alexander, 25 Oct: kept. The repeated 48 px blocks all sit on the riveted girder flanges (y 24-48): real rivets repeat at a fixed pitch, it is not the model copying a patch."
+      },
+      {
+        "chunk": "rcz-2-0",
+        "check": "repeat",
+        "why": "Alexander, 25 Oct: kept. The repeated 48 px blocks all sit on the riveted girder flanges (y 24-48): real rivets repeat at a fixed pitch, it is not the model copying a patch."
+      }
+    ]
   }
 }

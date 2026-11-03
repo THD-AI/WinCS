@@ -163,3 +163,11 @@ def test_hole_fails_on_an_empty_repaint_window_only():
     assert wg.check_hole(img)["pass"]
     img[100:250, 100:300] = 0                   # 30 000 px: an empty window
     assert not wg.check_hole(img)["pass"]
+
+
+def test_waive_passes_only_the_named_check_and_keeps_its_value():
+    report = {"a": {"repeat": wg.result(8, 4, False), "seam b": wg.result(30, 14, False)}, "pass": False}
+    out = wg.waive(report, [{"chunk": "a", "check": "repeat", "why": "rivets"}])
+    assert out["a"]["repeat"] == {"value": 8.0, "limit": 4.0, "pass": True, "waived": "rivets"}
+    assert not out["a"]["seam b"]["pass"] and not out["pass"]
+    assert wg.waive(out, [{"chunk": "a", "check": "seam b", "why": "x"}])["pass"]

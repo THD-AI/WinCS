@@ -17,7 +17,7 @@
    "row": 0,
    "band": "above",
    "role": "the bridge and the rust maze",
-   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm \u2013 most of the image is sky.",
+   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm – most of the image is sky.",
    "interact": [
     {
      "id": "rcz-0-0-glint",
@@ -36,7 +36,7 @@
    "row": 0,
    "band": "above",
    "role": "the bridge and the rust maze",
-   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm \u2013 most of the image is sky.",
+   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm – most of the image is sky.",
    "interact": [
     {
      "id": "rcz-1-0-glint",
@@ -55,7 +55,7 @@
    "row": 0,
    "band": "above",
    "role": "the bridge and the rust maze",
-   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm \u2013 most of the image is sky.",
+   "brief": "High above the creek: the railway bridge deck and the rust maze grown from it - long rusty blue-green girder beams with rivets, ladders between them, wide gaps of open morning sky over hazy campus buildings and trees. Grey beams are long rusty girders of the rust maze in the open morning sky; keep the sky wide and calm – most of the image is sky.",
    "interact": [
     {
      "id": "rcz-2-0-glint",
@@ -83,7 +83,7 @@
      "y": 430,
      "w": 140,
      "h": 50,
-     "note": "a bench on the creek path \u2013 sit, the music settles"
+     "note": "a bench on the creek path – sit, the music settles"
     }
    ]
   },
@@ -102,7 +102,7 @@
      "y": 478,
      "w": 140,
      "h": 50,
-     "note": "a bench on the creek path \u2013 sit, the music settles"
+     "note": "a bench on the creek path – sit, the music settles"
     }
    ]
   },
@@ -112,7 +112,7 @@
    "row": 1,
    "band": "level",
    "role": "the creek path",
-   "brief": "The creek at water level: the cement creek path with a railing and benches, steps, ivy-covered stone bridge piers, the calm creek with reflections, reeds at the bank. A steel footbridge on posts crosses the creek where the guide shows it. An embankment rises where the guide's brown mound is; the purple room in it is a culvert mouth with a bulkhead lamp and a small locker \u2013 a secret, built and lit, never a cave. A park bench stands on the cement creek path.",
+   "brief": "The creek at water level: the cement creek path with a railing and benches, steps, ivy-covered stone bridge piers, the calm creek with reflections, reeds at the bank. A steel footbridge on posts crosses the creek where the guide shows it. An embankment rises where the guide's brown mound is; the purple room in it is a culvert mouth with a bulkhead lamp and a small locker – a secret, built and lit, never a cave. A park bench stands on the cement creek path.",
    "interact": [
     {
      "id": "rcz-2-1-chest",
@@ -130,7 +130,7 @@
      "y": 478,
      "w": 140,
      "h": 50,
-     "note": "a bench on the creek path \u2013 sit, the music settles"
+     "note": "a bench on the creek path – sit, the music settles"
     }
    ]
   },
@@ -185,21 +185,9 @@
  "links": [
   {
    "a": "rcz-0-0",
-   "b": "rcz-0-1",
-   "by": "shaft",
-   "at": 528
-  },
-  {
-   "a": "rcz-0-0",
    "b": "rcz-1-0",
    "by": "door",
    "at": 360
-  },
-  {
-   "a": "rcz-0-1",
-   "b": "rcz-0-2",
-   "by": "shaft",
-   "at": 528
   },
   {
    "a": "rcz-0-1",
@@ -212,12 +200,6 @@
    "b": "rcz-1-2",
    "by": "door",
    "at": 648
-  },
-  {
-   "a": "rcz-1-0",
-   "b": "rcz-1-1",
-   "by": "shaft",
-   "at": 1104
   },
   {
    "a": "rcz-1-0",
@@ -238,16 +220,46 @@
    "at": 624
   },
   {
+   "a": "rcz-0-0",
+   "b": "rcz-0-1",
+   "by": "shaft",
+   "note": "the maze's ladders onto the girder deck"
+  },
+  {
+   "a": "rcz-1-0",
+   "b": "rcz-1-1",
+   "by": "shaft",
+   "note": "the maze's ladders onto the girder deck"
+  },
+  {
    "a": "rcz-2-0",
    "b": "rcz-2-1",
    "by": "shaft",
-   "at": 1752
+   "note": "the maze's ladders onto the girder deck"
+  },
+  {
+   "a": "rcz-0-1",
+   "b": "rcz-0-1",
+   "by": "ladder",
+   "note": "the pier ladder: path <-> girder deck"
+  },
+  {
+   "a": "rcz-1-1",
+   "b": "rcz-1-1",
+   "by": "ladder",
+   "note": "the pier ladder: path <-> girder deck"
+  },
+  {
+   "a": "rcz-2-1",
+   "b": "rcz-2-1",
+   "by": "ladder",
+   "note": "the pier ladder: path <-> girder deck"
   },
   {
    "a": "rcz-2-1",
    "b": "rcz-2-2",
-   "by": "shaft",
-   "at": 1704
+   "by": "door",
+   "note": "the culvert <-> the drain door"
   }
  ],
  "anomaly": {
@@ -307,12 +319,12 @@
   {
    "chunk": "rcz-0-1",
    "kind": "rest",
-   "note": "a bench on the creek path \u2013 sit, the music settles"
+   "note": "a bench on the creek path – sit, the music settles"
   },
   {
    "chunk": "rcz-1-1",
    "kind": "rest",
-   "note": "a bench on the creek path \u2013 sit, the music settles"
+   "note": "a bench on the creek path – sit, the music settles"
   },
   {
    "chunk": "rcz-2-1",
@@ -322,7 +334,7 @@
   {
    "chunk": "rcz-2-1",
    "kind": "rest",
-   "note": "a bench on the creek path \u2013 sit, the music settles"
+   "note": "a bench on the creek path – sit, the music settles"
   },
   {
    "chunk": "rcz-0-2",
@@ -334,5 +346,6 @@
    "kind": "secret",
    "note": "a lit service room: lockers, a desk, a hanging lamp"
   }
- ]
+ ],
+ "traced": "Collision traced from the painting (25 Oct): the level row measured, the bands above and below from their depth keys; the band above's blockout redrawn from it (the kept rust maze)."
 }

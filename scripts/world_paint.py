@@ -5,13 +5,15 @@
     python scripts/world_paint.py join  art/zones/<zone> [--only left-right|up-down] [--row N]
     python scripts/world_paint.py feature art/zones/<zone> <id> --box x0,y0,x1,y1 --brief "…"   # a story detail
     python scripts/world_paint.py settle art/zones/<zone> --row N [--up] # up/down seams: colour only
+    python scripts/world_paint.py join  art/zones/<zone> --only up-down --pair a,b --half 150,44 --brief "…"
+                                                                         # the window stops 44 rows into b
     python scripts/world_paint.py join  art/zones/<zone> --only left-right --pair a,b --half 480,160 --brief "…"
                                                                          # two different rooms: paint the passage
     python scripts/world_paint.py accept art/zones/<zone> [ids …]
 
 paint – the model edits each chunk's flat guide (blockout/<id>.png) under a fully open mask, so the walk lines,
-ladders, water and rooms stay where the blockout put them; the concept and the style master come along as the
-LOOK only. The first chunk at pond level is painted alone and then goes with every other chunk as the palette
+ladders, water and rooms stay where the blockout put them; the zone's look reference (zone.json "inputs", never
+a picture of the zone itself) comes along as the LOOK only. The first chunk at pond level is painted alone and then goes with every other chunk as the palette
 anchor, so the zone is one place. Chunks after the anchor are painted in parallel.
 join – one 2160×720 canvas per seam: the two halves that meet, the window across the seam repainted, then joined
 back to the old art along min-error cuts on both sides (grow_stage.min_cut). Left/right seams first, then up/down
@@ -51,8 +53,8 @@ PAINT = (
     "walk into; the pale blue is open air for sky, far trees and mid trees. Never draw the guide's flat colours, "
     "its lines or its hard rectangle edges: everything becomes natural, overgrown, painted scenery. The layout comes "
     "ONLY from the guide: where the guide is open air, paint open air - do not add girders, platforms, ponds or "
-    "rooms the guide does not have. The second image is the game's style master: the LOOK only - palette, light, "
-    "materials, the fine 2-pixel grain - never its content, layout or scale. "
+    "rooms the guide does not have. The second image is the zone's look reference (zone.json \"inputs\"): the LOOK only - "
+    "palette, light, materials, the fine 2-pixel grain - never its content, layout or scale. "
     "{anchor}\n\nWHAT IS HERE: {brief}")
 ANCHOR = ("The last image is a neighbouring chunk of the same zone, already painted: the same palette, light, grain "
           "and level of detail, so the two read as one place.")
@@ -275,7 +277,9 @@ def join_one(zone: dict, a: Image.Image, b: Image.Image, kind: str, name: str, h
         canvas = Image.new("RGB", (W, H))
         canvas.paste(a.crop((0, H // 2, W, H)), (0, 0))
         canvas.paste(b.crop((0, 0, W, H // 2)), (0, H // 2))
-        box, where = (0, H // 2 - BAND, W, H // 2 + BAND), "along a horizontal line across the middle, above and below"
+        # (above, below) keeps the window off something below that must not move (a railway girder's top edge)
+        above, below = half if isinstance(half, tuple) else (BAND, BAND)
+        box, where = (0, H // 2 - above, W, H // 2 + below), "along a horizontal line across the middle, above and below"
     parts = [JOIN.format(where=where)] + ([TRANSITION.format(brief=brief)] if brief else []) +         ([f"WHAT IS HERE: {here}"] if here else [])
     prompt = "\n\n".join(parts + [zone["style"], zone["people"]])
     painted = call(name, prompt, canvas, window_mask((W, H), box), zone["inputs"][:1], zone)
@@ -409,7 +413,7 @@ def main() -> None:
     parser.add_argument("--brief", help="feature: what to paint in the window; join: the passage between two rooms")
     parser.add_argument("--pair", help="join: only this seam, a,b")
     parser.add_argument("--half", default=str(HALF), help="join: px repainted on each side of a left/right seam, "
-                                                          "or left,right")
+                                                          "or left,right; an up/down seam takes above,below")
     parser.add_argument("--up", action="store_true", help="settle: fade the row into the chunk below it")
     args = parser.parse_args()
     zone = args.zone if args.zone.is_absolute() else ROOT / args.zone
