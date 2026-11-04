@@ -27,24 +27,7 @@
  ],
  "slide": [],
  "oneWay": [],
- "climb": [
-  {
-   "x": 896,
-   "y": 0,
-   "w": 18,
-   "h": 216,
-   "kind": "ladder",
-   "id": "rcz-1-2-ladder-4"
-  },
-  {
-   "x": 1249,
-   "y": 0,
-   "w": 18,
-   "h": 217,
-   "kind": "ladder",
-   "id": "rcz-1-2-ladder-5"
-  }
- ],
+ "climb": [],
  "solid": [],
  "noGo": [
   {

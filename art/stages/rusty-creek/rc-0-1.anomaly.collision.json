@@ -1,0 +1,139 @@
+{
+ "chunk": "rc-0-1",
+ "state": "anomaly",
+ "size": [
+  2160,
+  720
+ ],
+ "walk": [
+  [
+   [
+    0,
+    522
+   ],
+   [
+    2160,
+    522
+   ]
+  ],
+  [
+   [
+    0,
+    62
+   ],
+   [
+    2160,
+    62
+   ]
+  ]
+ ],
+ "slide": [],
+ "oneWay": [],
+ "climb": [
+  {
+   "x": 330,
+   "y": 54,
+   "w": 42,
+   "h": 468,
+   "kind": "ladder",
+   "id": "rcz-0-1-pier-ladder"
+  },
+  {
+   "x": 1619,
+   "y": 0,
+   "w": 33,
+   "h": 62,
+   "kind": "ladder",
+   "id": "rcz-0-0-ladder-1-on"
+  }
+ ],
+ "solid": [],
+ "noGo": [
+  {
+   "x": 0,
+   "y": 600,
+   "w": 2160,
+   "h": 120,
+   "kind": "water"
+  }
+ ],
+ "hazard": [],
+ "interact": [
+  {
+   "id": "chair",
+   "kind": "pickup",
+   "item": "chair",
+   "x": 520,
+   "y": 486,
+   "w": 40,
+   "h": 36
+  },
+  {
+   "id": "note-1",
+   "kind": "pickup",
+   "item": "note-1",
+   "x": 1200,
+   "y": 38,
+   "w": 24,
+   "h": 24
+  }
+ ],
+ "spawn": [
+  {
+   "id": "player",
+   "kind": "player",
+   "x": 200,
+   "y": 522
+  },
+  {
+   "id": "rover-1",
+   "kind": "rover",
+   "x": 900,
+   "y": 522,
+   "patrol": [
+    780,
+    1020
+   ]
+  },
+  {
+   "id": "rover-4",
+   "kind": "rover",
+   "x": 1500,
+   "y": 522,
+   "patrol": [
+    1380,
+    1620
+   ]
+  }
+ ],
+ "ledge": [],
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    510,
+    534
+   ],
+   "kind": "ground",
+   "material": "stone",
+   "note": "the creek path"
+  },
+  {
+   "x": [
+    0,
+    2160
+   ],
+   "y": [
+    50,
+    74
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "the railway girder's deck"
+  }
+ ]
+}

@@ -193,6 +193,15 @@ def reach(data: dict, name: str) -> list[str]:
     player = [p for p in data["spawn"] if p["kind"] == "player"]
     start = standing(s, player[0]["x"], player[0]["y"]) if player else \
         [i for i, a in enumerate(s) if a["x0"] <= SNAP]
+    # A ladder that runs off the chunk's top or bottom edge is a way in from the row next to it (a zone's rows are
+    # rooms joined by ladders): the floor at its other end is a start too.
+    h = data["size"][1]
+    for c in data["climb"]:
+        x = c["x"] + c["w"] / 2
+        if c["y"] + c["h"] >= h - 2:
+            start += standing(s, x, c["y"])
+        elif c["y"] <= 2:
+            start += standing(s, x, c["y"] + c["h"])
     if not start:
         return [f"{name}: no floor at the player spawn or the chunk's left edge"]
     seen, todo = set(start), list(start)

@@ -8,46 +8,170 @@
  "walk": [
   [
    [
-    0,
-    566
+    80,
+    327
+   ],
+   [
+    304,
+    327
+   ]
+  ],
+  [
+   [
+    132,
+    524
+   ],
+   [
+    780,
+    524
+   ]
+  ],
+  [
+   [
+    360,
+    208
+   ],
+   [
+    544,
+    208
+   ]
+  ],
+  [
+   [
+    880,
+    473
+   ],
+   [
+    1136,
+    473
+   ]
+  ],
+  [
+   [
+    1136,
+    448
+   ],
+   [
+    1408,
+    448
+   ]
+  ],
+  [
+   [
+    1440,
+    287
    ],
    [
     2160,
-    566
+    287
    ]
   ]
  ],
  "slide": [],
  "oneWay": [],
- "climb": [],
- "solid": [
+ "climb": [
   {
-   "x": 0,
-   "y": 0,
-   "w": 8,
-   "h": 720
+   "x": 495,
+   "y": 208,
+   "w": 33,
+   "h": 316,
+   "kind": "ladder",
+   "id": "rcz-0-0-ladder-0"
+  },
+  {
+   "x": 1619,
+   "y": 287,
+   "w": 33,
+   "h": 433,
+   "kind": "ladder",
+   "id": "rcz-0-0-ladder-1"
   }
  ],
- "noGo": [
-  {
-   "x": 0,
-   "y": 600,
-   "kind": "water",
-   "w": 2160,
-   "h": 120
-  }
- ],
+ "solid": [],
+ "noGo": [],
  "hazard": [],
  "interact": [],
- "spawn": [
-  {
-   "id": "player",
-   "kind": "player",
-   "x": 600,
-   "y": 566,
-   "note": "The 404 lands the hero on the creek path under the rail bridge (P5)"
-  }
- ],
+ "spawn": [],
  "ledge": [],
- "glideLift": []
+ "glideLift": [],
+ "terrain": [
+  {
+   "x": [
+    80,
+    304
+   ],
+   "y": [
+    315,
+    339
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    132,
+    780
+   ],
+   "y": [
+    512,
+    536
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    360,
+    544
+   ],
+   "y": [
+    196,
+    220
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    880,
+    1136
+   ],
+   "y": [
+    461,
+    485
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1136,
+    1408
+   ],
+   "y": [
+    436,
+    460
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  },
+  {
+   "x": [
+    1440,
+    2160
+   ],
+   "y": [
+    275,
+    299
+   ],
+   "kind": "plank",
+   "material": "steel",
+   "note": "a girder of the rust maze"
+  }
+ ]
 }

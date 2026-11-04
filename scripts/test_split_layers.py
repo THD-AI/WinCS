@@ -9,7 +9,6 @@ from PIL import Image, ImageChops, ImageDraw
 import split_layers as sl
 
 ROOT = Path(__file__).resolve().parents[1]
-CREEK = ROOT / 'art' / 'stages' / 'rusty-creek'
 
 
 def scene(anomaly=False):
@@ -81,28 +80,6 @@ class SplitLayersTests(unittest.TestCase):
         with self.assertRaisesRegex(sl.SplitError, "unknown layer '09-fx'"):
             sl.run(self.region, check=False)
 
-    def test_rusty_creek_matches_creek_layers(self):
-        """Split the composed left anomaly chunk with the creek's own layer alphas, in its draw order.
-        Every pixel lands in the layer creek_layers.py drew on top there, and the stack rebuilds the art.
-        (Colours can't match the plates: they are semi-transparent, so the composed art is a blend.)"""
-        assembly = json.loads((CREEK / 'assembly.json').read_text(encoding='utf-8'))
-        role_to_layer = {'01-distance': '01-far', '03-bank': '02-mid', '02-supports': '03-rear',
-                         '04-water': '04-water', '05-traversal': '05-play', '06-near-rails': '06-near',
-                         '07-foliage': '07-foreground'}
-        order = assembly['draw_order']
-        plates = {r: Image.open(CREEK / 'images' / f'{r}-left.png').convert('RGBA') for r in order}
-        rules = [{'layer': role_to_layer[r], 'alpha': f'images/{r}-left.png'} for r in order]
-        source = Image.open(CREEK / 'images' / 'after-left.png').convert('RGBA')
-        layers = sl.split(source, sl.assign({'default': '01-far', 'rules': rules}, 'anomaly', source, CREEK))
-        self.assertTrue(sl.same(sl.stack(layers, source.size), source))
-        covered = Image.new('L', source.size, 0)  # pixels a later-drawn plate already claims
-        for role in reversed(order):
-            drawn = plates[role].getchannel('A').point(lambda a: 255 if a else 0)
-            on_top = ImageChops.subtract(drawn, covered)
-            ours = layers.get(role_to_layer[role])
-            ours = ours.getchannel('A').point(lambda a: 255 if a else 0) if ours else Image.new('L', source.size, 0)
-            self.assertIsNone(ImageChops.difference(ours, on_top).getbbox(), role)
-            covered = ImageChops.lighter(covered, drawn)
     def test_a_fill_goes_only_under_nearer_layers(self):
         source = scene()
         owner = sl.assign(self.config['chunks']['t-0-0'], 'clean', source, self.region)

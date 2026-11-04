@@ -16,7 +16,7 @@ A real GAMEPLAY screenshot, same camera as the first image: strict side view, wi
 
 - [style-master](style-master.md) (this pack)
 - [hero-preview.png](../sprites/images/hero-preview.png)
-- [after-center.png](../stages/rusty-creek/images/after-center.png)
+- [after-center.png](../stages/rusty-creek/prototype/after-center.png)
 - [bad-seed-02.jpg](../../references/games/dead-cells/images/bad-seed-02.jpg)
 
 Model `gpt-image-2.5-sunburst` · pixel factor 2 · source image `images/combat.png` · rebuild: `python scripts/make_boards.py draw --config art/direction/direction.json --redo combat`

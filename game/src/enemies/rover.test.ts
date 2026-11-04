@@ -3,10 +3,12 @@ import { Rover, CHARGE_SPEED, PATROL_SPEED, ROVER_WIDTH, ROVER_HEIGHT } from './
 import { parseCollision, placeCollision } from '../stage/collision';
 import type { Damageable } from '../combat/sweeps';
 import { Sweeps, intersects } from '../combat/sweeps';
-import raw from '../../../art/stages/rusty-creek/rc-0-0.anomaly.collision.json';
+import raw from '../../../art/stages/rusty-creek/rc-0-1.anomaly.collision.json';
 
+// The first rover on the creek path (rc-0-1, at x 900 on the path's y 522, patrolling 780-1020), placed 140 px left
+// and 14 px up so it stands where the old stage's tutorial rover stood: (760, 508), patrolling 640-880.
 const tutorial = () => {
-  const spawn = placeCollision(parseCollision(raw, 'rc-0-0', 'anomaly'), [0, 0]).world.spawn.find(point => point.kind === 'rover')!;
+  const spawn = placeCollision(parseCollision(raw, 'rc-0-1', 'anomaly'), [-140, -14]).world.spawn.find(point => point.id === 'rover-1')!;
   return new Rover({ x: spawn.x, y: spawn.y }, spawn.patrol as [number, number]);
 };
 describe('autonomous rover', () => {
